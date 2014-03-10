@@ -1,41 +1,54 @@
-/**
- * Routes
- *
- * Your routes map URLs to views and controllers.
- * 
- * If Sails receives a URL that doesn't match any of the routes below,
- * it will check for matching files (images, scripts, stylesheets, etc.) 
- * in your assets directory.  e.g. `http://localhost:1337/images/foo.jpg` 
- * might match an image file: `/assets/images/foo.jpg`
- *
- * Finally, if those don't match either, the default 404 handler is triggered.
- * See `config/404.js` to adjust your app's 404 logic.
- *
- * Note: Sails doesn't ACTUALLY serve stuff from `assets`-- the default Gruntfile in Sails copies
- * flat files from `assets` to `.tmp/public`.  This allows you to do things like compile LESS or 
- * CoffeeScript for the front-end.
- *
- * For more information on routes, check out:
- * http://sailsjs.org/#documentation
- */
-
+// Routes
+// *********************
+//
+// This table routes urls to controllers/actions.
+//
+// If the URL is not specified here, the default route for a URL is:  /:controller/:action/:id
+// where :controller, :action, and the :id request parameter are derived from the url
+//
+// If :action is not specified, Sails will redirect to the appropriate action
+// based on the HTTP verb: (using REST/Backbone conventions)
+//
+//		GET:	/:controller/read/:id
+//		POST:	/:controller/create
+//		PUT:	/:controller/update/:id
+//		DELETE:	/:controller/destroy/:id
+//
+// If the requested controller/action doesn't exist:
+//   - if a view exists ( /views/:controller/:action.ejs ), Sails will render that view
+//   - if no view exists, but a model exists, Sails will automatically generate a
+//       JSON API for the model which matches :controller.
+//   - if no view OR model exists, Sails will respond with a 404.
+//
 module.exports.routes = {
 
+	// To route the home page to the "index" action of FooController
+	// (if no controller exists, Sails will look for a view called `views/home/index.*`)
+	// '/' : {
+	//     controller  : 'foo',
+	//     action      : 'index',
+	// }
 
-  // Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, etc. depending on your
-  // default view engine) your home page.
-  // 
-  // (Alternatively, remove this and add an `index.html` file in your `assets` directory)
-  '/': {
-    view: 'homepage'
-  },
+	// If you want to set up a route only for a particular HTTP method/verb
+	// (GET, POST, PUT, DELETE) you can specify the verb before the path:
+	// 'post /signup': {
+	//		controller	: 'user',
+	//		action		: 'signup'
+	// }
 
+	// Keep in mind default routes exist for each of your controllers
+	// So if you have a UserController with an action called "juggle"
+	// a route will be automatically exist mapping it to /user/juggle.
+	//
+	// Additionally, unless you override them, new controllers will have
+	// create(), find(), findAll(), update(), and destroy() actions,
+	// and routes will exist for them as follows:
+	/*
 
-  // Custom routes here...
+	// Standard RESTful routing
+	// (if index is not defined, findAll will be used)
+	*/
 
-
-  // If a request to a URL doesn't match any of the custom routes above, it is matched 
-  // against Sails route blueprints.  See `config/blueprints.js` for configuration options
-  // and examples.
-
+	'get /': 'ProxyController.fetch',
+	'get /refresh': 'refreshController.index'
 };
