@@ -25,12 +25,7 @@ The public-facing web presence for the Sails framework.  Mostly static assets, e
 
 ## Which branch do I use?
 
-As of Feb 14, 2014, any additions or changes should **still be pushed/merged into the `cleanup` branch**.
-
-But ASAP, we should merge everything into `master`.  Keeping it simple and all that.
-
-~mike
-
+Please use the `master` branch.
 
 
 ### License
