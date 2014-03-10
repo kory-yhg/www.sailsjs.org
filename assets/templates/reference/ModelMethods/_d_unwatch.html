@@ -1,0 +1,22 @@
+<h1 id="-unwatch-request-">.unwatch(<code>request</code>)</h1>
+<h3 id="purpose">Purpose</h3>
+<p>This unsubscribes a client from publishCreate events for the model.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Request</td>
+<td><code>request object</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note</em>: <code>unwatch</code> will only work when the request is made over a socket connection (e.g. using <code>socket.get</code>), <em>not</em> over an http connection (e.g. using <code>jquery.get</code>).</p>

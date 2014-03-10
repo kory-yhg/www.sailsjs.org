@@ -1,0 +1,240 @@
+.sails-footer {
+	position: relative;
+
+	.bottom-waves {
+		position: absolute;
+		top: -25px;
+	
+		height: 45px;
+		background: url('/images/image_wavesBottom.png') no-repeat center;
+		width: 100%;
+		z-index: 10;
+
+		@media screen and (max-width: 768px) {
+			background: url('/images/waves-mobile.png') no-repeat -25px top;
+			top: -20px;
+		}
+	}
+
+	.navigation-footer {
+		.clearfix();
+		background-color: @turquoise;
+		color: @white;
+		padding: 75px 0 60px;
+		z-index: 5;
+
+	.footer-container {
+		.container();
+	}
+
+	.built {
+		float: left;
+		width: 40.2%;
+
+		a {
+			color: @taglineBlue;
+		}
+
+		a:hover {
+			color: @black;
+			.transition(all 0.25s);
+		}
+
+		h1 {
+			background: url(/images/icon_heart.png) no-repeat left center;
+			background-size: 40px;
+			color: @white;
+			font-size: 30px;
+			margin-bottom: 15px;
+			padding-left: 47px;
+			width: 215px;
+		}
+
+		p, span{
+			font-size: 0.9em;
+			font-weight: lighter;
+			margin-bottom: 20px;
+		}
+	}
+
+	.footer-nav {
+		float: right;
+		height: 230px;
+		margin-top: 10px;
+
+		li {
+			text-align: right;
+			margin-bottom: 15px;
+
+			span {
+				font-size: .75em;
+				font-weight: 300;
+				margin-top: 1em;
+				text-decoration: underline;
+			}
+
+
+			a {
+				color: @white;
+				font-size: 1.1em;
+				-webkit-transition: font-size 250ms;
+				padding-right: 15px;
+			}
+
+			a:hover {
+				color: @black;
+				.transition(all 0.25s);
+			}
+		}
+	}
+
+	.c-mobile {
+		display: none;
+	}
+
+	@media screen and (min-width: 636px) and (max-width: 768px) {
+		text-align: center;
+		padding: 20px 0 10px;
+
+		.built {
+			float: none;
+			width: 90%;
+			margin: auto;
+
+			h1 {
+				margin: 0 auto 10px;
+			}
+		}
+
+		.footer-nav {
+			float: none;
+			width: 90%;
+			margin: 0 auto 20px;
+			height: auto;
+
+
+			li {
+				text-align: center;
+				margin-bottom: 10px;
+			}
+		}
+
+		.c {
+			display: none;
+		}
+
+		.c-mobile {
+			display: block;
+			font-size: 0.9em;
+			font-weight: lighter;
+			margin-bottom: 10px;
+		}
+	}
+
+		@media screen and (max-width: 635px) {
+			text-align: center;
+			padding: 60px 0;
+
+			.built {
+				float: none;
+				width: 90%;
+				margin: auto;
+
+				h1 {
+					margin: 0 auto 10px;
+				}
+			}
+
+			.footer-nav {
+				float: none;
+				width: 90%;
+				margin: 0 auto 20px;
+				height: auto;
+
+
+				li {
+					text-align: center;
+					margin-bottom: 10px;
+				}
+			}
+
+			.c {
+				display: none;
+			}
+
+			.c-mobile {
+				display: block;
+				font-size: 0.9em;
+				font-weight: lighter;
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
+
+//Black footer with tweet/star/share links
+//Also used on documentation page
+.bottom {
+	.borderBox();
+	.clearfix();
+	width: 100%;
+	height: 60px;
+	color: @white;
+	font-size: 0.9em;
+	font-weight: 400;
+	background-color: @black;
+	padding: 15px 0;
+
+	a {
+		color: @white;
+		&:hover {
+			color: @black;
+			.transition(all 0.25s);
+		}
+	}
+
+
+	.mobile {
+		display: none;
+	}
+
+	.sharing-footer {
+		padding-top: 15px;
+		.container();
+
+		div {
+			float: left;
+			padding-left: 1%;
+		}
+
+		.star {
+			padding-left: 0;
+		}
+	}
+
+	.small-button {
+		background-color: @turquoise;
+		display: block;
+		width: 10%;
+		float: right;
+		padding: 5px 15px;
+		margin-right: 15px;
+		text-align: center;
+
+	}
+
+	@media screen and (max-width: 768px) {
+		.sharing {
+			width: 95%;
+			margin: auto;
+		}
+
+		.mobile {
+			display: block;
+		}
+
+		.small-button {
+			display: none;
+		}
+	}
+}

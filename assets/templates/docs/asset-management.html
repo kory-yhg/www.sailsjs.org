@@ -1,0 +1,71 @@
+<div class="docs asset-management">
+<h1>Asset Management</h1>
+<blockquote>
+<p><em><strong>Note:</strong> You are viewing the Sails.js v0.9.0 documentation.  If you&#39;re looking for information on v0.8.x, please visit <a href="http://08x.sailsjs.org">here</a>.</em></p>
+</blockquote>
+<p>Sails uses a very powerful tool called <a href="https://github.com/gruntjs/grunt">Grunt</a> to manage assets.  </p>
+<h2>What is Grunt?</h2>
+<p>Grunt is a javascript task manager that has a fast growing ecosystem of plugins that help automate any task that you could think of. Why did we decide to use this task runner to manage assets? From Grunt&#39;s very own <a href="http://gruntjs.com/">website</a>.</p>
+<p><em>In one word: automation. The less work you have to do when performing repetitive tasks like minification, compilation, unit testing, linting, etc, the easier your job becomes. After you&#39;ve configured it, a task runner can do most of that mundane work for you—and your team—with basically zero effort.</em></p>
+<p>With that in mind, Grunt not only allows you to manage assets very easily, but most of the code to do this is already written and accessable through grunt plugins. Just find a plugin you need, configure the task, and Grunt takes care of the rest.</p>
+<p>If you&#39;d like a more comprehensive understanding of Grunt, <a href="http://gruntjs.com/getting-started">here</a> is a good place to start.</p>
+<h2>Default Asset Management with Grunt</h2>
+<p>Here is what the default grunt file does:</p>
+<ul>
+<li>clears the .tmp folder created the last time the app was run. Your .tmp folder is the public facing directory of your web application.</li>
+<li>compiles JST templates from assets/linker</li>
+<li>compiles Less styles</li>
+<li>copies assets into a .tmp/public folder (this is where static files are served from)</li>
+<li>runs secret injector code<ul>
+<li>automatically injects assets into dev files. See <a href="#!documentation/asset-management">Assets Documentation</a> for more details</li>
+</ul>
+</li>
+<li>watches for changes to your files</li>
+</ul>
+<!-- TODO production enviroment default asset management -->
+
+<h2>Configuring a Grunt Task</h2>
+<p>To customize your own Grunt task, you must first ensure that the Grunt plugin you are going to use is installed. You can install it from your terminal. If you wanted to use Grunt&#39;s Handlebars plugin you could do this:</p>
+<pre><code class="lang-bash">  npm install --save-dev grunt-contrib-handlebars</code></pre>
+<p>We can then configure the plugin options, load the task, and include it in a registered Grunt task. Here is a snippet of code for these steps:</p>
+<pre><code class="lang-javascript">module.exports = function(grunt) {
+  ...
+
+  // configure the handlebars task
+  handlebars: {
+    dev: {
+      options : {
+        namespace: &quot;JST&quot;
+      },
+      files: {
+        &quot;path/to/results.js&quot;: &quot;path/to/source.hbs&quot;,
+        &quot;path/to/another.js&quot;: [&quot;path/to/sources/*.hbs&quot;, &quot;path/to/more/*.hbs&quot;]
+      }
+    }
+  }
+
+  // load the handlebars plugin
+  grunt.loadTasks(&#39;grunt-contrib-handlebars&#39;);
+
+  // A simple default task that runs the handlebars task
+  grunt.registerTask(&#39;default&#39;, [
+    &#39;handlebars:dev&#39;
+  ]);
+
+  ...
+}</code></pre>
+<p><a href="http://gruntjs.com/sample-gruntfile">Here</a> is a very well documented example of a full Gruntfile.</p>
+<!-- TODO: sails build docs -->
+<!--
+
+## Building Assets for CDN/Phonegap
+Sails allows you to build your assets in a way that can be used with CDN's or Phonegap.  Simply setup your assets like you would for launching the site in production mode.  Then run the following command from your projects root folder.
+
+```bash
+sails build 
+```
+
+This will output all the files needed to host your app on a CDN or use it with phonegap into ```/build/``` directory.
+  -->
+
+</div>

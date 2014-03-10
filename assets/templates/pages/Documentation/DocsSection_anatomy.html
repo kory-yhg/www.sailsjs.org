@@ -1,0 +1,113 @@
+<div class="anatomy-page">
+	<div class="anatomy-container">
+		<div class="file-list">
+			<h2>myApp</h2>
+			<ul class="file-list">
+				<!-- Folders get class "expanded" to show their contents -->
+				<!-- Files get class "active" to show which one you're looking at.-->
+				<!-- The top-level folder containing the "active" file also gets the class "active" -->
+				<li class="folder" data-page="api">
+					<span>api</span>
+					<ul>
+						<li class="folder" data-page="api/adapters">
+							<span>adapters</span>
+						</li>
+						<li class="folder" data-page="api/controllers">
+							<span>controllers</span>
+							<ul>
+								<li class="file" data-page="api/controllers/UserController.js">UserController.js</li>
+							</ul>
+						</li>
+						<li class="folder" data-page="api/models">
+							<span>models</span>
+							<ul>
+								<li class="file" data-page="api/models/User.js">User.js</li>
+							</ul>
+						</li>
+						<li class="folder" data-page="api/policies">
+							<span>policies</span>
+							<ul>
+								<li class="file" data-page="api/policies/isAuthenticated.js">isAuthenticated.js</li>
+							</ul>
+						</li>
+						<li class="folder" data-page="api/services">
+							<span>services</span>
+						</li>
+					</ul>
+				</li>
+				<li class="folder" data-page="assets">
+					<span>assets</span>
+					<ul>
+						<li class="folder" data-page="assets/images">
+							<span>images</span>
+						</li>
+						<li class="folder" data-page="assets/js">
+							<span>js</span>
+							<ul>
+								<li class="file" data-page="assets/js/app.js">app.js</li>
+								<li class="file" data-page="assets/js/sails.io.js">sails.io.js</li>
+								<li class="file" data-page="assets/js/socket.io.js">socket.io.js</li>
+							</ul>
+						</li>
+						<li class="folder" data-page="assets/styles">
+							<span>styles</span>
+						</li>
+						<li class="file" data-page="assets/favicon.ico">favicon.ico</li>
+						<li class="file" data-page="assets/robots.txt">robots.txt</li>
+					</ul>
+				</li>
+				<li class="folder" data-page="config">
+					<span>config</span>
+					<ul>
+						<li class="folder" data-page="config/locales">
+							<span>locales</span>
+						</li>
+						<li class="file" data-page="config/403.js">400.js</li>
+						<li class="file" data-page="config/403.js">403.js</li>
+						<li class="file" data-page="config/404.js">404.js</li>
+						<li class="file" data-page="config/500.js">500.js</li>
+						<li class="file" data-page="config/adapters.js">adapters.js</li>
+						<li class="file" data-page="config/bootstrap.js">bootstrap.js</li>
+						<li class="file" data-page="config/controllers.js">controllers.js</li>
+						<li class="file" data-page="config/cors.js">cors.js</li>
+						<li class="file" data-page="config/csrf.js">csrf.js</li>
+						<li class="file" data-page="config/i18n.js">i18n.js</li>
+						<li class="file" data-page="config/local.js">local.js</li>
+						<li class="file" data-page="config/log.js">log.js</li>
+						<li class="file" data-page="config/policies.js">policies.js</li>
+						<li class="file" data-page="config/routes.js">routes.js</li>
+						<li class="file" data-page="config/session.js">session.js</li>
+						<li class="file" data-page="config/sockets.js">sockets.js</li>
+						<li class="file" data-page="config/views.js">views.js</li>
+					</ul>
+				</li>
+				<li class="folder" data-page="views">
+					<span>views</span>
+					<ul>
+						<li class="folder" data-page="views/home">
+							<span>home</span>
+							<ul>
+								<li class="file" data-page="views/home/index.ejs">index.ejs</li>
+							</ul>
+						</li>
+						<li class="file" data-page="views/403.ejs">403.ejs</li>
+						<li class="file" data-page="views/404.ejs">404.ejs</li>
+						<li class="file" data-page="views/500.ejs">500.ejs</li>
+						<li class="file" data-page="views/layout.ejs">layout.ejs</li>
+					</ul>
+				</li>
+				<li class="file" data-page="app.js">app.js</li>
+				<li class="file" data-page="Gruntfile.js">Gruntfile.js</li>
+				<li class="file" data-page="package.json">package.json</li>
+				<li class="file" data-page="README.md">README.md</li>
+			</ul>
+		</div>
+
+		<!-- Region with the information about the selected file -->
+		<div data-region data-id="fileDetailsRegion" class="docs-region"></div>
+		<div class="contribution-message">
+			<h2>Something to add?</h2>
+			<p>If you notice something we've missed, please visit the <a href="https://github.com/balderdashy/sails-docs/tree/master/anatomy">sails-docs</a> repo on GitHub and edit the page to submit a pull request.</p>
+		</div>
+	</div>
+</div>

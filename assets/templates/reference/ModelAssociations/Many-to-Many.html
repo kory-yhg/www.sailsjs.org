@@ -1,0 +1,295 @@
+<h1 id="many-to-many">Many-to-Many</h1>
+<h3 id="overview">Overview</h3>
+<p>A many-to-many association states that a model can be associated with many other models and vice-versa.<br>Because both models can have many related models a new join table will need to be created to keep track<br>of these relations.</p>
+<p>Waterline will look at your models and if it finds that two models both have collection attributes that<br>point to each other, it will automatically build up a join table for you.</p>
+<p>Because you may want a model to have multiple many-to-many associations on another model a <code>via</code> key<br>is needed on the <code>collection</code> attribute. This states which <code>model</code> attribute on the one side of the<br>association is used to populate the records.</p>
+<p>Using the <code>User</code> and <code>Pet</code> example lets look at how to build a schema where a <code>User</code> may have many<br><code>Pet</code> records and a <code>Pet</code> may have multiple owners.</p>
+<h3 id="many-to-many-example">Many-to-Many Example</h3>
+<p>In this example, we will start with an array of users and an array of pets.  We will create records for each element in each array then associate all of the <code>Pets</code> with all of the <code>Users</code>.  If everything worked properly, we should be able to query any <code>User</code> and see that they &#39;own&#39; all of the <code>Pets</code>.  Furthermore, we should be able to query any <code>Pet</code> and see that it is &#39;owned&#39; by every <code>User</code>.</p>
+<p><code>myApp/api/models/pet.js</code></p>
+<pre><code class="lang-javascript">
+module.exports = {
+
+    attributes: {
+        name:&#39;STRING&#39;,
+        color:&#39;STRING&#39;,
+
+        // Add a reference to User
+        owners: {
+            collection: &#39;user&#39;,
+            via: &#39;pets&#39;,
+            dominant:true
+        }
+    }
+}</code></pre>
+<p><code>myApp/api/models/user.js</code></p>
+<pre><code class="lang-javascript">
+module.exports = {
+
+    attributes: {
+        name:&#39;STRING&#39;,
+        age:&#39;INTEGER&#39;,
+
+        // Add a reference to Pet
+        pets:{
+            collection: &#39;pet&#39;,
+            via: &#39;owners&#39;
+        }
+    }
+
+}</code></pre>
+<p><code>myApp/config/bootstrap.js</code></p>
+<pre><code class="lang-javascript">
+module.exports.bootstrap = function (cb) {
+
+// After we create our users, we will store them here to associate with our pets
+var storeUsers = []; 
+
+var users = [{name:&#39;Mike&#39;,age:&#39;16&#39;},{name:&#39;Cody&#39;,age:&#39;25&#39;},{name:&#39;Gabe&#39;,age:&#39;107&#39;}];
+var ponys = [{ name: &#39;Pinkie Pie&#39;, color: &#39;pink&#39;},{ name: &#39;Rainbow Dash&#39;,color: &#39;blue&#39;},{ name: &#39;Applejack&#39;, color: &#39;orange&#39;}]
+
+// This does the actual associating.
+// It takes one Pet then iterates through the array of newly created Users, adding each one to it&#39;s join table
+var associate = function(onePony,cb){
+  var thisPony = onePony;
+  var callback = cb;
+
+  storeUsers.forEach(function(thisUser,index){
+    console.log(&#39;Associating &#39;,thisPony.name,&#39;with&#39;,thisUser.name);
+    thisUser.pets.add(thisPony.id);
+    thisUser.save(console.log);
+
+    if (index === storeUsers.length-1)
+      return callback(thisPony.name);
+  })
+};
+
+
+// This callback is run after all of the Pets are created.
+// It sends each new pet to &#39;associate&#39; with our Users  
+var afterPony = function(err,newPonys){
+  while (newPonys.length){
+    var thisPony = newPonys.pop();
+    var callback = function(ponyID){
+      console.log(&#39;Done with pony &#39;,ponyID)
+    }
+    associate(thisPony,callback)
+  }
+  console.log(&#39;Everyone belongs to everyone!! Exiting.&#39;);
+
+  // This callback lets us leave bootstrap.js and continue lifting our app!
+  return cb()
+};
+
+// This callback is run after all of our Users are created.
+// It takes the returned User and stores it in our storeUsers array for later.
+var afterUser = function(err,newUsers){
+  while (newUsers.length)
+    storeUsers.push(newUsers.pop())
+
+  Pet.create(ponys).exec(afterPony)
+};
+
+
+User.create(users).exec(afterUser)
+
+};</code></pre>
+<p>Lifting our app with <code>sails console</code></p>
+<pre><code class="lang-sh">
+dude@littleDude:~/node/myApp$ sails console
+
+info: Starting app in interactive mode...
+
+Associating  Applejack with Gabe
+Associating  Applejack with Cody
+Associating  Applejack with Mike
+Done with pony  Applejack
+Associating  Rainbow Dash with Gabe
+Associating  Rainbow Dash with Cody
+Associating  Rainbow Dash with Mike
+Done with pony  Rainbow Dash
+Associating  Pinkie Pie with Gabe
+Associating  Pinkie Pie with Cody
+Associating  Pinkie Pie with Mike
+Done with pony  Pinkie Pie
+Everyone belongs to everyone!! Exiting.
+info: Welcome to the Sails console.
+info: ( to exit, type &lt;CTRL&gt;+&lt;C&gt; )
+
+sails&gt; null { name: &#39;Gabe&#39;,
+  age: 107,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 9 }
+null { name: &#39;Cody&#39;,
+  age: 25,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 8 }
+null { name: &#39;Mike&#39;,
+  age: 16,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 7 }
+null { name: &#39;Gabe&#39;,
+  age: 107,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 9 }
+null { name: &#39;Cody&#39;,
+  age: 25,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 8 }
+null { name: &#39;Mike&#39;,
+  age: 16,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 7 }
+null { name: &#39;Gabe&#39;,
+  age: 107,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 9 }
+null { name: &#39;Cody&#39;,
+  age: 25,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 8 }
+null { name: &#39;Mike&#39;,
+  age: 16,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 7 }
+sails&gt; Pet.find().populate(&#39;owners&#39;).exec(function(e,r){while(r.length){var thisPet=r.pop();console.log(thisPet.toJSON())}});
+{ owners: 
+   [ { name: &#39;Mike&#39;,
+       age: 16,
+       id: 7,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Cody&#39;,
+       age: 25,
+       id: 8,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Gabe&#39;,
+       age: 107,
+       id: 9,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
+  name: &#39;Applejack&#39;,
+  color: &#39;orange&#39;,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 9 }
+{ owners: 
+   [ { name: &#39;Mike&#39;,
+       age: 16,
+       id: 7,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Cody&#39;,
+       age: 25,
+       id: 8,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Gabe&#39;,
+       age: 107,
+       id: 9,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
+  name: &#39;Rainbow Dash&#39;,
+  color: &#39;blue&#39;,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 8 }
+{ owners: 
+   [ { name: &#39;Mike&#39;,
+       age: 16,
+       id: 7,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Cody&#39;,
+       age: 25,
+       id: 8,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Gabe&#39;,
+       age: 107,
+       id: 9,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
+  name: &#39;Pinkie Pie&#39;,
+  color: &#39;pink&#39;,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 7 }
+sails&gt; User.find().populate(&#39;pets&#39;).exec(function(e,r){while(r.length){var thisUser=r.pop();console.log(thisUser.toJSON())}});
+{ pets: 
+   [ { name: &#39;Pinkie Pie&#39;,
+       color: &#39;pink&#39;,
+       id: 7,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Rainbow Dash&#39;,
+       color: &#39;blue&#39;,
+       id: 8,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Applejack&#39;,
+       color: &#39;orange&#39;,
+       id: 9,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
+  name: &#39;Gabe&#39;,
+  age: 107,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 9 }
+{ pets: 
+   [ { name: &#39;Pinkie Pie&#39;,
+       color: &#39;pink&#39;,
+       id: 7,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Rainbow Dash&#39;,
+       color: &#39;blue&#39;,
+       id: 8,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Applejack&#39;,
+       color: &#39;orange&#39;,
+       id: 9,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
+  name: &#39;Cody&#39;,
+  age: 25,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 8 }
+{ pets: 
+   [ { name: &#39;Pinkie Pie&#39;,
+       color: &#39;pink&#39;,
+       id: 7,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Rainbow Dash&#39;,
+       color: &#39;blue&#39;,
+       id: 8,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Applejack&#39;,
+       color: &#39;orange&#39;,
+       id: 9,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
+  name: &#39;Mike&#39;,
+  age: 16,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 7 }</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>For a more detailed description of this type of association, see the <a href="https://github.com/balderdashy/waterline-docs/blob/master/associations.md">Waterline Docs</a></p>
+</blockquote>

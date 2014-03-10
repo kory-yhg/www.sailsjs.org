@@ -1,0 +1,27 @@
+<h1 id="req-accepts-string-">req.accepts(<code>string</code>)</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Checks if the supplied argument is found in the list of acceptable <a href="http://omfgdogs.com">Content-Type</a>s specified by the user-agent who sent the request.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">// Accept: text/html
+req.accepts(&#39;html&#39;);
+//  &quot;html&quot;
+
+// Accept: text/*, application/json
+req.accepts(&#39;html&#39;);
+//  &quot;html&quot;
+req.accepts(&#39;text/html&#39;);
+//  &quot;text/html&quot;
+req.accepts(&#39;json, text&#39;);
+//  &quot;json&quot;
+req.accepts(&#39;application/json&#39;);
+//  &quot;application/json&quot;
+
+// Accept: text/*, application/json
+req.accepts(&#39;image/png&#39;);
+req.accepts(&#39;png&#39;);
+//  undefined
+
+// Accept: text/*;q=.5, application/json
+req.accepts([&#39;html&#39;, &#39;json&#39;]);
+req.accepts(&#39;html, json&#39;);
+//  &quot;json&quot;</code></pre>

@@ -1,0 +1,41 @@
+<div class="documentation-section">
+	<!--
+	Header for each section.
+	Title gets switched out and selected link changes
+	depending on which section is in documentationSectionContent
+	-->
+
+	<div class="documentation-section-header">
+		<div class="header-container">
+			<h1 class="header-title">Header for the section</h1>
+			<ul class="docs-header-nav">
+				<a href="#!documentation/anatomy" data-section="anatomy">
+                    <li>Anatomy</li>
+                </a>
+				<a href="#!documentation/guides/new-to-nodejs" data-section="guides">
+                    <li>Guides</li>
+                </a>
+				<a href="#!documentation/reference/Blueprints/Blueprints.html" data-section="reference">
+                    <li>Reference</li>
+                </a>
+				<a href="#!documentation/support" data-section="support">
+                    <li>Supported Databases</li>
+                </a>
+			</ul>
+		</div>
+	</div>
+
+	<!--
+	Region with the main content of the page.
+	Template can be: Anatomy, Guides, Reference, or SupportMatrix
+	-->
+	<div class="documentation-section-content">
+		<region data-id="contentRegion"></region>
+	</div>
+
+	<div class="github-message">
+		<img src="images/image_devInTub.png"/>
+		<a href="https://github.com/balderdashy/sails-wiki">View our GitHub</a>
+		<p>Please visit the Sails wiki on GitHub to view documentation on your mobile device.</p>
+	</div>
+</div>

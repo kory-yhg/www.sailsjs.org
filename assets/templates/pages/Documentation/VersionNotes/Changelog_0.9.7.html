@@ -1,0 +1,33 @@
+<div class="version-notes">
+	<h1>Changelog 0.9.7</h1>
+	<p><em>October 10, 2013</em></p>
+	<ul>
+		<li>Complete improvement/refactoring of configuration loader (fixes bugs)</li>
+		<li>Complete improvement/refactoring of ORM loader (fixes bugs)</li>
+		<li>Continued improvements of tests</li>
+		<li>Include a modified version of consolidate to better support view engines</li>
+		<li>Blueprints are now configurable per-controller (thanks <a target="_blank" href="https://github.com/xdissent">@xdissent</a>, and everyone else who helped!)
+			<ul>
+				<li>(waiting to expose this and deprecate the old behavior in the docs until the next minor release to avoid causing any breaking changes)</li>
+				<li>New <code>prefix</code> option in global blueprint config, as well as per-controller.</li>
+				<li>New <code>jsonp</code> option in global controller config, as well as per-controller.</li>
+				<li>New <code>pluralize</code> option in global controller config, as well as per-controller.</li>
+			</ul>
+		</li>
+		<li>Models can now easily use one or more custom named connections which use different adapters
+			<ul>
+				<li>(waiting to expose this and deprecate the old behavior in the docs until the next minor release to avoid causing any breaking changes)</li>
+			</ul>	
+		</li>
+		<li>Adds configurable default behavior for 403/404/500/400 HTTP status code error cases.
+			<ul>
+				<li>(waiting to expose this and deprecate the old behavior in the docs until the next minor release to avoid causing any breaking changes)</li>
+			</ul>
+		</li>
+		<li>Properly namespace the io in bundled sails.io.js client in new projects (thanks <a target="_blank" href="https://github.com/drosen0">@drosen0</a>)</li>
+		<li>Better handle crash scenario, particularly in nodemon (thanks <a target="_blank" href="https://github.com/edy">@edy</a>)</li>
+	</ul>
+	<blockquote><p>Thanks to everyone else I missed, and to everyone else who helped out with this release!</p></blockquote>
+
+	<a class="back-button" href="#!documentation">Back to Documentation</a>
+</div>

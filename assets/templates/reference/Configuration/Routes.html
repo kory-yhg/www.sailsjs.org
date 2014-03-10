@@ -1,0 +1,96 @@
+<h1 id="routes">Routes</h1>
+<h3 id="what-is-this-">What is this?</h3>
+<p>Sails uses a number of different strategies to route requests. This section lists them top-to-bottom, in order of precedence.</p>
+<h3 id="description">Description</h3>
+<p>Sails uses a number of different strategies to route requests. Here they are top-to-bottom, in order of precedence:</p>
+<h4 id="1-static-assets">1. Static Assets</h4>
+<p>Flat files in your <code>assets</code> directory- (these are sometimes referred to as &lsquo;public&rsquo;)</p>
+<p>If you have an image file at <code>/assets/images/foo.jpg</code>, it will be made available automatically via the route:  <code>/images/foo.jpg</code></p>
+<h4 id="2-static-routes">2. Static Routes</h4>
+<p>This object routes static URLs to handler functions-- In most cases, these functions are actions inside of your controllers. For convenience, you can also connect routes directly to views or external URLs.</p>
+<p>By default, your root route (aka home page) points to a view located at <code>views/home/index.ejs</code>. (This would also work if you had a file at: <code>/views/home.ejs</code>)</p>
+<p>But what if you want your home page to display a signup form located at <code>views/user/signup.ejs</code>?</p>
+<pre><code class="lang-javascript">&#39;/&#39; : {
+  view : &#39;user/signup&#39;
+}</code></pre>
+<p>Let&rsquo;s say you&rsquo;re building an email client, like Gmail. You might want your home route to serve an interface using custom logic. In this scenario, you have a custom controller <code>MessageController</code> with an <code>inbox</code> action: <code>&#39;/&#39; : &#39;message.inbox&#39;</code></p>
+<p>Alternatively, you can use the more verbose syntax:</p>
+<pre><code class="lang-javascript">&#39;/&#39;: {
+  controller  : &#39;message&#39;,
+  action    : &#39;inbox&#39;
+}</code></pre>
+<p>If you decided to call your action <code>index</code> instead of <code>inbox</code>, since the <code>index</code> action is the default, you can shortcut even further to: <code>&#39;/&#39;: &#39;MessageController&#39;</code></p>
+<p>Up until now, we haven&rsquo;t specified a specific HTTP method/verb. The routes above will apply to ALL verbs! If you want to set up a route only for one in particular (GET, POST, PUT, DELETE, etc.), just specify the verb before the path. </p>
+<p>For example, if you have a <code>UserController</code> with a <code>signup</code> action, and somewhere else, you&rsquo;re serving a signup form that looks like:</p>
+<pre><code class="lang-html">&lt;form action=&quot;/signup&quot;&gt;
+  &lt;input name=&quot;username&quot; type=&quot;text&quot;/&gt;
+  &lt;input name=&quot;password&quot; type=&quot;password&quot;/&gt;
+&lt;/form&gt;</code></pre>
+<p>You could define the following route: <code>&#39;post /signup&#39; : &#39;user.signup&#39;</code>.</p>
+<p>Finally, here&rsquo;s an example of how you would route all GET requests to the <code>/google</code> route to Google&rsquo;s website: <code>&#39;get /google&#39; : &#39;http://google.com&#39;</code></p>
+<h4 id="3-advanced-route-config">3. Advanced Route config</h4>
+<h5 id="setting-locals-variables-accessible-in-your-view-in-sails-v0-10">Setting Locals (variables accessible in your view) in Sails v0.10</h5>
+<p>Just like you can set variables to be available in your view scope like <code>res.locals.foo = &#39;bar&#39;</code> in a controller or action, you can now also pass locals down to your views via route configuration.  Note, this is only relevant for declared routes. It won&#39;t work on implicit blueprint routes.</p>
+<p>Here&#39;s an example of what can be done!</p>
+<pre><code>// myApp/config/routes.js
+
+module.exports.routes = {
+
+  &#39;/&#39;&quot; {
+    view: &#39;static/index&#39;
+  },
+
+  &#39;/fiddlesticks&#39;: {
+    view: &#39;session/new&#39;,
+
+    locals: {
+      foo: &#39;asdg&#39;,
+      bar: &#39;sadgasgd&#39;,
+    }
+  }
+}</code></pre>
+<h5 id="upload-limit">Upload Limit</h5>
+<p>By default routes are limited to <code>10mb</code> uploads, to change the upload limit set the <code>uploadLimit</code> config on your route:</p>
+<pre><code class="lang-javascript">&#39;/&#39;: {
+  ...,
+  uploadLimit: &#39;100mb&#39;
+}</code></pre>
+<p>The limit setting uses <code>express.limit()</code> internally, and supports any valid <a href="http://www.senchalabs.org/connect/limit.html">connect.limit()</a> values </p>
+<h5 id="cors-cross-origin-resource-sharing-">CORS (Cross origin resource sharing)</h5>
+<p>Additionally, you can also enable <a href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a> on a route:</p>
+<pre><code class="lang-javascript">&#39;/&#39;: {
+  ...,
+  cors: true
+  // cors: &#39;http://sailsjs.org, http://sailsjs.com&#39;
+}</code></pre>
+<p>If CORS is enabled on a route, the _csrf token is set to <code>null</code> to prevent accidental _csrf token exposure.</p>
+<h4 id="4-action-blueprints">4. Action Blueprints</h4>
+<p>These routes can be disabled in <code>config/controllers.js</code> by setting: <code>module.exports.controllers.routes.actions = false</code></p>
+<p>All of your controllers&#39; actions are automatically bound to a route.  For example: If you have a controller, <code>FooController</code>:</p>
+<ul>
+<li>its action <code>bar</code> is accessible at <code>/foo/bar</code></li>
+<li>its action <code>index</code> is accessible at <code>/foo/index</code>, and also <code>/foo</code></li>
+</ul>
+<h4 id="5-view-blueprints">5. View Blueprints</h4>
+<p>These routes can be disabled in <code>config/controllers.js</code> by setting: <code>module.exports.views.routes = false</code></p>
+<p>If you have a view file at <code>/views/foo/bar.ejs</code>, it will be rendered and served automatically via the route:  <code>/foo/bar</code></p>
+<h4 id="6-shortcut-crud-blueprints">6. Shortcut CRUD blueprints</h4>
+<p>These routes can be disabled in <code>config/controllers.js</code> by setting: <code>module.exports.controllers.routes.shortcuts = false</code></p>
+<p>If you have a model, <code>Foo</code>, and a controller, <code>FooController</code>, you can access CRUD operations for that model at:</p>
+<ul>
+<li><code>/foo/find/:id?</code>  -&gt;  search lampshades using specified criteria or with id=:id</li>
+<li><code>/foo/create</code> -&gt;  create a lampshade using specified values   </li>
+<li><code>/foo/update/:id</code> -&gt;  update the lampshade with id=:id    </li>
+<li><code>/foo/destroy/:id</code>  -&gt;  delete lampshade with id=:id</li>
+</ul>
+<h4 id="7-rest-blueprints">7. REST blueprints</h4>
+<p>These routes can be disabled in <code>config/controllers.js</code> by setting: <code>module.exports.controllers.routes.rest = false</code></p>
+<p>If you have a model, <code>Foo</code>, and a controller, <code>FooController</code>, you can access CRUD operations for that model at:</p>
+<ul>
+<li><code>get /foo/:id?</code> -&gt;  search lampshades using specified criteria or with id=:id</li>
+<li><code>post /foo</code>   -&gt; create a lampshade using specified values</li>
+<li><code>put /foo/:id</code>  -&gt;  update the lampshade with id=:id</li>
+<li><code>delete /foo/:id</code> -&gt;  delete lampshade with id=:id</li>
+</ul>
+<h4 id="8-default-404-not-found-handler">8. Default 404 (not found) handler</h4>
+<p>Finally, if nothing else matched, the default 404 handler is triggered. See <code>config/404.js</code> to adjust your app&rsquo;s 404 logic.</p>

@@ -1,0 +1,138 @@
+<div class="docs controllers">
+<h1>Controllers</h1>
+<blockquote>
+<p><em><strong>Note:</strong> You are viewing the Sails.js v0.9.0 documentation.  If you&#39;re looking for information on v0.8.x, please visit <a href="http://08x.sailsjs.org">here</a>.</em></p>
+</blockquote>
+<h2>What is a Controller?</h2>
+<p>Sails controllers work very similarly to controllers in other MVC frameworks. Think of controllers
+as being the middleman between your model and your views.</p>
+<h2>Where are Controllers Defined?</h2>
+<p>Controllers are defined in the <code>/api/controllers/</code> folder. By default when you create a
+controller using the command line, you can add additional arguments that represent the controller
+actions.</p>
+<pre><code>sails generate controller comment create destroy tag like</code></pre>
+<p>generates:</p>
+<pre><code class="lang-javascript">
+// Comment controller with generated actions.
+var CommentController = {
+    create: function(req, res) {
+
+    },
+
+    destroy: function(req, res) {
+
+    },
+
+    tag: function(req, res) {
+
+    },
+
+    like: function(req, res) {
+
+    }
+}
+
+module.exports = CommentController;</code></pre>
+<!--
+Alternively if you add a federated flag [[[2]]] to the end of your generate controller command the
+controller will be created as a folder with each action being its own file. This is useful if
+your actions contain a bunch of logic. No more super long controller files! The best part about this
+is that, routing to these actions works the exact same way!
+
+[[[3]]]
+will create the directory, **api/controllers/comment/** with three files 
+**/api/controllers/comment/create.js**,
+**/api/controllers/comment/destory.js**, and
+**/api/controllers/comment/tag.js**.
+
+-->
+
+<h2>How do I use the controller once I&rsquo;ve created it?</h2>
+<p>After a controller has been defined, Sails will automatically map out routes to give you easy access.<br>For the controller above, the routes would be the following:<br><code>http://localhost:1337/comment/create</code><br><code>http://localhost:1337/comment/destroy</code><br><code>http://localhost:1337/comment/tag</code><br><code>http://localhost:1337/comment/like</code>  </p>
+<p>Additionally, thanks to blueprints, you also get these methods by default:<br><code>get /:controller/:id?</code><br><code>post /:controller</code><br><code>put /:controller/:id</code><br><code>delete /:controller/:id</code>  </p>
+<p><code>/:controller/find/:id?</code><br><code>/:controller/create</code><br><code>/:controller/update/:id</code><br><code>/:controller/destroy/:id</code>  </p>
+<p>To turn off the CRUD routes, simply set the &lsquo;shortcuts&rsquo; flag to false in <code>config/controllers.js</code>,<br>and to turn off REST routes, simply set the &lsquo;rest&rsquo; flag to false in <code>config/conttrollers.js</code></p>
+<h2>The Request Object</h2>
+<h3><code>req.param()</code></h3>
+<p>Whether it was sent as POSTed JSON, to look up the value of a request parameter, do:</p>
+<pre><code class="lang-javascript">var foo = req.param(&#39;foo&#39;);</code></pre>
+<p>If you need to dive deeper into request parameters, check out the <a href="http://expressjs.com/2x/guide.html#req.param()">express guide</a>.</p>
+<h3><code>req.isSocket</code></h3>
+<p>Whether or not this request was sent over Socket.io</p>
+<h3><code>req.isAjax</code></h3>
+<p>Whether or not this is an AJAX/xhr request</p>
+<h3><code>req.isJson</code></h3>
+<p>Whether or not this request is JSONish (has a JSON &ldquo;Accept&rdquo; or &ldquo;Content-Type&rdquo; header)</p>
+<h2>The Response Object</h2>
+<p>When responding to a request, Sails uses many of the same res methods as Express.</p>
+<h3><code>res.view([view, options[, fn]])</code></h3>
+<p>This method is an enhanced version of  Express&rsquo;s <code>res.render()</code>. The method <code>res.view()</code>
+automatically renders the appropriate view based on the controller and action. The original function
+is still accessible via <code>res.render()</code>.</p>
+<h3><code>res.send(body|status[, headers|status[, status]])</code></h3>
+<p>From the <a href="http://expressjs.com/2x/guide.html#res.send()">express guide</a>.
+The <code>res.send()</code> method is a high level response utility allowing you to pass objects to respond
+with json, strings for html, Buffer instances, or numbers representing the status code. The
+following are all valid uses:</p>
+<pre><code class="lang-javascript">    res.send(); // 204
+    res.send(new Buffer(&#39;wahoo&#39;));
+    res.send({ some: &#39;json&#39; });
+    res.send(&#39;&lt;p&gt;some html&lt;/p&gt;&#39;);
+    res.send(&#39;Sorry, cant find that&#39;, 404);
+    res.send(&#39;text&#39;, { &#39;Content-Type&#39;: &#39;text/plain&#39; }, 201);
+    res.send(404);</code></pre>
+<p>By default the Content-Type response header is set, however if explicitly assigned through
+<code>res.send()</code> or previously with <code>res.header()</code> or <code>res.contentType()</code> it will not be set
+again.</p>
+<p>Note that this method ends the response, so you will want to use node’s <code>res.write()</code> for multiple
+writes or streaming.</p>
+<h3><code>res.json(obj[, headers|status[, status]])</code></h3>
+<p>From the <a href="http://expressjs.com/2x/guide.html#res.json()">express guide</a>.
+Send a JSON response with optional headers and status. This method is ideal for JSON-only APIs,
+however <code>res.send(obj)</code> will send JSON as well, though not ideal for cases when you want to send
+for example a string as JSON, since the default for <code>res.send(string)</code> is text/html.</p>
+<pre><code class="lang-javascript">    res.json(null);
+    res.json({ user: &#39;tj&#39; });
+    res.json(&#39;oh noes!&#39;, 500);
+    res.json(&#39;I dont have that&#39;, 404);</code></pre>
+<h3><code>res.redirect(url[, status])</code></h3>
+<p>From the <a href="http://expressjs.com/2x/guide.html#res.redirect()">express guide</a>.
+Redirect to the given url with a default response status of 302.</p>
+<pre><code class="lang-javascript">    res.redirect(&#39;/&#39;, 301);
+    res.redirect(&#39;/account&#39;);
+    res.redirect(&#39;http://google.com&#39;);
+    res.redirect(&#39;home&#39;);
+    res.redirect(&#39;back&#39;);</code></pre>
+<h3><code>res.viewExists</code></h3>
+<p>Whether or not the view for this controller exists.</p>
+<h2>Accessing your models</h2>
+<p>In many cases, the reason you have a controller at all is that you want to do custom stuff with your models.  Otherwise, you could just use the defaults!</p>
+<p>For example, your controller might look like:</p>
+<pre><code class="lang-javascript">// Keep in mind you&#39;d probably want to do this transactionally, in case the chicken is being pecked 
+var ChickenController = {
+
+  // Peck the chicken specified by id (subtract 50 HP)
+  peck: function (req,res) {
+    Chicken.find(req.param(&#39;id&#39;)).exec(function (err, chicken) {
+      if (err) return res.send(err,500);
+      if (!chicken) return res.send(&quot;No other chicken with that id exists!&quot;, 404);
+      if (chicken.hp &lt;= 0) return res.send(&quot;The other chicken is already dead!&quot;, 403);
+
+      // Subtract 50 HP from the chicken
+      chicken.hp -= 50;
+
+      // Persist the change
+      chicken.save(function (err) {
+        if (err) return res.send(err,500);
+
+        // Report back with the new state of the chicken
+        res.json(chicken);
+      });
+    });
+
+  }
+};
+module.exports = ChickenController;</code></pre>
+<p>Check out the page on <a href="https://github.com/balderdashy/sails/wiki/Models">Models</a> to learn more.</p>
+
+</div>

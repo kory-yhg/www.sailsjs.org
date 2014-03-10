@@ -1,0 +1,15 @@
+<h1 id="res-view-pathtoview-locals-">res.view([<code>pathToView</code>],[<code>locals</code>])</h1>
+<h3 id="purpose">Purpose</h3>
+<p>This is a Sails method that loads the appropriate view.  </p>
+<h5 id="arguments">Arguments</h5>
+<ul>
+<li><strong>pathToView</strong> - the relative path to a view file from <a href="">your app&#39;s views directory</a>.  File extension suffix (e.g. <code>.ejs</code> should be omitted.</li>
+</ul>
+<h3 id="example-usage">Example Usage</h3>
+<p>Assuming the example below is an action in UsersController.js .</p>
+<pre><code class="lang-javascript">// ...
+riceNoodles: function(req,res){
+  // This would render the view /views/users/riceNoodles.ejs
+  return res.view();
+}
+// ...</code></pre>

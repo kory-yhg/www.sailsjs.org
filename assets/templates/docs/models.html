@@ -1,0 +1,605 @@
+<div class="docs models">
+<h1>Models</h1>
+<blockquote>
+<p><em><strong>Note:</strong> You are viewing the Sails.js v0.9.0 documentation.  If you&#39;re looking for information on v0.8.x, please visit <a href="http://08x.sailsjs.org">here</a>.</em></p>
+</blockquote>
+<p>Like most MVC frameworks, Sails provides an ORM (Object Relational Mapping) called
+<a href="https://github.com/balderdashy/waterline">Waterline</a> for normalizing interactions with models,
+no matter what data source you&#39;re using. It also defines an interface for mapping your own custom
+models from external APIs, not-yet-supported databases, or in-memory state (i.e. Session storage.)</p>
+<h2>What is a Model?</h2>
+<p>A model is a persistent data type: a representation of data stored in a database. If you&#39;re using
+MySQL, a model might correspond to a table. If you&#39;re using MongoDB, it might correspond to a
+collection. In either case, our goal is to provide a simple, modular way of managing data without
+relying on any one type of database.</p>
+<h2>How do I define a Model?</h2>
+<p>Model definitions contain attributes, validations, instance methods, lifecycle callbacks and
+class methods.</p>
+<h3>Attributes</h3>
+<p>Attributes are basic pieces of information about a model. For instance, a model called <code>Person</code>
+might have attributes called <code>firstName</code>, <code>lastName</code>, <code>phoneNumber</code>, <code>age</code>, <code>birthDate</code> and <code>emailAddress</code>.
+The model definition for <code>Person</code> might look like this:</p>
+<pre><code class="lang-javascript">// Person.js
+var Person = {
+  attributes: {
+    firstName: &#39;STRING&#39;,
+    lastName: &#39;STRING&#39;,
+    age: {
+      type: &#39;INTEGER&#39;,
+      max: 150,
+      required: true
+    }
+    birthDate: &#39;DATE&#39;,
+    phoneNumber: {
+      type: &#39;STRING&#39;,
+      defaultsTo: &#39;111-222-3333&#39;
+    }
+    emailAddress: {
+      type: &#39;email&#39;, // Email type will get validated by the ORM
+      required: true
+    }
+  }
+};
+
+module.exports = Person;</code></pre>
+<h4>Available Attribute Types:</h4>
+<p>The following attribute types are currently available:</p>
+<ul>
+<li>string</li>
+<li>text</li>
+<li>integer</li>
+<li>float</li>
+<li>date</li>
+<li>time</li>
+<li>datetime</li>
+<li>boolean</li>
+<li>binary</li>
+<li>array</li>
+<li>json</li>
+</ul>
+<p>To learn more about what methods are available to you, check out the <a href="https://github.com/balderdashy/waterline">waterline documentation</a>.</p>
+<h3>Validations</h3>
+<p>Validations are defined on you attributes when defining a model. It uses
+<a href="https://github.com/balderdashy/anchor">Anchor</a> behind the scenes to run validations whenever you
+create or update a record.</p>
+<pre><code class="lang-javascript">attributes: {
+  name: {
+    type: &#39;string&#39;,
+    maxLength: 20,
+    minLength: 5
+  },
+
+  email: {
+    type: &#39;email&#39;,
+    required: true
+  }
+}</code></pre>
+<p>Available validations are:</p>
+<ul>
+<li>empty</li>
+<li>required</li>
+<li>notEmpty</li>
+<li>undefined</li>
+<li>string</li>
+<li>alpha</li>
+<li>numeric</li>
+<li>alphanumeric</li>
+<li>email</li>
+<li>url</li>
+<li>urlish</li>
+<li>ip</li>
+<li>ipv4</li>
+<li>ipv6</li>
+<li>creditcard</li>
+<li>uuid</li>
+<li>uuidv3</li>
+<li>uuidv4</li>
+<li>int</li>
+<li>integer</li>
+<li>number</li>
+<li>finite</li>
+<li>decimal</li>
+<li>float</li>
+<li>falsey</li>
+<li>truthy</li>
+<li>null</li>
+<li>notNull</li>
+<li>boolean</li>
+<li>array</li>
+<li>date</li>
+<li>hexadecimal</li>
+<li>hexColor</li>
+<li>lowercase</li>
+<li>uppercase</li>
+<li>after</li>
+<li>before</li>
+<li>is</li>
+<li>regex</li>
+<li>not</li>
+<li>notRegex</li>
+<li>equals</li>
+<li>contains</li>
+<li>notContains</li>
+<li>len</li>
+<li>in</li>
+<li>notIn</li>
+<li>max</li>
+<li>min</li>
+<li>minLength</li>
+<li>maxLength</li>
+</ul>
+<h3>Instance Methods</h3>
+<p>You can attach instance methods to a model which will be available on any record returned from
+a query. There are also a few helper instance methods that get attached to allow you to perform
+operations on a model instance without having to build the lookup criteria.</p>
+<p>Helper Instance Methods:</p>
+<ul>
+<li>save</li>
+<li>destroy</li>
+<li>toObject</li>
+<li>toJSON</li>
+</ul>
+<h3>Save Instance Method</h3>
+<p>The save instance method will write the current values of the model instance to the datastore.
+It only takes a callback as it&#39;s argument.</p>
+<pre><code class="lang-javascript">// Lookup a user
+User.findOne(1).done(function(err, user) {
+
+  // we now have a model with instance methods attached
+  // update an attribute value
+  user.email = &#39;foo.bar@gmail.com&#39;;
+
+  // save the updated value
+  user.save(function(err) {
+    // value has been saved
+  });
+
+});</code></pre>
+<h3>Destroy Instance Method</h3>
+<p>The destroy instance method allows you to delete a single record from the datastore without having
+to build up a criteria search.</p>
+<pre><code class="lang-javascript">// Lookup a user
+User.findOne(1).done(function(err, user) {
+
+  // we now have a model with instance methods attached
+
+  // destroy the record
+  user.destroy(function(err) {
+    // record has been removed
+  });
+
+});</code></pre>
+<h3>toObject/toJSON Instance Methods</h3>
+<p>The <code>toObject()</code> method will return the currently set model values only, without any of the instance
+methods attached. Useful if you want to change or remove values before sending to the client.</p>
+<p>However we provide an even easier way to filter values before returning to the client when using
+the blueprints by allowing you to override the <code>toJSON()</code> method in your model. This function will
+automatically be called when using the blueprints so you don&#39;t need to write custom controllers in
+order to filter values.</p>
+<p>Example of filtering a password in your model definition:</p>
+<pre><code class="lang-javascript">module.exports = {
+  attributes: {
+    name: &#39;string&#39;,
+    password: &#39;string&#39;,
+
+    // Override toJSON instance method
+    // to remove password value
+    toJSON: function() {
+      var obj = this.toObject();
+      delete obj.password;
+      return obj;
+    }
+  }
+}
+
+// Then later when you query it:
+
+User.findOne(1).done(function(err, user) {
+  // user.password doesn&#39;t exist
+});</code></pre>
+<h3>Custom Defined Instance Methods</h3>
+<p>You may define custom instance methods that are available after querying a model. These are defined
+as functions in your model attributes.</p>
+<pre><code class="lang-javascript">module.exports = {
+
+  attributes: {
+    firstName: &#39;string&#39;,
+    lastName: &#39;string&#39;,
+
+    // Define a custom instance method
+    fullName: function() {
+      return this.firstName + &#39; &#39; + this.lastName;
+    }
+  }
+}
+
+// Then use it in your query results like:
+User.findOne(1).done(function(err, user) {
+  // use the instance method
+  var name = user.fullName();
+});</code></pre>
+<h2>Lifecycle Callbacks</h2>
+<p>Lifecycle callbacks are functions you can define to run at certain times in a query. They are hooks
+that you can tap into in order to change data. An example use case would be automatically
+encrypting a password before creating or automatically generating a slugified url attribute.</p>
+<p><em>Callbacks run on Create:</em></p>
+<pre><code>- beforeValidation / *fn(values, cb)*
+- beforeCreate / *fn(values, cb)*
+- afterCreate / *fn(newlyInsertedRecord, cb)*</code></pre>
+<p><em>Callbacks run on Update:</em></p>
+<pre><code>- beforeValidation / *fn(valuesToUpdate, cb)*
+- beforeUpdate / *fn(valuesToUpdate, cb)*
+- afterUpdate / *fn(updatedRecord, cb)*</code></pre>
+<p><em>Callbacks run on Destroy:</em></p>
+<pre><code>- beforeDestroy / *fn(criteria, cb)*
+- afterDestroy / *fn(cb)*</code></pre>
+<p><strong>Examples</strong></p>
+<p>Encrypt a password before saving to the database.</p>
+<pre><code class="lang-javascript">var bcrypt = require(&#39;bcrypt&#39;);
+
+module.exports = {
+
+  attributes: {
+
+    username: {
+      type: &#39;string&#39;,
+      required: true
+    },
+
+    password: {
+      type: &#39;string&#39;,
+      minLength: 6,
+      required: true,
+      columnName: &#39;encrypted_password&#39;
+    }
+
+  },
+
+
+  // Lifecycle Callbacks
+  beforeCreate: function(values, next) {
+    bcrypt.hash(values.password, 10, function(err, hash) {
+      if(err) return next(err);
+      values.password = hash;
+      next();
+    });
+  }
+};</code></pre>
+<h2>Custom Table Names</h2>
+<p>You can define a custom table name on your adapter by adding a <code>tableName</code> attribute. If no table
+name is supplied it will use the filename as the table name when passing it to an adapter. So if
+you model is name UserModel the table name will be set to user by default.</p>
+<pre><code class="lang-javascript">// api/models/User.js
+module.exports = {
+  tableName: &#39;sails_user&#39;,
+  attributes: {
+    // attributes here
+  }
+};</code></pre>
+<h2>Adapters</h2>
+<p>Adapters can be included from npm, or defined locally in the <code>api/adapters</code> directory of your
+project.</p>
+<p>You can override the adapter globally for your application, or you can configure different models
+to point to different adapters. To see how to change your default application adapter config,
+check out the Configuration section of this documentation at
+<a href="#!documentation/configuration">Configuration</a></p>
+<p>To override the adapter of a single model, you specify the adapter module&#39;s name and any extra
+configuration information necessary to make it work.</p>
+<p>For example:</p>
+<pre><code class="lang-javascript">// api/models/User.js
+module.exports = {
+
+  adapter: &#39;mysql&#39;,
+
+  config: {
+    user: &#39;root&#39;,
+    password: &#39;thePassword&#39;,
+    database: &#39;testdb&#39;,
+    host: &#39;127.0.0.1&#39;
+  },
+
+  attributes: {
+    name: &#39;string&#39;,
+    email: &#39;string&#39;,
+    phoneNumber: {
+      type: &#39;string&#39;,
+      defaultsTo: &#39;555-555-5555&#39;
+    }
+  }
+
+};</code></pre>
+<p>Our global is set to <code>disk</code>, however since we overrode the adapter our User models will now be
+stored in MySQL using the sails-mysql adapter.</p>
+<h3>Schemaless Mode</h3>
+<p>For adapters that don&#39;t require a schema such as Mongo or Redis the default setting is to be schemaless. This means
+that you don&#39;t need to specify attributes on your model in order to persist them. For some cases this may be fine but
+in other cases you would like to specify that all data sticks to a schema.</p>
+<p>You can toggle the <code>schema</code> flag on models on or off. However note that if you are using a schema database such as MySQL
+or PostgreSQL you will not be able to use the model if <code>schema</code> is set to false.</p>
+<pre><code class="lang-javascript">module.exports = {
+
+ adapter: &#39;mongo&#39;,
+ schema: true,
+
+ attributes: {
+   // some attributes
+ }
+};</code></pre>
+<p>You may also set the <code>schema</code> flag globally in your <code>config/adapters.js</code> for a datastore. This will enable/disable a schema
+on all your models.</p>
+<pre><code class="lang-javascript">module.exports.adapters = {
+  mongo: {
+    module: &#39;sails-mongo&#39;,
+    schema: true
+  }
+};</code></pre>
+<h2>Associations</h2>
+<p>Associations are not yet available for Sails.JS, however are on the immediate todo list.
+Please check out issue <a href="https://github.com/balderdashy/sails/issues/124">#124</a> for more
+information regarding the proposed changes for associations.</p>
+<!-- Associations describe how models are connected to each other.  The concept originates from SQL databases, but it has analogues in noSQL databases as well (links and embeds).  NoSQL support for Sails' ORM is currently under development. -->
+
+<!--
+Since Sails supports both relational and non-relational databases, we must support both standard SQL associations (links) and bundled JSON, Mongo-style associations (embeds)
+
+## Embedding
+_TODO_
+
+## Linking
+_TODO_
+-->
+
+<!-- #### One-To-One
+_TODO_
+
+#### One-To-Many
+_TODO_
+
+#### Many-To-Many
+_TODO_ -->
+
+<h2>Where do I define Models?</h2>
+<p>Models are defined in the <strong>api/models/</strong> directory in your Sails application.
+<!-- You can create them with their attributes using.   name:string age:int email:string --></p>
+<p>You can generate a model with the command line tool:</p>
+<pre><code>sails generate model Person</code></pre>
+<h2>Automatic schema creation</h2>
+<p>Depending on your configuration, the database tables will be recreated automatically.</p>
+<h2>Querying Models</h2>
+<p>You&#39;ll want to create, access, modify, and destroy models from controllers, views, services, and
+policies, and so you&#39;ll need a way to deal with them.</p>
+<p>Queries can be run with either a callback interface or with a deferred object. For building
+complicated queries the deferred object method is the best choice.</p>
+<h3>Callback Method</h3>
+<pre><code class="lang-javascript">User.findOne({ id: 1 }, function(err, user) {
+  // Do stuff here
+});</code></pre>
+<h3>Deferred Object Method</h3>
+<pre><code class="lang-javascript">User.find()
+.where({ id: { &#39;&gt;&#39;: 100 }})
+.where({ age: 21 })
+.limit(100)
+.sort(&#39;name&#39;)
+.exec(function(err, users) {
+  // Do stuff here
+});</code></pre>
+<h2><code>create</code></h2>
+<p>To create a new record in the database, use <code>create()</code>.</p>
+<pre><code class="lang-javascript">// For example
+User.create({
+  name: &#39;Mike&#39;,
+  age: 13,
+  phoneNumber: &#39;(512)-555-5555&#39;
+}).done(function(err, user) {
+
+  // Error handling
+  if (err) {
+    return console.log(err);
+
+  // The User was created successfully!
+  }else {
+    console.log(&quot;User created:&quot;, user);
+  }
+});</code></pre>
+<h2><code>findOne</code></h2>
+<p>To lookup a model by id, use <code>findOne(id)</code>. You can call also look for a model by passing in an
+object composed of the desired matching criteria.</p>
+<pre><code class="lang-javascript">// For example to find by id
+User.findOne(123).done(function(err, user) {
+
+  // Error handling
+  if (err) {
+    return console.log(err);
+
+  // The User was found successfully!
+  } else {
+    console.log(&quot;User found:&quot;, user);
+  }
+});
+
+
+// To find by a criteria
+User.findOne({
+  name: &#39;Steven&#39;,
+  age: 32,
+  phone:&#39;(210)-555-1234&#39;
+}).done(function(err, user) {
+
+  // Error handling
+  if (err) {
+    return console.log(err);
+
+  // The User was found successfully!
+  } else {
+    console.log(&quot;User found:&quot;, user);
+  }
+});</code></pre>
+<h2><code>find</code></h2>
+<p><code>find()</code> lets you search for one or more models which meet the criteria you specify. You can also
+include a <code>limit</code> (max number of models to return), <code>skip</code> (useful for pagination), and sort
+<code>sort</code>. Find all will always return an array even if only one model fits the criteria.</p>
+<pre><code class="lang-javascript">// For example, this query returns the first ten 18 year olds, sorted alphabetically
+User.find({
+  age: 18
+}).limit(10).sort(&#39;name ASC&#39;).done(function(err, users) {
+
+  // Error handling
+  if (err) {
+    return console.log(err);
+
+  // Found multiple users!
+  } else {
+    console.log(&quot;Users found:&quot;, users);
+  }
+});</code></pre>
+<p>Below are some more examples.  Some of these examples include query modifiers.
+You can view more about query modifiers
+<a href="https://github.com/balderdashy/sails/wiki/Models#query-modifiers">here</a>.</p>
+<pre><code class="lang-javascript">// Search-as-you-type input field
+User.find({
+  name: {
+    startsWith: &#39;thelas&#39;
+  }
+}, cb);
+
+// Search-as-you-type input field which checks multiple attributes
+User.find({
+  or: [
+    name: { startsWith: &#39;thelas&#39; },
+    email: { startsWith: &#39;thelas&#39; }
+  ]
+}, cb);
+
+// Keyword search
+User.find({
+  description: {
+    contains: &#39;roller coaster&#39;
+  }
+}, cb);
+
+// Alphabetical search
+User.find({
+  name: {
+    &#39;&gt;=&#39;: &#39;a&#39;
+  }
+}, cb);
+// you can also do &lt;=, &lt;, &gt;, and ! See query modifiers
+
+// Alphabetical search.. but paginated:
+// (here&#39;s page 2)
+User.find({
+  where: {
+    name: {
+      &#39;&gt;=&#39;: &#39;a&#39;
+    }
+  },
+  limit: 15,
+  skip: 15,
+  sort: &#39;name ASC&#39;
+}, cb);</code></pre>
+<h2>Dynamic finders</h2>
+<p>With Sails built in ORM, <a href="https://github.com/balderdashy/waterline">Waterline</a>, you can use a very
+helpful tool called dynamic finders. You can query your models with automatically genereated methods
+that depend on the attributes you define for the model. For example, if you had a book model that
+looks like this.</p>
+<pre><code class="lang-javascript">var Book = {
+  title: &#39;STRING&#39;,
+  author: &#39;STRING&#39;,
+  publisher: &#39;STRING&#39;,
+}
+
+module.exports = Book;</code></pre>
+<p>You can query the db using methods such as these</p>
+<pre><code class="lang-javascript">
+// Query by author
+Book.findOneByTitle(&#39;50 Shades of Grey&#39;).done(function(err, book) {
+
+  // Error handling
+  if (err) {
+    return console.log(err);
+
+  // The Book was found successfully!
+  } else {
+    console.log(&quot;Book found:&quot;, book);
+  }
+});
+
+// Query by Author
+Book.findByAuthor(&#39;John R. Erickson&#39;).done(function(err, books) {
+
+  // Error handling
+  if (err) {
+    return console.log(err);
+
+  // The Books were found successfully!
+  } else {
+    console.log(&quot;Books found:&quot;, books);
+  }
+});</code></pre>
+<h2><code>update</code></h2>
+<p><code>update()</code> allows you to update an instance of a model from the database. It will always return
+an array of records that have been updated.</p>
+<pre><code class="lang-javascript">// For example, to update a user&#39;s name,
+// .update(query, params to change, callback)
+User.update({
+  name: &#39;sally&#39;
+},{
+  phone: &#39;555-555-5555&#39;
+}, function(err, users) {
+  // Error handling
+  if (err) {
+    return console.log(err);
+  // Updated users successfully!
+  } else {
+    console.log(&quot;Users updated:&quot;, users);
+  }
+});</code></pre>
+<h2><code>destroy</code></h2>
+<p><code>destroy()</code> allows you to delete models from the database. It will work on all matching criteria.</p>
+<pre><code class="lang-javascript">// For example, to delete a user named Johnny,
+User.destroy({
+  name: &#39;Johnny&#39;,
+  age: 22
+}).done(function(err) {
+
+  // Error handling
+  if (err) {
+    return console.log(err);
+
+  // Johnny was deleted!
+  } else {
+    console.log(&quot;User deleted&quot;);
+  }
+});</code></pre>
+<h2>Query Modifiers</h2>
+<p>Modifiers can be used in your database queries.  These make it easier to get information from your
+database without having to write a bunch of code. Currently supported modifiers are <em>contains</em>,
+<em>or</em>, <em>startsWith</em>, <em>endsWith</em>, <em>greaterThan</em>, <em>lessThan</em>, <em>&gt;=</em>, and <em>&lt;=</em>.
+Each of these are shown in examples below.</p>
+<h2>Modifier: <code>contains</code></h2>
+<p>In order to use a <code>contains</code> modifier, you would do the following.</p>
+<pre><code class="lang-javascript">where: {
+  name: {
+    contains: &#39;James&#39;
+  }
+}</code></pre>
+<h2>Modifier: <code>or</code></h2>
+<p>In order to use an <code>or</code> modifier, you would do the following.</p>
+<pre><code class="lang-javascript">where: {
+  or: [{name: &#39;James&#39;}, {name: &#39;Mike&#39;}]
+}</code></pre>
+<p>name: {
+ &#39;&gt;&#39;: &#39;a&#39;
+}</p>
+<h2>What About Migrations?</h2>
+<p>In schemaful databases (like MySQL) schema migrations occur automatically.  Models default to
+<code>migrate:alter</code>, which tells Sails to attempt to auto-migrate the schema.</p>
+<p>Explicit production data migrations, like in Rails, do not exist at this time-- production data is
+precious, and manual migrations can be dangerous.  However, if this is a feature that you are
+interested in, please submit an issue, or better yet, a pull-request!</p>
+<h3>More Information</h3>
+<p>For more information on using Models you can visit the
+<a href="https://github.com/balderdashy/waterline">Waterline</a> documentation which goes more in depth on how
+the internals work.</p>
+
+</div>

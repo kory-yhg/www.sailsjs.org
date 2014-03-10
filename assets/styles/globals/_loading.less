@@ -1,0 +1,110 @@
+.loading-spinner {
+	position:relative;
+	width:55px;
+	height:7px;
+
+	.dot {
+		position:absolute;
+		top:0;
+		width:8px;
+		height:8px;
+		border-radius: 50%;
+		.animationDuration(1s);
+		.animationIterationCount(infinite);
+		.animationDirection(linear);
+		.scale(0.3);
+	}
+
+	.dot_1{
+		left:0;
+		.animationDelay(0.4s)
+	}
+
+	.dot_2{
+		left:8px;
+		.animationDelay(0.5s)
+	}
+
+	.dot_3{
+		left:16px;
+		.animationDelay(0.6s)
+	}
+
+	.dot_4{
+		left:24px;
+		.animationDelay(0.7s)
+	}
+
+	.dot_5{
+		left:33px;
+		.animationDelay(0.8s)
+	}
+
+	.dot_6{
+		left:41px;
+		.animationDelay(0.9s)
+	}
+
+	.dot_7{
+		left:49px;
+		.animationDelay(1s)
+	}
+
+	.dot_8{
+		left:57px;
+		.animationDelay(1.1s)
+	}
+	&.light-bg {
+		.dot {
+			background-color: @turquoise;
+			.animationName(loading_animation);
+		}
+		
+		@-moz-keyframes loading_animation {
+			.loadingAnimationKeyframesLtBg()
+		}
+
+		@-webkit-keyframes loading_animation {
+			.loadingAnimationKeyframesLtBg()
+		}
+
+		@-ms-keyframes loading_animation {
+			.loadingAnimationKeyframesLtBg()
+		}
+
+		@-o-keyframes loading_animation {
+			.loadingAnimationKeyframesLtBg()
+		}
+
+		@keyframes loading_animation {
+			.loadingAnimationKeyframesLtBg()
+		}
+	}
+
+
+	&.dark-bg {
+		.dot {
+			background-color: @white;
+			.animationName(loading_animation_dkbg);
+		}
+		@-moz-keyframes loading_animation_dkbg {
+			.loadingAnimationKeyframesDkBg()
+		}
+
+		@-webkit-keyframes loading_animation_dkbg {
+			.loadingAnimationKeyframesDkBg()
+		}
+
+		@-ms-keyframes loading_animation_dkbg {
+			.loadingAnimationKeyframesDkBg()
+		}
+
+		@-o-keyframes loading_animation_dkbg {
+			.loadingAnimationKeyframesDkBg()
+		}
+
+		@keyframes loading_animation_dkbg {
+			.loadingAnimationKeyframesDkBg()
+		}
+	}
+}

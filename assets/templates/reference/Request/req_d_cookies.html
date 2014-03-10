@@ -1,0 +1,12 @@
+<h1 id="req-cookies">req.cookies</h1>
+<h3 id="purpose">Purpose</h3>
+<p>This contains the unsigned cookies sent by the user-agent.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">// Assuming the browser sends a cookie named &#39;Yummy&#39;
+console.log(req.cookies.name);
+
+// &quot;Yummy&quot;</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>You should never have to use this method.  While it can be overridden, by default Sails uses the express cookieParser middleware which blanks req.cookies </p>
+</blockquote>

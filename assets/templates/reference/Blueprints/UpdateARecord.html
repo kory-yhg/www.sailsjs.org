@@ -1,0 +1,162 @@
+<h1 id="update-a-record">Update A Record</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Update an existing model instance.<br>Attributes to change should be sent in the HTTP body as form-encoded values or JSON.</p>
+<h3 id="description">Description</h3>
+<p>Updates the model instance which matches the <strong>id</strong> parameter.  Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a <code>400</code> status code will be returned instead.  If no model instance exists matching the specified <strong>id</strong>, a <code>404</code> is returned.</p>
+<p>Additionally, a comet message will be published to all sockets subscribed to the instance room, e.g.:</p>
+<pre><code class="lang-javascript">
+//
+// New usage:
+//
+
+// On the client
+
+// You can still do `message`, but you&#39;ll get the 0.9-style comet messages (see below).
+
+// New comet events you can subscribe to (for each model):
+socket.on(&#39;user&#39;, console.log);
+socket.on(&#39;pet&#39;, console.log);
+socket.on(&#39;chair&#39;, console.log);
+
+// -&gt; Later, one of these might log something like:
+/*
+{
+ verb: &#39;created&#39;,
+ data: { name: &#39;Scott&#39; },
+ id: 15
+}
+
+{
+ verb: &#39;updated&#39;
+ data: { name: &#39;Ricky&#39; },
+ id: 15
+}
+
+{
+ verb: &#39;destroyed&#39;
+ data: { },
+ id: 15
+}
+
+{
+ verb: &#39;removedFrom&#39;,
+ association: { alias: &#39;petHorses&#39;, model: &#39;Horse&#39; },
+ message: &#39;Removed a Horse from User\&#39;s `petHorses`&#39;,
+ data: { id: &#39;b728a8efcd2941313043&#39; },
+ id: 7
+}
+
+{
+ verb: &#39;addedTo&#39;,
+ association: { alias: &#39;petHorses&#39;, model: &#39;Horse&#39; },
+ message: &#39;Added a Horse to User\&#39;s `petHorses`&#39;,
+ data: { id: &#39;b728a8efcd2941313043;, name: &#39;Sea Biscuit&#39; },
+ id: 7
+}
+*/
+
+
+
+//
+// 0.9-style usage:
+//
+
+// On the client
+socket.on(&#39;message&#39;, console.log);
+
+// -&gt; Later, this might log something like:
+/*
+{
+ model: &#39;user&#39;,
+ verb: &#39;update&#39;,
+ data: { name: &#39;Scott&#39; },
+ id: 8
+}
+*/</code></pre>
+<p>This is equivalent to running <code>Pony.publishUpdate( pinkiesId, changedAttributes.toJSON() )</code> in a custom controller.</p>
+<h3 id="examples">Examples</h3>
+<h3 id="update-record-rest-">Update Record (REST)</h3>
+<p><code>PUT http://localhost:1337/:model/:id</code></p>
+<p>Change AppleJack&#39;s hobby to &quot;kickin&quot;.</p>
+<p><em>via Postman</em><br><code>PUT http://localhost:1337/pony/47?hobby=kickin</code></p>
+<h3 id="expected-response">Expected Response</h3>
+<pre><code class="lang-json">{
+  &quot;name&quot;: &quot;Pinkie Pie&quot;,
+  &quot;hobby&quot;: &quot;kickin&quot;,
+  &quot;id&quot;: 47,
+  &quot;createdAt&quot;: &quot;2013-10-18T01:23:56.000Z&quot;,
+  &quot;updatedAt&quot;: &quot;2013-11-26T22:55:19.951Z&quot;
+}</code></pre>
+<h3 id="update-record-shortcuts-">Update Record (Shortcuts)</h3>
+<p><code>http://localhost:1337/:model/update?</code></p>
+<p>via web browser</p>
+<p><code>http://localhost:1337/pony/update/5?name=Shutterfly_myLove</code></p>
+<h4 id="expected-response">Expected Response</h4>
+<pre><code class="lang-javascript">{
+  &quot;name&quot;: &quot;Shutterfly_myLove&quot;,
+  &quot;best_pony&quot;: &quot;yep&quot;,
+  &quot;createdAt&quot;: &quot;2014-02-24T21:02:16.068Z&quot;,
+  &quot;updatedAt&quot;: &quot;2014-02-24T21:07:41.695Z&quot;,
+  &quot;id&quot;: 5
+}</code></pre>
+<h3 id="add-association-between-two-existing-records-rest-">Add association between two existing records (REST)</h3>
+<p><code>POST http://localhost:1337/:model/:recordID/:collectionName?</code></p>
+<p>Give Pinkie Pie the pre-existing pet named &quot;Bubbles&quot; who has ID 15.</p>
+<p>via Postman</p>
+<p><code>POST http://localhost:1337/pony/4/pets?id=12</code></p>
+<h4 id="expected-response">Expected Response</h4>
+<pre><code class="lang-json">{
+  &quot;name&quot;: &quot;Pinkie Pie&quot;,
+  &quot;hobby&quot;: &quot;kickin&quot;,
+  &quot;id&quot;: 47,
+  &quot;pets&quot;: [{
+      &quot;name&quot;: &quot;Gummy&quot;,
+      &quot;species&quot;: &quot;crocodile&quot;
+      &quot;id&quot;: 10,
+      &quot;createdAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;,
+      &quot;updatedAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;
+    },{
+      &quot;name&quot;: &quot;Bubbles&quot;,
+      &quot;species&quot;: &quot;crackhead&quot;
+      &quot;id&quot;: 15,
+      &quot;createdAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;,
+      &quot;updatedAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;
+    }],
+  &quot;createdAt&quot;: &quot;2013-10-18T01:23:56.000Z&quot;,
+  &quot;updatedAt&quot;: &quot;2013-11-26T22:55:19.951Z&quot;
+}</code></pre>
+<h3 id="add-association-between-two-existing-records-shortcuts-">Add association between two existing records (Shortcuts)</h3>
+<p><code>http://localhost:1337/:model/update?</code></p>
+<h4 id="expected-response">Expected Response</h4>
+<pre><code class="lang-json">
+</code></pre>
+<h3 id="remove-association-many-to-many-rest-">Remove Association (Many-To-Many) (REST)</h3>
+<p><code>DELETE http://localhost:1337/:model/:recordID/:collectionName?</code></p>
+<p>Remove Pinkie Pie&#39;s pet, &quot;Gummy&quot; (ID 12)</p>
+<p>via Postman</p>
+<p><code>DELETE http://localhost:1337/pony/4/pets?id=12</code></p>
+<h4 id="expected-response">Expected Response</h4>
+<pre><code class="lang-json">
+{
+  &quot;name&quot;: &quot;Pinkie Pie&quot;,
+  &quot;hobby&quot;: &quot;ice skating&quot;,
+  &quot;pets&quot;: [{
+      &quot;name&quot;: &quot;Bubbles&quot;,
+      &quot;species&quot;: &quot;crackhead&quot;
+      &quot;id&quot;: 15,
+      &quot;createdAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;,
+      &quot;updatedAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;
+    }],
+  &quot;id&quot;: 4,
+  &quot;createdAt&quot;: &quot;2013-10-18T01:22:56.000Z&quot;,
+  &quot;updatedAt&quot;: &quot;2013-11-26T22:54:19.951Z&quot;
+}</code></pre>
+<h4 id="remove-association-many-to-many-shortcuts-">Remove Association (Many-To-Many) (Shortcuts)</h4>
+<p><code>http://localhost:1337/:model/:recordID/:collectionName/remove?</code></p>
+<h4 id="expected-response">Expected Response</h4>
+<pre><code class="lang-json">
+</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>JSON keys and values must be wrapped in double quotes.  Single quotes won&#39;t work.</p>
+</blockquote>

@@ -1,0 +1,12 @@
+<h1 id="res-location-">res.location()</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Set the location header.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">res.location(&#39;/foo/bar&#39;);
+res.location(&#39;foo/bar&#39;);
+res.location(&#39;http://example.com&#39;);
+res.location(&#39;../login&#39;);
+res.location(&#39;back&#39;);</code></pre>
+<p>You can use the same kind of urls as in res.redirect().</p>
+<p>For example, if your application is mounted at /blog, the following would set the location header to /blog/admin:</p>
+<pre><code class="lang-javascript">res.location(&#39;admin&#39;)</code></pre>

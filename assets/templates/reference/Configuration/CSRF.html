@@ -1,0 +1,19 @@
+<h1 id="csrf">CSRF</h1>
+<h3 id="what-is-this-">What is this?</h3>
+<p>When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the &#39;_csrf&#39; parameter.</p>
+<h3 id="description">Description</h3>
+<p>When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the &#39;_csrf&#39; parameter.</p>
+<p>This option protects your Sails app against cross-site request forgery (or CSRF) attacks. A would-be attacker needs not only a user&#39;s session cookie, but also this timestamped, secret CSRF token, which is refreshed/granted when the user visits a URL on your app&#39;s domain.</p>
+<p>This allows you to have certainty that your users&#39; requests haven&#39;t been hijacked, and that the requests they&#39;re making are intentional and legitimate.</p>
+<p>This token has a short-lived expiration timeline, and must be acquired by either:</p>
+<h4 id="for-traditional-view-driven-web-apps-">For traditional view-driven web apps:*</h4>
+<p>Fetching it from one of your views, where it may be accessed as a local variable, i.e.: <code>&lt;%= _csrf %&gt;</code><br>e.g.:</p>
+<pre><code class="lang-html">&lt;form&gt;
+ &lt;input type=&#39;hidden&#39; name=&#39;_csrf&#39; value=&#39;&lt;%= _csrf %&gt;&#39;&gt;
+&lt;/form&gt;</code></pre>
+<h4 id="for-ajax-socket-heavy-and-or-single-page-apps-">For AJAX/Socket-heavy and/or single-page apps:*</h4>
+<p>Sending a GET request to the <code>/csrfToken</code> route, where it will be returned as JSON, e.g.: <code>{ _csrf: &#39;ajg4JD(JGdajhLJALHDa&#39; }</code></p>
+<p>Enabling this option requires managing the token in your front-end app. For traditional web apps, it&#39;s as easy as passing the data from a view into a form action. In AJAX/Socket-heavy apps, just send a GET request to the /csrfToken route to get a valid token.</p>
+<blockquote>
+<p>For more information on CSRF, check out: <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">this</a> article.</p>
+</blockquote>

@@ -1,0 +1,92 @@
+<h1 id="lifecycle-callbacks">Lifecycle Callbacks</h1>
+<h3 id="overview">Overview</h3>
+<p>Lifecycle callbacks are functions you can define to run at certain times in a query. They are useful for mutating data before records are saved as well as helping with timing events in your app.</p>
+<h3 id="callbacks-on-create-">Callbacks on <code>create</code></h3>
+<ul>
+<li>beforeValidation: fn(values, cb)</li>
+<li>afterValidation: fn(values, cb)</li>
+<li>beforeCreate: fn(values, cb)</li>
+<li>afterCreate: fn(newlyInsertedRecord, cb)</li>
+</ul>
+<h4 id="example">Example</h4>
+<p>Sometimes you want to remove fields from a newly created record before they get published and sent back to the client.  You can use the afterCreate lifecycle callback.</p>
+<pre><code class="lang-javascript">
+// User.js
+
+module.exports = {
+
+    attributes: {
+        name: &#39;STRING&#39;,
+        profession: &#39;STRING&#39;,
+        gps_location_of_buried_drug_money: &#39;JSON&#39;
+    },
+    afterCreate: function(newlyInsertedRecord, cb){
+        delete newlyInsertedRecord.gps_location_of_buried_drug_money;
+        cb();
+    }
+
+};</code></pre>
+<h3 id="callbacks-on-update-">Callbacks on <code>update</code></h3>
+<ul>
+<li>beforeValidation: fn(valuesToUpdate, cb)</li>
+<li>afterValidation: fn(valuesToUpdate, cb)</li>
+<li>beforeUpdate: fn(valuesToUpdate, cb)</li>
+<li>afterUpdate: fn(updatedRecord, cb)</li>
+</ul>
+<h4 id="example">Example</h4>
+<p>Youre the NSA and you need to update the record of a person who might try to hurt America!  First though, you need to make sure that the record concerns a person of interest.  You might want to use the <code>beforeValidation</code> lifecycle callback to see if the record&#39;s <code>citizen_id</code> exists in your <code>Probable_terrorist</code> model.  </p>
+<pre><code class="lang-javascript">
+// Record.js
+
+module.exports = {
+
+    attributes: {
+        citizen_name: &#39;STRING&#39;,
+        phone_records: &#39;ARRAY&#39;,
+        text_messages: &#39;ARRAY&#39;,
+        friends_and_family: &#39;ARRAY&#39;,
+        geo_location: &#39;JSON&#39;,
+        loveint_rating: &#39;INTEGER&#39;,
+        citizen_id: &#39;INTEGER&#39;
+    },
+    beforeValidation: function(citizen_record, cb){
+        var terroristLookupCB = function(err,terroristRecord){
+
+            var runCallback = cb;
+
+            if (err) return err;
+
+            if (terroristRecord)
+                runCallback();
+            else
+                return;
+        };
+
+
+        Probable_terrorist.findOneById(citizen_record.citizen_id).exec(terroristLookupCB);
+
+    }
+};</code></pre>
+<h3 id="callbacks-on-destroy-">Callbacks on <code>destroy</code></h3>
+<ul>
+<li>beforeDestroy: fn(criteria, cb)</li>
+<li>afterDestroy: fn(cb)</li>
+</ul>
+<h4 id="example">Example</h4>
+<p>Let&#39;s pretend you&#39;re Myspace and your last user has just deleted their account.  You are now irrelevant.  You can use the afterDestroy lifecycle callback to help close up shop.</p>
+<pre><code class="lang-javascript">
+module.exports = {
+
+    attributes: {
+        name: &#39;STRING&#39;,
+        top_8_friends: &#39;ARRAY&#39;,
+        favorites_things: &#39;JSON&#39;
+    },
+    afterDestroy: function(cb){
+
+        process.exit(1);
+
+    }
+
+};</code></pre>
+<h3 id="overview">Overview</h3>

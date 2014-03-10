@@ -1,0 +1,226 @@
+<div class="docs api.adapter-interface">
+<h1>Sails.js Adapter Interface</h1>
+<h4>A reference and support document for developers creating adapters for Sails/Waterline</h4>
+<hr>
+<blockquote>
+<h3>A quick personal note:</h3>
+<p>The more high-quality adapters we collectively release as open-source, the less repetitive work we all have to do when we integrate with various databases and services.  My vision is to make building server-side apps more fun and less repetitive for everyone, and that happens one community adapter at a time.</p>
+<p>~ Mike</p>
+</blockquote>
+<hr>
+<h2>Why would I need a custom adapter?</h2>
+<p>When building a Sails app, the sending or receiving of any asynchronous communication with another piece of hardware can be normalized into an adapter.  (viz. API integrations) </p>
+<blockquote>
+<p><strong>From Wikipedia:</strong>
+<em><a href="http://en.wikipedia.org/wiki/Create,_read,_update_and_delete">http://en.wikipedia.org/wiki/Create,_read,_update_and_delete</a></em></p>
+<p>Although a relational database provides a common persistence layer in software applications, numerous other persistence layers exist. CRUD functionality can be implemented with an object database, an XML database, flat text files, custom file formats, tape, or card, for example.</p>
+</blockquote>
+<p>In other words, Waterline is not just an ORM for your database.  It is a purpose-agnostic, open standard and toolset for integrating with all kinds of RESTful services, datasources, and devices, whether it&#39;s LDAP, Neo4J, or <a href="https://www.youtube.com/watch?v=OmcQZD_LIAE">a lamp</a>.
+I know, I know.. Not everything fits perfectly into a RESTful/CRUD mold!  Sometimes the service you&#39;re integrating with has more of an RPC-style interface, with one-off method names.  That&#39;s ok-- you can define any adapter methods you like! You still get all of the trickle-down config and connection-management goodness of Waterline core.</p>
+<p>To recap, writing your API integrations as adapters is <strong>easier</strong>, takes <strong>less time</strong>, and <strong>absorbs a considerable amount of risk</strong>, since you get the advantage of a <strong>standardized set of conventions</strong>, a <strong>documented API</strong>, and a <strong>built-in community</strong> of other developers who have gone through the same process.  Best of all, you (and your team) can <strong>reuse the adapter</strong> in other projects, <strong>speeding up development</strong> and <strong>saving time and money</strong>.</p>
+<p>Finally, if you choose to release your adapter as open-source, you provide a tremendous boon to our little framework and our budding Sails.js ecosystem.  Even if it&#39;s not via Sails, I encourage you to give back to the OSS community, even if you&#39;ve never forked a repo before-- don&#39;t be intimidated, it&#39;s not that bad!</p>
+<p>I tip my hat to you in advance :)</p>
+<h2>Interfaces</h2>
+<p>The functionality of adapters is as varied as the services they connect.  That said, there is a standard library of methods, and a support matrix you should be aware of.  Adapters may implement some, all, or none of the interfaces below, but rest assured that <strong>if an adapter implements one method in an interface, it should implement <em>all</em> of them</strong>.  This is not always the case due to limitations and/or incomplete implementations, but at the very least, a descriptive error message should be used to keep developers informed of what&#39;s supported and what&#39;s not.</p>
+<h5>Class methods</h5>
+<p>Below, <code>class methods</code> refer to the static, or collection-oriented, functions available on the model itself, e.g. <code>User.create()</code> or <code>Menu.update()</code>.  To add custom class methods to your model (beyond what is provided in the adapters it implements), define them as top-level key/function pairs in the model object.</p>
+<h5>Instance methods</h5>
+<p><code>instance methods</code> on the other hand, (also known as object, or model, methods) refer to methods available on the individual result models themselves, e.g. <code>User.findOne(7).done(function (err, user) { user.someInstanceMethod(); });</code>.  To add custom instance methods to your model (beyond what is provided in the adapters it implements), define them as key/function pairs in the <code>attributes</code> object of the model&#39;s definition.</p>
+<h5>DDL and auto-migrations</h5>
+<p><code>DDL</code> stands for data-definition language, and is a common fixture of schema-oriented databases.  In Sails, auto-migrations are supported out of the box.  Since adapters for the most common SQL databases support <code>alter()</code>, they also support automatic schema migration!  In your own adapter, if you write the <code>alter()</code> method, the same behavior will take effect.  The feature is configurable using the <code>migrate</code> property, which can be set to <code>safe</code> (don&#39;t touch the schema, period), <code>drop</code> (recreate the tables every time the app starts), or <code>alter</code> (the default-- merge the schema in the apps&#39; models with what is currently in the database).</p>
+<h2>Semantic (interface)</h2>
+<p>Implementing the basic semantic interface (CRUD) is really a step towards a complete implementation of the Queryable interface, but with some services/datasources, about as far as you&#39;ll be able to get using native methods.</p>
+<p>By supporting the Semantic interface, you also get the following:
++ if you write a <code>find()</code> function, developers can also use all of its synonyms, including dynamic finders and <code>findOne()</code>.  When they&#39;re called, they&#39;ll automatically be converted into the appropriate criteria object for the basic <code>find()</code> definition in your adapter.
++ as long as you implement basic <code>where</code> functionality (see <code>Queryable</code> below), Waterline can derive a simplistic version of associations support for you.  To optimize the default assumptions with native methods, override the appropriate methods in your adapter.
++ automatic socket.io pubsub support is provided by Sails-- it manages &quot;rooms&quot; for every class (collection) and each instance (model)
+  + As soon as a socket subscribes to the &quot;class room&quot; using <code>Foo.subscribe()</code>, it starts receiving <code>Foo.publishCreate()</code> notifications any time they&#39;re fired for <code>Foo</code>.
+  + When a socket subscribes to one or more &quot;instance room(s)&quot; (usually the results of a <code>find()</code>), it will receive <code>Foo.publishUpdate()</code> and <code>Foo.publishDestroy()</code> notifications for the relevant instances.
+  + If a socket is subscribed to an &quot;instance room&quot;, it will also be subscribed for &quot;updates&quot; and &quot;destroys&quot; to all instances of other models with a 1:* association with <code>Foo</code>.  The socket will also be notified of and subscribed to new matching instances of the associated model.</p>
+<blockquote>
+<p>All officially supported Sails.js database adapters implement this interface.</p>
+</blockquote>
+<h6>Class methods</h6>
+<ul>
+<li><code>Model.create()</code></li>
+<li><code>Model.find()</code></li>
+<li><code>Model.findOne()</code></li>
+<li><code>Model.update()</code></li>
+<li><code>Model.destroy()</code></li>
+</ul>
+<h6>Instance methods</h6>
+<ul>
+<li><code>henry.save()</code></li>
+<li><code>henry.destroy()</code></li>
+</ul>
+<h2>Queryable (interface)</h2>
+<blockquote>
+<p>All officially supported Sails.js database adapters implement this interface.</p>
+</blockquote>
+<p>Query building features are common in traditional ORMs, but not at all a guarantee when working with Waterline.  Since Waterline adapters can support services as varied as Twitter, SMTP, and Skype, traditional assumptions around structured data don&#39;t always apply.</p>
+<p>If query modifiers are enabled, the adapter must support <code>Model.find()</code>, as well as the <strong>complete</strong> query interface, or, where it is impossible to do so, at least provide helper notices.  If coverage of the interace is unfinished, it&#39;s still not a bad idea to make the adapter available, but it&#39;s important to clearly state the unifinished parts, and consequent limitations, up front.  This helps prevent the creation of off-topic issues in Sails/Waterline core, protects developers from unexpected consequences, and perhaps most importantly, helps focus contributors on high-value tasks.</p>
+<h6>Query modifiers</h6>
+<p>Query modifiers include filters:
++ <code>where</code>
++ <code>limit</code>
++ <code>skip</code>
++ <code>sort</code>
++ <code>select</code>
++ <code>distinct</code></p>
+<p>Boolean logic:
++ <code>and</code>
++ <code>or</code>
++ <code>not</code></p>
+<p>As well as <code>groupBy</code> and the aggregators:
++ <code>count</code>
++ <code>sum</code>
++ <code>min</code>
++ <code>max</code>
++ <code>average</code></p>
+<p><code>IN</code> queries:
+Adapters which implement <code>where</code> should recognize a list of values (e.g. <code>name: [&#39;Gandolph&#39;, &#39;Merlin&#39;]</code>) as an <code>IN</code> query.  In other words, if <code>name</code> is either of those values, a match occured.  </p>
+<p>Sub-attribute modifiers:
+You are also responsible for sub-attribute modifiers, (e.g. <code>{ age: { &#39;&gt;=&#39; : 65 } }</code>) with the notable exception of <code>contains</code>, <code>startsWith</code>, and <code>endsWith</code>, since support for those modifiers can be derived programatically by leveraging your definition of  <code>like</code>.
++ <code>like</code>    (SQL-style, with % wildcards)
++ <code>&#39;&gt;&#39;</code>    (you can also opt to use the more verbose <code>.greaterThan()</code>, etc.)
++ <code>&#39;&lt;&#39;</code>
++ <code>&#39;&gt;=&#39;</code>
++ <code>&#39;&lt;=&#39;</code></p>
+<h2>Migratable (interface)</h2>
+<p>Adapters which implement the Migratable interface are usually interacting with SQL databases.  This interface enables the <code>migrate</code> configuration option on a per-model or adapter-global basis, as well as access to the prototypal/class-level CRUD operations for working with tables.</p>
+<h6>Adapter methods</h6>
+<ul>
+<li><code>Adaper.define()</code></li>
+<li><code>Adaper.describe()</code></li>
+<li><code>Adaper.alter()</code></li>
+<li><code>Adaper.drop()</code></li>
+</ul>
+<h6>Auto-migration strategies</h6>
+<ul>
+<li><code>&quot;alter&quot;</code> (default)</li>
+<li><code>&quot;drop&quot;</code></li>
+<li><code>&quot;safe&quot;</code></li>
+</ul>
+<h2>Streaming (interface)</h2>
+<blockquote>
+<p>Traditionally, communicating to a server via HTTP is like wading across a river with a big bag of rocks.  Streaming is like skipping them across the water one by one.</p>
+</blockquote>
+<p>A huge advantage of using Node.js is the ease with which you can parse and manipulate streams of data.  Instead of pulling an entire dataset into RAM, you can inspect it a little at a time.  This unlocks a level of performance that is unachievable using conventional approaches.  </p>
+<p>The most common use case is taking advantage of the available HTTP response stream to pipe the output byte stream from the database directly back to the user.  i.e. to generate a dynamic sitemap, you might need to respond with a huge set of data (far too large to fit in memory on a commodity server) and simultaneously transform it into XML.</p>
+<p>Implementing the Streaming CRUD interface is actually pretty simple-- you just need to get comfortable with Node.js streams.  You can mutate streams as they come in-- you just need to find or design a mapping function designed for streams, where you don&#39;t have all the data at once.  </p>
+<h2>Blob (interface)</h2>
+<p>Implementing the Blob interface allows you to upload and download binary data (aka files) to the service/database.  These &quot;blobs&quot; might be MP3 music files (~5MB) but they could also be data-center backups (~50TB).  Because of this, it&#39;s crucial that adapters which implement this interface use streams for uploads (incoming, into data source from Sails) and downloads (outgoing, from data source to Sails).</p>
+<h6>Class methods</h6>
+<ul>
+<li><code>write()</code></li>
+<li><code>read()</code></li>
+</ul>
+<h2>One-Way (interface)</h2>
+<p>Adapters which implement one-way messages should do so using <code>send()</code> or a suffixed <code>send*()</code> method.  This lets developers know that it&#39;s not safe to assume that these operations are reversible.  An example of one such adapter is SMTP, for sending email, or APNS for sending Apple push notifications.</p>
+<h6>Class methods</h6>
+<ul>
+<li><code>send()</code></li>
+</ul>
+<h2>Pubsub (interface)</h2>
+<p>Adapters implementing the pubsub interface use a MQ to report changes from the service/database back up to the app.</p>
+<p>They should call Sails&#39; <code>Model.publishUpdate()</code>, <code>Model.publishCreate()</code>, and <code>Model.publishDestroy()</code> to publish changes and take advantage of automatic room management functionality.
+<code>Model.subscribe()</code> should still be called at the app layer, not in our adapter.
+We don&#39;t want to force users to handle realtime events-- we don&#39;t know the specific goals and requiements of their app, and since the broadcasts are volatile, pubsub notifications is a feature that should be opt-in anyway.</p>
+<p>Examples:
++ Twitter streaming API (see new tweets as they come in)
++ IRC (see new chats as they come in)
++ Stock prices (visualize the latest market data as soon as it is available)
++ Hardware scanners (see new data as it comes in)</p>
+<h2>Transactional (interface)</h2>
+<p>Atomic, consistent, isolated, and durable.</p>
+<h6>TODO</h6>
+<h2>Offcially supported adapters</h2>
+<p>Mike and the team behind Sails.js at Balderdash support a handful of commonly used adapters.</p>
+<h3>Disk</h3>
+<p>Write to your computer&#39;s hard disk, or a mounted network drive.  Not suitable for at-scale production deployments, but great for a small project.  Most importantly, this adapter is bundled with Sails and works out of the box.</p>
+<h6>Interfaces implemented:</h6>
+<ul>
+<li>Semantic</li>
+<li>Queryable</li>
+<li>Streaming</li>
+<li>Blob</li>
+</ul>
+<h3>Memory</h3>
+<p>Just like Disk, but doesn&#39;t actually write to disk, so it&#39;s not persistent.  Not suitable for at-scale production deployments, but useful when developing on systems with little or no disk space.</p>
+<h6>Interfaces implemented:</h6>
+<ul>
+<li>Semantic</li>
+<li>Queryable</li>
+<li>Streaming</li>
+</ul>
+<h3>MySQL</h3>
+<h6>Interfaces implemented:</h6>
+<ul>
+<li>Semantic</li>
+<li>Queryable</li>
+<li>Streaming</li>
+<li>Migratable</li>
+</ul>
+<h3>PostgreSQL</h3>
+<h6>Interfaces implemented:</h6>
+<ul>
+<li>Semantic</li>
+<li>Queryable</li>
+<li>Streaming</li>
+<li>Migratable</li>
+</ul>
+<h3>MongoDB</h3>
+<h6>Interfaces implemented:</h6>
+<ul>
+<li>Semantic</li>
+<li>Queryable</li>
+<li>Streaming</li>
+</ul>
+<blockquote>
+<p>Coming soon...
++ S3 (Blob, Streaming)
++ OpenStack Swift / Rackspace CloudFiles (Blob, Streaming)</p>
+</blockquote>
+<h2>Notable Community Adapters</h2>
+<p>Community adapters are crucial to the success and central to the philosophy of an open ecosystem for API integrations.  The more high-quality adapters you release as open-source, the less repetitive work we all have to do when we integrate with various databases and services.  My vision is to make building server-side apps more fun and less repetitive for everyone, and that happens one community adapter at a time.  We welcome your support!</p>
+<blockquote>
+<p>in various states of completion</p>
+</blockquote>
+<h3>Mandrill (email-sending service by MailChimp)</h3>
+<ul>
+<li>One-Way</li>
+</ul>
+<h3>Github</h3>
+<p>None</p>
+<h3>Git</h3>
+<p>None</p>
+<h3>CouchDB</h3>
+<ul>
+<li>Semantic</li>
+</ul>
+<h3>Riak</h3>
+<ul>
+<li>Semantic</li>
+</ul>
+<h3>Redis</h3>
+<ul>
+<li>Semantic</li>
+</ul>
+<h3>REST</h3>
+<ul>
+<li>Semantic</li>
+</ul>
+<h3>IRC</h3>
+<ul>
+<li>Pubsub</li>
+</ul>
+<h3>Twitter</h3>
+<p>None</p>
+<h3>ElasticSearch</h3>
+<ul>
+<li>Semantic</li>
+</ul>
+<h3>JSDom</h3>
+<p>None</p>
+
+</div>

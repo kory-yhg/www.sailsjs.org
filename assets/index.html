@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Sails.js | Realtime MVC Framework for Node.js</title>
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href='/styles/fonts.css' rel='stylesheet' type='text/css'>
+    <meta name="description" content="Sails.js makes it easy to build custom, enterprise-grade Node.js apps. It is designed to resemble the MVC architecture from frameworks like Ruby on Rails, but with support for the more modern, data-oriented style of web app development. It's especially good for building realtime features like chat." />
+    <meta name="author" content="Mike McNeil, Balderdash, and contributors" />
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/min/production.css">
+    <!--STYLES END-->
+
+    <!--[if IE 7]>
+    <style>
+    .getting-started li{overflow:visible;clear:both}.delete{width:690px}
+    </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="wrap">
+      <region default="App"></region>
+      <div id="push"></div>
+    </div>
+    <region template="SharingFooter"></region>
+  </body>
+
+
+  <!--TEMPLATES-->
+  <script type="text/javascript" src="/jst.js"></script>
+  <!--TEMPLATES END-->
+
+  <!--SCRIPTS-->
+  <script src="/min/production.js"></script>
+  <!--SCRIPTS END-->
+
+  <!-- Tweet button script -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    </script>
+    
+    <!-- Follow button script -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  <script>
+    // Instantiate global collections and models.
+    Mast.models.App = new Mast.modelDefinitions.AppModel();
+    Mast.collections.StackOverflowLinks = new Mast.collectionDefinitions.StackOverflowLinks();
+
+    // Modify JST templates to eliminate the nasty parts of the file path
+    var howDeep;
+    Mast.anatomy = {};
+    Mast.reference = {};
+
+    for (var templatePath in JST) {
+
+      var id;
+
+      // Delimit the sections of the reference documentation w/ underscores
+      if (templatePath.indexOf('/reference/') > 0){
+        id = templatePath.split('/reference/')[1].replace(/_d_/g,'.');
+//        console.log(id);
+
+        var splitID = id.split('/');
+        if (splitID.length>0){
+          try{
+            Mast.reference[splitID[0]][splitID[1]] = JST[templatePath];
+          } catch(err){
+            Mast.reference[splitID[0]] = {};
+            Mast.reference[splitID[0]][splitID[1]] = JST[templatePath];
+          }
+        }
+
+
+      // Create a complex object for all 'anatomy' pages that mimics the folder structure.
+      } else if (templatePath.indexOf('/anatomy/myApp/') > 0){
+        id = templatePath.split('/anatomy/myApp/')[1].replace(/_d_/g,'.');
+        var objRef = Mast.anatomy;
+        var splitTemplateName = id.split('/');
+
+        // Take off the last piece of the template path.
+        // Look at it later to determine if its a file or a directory template
+        var fileName = splitTemplateName.pop();
+
+        // This function is called on each subdirectory in a template path so
+        // an error isnt thrown when referencing it.
+        function makeExist(sub){
+          if (!objRef[sub])
+            objRef[sub] = {children:{}};
+            return objRef[sub];
+        }
+
+
+        // Iterate through each subdirectory in a template path.
+        splitTemplateName.forEach(function makeObject(subdirectory,index){
+            var thisKey = splitTemplateName[index];
+
+            // Create identifying keys only on the last argument of the template path.
+            // Otherwise, just make sure it can be referenced then move on.
+            if (index == splitTemplateName.length-1){
+              var justTemplateName = fileName.split('.html')[0];
+
+
+              // If the fileName contains a dot, then it must be a file.
+              // Otherwise, it must be a directory
+
+              if (justTemplateName.indexOf('.')>0){
+
+                var thisFile = {
+                  type: 'file',
+                  template: id
+                }
+
+                objRef = makeExist(subdirectory);
+                objRef.children[justTemplateName] = thisFile;
+              } else {
+                objRef = makeExist(subdirectory);
+                objRef = makeExist(justTemplateName);
+                objRef.type = 'directory';
+                objRef.template = id;
+
+              }
+
+            } else {
+
+              objRef = makeExist(subdirectory);
+            }
+
+        });
+
+        // Build
+
+      } else {
+        id = templatePath.match(/\/([^\/]+)\..+$/)[1];
+      }
+
+      Mast.templates[id] = JST[templatePath];
+    }
+
+    // When visiting home page change url hash to hashbang (for Brombone)
+    if (window.location.hash === '') {
+      window.location.hash = '#!';
+    }
+
+    // DAT MASST
+    Mast.raise();
+  </script>
+</html>

@@ -1,0 +1,32 @@
+<div class="version-notes">
+	<h1>Changelog 0.8.9</h1>
+	<p><em>April 9, 2013</em></p>
+	<ul>
+		<li>Controllers must now also be generated to use the default API (they can be empty)</li>
+		<li>Haml template support on back-end for new projects (thanks <a target="_blank" href="https://github.com/dcbartlett">@dcbartlett</a>)</li>
+		<li>default values in models (defaultsTo)</li>
+		<li>Chained policies fixed</li>
+		<li>Removed all reference to blueprints as "scaffolds". Blueprints are more than temporary placeholders-- they are the preferred method of serving an API from your app.</li>
+		<li>Refactored most of the code base</li>
+		<li>Removed CRUD synonyms</li>
+		<li>Main: Compatibility with Node v0.10.0 (patches node-dirty)</li>
+		<li>Main: Fixed crash that happened when absolute path was given as appPath</li>
+		<li>Assets: Added more logging features for LESS.</li>
+		<li>Assets: Reset.css now in mixins</li>
+		<li>Assets: LESS assets are deligated to Rack.LessAsset</li>
+		<li>Assets: LESS assets served from asset-rack will have their extensions changed to css</li>
+		<li>Policies: Implemented the controller syntax for defining a policy.</li>
+		<li>Naming: scaffolds is now known as blueprints</li>
+		<li>Naming: blueprints is now known as boilerplates</li>
+		<li>Routing: Added controller.action syntax</li>
+		<li>Routing: Removed CRUD Synonyms-- now you must explicitly use find, findAll, create, destroy, update (can't use <code>get</code>, <code>detail</code>, <code>delete</code>, <code>edit</code>, etc. to indicate the same thing. Turns out this was actually annoying, not helpful)</li>
+		<li>Routing: Fix in API blueprint for regression around PUT/DELETE automatic RESTful routes</li>
+		<li>Routing: Fix for resourceful routing. /model/[id] didn't work with verbs. It now does.</li>
+		<li>Config: _ and async no longer have to be global (but they are by default) They are configurable with <code>sails.config.globals._</code> and <code>sails.config.globals.async</code> (thanks <a target="_blank" href="https://github.com/particlebanana">@particlebanana</a>!)</li>
+		<li>New sails project can now be created in the current dir with <code>sails new .</code> (thanks <a target="_blank" href="https://github.com/collinwren">@collinwren</a>!)</li>
+		<li>More tests (thanks <a target="_blank" href="https://github.com/collinwren">@collinwren</a> and <a target="_blank" href="https://github.com/benrudolph">@benrudolph</a>)</li>
+		<li>Travis CI integration (thanks <a target="_blank" href="https://github.com/collinwren">@collinwren</a>!)</li>
+	</ul>
+
+	<a class="back-button" href="#!documentation">Back to Documentation</a>
+</div>

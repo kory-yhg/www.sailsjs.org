@@ -1,0 +1,68 @@
+<div class="docs assets">
+<h1>Assets</h1>
+<blockquote>
+<p><em><strong>Note:</strong> You are viewing the Sails.js v0.9.0 documentation.  If you&#39;re looking for information on v0.8.x, please visit <a href="http://08x.sailsjs.org">here</a>.</em></p>
+</blockquote>
+<p>Assets refer to anything (js, css, html, images, etc) that needs to be accessible to the outside world. 
+The <code>assets</code> folder is where all of your assets will go, and will be served as static assets. 
+If you have experience with <a href="http://www.expressjs.com">Express</a>, it is equivalent to the <code>public</code> folder (the same as in Sails 0.8.x).  </p>
+<p>However, Sails does do a few extra things to help you out:
+ - Automatic LESS compilation
+ - Automatic JST compilation
+ - Optional automatic asset injection, minification, and concatenation</p>
+<p>In order to take advantage of asset injection, minification, and concatenation you must put your assets in folder under 
+<code>assets/linker</code>. Any asset you put in <code>linker</code> will be automatically injected based on special flags in your views.</p>
+<pre><code class="lang-html">&lt;!--SCRIPTS--&gt;
+All .js files in assets/linker/js will be included here
+In production mode, they will all be concatenated and minified
+&lt;!--SCRIPTS END--&gt;
+
+&lt;!--STYLES--&gt;
+All .css files in assets/linker/styles (including automatically compile ones from LESS) will be included here
+In production mode, they will all be concatenated and minified
+&lt;!--STYLES END--&gt;
+
+&lt;!--TEMPLATES--&gt;
+All *.html files will be compiled as JST templates and included here.
+&lt;!--TEMPLATES END--&gt;</code></pre>
+<p>Jade templates are also supported</p>
+<pre><code class="lang-jade">// SCRIPTS
+// SCRIPTS END
+
+// STYLES
+// STYLES END
+
+// TEMPLATES
+// TEMPLATES END</code></pre>
+<p>If you did not create an application with the <code>--linker</code> option, you will need to create the following file structure
+and also add the special flags metioned above into the desired views:</p>
+<pre><code>assets/
+  linker/
+    js/
+    styles/
+    templates/</code></pre>
+<p>Since the order of styles and scripts is important, you can change the order of injection by opening your
+<code>Gruntfile.js</code> file. You will see three arrays at the top of the file where you can use Grunt-style
+wildcard/glob/splat expressions to order your assets.</p>
+<p>Here is an example:</p>
+<pre><code class="lang-javascript">module.exports = function (grunt) {
+
+ &#39;use strict&#39;;
+
+ ...
+
+  var jsFilesToInject = [
+    // Need this order for these libraries to work correctly
+    &#39;linker/js/vendor/jquery.js&#39;,
+    &#39;linker/js/vendor/underscore.js&#39;,
+    &#39;linker/js/vendor/backbone.js&#39;,
+
+    // Inject all of js assests after
+    &#39;linker/**/*.js&#39;
+  ];
+
+ ...
+
+}</code></pre>
+
+</div>

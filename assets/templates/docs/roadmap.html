@@ -1,0 +1,49 @@
+<div class="docs roadmap">
+<h1>Roadmap</h1>
+<p>What&#39;s next?</p>
+<h2>Sails Core</h2>
+<h4>Streaming File Uploads/Downloads</h4>
+<blockquote>
+<p>Update: This is finished and packaged as separate modules, just not in core yet.</p>
+</blockquote>
+<p>Express&#39;s default support for file uploads via formidable is not suitable for production apps with large file uploads (&gt;100MB)
+  + Built-in, friendly support for streaming file uploads using Waterline&#39;s adapters which implements the binary-stream interface
+  + (i.e. you can&#39;t buffer 100GB uploads to disk)
+  + Use formidable&#39;s onPart event to process file uploads
+  + Everything else should be handle by formidable&#39;s built-in parser</p>
+<h4>Logging</h4>
+<p>Pull out Sails.log (winston wrapper) as a separate module so it can be used by waterline</p>
+<h4>Sessions</h4>
+<p>Create generic sails-session adapter to allow any sails CRUD adapter to be used as a session store. then add config</p>
+<h4>Plugins</h4>
+<p>Document the plugin (hook) system</p>
+<h2>CLI / Generators</h2>
+<p>Pull out CLI as a separate module so that it can develop in parallel- investigate <code>yo</code> integration for generators</p>
+<h2>Gruntfile</h2>
+<ul>
+<li>Pull out Gruntfile as a separate module so that it can develop in parallel- investigate integration with CLI for so that the proper generators <code>yo</code> integration for generators</li>
+<li>Provide public access to templates for async loading by default (it&#39;s totally possible to do this now, but let&#39;s make it easier)</li>
+</ul>
+<h2>Waterline (ORM)</h2>
+<blockquote>
+<p>Associations are coming along nicely</p>
+</blockquote>
+<ul>
+<li>Associations (cross-model, cross-adapter)</li>
+<li>Transactions (cross-model, cross-adapter)</li>
+</ul>
+<h2>Adapters</h2>
+<ul>
+<li>Document the adapter interface support matrix for Disk, MySQL, PostgreSQL, Mongo, and Redis</li>
+<li>SMTP Adapter (<code>send</code>)</li>
+<li>S3 Adapter (<code>upload</code>, <code>download</code>)</li>
+</ul>
+<h2>Community</h2>
+<ul>
+<li>Examples / articles</li>
+<li>Backbone works with Sails out of the box with Sails blueprints (no code required), but let&#39;s create a Backbone.sync override for taking advantage of comet messaging (based on the existing Backbone -&gt; Socket.io SDK)</li>
+<li>Improve the Angular -&gt; Socket.io SDK</li>
+<li>Create an example of a TemplateController which allows you to load your templates asynchronously from the client.</li>
+</ul>
+
+</div>

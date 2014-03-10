@@ -1,0 +1,24 @@
+<h1 id="sails-config">sails.config</h1>
+<h3 id="purpose">Purpose</h3>
+<p>The config object allows you to see your apps configuration settings. </p>
+<ul>
+<li>sails.config.log.level</li>
+<li>sails.config.port</li>
+<li>sails.config.environment</li>
+<li>sails.config.host</li>
+<li>sails.config.adapters.default</li>
+<li>sails.config.controllers.blueprints.actions</li>
+<li>sails.config.controllers.blueprints.shortcuts</li>
+<li>sails.config.controllers.blueprints.rest</li>
+<li>sails.config.views.engine.ext</li>
+<li>sails.config.csrf</li>
+</ul>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">// Make sure csrf is enabled if we are in production mode.  Throw an error otherwise.
+
+if (sails.config.environment &amp;&amp; !sails.config.csrf)
+    throw new Error(&#39;STOP IMMEDIATELY ! CSRF should always be enabled in production mode!&#39;);</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>These settings are only read upon lifting your app.  Changing them will do nothing.</p>
+</blockquote>

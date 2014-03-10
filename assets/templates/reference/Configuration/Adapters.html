@@ -1,0 +1,27 @@
+<h1 id="adapters">Adapters</h1>
+<h3 id="what-is-this-">What is this?</h3>
+<p>Adapters are the middle man between your Sails app and some kind of storage (typically a database)</p>
+<p>Adapters are configured in the <code>connections.js</code> file located in your project&#39;s <code>config</code> directory.  Here you can create different global “saved settings” that you can mix and match in your models.</p>
+<p>Sails adapters have been written for a variety of popular databases such as MySQL, Postgres and Mongo.  You can find a list of supported adapters <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/Database-Support.md">here</a>.</p>
+<h3 id="example">Example</h3>
+<p>To use the <code>sails-memory</code> adapter (for DEVELOPMENT ONLY), first install the module with <code>npm install sails-memory</code>, then define it in <code>connections.js</code>:</p>
+<p>Here is an example adapter configuration file</p>
+<p><code>myApp/config/connections.js</code></p>
+<pre><code class="lang-javascript">
+module.exports.connections = {
+  // sails-disk is installed by default.
+  localDiskDb: {
+    adapter: &#39;sails-disk&#39;
+  },
+  memory: {
+    adapter: &#39;sails-memory&#39;
+  }
+};</code></pre>
+<p>If you wanted to set <code>memory</code> as the default adapter for your models, you would do this.<br><code>myApp/config/models.js</code></p>
+<pre><code class="lang-javascript">module.exports.models = {
+
+  connection: &#39;memory&#39;
+};</code></pre>
+<blockquote>
+<p>Keep in mind that options you define directly in your model definitions will override these settings.<br>Prior to v0.10, adapters were defined in <code>myApp/config/Adapters.js</code>.  See v0.9 docs for more info.</p>
+</blockquote>

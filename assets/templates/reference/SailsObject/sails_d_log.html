@@ -1,0 +1,19 @@
+<h1 id="sails-log">sails.log</h1>
+<h3 id="purpose">Purpose</h3>
+<p>These methods provide different levels of logging functionality in sails.</p>
+<ul>
+<li>sails.log() </li>
+<li>sails.log.verbose() </li>
+<li>sails.log.info()</li>
+<li>sails.log.warn()</li>
+<li>sails.log.error()</li>
+</ul>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code>// Logs using the log level currently set in config.
+sails.log(&#39;There&#39;,{sure:&#39;are&#39;},[&#39;a&#39;,&#39;lot&#39;],&#39;of&#39;,[{log:&#39;levels&#39;}, &#39;huh&#39;],&#39;?&#39;,true);
+
+// There { sure: &#39;are&#39; } [ &#39;a&#39;, &#39;lot&#39; ] of [ { log: &#39;levels&#39; }, &#39;huh&#39; ] ? true</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>These will accept an infinite number of arguments of any data type, seperated by commas.</p>
+</blockquote>

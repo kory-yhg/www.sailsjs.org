@@ -1,0 +1,66 @@
+<h1 id="-save-callback-">* .save(<code>callback</code>)</h1>
+<h3 id="purpose">Purpose</h3>
+<p>The <code>save</code> method updates your record in the database using the current attributes.  It then returns the newly saved object in the callback. </p>
+<h3 id="overview">Overview</h3>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Callback</td>
+<td><code>function</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h4 id="callback-parameters">Callback Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Possible Data Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Error</td>
+<td><code>Error</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Saved Record</td>
+<td><code>{ }</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">User.find().exec(
+  function(err,myRecords){
+
+    // Grab a record off the top of the returned array and save a new attribute to it
+    var getOneRecord = myRecords.pop();
+    getOneRecord.name = &#39;Hank&#39;;
+    getOneRecord.save(
+      function(err,s){
+        console.log(&#39;User with ID &#39;+s.id+&#39; now has name &#39;+s.name);
+      });
+  });
+
+// User with ID 1 now has name Hank
+
+// Don&#39;t forget to handle your errors.
+// Don&#39;t forget to abide by the rules you set in your model</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  </p>
+</blockquote>

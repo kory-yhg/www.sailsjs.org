@@ -1,0 +1,61 @@
+<h1 id="-attribute-startswith-criteria-callback-">.<code>&lt;attribute&gt;</code>StartsWith( <code>criteria</code> , [<code>callback</code>] )</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Find records based on the starting letters of one of its attributes value.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Find Criteria</td>
+<td><code>{}</code>,<code>[{}]</code>, <code>string</code>, <code>int</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Callback</td>
+<td><code>function</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h4 id="callback-parameters">Callback Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Possible Data Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Error</td>
+<td><code>Error</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Found Records</td>
+<td><code>{}</code>, <code>[{}]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">User.nameStartsWith(&#39;W&#39;, function startsWithCB(err,found){
+  while (found.length)
+    console.log(&#39;User &#39;+found.pop().name+&#39; has name that starts with \&#39;W\&#39;&#39;);
+  });
+
+// User Walter has name that starts with &#39;W&#39;
+// Don&#39;t forget to handle your errors</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>Warning! Your attribute in the method name must be lowerCase!<br>Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.<br>Any string arguments passed must be the ID of the record.</p>
+</blockquote>

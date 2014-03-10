@@ -1,0 +1,19 @@
+<h1 id="res-sendfile-path-options-fn-">res.sendfile(<code>path</code>, <code>[options]</code> , <code>[fn]</code>)</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Transfer the file at the given path.</p>
+<p>Automatically defaults the Content-Type response header field based on the filename&#39;s extension. The callback fn(err) is invoked when the transfer is complete or when an error occurs.</p>
+<p>Options:</p>
+<p>maxAge in milliseconds defaulting to 0<br>root root directory for relative filenames<br>This method provides fine-grained support for file serving as illustrated in the following example:</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">app.get(&#39;/user/:uid/photos/:file&#39;, function(req, res){
+  var uid = req.params.uid
+    , file = req.params.file;
+
+  req.user.mayViewFilesFrom(uid, function(yes){
+    if (yes) {
+      res.sendfile(&#39;/uploads/&#39; + uid + &#39;/&#39; + file);
+    } else {
+      res.send(403, &#39;Sorry! you cant see that.&#39;);
+    }
+  });
+});</code></pre>

@@ -1,0 +1,40 @@
+<h1 id="sails-sockets-leave-socket-roomname-">sails.sockets.leave( <code>socket</code>, <code>roomName</code> )</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Unsubscribe a socket from a generic room.</p>
+<h3 id="overview">Overview</h3>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Socket object</td>
+<td><code>object</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Room Name</td>
+<td><code>string</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">// Controller action
+
+leaveFunRoom: function(req, res) {
+    var roomName = req.param(&#39;roomName&#39;);
+    sails.sockets.leave(req.socket, roomName);
+    res.json({
+      message: &#39;Left a fun room called &#39;+roomName+&#39;!&#39;
+    });
+}</code></pre>
+<p><em>Note: <code>req.socket</code> is only valid if the action is triggered via a socket request, e.g. <code>socket.get(&#39;/leaveFunRoom/someRoomName&#39;)</code></em></p>

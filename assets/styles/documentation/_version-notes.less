@@ -1,0 +1,21 @@
+.version-notes {
+	.container();
+	padding: 25px 0;
+
+	a.back-button {
+		display: inline-block;
+		padding: 25px;
+		margin: 25px 0;
+		background-color: @bgLtGray;
+		border: 1px solid @ltestGray;
+		color: @turquoise;
+		font-weight: 600;
+		text-decoration: none;
+		&:hover {
+			.transition(all 0.5s);
+			background-color: @ltestGray;
+			color: @darkTurquoise;
+			border: 1px solid @ltGray;
+		}
+	}
+}

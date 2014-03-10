@@ -1,0 +1,62 @@
+<h1 id="one-way-association">One Way Association</h1>
+<h3 id="overview">Overview</h3>
+<p>A one way association is where a model is associated with another model.  You could query that model and populate to get the associatED model.  You can&#39;t however query the associated model and populate to get the associatING model.</p>
+<h3 id="one-way-example">One Way Example</h3>
+<p>In this example, we are associating a <code>User</code> with a <code>Pet</code> but not a <code>Pet</code> with a <code>User</code>.</p>
+<p><code>myApp/api/models/pet.js</code></p>
+<pre><code class="lang-javascript">
+module.exports = {
+
+    attributes: {
+        name:&#39;STRING&#39;,
+        color:&#39;STRING&#39;
+    }
+
+}</code></pre>
+<p><code>myApp/api/models/user.js</code></p>
+<pre><code class="lang-javascript">
+module.exports = {
+
+    attributes: {
+        name:&#39;STRING&#39;,
+        age:&#39;INTEGER&#39;,
+        pony:{
+            model: &#39;pet&#39;
+        }
+    }
+
+}</code></pre>
+<p>Using <code>sails console</code></p>
+<pre><code class="lang-sh">
+sails&gt; Pet.create({name:&#39;Pinkie Pie&#39;,color:&#39;pink&#39;}).exec(console.log)
+null { name: &#39;Pinkie Pie&#39;,
+  color: &#39;pink&#39;,
+  createdAt: Tue Feb 11 2014 15:45:33 GMT-0600 (CST),
+  updatedAt: Tue Feb 11 2014 15:45:33 GMT-0600 (CST),
+  id: 5 }
+
+sails&gt; User.create({name:&#39;Mike&#39;,age:21,pony:5}).exec(console.log);
+null { name: &#39;Mike&#39;,
+  age: 21,
+  pony: 5,
+  createdAt: Tue Feb 11 2014 15:48:53 GMT-0600 (CST),
+  updatedAt: Tue Feb 11 2014 15:48:53 GMT-0600 (CST),
+  id: 1 }
+
+sails&gt; User.find({name:&#39;Mike&#39;}).populate(&#39;pony&#39;).exec(console.log);
+null [ { name: &#39;Mike&#39;,
+    age: 21,
+    pony: 
+     { name: &#39;Pinkie Pie&#39;,
+       color: &#39;pink&#39;,
+       id: 5,
+       createdAt: Tue Feb 11 2014 15:45:33 GMT-0600 (CST),
+       updatedAt: Tue Feb 11 2014 15:45:33 GMT-0600 (CST) },
+    createdAt: Tue Feb 11 2014 15:48:53 GMT-0600 (CST),
+    updatedAt: Tue Feb 11 2014 15:48:53 GMT-0600 (CST),
+    id: 1 } ]</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>For a more detailed description of this type of association, see the <a href="https://github.com/balderdashy/waterline-docs/blob/master/associations.md">Waterline Docs</a></p>
+<p>Because we have only formed an association on one of the models, a <code>Pet</code> has no restrictions on the number of <code>User</code> models it can belong to. If we wanted to, we could change this and associate the <code>Pet</code> with exactly one <code>User</code> and the <code>User</code> with exactly one <code>Pet</code>.</p>
+</blockquote>

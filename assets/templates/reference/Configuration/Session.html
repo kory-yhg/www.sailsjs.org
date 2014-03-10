@@ -1,0 +1,33 @@
+<h1 id="session">Session</h1>
+<h3 id="what-is-this-">What is this?</h3>
+<p>Sails session integration leans heavily on the great work already done by Express, but also unifies Socket.io with the Connect session store.</p>
+<h3 id="description">Description</h3>
+<p>Sails session integration leans heavily on the great work already done by Express, but also unifies<br>Socket.io with the Connect session store. It uses Connect&rsquo;s cookie parser to normalize configuration<br>differences between Express and Socket.io and hooks into Sails&rsquo; middleware interpreter to allow you<br>to access and auto-save to <code>req.session</code> with Socket.io the same way you would with Express.</p>
+<h4 id="-secret-"><code>secret</code></h4>
+<p>Session secret is automatically generated when your new app is created.<br>Replace at your own risk in production-- you will invalidate the cookies of your users, forcing them to log in again. </p>
+<h4 id="shared-redis-session-store">Shared Redis session store</h4>
+<p>In production, uncomment the following line to set up a shared redis session store<br>that can be shared across multiple Sails.js servers.</p>
+<pre><code class="lang-javascript">adapter: &#39;redis&#39;,</code></pre>
+<p>The following values are optional, if no options are set a redis instance running<br>on localhost is expected.<br>Read more about options at: <a href="https://github.com/visionmedia/connect-redis">https://github.com/visionmedia/connect-redis</a></p>
+<pre><code class="lang-javascript">        host: &#39;localhost&#39;,
+        port: 6379,
+        ttl: &lt;redis session TTL in seconds&gt;,
+        db: 0,
+        pass: &lt;redis auth password&gt;
+        prefix: &#39;sess:&#39;</code></pre>
+<p>Uncomment the following lines to use your Mongo adapter as a session store</p>
+<pre><code class="lang-javascript">        adapter: &#39;mongo&#39;,
+
+        host: &#39;localhost&#39;,
+        port: 27017,
+        db: &#39;sails&#39;,
+        collection: &#39;sessions&#39;,</code></pre>
+<p>Optional Values:</p>
+<pre><code class="lang-javascript">        // Note: url will override other connection settings
+        // url: &#39;mongodb://user:pass@host:port/database/collection&#39;,
+
+        username: &#39;&#39;,
+        password: &#39;&#39;,
+        auto_reconnect: false,
+        ssl: false,
+        stringify: true</code></pre>

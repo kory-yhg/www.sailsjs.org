@@ -1,0 +1,76 @@
+<h1 id="policies">Policies</h1>
+<h3 id="what-is-this-">What is this?</h3>
+<p>Policies are like any other system for authentication control. You can allow or deny access in fine granularity with policies.</p>
+<h3 id="description">Description</h3>
+<p>Your app&#39;s ACL (access control list) is located in <strong>config/policies.js</strong>.</p>
+<h4 id="applying-a-policy">Applying a Policy</h4>
+<h5 id="to-a-specific-action">To a Specific Action</h5>
+<p>To apply a policy to a specific action in particular, you should specify it on the right-hand side of that action:</p>
+<pre><code class="lang-javascript">{
+  ProfileController: {
+      edit: &#39;isLoggedIn&#39;
+  }
+}</code></pre>
+<h5 id="to-an-entire-controller">To an Entire Controller</h5>
+<p>To set the default policy mapping for a controller, use the <code>*</code> notation:</p>
+<blockquote>
+<p><strong>Note:</strong> Default policy mappings do not &quot;cascade&quot; or &quot;trickle down.&quot;  Specified mappings for the controller&#39;s actions will override the default mapping.  In this example, <code>isLoggedIn</code> is overriding <code>false</code>.</p>
+</blockquote>
+<pre><code class="lang-javascript">{
+  ProfileController: {
+    &#39;*&#39;: false,
+    edit: &#39;isLoggedIn&#39;
+  }
+}</code></pre>
+<h5 id="globally">Globally</h5>
+<blockquote>
+<p><strong>Note:</strong> Global policy mappings do not &quot;cascade&quot; or &quot;trickle down&quot; either.  Specified mappings, whether they&#39;re default controller mappings or for specific actions, will <strong>ALWAYS</strong> override the global mapping.  In this example, <code>isLoggedIn</code> is overriding <code>false</code>.</p>
+</blockquote>
+<pre><code class="lang-javascript">{
+
+  // Anything you don&#39;t see here (the unmapped stuff) is publicly accessible
+  &#39;*&#39;: true,
+
+  ProfileController: {
+    &#39;*&#39;: false,
+    edit: &#39;isLoggedIn&#39;
+  }
+}</code></pre>
+<h5 id="built-in-policies">Built-in policies</h5>
+<h6 id="true">true</h6>
+<blockquote>
+<p>This is the default policy mapped to all controllers and actions in a new project.  In production, it&#39;s good practice to set this to <code>false</code> to prevent access to any logic you might have inadvertently exposed.</p>
+</blockquote>
+<p>Allow public access to the mapped controller/action.  This will allow any request to get through, no matter what.</p>
+<pre><code class="lang-javascript">module.exports = {
+  UserController: {
+
+    // login should always be accessible
+    login: true
+
+  }
+}</code></pre>
+<h6 id="false">false</h6>
+<p><strong>NO</strong> access to the mapped controller/action.  No requests get through.  Period.</p>
+<pre><code class="lang-javascript">module.exports = {
+  MathController: {
+
+    // This fancy algorithm we&#39;re working on isn&#39;t done yet
+    // so we set it to false to disable it
+    someFancyAlgorithm: false
+
+  }
+}</code></pre>
+<h5 id="custom-policies">Custom policies</h5>
+<p>You can apply one or more policies to a given controller or action.  Any file in your <code>/policies</code> folder (e.g. <code>authenticated.js</code>) is referable in your ACL (<code>config/policies.js</code>) by its filename minus the extension, (e.g.  <code>&#39;authenticated&#39;</code>).</p>
+<pre><code class="lang-javascript">module.exports = {
+  FileController: {
+    upload: [&#39;isAuthenticated&#39;, &#39;canWrite&#39;, &#39;hasEnoughSpace&#39;]
+  }
+}</code></pre>
+<h5 id="multiple-policies">Multiple Policies</h5>
+<p>To apply two or more policies to a given action, (order matters!) you can specify an array, each referring to a specific policy. </p>
+<pre><code class="lang-javascript">UserController: {
+    lock: [&#39;isLoggedIn&#39;, &#39;isAdmin&#39;]
+}</code></pre>
+<p>In each of the policies, the next policy in the chain will only be run if <code>next()</code>, the third argument, is called.  When and if the last policy calls <code>next()</code>, the requested controller action is run.</p>

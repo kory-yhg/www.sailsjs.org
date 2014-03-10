@@ -1,0 +1,85 @@
+<h1 id="socket-post-url-params-callback-">socket.post( <code>url</code>, [<code>params</code>], [<code>callback</code>] )</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Create a new record using the REST Blueprints via Socket.IO</p>
+<h3 id="overview">Overview</h3>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>/path/to/controller/action/</td>
+<td><code>string</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Parameters</td>
+<td><code>object</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Callback</td>
+<td><code>function</code></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h4 id="callback-parameters">Callback Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Possible Data Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Error</td>
+<td><code>Error</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Records Created</td>
+<td><code>[{}]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">&lt;script&gt;
+
+window.onload=function loading(){
+    var paramObj = {
+      &quot;name&quot;: &quot;Pinkie Pie&quot;,
+      &quot;hobby&quot;: &quot;snowboarding&quot;,
+      &quot;pet&quot;: {
+        &quot;name&quot;: &quot;Gummy&quot;,
+        &quot;species&quot;: &quot;crocodile&quot;
+      }
+    };
+    socket.post(&#39;/users/&#39;,paramObj,function serverSays(err,users){
+        if (err)
+            console.log(err)
+
+        console.log(JSON.stringify(users));
+    });
+}
+
+// logs: Object {name: &quot;Pinkie Pie&quot;, hobby: &quot;snowboarding&quot;, pet: Object, createdAt: &quot;2013-12-12T21:54:13.390Z&quot;, updatedAt: &quot;2013-12-12T21:54:13.390Z&quot;…}
+
+&lt;/script&gt;
+HTML BODY</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>This example assumes you have rest blueprints enabled in <code>config/controllers.js</code></p>
+</blockquote>

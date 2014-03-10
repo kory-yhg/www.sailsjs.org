@@ -1,0 +1,11 @@
+<h1 id="res-render-pathtoview-locals-callback-">res.render(<code>pathToView</code>, <code>[locals]</code> , <code>[callback]</code>)</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Render a view with a callback responding with the rendered string. When an error occurs next(err) is invoked internally. When a callback is provided both the possible error and rendered string are passed, and no automated response is performed.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">res.render(&#39;index&#39;, function(err, html){
+  // ...
+});
+
+res.render(&#39;user&#39;, { name: &#39;Tobi&#39; }, function(err, html){
+  // ...
+});</code></pre>

@@ -1,0 +1,101 @@
+<h1 id="sails-lift">sails lift</h1>
+<h3 id="purpose">Purpose</h3>
+<p>The lift argument launches the sails app in the current directory.  You can also add the folowing flags behind lift for more control.</p>
+<table>
+<thead>
+<tr>
+<th><code>--flag</code></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--verbose</code></td>
+<td>This displays extra information in console relevent to your app</td>
+</tr>
+<tr>
+<td><code>--silly</code></td>
+<td>This flag displays ALL of the information.  All of it.</td>
+</tr>
+<tr>
+<td><code>--port=&lt;integer&gt;</code></td>
+<td>Lifts your app on the specified port eliminating the need to change config.</td>
+</tr>
+<tr>
+<td><code>--dev</code></td>
+<td>Lifts your app in development mode eliminating the need to change config.</td>
+</tr>
+<tr>
+<td><code>--prod</code></td>
+<td>Lifts your app in production mode eliminating the need to change config</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-sh">catGuy@catGuy:~/nodeProjects/blogApp$ sails lift --port=1338 --verbose --environment=production
+
+verbose: Enabling CoffeeScript...
+verbose: Using Express router...
+verbose: Configuring express.static flat-file middleware...
+verbose: Loading app Gruntfile...
+verbose: Tracking new grunt child process...
+verbose: Loading hook: request
+verbose: Hook loaded successfully: request
+verbose: Loading hook: orm
+verbose: Loading the apps models and adapters...
+verbose: Loading app models...
+verbose: Loading app adapters...
+verbose: Loading hook: views
+verbose: Setting view engine to ejs...
+verbose: Setting Model.adapter with ad-hoc clone ids =&gt;  [ &#39;adhoc_adapter_0&#39; ]
+verbose: Starting ORM...
+verbose: Registering model `users` in Waterline (ORM) with definition :: 
+verbose: Applying policy to users.create... [ [Function: alwaysAllow], [Function: create] ]
+verbose: Applying policy to users.destroy... [ [Function: alwaysAllow], [Function: destroy] ]
+verbose: Applying policy to users.find... [ [Function: alwaysAllow], [Function: find] ]
+verbose: Applying policy to users.update... [ [Function: alwaysAllow], [Function: update] ]
+verbose: Applying policy ::  [ [Function: alwaysAllow] ]  to  403
+verbose: Policy-controller bindings complete!
+verbose: Binding route ::   /*
+verbose: Loading app services...
+verbose: Waiting for all hooks to declare that theyre ready...
+verbose: Sails loaded successfully.
+verbose: Starting app at /node/sails/myApp...
+erbose: Running the setup logic in `sails.config.bootstrap(cb)`...
+info: 
+info: 
+info:    Sails.js           &lt;|
+info:    v0.9.7              |\
+info:                       /|.\
+info:                      / || \
+info:                    ,&#39;  |&#39;  \
+info:                 .-&#39;.-==|/_--&#39;
+info:                 `--&#39;-------&#39; 
+info:    __---___--___---___--___---___--___
+info:  ____---___--___---___--___---___--___-__
+info: 
+info: Server lifted in `node/sails/myApp`
+info: To see your app, visit http://localhost:1338
+info: To shut down Sails, press &lt;CTRL&gt; + C at any time.
+debug: --------------------------------------------------------
+debug: :: Wed Oct 30 2013 14:02:53 GMT-0500 (CDT)
+debug: 
+debug: Environment    : production
+debug: Port        : 1338
+debug: --------------------------------------------------------
+verbose: Lifting guard-- all conditions satisfied.
+verbose: Binding RESTful controller blueprints for  users
+verbose: Binding route ::  get /users/:id?
+verbose: Binding route ::  post /users
+verbose: Binding route ::  put /users/:id?
+verbose: Binding route ::  delete /users/:id?
+verbose: Binding shortcut controller blueprints for  users
+verbose: Binding route ::   /users/find/:id?
+verbose: Binding route ::   /users/create
+verbose: Binding route ::   /users/update/:id?
+verbose: Binding route ::   /users/destroy/:id?
+verbose: Grunt :: Running &quot;clean:dev&quot; (clean) task
+verbose: Grunt :: Cleaning &quot;.tmp/public&quot;...
+verbose: Grunt :: OK
+verbose: Grunt :: 
+verbose: Grunt :: Done, without errors.</code></pre>

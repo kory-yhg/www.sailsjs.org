@@ -1,0 +1,89 @@
+.sails-next-steps {
+	background-color: @seaGreen;
+	padding: 100px 0;
+	position: relative;
+	color: @black;
+
+	h1 {
+		margin: 0 auto 10px;
+		text-align: center;
+		color: @black;
+	}
+
+	p {
+		font-style: italic;
+		font-size: 1.3em;
+		margin: 0 auto 20px;
+		text-align: center;
+		width: 65%;
+		color: @black;
+
+		a {
+			color: @turquoise;
+			font-weight: 300;
+			&:hover {
+				color: @black;
+				.transition(all 0.25s);
+			}
+		}
+
+	}
+
+
+
+	.call-to-actions {
+		text-align: center;
+		margin: auto;
+		font-size: .9em;
+		padding-top: 25px;
+		color: @black;
+
+		.button {
+			.button();
+			padding: 17px 50px;
+			margin-left: 1%;
+		}
+
+		a {
+			font-size: 1.6em;
+			font-weight: bold;
+			margin-right: 1%;
+			&:hover {
+				color: @turquoise;
+				.transition(all 0.25s);
+			}
+		}
+
+
+		.doc {
+			margin-left: 10px;
+			&:hover {
+				color: @black;
+				.transition(all 0.25s);
+			}
+		}
+
+	}
+
+	@media screen and (max-width: 768px) {
+		padding: 60px 0;
+
+		p {
+			font-size: 1.2em;
+			width: 90%;
+		}
+
+		.call-to-actions {
+
+			a {
+				font-size: 1.2em;
+			}
+
+			.button {
+				font-size: 1.2em;
+				padding: 12px 15px;
+			}
+		}
+	}
+
+}

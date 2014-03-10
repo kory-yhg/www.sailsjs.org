@@ -1,0 +1,18 @@
+<div class="docs config.adapters">
+<h1>Global adapter config</h1>
+<p>The <code>adapters</code> configuration object lets you create different global &ldquo;saved settings&rdquo; that you can mix and match in your models.  The <code>default</code> option indicates which saved setting should be used if a model doesn&#39;t have an adapter specified.</p>
+<p>Keep in mind that options you define directly in your model definitions will override these settings.</p>
+<p>For example, to use the in-memory adapter (for DEVELOPMENT ONLY), first install the module with <code>npm install sails-memory</code>, then define it in <code>adapters.js</code>:</p>
+<pre><code class="lang-javascript">  memory: {
+    module: &#39;sails-memory&#39;
+  },</code></pre>
+<p>then in your model definition, add <code>adapter: &#39;memory&#39;</code>:</p>
+<pre><code class="lang-javascript">  module.exports = {
+     adapter: &#39;memory&#39;,
+     attributes: {
+       // some attributes
+     }
+  }</code></pre>
+<p>Sails adapters have been written for a variety of popular databases such as MySQL, Postgres and Mongo.  You can find a list of supported adapters <a href="#!documentation/Database-Support">here</a>.</p>
+
+</div>

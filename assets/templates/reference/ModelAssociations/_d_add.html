@@ -1,0 +1,58 @@
+<h1 id="-add-primary-key-">.add( <code>primary key</code> )</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Used to add records to the join table that is automatically generated during a Many-to-Many association.  It accepts either the primary key of the model instance (defaults to record ID) or a new record (object) that you want created and to be associated with.  </p>
+<h3 id="overview">Overview</h3>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Records</td>
+<td><code>{}</code>,<code>[{}]</code>, <code>string</code>, <code>int</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">User.find({name:&#39;Mike&#39;}).populate(&#39;pets&#39;).exec(function(e,r){
+  r[0].pets.add(7);
+  r[0].save(console.log)
+});
+
+/*
+
+{ pets: 
+   [ { name: &#39;Pinkie Pie&#39;,
+       color: &#39;pink&#39;,
+       id: 7,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Rainbow Dash&#39;,
+       color: &#39;blue&#39;,
+       id: 8,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: &#39;Applejack&#39;,
+       color: &#39;orange&#39;,
+       id: 9,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
+  name: &#39;Mike&#39;,
+  age: 16,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 19:30:54 GMT-0600 (CST),
+  id: 7 }
+
+*/</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>Any string arguments passed must be the primary key of the record.</p>
+</blockquote>

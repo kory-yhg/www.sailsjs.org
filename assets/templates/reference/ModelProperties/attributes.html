@@ -1,0 +1,66 @@
+<h1 id="attributes">attributes</h1>
+<h3 id="overview">Overview</h3>
+<p>Model attributes are basic pieces of information about a model. A model called <code>Person</code><br>might have attributes called <code>firstName</code>, <code>lastName</code>, <code>phoneNumber</code>, <code>age</code>, <code>birthDate</code> and <code>emailAddress</code>.</p>
+<blockquote>
+<p>Note, this section applies only if you are using <a href="https://github.com/balderdashy/waterline">Waterline</a> as your ORM.  If you&#39;re not sure what this means, ignore this message.</p>
+</blockquote>
+<h3 id="attribute-types">Attribute Types</h3>
+<p>The following attribute types are currently supported by Sails via <a href="https://github.com/balderdashy/waterline">Waterline</a></p>
+<ul>
+<li>string</li>
+<li>text</li>
+<li>integer</li>
+<li>float</li>
+<li>date</li>
+<li>time</li>
+<li>datetime</li>
+<li>boolean</li>
+<li>binary</li>
+<li>array</li>
+<li>json</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<p>The model definition for <code>Person</code> might look like this:</p>
+<pre><code class="lang-javascript">
+// Person.js
+
+module.exports = {
+  attributes: {
+    firstName: &#39;STRING&#39;,
+    lastName: &#39;STRING&#39;,
+    age: &#39;INTEGER&#39;,
+    birthDate: &#39;DATE&#39;,
+    phoneNumber: &#39;STRING&#39;,
+    emailAddress: &#39;EMAIL&#39;
+  }
+};</code></pre>
+<p>Sails can also validate your data before it is saved!  Below is the same example with some validations applied.    </p>
+<pre><code class="lang-javascript">
+// Person.js
+
+module.exports = {
+  attributes: {
+    firstName: &#39;STRING&#39;,
+    lastName: &#39;STRING&#39;,
+    age: {
+      type: &#39;INTEGER&#39;,
+      max: 150,
+      required: true
+    },
+    birthDate: &#39;DATE&#39;,
+    phoneNumber: {
+      type: &#39;STRING&#39;,
+      defaultsTo: &#39;111-222-3333&#39;
+    },
+    emailAddress: {
+      type: &#39;email&#39;, // Email type will get validated by the ORM
+      required: true
+    }
+  }
+};
+
+module.exports = Person;</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>To learn more about what methods are available to you, check out the Model Methods section of Reference</p>
+</blockquote>

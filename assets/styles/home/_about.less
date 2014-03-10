@@ -1,0 +1,94 @@
+.sails-about {
+	background-color: @seaGreen;
+	padding: 75px 0;
+	position: relative;
+	z-index: 10;
+
+	.about-container {
+		.container();
+		.clearfix();
+	}
+
+	.what-is-sails {
+		float: left;
+		width: 41%;
+		padding-right: 1%;
+
+		h1 {
+			margin-bottom: 8px;
+		}
+
+		p {
+			font-size: 1.2em;
+			font-weight: lighter;
+			line-height: 1.45em;
+		}
+	}
+
+	.video {
+		float: right;
+
+		iframe {
+			width: 500px;
+			height: 282px;
+		}
+	}
+
+	@media screen and (min-width: 481px) and (max-width: 952px) {
+		background-color: @seaGreen;
+			margin: 0 auto 0 auto;
+			padding: 10px auto 10px !important;
+			text-align: center;
+
+		.what-is-sails {
+			width: 90%;
+			padding-right: 0;
+			margin: auto;
+			float: none !important;
+
+			p {
+				font-size: 1em;
+			}
+		}
+		.video {
+			width: 90%;
+			float: none;
+			margin: 15px auto;
+			padding-top: 20px;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+			background-color: @seaGreen;
+			margin: 0 auto 0 auto;
+			padding: 10px auto 10px !important;
+			text-align: center;
+
+		.what-is-sails {
+			width: 90%;
+			margin: auto;
+			float: none !important;
+
+			p {
+				font-size: 1em;
+			}
+		}
+		.video {
+			display: none!important;
+		}
+
+		.video-mobile {
+			display: block;
+			padding: 40px 0 10px 0;
+
+			h2 {
+				font-size: 1.5em;
+				font-style: italic;
+			}
+
+			a:hover {
+				color: black;
+			}
+		}
+	}
+}

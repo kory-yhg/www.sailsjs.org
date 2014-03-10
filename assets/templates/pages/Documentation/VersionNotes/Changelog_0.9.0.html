@@ -1,0 +1,44 @@
+<div class="version-notes">
+	<h1>Changelog 0.9.0</h1>
+	<p><em>July 10, 2013</em></p>
+	<h3>Sails.js</h3>
+	<ul>
+		<li>Main: Express 3.x has been integrated.</li>
+		<li>Main: CSRF Attack Protection was added as part of the core. Uses express-csrf, plus a token-based approach for SPAs and embedded apps (Chrome extensions, javascript plugins).</li>
+		<li>Main: Most of the core has been refactored for performance, code clarity, and simplicity to make contributions easier.</li>
+		<li>Main: Most of the core has been pulled into hooks. In a subsequent patch release for 0.9.x, this process will make Socket.io optional.</li>
+		<li>Controllers: Automatic routing is now disable-able.</li>
+		<li>Assets: Grunt integration replaces Asset Rack.</li>
+		<li>Assets: Public folder removed from new projects.</li>
+		<li>Assets: Temporary 'public' folder is automatically built on lift, using the contents of the assets folder.</li>
+		<li>Assets: Static assets can be compiled with "sails build" for external hosting of front-end assets</li>
+		<li>Assets: Grunt ecosystem allows for a <a target="_blank" href="https://github.com/gruntjs/grunt-contrib">wide variety</a> of front-end template/css/js preprocessor support (sass, hbs, stylus, dust, typescript, etc.)</li>
+		<li>Routing: Automatic 404 and 500 routing is replaced.</li>
+		<li>Assets: Asset bundling is now disabled by default, use <code>sails new foo --linker</code> to enable it</li>
+		<li>Config: Most configuration is now also explicit in new projects. Defaults are still provided underneath.</li>
+		<li>Sockets: Socket.IO can now be configured with the options detailed in config/sockets.js.</li>
+		<li>Sockets: Built-in support for Redis MQ-- allows you to scale realtime apps to a multi-instance deployment without necessitating sticky sessions at your load balancer.</li>
+		<li>Views: Express 3 killed support for layouts/view partials. Sails has been extended to maintain support for them with ejs and jade, but otherwise you are limited to what is supported by the engine itself.</li>
+		<li>Views: Automatic routing to views is now disable-able.</li>
+		<li>Sessions: Built-in support for Redis and Mongo sessions for scaling your app to multi-instance deployments.</li>
+	</ul>
+
+	<h3>Waterline</h3>
+	<ul>
+		<li>ORM: Waterline has been pulled out of Sails.js... Again. (See <a target="_blank" href="https://github.com/balderdashy/waterline">Waterline</a>)</li>
+		<li>ORM: Model attributes now support validations. (See <a target="_blank" href="https://github.com/balderdashy/anchor">Anchor</a>)</li>
+		<li>ORM: Custom instance methods can now be defined on models as virtual attributes.</li>
+		<li>ORM: Lifecycle Callbacks have been added. (See <a target="_blank" href="https://github.com/balderdashy/sails-docs/tree/0.9">Lifecycle Callbacks</a>)</li>
+		<li>ORM: findAll() has been replaced with find().</li>
+		<li>ORM: find() has been replaced with findOne().</li>
+		<li>ORM: .done() promise now works on all ORM methods</li>
+		<li>ORM: Complete support for the Promise specificiation has been added.</li>
+
+		<h3>Anchor</h3>
+		<ul>
+			<li>Validations: Too many added to list, see <a target="_blank" href="https://github.com/balderdashy/sails-docs/tree/0.9">Validations</a></li>
+		</ul>
+	</ul>
+
+	<a class="back-button" href="#!documentation">Back to Documentation</a>
+</div>

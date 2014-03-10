@@ -1,0 +1,21 @@
+<div class="comment-section">
+	<div class="comment-form">
+		<h3>Comments</h3>
+		<textarea placeholder="Type your message here..."></textarea>
+		<button class="submit-button">
+			<span>Submit</span>
+			<region template="LoadingDarkBG"></region>
+		</button>
+		<span class="error">There was an error adding your comment. Please try again later.</span>
+	</div>
+
+	<p class="sorting-links">
+		<span class="new active">Newest</span> |
+		<span class="old">Oldest</span>
+	</p>
+	
+	<ul class="comment-list">
+		<region template="LoadingLightBG"></region>
+		<region data-id="commentsRegionComment" default="DocsSection_reference_commentSection_comment"></region>
+	</ul>
+</div>

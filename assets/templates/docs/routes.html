@@ -1,0 +1,127 @@
+<div class="docs routes">
+<h1>Routes</h1>
+<blockquote>
+<p><em><strong>Note:</strong> You are viewing the Sails.js v0.9.0 documentation.  If you&#39;re looking for information on v0.8.x, please visit <a href="http://08x.sailsjs.org">here</a>.</em></p>
+</blockquote>
+<p>This table routes urls to controllers/actions.</p>
+<h2>Resourceful Routing</h2>
+<p>If the URL is not specified in <code>config/routes.js</code>, the default route for a URL is:
+<code>/:controller/:action/:id</code>
+where <code>:controller</code>, <code>:action</code>, and the <code>:id</code> request parameter are derived from the url</p>
+<p>If <code>:action</code> is not specified, Sails will redirect to the appropriate action.  Out of the box,
+Sails supports RESTful resourceful route conventions, as used in Backbone.js.</p>
+<pre><code>    # Backbone Conventions
+    GET   :    /:controller            =&gt; findAll()
+    GET   :    /:controller/read/:id        =&gt; find(id)
+    POST  :    /:controller/create        =&gt; create()
+    POST  :    /:controller/create/:id        =&gt; create(id)
+    PUT   :    /:controller/update/:id        =&gt; update(id)
+    DELETE:    /:controller/destroy/:id    =&gt; destroy(id)
+
+    # You can also explicitly state the action
+    GET   :    /:controller/find        =&gt; findAll()
+    GET   :    /:controller/find/:id        =&gt; find(id)
+    POST  :    /:controller/create        =&gt; create(id)
+    PUT   :    /:controller/update/:id        =&gt; update(id)
+    DELETE:    /:controller/destroy/:id    =&gt; destroy(id)</code></pre>
+<p>If the requested controller/action doesn&#39;t exist:
+  - if a view exists ( <code>/views/:controller/:action.ejs</code>), Sails will render that view
+  - if no view exists, but a model exists, Sails will automatically generate a JSON API for the 
+      model which matches <code>:controller</code>.
+  - if no view OR model exists, Sails will respond with a 404.</p>
+<h2>Custom Routes</h2>
+<p>You can define your own custom routes in <code>config/routes.js</code></p>
+<pre><code class="lang-javascript">module.exports.routes = {
+    // To route the home page to the &quot;index&quot; action of the &quot;home&quot; controller:
+    &#39;/&#39;: {
+        controller: &#39;home&#39;
+    },
+
+    // Additional routes might look like:
+    &#39;/whateverYouWant&#39;: {
+        controller: &#39;someController&#39;,
+        action: &#39;someAction&#39;
+    },
+
+    // If you want to set up a route only for a particular HTTP method/verb 
+    // (GET, POST, PUT, DELETE) you can specify the verb before the path:
+    &#39;post /signup&#39;: {
+        controller: &#39;auth&#39;,
+        action: &#39;signup&#39;
+    }
+
+    // Keep in mind default routes exist for each of your controllers
+    // So if you have a UserController with an action called &quot;juggle&quot; 
+    // a route will be automatically exist mapping it to /user/juggle.
+    //
+    // Additionally, unless you override them, new controllers will have 
+    // create(), find(), update(), and destroy() actions, 
+    // and routes will exist for them as follows:
+
+    /*
+
+    // Standard RESTful routing
+
+    // If no id is given, an array of all users will be returned
+    &#39;get /user/:id?&#39;: {
+        controller    : &#39;user&#39;,
+        action        : &#39;find&#39;
+    }
+    &#39;post /user&#39;: {
+        controller    : &#39;user&#39;,
+        action        : &#39;create&#39;
+    }
+    &#39;put /user/:id&#39;: {
+        controller    : &#39;user&#39;,
+        action        : &#39;update&#39;
+    }
+    &#39;delete /user/:id&#39;: {
+        controller    : &#39;user&#39;,
+        action        : &#39;destroy&#39;
+    },
+
+    // Override the default index action (find) by declaring an &quot;index&quot; method in your controller
+    &#39;get /user&#39;: {
+        controller    : &#39;user&#39;,
+        action        : &#39;index&#39;
+    }
+
+    */
+};</code></pre>
+<h2>Wildcard Routes</h2>
+<p>Wildcard routes can also be defined in <code>config/routes.js</code>.  If say for example, you want all unknown routes (routes that aren&#39;t real) to point to a specific controller and action.  Then you can use the <code>:unkownRoute</code> arbitrary variable as the route.  An example of this is shown below.</p>
+<pre><code class="lang-javascript">// config/routes.js
+
+modules.exports.routes = {
+  &#39;/some/route&#39;: {
+    controller: &#39;something&#39;,
+    action: &#39;foo&#39;
+  },
+
+  // Wildcard (404) handler
+  &#39;/:unknownRoute&#39;: {
+    controller: &#39;notfound&#39;
+    action: &#39;index&#39;
+  }
+};</code></pre>
+<p>Arbitrary variables will take any value that is put in the router and pass it down to the controller and action you specify.</p>
+<p>Another example, if say you want the route as the username of a user on your system, you could do the following.</p>
+<pre><code class="lang-javascript">  &#39;/:username&#39;: {
+    controller: &#39;user&#39;,
+    action: &#39;profile&#39;
+  }</code></pre>
+<p>and in your controller,</p>
+<pre><code class="lang-javascript">module.exports = {
+  profile: function (req,res) {
+    var username = req.param(&#39;username&#39;);
+    User.findByUsername(username).done(function (err, user) {
+       if (err) return res.send(err,500);
+       res.view({ user: user });
+    });
+  }
+
+};</code></pre>
+<p>This setup will allow UserA to visit <a href="http://yoursite.com/UserA">http://yoursite.com/UserA</a> and depending on your view, may see their profile page.</p>
+<p><a href="http://githalytics.com/balderdashy/sails/wiki/routes"><img src="https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7" alt="githalytics.com alpha" title="githalytics.com"></a></p>
+
+</div>

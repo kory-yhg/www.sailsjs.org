@@ -1,0 +1,33 @@
+<h1 id="res-format-object-">res.format(<code>object</code>)</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Performs content-negotiation on the request Accept header field when present. This method uses req.accepted, an array of acceptable types ordered by their quality values, otherwise the first callback is invoked. When no match is performed the server responds with 406 &quot;Not Acceptable&quot;, or invokes the default callback.</p>
+<p>The Content-Type is set for you when a callback is selected, however you may alter this within the callback using res.set() or res.type() etcetera.</p>
+<p>The following example would respond with { &quot;message&quot;: &quot;hey&quot; } when the Accept header field is set to &quot;application/json&quot; or &quot;<em>/json&quot;, however if &quot;</em>/*&quot; is given then &quot;hey&quot; will be the response.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">res.format({
+  &#39;text/plain&#39;: function(){
+    res.send(&#39;hey&#39;);
+  },
+
+  &#39;text/html&#39;: function(){
+    res.send(&#39;hey&#39;);
+  },
+
+  &#39;application/json&#39;: function(){
+    res.send({ message: &#39;hey&#39; });
+  }
+});</code></pre>
+<p>In addition to canonicalized MIME types you may also use extnames mapped to these types, providing a slightly less verbose implementation:</p>
+<pre><code class="lang-javascript">res.format({
+  text: function(){
+    res.send(&#39;hey&#39;);
+  },
+
+  html: function(){
+    res.send(&#39;hey&#39;);
+  },
+
+  json: function(){
+    res.send({ message: &#39;hey&#39; });
+  }
+});</code></pre>

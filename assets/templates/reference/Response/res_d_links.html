@@ -1,0 +1,11 @@
+<h1 id="res-links-">res.links()</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Join the given links to populate the &quot;Link&quot; response header field.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">res.links({
+  next: &#39;http://api.example.com/users?page=2&#39;,
+  last: &#39;http://api.example.com/users?page=5&#39;
+});</code></pre>
+<p>yields:</p>
+<pre><code class="lang-html">Link: &lt;http://api.example.com/users?page=2&gt;; rel=&quot;next&quot;, 
+      &lt;http://api.example.com/users?page=5&gt;; rel=&quot;last&quot;</code></pre>

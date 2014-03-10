@@ -1,0 +1,25 @@
+<h1 id="sails-sockets-subscribetofirehose-socket-">sails.sockets.subscribeToFirehose(socket)</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Subscribe to the &quot;firehose&quot;, which (while running in the development environment) broadcasts messages about <em>all</em> model events.</p>
+<h3 id="overview">Overview</h3>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Socket</td>
+<td><code>object</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>The firehose publish messages using the &quot;firehose&quot; event. By default, messages will be published when a model instance is created, destroyed, or updated, or when an associated collection is added to or removed from.  The message content is similar to that for the <a href="#!documentation/reference/ModelMethods/ModelMethods.html">PubSub methods</a> like PublishUpdate, PublishCreate, etc.</p>
+<p>Note that you can also subscribe to the firehose from the client side by making a socket GET request to <code>/firehose</code>.</p>

@@ -1,0 +1,32 @@
+<h1 id="locales">Locales</h1>
+<h3 id="what-is-this-">What is this?</h3>
+<p>This is a folder that contains the Language files for different locales.</p>
+<h3 id="description">Description</h3>
+<h4 id="default-stringfile">Default stringfile</h4>
+<p> If you&#39;re building an internationalized application that needs support for multiple languages, you&#39;ll want to pull all of the static strings out of your application, then provide a translation file for each of your target languages.</p>
+<h5 id="example-i18n-usage-e-g-views-about-ejs-">Example i18n usage: e.g. <code>/views/about.ejs</code></h5>
+<pre><code class="lang-ejs">&lt;h2&gt;&lt;%= __(&#39;whatIsApp?&#39;) %&gt;&lt;/h2&gt;
+&lt;p&gt; &lt;%= __(&#39;appDescription&#39;) %&gt;&lt;/p&gt;</code></pre>
+<p>More about this implementation: <a href="https://github.com/mashpie/i18n-node">https://github.com/mashpie/i18n-node</a></p>
+<h5 id="locales-de-js">locales.de.js</h5>
+<p>This file is provided in the folder as an example:<br>Note that this is part of a campaign to rebrand our app for the German market as Bleistift Buben (or &quot;Pencil Boys&quot;)</p>
+<pre><code class="lang-javascript">module.exports = {
+
+  // Key        : Value
+  // e.g.
+
+  &#39;whatIsApp?&#39;    : &#39;Was ist Bleistift Buben?&#39;,
+
+  appDescription    : &#39;Bleistift Buben ist eine App für den Aufbau und die Aufrechterhaltung &#39; +
+              &#39;Freunde, mit denen Sie Darlehen Bleistifte. Mit Funktionen wie Bleistift &#39;+
+              &#39;Ledger, In-App-Zahlungen, und Vintage-Foto-Filter ermöglicht PP eine schöne &#39; +
+              &#39;neue Welt der Rechenschaftspflicht für die 1, 2 UND 3 Bleistifte. &#39; +
+              &#39;Du wirst nie verlieren einen Freund über eine verlorene Bleistift nie wieder!&#39;
+};</code></pre>
+<h4 id="what-about-i18n-on-the-client-">What About i18n on the client?</h4>
+<p>The above technique works great out of the box for server-side views. But what about rich client apps?  HTML 5, SPAs, PhoneGap, Chrome Extensions and stuff? What if your HTML templates are being served from a CDN? If you are using <strong>client-side</strong> templates, you can reuse Sails&#39; i18n support to help you get your translated templates to the browser.  </p>
+<p>If you want to use Sails to internationalize your client-side templates, just put your front-end templates in a subdirectory of your app&#39;s <code>/views</code> folder.</p>
+<ul>
+<li>In development mode, you should retranslate and precompile your templates each time the relevant stringfile or template changes using grunt-contrib-watch, which is already installed by default in new Sails projects.</li>
+<li>In production mode, you&#39;ll want to translate and precompile all templates on lift(). In loadtime-critical scenarios (e.g. mobile web apps) you can even upload your translated, precompiled, minified templates to a CDN like Cloudfront for further performance gains.</li>
+</ul>

@@ -1,0 +1,186 @@
+<div class="docs Migration-Guide">
+<h1>Migration Guide</h1>
+<blockquote>
+<p><em><strong>Note:</strong> You are viewing the Sails.js v0.9.0 documentation.  If you&#39;re looking for information on v0.8.x, please visit <a href="http://08x.sailsjs.org">here</a>.</em></p>
+</blockquote>
+<p>Sail 0.9.x is a major upgrade from 0.8.x and you will need to make some changes in order for your application
+to be compatible with the new version. This guide will walk you through what has changed and what you
+will need to update in your current codebase.</p>
+<h2>What Has Changed</h2>
+<p>In 0.9.x we have made some major updates. This is just a quick runthrough of some of the larger changes
+that will probably affect an application that is currently running on 0.8.x. For a complete list of
+changes you can view the <a href="#!documentation/changelog">Changelog</a>.</p>
+<h3>Express 3.x Support</h3>
+<p>In 0.9.x we have finally moved to <a href="http://expressjs.com/">Express 3</a> behind the scenes, which is
+welcome news to many. This has some minor effect on applications that may have been using Express 2.x
+functionality but for most applications you will not need to change your code in order to be compatible
+with the newer version. If you have custom middleware you may want to run through the
+<a href="https://github.com/visionmedia/express/wiki/Migrating-from-2.x-to-3.x">Express 2.x to 3.x Migration Guide</a>
+to be sure it will continue to work.</p>
+<p>The one feature that has been removed from 3.x is support for layouts and view partials.
+Sails 0.9 has been extended to support layouts and partials if you are using <code>ejs</code> or <code>jade</code> views but for
+other template languages you will need to stick to the Express 3.x conventions.</p>
+<h3>Assets</h3>
+<p>We are no longer using <a href="https://github.com/techpines/asset-rack">asset-rack</a> for compiling assets and
+instead have moved all asset handling to <a href="http://gruntjs.com/">Grunt</a>. This gives you complete control
+over how you handle assets in both development and production modes.</p>
+<p>You are now able to take full advantage of the entire <a href="http://gruntjs.com/plugins">grunt-plugin</a>
+ecosystem. You can decide which template engine to use and which css preprocessor you prefer without
+having to worry about support from Sails core. It also allows you to configure the loading order of
+your assets however you choose without having to seperate your files into multiple folders to control
+ordering or alphabetically naming your files.</p>
+<p>We have provided a default <strong>Gruntfile</strong> which will be automatically added to new projects with some basic
+defaults to get you started. For current projects which need a <strong>Gruntfile</strong> we will walk you through
+creating one below.</p>
+<p>For more information on <a href="http://gruntjs.com/">Grunt</a> visit their website or read the official
+<a href="http://gruntjs.com/getting-started">Getting Started Guide</a>.</p>
+<h3>Waterline ORM</h3>
+<p>Waterline has been completely rewritten and split out into its own project again. In the new version
+there are some exiciting features that have been added to help you build data-driven applications.</p>
+<p><a href="https://github.com/balderdashy/waterline#validations">Validations</a> are now fully supported for model attributes. You can see a full list of available validations on the <a href="https://github.com/balderdashy/sails/wiki/models">Models Page</a>.</p>
+<p>We also added support for Rails-like <a href="https://github.com/balderdashy/waterline#lifecycle-callbacks">Lifecycle Callbacks</a>. This gives you hooks into various stages of the data process to run functions. It&#39;s super useful for stuff like
+encrypting passwords in a <code>beforeCreate</code> method.</p>
+<p>One of the major changes that will effect your codebase are the changes away from <code>findAll</code>. We
+have adopted a MongoDB-like syntax starting in 0.9 and have replaced the methods with <code>findOne</code> and
+<code>find</code>.</p>
+<p><code>find</code> will now return an array of values where before it would only return a single object and
+<code>findOne</code> will now return a single object.</p>
+<p>You will need to update these values throughout your codebase in order to get the expected results
+in your custom controllers. If you are using the blueprints for serving your data then you will not
+need to make any changes on those controllers.</p>
+<p>For more information on the Waterline and Model interfaces you can read the updated
+<a href="https://github.com/balderdashy/sails/wiki/models">Models Page</a>.</p>
+<p>Information on <a href="https://github.com/balderdashy/waterline">Waterline</a> is available in the project&#39;s
+Readme file.</p>
+<h2>Migrating Your Application</h2>
+<p>The first step to migrating an application to 0.9.x will be handling your assets. This is the largest
+part of the transition as so much has changed.</p>
+<h3><strong>Step 1:</strong> Creating a Gruntfile</h3>
+<p>The first thing we will need to do is create a <code>Gruntfile.js</code> file in the top level of your application.
+Sails 0.9.x has one included with some basic defaults we can use to get started. This will give you
+backwards support for LESS css preprocessing and the ability to optionally add automatic asset injection
+into your layout.</p>
+<ul>
+<li>Copy the <a href="https://github.com/balderdashy/sails/blob/development/bin/boilerplates/Gruntfile.js">Default Gruntfile</a> into your application&#39;s top-level directory and make sure the filename is <code>Gruntfile.js</code>.</li>
+</ul>
+<h3><strong>Step 2:</strong> Update Package.json</h3>
+<p>You will need to update your <code>package.json</code> file to include the new 0.9 version of Sails along with
+adding the Grunt dependency.</p>
+<ol>
+<li><p>Add the following options to your <code>package.json</code> file:</p>
+<ul>
+<li><code>&quot;sails&quot;: &quot;0.9.0&quot;</code></li>
+<li><code>&quot;grunt&quot;: &quot;0.4.1&quot;</code></li>
+</ul>
+</li>
+<li><p>Run <code>npm install</code> to install the new dependencies.</p>
+</li>
+</ol>
+<h3><strong>Step 3:</strong> Update Adapters Config</h3>
+<p>In Sails 0.8.x the default development adapter was <code>sails-dirty</code> which is an in-memory adapter that
+syncs to disk. In Sails 0.9.x we have moved to our own development adapters named <code>sails-disk</code> and
+<code>sails-memory</code>. You will need to update your <code>config/adapters.js</code> file to reflect this.</p>
+<p>Your adapters config should have the following set for the disk and memory adapters.</p>
+<pre><code class="lang-javascript">module.exports.adapters = {
+
+  // If you leave the adapter config unspecified
+  // in a model definition, &#39;default&#39; will be used.
+  &#39;default&#39;: &#39;disk&#39;,
+
+  // In-memory adapter for DEVELOPMENT ONLY
+  memory: {
+    module: &#39;sails-memory&#39;
+  },
+
+  // Persistent adapter for DEVELOPMENT ONLY
+  // (data IS preserved when the server shuts down)
+  disk: {
+    module: &#39;sails-disk&#39;
+  }
+}</code></pre>
+<h3><strong>Step 4:</strong> Update Application Config Files</h3>
+<p>Sails 0.9.x exposes many more configuration options. It&#39;s a good idea to setup all these new configuration
+files to make working with your app easier. The new configuration options give you the ability to
+override many of the settings that were previously unavailable as well as some new options such as
+remote session and socket storage.</p>
+<ol>
+<li>Delete <code>config/assets.js</code> as it&#39;s no longer needed.  Asset handling is performed by the new <code>Gruntfile.js</code>.</li>
+<li>Copy over the new <a href="https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/local.js">local.js</a> file into <code>config/local.js</code></li>
+<li>Copy over the new <a href="https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/controllers.js">controllers.js</a> file into <code>config/controllers.js</code></li>
+<li>Copy over the new <a href="https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/sockets.js">sockets.js</a> file into <code>config/socket.js</code></li>
+<li>Copy over the new <a href="https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/log.js">log.js</a> file into <code>config/log.js</code></li>
+<li>Copy over the new <a href="https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/routes.js">routes.js</a> into <code>config/routes.js</code> and be sure to add in your old application&#39;s routes. This exposes the new <strong>404</strong> and <strong>500</strong> handlers.</li>
+<li>Copy over the new <a href="https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/session.js">session.js</a> file into <code>config/session.js</code></li>
+<li>Copy over the new <a href="https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/views.js">views.js</a> file into <code>config/views.js</code></li>
+</ol>
+<h3><strong>Step 5:</strong> Handle Assets in the Deprecated Public Folder</h3>
+<p>In Sails 0.9.x the public folder is no longer supported. All assets are moved to the <code>assets</code> folder.
+This will be handled by Grunt and copied into a <code>.tmp/public</code> folder which is served as static assets.</p>
+<p>This folder will contain all of your compiled and minified assets as well as any images or other assets
+you have in you <code>assets</code> folder. It is designed in a way that it can be pushed to a CDN or served from
+somewhere else if you would like.</p>
+<p>When you are ready to deploy you can run: <code>sails build</code> or alternatively <code>grunt build</code> to create a
+<code>www</code> folder in your top level directory that you can deploy to S3 or Cloudfront.</p>
+<ol>
+<li>Copy any assets you currently have in <code>public</code> over to the <code>assets</code> directory.</li>
+<li>Delete the <code>public</code> folder.</li>
+</ol>
+<h3><strong>Step 6:</strong> Remove Asset-Rack Partials from Layout</h3>
+<p>In your <code>views/layout.ejs</code> file you will need to remove the asset partials used by Asset-Rack. You now
+have the option to choose how you want to include your assets. If you would like to point directly to
+your assets they will available from the <code>.tmp/public</code> folder and can be included like:</p>
+<pre><code class="lang-html">&lt;link href=&quot;/styles/main.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;script src=&quot;/js/main.js&quot; type=&quot;text/javascript&quot;&gt;</code></pre>
+<p>If your application uses the realtime functionality of Sails through socket.io you will need to add
+the library manually to your <code>layout.ejs</code> file.</p>
+<pre><code class="lang-html">&lt;script type=&quot;text/javascript&quot; src=&quot;/js/sails.io.js&quot;&gt;&lt;/script&gt;</code></pre>
+<p>We also have a Grunt plugin for linking your scripts automatically so you can continue working as you
+did in 0.8.x.</p>
+<p>To use the script linker you will need to replace your asset-rack partials with a syntax defined
+in the <code>Gruntfile</code></p>
+<ul>
+<li><p>For stylesheets you can replace <code>&lt;%- assets.css() %&gt;</code> with the following:</p>
+<pre><code>&lt;!--STYLES--&gt;
+&lt;!--STYLES END--&gt;</code></pre>
+</li>
+<li><p>For javascript you can replace <code>&lt;%- assets.js() %&gt;</code> with the following:</p>
+<pre><code>&lt;!--SCRIPTS--&gt;
+&lt;!--SCRIPTS END--&gt;</code></pre>
+</li>
+<li><p>For templates you can replace <code>&lt;%- assets.templateLibrary() %&gt;</code> with the following:</p>
+<pre><code>&lt;!--TEMPLATES--&gt;
+&lt;!--TEMPLATES END--&gt;</code></pre>
+</li>
+</ul>
+<p>To get your assets automatically linked you will need to place any assets you want injected into the
+layout into <code>assets/linker</code>. This will make your assets file structure look like:</p>
+<pre><code>assets/
+  images/
+  linker/
+    js/
+    styles/
+    templates/</code></pre>
+<h3><strong>Step 7:</strong> Update Global Sails</h3>
+<p>The last step is to update your global version of Sails to the new 0.9.x branch. This is the easiest
+part! Simply run the following command.</p>
+<pre><code class="lang-bash">$ npm update sails -g</code></pre>
+<p>Depending on how you installed NPM you may need to have sudo access to complete this. In that case you
+can run:</p>
+<pre><code class="lang-bash">$ sudo npm update sails -g</code></pre>
+<p>To test that the global version of Sails has been updated run:</p>
+<pre><code class="lang-base">$ sails -v</code></pre>
+<p>You should see: <code>info: v0.9.0</code> to ensure it was updated correctly.</p>
+<blockquote>
+<p><strong>Note</strong>: Make sure that if your app uses an earlier version of sails, you remove the local dependency with <code>rm -rf node_modules/sails</code>.</p>
+</blockquote>
+<h2>You&rsquo;re done!</h2>
+<p>You should now be able to call <code>sails lift</code> and start your application on the new
+version of Sails.</p>
+<p>The next step is to read through the docs and see all the new features you can take advantage of.
+Sails is now more powerful than ever and 0.9.x is a huge step on the way to a 1.0 release.</p>
+<p>We are excited to get it into developers&rsquo; hands and see all the awesome new applications they build
+on top of it. We have many more new features planned for the 0.9.x branch and will continue pushing
+out features that make Sails the best framework for building Node.js apps on.</p>
+<p>A final shoutout and thanks to all of the contributors that have helped shape 0.9.</p>
+
+</div>

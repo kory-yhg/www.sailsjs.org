@@ -1,0 +1,17 @@
+<h1 id="res-download-path-filename-fn-">res.download(<code>path</code>, <code>[filename]</code> , <code>[fn]</code>)</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Transfer the file at path as an &quot;attachment&quot;, typically browsers will prompt the user for download. The Content-Disposition &quot;filename=&quot; parameter, aka the one that will appear in the brower dialog is set to path by default, however you may provide an override filename.</p>
+<p>When an error has ocurred or transfer is complete the optional callback fn is invoked. This method uses res.sendfile() to transfer the file.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">res.download(&#39;/report-12345.pdf&#39;);
+
+res.download(&#39;/report-12345.pdf&#39;, &#39;report.pdf&#39;);
+
+res.download(&#39;/report-12345.pdf&#39;, &#39;report.pdf&#39;, function(err){
+  if (err) {
+    // handle error, keep in mind the response may be partially-sent
+    // so check res.headerSent
+  } else {
+    // decrement a download credit etc
+  }
+});</code></pre>

@@ -1,0 +1,17 @@
+<h1 id="res-cookie-name-value-options-">res.cookie(<code>name</code>, <code>value</code>, <code>[options]</code>)</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Set cookie name to value, where which may be a string or object converted to JSON. The path option defaults to &quot;/&quot;.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">res.cookie(&#39;name&#39;, &#39;tobi&#39;, { domain: &#39;.example.com&#39;, path: &#39;/admin&#39;, secure: true });
+res.cookie(&#39;rememberme&#39;, &#39;1&#39;, { expires: new Date(Date.now() + 900000), httpOnly: true });</code></pre>
+<p>The maxAge option is a convenience option for setting &quot;expires&quot; relative to the current time in milliseconds. The following is equivalent to the previous example.</p>
+<pre><code class="lang-javascript">res.cookie(&#39;rememberme&#39;, &#39;1&#39;, { maxAge: 900000, httpOnly: true })</code></pre>
+<p>An object may be passed which is then serialized as JSON, which is automatically parsed by the bodyParser() middleware.</p>
+<pre><code class="lang-javascript">res.cookie(&#39;cart&#39;, { items: [1,2,3] });
+res.cookie(&#39;cart&#39;, { items: [1,2,3] }, { maxAge: 900000 });</code></pre>
+<p>Signed cookies are also supported through this method. Simply pass the signed option. When given res.cookie() will use the secret passed to express.cookieParser(secret) to sign the value.</p>
+<pre><code class="lang-javascript">res.cookie(&#39;name&#39;, &#39;tobi&#39;, { signed: true });</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>Later you may access this value through the req.signedCookie object.</p>
+</blockquote>

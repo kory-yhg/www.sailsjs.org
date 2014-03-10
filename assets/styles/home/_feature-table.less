@@ -1,0 +1,73 @@
+.features {
+	h1 {
+		color: @turquoise;
+		margin-top: 1em;
+	}
+
+	h2 {
+		color: gray;
+	}
+
+	.features-table {
+		margin-top: 20px;
+		color: gray;
+		text-align: center;
+		font-size: 0.9em;
+		font-weight: 400;
+
+		.sails-features {
+			border-collapse: collapse;
+
+		}
+
+		td {
+			border: 1px solid #C0C0C0;
+			padding: 1em 1.5em;
+			width: 120px;
+		}
+
+		.yes {
+			background: url(/images/tick.png) no-repeat center;
+		}
+
+		.no {
+			background: url(/images/x.png) no-repeat center;
+		}
+
+		.dark1 {
+			background-color: #212c2e;
+			color: #C0C0C0;
+			border-top: 1px solid #212c2e;
+			border-bottom: 1px solid #212c2e;
+			border-left: none;
+			border-right: none;
+
+		}
+
+		.first-td {
+				border-left: 1px solid #212c2e;
+			}
+
+		.dark2 {
+			background-color: @black;
+			color: #C0C0C0;
+			border-top: 1px solid @black;
+			border-bottom: 1px solid @black;
+			border-left: none;
+			border-right: none;
+		}
+
+		.last-td {
+				border-right: 1px solid @black;
+			}
+
+		.feature {
+			background-color: @seaGreen;
+		}
+
+		.blank {
+			border: none;
+		}
+	}
+}
+

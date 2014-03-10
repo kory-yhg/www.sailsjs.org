@@ -1,0 +1,16 @@
+<h1 id="req-accepted">req.accepted</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Return an array of Accepted media types ordered from highest quality to lowest.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">console.log(req.accepted);
+
+/*
+  [ { value: &#39;application/json&#39;,
+      quality: 1,
+      type: &#39;application&#39;,
+      subtype: &#39;json&#39; },
+  { value: &#39;text/html&#39;,
+       quality: 0.5,
+       type: &#39;text&#39;,
+       subtype: &#39;html&#39; } ]
+*/</code></pre>

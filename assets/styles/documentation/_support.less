@@ -1,0 +1,56 @@
+.support {
+	.container();
+	padding: 50px 0 100px;
+	table.support-table {
+		border-collapse: collapse;
+		margin: 25px auto 50px;
+		tr {
+			th {
+				.borderBox();
+				padding: 14px;
+				color: @white;
+				width: 150px;
+				text-align: center;
+				font-weight: 300;
+				&.invisible {
+					width: 180px;
+				}
+				&.lt {
+					background-color: @dkestGray;
+				}
+				&.dk {
+					background-color: @black;
+				}
+			}
+			td {
+				.borderBox();
+				position: relative;
+				padding: 14px;
+				text-align: center;
+				border: 1px solid @borderLtGray;
+				&.feature {
+					background-color: @ltestGreen;
+				}
+				&.yes {
+					background: url('/images/tick.png') no-repeat center;
+				}
+				&.no {
+					
+					background: url('/images/x.png') no-repeat center;
+				}
+				&.with-icon {
+					img {
+						height: 27px;
+						left: 10px;
+						position: absolute;
+					}
+					&.narrow-icon {
+						img {
+							left: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

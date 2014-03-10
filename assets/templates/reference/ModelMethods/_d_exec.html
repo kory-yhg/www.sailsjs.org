@@ -1,0 +1,51 @@
+<h1 id="-exec-callback-">.exec(<code>callback</code>)</h1>
+<h3 id="purpose">Purpose</h3>
+<p>This is run at the end of a chain of stringable methods.  It signals the adapter to run the query. </p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Callback</td>
+<td><code>function</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h4 id="callback-parameters">Callback Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Possible Data Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Error</td>
+<td><code>Error</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Data Returned</td>
+<td><code>{}</code>, <code>[{}]</code>, <code>int</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">// refer to any of the examples above</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<p>The .find() method returns a chainable object if you don&#39;t supply a callback.  This method can be chained to .find() to further filter your results.</p>
+<p>If you dont run .exec() , your query will not execute.</p>
+</blockquote>

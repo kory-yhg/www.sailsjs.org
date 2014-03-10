@@ -1,0 +1,35 @@
+<div class="docs services">
+<h1>Services</h1>
+<blockquote>
+<p><em><strong>Note:</strong> You are viewing the Sails.js v0.9.0 documentation.  If you&#39;re looking for information on v0.8.x, please visit <a href="http://08x.sailsjs.org">here</a>.</em></p>
+</blockquote>
+<p>Alright. Close your eyes, and take a deep breath. You are on a beautiful torpical island, in the middle of the ocean.
+The sun bathes you in its warm glow as you stare out at the horizon. The waves splash calmly on the shore, just inches
+away from where you stand. You feel the warm soft sand under your feet. The ocean beeze washes over you, as you then realize that you need services.</p>
+<h2>What are services?</h2>
+<p>Services are basically libraries, which contain functions that you might want to use in many places of your application. 
+For example, you might have an EmailService which wraps some default email message boilerplate code that you would want to use in many parts of your application. </p>
+<h2>How to I create a service?</h2>
+<p>An email service might look something like this:</p>
+<pre><code class="lang-javascript">// EmailService.js - in api/services
+exports.sendInviteEmail = function(options) {
+
+    var opts = {&quot;type&quot;:&quot;messages&quot;,&quot;call&quot;:&quot;send&quot;,&quot;message&quot;:
+        {
+            &quot;subject&quot;: &quot;YourIn!&quot;,
+            &quot;from_email&quot;: &quot;info@balderdash.co&quot;,
+            &quot;from_name&quot;: &quot;AmazingStartupApp&quot;,
+            &quot;to&quot;:[
+                {&quot;email&quot;: options.email, &quot;name&quot;: options.name}
+            ],
+            &quot;text&quot;: &quot;Dear &quot;+options.name+&quot;,\nYou&#39;re in the Beta! Click &lt;insert link&gt; to verify your account&quot;
+        }
+    };
+
+    myEmailSendingLibrary.send(opts);
+};</code></pre>
+<p>Services are automatically exposed by Sails to the rest of your application.</p>
+<pre><code class="lang-javascript">// Somewhere in a conroller
+  EmailService.sendInviteEmail({email: &#39;test@test.com&#39;, name: &#39;test&#39;});</code></pre>
+
+</div>

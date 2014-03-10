@@ -1,0 +1,10 @@
+<h1 id="res-attachment-filename-">res.attachment(<code>[filename]</code>)</h1>
+<h3 id="purpose">Purpose</h3>
+<p>Sets the Content-Disposition header field to &quot;attachment&quot;. If a filename is given then the Content-Type will be automatically set based on the extname via res.type(), and the Content-Disposition&#39;s &quot;filename=&quot; parameter will be set.</p>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="lang-javascript">res.attachment();
+// Content-Disposition: attachment
+
+res.attachment(&#39;path/to/logo.png&#39;);
+// Content-Disposition: attachment; filename=&quot;logo.png&quot;
+// Content-Type: image/png</code></pre>

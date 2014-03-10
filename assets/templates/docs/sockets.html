@@ -1,0 +1,182 @@
+<div class="docs sockets">
+<h1>Sockets / Pubsub</h1>
+<blockquote>
+<p><em><strong>Note:</strong> You are viewing the Sails.js v0.9.0 documentation.  If you&#39;re looking for information on v0.8.x, please visit <a href="http://08x.sailsjs.org">here</a>.</em></p>
+</blockquote>
+<h2>Contents</h2>
+<p>Sails makes HTTP and Socket.io interoperable, making it easier than ever to add realtime/pubsub/comet functionality to your app.</p>
+<ol>
+<li><p>Using standard controllers</p>
+</li>
+<li><p>Using the CRUD blueprints</p>
+</li>
+<li><p>Using the built-in realtime <em>sync</em> methods (e.g. <code>User.publishCreate()</code>)</p>
+</li>
+<li><p>Using Sails built-in low-level pubsub/socket methods (e.g. <code>req.listen</code>, <code>User.subscribers</code>)</p>
+</li>
+<li><p>Obtaining raw access to socket.io via <code>req.socket</code> and <code>sails.io</code></p>
+</li>
+</ol>
+<h2>Using standard controllers</h2>
+<p>Out of the box, Sails handles Socket.io requests the same way it handles HTTP requests-- through the Express interface.  It does this by creating a fake Express request and automatically routing the socket requests to the proper controller and action.  For instance, here is a simple controller:</p>
+<pre><code class="lang-javascript">// api/controllers/EchoController.js
+
+module.exports = {
+  index: function (req,res) {
+    // Get the value of a parameter
+    var param = req.param(&#39;message&#39;);
+
+    // Send a JSON response
+    res.json({
+      success: true,
+      message: param
+    });
+  }
+};</code></pre>
+<p>From an HTML page, we can access our controller like so:</p>
+<pre><code class="lang-javascript">// socket is globalized by sails
+socket.get(&#39;/echo&#39;,{
+  message: &#39;hi there!&#39;
+}, function (response) {
+  // response === {success: true, message: &#39;hi there!&#39;}
+});</code></pre>
+<p>In controllers, when handling a socket request, req and res are automatically set up to take the appropriate actions using Socket.io instead of Express. If you need it, <code>req.socket</code> contains a raw reference to the underlying socket.io socket.  If you ever need to access it directly, you can do so.  But for the majority of use cases, using Sails&#39; built-in behavior will keep your syntax simple and conventional.</p>
+<h2>Using CRUD Blueprints</h2>
+<p>The default blueprint API supports pubsub for socket requests out of the box.  So for instance if you create a model called User, then send a socket.io message to the server from the client requesting a list of users, the client will be automatically subscribed to changes to the users collection for the remainder of the connection:</p>
+<blockquote>
+<p><code>socket.get()</code>, <code>socket.post()</code>, etc. are methods available in the client-side SDK included in new Sails projects.  In this example, we&#39;ll use them to talk to the backend via Socket.io.  Please be aware that you can use these methods whether or not you&#39;re using CRUD blueprints.</p>
+</blockquote>
+<pre><code class="lang-javascript">socket.get(&#39;/user&#39;, function (response) {
+  // response contains a list of all users
+});
+socket.post(&#39;/user&#39;,{name: &#39;foo&#39;}, function (response) {
+  // create a new user
+});
+socket.put(&#39;/user/1&#39;,{name: &#39;foobar&#39;}, function (response) {
+  // update the user
+});
+socket.delete(&#39;/user/1&#39;, function (response) {
+  // delete the user
+});</code></pre>
+<p>These calls will subscribe you to changes to the model, see your <code>assets/js/app.js</code> file to see default socket setup.</p>
+<h2>Using built-in pubsub methods</h2>
+<p>Sails exposes some convenient accessor methods for performing common publish/subscribe operations.  The following methods may be used in your custom controllers to give you lower-level access to the same kind of realtime functionality you&#39;ve seen in the blueprints.</p>
+<p>Under the covers, Sails blueprints work their realtime magic by automatically furnishing models with a collection-wide &quot;class room&quot; and an &quot;instance room&quot; for each instance.  </p>
+<h3><code>Model.subscribe( req.socket )</code></h3>
+<h5>The &quot;class room&quot;</h5>
+<p>If you have a visitor whose socket is subscribed to the &quot;class room&quot; (e.g. <code>User.subscribe( req.socket )</code>), she&#39;ll receive messages <em>any time</em> <code>User.publishCreate()</code> is called.  </p>
+<p>Subscribe the request object&#39;s socket (<code>req.socket</code>) to this model&#39;s class room.
+Your subscribed socket on the client will receive a message every time a new instance of the specified model is created.  Any time <code>publishCreate</code> is called, sockets subscribed to the class room are automatically subscribed to newly created models&#39; instance rooms (more on that below).</p>
+<p>e.g. <code>User.subscribe( req.socket )</code></p>
+<h3><code>Model.subscribe( req.socket, model[s] )</code></h3>
+<h5>&quot;instance rooms&quot;</h5>
+<p>If the visitor is subscribed to one or more &quot;instance rooms&quot; (e.g. <code>User.subscribe( req.socket, listOfUserInstances )</code> ), she&#39;ll receive messages when <code>User.publishUpdate()</code> or <code>User.publishDestroy()</code> is called involving one of the instances she cares about.</p>
+<p>Subscribe the request object&#39;s socket (<code>req.socket</code>) to the specified model, id OR array of <code>models</code> or ids.  Subscribed sockets will receive a message every time the specified model(s) are updated or destroyed from here on out.</p>
+<p>e.g. 
++ <code>User.subscribe(req.socket , [7, 3] )</code>
++ <code>Player.subscribe(req.socket , todaysLuckyGuests )</code>
++ <code>User.subscribe(req.socket , req.session.userId )</code>
++ <code>Product.subscribe(req.socket, saleItems )</code></p>
+<!-- TODO -->
+<!-- 
+
+# Coming soon:
+
+### req.socket.watch( model[s] )
+Watch the specified array of `models` or single model with this socket (`req.socket`).  Your socket on the client will receive a message every time the specified user(s) are updated or destroyed.
+e.g. `req.socket.watch( [ {id: 7} ] )`
+
+### req.socket.subscribeTo( Model )
+Subscribe the request object's socket (`req.socket`) to the collection's class room.  In the example below, our user's socket will receive a message in their browser every time a new user is **created**.
+
+Note: If a socket is subscribed to creates, it will also be automatically subscribed to update and destroy events for any new instances.
+
+e.g. `req.socket.subscribeTo( User );
+
+-->
+
+
+<blockquote>
+<p>IMPORTANT NOTE: <code>Model.subscribe( req.socket, [])</code> is not the same as <code>Model.subscribe( req.socket )</code>.  The latter usage will subscribe to the &quot;class room.&quot;  The former will subscribe to nothing!  This is because the presence of the second argument (in this case the empty list <code>[]</code>) signals to Sails that you&#39;re subscribing to instances, but in this case you&#39;ve specified none!</p>
+</blockquote>
+<h3><code>Model.publishCreate( values, [socketToOmit] )</code></h3>
+<p>Inform all sockets who are members of the &quot;class room&quot; for <code>Model</code> that a new instance has been created.  Those sockets will also be automatically subscribed to the new instance&#39;s room.</p>
+<p>Optionally, if <code>socket</code> argument is specified, it will be omitted from the broadcast.</p>
+<pre><code class="lang-javascript">// For example
+User.publishCreate({
+  id: 3,
+  name: &#39;Randy&#39;
+})</code></pre>
+<p>Client-side sockets who were subscribed to the class room and are listening to the <code>message</code> event would receive a JSON message like the following:</p>
+<pre><code class="lang-javascript">{
+  data: {
+    id: 3,
+    name: &#39;Randy&#39;
+  }
+  id: 3
+  model: &#39;user&#39;
+  verb: &#39;create&#39;
+}</code></pre>
+<h3><code>Model.publishUpdate( id, values, [socketToOmit] )</code></h3>
+<p>Inform all sockets who are subscribed to the specified <code>id</code>&#39;s instance room for <code>Model</code> that the instance has been updated. </p>
+<p>Optionally, if <code>socket</code> argument is specified, it will be omitted from the broadcast.</p>
+<pre><code class="lang-javascript">// For example
+User.publishUpdate( 7, {
+  name: &#39;Amanda&#39;
+});</code></pre>
+<p>Client-side sockets who were subscribed to the class room and are listening to the <code>message</code> event would receive a JSON message like the following:</p>
+<pre><code class="lang-javascript">{
+  data: {
+    name: &#39;Amanda&#39;
+  }
+  id: 7
+  model: &#39;user&#39;
+  verb: &#39;update&#39;
+}</code></pre>
+<h3><code>Model.publishDestroy( id, [socketToOmit] )</code></h3>
+<p>Inform all sockets who are subscribed to the specified <code>id</code>&#39;s instance room for <code>Model</code> that the instance has been destroyed. </p>
+<p>Optionally, if <code>socket</code> argument is specified, it will be omitted from the broadcast.</p>
+<pre><code class="lang-javascript">// For example
+User.publishDestroy(7);</code></pre>
+<p>Client-side sockets who were subscribed to the class room and are listening to the <code>message</code> event would receive a JSON message like the following:</p>
+<pre><code class="lang-javascript">{
+  id: 7
+  model: &#39;user&#39;
+  verb: &#39;destroy&#39;
+}</code></pre>
+<h2>Using low-level pubsub/socket methods</h2>
+<h3><code>Model.unsubscribe( req.socket, model[s] )</code></h3>
+<p>Unsubscribe the request object&#39;s socket (<code>req</code>) from the specified <code>models</code>
+e.g. <code>User.unsubscribe(req.socket,[{id: 7}, {id: 2}])</code></p>
+<h3><code>Model.introduce( req.socket, id )</code></h3>
+<p>Take all of the class room models and &#39;introduce&#39; them to a new instance room
+(good for when a new instance is created-- connecting sockets must subscribe to it)
+e.g. <code>User.introduce(req.socket,3)</code></p>
+<h3><code>Model.publish( req.socket, models, message )</code></h3>
+<p>Broadcast a <code>message</code> to sockets connected to the specified <code>models</code> using the request object (<code>req</code>).
+e.g. <code>User.publish(req,[{id: 7},{id: 2}], {latitude: 31.2325, longitude: 22.1135})</code></p>
+<h3><code>Model.room( id )</code></h3>
+<p>Return the room name for the instance in this collection with the given id
+If id is null, return the name of the &quot;class&quot; or collection-wide room (for listening to <code>create</code>s)
+e.g. <code>User.room(3)</code></p>
+<h3><code>Model.subscribers( id )</code></h3>
+<p>Return the set of sockets subscribed to this instance (if id specified) or class room (if it&#39;s not)
+e.g. <code>User.subscribers(7)</code></p>
+<p>See <a href="https://github.com/balderdashy/sails/blob/master/lib/hooks/pubsub/index.js">https://github.com/balderdashy/sails/blob/master/lib/hooks/pubsub/index.js</a> for implementation details.</p>
+<h5><code>req.listen(room)</code></h5>
+<p>Subscribe the current socket to broadcasts from the specified room
+e.g. <code>req.listen(&#39;off the wall chats&#39;)</code></p>
+<h2>Still need more control?</h2>
+<p>If you need more precise functionality, the raw Socket.io API is pretty straightforward to figure out. You can read more here: <a href="http://socket.io/#how-to-use">http://socket.io/#how-to-use</a></p>
+<p>The root Socket.io object is available globally in Sails via <code>sails.io</code>.  You can also access the currently connected socket in the request object, via <code>req.socket</code> in your controllers.</p>
+<h2>FAQ</h2>
+<h3>500 error: &quot;handshake error&quot; returned from socket.io request</h3>
+<p>This is most likely because you don&#39;t have any express cookies yet in your current session and are requesting from a domain other than your server. To alleviate this and prevent the error from cropping back up, you should build in some kind of request to your server BEFORE you initialize your socket.io connection. So, if you&#39;re using Mast, something like this on your client side:</p>
+<pre><code class="lang-javascript">// location of your server
+url = &quot;http://localhost:1337/&quot;
+// dummy request to the server, retrieves cookie. using jQuery, you can use whatever
+$.get(url, function() {})
+// NOW setup socket.io
+Mast.raise({ baseurl : url })</code></pre>
+
+</div>
