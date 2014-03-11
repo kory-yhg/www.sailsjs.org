@@ -19,6 +19,11 @@ Mast.define('App', function () {
       Mast.models.App.set('currentPage', 'get-started');
     },
 
+    '#!sails-angular': function() {
+      this.attachPage('HowToPage');
+      Mast.models.App.set('currentPage', 'get-started');
+    },
+
     '#!logos' : function() {
       this.attachPage('LogosPage');
       Mast.models.App.set('currentPage', 'logos');

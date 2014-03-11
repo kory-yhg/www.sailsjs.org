@@ -2,20 +2,63 @@
 	.page-header {
 		.pageHeader();
 		.page-header-container {
-			padding: 50px 0;
+			padding: 100px 0 50px;
+			.clearfix();
+			div.left-column {
+				.borderBox();
+				float: left;
+				width: 50%;
+				padding-right: 25px;
+				h1 {
+					padding-top: 50px;
+				}
+			}
+			>img {
+				.borderBox();
+				width: 50%;
+				padding-left: 25px;
+			}
 		}
 	}
 	div.step {
 		.clearfix();
-		img.step-number {
-			float: left;
-			padding-right: 25px;
+		.container();
+		padding: 50px 0;
+		&:first-child {
+			padding-top: 100px;
+		}
+		&:last-child {
+			padding-bottom: 150px;
 		}
 		div.instructions-column {
+			.borderBox();
+			width: 40%;
+			position: relative;
 			float: left;
+			padding-left: 75px;
+			img.step-number {
+				position: absolute;
+				left: 0px;
+				top: 5px;
+				width: 35px;
+				height: 35px;
+			}
+			h2 {
+				font-size: 1.6em;
+				font-weight: 300;
+				color: @turquoise;
+				padding-bottom: 10px;
+			}
+			p {
+				font-size: 1em;
+				line-height: 1.7em;
+			}
 		}
 		div.example-column {
+			.borderBox();
+			padding-left: 50px;
 			float: left;
+			width: 60%;
 		}
 	}
 }
