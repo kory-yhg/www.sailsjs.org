@@ -1,6 +1,6 @@
 /*---------------------
-	:: Proxy
-	-> controller
+    :: Proxy
+    -> controller
 ---------------------*/
 var request = require('request');
 
@@ -11,11 +11,11 @@ var ProxyController = {
     var urlPath = req.param('_escaped_fragment_');
 
     // If no urlPath that this request is not from a crawler.
-    if (!urlPath) {
+    if (typeof urlPath === 'undefined') {
       return next();
     }
 
-    var HOST = 'sailsjs.brombone.com';
+    var HOST = 'beta.sailsjs.brombone.com';
     var url = 'http://'+HOST+'/%2523!'+urlPath;
     request(url).pipe(res);
   }
