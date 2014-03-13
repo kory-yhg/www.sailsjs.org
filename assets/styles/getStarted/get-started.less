@@ -5,9 +5,9 @@
 	padding-top: 75px;
 
 	.description {
+		.borderBox();
 		float: left;
 		width: 25%;
-		margin-right: 2%;
 
 		h1 {
 			margin-top: 50px;
@@ -28,22 +28,16 @@
 		}
 	}
 
-	.container.instructions {
-		width: 57%;
-		margin-left: 7%
+	.getting-started {
+		.borderBox();
+		float: left;
+		width: 75%;
+		padding: 45px 0 100px 100px;
 	}
 
-	pre  {
-		.docs_codeblock();
-		code {
-			.docs_code();
-		}
-	}
 
-	@media screen and (min-width: 481px) and (max-width: 950px) {
-		&.get-started.page.guide {
-			padding-top: 60px;
-		}
+	@media screen and (max-width: 900px) {
+		padding-top: 60px;
 
 		.description{
 			float: none;
@@ -56,86 +50,19 @@
 			}
 		}
 
-		.container.instructions {
+		.getting-started {
 			float: none;
-			width: 80%;
-			margin: auto;
-			text-align: left;
-		}
-
-		.docs {
-			float: none !important;
-			width: 90% !important;
-			max-width: 90% !important;
-			padding-left: 0 !important;
+			width: 90%;
+			max-width: 90%;
+			padding-left: 0;
 			margin: auto;
 		}
 	}
 
 	@media screen and (max-width: 480px) {
-		&.get-started.page.guide {
-			padding-top: 60px;
 
-			h1 {
-				text-align: center;
-			}
-		}
-		.description{
-			float: none;
-			width: 70%;
-			margin: auto;
+		h1 {
 			text-align: center;
-
-			img {
-				display: none;
-			}
 		}
-
-		.docs {
-			max-width: 95% !important;
-			float: none !important;
-			padding-left: 0 !important;
-
-			h2 {
-				text-align: center;
-			}
-
-			blockquote {
-				background-image: none;
-				 p {
-				 	text-align: center;
-				 	padding: 10px;
-				 }
-			}
-
-
-		}
-
-		.container.instructions {
-			float: none;
-			width: 80%;
-			margin: auto;
-			text-align: left;
-
-			.notice-short {
-				background: @seaGreen;
-
-				p {
-					padding: 10px 10px;
-					margin: 0;
-					text-align: center;
-				}
-			}
-		}
-	}
-}
-.get-started {
-	color: @black;
-	margin-bottom: 10px;
-
-	.docs {
-		max-width: 70%;
-		float: left;
-		padding: 50px 0 25px 5%;
 	}
 }
