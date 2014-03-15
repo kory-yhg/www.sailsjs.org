@@ -122,6 +122,8 @@ nbproject
 ########################
 assets/markdown
 wiki
+assets/templates/reference*
+assets/templates/anatomy*
 
 ####################################
 # Local copy of sails-docs repo
