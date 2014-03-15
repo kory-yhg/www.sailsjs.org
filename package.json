@@ -34,5 +34,9 @@
     "url": "git://github.com/mike/www.sailsjs.org.git"
   },
   "author": "mike",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "fs-extra": "^0.8.1",
+    "marked": "^0.3.2"
+  }
 }

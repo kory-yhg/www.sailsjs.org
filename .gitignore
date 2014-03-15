@@ -114,3 +114,17 @@ npm-debug.log
 .netbeans
 nbproject
 .idea
+
+
+
+######################
+# stuff from github
+########################
+assets/markdown
+wiki
+
+####################################
+# Local copy of sails-docs repo
+####################################
+sails-docs
+modulus-auto-zip*
