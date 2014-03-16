@@ -167,7 +167,7 @@
 		<loc>http://sailsjs.org/#!documentation/reference/Blueprints/DestroyARecord</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/BrowserSDK/SocketClient</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/BrowserSDK/BrowserSDK</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/BrowserSDK/socket.post</loc>
@@ -254,6 +254,9 @@
 		<loc>http://sailsjs.org/#!documentation/reference/Configuration/Views</loc>
 	</url>
 	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Controllers/Controllers</loc>
+	</url>
+	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/ModelAssociations/ModelAssociations</loc>
 	</url>
 	<url>
@@ -270,18 +273,6 @@
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/ModelAssociations/ThroughAssociations</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelAssociations/.add</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelAssociations/.remove</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelAssociations/.save</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelAssociations/.populate</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/ModelAssociations/Dominance</loc>
@@ -318,21 +309,6 @@
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.query</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.findBy</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.findOneBy</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.countBy</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.StartsWith</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.EndsWith</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.subscribe</loc>
@@ -395,13 +371,13 @@
 		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.exec</loc>
 	</url>
 	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/*.*.add</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/*.*.remove</loc>
+	</url>
+	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.populate</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.add</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.remove</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/ModelProperties</loc>
@@ -410,10 +386,10 @@
 		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/tableName</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/*.primaryKey</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/:attribute.primaryKey</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/*.columnName</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/:attribute.columnName</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/migrate</loc>
@@ -429,6 +405,9 @@
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/Validations</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Models/Models</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Request/Request</loc>
@@ -626,40 +605,52 @@
 		<loc>http://sailsjs.org/#!documentation/reference/SailsObject/sails.io</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/SocketsLowLevel</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/Sockets</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/sails.sockets.join</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.join</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/sails.sockets.leave</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.leave</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/sails.sockets.broadcast</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.broadcast</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/sails.sockets.blast</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.blast</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/sails.sockets.id</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.id</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/sails.sockets.emit</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.emit</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/sails.sockets.subscribers</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.subscribers</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/sails.sockets.socketRooms</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.socketRooms</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/sails.sockets.rooms</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.rooms</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/sails.sockets.subscribeToFirehose</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.subscribeToFirehose</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/sailssockets/sails.sockets.unsubscribeFromFirehose</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.unsubscribeFromFirehose</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Views/Views</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Views/Layouts</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Views/Locals</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Views/ViewEngines</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!getStarted</loc>
