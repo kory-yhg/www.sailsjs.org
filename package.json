@@ -36,7 +36,9 @@
   "author": "mike",
   "license": "",
   "devDependencies": {
-    "fs-extra": "^0.8.1",
-    "marked": "^0.3.2"
+    "fs-extra": "~0.8.1",
+    "marked": "~0.3.2",
+    "jquery": "~2.1.0",
+    "jsdom": "~0.10.3"
   }
 }
