@@ -128,53 +128,70 @@
 
 .docs_codeblock() {
     .docs_code();
-    color: @black;
-    background: @ltestGray;
-    border: 1px solid @ltGray;
+    background: #272822;
+    color: #fff;
     padding: 10px 15px;
     word-wrap: break-word;
     font-size: 1em;
     line-height: 1.5em;
     margin-bottom: 35px;
     
-    &.comment {
-        color: @ltGray;
+    .comment {
+        color: #75715E;
     }
 
-    &.constant {
-        color: gray;
+    .constant {
+        color: #AE81FF;
     }
 
-    &.storage {
-        color: #9f3b2b;
+    .storage {
+        color: #66D9EF;
     }
 
-    &.string, &.comment.docstring {
-        color: #14acc2;
+    .string, .comment.docstring {
+        color: #E6DB74;
     }
 
-    &.string.regexp, &.support.tag.script, &.support.tag.style {
+    .support.tag {
         color: #fff;
     }
 
-    &.keyword, &.selector {
-        color: #9f3b2b;
+    .keyword {
+        /* @todo some keywords use this light blue, most use the pink */
+        /*color: #66D9EF;*/
+        color: #F92672;
     }
 
-    &.inherited-class {
+    .selector {
+        color: #F92672;
+    }
+
+    .inherited-class {
         font-style: italic;
     }
 
-    &.entity {
-        color: #2f78c7;
+    .operator, .support.tag-name , .entity.tag {
+        color: #F92672;
     }
 
-    &.support, *[data-language="c"] .function.call {
-        color: #8DA6CE;
+    .entity, .support.attribute, .entity.attribute {
+        color: #A6E22E;
     }
 
-    &.variable.global, pre .variable.class, pre .variable.instance {
-        color: #2f78c7;
+    .support, *[data-language="c"] .function.call {
+        color: #66D9EF;
+    }
+
+    *[data-language="html"] .support.operator {
+        color: #fff;
+    }
+
+    .css-property, .storage.function {
+        font-style: italic;
+    }
+
+    .variable.global, .variable.class, .variable.instance {
+        color: #A6E22E;
     }
 }
 
