@@ -228,6 +228,16 @@
     td {
         border: 1px solid @borderLtGray;
         padding: 15px;
+        &.yes {
+            background: url('/images/tick.png') no-repeat center;
+        }
+        &.no {
+            
+            background: url('/images/x.png') no-repeat center;
+        }
+        &.never {
+            background: url('/images/na.png') no-repeat center;
+        }
     }
     code {
         font-family: @codeFontFamily;
