@@ -380,34 +380,19 @@
 		<loc>http://sailsjs.org/#!documentation/reference/ModelMethods/.populate</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/ModelProperties</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/tableName</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/:attribute.primaryKey</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/:attribute.columnName</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/migrate</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/schema</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/attributes</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/LifecycleCallbacks</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/ModelProperties/Validations</loc>
-	</url>
-	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Models/Models</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Models/Attributes</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Models/Modelconfiguration</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Models/Validations</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Models/Lifecyclecallbacks</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Request/Request</loc>
