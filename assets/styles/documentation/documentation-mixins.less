@@ -30,34 +30,34 @@
 .docs_h2() {
     font-size: 1.7em;
     font-weight: 300;
-    padding: 10px 0 20px;
+    padding: 15px 0 20px;
 }
 
 .docs_h3() {
     color: @turquoise;
     font-weight: 400;
     font-size: 1.5em;
-    padding: 10px 0 20px;
+    padding: 15px 0 20px;
 }
 
 .docs_h4() {
     font-size: 1.3em;
     font-weight: 400;
-    padding: 10px 0 15px;
+    padding: 15px 0;
 }
 
 .docs_h5() {
     color: @turquoise;
     font-size: 1.2em;
     font-weight: 400;
-    padding: 10px 0 15px;
+    padding: 15px 0;
 }
 
 .docs_p() {
     font-size: 15px;
     line-height: 1.6em;
     font-weight: 400;
-    padding: 0 0 10px;
+    padding: 0 0 20px;
     color: @black;
     code {
         .docs_inlinecode();
@@ -83,7 +83,7 @@
 
 .docs_list() {
     li {
-        font-size: 0.9em;
+        font-size: 15px;
         line-height: 2em;
         code {
             .docs_inlinecode();
@@ -95,15 +95,12 @@
     .docs_list();
     li {
         padding: 0 0 8px 18px;
-        background: url('/images/li_bullet-point.png') no-repeat 2px 11px;
+        background: url('/images/li_bullet-point.png') no-repeat 2px 13px;
         background-size: 6px;
         ul {
+            padding-left: 25px;
             li {
-                list-style-type: none;
-                padding-left: 40px;
-                background: url('/images/li_li-bullet-point.png') no-repeat 23px 10px;
-                font-size: 0.9em;
-                background-size: 6px;
+                font-size: inherit;
                 &:last-child {
                     padding-bottom: 0;
                 }
@@ -184,7 +181,7 @@
 .docs_code() {
     font-family: @codeFontFamily;
     font-weight: 300;
-    font-size: 0.8em;
+    font-size: 15px;
 }
 
 .docs_blockquote() {
