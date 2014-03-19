@@ -4,20 +4,48 @@
 		.pageHeader();
 		.page-header-container {
 			padding: 100px 0 50px;
+			position: relative;
 			.clearfix();
 			div.left-column {
 				.borderBox();
 				float: left;
-				width: 50%;
+				width: 100%;
+				position: relative;
+				z-index: 10;
 				padding-right: 25px;
 				h1 {
 					padding-top: 50px;
 				}
 			}
-			>img {
+			.header-image {
 				.borderBox();
-				width: 50%;
+				width: 450px;
+				height: 200px;
 				padding-left: 25px;
+				position: absolute;
+				right: 0;
+				z-index: 5;
+				img.cloud {
+					width: 140px;
+					position: absolute;
+					z-index: 1;
+					left: 0px;
+					top: 10px;
+				}
+				img.waves {
+					width: 450px;
+					position: absolute;
+					z-index: 1;
+					left: 0px;
+					bottom: 20px;
+				}
+				img.tentacle {
+					width: 175px;
+					position: absolute;
+					z-index: 5;
+					right: 140px;
+					bottom: 5px;
+				}
 			}
 		}
 	}
@@ -69,6 +97,24 @@
 		}
 	}
 	@media screen and (max-width: 800px) {
+		.page-header {
+			.page-header-container {
+				.header-image {
+					img.cloud {
+						left: 1000px;
+						.transition(all 4000ms);
+					}
+					img.waves {
+						left: 1000px;
+						.transition(all 2000ms;)
+					}
+					img.tentacle {
+						right: 0px;
+						.transition(all 700ms;)
+					}
+				}
+			}
+		}
 		div.step {
 			padding: 0px 0 25px;
 			&:first-child {
@@ -89,7 +135,24 @@
 			}
 		}
 	}
-	@media screen and (max-width: 480px) {
+	@media screen and (max-width: 600px) {
+		.page-header {
+			.page-header-container {
+				text-align: center;
+				div.left-column {
+					h1 {
+						padding-top: 15px;
+						padding-bottom: 10px;
+					}
+					h5 {
+						padding-bottom: 10px;
+					}
+				}
+				>.header-image {
+					display: none;	
+				}
+			}
+		}
 		div.step {
 			div.instructions-column {
 				padding-left: 0px;
