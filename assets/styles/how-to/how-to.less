@@ -60,6 +60,46 @@
 			padding-left: 50px;
 			float: left;
 			width: 60%;
+			pre {
+				.docs_codeblock();
+				code {
+					.docs_code();
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 800px) {
+		div.step {
+			padding: 0px 0 25px;
+			&:first-child {
+				padding-top: 50px;
+			}
+			&:last-child {
+				padding-bottom: 50px;
+			}
+			div.instructions-column {
+				float: none;
+				width: 100%;
+				padding-left: 60px;
+			}
+			div.example-column {
+				width: 100%;
+				padding-left: 60px;
+				margin-top: 25px;
+			}
+		}
+	}
+	@media screen and (max-width: 480px) {
+		div.step {
+			div.instructions-column {
+				padding-left: 0px;
+			}
+			img.step-number {
+				display: none;
+			}
+		}
+		div.example-column {
+			padding-left: 0px!important;
 		}
 	}
 }

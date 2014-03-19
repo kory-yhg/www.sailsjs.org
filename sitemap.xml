@@ -5,13 +5,13 @@
 		<loc>http://sailsjs.org/#!documentation/reference/Assets/Assets</loc>
 	</url>
 	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Assets/TaskAutomation</loc>
+	</url>
+	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Assets/DefaultTasks</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Assets/DisablingGrunt</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/Assets/Automation</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Blueprints/Blueprints</loc>
