@@ -32,16 +32,6 @@
 				&.feature {
 					background-color: @ltestGreen;
 				}
-				&.yes {
-					background: url('/images/tick.png') no-repeat center;
-				}
-				&.no {
-					
-					background: url('/images/x.png') no-repeat center;
-				}
-				&.never {
-					background: url('/images/na.png') no-repeat center;
-				}
 				&.with-icon {
 					img {
 						height: 27px;
@@ -58,3 +48,22 @@
 		}
 	}
 }
+
+div.replacementIcon {
+
+	display: inline-block;
+	width: 32px; height: 27px;
+	vertical-align: middle;
+
+	
+	&.yes {
+		background: url('/images/tick.png') no-repeat center;
+	}
+	&.no {
+		background: url('/images/x.png') no-repeat center;
+	}
+	&.never {
+		background: url('/images/na.png') no-repeat center;
+	}
+}
+
