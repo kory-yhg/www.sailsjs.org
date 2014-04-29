@@ -34,7 +34,7 @@ module.exports = function compileDocumentationMarkdown (cb) {
     html = html.replace(/\:heavy_multiplication_x\:/g, '<div class="replacementIcon never"></div>');
 
     // Replace ((bubble))s with HTML
-    html = html.replace(/\(\((.*)\)\)/g, '<bubble>$1</bubble>');
+    html = html.replace(/\(\(([^())]*)\)\)/g, '<bubble>$1</bubble>');
 
     writeFileObject.templateHTML = html;
     return cb(writeFileObject);
