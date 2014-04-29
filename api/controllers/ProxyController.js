@@ -1,8 +1,10 @@
-/*---------------------
-    :: Proxy
-    -> controller
----------------------*/
 var request = require('request');
+
+
+/**
+ * Used for serving compiled HTML to Google.
+ * @type {Object}
+ */
 
 var ProxyController = {
 

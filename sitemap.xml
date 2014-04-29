@@ -20,6 +20,9 @@
 		<loc>http://sailsjs.org/#!documentation/reference/Blueprints/FindRecords</loc>
 	</url>
 	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Blueprints/FindOne</loc>
+	</url>
+	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Blueprints/CreateARecord</loc>
 	</url>
 	<url>
@@ -47,25 +50,25 @@
 		<loc>http://sailsjs.org/#!documentation/reference/BrowserSDK/socket.request</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/BrowserSDK/App.js</loc>
-	</url>
-	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/CommandLine/CommandLine</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/CommandLine/sailsnew</loc>
-	</url>
-	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/CommandLine/sailsgenerate</loc>
-	</url>
-	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/CommandLine/sailslift</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/CommandLine/sailsdebug</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/CommandLine/sailsconsole</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/CommandLine/sailsversion</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/CommandLine/sailsnew</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/CommandLine/sailsgenerate</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Configuration/Configuration</loc>
@@ -77,13 +80,13 @@
 		<loc>http://sailsjs.org/#!documentation/reference/Configuration/500</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/Configuration/Adapters</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Configuration/Connections</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Configuration/Bootstrap</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/Configuration/Controllers</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Configuration/Blueprints</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Configuration/CSRF</loc>
@@ -117,6 +120,27 @@
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Controllers/Controllers</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/CustomResponses/CustomResponses</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Deployment/Deployment</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Deployment/Scaling</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Deployment/FAQ</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Deployment/Hosting</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Globals/Globals</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Logs/Logs</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/ModelAssociations/ModelAssociations</loc>
@@ -255,6 +279,9 @@
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Models/Lifecyclecallbacks</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Policies/Policies</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Request/Request</loc>
@@ -434,22 +461,37 @@
 		<loc>http://sailsjs.org/#!documentation/reference/Response/res.render</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/SailsObject/SailsObject</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Routes/Routes</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/SailsObject/sails.log</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Routes/URLSlugs</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/SailsObject/sails.config</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Routes/RouteTargetSyntax</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/SailsObject/sails.models</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Security/Security</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/SailsObject/sails.sockets</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Security/DDOS</loc>
 	</url>
 	<url>
-		<loc>http://sailsjs.org/#!documentation/reference/SailsObject/sails.io</loc>
+		<loc>http://sailsjs.org/#!documentation/reference/Security/CSRF</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Security/SocketHijacking</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Security/ContentSecurityPolicy</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Security/Clickjacking</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Security/P3P</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Services/Services</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Sockets/Sockets</loc>
@@ -488,6 +530,9 @@
 		<loc>http://sailsjs.org/#!documentation/reference/Sockets/sails.sockets.unsubscribeFromFirehose</loc>
 	</url>
 	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/Upgrading/Upgrading</loc>
+	</url>
+	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Views/Views</loc>
 	</url>
 	<url>
@@ -498,6 +543,12 @@
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/Views/ViewEngines</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/i18n/i18n</loc>
+	</url>
+	<url>
+		<loc>http://sailsjs.org/#!documentation/reference/i18n/Usage</loc>
 	</url>
 	<url>
 		<loc>http://sailsjs.org/#!documentation/reference/myApp/myApp</loc>
