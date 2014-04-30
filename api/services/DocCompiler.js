@@ -8,7 +8,7 @@ var DocTemplater = require('doc-templater');
 
 module.exports = function compileDocumentationMarkdown (cb) {
 
-  var compiler = DocTemplater();
+  var compiler = DocTemplater({logger:true});
   var afterTemplateCB = function(err, stuff) {
     if (err) {
       return cb(err);
