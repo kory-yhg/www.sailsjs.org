@@ -33,6 +33,16 @@ module.exports = function compileDocumentationMarkdown (cb) {
     html = html.replace(/\:white_large_square\:/g, '<div class="replacementIcon no"></div>');
     html = html.replace(/\:heavy_multiplication_x\:/g, '<div class="replacementIcon never"></div>');
 
+    try {
+
+        var loseExtension = writeFileObject.fullPathAndFileName.split('.html')[0];
+        loseExtension = loseExtension.replace(/\./g,'_d_')+'.html';
+    } catch (replaceError) {
+        console.log('Template ',writeFileObject.templateName,'doesnt have .html extension',replaceError)
+        loseExtension = writeFileObject.fullPathAndFileName;
+    }
+    writeFileObject.fullPathAndFileName = loseExtension;
+
     // Replace ((bubble))s with HTML
     html = html.replace(/\(\(([^())]*)\)\)/g, '<bubble>$1</bubble>');
 
