@@ -22,11 +22,14 @@ var cssFilesToInject = [
 // Client-side javascript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
-  'mixins/jquery.js',
-  'mixins/lodash.js',
-  'mixins/backbone.js',
-  'mixins/mast.js',
-  'mixins/nameframework.js',
+  'dependencies/angular.min.js',
+  'dependencies/angular-route.min.js',
+  'dependencies/jquery.js',
+  'dependencies/lodash.js',
+  'dependencies/backbone.js',
+  'dependencies/mast.js',
+  'dependencies/nameframework.js',
+  'js/App.js',
   'data/models/**/*.js',
   'data/collections/**/*.js',
   'js/**/*.js'
