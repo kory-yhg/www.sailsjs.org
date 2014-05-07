@@ -26,12 +26,7 @@ var jsFilesToInject = [
   'dependencies/angular-route.min.js',
   'dependencies/jquery.js',
   'dependencies/lodash.js',
-  'dependencies/backbone.js',
-  'dependencies/mast.js',
-  'dependencies/nameframework.js',
   'js/App.js',
-  'data/models/**/*.js',
-  'data/collections/**/*.js',
   'js/**/*.js'
 ];
 

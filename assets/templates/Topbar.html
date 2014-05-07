@@ -14,9 +14,17 @@
     </a>
     <ul class="nav">
       <!-- <li><a class="sails-site" data-page="HomePage" href="#!" id="home">Home</a></li> -->
-      <li><a class="sails-site" data-page="GetStartedPage" href="#!getStarted">Get Started</a></li>
-      <li><a class="sails-site" data-page="DocsSection" href="#!documentation">Documentation</a></li>
-      <li class="no-mobile"><a class="sails-site" data-page="LogosPage" href="#!logos">Logos</a></li>
+      <li><a class="sails-site"
+          ng-class="{current: intent.isCurrentPage('/getStarted')}" 
+          href="#/getStarted">Get Started</a></li>
+      <li><a class="sails-site"
+          ng-class="{current: intent.isCurrentPage('/documentation')}"
+          href="#/documentation">Documentation</a></li>
+      <li class="no-mobile">
+        <a class="sails-site"
+          ng-class="{current: intent.isCurrentPage('/logos')}"
+          href="#/logos">Logos</a>
+      </li>
       <li><a target="_blank" href="http://michaelmcneil.com">Blog</a></li>
     </ul>
   </div>
