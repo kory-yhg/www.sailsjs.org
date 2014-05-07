@@ -12,7 +12,7 @@ angular.module('Sails')
     })
 
     .when('/documentation', {
-      templateUrl: 'templates/pages/DocumentationPage.html'
+      templateUrl: 'templates/pages/Documentation/DocsMainPage.html'
     })
 
     .when('/getStarted', {

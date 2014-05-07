@@ -29,9 +29,8 @@
 	Region with the main content of the page.
 	Template can be: Anatomy, Guides, Reference, or SupportMatrix
 	-->
-	<div class="documentation-section-content">
-		<region data-id="contentRegion"></region>
-	</div>
+	<div class="documentation-section-content"
+		ng-include src="documentationSection"></div>
 
 	<div class="github-message">
 		<img src="images/image_devInTub.png"/>
