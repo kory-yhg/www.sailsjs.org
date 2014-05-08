@@ -35,6 +35,32 @@ angular.module('Sails')
     //   }
     // })
 
+    //Version Notes Links
+    .when('/documentation/changelog/pre-0.8.77', {
+      templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_before0.8.77.html'
+    })
+    .when('/documentation/changelog/0.8.7x', {
+      templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.8.7x.html'
+    })
+    .when('/documentation/changelog/0.8.8x', {
+      templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.8.8x.html'
+    })
+    .when('/documentation/changelog/0.8.9', {
+      templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.8.9.html'
+    })
+    .when('/documentation/changelog/0.9.0', {
+      templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.9.0.html'
+    })
+    .when('/documentation/changelog/0.9.4', {
+      templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.9.4.html'
+    })
+    .when('/documentation/changelog/0.9.7', {
+      templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.9.7.html'
+    })
+    .when('/documentation/changelog/0.9.8', {
+      templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.9.8.html'
+    })
+    
 
     .when('/getStarted', {
       templateUrl: 'templates/pages/GetStartedPage.html'
