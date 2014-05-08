@@ -57,10 +57,10 @@ angular.module('Sails')
     .when('/documentation/changelog/0.9.7', {
       templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.9.7.html'
     })
-    .when('/documentation/changelog/0.9.8', {
+    .when('/documentation/changelog/0.9.16', {
       templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.9.8.html'
     })
-    
+
 
     .when('/getStarted', {
       templateUrl: 'templates/pages/GetStartedPage.html'
