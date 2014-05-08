@@ -9,18 +9,18 @@
 		<div class="header-container">
 			<h1 class="header-title">Header for the section</h1>
 			<ul class="docs-header-nav">
-				<a href="#!documentation/anatomy" data-section="anatomy">
-                    <li>Anatomy</li>
+				<a href="#/documentation/anatomy">
+                    <li ng-class="{current: docs.currentSection === 'anatomy'}">Anatomy</li>
                 </a>
-				<a href="#!documentation/guides/new-to-nodejs" data-section="guides">
-                    <li>Guides</li>
+				<a href="#/documentation/guides/">
+                    <li ng-class="{current: docs.currentSection === 'guides'}">Guides</li>
                 </a>
-				<a href="#!documentation/reference/Blueprints/Blueprints.html" data-section="reference">
-                    <li>Reference</li>
+				<a href="#/documentation/reference/">
+                    <li ng-class="{current: docs.currentSection === 'reference'}">Reference</li>
                 </a>
-				<a href="#!documentation/support" data-section="support">
+				<!-- <a href="#/documentation/support" data-section="support">
                     <li>Supported Features</li>
-                </a>
+                </a> -->
 			</ul>
 		</div>
 	</div>
@@ -30,7 +30,7 @@
 	Template can be: Anatomy, Guides, Reference, or SupportMatrix
 	-->
 	<div class="documentation-section-content"
-		ng-include src="documentationSection"></div>
+		ng-include src="docs.documentationSection"></div>
 
 	<div class="github-message">
 		<img src="images/image_devInTub.png"/>

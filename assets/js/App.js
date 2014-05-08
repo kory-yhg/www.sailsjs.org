@@ -15,6 +15,27 @@ angular.module('Sails')
       templateUrl: 'templates/pages/Documentation/DocsMainPage.html'
     })
 
+    //Documentation Sections:
+    .when('/documentation/reference', {
+      templateUrl: 'templates/pages/Documentation/DocsSection.html',
+      controller: function ($scope) {
+        $scope.intent.changeDocsTab('reference');
+      }
+    })
+    .when('/documentation/anatomy', {
+      templateUrl: 'templates/pages/Documentation/DocsSection.html',
+      controller: function ($scope) {
+        $scope.intent.changeDocsTab('anatomy');
+      }
+    })
+    .when('/documentation/guides', {
+      templateUrl: 'templates/pages/Documentation/DocsSection.html',
+      controller: function ($scope) {
+        $scope.intent.changeDocsTab('guides');
+      }
+    })
+
+
     .when('/getStarted', {
       templateUrl: 'templates/pages/GetStartedPage.html'
     })
