@@ -23,6 +23,10 @@ angular.module('Sails')
       templateUrl: 'templates/pages/LogosPage.html'
     })
 
+    .when('/features', {
+      templateUrl: 'templates/pages/FeaturesPage.html'
+    })
+
     .otherwise({
       redirectTo: '/'
     });
