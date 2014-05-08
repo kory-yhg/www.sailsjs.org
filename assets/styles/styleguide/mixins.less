@@ -1,0 +1,16 @@
+.disable-flash () {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.opacity (@opacity: 0.5) {
+    -webkit-opacity: @opacity;
+    -moz-opacity   : @opacity;
+    opacity        : @opacity;
+}
+
+.truncate (@width:250px) {
+    width        : @width;
+    white-space  : nowrap;
+    overflow     : hidden;
+    text-overflow: ellipsis;
+}
