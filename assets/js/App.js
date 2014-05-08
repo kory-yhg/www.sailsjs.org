@@ -28,12 +28,12 @@ angular.module('Sails')
         $scope.intent.changeDocsTab('anatomy');
       }
     })
-    .when('/documentation/guides', {
-      templateUrl: 'templates/pages/Documentation/DocsSection.html',
-      controller: function ($scope) {
-        $scope.intent.changeDocsTab('guides');
-      }
-    })
+    // .when('/documentation/guides', {
+    //   templateUrl: 'templates/pages/Documentation/DocsSection.html',
+    //   controller: function ($scope) {
+    //     $scope.intent.changeDocsTab('guides');
+    //   }
+    // })
 
 
     .when('/getStarted', {

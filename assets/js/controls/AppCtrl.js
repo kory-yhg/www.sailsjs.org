@@ -12,6 +12,13 @@ angular.module('Sails').controller('AppCtrl', [
 		changeDocsTab: function(section) {
 			$scope.docs.currentSection = section;
 			$scope.docs.documentationSection = 'templates/pages/Documentation/sections/DocsSection_'+section+'.html';
+
+			if(section === 'anatomy') {
+				$scope.docs.currentSectionTitle = 'Anatomy of a Sails App';
+			}
+			if(section === 'reference') {
+				$scope.docs.currentSectionTitle = 'Reference';
+			}
 		}
 	});
   }
