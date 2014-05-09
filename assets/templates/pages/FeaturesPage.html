@@ -1,126 +1,135 @@
 <div class="page features-page">
 
   <!-- White Upper Bar -->
-  <div>
-    <div>
-      <p>Latest update on Github</p>
-      <p>22nd April, 2014</p>
-    </div>
-    <div class="star">
-      <iframe src="http://ghbtns.com/github-btn.html?user=balderdashy&amp;repo=sails&amp;type=watch&amp;count=true"
-    allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
-    </div>
-  </div> <!-- white bar -->
+  <div class="banner">
+    <!-- <div class="banner-container"> -->
+      <div class="white-banner">
+        <div class="banner-container">
+          <p>Latest update on Github</p>
+          <p class="blue">22nd April, 2014</p>
+          <div class="sharing">
+            <div>
+              <iframe src="http://ghbtns.com/github-btn.html?user=balderdashy&amp;repo=sails&amp;type=watch&amp;count=true"
+              allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+            </div>
 
-  <!-- Light Blue Section -->
-  <div>
-    <h1>Sails packs in more than your average web framework</h1>
-    <p>Sails is the most popular MVC framework for Node.js. It is designed for building practical, production-ready Node.js apps in a matter of weeks - not months.</p>
-    <img src="">
-  </div> <!-- light blue section -->
+            <div>
+              <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fsailsjs&amp;width=75&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:86px; height:21px;" allowTransparency="true"></iframe>
+            </div>
+
+              <a href="https://twitter.com/share" class="twitter-share-button" data-text="#sailsjs, the realtime MVC framework for Node.js:" data-url="http://sailsjs.org" data-lang="en">Tweet</a>
+
+              <a href="https://twitter.com/sailsjs" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @sailsjs</a>
+            </div> <!-- sharing -->
+        </div>
+        </div> <!-- white bar -->
+
+      <!-- Light Blue Section -->
+      <div class="banner-container">
+        <h1 class="mobile">Sails packs in more than your average web framework</h1>
+        <p class="sub-header">Sails is the most popular MVC framework for Node.js. It is designed for building practical, production-ready Node.js apps in a matter of weeks - not months.</p>
+        <img src="">
+      </div> <!-- light blue section -->
+    <!-- </div> banner container -->
+  </div> <!-- banner -->
 
   <!-- Features Section -->
-  <!-- Left Side Navigation -->
-  <div>
-    <h1>Features</h1>
-    <ul>
-      <li><a>100% Javascript</a></li>
-      <li><a>Any database</a></li>
-      <li><a>Powerful associations</a></li>
-      <li><a>Auto-generate REST APIs</a></li>
-      <li><a>Easy WebSocket support</a></li>
-      <li><a>Reusable security policies</a></li>
-      <li><a>Front-end agnostic</a></li>
-      <li><a>Flexible asset pipeline</a></li>
-      <li><a>Rock solid foundation</a></li>
-    </ul>
-  </div> <!-- left side navigation -->
+ <div class="sails-features">
+    <!-- left-side navigation -->
+    <div class="features-container">
+      <div class="features">
+        <h1>Features</h1>
+        <ul>
+          <li><a href="#javascript">100% Javascript</a></li>
+          <li><a href="#database">Any database</a></li>
+          <li><a href="#associations">Powerful associations</a></li>
+          <li><a href="#rest">Auto-generate REST APIs</a></li>
+          <li><a href="#websocket-support">Easy WebSocket support</a></li>
+          <li><a href="#security">Reusable security policies</a></li>
+          <li><a href="#front-end">Front-end agnostic</a></li>
+          <li><a href="#asset-pipeline">Flexible asset pipeline</a></li>
+          <li><a href="#solid-foundation">Rock solid foundation</a></li>
+        </ul>
+        </div> <!-- left side navigation -->
 
-  <!-- Right Side Feature Content -->
-  <div>
-    <ul>
-      <li>
-        <div>
-          <img src="">
-        </div>
-        <div>
-          <h2>100% Javascript</h2>
-          <p>Like other MVC frameworks, Sails is built with an emphasis on developer happiness and a convention-over-configuration philosophy. But Node.js takes this principle to the next level. Building on top of Sails means your app is written entirely in JavaScript, the language you and your team are already using in the browser. Since you spend less time context-shifting, you're able to write code in a more consistent style, which makes development more productive and fun.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <img src="">
-        </div>
-        <div>
-          <h2>Any database</h2>
-          <p>Sails bundles a powerful ORM, Waterline, which provides a simple data access layer that just works, no matter what database you're using. In addition to a plethora of community projects, officially supported adapters exist for MySQL, MongoDB, PostgreSQL, Redis, and local disk (for development).</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <img src="">
-        </div>
-        <div>
-          <h2>Powerful associations</h2>
-          <p>Sails offers a new take on the familiar relational model, aimed at making data modeling more practical. You can do all the same things you might be used to (one-to-many, many-to-many), but you can also assign multiple named associations per-model (for instance, a cake might have two collection of people: "havers" and "eaters"). Better yet, you can assign different models to different databases, and your associations/joins will still work-- even across NoSQL and relational boundries. Sails has no problem implicitly/automatically joining a MySQL table with a Mongo collection and vice versa.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <img src="">
-        </div>
-        <div>
-          <h2>Auto-generate REST APIs</h2>
-          <p>Sails comes with blueprints that help jumpstart your app's backend without writing any code. Just run sails generate api dentist andyou'll get an API that lets you search, paginate, sort, filter, create, destroy, update, and associate dentists. Since these blueprint actions are built on the same underlying technology as Sails, they also work with Websockets and any supported database out of the box.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <img src="">
-        </div>
-        <div>
-          <h2>Easy WebSocket support</h2>
-          <p>In the past, adding realtime/"comet" features meant maintaining two separate code bases. But since the request interpreter in Sails translates incoming socket messages for you, they're automatically capatible with every route in your Sails app, as well as any existing Express routes/middleware. Normalization of parameters, the session, and the streaming interface are all taken care of. In other words, the code you write works with WebSockets and HTTP, without doing any extra work.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <img src="">
-        </div>
-        <div>
-          <h2>Reusable security policies</h2>
-          <p>Sails provides baic security and role-based access control by default in the form of policies - simple, reusable middleware functions that run before your controllers and actions. Writing policies encourages encapsulation, which dramatically simplifies your business logic and reduces the total amount of code you need to write. Policies are interchangeable with Express/Connect middleware, which means you can plug in popular npm modules like Passport. Finally, like most things in Sails, your policies work for both WebSockets and HTTP automatically.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <img src="">
-        </div>
-        <div>
-          <h2>Front-end agnostic</h2>
-          <p>Sails works great for HTML 5 and PhoneGap apps, but just because we can use JavaScript on the server doesn't mean everything in the world is now build on web standards. Sails is designed to be compatible with any front-end strategy; whether it's Angular, Backbone, iOS/ObjC, Android/Java, Windows Phone, or something else that hasn't been invented yet. Plus it's easy to serve up the same API to be consumed by another web service or community of developers.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <img src="">
-        </div>
-        <div>
-          <h2>Flexible asset pipeline</h2>
-          <p>If you are building an app for the browser, you're in luck. Sails ships with Grunt - which means your entire front-end asset workflow is completely customizable, and comes with support for all of the great Grunt modules which are already out there. That includes support for LESS, SASS, Stylus, CoffeeScript, JST, Jade, Handlebars, Dust, and many more. When you're ready to go into production, your assets are minified and gzipped automatically. You can even compile your static assets and push them out to a CDN like CloudFront to make your app load even faster.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <img src="">
-        </div>
-        <div>
-          <h2>Rock solid foundation</h2>
-          <p>Sails is built on Node.js, a popular, lightweight server-side technology that allows developers to write blazing fast, scalable network applications in JavaScript. Sails uses Express for handling HTTP requests, and wraps socket.io for managing WebSockets. So if your app ever needs to get really low-level, you can access the raw Express or socket.io objects. Another nice side-effect is that your existing Express routes work perfectly well in a Sails app, so migrating an existing Node app is a breeze.</p>
-        </div>
-      </li>
-    </ul>
+      <!-- right side features list -->
+      <div class="feature-list">
+        <ul>
+          <li id="javascript">
+            <div class="icon-container">
+              <img class="icon javascript" src="http://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/600px-JavaScript-logo.png"/>
+            </div>
+            <h5>100% JavaScript.</h5>
+            <p>
+              Like other MVC frameworks, Sails is built with an emphasis on developer happiness and a convention-over-configuration philosophy. But Node.js takes this principle to the next level.  Building on top of Sails means your app is written entirely in JavaScript, the language you and your team are already using in the browser.  Since you spend less time context-shifting, you're able to write code in a more consistent style, which makes development more productive and fun.
+            </p>
+          </li>
+          <li id="database">
+            <div class="icon-container">
+              <img class="icon database" src="images/icon_anyDatabase@2x.png"/>
+            </div>
+            <h5>Any database.</h5>
+            <p>Sails bundles a powerful ORM, Waterline, which provides a simple data access
+            layer that just works, no matter what database you're using.
+            In addition to a plethora of community projects, officially supported adapters exist for MySQL, MongoDB, PostgreSQL, Redis, and local disk (for development).
+          </li>
+          <li id="associations">
+            <div class="icon-container">
+              <img class="icon optional-support" src="images/icon_associations@2x.png"/>
+            </div>
+            <h5>Powerful associations.</h5>
+            <p>Sails offers a new take on the familiar relational model, aimed at making data modeling more practical. You can do all the same things you might be used to (one-to-many, many-to-many), but you can also assign multiple <em>named</em> associations per-model (for instance, a cake might have two collection of people: <em>"havers"</em> and <em>"eaters"</em>).  Better yet, you can assign different models to different databases, and your associations/joins will <strong>still work</strong>-- even across NoSQL and relational boundries.  Sails has no problem implicitly/automatically joining a MySQL table with a Mongo collection and vice versa.</p>
+          </li>
+          <li id="rest">
+            <div class="icon-container">
+              <img class="icon api" src="images/icon_autoGenerateApi@2x.png"/>
+            </div>
+            <h5>Auto-generate REST APIs.</h5>
+            <p>Sails comes with <em>blueprints</em> that help jumpstart your app's backend without writing any code.  Just run <code>sails generate api dentist</code> and you'll get an API that lets you search, paginate, sort, filter, create, destroy, update, and associate dentists.  Since these <em>blueprint actions</em> are built on the same underlying technology as Sails, they also work with Websockets and any supported database out of the box.</p>
+          </li>
+          <li id="websocket-support">
+            <div class="icon-container">
+              <img class="icon realtime" src="images/icon_websockets@2x.png"/>
+            </div>
+            <h5>Support WebSockets with no additional code.</h5>
+            <p>In the past, adding realtime/"comet" features meant maintaining two separate code bases. But since the request interpreter in Sails translates incoming socket messages for you, they're automatically compatible with every route in your Sails app, as well as any any existing Express routes/middleware.  Normalization of parameters, the session, and the streaming interface are all taken care of.  In other words, the code you write works with WebSockets <em>and</em> HTTP, without doing any extra work.</p>
+          </li>
+          <li id="security">
+            <div class="icon-container">
+              <img class="icon security" src="images/icon_controlAndSecurity@2x.png"/>
+            </div>
+            <h5>Declarative, reusable security policies.</h5>
+            <p>Sails provides basic security and role-based access control by default in the form of policies - simple, reusable middleware functions that run before your controllers and actions.  Writing policies encourages <a>encapsulation</a>, which dramatically simplifies your business logic and reduces the total amount of code you need to write.  Policies are interchangeable with Express/Connect middleware, which means you can plug in popular npm modules like <a>Passport</a>.  Finally, like most things in Sails, your policies work for both WebSockets and HTTP automatically.</p>
+          </li>
+
+          <li id="front-end">
+            <div class="icon-container">
+              <img class="icon database" src="images/icon_frontend@2x.png"/>
+            </div>
+            <h5>Front-end agnostic.</h5>
+            <p>Sails works great for HTML 5 and PhoneGap apps, but just because we can use JavaScript on the server doesn't mean everything in the world is now built on web standards.  Sails is designed to be compatible with any front-end strategy; whether it's Angular, Backbone, iOS/ObjC, Android/Java, Windows Phone, or something else that hasn't been invented yet. Plus it's easy to serve up the same API to be consumed by another web service or community of developers.
+          </li>
+
+          <li id="asset-pipeline">
+            <div class="icon-container">
+              <img class="icon minification" src="images/icon_grunt@2x.png"/>
+            </div>
+            <h5>Flexible asset pipeline.</h5>
+            <p>
+              If you <em>are</em> building an app for the browser, you're in luck.  Sails ships with Grunt- which means your entire front-end asset workflow is completely customizable, and comes with support for all of the great Grunt modules which are already out there. That includes support for LESS, SASS, Stylus, CoffeeScript, JST, Jade, Handlebars, Dust, and many more.  When you're ready to go into production, your assets are minified and gzipped automatically. You can even compile your static assets and push them out to a CDN like CloudFront to make your app load even faster.
+            </p>
+          </li>
+          
+          <li id="solid-foundation">
+            <div class="icon-container">
+              <img class="icon policies" src="images/icon_nodeJS@2x.png"/>
+            </div>
+            <h5>Rock-solid foundation.</h5>
+            <p>Sails is built on <a href="http://node.js">Node.js</a>, a popular, lightweight server-side technology that allows developers to write blazing fast, scalable network appliations in JavaScript.  Sails uses <a>Express</a> for handling HTTP requests, and wraps <a>socket.io</a> for managing WebSockets. So if your app ever needs to get really low-level, you can access the raw Express or socket.io objects. Another nice side-effect is that your existing Express routes work perfectly well in a Sails app, so migrating an existing Node app is a breeze.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div> <!-- right side features content -->
 
   <!-- Sails next steps section -->

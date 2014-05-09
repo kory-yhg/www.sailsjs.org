@@ -1,3 +1,100 @@
 .features-page {
-	
+  .banner {
+    background-color: #E2F0F1;
+    padding: 61px 0 155px;
+    background-image: none;
+
+    h1 {
+      .h1(@turquoise);
+      text-align: center;
+      padding: 50px 0 20px;
+    }
+    p {
+      &.sub-header {
+        .sub-header();
+        text-align: center;
+      }
+    }
+
+  }
+
+  // White Banner
+  .white-banner {
+    background-color: @white;
+    height: 50px;
+    .banner-container {
+      padding: 15px;
+      p {
+        font-size: .9em;
+        display: block;
+        float: left;
+        color: @dkerGray;
+        &.blue {
+          color: @turquoise;
+          padding-left: 20px;
+        }
+      }
+      .sharing {
+        .clearfix();
+        float: right;
+        div, div.star {
+          display: inline-block;
+          float: left;
+        }
+      }
+    }
+  } // white banner
+
+
+  // Feature Section
+  .sails-features {
+
+    // Features Navigation
+    .features {
+      width: 20%;
+      ul {
+        li {
+          padding: 5px 0;
+          font-size: .9em;
+          a {
+            color: @dkestGray;
+            &:hover {
+              color: @turquoise;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    } // sfeature navigation
+
+    // Features List
+    .feature-list {
+      padding-left: 0px;
+      ul {
+        li {
+          border-bottom: none;
+          h5 {
+            .sub-section-header();
+            padding: 0 0 10px 20px;
+          }
+          p {
+            padding-left: 20px;
+            font-weight: 500;
+          }
+          .icon-container {
+            height: 110px;
+            width: 100px;
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            top: 35px;
+            background-color: @turquoise;
+            img {
+              display: none;
+            }
+          }
+        }
+      }
+    } // feature list
+  } // features section
 }
