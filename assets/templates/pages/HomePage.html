@@ -118,7 +118,16 @@
       <!-- <h1>What do users say about Sails?</h1> -->
       <div class="sails-reviews">
         <!-- switch out this template for different tweets-->
-        <region data-id="twitter-quote" template="Tweets"></region>
+        <ul class="tweets-wrapper"
+          ng-controller="TweetCtrl"
+          ng-init="intent.startSlideshow()">
+          <li ng-repeat="tweet in tweets"
+            ng-class="{active: activeTweet === tweet.twitterHandle}"
+            class="tweet">
+            <h2><a target="_blank" href="{{tweet.twitterUrl}}">{{tweet.twitterHandle}}</a></h2>
+            <p>{{tweet.text}}</p>
+          </li>
+        </ul>
         
         <h3>There's a party going on, and you're invited.</h3>
         <div class="follow-buttons">
