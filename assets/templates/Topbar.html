@@ -9,20 +9,23 @@
 
   <!--Navigation list-->
   <div class="nav-container">
-    <a href="#!">
+    <a href="#/">
       <img class="logo" src="/images/sails-logo.jpg" alt="Sails" />
     </a>
     <ul class="nav">
       <!-- <li><a class="sails-site" data-page="HomePage" href="#!" id="home">Home</a></li> -->
+      <li><a class="sails-site"
+          ng-class="{current: intent.isCurrentPage('/')}" 
+          href="#/">Home</a></li>
+      <li><a class="sails-site"
+          ng-class="{current: intent.isCurrentPage('/features')}"
+          href="#/features">Features</a></li>
       <li><a class="sails-site"
           ng-class="{current: intent.isCurrentPage('/getStarted')}" 
           href="#/getStarted">Get Started</a></li>
       <li><a class="sails-site"
           ng-class="{current: intent.isCurrentPage('/documentation')}"
           href="#/documentation">Documentation</a></li>
-      <li><a class="sails-site"
-          ng-class="{current: intent.isCurrentPage('/features')}"
-          href="#/features">Features</a></li>
      <!--  <li class="no-mobile">
         <a class="sails-site"
           ng-class="{current: intent.isCurrentPage('/logos')}"
