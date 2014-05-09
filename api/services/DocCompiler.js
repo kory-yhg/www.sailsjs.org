@@ -67,17 +67,17 @@ module.exports = function compileDocumentationMarkdown (cb) {
 
 
   compiler.build([{
-    docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-    dirNameInRepo: 'reference',
+    docsGitRepo: 'git://github.com/balderdashy/sails-docs-reference.git',
+    //dirNameInRepo: 'reference',
     parsedTemplatesDirectory: 'assets/templates/reference/',
     applyToTemplates: {
       beforeConvert: beforeConvert,
       afterConvert: afterConvert
     }
-  }, {
+  }/*, {
     docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
     dirNameInRepo: 'anatomy',
     parsedTemplatesDirectory: 'assets/templates/anatomy/'
-  }], afterTemplateCB);
+  }*/], afterTemplateCB);
 
 }
