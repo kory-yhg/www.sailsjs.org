@@ -1,23 +1,20 @@
 <div class="reference-page">
-		<div class="left-column">
+  <!-- The documentation content pulled in from GitHub -->
+  <div class="reference-item" ng-include src="currentPage.templatePath"></div>
+  <div class="contribution-message">
+      <h2>Something to add?</h2>
+      <p>If you notice something we've missed, please visit the <a href="https://github.com/balderdashy/sails-docs/tree/master/reference" target="_blank">sails-docs</a> repo on GitHub and edit the page to submit a pull request.</p>
+  </div>
 
-			<!-- The documentation content pulled in from GitHub -->
-			<ng-include src="currentPage.templatePath"></ng-include>
-			<div class="contribution-message">
-				<h2>Something to add?</h2>
-				<p>If you notice something we've missed, please visit the <a href="https://github.com/balderdashy/sails-docs/tree/master/reference" target="_blank">sails-docs</a> repo on GitHub and edit the page to submit a pull request.</p>
-			</div>
-		</div>
-
-		<!-- Navigation around the different reference pages -->
-		<div class="reference-sidebar">
-			<h4>Reference</h4>
-			<ul class="main-sections">
-				<li ng-repeat="menuItem in referenceMenu"
-					stop-propagation="click"
-                    ng-init="intent.toggleReferenceItemExpanded(menuItem.name)"
-                    ng-include
-                    src="'templates/pages/Documentation/sections/NavItem.html'"></li>
-			</ul>
-		</div>
+  <!-- Navigation around the different reference pages -->
+  <div class="reference-sidebar">
+    <h4>Reference</h4>
+    <ul class="main-sections">
+      <li ng-repeat="menuItem in referenceMenu"
+        class=""
+        stop-propagation="click"
+        ng-init="intent.toggleReferenceItemExpanded(menuItem.name)"
+        ng-include src="'templates/pages/Documentation/sections/NavItem.html'"></li>
+    </ul>
+  </div>
 </div>

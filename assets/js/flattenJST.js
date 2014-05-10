@@ -49,7 +49,6 @@ function flattenJST (subsection, JST) {
     pieces.shift();
     // pieces.shift();
     // pieces.shift();
-    // pieces.shift();
 
 
     // Set the "name" to be the ugly file name

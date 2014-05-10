@@ -1,309 +1,201 @@
 .reference-page {
-	.container();
-	.clearfix();
-	padding: 50px 0 100px;
-	font-family: @mainFont;
+  .container();
+  .clearfix();
+  .borderBox();
+  @menuWidth: 250px;
+  position: relative;
+  padding: 50px @menuWidth 100px 0px;
+  font-family: @mainFont;
 
-	.left-column {
-		width: 75%;
-		float: left;
+  .left-column {
+    width: 75%;
+    float: left;
 
-
-		.reference-item {
-			padding-bottom: 50px;
-		}
-
-
-		// Section with links and comments
-		// at the bottom
-		.link-comment-section {
-			border-top: 3px solid @ltestGray;
-
-			h3 {
-				font-size: 1.4em;
-				font-weight: 300;
-				padding: 12px 0 12px 50px;
-			}
-
-			a {
-				font-size: 0.8em;
-				text-decoration: underline;
-				font-weight: inherit;
-			}
-
-			button {
-				.borderBox();
-				height: 36px;
-				background-color: @turquoise;
-				border: none;
-				color: @white;
-				text-transform: uppercase;
-				cursor: pointer;
-				&:active {
-					background-color: @darkTurquoise;
-				}
-				&:hover {
-					color: @taglineBlue;
-					.transition(all 0.25s);
-				}
-				.loading-spinner {
-					display: none;
-					margin: auto;
-				}
-			}
-
-			.link-section {
-				.borderBox();
-				padding: 25px 0 40px;
-
-				h3 {
-					background: url('/images/icon_stackoverflow.png') no-repeat left center;
-				}
-
-				input {
-					.borderBox();
-					width: 80%;
-					height: 36px;
-					border: 1px solid @ltestGray;
-					padding: 5px 10px;
-					font-size: 0.9em;
-					font-weight: 300;
-				}
-
-				button {
-					width: 18.5%;
-					font-size: 0.9em;
-					float: right;
-				}
-
-				.link-list {
-					background-color: @seaGreen;
-					padding: 10px;
-					margin-top: 10px;
-					.link {
-						white-space: nowrap;
-						overflow-x: hidden;
-						text-overflow: ellipsis;
-						font-weight: 600;
-						padding: 3px;
-					}
-					.loading-spinner {
-						margin: 10px auto;
-						display: none;
-					}
-					.empty-message, .error-message, .server-error-message {
-						font-weight: 300;
-						font-style: italic;
-						display: none;
-					}
-				}
-				//change to use data attributes!
-				&.submitting {
-					button.add-button {
-						span {
-							display: none;
-						}
-						.loading-spinner {
-							display: block;
-						}
-					}
-				}
-				&.syncing {
-					.link-list {
-						.loading-spinner {
-							display: block;
-						}
-					}
-				}
-				&.empty {
-					.empty-message {
-						display: block;
-					}
-				}
-				&.error {
-					.error-message {
-						display: block;
-					}
-				}
-
-                &.server-error {
-                    .server-error-message {
-                        display: block;
-                    }
-                }
-			}
-
-			.comment-section {
-
-				h3 {
-					background: url('/images/icon_comments.png') no-repeat left center;
-				}
-
-				.sorting-links {
-					font-size: 0.8em;
-					padding-bottom: 10px;
-					color: @ltGray;
-
-					span {
-						cursor: pointer;
-					}
-
-					span.active {
-						color: @turquoise;
-						font-weight: 600;
-					}
-				}
-
-				.comment-form {
-					padding-bottom: 40px;
-
-					textarea {
-						.borderBox();
-						width: 100%;
-						height: 100px;
-						border: 1px solid @ltestGray;
-						padding: 10px;
-						font-size: 0.9em;
-						margin-bottom: 10px;
-					}
-
-					button {
-						width: 100%;
-						font-size: 1.1em;
-					}
-					span.error {
-						display: none;
-					}
-				}
-
-				.comment-list {
-					.clearfix();
-					border-top: 3px solid @ltestGray;
-					color: @medGray;
-
-					.comment {
-						padding: 15px 0px 25px 80px;
-						border-bottom: 2px solid @ltestGray;
-						position: relative;
-						div.avatar {
-							width: 65px;
-							height: 65px;
-							position: absolute;
-							top: 20px;
-							left: 0px;
-						}
-
-						span {
-							position: absolute;
-							right: 0px;
-							top: 15px;
-							font-size: 0.8em;
-							font-weight: 300;
-						}
-
-						h4, p {
-							.borderBox();
-						}
-						h4 {
-							font-size: 1.2em;
-							padding-bottom: 10px;
-						}
-						p {
-							font-size: 0.8em;
-						}
-					}
-					.loading-spinner {
-						margin: 25px auto;
-						display: none;
-					}
-				}
-				//change to use data attributes!
-				&.submitting {
-					.comment-form button.submit-button {
-						span {
-							display: none;
-						}
-						.loading-spinner {
-							display: block;
-						}
-					}
-				}
-				&.syncing {
-
-				}
-			}
-		}
-	}
-
-
-	//Styles for the navigation sidebar
-	.reference-sidebar {
-		width: 20%;
-		.borderBox();
-		float: right;
-		text-align: right;
-
-		h4 {
-			font-size: 1.6em;
-			color: @turquoise;
-			font-weight: 300;
-			padding: 0px 15px 0px 5px;
-		}
-
-		.ref-links {
-			display: none;
-			color: @ltGray;
-			font-weight: 300;
-		}
-
-		.main-sections {
-			line-height: 1.7em;
-			.main-section-title {
-				padding-right: 15px;
-				font-size: 15px;
-				>a {
-					color: black;
-					font-weight: 600;
-					text-decoration: none;
-					cursor: pointer;
-					&:hover {
-						color: @turquoise;
-						.transition(all 0.25s);
-					}
-				}
-
-                > a.active {
-                    color: @turquoise;
-                }
-
-				&.expanded {
-					padding-right: 0px;
-					> a {
-						padding-right: 10px;
-						border-right: 5px solid @turquoise;
-					}
-					li {
-						padding-right: 15px;
-						white-space: nowrap;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						a {
-							// color: @ltGray;
-							color: @medGray;
-							font-weight: 400;
-    						&.active {
-    							color: @turquoise;
-    						}
-							&:hover {
-								color: @turquoise;
-							}
-                        }
-					}
-					.ref-links {
-						display: block;
-					}
-				}
-			}
-		}
-	}
+    .reference-item {
+      padding-bottom: 50px;
+    }
+    // Section with links and comments
+    // at the bottom
+    .link-comment-section {
+      border-top: 3px solid @ltestGray;
+      h3 {
+        font-size: 1.4em;
+        font-weight: 300;
+        padding: 12px 0 12px 50px;
+      }
+      a {
+        font-size: 0.8em;
+        text-decoration: underline;
+        font-weight: inherit;
+      }
+      button {
+        .borderBox();
+        height: 36px;
+        background-color: @turquoise;
+        border: none;
+        color: @white;
+        text-transform: uppercase;
+        cursor: pointer;
+        &:active {
+          background-color: @darkTurquoise;
+        }
+        &:hover {
+          color: @taglineBlue;
+          .transition(all 0.25s);
+        }
+        .loading-spinner {
+          display: none;
+          margin: auto;
+        }
+      }
+      .link-section {
+        .borderBox();
+        padding: 25px 0 40px;
+        h3 {
+          background: url('/images/icon_stackoverflow.png') no-repeat left center;
+        }
+        input {
+          .borderBox();
+          width: 80%;
+          height: 36px;
+          border: 1px solid @ltestGray;
+          padding: 5px 10px;
+          font-size: 0.9em;
+          font-weight: 300;
+        }
+        button {
+          width: 18.5%;
+          font-size: 0.9em;
+          float: right;
+        }
+        .link-list {
+          background-color: @seaGreen;
+          padding: 10px;
+          margin-top: 10px;
+          .link {
+            white-space: nowrap;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            font-weight: 600;
+            padding: 3px;
+          }
+          .loading-spinner {
+            margin: 10px auto;
+            display: none;
+          }
+          .empty-message, .error-message, .server-error-message {
+            font-weight: 300;
+            font-style: italic;
+            display: none;
+          }
+        }
+      }
+      .comment-section {
+        h3 {
+          background: url('/images/icon_comments.png') no-repeat left center;
+        }
+        .sorting-links {
+          font-size: 0.8em;
+          padding-bottom: 10px;
+          color: @ltGray;
+          span {
+            cursor: pointer;
+          }
+          span.active {
+            color: @turquoise;
+            font-weight: 600;
+          }
+        }
+        .comment-form {
+          padding-bottom: 40px;
+          textarea {
+            .borderBox();
+            width: 100%;
+            height: 100px;
+            border: 1px solid @ltestGray;
+            padding: 10px;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+          }
+          button {
+            width: 100%;
+            font-size: 1.1em;
+          }
+          span.error {
+            display: none;
+          }
+        }
+        .comment-list {
+          .clearfix();
+          border-top: 3px solid @ltestGray;
+          color: @medGray;
+          .comment {
+            padding: 15px 0px 25px 80px;
+            border-bottom: 2px solid @ltestGray;
+            position: relative;
+            div.avatar {
+              width: 65px;
+              height: 65px;
+              position: absolute;
+              top: 20px;
+              left: 0px;
+            }
+            span {
+              position: absolute;
+              right: 0px;
+              top: 15px;
+              font-size: 0.8em;
+              font-weight: 300;
+            }
+            h4, p {
+              .borderBox();
+            }
+            h4 {
+              font-size: 1.2em;
+              padding-bottom: 10px;
+            }
+            p {
+              font-size: 0.8em;
+            }
+          }
+          .loading-spinner {
+            margin: 25px auto;
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  //Styles for the navigation sidebar
+  .reference-sidebar {
+    .borderBox();
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: @menuWidth;float: right;
+    text-align: right;
+    h4 {
+      font-size: 1.6em;
+      color: @turquoise;
+      font-weight: 300;
+      padding-bottom: 0px 15px 0px 5px;
+    }
+    ul {
+      >li {
+        font-weight: 400;
+        color: @headerGray;
+        span {
+          cursor: pointer;
+          &:hover {
+           color: @turquoise;
+           .transition(all 250ms);
+          }
+        }
+        >ul >li {
+          font-weight: 600;
+          color: @black;
+        }
+      }
+    }
+  }
 }
