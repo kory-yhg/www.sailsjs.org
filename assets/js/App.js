@@ -1,18 +1,18 @@
+
+/**
+ * Define the app module ("Sails")
+ *
+ * Bring any module dependencies (ngRoute, etc.)
+ */
 angular.module('Sails', [
-  'ngRoute'
-]);
+  'ngRoute',
+  'directives.skrollr'
+])
 
-// var app = angular.module('app', [
-//   'directives.skrollr'
-// ]);
-
-// skrollr.init ({
-//   forceHeight: false,
-// });
-
-
-angular.module('Sails')
-  .config(['$routeProvider', function($routeProvider) {
+/**
+ * Configure client-side routes (#/foo, #/bar, etc.)
+ */
+.config(['$routeProvider', function($routeProvider) {
 
     $routeProvider
 
