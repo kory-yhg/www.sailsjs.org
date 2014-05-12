@@ -2,9 +2,9 @@ angular.module('Sails', [
   'ngRoute'
 ]);
 
-skrollr.init ({
-  forceHeight: false,
-});
+// skrollr.init ({
+//   forceHeight: false,
+// });
 
 angular.module('Sails')
   .config(['$routeProvider', function($routeProvider) {
