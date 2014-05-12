@@ -1,19 +1,19 @@
 .banner {
 	.footerGradient();
 	font-family: @mainFont;
-	// background-image: url('/images/image_squidhome.png') no-repeat center 180px;
-	padding: 160px 0 110px;
 	width: 100%;
-
-  img.squid {
-    height: 414px;
-    width: 852px;
-  }
-
+  .clearfix();
 
 
 	.banner-container {
 		.container();
+    &.home {
+      padding: 160px 4% 110px;
+      background-image: url('/images/bkgd_squid@2x.png');
+      background-repeat: no-repeat;
+      background-size: 70%;
+      background-position: 100% 50px;
+    }
 
 		.star {
 			float: right;
@@ -41,7 +41,7 @@
 
 			h3 {
 				color: @taglineBlue;
-				font: 28px @headerFont;
+				font: 24px @headerFont;
 				font-weight: 300;
 				position: relative;
 				z-index: 10;
