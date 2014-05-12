@@ -28,9 +28,15 @@
   // Feature Section
   .sails-features {
 
+    // Features Container
+    .features-container {
+      position: relative;
+    }
+
     // Features Navigation
     .features {
       width: 20%;
+      position: absolute;
       ul {
         li {
           padding: 5px 0;
@@ -61,15 +67,11 @@
             font-weight: 500;
           }
           .icon-container {
-            height: 110px;
-            width: 100px;
-            border-radius: 10px;
             position: absolute;
             left: 0;
-            top: 35px;
-            background-color: @turquoise;
+            top: 0;
             img {
-              display: none;
+              width: 100px;
             }
           }
         }
