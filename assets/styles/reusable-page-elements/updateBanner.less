@@ -1,29 +1,52 @@
 // White Banner
-  .white-banner.update-banner {
-    font-family: @mainFont;
-    background-color: @white;
-    height: 50px;
-    .banner-container {
-      .container();
-      padding: 15px;
-      p {
-        font-size: .9em;
-        display: block;
+.white-banner.update-banner {
+  font-family: @mainFont;
+  background-color: @white;
+  height: 50px;
+  .banner-container {
+    .container();
+    padding: 15px 0;
+    p {
+      font-size: 15px;
+      display: block;
+      float: left;
+      color: @dkerGray;
+      font-family: @mainFont;
+      a {
+        color: @brightBlue;
+        padding-left: 20px;
+      }
+    }
+    .sharing {
+      .clearfix();
+      float: right;
+      div, div.star {
+        display: inline-block;
         float: left;
-        color: @dkerGray;
-        font-family: @mainFont;
+      }
+    }
+  }
+  @media screen and (max-width: 900px) {
+    .banner-container {
+      p {
+        width: 100%;
+        text-align: center;
         a {
-          color: @brightBlue;
-          padding-left: 20px;
+          padding-left: 5px;
         }
       }
       .sharing {
-        .clearfix();
-        float: right;
-        div, div.star {
-          display: inline-block;
-          float: left;
-        }
+        display: none;
       }
     }
-  } // white banner
+  }
+  @media screen and (max-width: 500px) {
+    height: 40px;
+    .banner-container {
+      padding: 12px 0;
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+} // white banner
