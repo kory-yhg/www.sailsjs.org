@@ -12,14 +12,9 @@
   }
 
   p {
-    font-style: italic;
-    font-size: 20px;
+    .sectionSubHeader(@black);
     margin: 0 auto 20px;
     text-align: center;
-    line-height: 1.8em;
-    width: 65%;
-    color: @black;
-    font-weight: 300;
     a {
       color: @brightBlue;
       &:hover {
@@ -36,9 +31,9 @@
     color: @black;
 
     .button {
-      .button();
+      .lgButton(@black, @white);
       font-weight: 500;
-      margin-left: 1%;
+      margin-left: 10px;
     }
 
     a {
