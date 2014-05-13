@@ -28,11 +28,12 @@
     .borderBox();
     .container();
     .clearfix();
-    padding: 100px 0px 100px 300px;
+    padding: 100px 0px 100px 250px;
     position: relative;
     // Features Navigation
     .features {
-      width: 250px;
+      .borderBox();
+      width: 225px;
       position: absolute;
       left: 0;
       top: 100px;
@@ -89,4 +90,44 @@
       } // feature list
     }
   } // features section
+
+  @media screen and (max-width: 1000px) {
+    .features-container {
+      .feature-list ul li {
+        padding: 35px 0 35px 90px;
+        .icon-container img {
+          width: 75px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .features-container {
+      padding-left: 0;
+      .features {
+        position: static;
+        width: 100%;
+        h1 {
+          text-align: center;
+        }
+        ul {
+          display: none;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .features-container {
+      padding: 50px 0px 50px 0px;
+      .feature-list {
+        padding-top: 25px;
+        ul li {
+          padding: 15px 0;
+          .icon-container {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 }
