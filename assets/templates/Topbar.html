@@ -1,7 +1,9 @@
 <div class="topbar">
-  
+
   <!--Mobile menu button-->
-  <div class="menu">
+  <div class="menu"
+    ng-click="menuVisible = !menuVisible"
+    ng-class="{'menu-open': menuVisible === true}">
     <div class="menu-button-stripe"></div>
     <div class="menu-button-stripe"></div>
     <div class="menu-button-stripe"></div>
@@ -12,18 +14,17 @@
     <a href="#/">
       <img class="logo" src="/images/sails-logo.jpg" alt="Sails" />
     </a>
-    <ul class="nav">
-      <!-- <li><a class="sails-site" data-page="HomePage" href="#!" id="home">Home</a></li> -->
-      <li><a class="sails-site"
-          ng-class="{current: intent.isCurrentPage('/')}" 
+    <ul class="nav" ng-class="{'menu-open': menuVisible === true}">
+      <li ng-click="menuVisible = false"><a class="sails-site"
+          ng-class="{current: intent.isCurrentPage('/')}"
           href="#/">Home</a></li>
-      <li><a class="sails-site"
+      <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: intent.isCurrentPage('/features')}"
           href="#/features">Features</a></li>
-      <li><a class="sails-site"
-          ng-class="{current: intent.isCurrentPage('/getStarted')}" 
+      <li ng-click="menuVisible = false"><a class="sails-site"
+          ng-class="{current: intent.isCurrentPage('/getStarted')}"
           href="#/getStarted">Get Started</a></li>
-      <li><a class="sails-site"
+      <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: intent.isCurrentPage('/documentation')}"
           href="#/documentation">Documentation</a></li>
      <!--  <li class="no-mobile">
