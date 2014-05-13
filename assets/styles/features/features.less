@@ -1,4 +1,5 @@
 .features-page {
+  font-family: @mainFont;
   .banner {
     background-color: #E2F0F1;
     padding: 61px 0 0;
@@ -10,11 +11,9 @@
       padding: 50px 0 20px;
     }
 
-    p {
-      &.sub-header {
-        .featuresSubHeader();
-        text-align: center;
-      }
+    p.sub-header {
+      .featuresSubHeader();
+      text-align: center;
     }
 
     img.squiddy {
@@ -24,23 +23,23 @@
       padding: 50px 0;
     }
   }
-
-  // Feature Section
-  .sails-features {
-
-    // Features Container
-    .features-container {
-      position: relative;
-    }
-
+  // Features Container
+  .features-container {
+    .borderBox();
+    .container();
+    .clearfix();
+    padding: 100px 0px 100px 300px;
+    position: relative;
     // Features Navigation
     .features {
-      width: 20%;
+      width: 250px;
       position: absolute;
+      left: 0;
+      top: 100px;
       ul {
         li {
           padding: 5px 0;
-          font-size: .9em;
+          font-size: 15px;
           a {
             color: @dkestGray;
             &:hover {
@@ -50,32 +49,44 @@
           }
         }
       }
-    } // sfeature navigation
+    } // features navigation
 
     // Features List
     .feature-list {
       padding-left: 0px;
       ul {
         li {
-          border-bottom: none;
+          .borderBox();
+          .clearfix();
+          position: relative;
+          width: 100%;
+          clear: both;
+          padding: 35px 0 35px 115px;
           h5 {
             .featuresSectionHeader();
             padding: 0 0 10px 20px;
           }
           p {
+            .smallParagraph(@black);
             padding-left: 20px;
             font-weight: 500;
+            a {
+              color: @turquoise;
+            }
+            code {
+              .docs_inlinecode();
+            }
           }
           .icon-container {
             position: absolute;
             left: 0;
-            top: 0;
+            top: 40px;
             img {
               width: 100px;
             }
           }
         }
-      }
-    } // feature list
+      } // feature list
+    }
   } // features section
 }
