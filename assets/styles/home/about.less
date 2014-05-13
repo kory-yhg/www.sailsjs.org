@@ -33,64 +33,39 @@
 		}
 	}
 	.video-link {
+    .sectionSubHeader(@black);
 		display: none;
+    padding: 25px 0 0;
+    text-align: center;
+    a {
+      color: @turquoise;
+    }
 	}
 
-	@media screen and (min-width: 481px) and (max-width: 952px) {
-		background-color: @seaGreen;
-			margin: 0 auto 0 auto;
-			padding: 10px auto 10px !important;
-			text-align: center;
+  @media screen and (max-width: 1000px) {
+    .about-container {
+      padding-right: 0;
+    }
+    .what-is-sails {
+      text-align: center;
+      max-width: 700px;
+    }
+    .video {
+      padding-top: 50px;
+      position: static;
+      margin: 0 auto;
+    }
+  }
 
-		.what-is-sails {
-			width: 90%;
-			padding-right: 0;
-			margin: auto;
-			float: none !important;
-
-			p {
-				font-size: 1em;
-			}
-		}
-		.video {
-			width: 90%;
-			float: none;
-			margin: 15px auto;
-			padding-top: 20px;
-		}
-	}
-
-	@media screen and (max-width: 480px) {
-			background-color: @seaGreen;
-			margin: 0 auto 0 auto;
-			padding: 10px auto 10px !important;
-			text-align: center;
-
-		.what-is-sails {
-			width: 90%;
-			margin: auto;
-			float: none !important;
-
-			p {
-				font-size: 1em;
-			}
-		}
-		.video {
-			display: none!important;
-		}
-
-		.video-link {
-			display: block;
-			padding: 40px 0 10px 0;
-
-			h2 {
-				font-size: 1.5em;
-				font-style: italic;
-			}
-
-			a:hover {
-				color: black;
-			}
-		}
-	}
+  @media screen and (max-width: 500px) {
+    .about-container {
+      padding: 50px 0;
+    }
+    .video {
+      display: none;
+    }
+    .video-link {
+      display: block;
+    }
+  }
 }
