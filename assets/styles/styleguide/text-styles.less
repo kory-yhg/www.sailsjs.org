@@ -1,13 +1,41 @@
-// header styles
-.h1(@color) {
+/*********
+* General
+*********/
+.pageHeader(@color) {
 	color: @color;
 	font-family: @headerFont;
 	font-weight: 300;
 	font-size: 36px;
 }
 
+.paragraph(@color) {
+  color: @color;
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 400;
+}
+
+/*******************
+* For the Home Page
+********************/
+.sectionHeader(@color) {
+  color: @color;
+  font-family: @headerFont;
+  font-weight: 300;
+  font-size: 22px;
+}
+.featureHeader() {
+  color: @ltTurquoise;
+  font-family: @mainFont;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+/***********************
+* For the Features Page
+***********************/
 // sub-header styles
-.sub-header() {
+.featuresSubHeader() {
   font-style: italic;
   font-size: 1.2em;
   font-weight: 400;
@@ -15,8 +43,8 @@
 }
 
 // blue header styles (sub-sections)
-.sub-section-header {
-  font-size: 1.3em;
+.featuresSectionHeader() {
+  font-size: 26px;
   font-weight: 400;
   color: @turquoise;
   padding-bottom: 0px;
