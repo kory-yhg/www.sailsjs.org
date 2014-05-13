@@ -1,180 +1,232 @@
 .sails-footer {
-	font-family: @mainFont;
-	position: relative;
+  .footerGradient();
+  font-family: @mainFont;
+  position: relative;
 
-	.bottom-waves {
-		position: absolute;
-		top: -150px;
 
-		height: 300px;
-		background: url('/images/image_wavesBottom.png') no-repeat center;
-		width: 100%;
-		z-index: 10;
+  .navigation-footer {
+      .clearfix();
+      .container();
+      color: @white;
+      padding: 0 0 60px;
+      z-index: 5;
 
-		@media screen and (max-width: 768px) {
-			background: url('/images/waves-mobile.png') no-repeat -25px top;
-			top: -20px;
-		}
-	}
+    	.bottom-waves {
+  		position: relative;
+  		top: 0px;
+  		width: 100%;
 
-	.navigation-footer {
-		.clearfix();
-		.footerGradient();
-		color: @white;
-		padding: 75px 0 60px;
-		z-index: 5;
-
-	.footer-container {
-		.container();
-	}
-
-	.built {
-		float: left;
-		width: 50%;
-
-		a {
-			color: @white;
-			font-weight: 600;
-		}
-
-		a:hover {
-			color: @darkTurquoise;
-			.transition(all 0.25s);
-		}
-
-		h1 {
-      .sectionHeader(@white);
-      background: url(/images/icon_heart.png) no-repeat left 5px;
-      background-size: 32px;
-			padding-left: 40px;
-			width: 215px;
-		}
-
-		p, span{
-      .paragraph(@white);
-      font-size: 15px;
-			&.license-info {
-        font-size: 13px;
-        padding-top: 20px;
+      img {
+        position: absolute;
+        &.waves-left {
+          height: 30px;
+          left: -10px;
+          top: -24px;
+        }
+        &.waves-right {
+          height: 275px;
+          right: -10px;
+          top: -142px;
+        }
       }
-		}
-	}
+  	}
+  	.built {
+  		float: left;
+  		width: 50%;
+      padding-top: 75px;
+  		a {
+  			color: @white;
+  			font-weight: 600;
+    		&:hover {
+    			color: @darkTurquoise;
+    			.transition(all 0.25s);
+    		}
+      }
+  		h1 {
+        .sectionHeader(@white);
+        background: url(/images/icon_heart.png) no-repeat left 5px;
+        background-size: 32px;
+  			padding-left: 40px;
+  			width: 255px;
+        .borderBox();
+  		}
+  		p, span{
+        .paragraph(@white);
+        font-size: 15px;
+  			&.license-info {
+          font-size: 13px;
+          padding-top: 20px;
+        }
+  		}
+  	}
+  	.footer-nav {
+  		float: right;
+  		height: 230px;
+  		margin-top: 50px;
+      padding-top: 75px;
 
-	.footer-nav {
-		float: right;
-		height: 230px;
-		margin-top: 50px;
+  		li {
+  			text-align: right;
+  			margin-bottom: 12px;
 
-		li {
-			text-align: right;
-			margin-bottom: 12px;
-
-			span {
-				font-size: 13px;
-				font-weight: 300;
-				margin-top: 25px;
-				text-decoration: underline;
-			}
-
-
-			a {
-				color: @white;
-				font-size: 16px;
-				font-weight: 600;
-				padding-right: 15px;
-  			&:hover {
-  				color: @darkTurquoise;
-  				.transition(all 0.25s);
+  			span {
+  				font-size: 13px;
+  				font-weight: 300;
+  				margin-top: 25px;
+  				text-decoration: underline;
   			}
+
+
+  			a {
+  				color: @white;
+  				font-size: 16px;
+  				font-weight: 600;
+  				padding-right: 15px;
+    			&:hover {
+    				color: @darkTurquoise;
+    				.transition(all 0.25s);
+    			}
+        }
+  		}
+  	}
+
+  	.license-info-mobile {
+  		display: none;
+  	}
+
+    @media screen and (max-width: 1000px) {
+      .bottom-waves {
+          img.waves-left {
+            left: -50px;
+          }
+          img.waves-right {
+            right: -50px;
+          }
+        }
+    }
+    @media screen and (max-width: 768px) {
+      text-align: center;
+      padding-bottom: 50px;
+      .built {
+        padding-top: 50px;
+        float: none;
+        width: 100%;
+        max-width: 600px;
+        h1 {
+          margin: 0 auto;
+          width: 230px;
+        }
+        p.license-info {
+          display: none;
+        }
       }
-
-		}
-	}
-
-	.license-info-mobile {
-		display: none;
-	}
-
-	@media screen and (min-width: 636px) and (max-width: 768px) {
-		text-align: center;
-		padding: 20px 0 10px;
-
-		.built {
-			float: none;
-			width: 90%;
-			margin: auto;
-
-			h1 {
-				margin: 0 auto 10px;
-			}
-		}
-
-		.footer-nav {
-			float: none;
-			width: 90%;
-			margin: 0 auto 20px;
-			height: auto;
-
-
-			li {
-				text-align: center;
-				margin-bottom: 10px;
-			}
-		}
-
-		.license-info {
-			display: none;
-		}
-
-		.license-info-mobile {
-			display: block;
-			font-size: 0.9em;
-			font-weight: lighter;
-			margin-bottom: 10px;
-		}
-	}
-
-		@media screen and (max-width: 635px) {
-			text-align: center;
-			padding: 60px 0;
-
-			.built {
-				float: none;
-				width: 90%;
-				margin: auto;
-
-				h1 {
-					margin: 0 auto 10px;
-				}
-			}
-
-			.footer-nav {
-				float: none;
-				width: 90%;
-				margin: 0 auto 20px;
-				height: auto;
-
-
-				li {
-					text-align: center;
-					margin-bottom: 10px;
-				}
-			}
-
-			.license-info {
-				display: none;
-			}
-
-			.license-info-mobile {
-				display: block;
-				font-size: 0.9em;
-				font-weight: lighter;
-				margin-bottom: 10px;
-			}
-		}
-	}
+      ul.footer-nav {
+        display: none;
+      }
+      .license-info-mobile {
+        display: block;
+        padding-top: 20px;
+        a {
+          color: @white;
+          text-decoration: underline;
+        }
+      }
+      .bottom-waves  {
+          img.waves-left {
+            height: 25px;
+            top: -20px;
+            left: -25px;
+          }
+          img.waves-right {
+            display: none;
+          }
+        }
+    }
+  }
 }
 
+
+ //  	@media screen and (min-width: 636px) and (max-width: 768px) {
+ //  		text-align: center;
+ //      .bottom-waves {
+ //        img.waves-right {
+
+ //        }
+ //      }
+
+ //  		.built {
+ //  			float: none;
+ //  			width: 90%;
+ //  			margin: auto;
+
+ //  			h1 {
+ //  				margin: 0 auto 10px;
+ //  			}
+ //  		}
+
+ //  		.footer-nav {
+ //  			float: none;
+ //  			width: 90%;
+ //  			margin: 0 auto 20px;
+ //  			height: auto;
+
+
+ //  			li {
+ //  				text-align: center;
+ //  				margin-bottom: 10px;
+ //  			}
+ //  		}
+
+ //  		.license-info {
+ //  			display: none;
+ //  		}
+
+ //  		.license-info-mobile {
+ //  			display: block;
+ //  			font-size: 0.9em;
+ //  			font-weight: lighter;
+ //  			margin-bottom: 10px;
+ //  		}
+ //  	}
+
+	// 	@media screen and (max-width: 635px) {
+	// 		text-align: center;
+	// 		padding: 60px 0;
+
+	// 		.built {
+	// 			float: none;
+	// 			width: 90%;
+	// 			margin: auto;
+
+	// 			h1 {
+	// 				margin: 0 auto 10px;
+	// 			}
+	// 		}
+
+	// 		.footer-nav {
+	// 			float: none;
+	// 			width: 90%;
+	// 			margin: 0 auto 20px;
+	// 			height: auto;
+
+
+	// 			li {
+	// 				text-align: center;
+	// 				margin-bottom: 10px;
+	// 			}
+	// 		}
+
+	// 		.license-info {
+	// 			display: none;
+	// 		}
+
+	// 		.license-info-mobile {
+	// 			display: block;
+	// 			font-size: 0.9em;
+	// 			font-weight: lighter;
+	// 			margin-bottom: 10px;
+	// 		}
+	// 	}
 //Black footer with tweet/star/share links
 //Also used on documentation page
 .bottom {
