@@ -20,7 +20,6 @@
 	.navigation-footer {
 		.clearfix();
 		.footerGradient();
-		// background-color: @turquoise;
 		color: @white;
 		padding: 75px 0 60px;
 		z-index: 5;
@@ -31,69 +30,68 @@
 
 	.built {
 		float: left;
-		width: 40.2%;
+		width: 50%;
 
 		a {
-			color: @taglineBlue;
+			color: @white;
 			font-weight: 600;
 		}
 
 		a:hover {
-			color: @black;
+			color: @darkTurquoise;
 			.transition(all 0.25s);
 		}
 
 		h1 {
-			background: url(/images/icon_heart.png) no-repeat left center;
-			background-size: 40px;
-			color: @white;
-			font-size: 30px;
-			margin-bottom: 15px;
-			padding-left: 47px;
+      .sectionHeader(@white);
+      background: url(/images/icon_heart.png) no-repeat left 5px;
+      background-size: 32px;
+			padding-left: 40px;
 			width: 215px;
 		}
 
 		p, span{
-			font-size: 14px;
-			line-height: 1.7em;
-			font-weight: 500;
-			margin-bottom: 20px;
+      .paragraph(@white);
+      font-size: 15px;
+			&.license-info {
+        font-size: 13px;
+        padding-top: 20px;
+      }
 		}
 	}
 
 	.footer-nav {
 		float: right;
 		height: 230px;
-		margin-top: 10px;
+		margin-top: 50px;
 
 		li {
 			text-align: right;
-			margin-bottom: 15px;
+			margin-bottom: 12px;
 
 			span {
-				font-size: .75em;
-				font-weight: 600;
-				margin-top: 1em;
+				font-size: 13px;
+				font-weight: 300;
+				margin-top: 25px;
 				text-decoration: underline;
 			}
 
 
 			a {
 				color: @white;
-				font-size: 1.1em;
+				font-size: 16px;
 				font-weight: 600;
-				-webkit-transition: font-size 250ms;
 				padding-right: 15px;
-			}
+  			&:hover {
+  				color: @darkTurquoise;
+  				.transition(all 0.25s);
+  			}
+      }
 
-			a:hover {
-				color: @black;
-				.transition(all 0.25s);
-			}
 		}
 	}
 
-	.c-mobile {
+	.license-info-mobile {
 		display: none;
 	}
 
@@ -124,11 +122,11 @@
 			}
 		}
 
-		.c {
+		.license-info {
 			display: none;
 		}
 
-		.c-mobile {
+		.license-info-mobile {
 			display: block;
 			font-size: 0.9em;
 			font-weight: lighter;
@@ -163,11 +161,11 @@
 				}
 			}
 
-			.c {
+			.license-info {
 				display: none;
 			}
 
-			.c-mobile {
+			.license-info-mobile {
 				display: block;
 				font-size: 0.9em;
 				font-weight: lighter;
