@@ -1,38 +1,34 @@
 .sails-about {
 	font-family: @mainFont;
 	background-color: @seaGreen;
-	padding: 75px 0;
 	position: relative;
 	z-index: 10;
 
 	.about-container {
 		.container();
 		.clearfix();
+    position: relative;
+    padding: 100px 525px 100px 0;
 	}
 
 	.what-is-sails {
-		float: left;
-		width: 41%;
-		padding-right: 1%;
-
 		h1 {
-			.pageHeader(@turquoise);
+			.sectionHeader(@medTurquoise);
 			margin-bottom: 8px;
 		}
 
 		p {
-			font-size: 18px;
-			font-weight: lighter;
-			line-height: 1.8em;
+			.paragraph(@black);
 		}
 	}
 
 	.video {
-		float: right;
-		margin-top: 50px;
-
+    width: 450px;
+    position: absolute;
+    top: 75px;
+    right: 0px;
 		iframe {
-			width: 500px;
+			width: 450px;
 			height: 282px;
 		}
 	}
