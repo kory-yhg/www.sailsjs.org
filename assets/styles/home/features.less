@@ -39,18 +39,7 @@
 
 	.feature-list {
 		.borderBox();
-		float: right;
-		width: 70%;
-		padding-left: 50px;
-
-		h3 {
-			font-size: 1.2em;
-			font-weight: lighter;
-			padding-bottom: 40px;
-		}
-
 		ul {
-
 			li {
 				.borderBox();
 				.clearfix();
@@ -62,11 +51,9 @@
 				&:last-child {
 					border-bottom: none;
 				}
-
 				code {
 					.docs_inlinecode();
 				}
-
 				img.icon {
 					.borderBox();
 					position: absolute;
@@ -77,17 +64,11 @@
 				}
 
 				h5 {
-					font-size: 1.5em;
-					font-weight: 300;
-					color: @turquoise;
-					padding-bottom: 10px;
+					.featureHeader();
 				}
 
 				p {
-					font-size: 15px;
-					line-height: 1.8em;
-					font-weight: 300;
-					padding-bottom: 3px;
+					.smallParagraph(@black);
 				}
 
 			}
