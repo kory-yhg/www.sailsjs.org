@@ -56,11 +56,19 @@ angular.module('Sails')
 
     .when('/documentation/anatomy', {
       templateUrl: 'templates/pages/Documentation/DocsSection.html',
-      controller: ['$scope', function ($scope) {
-        $scope.docs.sectionID = 'anatomy';
-        $scope.docs.sectionTpl = 'templates/pages/Documentation/sections/DocsSection_anatomy.html';
-        $scope.docs.title = 'Anatomy of a Sails App';
-      }]
+      redirectTo: '/documentation/anatomy/myApp'
+      // controller: ['$scope','Menu', function ($scope,Menu) {
+
+      //   // Build the menu
+      //   var menu = Menu.all('anatomy');
+      //   MENU=menu;
+      //   $scope.docs.sectionID = 'anatomy';
+      //   $scope.docs.sectionTpl = 'templates/pages/Documentation/sections/DocsSection_anatomy.html';
+      //   $scope.docs.title = 'Anatomy of a Sails App';
+
+      //   $scope.visibleMenu = menu;
+      //   $scope.docs.currentPage = target;
+      // }]
     })
 
     // Documentation section sub-router

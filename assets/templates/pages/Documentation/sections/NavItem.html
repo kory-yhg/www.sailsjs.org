@@ -6,7 +6,7 @@
 <ul ng-show="menuItem.visibleChildren.length">
   <li ng-repeat="menuItem in menuItem.visibleChildren"
     stop-propagation="click"
-    ng-include="'templates/pages/Documentation/sections/ReferenceNavItem.html'"
+    ng-include="'templates/pages/Documentation/sections/NavItem.html'"
     ng-class="{'current-section': docs.currentPage.name === menuItem.name, 'parent-section': docs.currentPage.parentName === menuItem.name }">
   </li>
 </ul>
