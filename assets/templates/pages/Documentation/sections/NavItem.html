@@ -1,0 +1,12 @@
+<span ng-click="intent.goto(menuItem.href)">
+  {{menuItem.name}}
+</span>
+
+
+<ul ng-show="menuItem.visibleChildren.length">
+  <li ng-repeat="menuItem in menuItem.visibleChildren"
+    stop-propagation="click"
+    ng-include="'templates/pages/Documentation/sections/ReferenceNavItem.html'"
+    ng-class="{'current-section': docs.currentPage.name === menuItem.name, 'parent-section': docs.currentPage.parentName === menuItem.name }">
+  </li>
+</ul>

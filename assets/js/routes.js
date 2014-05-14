@@ -54,6 +54,15 @@ angular.module('Sails')
       templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.9.8.html'
     })
 
+    .when('/documentation/anatomy', {
+      templateUrl: 'templates/pages/Documentation/DocsSection.html',
+      controller: ['$scope', function ($scope) {
+        $scope.docs.sectionID = 'anatomy';
+        $scope.docs.sectionTpl = 'templates/pages/Documentation/sections/DocsSection_anatomy.html';
+        $scope.docs.title = 'Anatomy of a Sails App';
+      }]
+    })
+
     // Documentation section sub-router
     .when('/documentation/:sectionPath*?', {
       templateUrl: 'templates/pages/Documentation/DocsSection.html',
@@ -66,17 +75,41 @@ angular.module('Sails')
         .where(function eliminateEmptypieces(piece) { return !!piece; }).valueOf();
         // console.log(pieces);
 
+
+        // Get topLevelSectionID (e.g. "anatomy", "reference")
         var topLevelSectionID = pieces[0];
-        var subSectionID = pieces.pop();
 
         // Build the menu
         var menu = Menu.all(topLevelSectionID);
 
+        // Lookup target
+        var subSectionID;
+        var target;
+        MENU=menu;
+
+        // if target is undefined, try to find the next best match, and
+        // in the worst case, just do the default behavior.
+        // (e.g. the sub-section id is the same as the top-level id, or
+        // this is an unrecognized page)
+        var tries = 0;
+        while (!target && tries<3) {
+          subSectionID = pieces.pop();
+          console.log('in',topLevelSectionID,', trying '+subSectionID);
+          target = _(menu).find(_ifPropertyEqualsCaseInsensitive('name', subSectionID));
+          tries++;
+          if (typeof subSectionID === 'undefined') break;
+        }
+        if(!target) {
+          // worst case, for right now, show the assets section
+          window.location.hash='#/documentation/reference/Assets';
+          // TODO: show a landing page
+          return;
+        }
+
 
         // Expose top-level menu in scope (i.e. orphans)
-        $scope.docs.menu = _.where(menu, {parentName: null});
+        $scope.docs.visibleMenu = _.where(menu, {parentName: null});
 
-        console.log($scope.docs.menu);
         // Then show the top-level docs section (e.g. anatomy, reference)
         $scope.docs.sectionID = topLevelSectionID;
         $scope.docs.sectionTpl = 'templates/pages/Documentation/sections/DocsSection_'+topLevelSectionID+'.html';
@@ -90,10 +123,34 @@ angular.module('Sails')
         }
 
         // Then show the appropriate sub-section
-        var target = _(menu).find(_ifPropertyEqualsCaseInsensitive('name', subSectionID)) || {};
         $scope.docs.subSectionID = target.name;
-        $scope.currentPage = target;
+        $scope.docs.currentPage = target;
 
+        // Now collapse all other top-level sections
+        // (TODO: play w/ this-- is this even a good thing UX-wise?)
+        _($scope.docs.visibleMenu).where({parentName: null}).each(function (topLevelItem) {
+          $scope.intent.collapseMenuItem(topLevelItem.name);
+        });
+
+        // In order to expand the appropriate parts of the menu
+        // (expand the current page, and expand its parent, and then its parent, etc.)
+        // we must find the menu item's ancestors
+        var ancestors = [];
+        var parent = _(menu).find(_ifPropertyEqualsCaseInsensitive('name', target.parentName));
+        while (parent) {
+          ancestors.push(parent);
+          parent = _(menu).find(_ifPropertyEqualsCaseInsensitive('name', parent.parentName));
+        }
+
+        // Now expand the menu item's ancestors
+        while (ancestors.length) {
+          var toExpand = ancestors.shift();
+          console.log('trying to expand ancestor',toExpand.name);
+          $scope.intent.expandMenuItem(toExpand.name);
+        }
+        // Finally, expand the menu item itself
+        console.log('trying to expand',target);
+        $scope.intent.expandMenuItem(target.name);
 
       }]
     });

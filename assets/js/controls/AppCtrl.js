@@ -40,10 +40,9 @@ angular.module('Sails').controller('AppCtrl', [
       },
 
       toggleMenuItem: function (id) {
-        console.log($scope.docs.menu);
-        var thisMenuItem = _.find($scope.docs.menu, { name: id });
+        var $thisMenuItem = _.find($scope.docs.visibleMenu, { name: id });
 
-        if (thisMenuItem.expanded) {
+        if ($thisMenuItem.expanded) {
           $scope.intent.collapseMenuItem(id);
         }
         else {
@@ -52,20 +51,28 @@ angular.module('Sails').controller('AppCtrl', [
       },
 
       expandMenuItem: function (id) {
-        // var menu = Menu.all('reference');
-        // var thisMenuItem = _.find(menu, { name: id });
+        var globalMenu = Menu.all($scope.docs.sectionID);
 
-        // $scope.docs.menu = menu;
-        var $menuItem =_.find($scope.docs.menu, {name:id});
+        // Find the targeted menu item in the visible menu and expand it
+        var $menuItem =_.find($scope.docs.visibleMenu, {name:id});
+        if (!$menuItem){
+          if (typeof console !== 'undefined') console.error('couldn\'t expand because couldnt find ('+id+')');
+          return;
+        }
+
         $menuItem.expanded = true;
-        $menuItem.visibleChildren = _.where(Menu.all($scope.docs.sectionID), { parentName: $menuItem.name });
-      },
-      collapseMenuItem: function (id) {
-        // var menu = Menu.all('reference');
-        // var thisMenuItem = _.find(menu, { name: id });
+        $menuItem.visibleChildren = _.where(globalMenu,{ parentName: $menuItem.name });
 
-        // $scope.docs.menu = menu;
-        var $menuItem =_.find($scope.docs.menu, {name:id});
+        // Merge newly expanded stuff into the visible menu
+        $scope.docs.visibleMenu = _.union($scope.docs.visibleMenu, $menuItem.visibleChildren);
+      },
+
+      collapseMenuItem: function (id) {
+        var $menuItem =_.find($scope.docs.visibleMenu, {name:id});
+        if (!$menuItem){
+          if (typeof console !== 'undefined') console.error('couldn\'t collapse because couldnt find ('+id+')');
+          return;
+        }
         $menuItem.expanded = false;
         $menuItem.visibleChildren = [];
       },
