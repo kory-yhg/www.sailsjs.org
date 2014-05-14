@@ -6,7 +6,13 @@
 				<!-- Folders get class "expanded" to show their contents -->
 				<!-- Files get class "active" to show which one you're looking at.-->
 				<!-- The top-level folder containing the "active" file also gets the class "active" -->
-				<li class="folder" data-page="api">
+        <li ng-repeat="menuItem in anatomyMenu"
+          stop-propagation="click"
+          ng-class="{'current-section': currentPage.name === menuItem.name, 'parent-section': currentPage.parentName === menuItem.name }"
+          ng-click="intent.toggleAnatomyItemExpanded(menuItem.name)">
+          <div ng-include="'templates/pages/Documentation/sections/AnatomyNavItem.html'"></div>
+        </li>
+				<!-- <li class="folder" data-page="api">
 					<span>api</span>
 					<ul>
 						<li class="folder" data-page="api/adapters">
@@ -101,7 +107,7 @@
 				<li class="file" data-page="package.json">package.json</li>
 				<li class="file" data-page="README.md">README.md</li>
 			</ul>
-		</div>
+		</div> -->
 
 		<!-- Region with the information about the selected file -->
 		<div data-region data-id="fileDetailsRegion" class="docs-region"></div>

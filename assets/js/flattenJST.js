@@ -28,14 +28,14 @@ function flattenJST (subsection, JST) {
   });
 
 
-  
+
 
   // Flatten menu data
   menuData = _.map(menuData, function(menuItem) {
 
     //
     // For each menu item:
-    // 
+    //
 
     // Trim the templatePath
     menuItem.templatePath = menuItem.templatePath.replace(/^assets\//,'');
@@ -46,16 +46,19 @@ function flattenJST (subsection, JST) {
 
     // Chop off the extraneous bullshit and get down...
     // ...to business.  Mmm girl
-    pieces.shift();
-    // pieces.shift();
-    // pieces.shift();
+    if(subsection === 'reference') {
+      pieces.shift();
+    } else if(subsection === 'anatomy') {
+      pieces.shift();
+      pieces.shift();
+    }
 
 
     // Set the "name" to be the ugly file name
     menuItem.name = pieces.pop();
 
     menuItem.pieces = pieces;
-    
+
     return menuItem;
   });
 
@@ -76,7 +79,7 @@ function flattenJST (subsection, JST) {
   });
 
   // console.log('here are the '+allExtraDads.length + ' dads',allExtraDads);
-  
+
   // Finally, push those extra dads onto the menu
   menuData = menuData.concat(_.uniq(allExtraDads));
   // (make sure there are no duplicate dads)
@@ -91,7 +94,7 @@ function flattenJST (subsection, JST) {
     return menuItem;
   });
 
-  
+
   return menuData;
 
 
@@ -105,7 +108,7 @@ function flattenJST (subsection, JST) {
 
 
   // Now that we know everybody's name, let's find their dads
-  // 
+  //
   // (we need this extra dad holding tank in case we need to create
   // some dads-- and it's weird to create them with the rest of the menu
   // items because what if it got confused)

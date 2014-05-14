@@ -74,10 +74,14 @@ module.exports = function compileDocumentationMarkdown (cb) {
       beforeConvert: beforeConvert,
       afterConvert: afterConvert
     }
-  }/*, {
-    docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-    dirNameInRepo: 'anatomy',
-    parsedTemplatesDirectory: 'assets/templates/anatomy/'
-  }*/], afterTemplateCB);
+  },{
+    docsGitRepo: 'git://github.com/balderdashy/sails-docs-anatomy.git',
+    //dirNameInRepo: 'reference',
+    parsedTemplatesDirectory: 'assets/templates/anatomy/',
+    applyToTemplates: {
+      beforeConvert: beforeConvert,
+      afterConvert: afterConvert
+    }
+  }], afterTemplateCB);
 
 }
