@@ -4,24 +4,25 @@
  *
  * Bring any module dependencies (ngRoute, etc.)
  */
+var Sails;
 (function _selfCallingFn () {
   var dependencies = [
     'ngRoute'
   ];
-  
+
   // Don't do this crazy parallax business on mobile
   if (window.innerWidth >= 400) {
     dependencies.push('directives.skrollr');
   }
-  
-  angular.module('Sails', dependencies);
+
+  Sails = angular.module('Sails', dependencies);
 })();
 
 
 /**
  * Configure client-side routes (#/foo, #/bar, etc.)
  */
-.config(['$routeProvider', function($routeProvider) {
+Sails.config(['$routeProvider', function($routeProvider) {
 
     $routeProvider
 
