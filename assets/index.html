@@ -21,8 +21,8 @@
     <![endif]-->
   </head>
   <body ng-app="Sails" ng-controller="AppCtrl">
-    <div id="wrap">
-      <div class="topbar-wrapper" ng-include="'templates/Topbar.html'"></div>
+    <div class="topbar-wrapper" ng-include="'templates/Topbar.html'"></div>
+    <div class="wrap">
       <ng-view></ng-view>
       <div id="push"></div>
     </div>
@@ -41,7 +41,7 @@
   <!-- Tweet button script -->
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
     </script>
-    
+
     <!-- Follow button script -->
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </html>

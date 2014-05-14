@@ -1,34 +1,32 @@
-.banner {
-	.footerGradient();
-	font-family: @mainFont;
-	width: 100%;
+.banner.home {
+  .borderBox();
+  .footerGradient();
   .clearfix();
+  font-family: @mainFont;
+  width: 100%;
+  height: 500px;
 
-
-	.banner-container {
-		.container();
-    &.home {
-      padding: 160px 4% 110px;
-      background-image: url('/images/bkgd_squid@2x.png');
-      background-repeat: no-repeat;
-      background-size: 70%;
-      background-position: 100% 50px;
+  .banner-container {
+    .borderBox();
+    position: relative;
+    width: 100%;
+    max-width: 1450px;
+    margin: auto;
+    padding: 160px 0 110px;
+    .squid {
+      height: 500px;
+      position: absolute;
+      top: 0px;
+      right: 0px;
     }
 
-		.star {
-			float: right;
-			position: relative;
-			iframe {
-				position: absolute;
-				right: 0px;
-				bottom: 275px;
-			}
-		}
-
 		.tagline {
-			width: 450px;
+      .container();
 			margin-top: 15px;
 			position: relative;
+      z-index: 15;
+
+      @bannerTextWidth: 450px;
 
 			h2 {
 				color: @ltBlue;
@@ -37,6 +35,7 @@
 				line-height: 100%;
 				position: relative;
 				z-index: 10;
+        width: @bannerTextWidth;
 			}
 
 			h3 {
@@ -45,10 +44,14 @@
 				font-weight: 300;
 				position: relative;
 				z-index: 10;
+        width: @bannerTextWidth;
 			}
 
 			.button {
-				.button();
+        .borderBox();
+				.lgButton(@black, @white);
+        display: block;
+        width: 230px;
 				margin-top: 20px;
 				z-index: 20;
 				&:hover {
@@ -59,156 +62,88 @@
 		}
 	}
 
-	.mobile-ocean {
-		position: relative;
-		display: none;
-		width: 100%;
-		height: 125px;
-		.oceanGradient();
-		position: relative;
-		img {
-			width: 60px;
-			position: absolute;
-			right: 6%;
-			bottom: 22px;
-		}
+	@media screen and (max-width: 1250px) {
+	 .banner-container {
+    .squid {
+      height: 425px;
+      left: 300px;
+      top: 60px;
+    }
+   }
 	}
+  @media screen and (max-width: 1000px) {
+    height: 410px;
+    .banner-container {
+      padding: 125px 0 115px;
+      img.squid {
+        height: 350px;
+        left: 300px;
+        top: 60px;
+      }
+    }
+  }
+  @media screen and (max-width: 800px) {
+    height: auto;
+    padding-bottom: 25px;
+    .banner-container {
+      padding-top: 110px;
+      padding-bottom: 50px;
+      background: url('/images/image_oceanFloor.png') no-repeat 80% bottom;
+      background-size: 300px;
+      img.squid {
+        display: none;
+      }
+      .tagline {
+        h2, h3 {
+          width: 100%;
+          text-align: center;
+        }
+        h2 {
+          font-size: 32px;
+          padding-bottom: 5px;
+        }
+        h3 {
+          font-size: 20px;
+          padding-bottom: 25px;
+        }
+        .button {
+          margin: 0 auto 35px;
+        }
+      }
+    }
+  }
+	// @media screen and (min-width: 769px) and (max-width: 950px) {
+	// 	// background-size: 900px;
+	// 	background-position: -70px 180px;
+	// }
+ // 	@media screen and (min-width: 551px) and (max-width: 768px) {
+	// 	.banner-container {
+	// 		.tagline.mobile {
+	// 			width: 70%;
+	// 		}
+	// 	}
+	// 	.mobile-ocean {
+	// 		img {
+	// 			right: 19%;
+	// 		}
+	// 	}
+	// }
 
-	.cloud-1 {
-		display: none;
-		position: absolute;
-		top: 28px;
-		left: -35px;
-		width: 68px;
-		height: 60px;
-		background: url('/images/img_clouds_waves.png') no-repeat 0px 0px;
-		background-size: 300px;
-		z-index: 5;
-	}
-	.cloud-2 {
-		display: none;
-		position: absolute;
-		top: -28px;
-		right: -20px;
-		width: 60px;
-		height: 60px;
-		background: url('/images/img_clouds_waves.png') no-repeat -68px 0px;
-		background-size: 300px;
-		z-index: 5;
-	}
-	.waves-1 {
-		display: inline-block;
-		position: absolute;
-		left: 20%;
-		top: -5px;
-		width: 90px;
-		height: 60px;
-		background: url('/images/img_clouds_waves.png') no-repeat -148px 0px;
-		background-size: 350px;
-	}
-	.waves-2 {
-		display: inline-block;
-		position: absolute;
-		right: 35%;
-		top: -5px;
-		width: 80px;
-		height: 60px;
-		background: url('/images/img_clouds_waves.png') no-repeat -238px 0px;
-		background-size: 350px;
-	}
-	.waves-3 {
-		display: inline-block;
-		position: absolute;
-		bottom: -36px;
-		left: 0px;
-		width: 225px;
-		height: 60px;
-		background: url('/images/shape-2.png') no-repeat 0px 0px;
-	}
-
-	@media screen and (max-width: 768px) {
-		.skyGradient();
-
-		.mobile-ocean {
-			display: block;
-		}
-
-		.star {
-			display: none;
-		}
-		.banner-container {
-			width: 95%;
-			padding: 0;
-
-			.cloud-1, .cloud-2 {
-				display: inline-block;
-			}
-		}
-
-		height: auto;
-		text-align: center;
-		padding: 100px 0 0;
-
-		.star {
-			display: none;
-		}
-
-		.tagline.mobile {
-			margin: auto;
-			padding-bottom: 25px;
-
-			h2 {
-				font-size: 2em;
-			}
-
-			h3 {
-				font-size: 1.2em;
-			}
-
-			.button {
-				.borderBox();
-				width: 58%;
-				margin-top: 40px;
-				margin-bottom: 30px;
-				padding: 10px 15px;
-				position: absolute;
-				left: 21%;
-				bottom: -110px;
-			}
-		}
-	}
-	@media screen and (min-width: 769px) and (max-width: 950px) {
-		// background-size: 900px;
-		background-position: -70px 180px;
-	}
- 	@media screen and (min-width: 551px) and (max-width: 768px) {
-		.banner-container {
-			.tagline.mobile {
-				width: 70%;
-			}
-		}
-		.mobile-ocean {
-			img {
-				right: 19%;
-			}
-		}
-	}
-
-	@media screen and (max-width: 550px) {
-		.tagline.mobile {
-			width: 100%;
-			h2 {
-				font-size: 1.7em;
-			}
-			h3 {
-				font-size: 1.1em;
-			}
-			.button {
-				width: 56%;
-			}
-		}
-		.waves-2 {
-			right: 25%;
-		}
-	}
+	// @media screen and (max-width: 550px) {
+	// 	.tagline.mobile {
+	// 		width: 100%;
+	// 		h2 {
+	// 			font-size: 1.7em;
+	// 		}
+	// 		h3 {
+	// 			font-size: 1.1em;
+	// 		}
+	// 		.button {
+	// 			width: 56%;
+	// 		}
+	// 	}
+	// 	.waves-2 {
+	// 		right: 25%;
+	// 	}
+	// }
 }

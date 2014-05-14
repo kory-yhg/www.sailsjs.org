@@ -1,0 +1,138 @@
+.topbar-wrapper {
+	position: fixed;
+	width: 100%;
+	z-index: 100;
+	top: 0;
+}
+
+.topbar {
+	.borderBox();
+	.clearfix();
+	background-color: @black;
+	width: 100%;
+	z-index: 100;
+	height: 60px;
+	position: relative;
+
+	.nav-container {
+		.container();
+	}
+
+	.logo {
+		float: left;
+		height: 40px;
+		padding: 10px 0;
+	}
+
+	.menu {
+		.borderBox();
+		.clearfix();
+		.disableSelection();
+		height: 60px;
+		display: none;
+		height: 100% !important;
+		float: right;
+		padding: 16px 20px;
+
+		.menu-button-stripe {
+			.borderBox();
+			width: 35px;
+			height: 5px;
+			border-bottom: 4px solid @white;
+			margin-bottom: 5px;
+		}
+	}
+
+	.nav {
+		float: right;
+
+		li {
+			float: left;
+
+			a {
+				color: white;
+				display: block;
+				font-family: @mainFont;
+				font-size: 14px;
+				font-weight: 600;
+				margin: 22px 17px 0px;
+				padding: 0px 3px 5px;
+
+				&.current {
+					border-bottom: 4px solid @turquoise;
+				}
+
+
+				&:hover {
+					color: @turquoise;
+					.transition(all 0.25s);
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+
+		.menu {
+			display: block !important;
+      &.menu-open {
+        background-color: @dkestGray;
+      }
+		}
+
+		.nav {
+      display: none;
+			width: 225px;
+			position: absolute;
+			background-color: @dkestGray;
+			padding: 0px;
+			right: 0px;
+			top: 60px;
+			li {
+				float: none;
+				border-bottom: 1px solid @black;
+				font-size: 20px;
+				&.no-mobile {
+					display: none;
+				}
+				a {
+					.borderBox();
+					display: block;
+					width: 100%;
+					padding: 12px 25px 13px;
+					margin: 0;
+					color: @white;
+          font-weight: 400;
+  				&.current {
+            border-bottom: none;
+  				  font-weight: 600;
+            color: @brightBlue;
+  				}
+        }
+				&:last-child {
+					border-bottom: none;
+					a {
+						padding-bottom: 16px;
+					}
+				}
+			}
+      &.menu-open {
+        display: block;
+      }
+		}
+
+		.logo {
+			height: 40px;
+			margin-left: 5%;
+			padding-top: 3px;
+		}
+
+		.active {
+			background-color: @turquoise;
+		}
+
+		.inactive {
+			background-color: @black;
+		}
+	}
+}

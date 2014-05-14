@@ -6,20 +6,15 @@
   color: @black;
 
   h1 {
-    .h1(@turquoise);
+    .sectionHeader(@turquoise);
     margin: 0 auto 10px;
     text-align: center;
   }
 
   p {
-    font-style: italic;
-    font-size: 20px;
+    .sectionSubHeader(@black);
     margin: 0 auto 20px;
     text-align: center;
-    line-height: 1.8em;
-    width: 65%;
-    color: @black;
-    font-weight: 300;
     a {
       color: @brightBlue;
       &:hover {
@@ -34,11 +29,13 @@
     margin: auto;
     padding-top: 25px;
     color: @black;
+    position: relative;
+    z-index: 10;
 
     .button {
-      .button();
+      .lgButton(@black, @white);
       font-weight: 500;
-      margin-left: 1%;
+      margin-left: 10px;
     }
 
     a {

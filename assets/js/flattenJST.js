@@ -28,117 +28,138 @@ function flattenJST (subsection, JST) {
   });
 
 
-  
 
-  // Flatten menu data
-  menuData = _.map(menuData, function(menuItem) {
 
-    //
-    // For each menu item:
-    // 
+  // Flatten and decorate menu data
+  menuData = _.map(menuData, function forEachMenuItem (menuItem) {
 
-    // Trim the templatePath
+    // Trim the templatePath to make it relative to the `assets/` directory.
     menuItem.templatePath = menuItem.templatePath.replace(/^assets\//,'');
 
     // Split up that template path (i.e. `menuItem.templatePath`)
     var pieces = menuItem.templatePath.split('/');
 
-
-    // Chop off the extraneous bullshit and get down...
-    // ...to business.  Mmm girl
+    // Chop off the prefix part (e.g. `templates/`)
     pieces.shift();
+    // and the top-level mmenu item part (e.g. "reference/" or "anatomy/")
     // pieces.shift();
-    // pieces.shift();
+    // console.log(pieces);
 
+
+    // Set the "href" (where to go when this thing is clicked)
+    menuItem.href = '#/documentation/'+pieces.join('/');
 
     // Set the "name" to be the ugly file name
     menuItem.name = pieces.pop();
 
     menuItem.pieces = pieces;
-    
+
     return menuItem;
   });
 
-  // Make sure all the dads are there
-  var allExtraDads = [];
+
+
+  // Determine the parent for each menu item
+  var virtualMenuItems = [];
   menuData = _.map(menuData, function (menuItem) {
-
-    menuItem.parentName = locateOrCreateDadAndTheirDadsEtc(menuItem.pieces, allExtraDads);
-
-    // Push these extra dads onto the cumulative array
-    // of all the extra dads
-    // console.log('ok next dad (heres all the extra dads we got now:',allExtraDads,')');
+    menuItem.parentName = findOrCreateParent(menuItem.pieces, virtualMenuItems);
 
     // Remove extraneous things
     delete menuItem.pieces;
 
     return menuItem;
   });
-
-  // console.log('here are the '+allExtraDads.length + ' dads',allExtraDads);
-  
   // Finally, push those extra dads onto the menu
-  menuData = menuData.concat(_.uniq(allExtraDads));
+  menuData = menuData.concat(_.uniq(virtualMenuItems));
   // (make sure there are no duplicate dads)
   menuData = _.uniq(menuData);
 
-
   // Precalculate each menuItem's children (their "names" I mean)
   _.map(menuData, function (menuItem) {
-    menuItem.children = _.where(menuData, { parentName: menuItem.name });
-    // "pluck" the children
-    menuItem.children = _.pluck(menuItem.children, 'name');
+    menuItem.children = _(menuData)
+      .where({ parentName: menuItem.name })
+      .pluck('name').valueOf();
     return menuItem;
   });
 
-  
   return menuData;
 
 
 
 
 
-
-
-
-  // Private functino \/
-
-
   // Now that we know everybody's name, let's find their dads
-  // 
+  //
   // (we need this extra dad holding tank in case we need to create
   // some dads-- and it's weird to create them with the rest of the menu
   // items because what if it got confused)
-  function locateOrCreateDadAndTheirDadsEtc(pieces, dadHoldingTank) {
+  function findOrCreateParent(pieces, virtualMenuItems) {
 
     // If we ran out of pieces, there is no dad.
     if (!pieces.length) return null;
 
+    // Build an href for our dad
+    var parentHref = '#/documentation/'+pieces.join('/')+'/';
+    // console.log(parentHref);
+
     // Find out our dad's name by popping a piece
     var parentName = pieces.pop();
 
-    // console.log('they are '+dadHoldingTank.length+' DADS IN THE HOLDING tank', dadHoldingTank);
+    // If this is the last piece, and it has the same name
+    // as our top-level section, ignore it
+    if (parentName === subsection && pieces.length === 0) return null;
 
-    // Find dad
-    // (note that he might be in the dad holding tank!!)
-    var dad = _.findWhere(menuData, {name: parentName});
-    if (!dad) {
-      // console.log('looking for ',parentName,'in the holding tank:',dadHoldingTank);
-      dad = _.findWhere(dadHoldingTank, {name: parentName});
-    }
+    // Build a template path for our dad
+    var parentTemplatePath = _(menuData).where({name: parentName + '.html'}).pluck('templatePath').first();
 
-    // If we still don't have a dad, we have to make one
-    if (!dad) {
-      dad = {
+    // console.log('they are '+virtualMenuItems.length+' DADS IN THE HOLDING tank', virtualMenuItems);
+
+    // Find this menu item's dad (note that he might be in `virtualMenuItems`)
+    var parentMenuItem =
+      _.findWhere(menuData, {name: parentName}) ||
+      _.findWhere(virtualMenuItems, {name: parentName});
+
+    // Otherwise, if the parent menu item doesn't exist already,
+    // we have to create a virtual one and add it to our collection
+    // of `virtualMenuItems`
+    if (!parentMenuItem) {
+      parentMenuItem = newVirtualParent({
         name: parentName,
-        parentName: null
-      };
-      dadHoldingTank.push(dad);
-      // console.log('WE HAD TO MAKE THIS DADS', dad, '(we were looking for a dad named '+parentName+')');
-      dad.parentName = locateOrCreateDadAndTheirDadsEtc(pieces, dadHoldingTank);
+        href: parentHref,
+        templatePath: parentTemplatePath,
+        pieces: pieces
+      }, virtualMenuItems);
     }
 
-
-    return dad.name;
+    return parentMenuItem.name;
   }
+
+
+  /**
+   * Create a new virtual menu item.
+   * NOTE: also adds it to the `virtualMenuItems` collection
+   *
+   * @option {String} name
+   * @option {String} templatePath
+   * @option {String} href
+   * @option {String[]} pieces
+   */
+  function newVirtualParent (opts, virtualMenuItems) {
+
+    var dad = {
+      name: opts.name,
+      templatePath: opts.templatePath,
+      href: opts.href,
+      parentName: null // (but will be calculated momentarily)
+    };
+
+    virtualMenuItems.push(dad);
+
+    // Now we have to go find the new virtual menu item's parent:
+    dad.parentName = findOrCreateParent(opts.pieces, virtualMenuItems);
+
+    return dad;
+  }
+
+
 }
