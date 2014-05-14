@@ -26,7 +26,7 @@ var jsFilesToInject = [
   'dependencies/angular-route.min.js',
   'dependencies/jquery.js',
   'dependencies/lodash.js',
-  'dependencies/*',
+  'dependencies/**/*.js',
   'js/App.js',
   'js/**/*.js'
 ];

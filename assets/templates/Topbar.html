@@ -16,20 +16,20 @@
     </a>
     <ul class="nav" ng-class="{'menu-open': menuVisible === true}">
       <li ng-click="menuVisible = false"><a class="sails-site"
-          ng-class="{current: intent.isCurrentPage('/')}"
+          ng-class="{current: getIsCurrentPage('/')}"
           href="#/">Home</a></li>
       <li ng-click="menuVisible = false"><a class="sails-site"
-          ng-class="{current: intent.isCurrentPage('/features')}"
+          ng-class="{current: getIsCurrentPage('/features')}"
           href="#/features">Features</a></li>
       <li ng-click="menuVisible = false"><a class="sails-site"
-          ng-class="{current: intent.isCurrentPage('/getStarted')}"
+          ng-class="{current: getIsCurrentPage('/getStarted')}"
           href="#/getStarted">Get Started</a></li>
       <li ng-click="menuVisible = false"><a class="sails-site"
-          ng-class="{current: intent.isCurrentPage('/documentation')}"
+          ng-class="{current: getIsCurrentPage('/documentation')}"
           href="#/documentation">Documentation</a></li>
      <!--  <li class="no-mobile">
         <a class="sails-site"
-          ng-class="{current: intent.isCurrentPage('/logos')}"
+          ng-class="{current: getIsCurrentPage('/logos')}"
           href="#/logos">Logos</a>
       </li> -->
       <li><a target="_blank" href="http://michaelmcneil.com">Blog</a></li>

@@ -3,38 +3,63 @@ angular.module('Sails').controller('AppCtrl', [
   '$scope',
 
   function($scope) {
-    var referenceMenuData = flattenJST('reference', JST);
-    var anatomyMenuData = flattenJST('anatomy', JST);
 
-    // Calculate the orphans
-    var referenceMenuOrphans = _.where(referenceMenuData, {parentName: null});
-    var anatomyMenuOrphans = _.where(anatomyMenuData, {parentName: null});
-    // console.log('ORPHAN ORPHAN ORPHAN: ',orphans);
+    // var referenceMenuData = flattenJST('reference', JST);
+    // var referenceMenuOrphans = _.where(referenceMenuData, {parentName: null});
+    // $scope.referenceMenu = referenceMenuOrphans;
+    // MENU=referenceMenuData;
 
-    // Put the orphans on the scope as "menu"
-    $scope.referenceMenu = referenceMenuOrphans;
-    $scope.anatomyMenu = anatomyMenuOrphans;
+    // var anatomyMenuData = flattenJST('anatomy', JST);
+    // var anatomyMenuOrphans = _.where(anatomyMenuData, {parentName: null});
+    // $scope.anatomyMenu = anatomyMenuOrphans;
 
     $scope.docs = {};
 
+
+    // Qualifiers
+    $scope.getIsCurrentPage = function( path ) {
+      var current = window.location.hash;
+      return current === '#'+path;
+    };
+
     $scope.intent = angular.extend($scope.intent || {}, {
-      
-      isCurrentPage: function( path ) {
-        var current = window.location.hash;
-        return current === '#'+path;
+
+      /**
+       * goto()
+       *
+       * Navigate to the specified client-side route.
+       *
+       * @param  {String} hash (e.g. #/foo/bar, #/blah)
+       */
+      goto: function (hash) {
+        alert(hash);
+        window.location.hash = hash;
       },
 
-      changeDocsTab: function(section) {
-        $scope.docs.currentSection = section;
-        $scope.docs.documentationSection = 'templates/pages/Documentation/sections/DocsSection_'+section+'.html';
+      /**
+       * changeDocsTab()
+       *
+       * Switch out the content of the documentation section based on
+       * the sectionID.
+       *
+       * @param  {String} sectionID  (e.g. anatomy, reference)
+       */
+      changeDocsTab: function(sectionID, pieces) {
 
-        if(section === 'anatomy') {
-          $scope.docs.currentSectionTitle = 'Anatomy of a Sails App';
-        }
-        if(section === 'reference') {
-          $scope.docs.currentSectionTitle = 'Reference';
+        $scope.docs.sectionID = sectionID;
+        $scope.docs.sectionTpl = 'templates/pages/Documentation/sections/DocsSection_'+sectionID+'.html';
+
+        switch(sectionID) {
+          case 'anatomy':
+            $scope.docs.title = 'Anatomy of a Sails App';
+            break;
+          case 'reference':
+            $scope.docs.title = 'Reference';
+            break;
         }
       },
+
+
       expandMenuItem: function (sectionMenuData, id) {
         var thisMenuItem = _.findWhere(sectionMenuData, { name: id });
         thisMenuItem.expanded = true;
@@ -49,7 +74,7 @@ angular.module('Sails').controller('AppCtrl', [
       showTemplateForReferenceItem: function (id) {
         var thisMenuItem = _.findWhere(referenceMenuData, { name: id });
         var overviewTemplate = _.findWhere(referenceMenuData, { name: id+'.html' });
-        // console.log('I CLCIEKD O IT', id, thisMenuItem.templatePath);
+
         if (thisMenuItem.templatePath) {
           $scope.currentPage = thisMenuItem;
         } else if(overviewTemplate) {
@@ -69,7 +94,7 @@ angular.module('Sails').controller('AppCtrl', [
       showTemplateForAnatomyItem: function (id) {
         var thisMenuItem = _.findWhere(anatomyMenuData, { name: id });
         var overviewTemplate = _.findWhere(anatomyMenuData, { name: id+'.html' });
-        // console.log('I CLCIEKD O IT', id, thisMenuItem.templatePath);
+
         if (thisMenuItem.templatePath) {
           $scope.currentPage = thisMenuItem;
         } else if(overviewTemplate) {

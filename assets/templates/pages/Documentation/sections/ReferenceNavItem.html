@@ -1,5 +1,4 @@
-<span
-  ng-click="intent.showTemplateForReferenceItem(menuItem.name)">
+<span ng-click="intent.goto(menuItem.href)">
   {{menuItem.name}}
 </span>
 
@@ -7,8 +6,7 @@
 <ul ng-show="menuItem.visibleChildren.length">
   <li ng-repeat="menuItem in menuItem.visibleChildren"
     stop-propagation="click"
-    ng-class="{'current-section': currentPage.name === menuItem.name, 'parent-section': currentPage.parentName === menuItem.name }"
-    ng-click="intent.toggleReferenceItemExpanded(menuItem.name)">
+    ng-class="{'current-section': currentPage.name === menuItem.name, 'parent-section': currentPage.parentName === menuItem.name }">
     <div ng-include="'templates/pages/Documentation/sections/ReferenceNavItem.html'"></div>
   </li>
 </ul>
