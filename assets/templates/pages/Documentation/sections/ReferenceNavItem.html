@@ -9,6 +9,6 @@
     stop-propagation="click"
     ng-class="{'current-section': currentPage.name === menuItem.name, 'parent-section': currentPage.parentName === menuItem.name }"
     ng-click="intent.toggleReferenceItemExpanded(menuItem.name)">
-    <div ng-include="'templates/pages/Documentation/sections/NavItem.html'"></div>
+    <div ng-include="'templates/pages/Documentation/sections/ReferenceNavItem.html'"></div>
   </li>
 </ul>
