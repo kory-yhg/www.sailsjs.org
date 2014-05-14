@@ -1,7 +1,7 @@
 <div class="page features-page">
 
   <!-- White Upper Bar -->
-  <div class="banner">
+  <div class="banner" id="target">
     <!-- <div class="banner-container"> -->
       <ng-include src="'templates/UpdateBanner.html'"></ng-include>
 
@@ -17,8 +17,9 @@
   <!-- Features Section -->
  <div class="sails-features">
     <!-- left-side navigation -->
-    <div class="features-container" id="target">
-      <div class="features" skrollr data-anchor-target="#target">
+    <div class="features-container">
+      <!-- not working due to floated elements. Clearfix? -->
+      <div class="features" data-anchor-target="#target" data-0="position: static;" data-top-bottom="position: fixed;">
         <h1>Features</h1>
         <ul>
           <li><a href="#javascript">100% Javascript</a></li>
