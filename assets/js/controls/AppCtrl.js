@@ -1,8 +1,12 @@
-menu = [];
 angular.module('Sails').controller('AppCtrl', [
   '$scope',
+  'Menu',
 
-  function($scope) {
+  function($scope, Menu) {
+
+    // Houses the state for the documentation pages.
+    // Should never be reset (only its properties changed)
+    $scope.docs = {};
 
     // var referenceMenuData = flattenJST('reference', JST);
     // var referenceMenuOrphans = _.where(referenceMenuData, {parentName: null});
@@ -13,7 +17,7 @@ angular.module('Sails').controller('AppCtrl', [
     // var anatomyMenuOrphans = _.where(anatomyMenuData, {parentName: null});
     // $scope.anatomyMenu = anatomyMenuOrphans;
 
-    $scope.docs = {};
+    // $scope.docs.menu
 
 
     // Qualifiers
@@ -32,85 +36,80 @@ angular.module('Sails').controller('AppCtrl', [
        * @param  {String} hash (e.g. #/foo/bar, #/blah)
        */
       goto: function (hash) {
-        alert(hash);
         window.location.hash = hash;
       },
 
-      /**
-       * changeDocsTab()
-       *
-       * Switch out the content of the documentation section based on
-       * the sectionID.
-       *
-       * @param  {String} sectionID  (e.g. anatomy, reference)
-       */
-      changeDocsTab: function(sectionID, pieces) {
+      toggleMenuItem: function (id) {
+        console.log($scope.docs.menu);
+        var thisMenuItem = _.find($scope.docs.menu, { name: id });
 
-        $scope.docs.sectionID = sectionID;
-        $scope.docs.sectionTpl = 'templates/pages/Documentation/sections/DocsSection_'+sectionID+'.html';
-
-        switch(sectionID) {
-          case 'anatomy':
-            $scope.docs.title = 'Anatomy of a Sails App';
-            break;
-          case 'reference':
-            $scope.docs.title = 'Reference';
-            break;
-        }
-      },
-
-
-      expandMenuItem: function (sectionMenuData, id) {
-        var thisMenuItem = _.findWhere(sectionMenuData, { name: id });
-        thisMenuItem.expanded = true;
-        thisMenuItem.visibleChildren = _.where(sectionMenuData, { parentName: thisMenuItem.name });
-      },
-      collapseMenuItem: function (sectionMenuData, id) {
-        var thisMenuItem = _.findWhere(sectionMenuData, { name: id });
-        thisMenuItem.expanded = false;
-        thisMenuItem.visibleChildren = [];
-      },
-
-      showTemplateForReferenceItem: function (id) {
-        var thisMenuItem = _.findWhere(referenceMenuData, { name: id });
-        var overviewTemplate = _.findWhere(referenceMenuData, { name: id+'.html' });
-
-        if (thisMenuItem.templatePath) {
-          $scope.currentPage = thisMenuItem;
-        } else if(overviewTemplate) {
-          $scope.currentPage = overviewTemplate;
-        }
-      },
-      toggleReferenceItemExpanded: function (id) {
-        var thisMenuItem = _.findWhere(referenceMenuData, { name: id });
-
-        if (!thisMenuItem.expanded) {
-          $scope.intent.expandMenuItem(referenceMenuData, id);
+        if (thisMenuItem.expanded) {
+          $scope.intent.collapseMenuItem(id);
         }
         else {
-          $scope.intent.collapseMenuItem(referenceMenuData,id);
+          $scope.intent.expandMenuItem(id);
         }
       },
-      showTemplateForAnatomyItem: function (id) {
-        var thisMenuItem = _.findWhere(anatomyMenuData, { name: id });
-        var overviewTemplate = _.findWhere(anatomyMenuData, { name: id+'.html' });
 
-        if (thisMenuItem.templatePath) {
-          $scope.currentPage = thisMenuItem;
-        } else if(overviewTemplate) {
-          $scope.currentPage = overviewTemplate;
-        }
+      expandMenuItem: function (id) {
+        // var menu = Menu.all('reference');
+        // var thisMenuItem = _.find(menu, { name: id });
+
+        // $scope.docs.menu = menu;
+        var $menuItem =_.find($scope.docs.menu, {name:id});
+        $menuItem.expanded = true;
+        $menuItem.visibleChildren = _.where(Menu.all($scope.docs.sectionID), { parentName: $menuItem.name });
       },
-      toggleAnatomyItemExpanded: function (id) {
-        var thisMenuItem = _.findWhere(anatomyMenuData, { name: id });
+      collapseMenuItem: function (id) {
+        // var menu = Menu.all('reference');
+        // var thisMenuItem = _.find(menu, { name: id });
 
-        if (!thisMenuItem.expanded) {
-          $scope.intent.expandMenuItem(anatomyMenuData, id);
-        }
-        else {
-          $scope.intent.collapseMenuItem(anatomyMenuData,id);
-        }
-      }
+        // $scope.docs.menu = menu;
+        var $menuItem =_.find($scope.docs.menu, {name:id});
+        $menuItem.expanded = false;
+        $menuItem.visibleChildren = [];
+      },
+
+      // showTemplateForReferenceItem: function (id) {
+      //   var thisMenuItem = _.findWhere(referenceMenuData, { name: id });
+      //   var overviewTemplate = _.findWhere(referenceMenuData, { name: id+'.html' });
+
+      //   if (thisMenuItem.templatePath) {
+      //     $scope.currentPage = thisMenuItem;
+      //   } else if(overviewTemplate) {
+      //     $scope.currentPage = overviewTemplate;
+      //   }
+      // },
+      // toggleReferenceItemExpanded: function (id) {
+      //   var thisMenuItem = _.findWhere(referenceMenuData, { name: id });
+
+      //   if (!thisMenuItem.expanded) {
+      //     $scope.intent.expandMenuItem(referenceMenuData, id);
+      //   }
+      //   else {
+      //     $scope.intent.collapseMenuItem(referenceMenuData,id);
+      //   }
+      // },
+      // showTemplateForAnatomyItem: function (id) {
+      //   var thisMenuItem = _.findWhere(anatomyMenuData, { name: id });
+      //   var overviewTemplate = _.findWhere(anatomyMenuData, { name: id+'.html' });
+
+      //   if (thisMenuItem.templatePath) {
+      //     $scope.currentPage = thisMenuItem;
+      //   } else if(overviewTemplate) {
+      //     $scope.currentPage = overviewTemplate;
+      //   }
+      // },
+      // toggleAnatomyItemExpanded: function (id) {
+      //   var thisMenuItem = _.findWhere(anatomyMenuData, { name: id });
+
+      //   if (!thisMenuItem.expanded) {
+      //     $scope.intent.expandMenuItem(anatomyMenuData, id);
+      //   }
+      //   else {
+      //     $scope.intent.collapseMenuItem(anatomyMenuData,id);
+      //   }
+      // }
     });
   }
 ]);

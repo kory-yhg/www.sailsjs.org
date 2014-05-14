@@ -33,18 +33,21 @@ function flattenJST (subsection, JST) {
   // Flatten and decorate menu data
   menuData = _.map(menuData, function forEachMenuItem (menuItem) {
 
-    // Trim the templatePath
+    // Trim the templatePath to make it relative to the `assets/` directory.
     menuItem.templatePath = menuItem.templatePath.replace(/^assets\//,'');
-
-    // Set the "href" (where to go when this thing is clicked)
-    menuItem.href = '#/documentation/'+menuItem.templatePath;
 
     // Split up that template path (i.e. `menuItem.templatePath`)
     var pieces = menuItem.templatePath.split('/');
 
-
-    // Chop off the top-level menu item (e.g. "reference/" or "anatomy/")
+    // Chop off the prefix part (e.g. `templates/`)
     pieces.shift();
+    // and the top-level mmenu item part (e.g. "reference/" or "anatomy/")
+    // pieces.shift();
+    // console.log(pieces);
+
+
+    // Set the "href" (where to go when this thing is clicked)
+    menuItem.href = '#/documentation/'+pieces.join('/');
 
     // Set the "name" to be the ugly file name
     menuItem.name = pieces.pop();
@@ -95,12 +98,18 @@ function flattenJST (subsection, JST) {
     // If we ran out of pieces, there is no dad.
     if (!pieces.length) return null;
 
+    // Build an href for our dad
+    var parentHref = '#/documentation/'+pieces.join('/')+'/';
+    // console.log(parentHref);
 
     // Find out our dad's name by popping a piece
     var parentName = pieces.pop();
 
-    // Build an href and tempate path for our dad
-    var parentHref = '#/documentation/'+pieces.join('/')+'/'+name;
+    // If this is the last piece, and it has the same name
+    // as our top-level section, ignore it
+    if (parentName === subsection && pieces.length === 0) return null;
+
+    // Build a template path for our dad
     var parentTemplatePath = _(menuData).where({name: parentName + '.html'}).pluck('templatePath').first();
 
     // console.log('they are '+virtualMenuItems.length+' DADS IN THE HOLDING tank', virtualMenuItems);

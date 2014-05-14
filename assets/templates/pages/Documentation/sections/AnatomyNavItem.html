@@ -1,5 +1,5 @@
 <span
-  ng-click="intent.showTemplateForAnatomyItem(menuItem.name)">
+  ng-click="intent.goto(menuItem.href)">
   {{menuItem.name}}
 </span>
 
@@ -8,7 +8,7 @@
   <li ng-repeat="menuItem in menuItem.visibleChildren"
     stop-propagation="click"
     ng-class="{'current-section': currentPage.name === menuItem.name, 'parent-section': currentPage.parentName === menuItem.name }"
-    ng-click="intent.toggleAnatomyItemExpanded(menuItem.name)">
+    ng-click="intent.toggleMenuItem(menuItem.name)">
     <div ng-include="'templates/pages/Documentation/sections/AnatomyNavItem.html'"></div>
   </li>
 </ul>
