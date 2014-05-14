@@ -15,7 +15,6 @@ function flattenJST (subsection, JST) {
     return memo;
   }, []);
 
-
   // Isolate the useful parts of the menu
   // and cut out the bogus parts
   menuData = _.remove(menuData, function fnThatReturnsFalseWhenWeWantToGetRidOfTheThing (menuItem) {
@@ -45,7 +44,6 @@ function flattenJST (subsection, JST) {
     // pieces.shift();
     // console.log(pieces);
 
-
     // Set the "href" (where to go when this thing is clicked)
     menuItem.href = '#/documentation/'+pieces.join('/');
 
@@ -69,6 +67,19 @@ function flattenJST (subsection, JST) {
 
     return menuItem;
   });
+
+  // Mark duplicates ("overview" pages) as "hidden"
+  // (i.e. if so, it will not be shown as a selection in the menu)
+  menuData = _.reject(menuData, function (menuItem) {
+    return (menuItem.parentName+'.html' === menuItem.name);
+  });
+  // menuData = _.map(menuData, function (menuItem) {
+  //   if (menuItem.parentName+'.html' === menuItem.name) {
+  //     menuItem.hidden = true;
+  //   }
+  //   return menuItem;
+  // });
+
   // Finally, push those extra dads onto the menu
   menuData = menuData.concat(_.uniq(virtualMenuItems));
   // (make sure there are no duplicate dads)
@@ -94,6 +105,7 @@ function flattenJST (subsection, JST) {
   // some dads-- and it's weird to create them with the rest of the menu
   // items because what if it got confused)
   function findOrCreateParent(pieces, virtualMenuItems) {
+    // console.log('dads ? '+_.uniqueId);
 
     // If we ran out of pieces, there is no dad.
     if (!pieces.length) return null;

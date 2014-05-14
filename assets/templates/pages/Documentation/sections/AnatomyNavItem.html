@@ -5,10 +5,9 @@
 
 
 <ul ng-show="menuItem.visibleChildren.length">
-  <li ng-repeat="menuItem in menuItem.visibleChildren"
+  <li ng-repeat="subMenuItem in menuItem.visibleChildren"
     stop-propagation="click"
-    ng-class="{'current-section': currentPage.name === menuItem.name, 'parent-section': currentPage.parentName === menuItem.name }"
-    ng-click="intent.toggleMenuItem(menuItem.name)">
+    ng-class="{'current-section': docs.currentPage.name === subMenuItem.name, 'parent-section': docs.currentPage.parentName === subMenuItem.name }">
     <div ng-include="'templates/pages/Documentation/sections/AnatomyNavItem.html'"></div>
   </li>
 </ul>
