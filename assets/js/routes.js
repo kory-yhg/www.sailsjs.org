@@ -41,7 +41,7 @@ angular.module('Sails')
         var menu = flattenJST('reference', JST);
         var target = _(menu).find(_ifPropertyEqualsCaseInsensitive('name', id));
         $scope.currentPage = target;
-        // console.log(id, target);
+        console.log(id, target);
         console.log($scope.currentPage);
 
       }]
