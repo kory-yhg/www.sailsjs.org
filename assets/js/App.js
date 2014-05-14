@@ -11,7 +11,7 @@ var Sails;
   ];
 
   // Don't do this crazy parallax business on mobile
-  if (window.innerWidth >= 400) {
+  if (window.innerWidth >= 768) {
     dependencies.push('directives.skrollr');
   }
 
