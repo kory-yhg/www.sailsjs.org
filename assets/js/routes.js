@@ -57,18 +57,11 @@ angular.module('Sails')
     .when('/documentation/anatomy', {
       templateUrl: 'templates/pages/Documentation/DocsSection.html',
       redirectTo: '/documentation/anatomy/myApp'
-      // controller: ['$scope','Menu', function ($scope,Menu) {
+    })
 
-      //   // Build the menu
-      //   var menu = Menu.all('anatomy');
-      //   MENU=menu;
-      //   $scope.docs.sectionID = 'anatomy';
-      //   $scope.docs.sectionTpl = 'templates/pages/Documentation/sections/DocsSection_anatomy.html';
-      //   $scope.docs.title = 'Anatomy of a Sails App';
-
-      //   $scope.visibleMenu = menu;
-      //   $scope.docs.currentPage = target;
-      // }]
+    .when('/documentation/reference', {
+      templateUrl: 'templates/pages/Documentation/DocsSection.html',
+      redirectTo: '/documentation/reference/Assets'
     })
 
     // Documentation section sub-router
@@ -93,7 +86,6 @@ angular.module('Sails')
         // Lookup target
         var subSectionID;
         var target;
-        MENU=menu;
 
         // if target is undefined, try to find the next best match, and
         // in the worst case, just do the default behavior.
@@ -108,7 +100,7 @@ angular.module('Sails')
           if (typeof subSectionID === 'undefined') break;
         }
         if(!target) {
-          // worst case, for right now, show the assets section
+          // If something weird is received, just show the assets section
           window.location.hash='#/documentation/reference/Assets';
           // TODO: show a landing page
           return;
@@ -117,6 +109,18 @@ angular.module('Sails')
 
         // Expose top-level menu in scope (i.e. orphans)
         $scope.docs.visibleMenu = _.where(menu, {parentName: null});
+
+        // Add some methods for accessing the visibleMenu's items
+        $scope.docs.findMenuItemByID = function (id, $submenu) {
+          // console.log('looking in', _.pluck($submenu, 'name'), 'for ', id);
+          return _.find($submenu, function ($menuItem) {
+            // console.log('comparing',$menuItem.name,'to',id);
+            if ($menuItem.name === id) {
+              return $menuItem;
+            }
+            else return $scope.docs.findMenuItemByID(id, $menuItem.visibleChildren);
+          });
+        };
 
         // Then show the top-level docs section (e.g. anatomy, reference)
         $scope.docs.sectionID = topLevelSectionID;

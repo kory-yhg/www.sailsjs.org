@@ -40,9 +40,9 @@ angular.module('Sails').controller('AppCtrl', [
       },
 
       toggleMenuItem: function (id) {
-        var $thisMenuItem = _.find($scope.docs.visibleMenu, { name: id });
+        var $menuItem = $scope.docs.findMenuItemByID(id,$scope.docs.visibleMenu);
 
-        if ($thisMenuItem.expanded) {
+        if ($menuItem.expanded) {
           $scope.intent.collapseMenuItem(id);
         }
         else {
@@ -54,7 +54,8 @@ angular.module('Sails').controller('AppCtrl', [
         var globalMenu = Menu.all($scope.docs.sectionID);
 
         // Find the targeted menu item in the visible menu and expand it
-        var $menuItem =_.find($scope.docs.visibleMenu, {name:id});
+        var $menuItem = $scope.docs.findMenuItemByID(id,$scope.docs.visibleMenu);
+
         if (!$menuItem){
           if (typeof console !== 'undefined') console.error('couldn\'t expand because couldnt find ('+id+')');
           return;
@@ -62,9 +63,6 @@ angular.module('Sails').controller('AppCtrl', [
 
         $menuItem.expanded = true;
         $menuItem.visibleChildren = _.where(globalMenu,{ parentName: $menuItem.name });
-
-        // Merge newly expanded stuff into the visible menu
-        $scope.docs.visibleMenu = _.union($scope.docs.visibleMenu, $menuItem.visibleChildren);
       },
 
       collapseMenuItem: function (id) {
