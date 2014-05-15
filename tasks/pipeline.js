@@ -22,12 +22,23 @@ var cssFilesToInject = [
 // Client-side javascript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
-  'dependencies/angular.min.js',
-  'dependencies/angular-route.min.js',
+
+
+  // Other stuff
   'dependencies/jquery.js',
   'dependencies/lodash.js',
+
+  // Angular
+  'dependencies/angular.min.js',
+  'dependencies/angular-route.min.js',
+  'dependencies/*.dir.js',
+  'dependencies/directive.*.js',
+
+  // Other dependencies
   'dependencies/**/*.js',
-  'js/App.js',
+
+  // Our single page app
+  'js/SinglePage.js',
   'js/**/*.js'
 ];
 

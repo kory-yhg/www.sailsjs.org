@@ -1,5 +1,4 @@
-angular.module('Sails')
-
+angular.module('directive.stopPropagation', [])
 .directive('stopPropagation', function() {
   return {
     restrict: 'A',
