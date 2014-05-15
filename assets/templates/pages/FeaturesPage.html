@@ -1,4 +1,4 @@
-<div class="page features-page skrollr-body">
+<div class="page features-page">
 
   <!-- White Upper Bar -->
   <div class="banner" id="target">
@@ -13,30 +13,32 @@
       </div> <!-- light blue section -->
   </div> <!-- banner -->
 
+  <!-- <div skrollr id="foo" data-0="background-color:rgb(0,0,255);" data-500="background-color:rgb(255,0,0);">WOOOT</div> -->
 
-  <div class="tester" data-0="background-color: rgb(114,203,220);" data-1000="background-color: rgb(18,45,57);">Tester</div>
   <!-- Features Section -->
-  <div class="features-section-container" id="target">
+  <div class="features-section-container">
     <!-- left-side navigation -->
 
     <div class="features-container">
-      <div class="features" data-anchor-target="#target" data-0="position: static;" data-bottom-top="position: fixed;">
+      <div class="features" id="sticky-features">
+        <!-- WORKS: data-top-bottom | data-bottom (second scrollbar) |  data-center-bottom (second scrollbar) | -->
         <h1>Features</h1>
         <ul>
-          <li><a href="#javascript">100% Javascript</a></li>
-          <li><a href="#database">Any database</a></li>
-          <li><a href="#associations">Powerful associations</a></li>
-          <li><a href="#rest">Auto-generate REST APIs</a></li>
-          <li><a href="#websocket-support">Easy WebSocket support</a></li>
-          <li><a href="#security">Reusable security policies</a></li>
-          <li><a href="#front-end">Front-end agnostic</a></li>
-          <li><a href="#asset-pipeline">Flexible asset pipeline</a></li>
-          <li><a href="#solid-foundation">Rock solid foundation</a></li>
+          <li><a href="/#/features/#javascript">100% Javascript</a></li>
+          <li><a href="/#/features/#database">Any database</a></li>
+          <li><a href="/#/features/#associations">Powerful associations</a></li>
+          <li><a href="/#/features/#rest">Auto-generate REST APIs</a></li>
+          <li><a href="/#/features/#websocket-support">Easy WebSocket support</a></li>
+          <li><a href="/#/features/#security">Reusable security policies</a></li>
+          <li><a href="/#/features/#front-end">Front-end agnostic</a></li>
+          <li><a href="/#/features/#asset-pipeline">Flexible asset pipeline</a></li>
+          <li><a href="/#/features/#solid-foundation">Rock solid foundation</a></li>
         </ul>
         </div> <!-- left side navigation -->
 
 
     <!-- right side features list -->
+    <a name="javascript" id="javascript"></a>
     <div class="feature-list">
       <ul>
         <li id="javascript">
@@ -44,6 +46,7 @@
             <img class="icon javascript" src="images/icon_js_large@2x.png"/>
           </div>
           <h5>100% JavaScript.</h5>
+          <a name="database" id="database"></a>
           <p>
             Like other MVC frameworks, Sails is built with an emphasis on developer happiness and a convention-over-configuration philosophy. But Node.js takes this principle to the next level.  Building on top of Sails means your app is written entirely in JavaScript, the language you and your team are already using in the browser.  Since you spend less time context-shifting, you're able to write code in a more consistent style, which makes development more productive and fun.
           </p>
@@ -53,6 +56,7 @@
             <img class="icon database" src="images/icon_database_large@2x.png"/>
           </div>
           <h5>Any database.</h5>
+          <a name="associations" id="associations"></a>
           <p>Sails bundles a powerful ORM, Waterline, which provides a simple data access
           layer that just works, no matter what database you're using.
           In addition to a plethora of community projects, officially supported adapters exist for MySQL, MongoDB, PostgreSQL, Redis, and local disk (for development).
@@ -62,6 +66,7 @@
             <img class="icon optional-support" src="images/icon_associations_large@2x.png"/>
           </div>
           <h5>Powerful associations.</h5>
+          <a name="rest" id="rest"></a>
           <p>Sails offers a new take on the familiar relational model, aimed at making data modeling more practical. You can do all the same things you might be used to (one-to-many, many-to-many), but you can also assign multiple <em>named</em> associations per-model (for instance, a cake might have two collection of people: <em>"havers"</em> and <em>"eaters"</em>).  Better yet, you can assign different models to different databases, and your associations/joins will <strong>still work</strong>-- even across NoSQL and relational boundries.  Sails has no problem implicitly/automatically joining a MySQL table with a Mongo collection and vice versa.</p>
         </li>
         <li id="rest">
@@ -69,6 +74,7 @@
             <img class="icon api" src="images/icon_api_large@2x.png"/>
           </div>
           <h5>Auto-generate REST APIs.</h5>
+          <a name="websocket-support" id="websocket-support"></a>
           <p>Sails comes with <em>blueprints</em> that help jumpstart your app's backend without writing any code.  Just run <code>sails generate api dentist</code> and you'll get an API that lets you search, paginate, sort, filter, create, destroy, update, and associate dentists.  Since these <em>blueprint actions</em> are built on the same underlying technology as Sails, they also work with Websockets and any supported database out of the box.</p>
         </li>
         <li id="websocket-support">
@@ -76,6 +82,7 @@
             <img class="icon realtime" src="images/icon_websocket_large@2x.png"/>
           </div>
           <h5>Support WebSockets with no additional code.</h5>
+          <a name="security" id="security"></a>
           <p>In the past, adding realtime/"comet" features meant maintaining two separate code bases. But since the request interpreter in Sails translates incoming socket messages for you, they're automatically compatible with every route in your Sails app, as well as any any existing Express routes/middleware.  Normalization of parameters, the session, and the streaming interface are all taken care of.  In other words, the code you write works with WebSockets <em>and</em> HTTP, without doing any extra work.</p>
         </li>
         <li id="security">
@@ -83,6 +90,7 @@
             <img class="icon security" src="images/icon_security_large@2x.png"/>
           </div>
           <h5>Declarative, reusable security policies.</h5>
+          <a name="front-end" id="front-end"></a>
           <p>Sails provides basic security and role-based access control by default in the form of policies - simple, reusable middleware functions that run before your controllers and actions.  Writing policies encourages <a>encapsulation</a>, which dramatically simplifies your business logic and reduces the total amount of code you need to write.  Policies are interchangeable with Express/Connect middleware, which means you can plug in popular npm modules like <a>Passport</a>.  Finally, like most things in Sails, your policies work for both WebSockets and HTTP automatically.</p>
         </li>
 
@@ -91,6 +99,7 @@
             <img class="icon database" src="images/icon_frontend_large@2x.png"/>
           </div>
           <h5>Front-end agnostic.</h5>
+          <a name="asset-pipeline" id="asset-pipeline"></a>
           <p>Sails works great for HTML 5 and PhoneGap apps, but just because we can use JavaScript on the server doesn't mean everything in the world is now built on web standards.  Sails is designed to be compatible with any front-end strategy; whether it's Angular, Backbone, iOS/ObjC, Android/Java, Windows Phone, or something else that hasn't been invented yet. Plus it's easy to serve up the same API to be consumed by another web service or community of developers.
         </li>
 
@@ -99,11 +108,11 @@
             <img class="icon minification" src="images/icon_asset_large@2x.png"/>
           </div>
           <h5>Flexible asset pipeline.</h5>
+          <a name="solid-foundation" id="solid-foundation"></a>
           <p>
             If you <em>are</em> building an app for the browser, you're in luck.  Sails ships with Grunt- which means your entire front-end asset workflow is completely customizable, and comes with support for all of the great Grunt modules which are already out there. That includes support for LESS, SASS, Stylus, CoffeeScript, JST, Jade, Handlebars, Dust, and many more.  When you're ready to go into production, your assets are minified and gzipped automatically. You can even compile your static assets and push them out to a CDN like CloudFront to make your app load even faster.
           </p>
         </li>
-
         <li id="solid-foundation">
           <div class="icon-container">
             <img class="icon policies" src="images/icon_foundation_large@2x.png"/>
