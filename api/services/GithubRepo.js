@@ -24,8 +24,8 @@ module.exports = {
     });
 
     github.repos.get({
-      repo: 'sails',
-      user: 'balderdashy'
+      repo: opts.repo||'sails',
+      user: opts.user||'balderdashy'
     }, sb);
   }
 

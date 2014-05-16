@@ -26,9 +26,7 @@ module.exports = {
       user: 'balderdashy'
     }, {
       error: function(err) {
-        return res.serverError({
-          hi: 'there'
-        });
+        return res.serverError(err);
       },
       success: function (repo) {
         res.json(repo);

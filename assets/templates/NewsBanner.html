@@ -1,6 +1,6 @@
 <div class="update-banner white-banner">
     <div class="banner-container">
-      <p>Latest update on Github <a target="_blank" href="{{options.lastUpdateOnGithub.url}}">{{options.lastUpdateOnGithub.date | date: 'short'}}</a></p>
+      <p ng-hide="options.error">Latest update on Github <a target="_blank" href="{{options.lastUpdateOnGithub.url}}">{{options.lastUpdateOnGithub.date | date: 'short'}}</a></p>
       <div class="sharing">
         <div>
           <iframe src="http://ghbtns.com/github-btn.html?user=balderdashy&amp;repo=sails&amp;type=watch&amp;count=true"

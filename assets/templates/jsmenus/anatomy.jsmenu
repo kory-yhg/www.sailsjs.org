@@ -13,6 +13,7 @@
         "children": [
           {
             "name": "README.html",
+            "displayName": "sails-docs-reference\n",
             "templatePath": "assets/templates/reference/README.html",
             "data": {
               "uniqueID": "README541912",
@@ -26,6 +27,7 @@
           "children": [
             {
               "name": "Assets.html",
+              "displayName": "# Assets\n",
               "templatePath": "assets/templates/reference/Assets/Assets.html",
               "data": {
                 "uniqueID": "Assets220313",
@@ -34,6 +36,7 @@
             },
             {
               "name": "DefaultTasks.html",
+              "displayName": "# Default Tasks\n",
               "templatePath": "assets/templates/reference/Assets/DefaultTasks.html",
               "data": {
                 "uniqueID": "DefaultTasks764297",
@@ -42,6 +45,7 @@
             },
             {
               "name": "DisablingGrunt.html",
+              "displayName": "# Disabling Grunt\n",
               "templatePath": "assets/templates/reference/Assets/DisablingGrunt.html",
               "data": {
                 "uniqueID": "DisablingGrunt970874",
@@ -50,6 +54,7 @@
             },
             {
               "name": "TaskAutomation.html",
+              "displayName": "# Task Automation\n",
               "templatePath": "assets/templates/reference/Assets/TaskAutomation.html",
               "data": {
                 "uniqueID": "TaskAutomation282238",
@@ -64,6 +69,7 @@
           "children": [
             {
               "name": "Blueprints.html",
+              "displayName": "# Blueprints\n",
               "templatePath": "assets/templates/reference/Blueprints/Blueprints.html",
               "data": {
                 "uniqueID": "Blueprints170785",
@@ -72,6 +78,7 @@
             },
             {
               "name": "CreateARecord.html",
+              "displayName": "# Create A Record\n",
               "templatePath": "assets/templates/reference/Blueprints/CreateARecord.html",
               "data": {
                 "uniqueID": "CreateARecord744986",
@@ -80,6 +87,7 @@
             },
             {
               "name": "DestroyARecord.html",
+              "displayName": "# Destroy A Record\n",
               "templatePath": "assets/templates/reference/Blueprints/DestroyARecord.html",
               "data": {
                 "uniqueID": "DestroyARecord867513",
@@ -88,6 +96,7 @@
             },
             {
               "name": "Find.html",
+              "displayName": "# Find\n",
               "templatePath": "assets/templates/reference/Blueprints/Find.html",
               "data": {
                 "uniqueID": "Find290807",
@@ -96,6 +105,7 @@
             },
             {
               "name": "FindOne.html",
+              "displayName": "# Find One\n",
               "templatePath": "assets/templates/reference/Blueprints/FindOne.html",
               "data": {
                 "uniqueID": "FindOne259267",
@@ -104,6 +114,7 @@
             },
             {
               "name": "UpdateARecord.html",
+              "displayName": "# Update A Record\n",
               "templatePath": "assets/templates/reference/Blueprints/UpdateARecord.html",
               "data": {
                 "uniqueID": "UpdateARecord421031",
@@ -118,6 +129,7 @@
           "children": [
             {
               "name": "Browser SDK.html",
+              "displayName": "# Browser SDK\n",
               "templatePath": "assets/templates/reference/Browser SDK/Browser SDK.html",
               "data": {
                 "uniqueID": "BrowserSDK293544",
@@ -126,6 +138,7 @@
             },
             {
               "name": "socket.delete.html",
+              "displayName": "# socket.delete( `url`, [`params`], [`callback`] )\n",
               "templatePath": "assets/templates/reference/Browser SDK/socket.delete.html",
               "data": {
                 "uniqueID": "socketdelete671580",
@@ -134,6 +147,7 @@
             },
             {
               "name": "socket.get.html",
+              "displayName": "# socket.get( `url`, [`params`], [`callback`] )\n",
               "templatePath": "assets/templates/reference/Browser SDK/socket.get.html",
               "data": {
                 "uniqueID": "socketget480208",
@@ -142,6 +156,7 @@
             },
             {
               "name": "socket.post.html",
+              "displayName": "# socket.post( `url`, [`params`], [`callback`] )\n",
               "templatePath": "assets/templates/reference/Browser SDK/socket.post.html",
               "data": {
                 "uniqueID": "socketpost175407",
@@ -150,6 +165,7 @@
             },
             {
               "name": "socket.put.html",
+              "displayName": "# socket.put( `url`, [`params`], [`callback`] )\n",
               "templatePath": "assets/templates/reference/Browser SDK/socket.put.html",
               "data": {
                 "uniqueID": "socketput168503",
@@ -158,6 +174,7 @@
             },
             {
               "name": "socket.request.html",
+              "displayName": "# socket.request( `url`, [`params`], [`callback`], [`method`] )\n",
               "templatePath": "assets/templates/reference/Browser SDK/socket.request.html",
               "data": {
                 "uniqueID": "socketrequest682488",
@@ -172,6 +189,7 @@
           "children": [
             {
               "name": "CommandLine.html",
+              "displayName": "# CommandLine\n",
               "templatePath": "assets/templates/reference/Command Line/CommandLine.html",
               "data": {
                 "uniqueID": "CommandLine83196",
@@ -180,6 +198,7 @@
             },
             {
               "name": "sailsconsole.html",
+              "displayName": "# sails console\n",
               "templatePath": "assets/templates/reference/Command Line/sailsconsole.html",
               "data": {
                 "uniqueID": "sailsconsole198558",
@@ -188,6 +207,7 @@
             },
             {
               "name": "sailsdebug.html",
+              "displayName": "# sails debug\n",
               "templatePath": "assets/templates/reference/Command Line/sailsdebug.html",
               "data": {
                 "uniqueID": "sailsdebug521538",
@@ -196,6 +216,7 @@
             },
             {
               "name": "sailsgenerate.html",
+              "displayName": "# sails generate\n",
               "templatePath": "assets/templates/reference/Command Line/sailsgenerate.html",
               "data": {
                 "uniqueID": "sailsgenerate197041",
@@ -204,6 +225,7 @@
             },
             {
               "name": "sailslift.html",
+              "displayName": "# sails lift\n",
               "templatePath": "assets/templates/reference/Command Line/sailslift.html",
               "data": {
                 "uniqueID": "sailslift482554",
@@ -212,6 +234,7 @@
             },
             {
               "name": "sailsnew.html",
+              "displayName": "# sails new\n",
               "templatePath": "assets/templates/reference/Command Line/sailsnew.html",
               "data": {
                 "uniqueID": "sailsnew912235",
@@ -220,6 +243,7 @@
             },
             {
               "name": "sailsversion.html",
+              "displayName": "# sails version\n",
               "templatePath": "assets/templates/reference/Command Line/sailsversion.html",
               "data": {
                 "uniqueID": "sailsversion892721",
@@ -234,6 +258,7 @@
           "children": [
             {
               "name": "Blueprints.html",
+              "displayName": "# Blueprints\n",
               "templatePath": "assets/templates/reference/Configuration/Blueprints.html",
               "data": {
                 "uniqueID": "Blueprints187690",
@@ -242,6 +267,7 @@
             },
             {
               "name": "Bootstrap.html",
+              "displayName": "# Bootstrap\n",
               "templatePath": "assets/templates/reference/Configuration/Bootstrap.html",
               "data": {
                 "uniqueID": "Bootstrap85232",
@@ -250,6 +276,7 @@
             },
             {
               "name": "CSRF.html",
+              "displayName": "# CSRF\n",
               "templatePath": "assets/templates/reference/Configuration/CSRF.html",
               "data": {
                 "uniqueID": "CSRF353281",
@@ -258,6 +285,7 @@
             },
             {
               "name": "Configuration.html",
+              "displayName": "# Configuration\n",
               "templatePath": "assets/templates/reference/Configuration/Configuration.html",
               "data": {
                 "uniqueID": "Configuration615655",
@@ -266,6 +294,7 @@
             },
             {
               "name": "ConfiguringtheCLI.html",
+              "displayName": "# Configuring the CLI\n",
               "templatePath": "assets/templates/reference/Configuration/ConfiguringtheCLI.html",
               "data": {
                 "uniqueID": "ConfiguringtheCLI374211",
@@ -274,6 +303,7 @@
             },
             {
               "name": "Connections.html",
+              "displayName": "# Connections\n",
               "templatePath": "assets/templates/reference/Configuration/Connections.html",
               "data": {
                 "uniqueID": "Connections100765",
@@ -282,6 +312,7 @@
             },
             {
               "name": "Express.html",
+              "displayName": "# Express\n",
               "templatePath": "assets/templates/reference/Configuration/Express.html",
               "data": {
                 "uniqueID": "Express178274",
@@ -290,6 +321,7 @@
             },
             {
               "name": "Globals.html",
+              "displayName": "# sails.config.globals\n",
               "templatePath": "assets/templates/reference/Configuration/Globals.html",
               "data": {
                 "uniqueID": "sailsconfigglobals588825999999",
@@ -298,6 +330,7 @@
             },
             {
               "name": "Local.html",
+              "displayName": "# Local\n",
               "templatePath": "assets/templates/reference/Configuration/Local.html",
               "data": {
                 "uniqueID": "Local760410",
@@ -306,6 +339,7 @@
             },
             {
               "name": "Locales.html",
+              "displayName": "# Locales\n",
               "templatePath": "assets/templates/reference/Configuration/Locales.html",
               "data": {
                 "uniqueID": "Locales998452",
@@ -314,6 +348,7 @@
             },
             {
               "name": "Log.html",
+              "displayName": "# Log\n",
               "templatePath": "assets/templates/reference/Configuration/Log.html",
               "data": {
                 "uniqueID": "Log812909",
@@ -322,6 +357,7 @@
             },
             {
               "name": "Policies.html",
+              "displayName": "# Policies\n",
               "templatePath": "assets/templates/reference/Configuration/Policies.html",
               "data": {
                 "uniqueID": "Policies753862",
@@ -330,6 +366,7 @@
             },
             {
               "name": "Routes.html",
+              "displayName": "# Routes\n",
               "templatePath": "assets/templates/reference/Configuration/Routes.html",
               "data": {
                 "uniqueID": "Routes141736",
@@ -338,6 +375,7 @@
             },
             {
               "name": "Session.html",
+              "displayName": "# Session\n",
               "templatePath": "assets/templates/reference/Configuration/Session.html",
               "data": {
                 "uniqueID": "Session786744",
@@ -346,6 +384,7 @@
             },
             {
               "name": "Sockets.html",
+              "displayName": "# Sockets\n",
               "templatePath": "assets/templates/reference/Configuration/Sockets.html",
               "data": {
                 "uniqueID": "Sockets959426",
@@ -354,6 +393,7 @@
             },
             {
               "name": "sails.config.views.html",
+              "displayName": "# sails.config.views\n",
               "templatePath": "assets/templates/reference/Configuration/sails.config.views.html",
               "data": {
                 "uniqueID": "sailsconfigviews588825",
@@ -368,6 +408,7 @@
           "children": [
             {
               "name": "Controllers.html",
+              "displayName": "# Controllers\n",
               "templatePath": "assets/templates/reference/Controllers/Controllers.html",
               "data": {
                 "uniqueID": "Controllers464694",
@@ -382,6 +423,7 @@
           "children": [
             {
               "name": "Custom Responses.html",
+              "displayName": "# Custom Responses\n",
               "templatePath": "assets/templates/reference/Custom Responses/Custom Responses.html",
               "data": {
                 "uniqueID": "CustomResponses867259",
@@ -396,6 +438,7 @@
           "children": [
             {
               "name": "Deployment.html",
+              "displayName": "# Deployment\n",
               "templatePath": "assets/templates/reference/Deployment/Deployment.html",
               "data": {
                 "uniqueID": "Deployment402941",
@@ -404,6 +447,7 @@
             },
             {
               "name": "FAQ.html",
+              "displayName": "# FAQ\n",
               "templatePath": "assets/templates/reference/Deployment/FAQ.html",
               "data": {
                 "uniqueID": "FAQ475097",
@@ -412,6 +456,7 @@
             },
             {
               "name": "Hosting.html",
+              "displayName": "# Hosting\n",
               "templatePath": "assets/templates/reference/Deployment/Hosting.html",
               "data": {
                 "uniqueID": "Hosting276234",
@@ -420,6 +465,7 @@
             },
             {
               "name": "Scaling.html",
+              "displayName": "# Scaling\n",
               "templatePath": "assets/templates/reference/Deployment/Scaling.html",
               "data": {
                 "uniqueID": "Scaling291270",
@@ -434,6 +480,7 @@
           "children": [
             {
               "name": "Globals.html",
+              "displayName": "# Globals\n",
               "templatePath": "assets/templates/reference/Globals/Globals.html",
               "data": {
                 "uniqueID": "Globals668238",
@@ -448,6 +495,7 @@
           "children": [
             {
               "name": "Logs.html",
+              "displayName": "# Logs\n",
               "templatePath": "assets/templates/reference/Logs/Logs.html",
               "data": {
                 "uniqueID": "Logs277763",
@@ -456,6 +504,7 @@
             },
             {
               "name": "sails.log.html",
+              "displayName": "# sails.log()\n",
               "templatePath": "assets/templates/reference/Logs/sails.log.html",
               "data": {
                 "uniqueID": "sailslog321347",
@@ -470,6 +519,7 @@
           "children": [
             {
               "name": "Attributes.html",
+              "displayName": "# Attributes\n",
               "templatePath": "assets/templates/reference/Models/Attributes.html",
               "data": {
                 "uniqueID": "Attributes951609",
@@ -478,6 +528,7 @@
             },
             {
               "name": "Lifecyclecallbacks.html",
+              "displayName": "# Lifecycle callbacks\n",
               "templatePath": "assets/templates/reference/Models/Lifecyclecallbacks.html",
               "data": {
                 "uniqueID": "Lifecyclecallbacks631538",
@@ -486,6 +537,7 @@
             },
             {
               "name": "Modelconfiguration.html",
+              "displayName": "# Model configuration\n",
               "templatePath": "assets/templates/reference/Models/Modelconfiguration.html",
               "data": {
                 "uniqueID": "Modelconfiguration960213",
@@ -494,6 +546,7 @@
             },
             {
               "name": "Models.html",
+              "displayName": "# Models\n",
               "templatePath": "assets/templates/reference/Models/Models.html",
               "data": {
                 "uniqueID": "Models416997",
@@ -502,6 +555,7 @@
             },
             {
               "name": "Validations.html",
+              "displayName": "# Validations\n",
               "templatePath": "assets/templates/reference/Models/Validations.html",
               "data": {
                 "uniqueID": "Validations576587",
@@ -515,6 +569,7 @@
             "children": [
               {
                 "name": "Associations.html",
+                "displayName": "# Model Associations\n",
                 "templatePath": "assets/templates/reference/Models/Associations/Associations.html",
                 "data": {
                   "uniqueID": "Associations913185",
@@ -523,6 +578,7 @@
               },
               {
                 "name": "Dominance.html",
+                "displayName": "# Dominance\n",
                 "templatePath": "assets/templates/reference/Models/Associations/Dominance.html",
                 "data": {
                   "uniqueID": "Dominance904539",
@@ -531,6 +587,7 @@
               },
               {
                 "name": "ManytoMany.html",
+                "displayName": "# Many-to-Many\n",
                 "templatePath": "assets/templates/reference/Models/Associations/ManytoMany.html",
                 "data": {
                   "uniqueID": "ManytoMany276455",
@@ -539,6 +596,7 @@
               },
               {
                 "name": "OneWayAssociation.html",
+                "displayName": "# One Way Association\n",
                 "templatePath": "assets/templates/reference/Models/Associations/OneWayAssociation.html",
                 "data": {
                   "uniqueID": "OneWayAssociation708096",
@@ -547,6 +605,7 @@
               },
               {
                 "name": "OnetoMany.html",
+                "displayName": "# One-to-Many\n",
                 "templatePath": "assets/templates/reference/Models/Associations/OnetoMany.html",
                 "data": {
                   "uniqueID": "OnetoMany478093",
@@ -555,6 +614,7 @@
               },
               {
                 "name": "OnetoOne.html",
+                "displayName": "# One-to-One\n",
                 "templatePath": "assets/templates/reference/Models/Associations/OnetoOne.html",
                 "data": {
                   "uniqueID": "OnetoOne169258",
@@ -563,6 +623,7 @@
               },
               {
                 "name": "ThroughAssociations.html",
+                "displayName": "# Through Associations\n",
                 "templatePath": "assets/templates/reference/Models/Associations/ThroughAssociations.html",
                 "data": {
                   "uniqueID": "ThroughAssociations740718",
@@ -577,6 +638,7 @@
             "children": [
               {
                 "name": "Model Methods.html",
+                "displayName": "# Model Methods\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/Model Methods.html",
                 "data": {
                   "uniqueID": "ModelMethods528291",
@@ -585,6 +647,7 @@
               },
               {
                 "name": "add.html",
+                "displayName": "# * . * .add( `primary key` )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/add.html",
                 "data": {
                   "uniqueID": "add574043",
@@ -593,6 +656,7 @@
               },
               {
                 "name": "count.html",
+                "displayName": "# .count( `criteria` , `criteria` , [`callback`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/count.html",
                 "data": {
                   "uniqueID": "count42579",
@@ -601,6 +665,7 @@
               },
               {
                 "name": "create.html",
+                "displayName": "# .create( `values`, [`callback`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/create.html",
                 "data": {
                   "uniqueID": "create312605",
@@ -609,6 +674,7 @@
               },
               {
                 "name": "destroy.html",
+                "displayName": "# .destroy( `criteria` , [`callback`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/destroy.html",
                 "data": {
                   "uniqueID": "destroy398816",
@@ -617,6 +683,7 @@
               },
               {
                 "name": "exec.html",
+                "displayName": "# .exec(`callback`)\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/exec.html",
                 "data": {
                   "uniqueID": "exec550068",
@@ -625,6 +692,7 @@
               },
               {
                 "name": "find.html",
+                "displayName": "# .find(`criteria` , [`callback`])\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/find.html",
                 "data": {
                   "uniqueID": "find816978",
@@ -633,6 +701,7 @@
               },
               {
                 "name": "findOne.html",
+                "displayName": "# .findOne( `criteria` , [`callback`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/findOne.html",
                 "data": {
                   "uniqueID": "findOne423345",
@@ -641,6 +710,7 @@
               },
               {
                 "name": "findOrCreate.html",
+                "displayName": "# .findOrCreate( `criteria` , `criteria` , [`callback`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/findOrCreate.html",
                 "data": {
                   "uniqueID": "findOrCreate760631",
@@ -649,6 +719,7 @@
               },
               {
                 "name": "limit.html",
+                "displayName": "# .limit(`integer`)\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/limit.html",
                 "data": {
                   "uniqueID": "limit203606",
@@ -657,6 +728,7 @@
               },
               {
                 "name": "message.html",
+                "displayName": "# .message( `models`,`data`, [`request`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/message.html",
                 "data": {
                   "uniqueID": "message373731",
@@ -665,6 +737,7 @@
               },
               {
                 "name": "native.html",
+                "displayName": "# .native()\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/native.html",
                 "data": {
                   "uniqueID": "native900002",
@@ -673,6 +746,7 @@
               },
               {
                 "name": "populate.html",
+                "displayName": "# .populate( `foreignKey` )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/populate.html",
                 "data": {
                   "uniqueID": "populate245634",
@@ -681,6 +755,7 @@
               },
               {
                 "name": "publishAdd.html",
+                "displayName": "# .publishAdd( `{id}`,`attribute`, `idAdded`, [`request`], [`options`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/publishAdd.html",
                 "data": {
                   "uniqueID": "publishAdd129964",
@@ -689,6 +764,7 @@
               },
               {
                 "name": "publishCreate.html",
+                "displayName": "# .publishCreate( `data`,[`request`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/publishCreate.html",
                 "data": {
                   "uniqueID": "publishCreate671839",
@@ -697,6 +773,7 @@
               },
               {
                 "name": "publishDestroy.html",
+                "displayName": "# .publishDestroy( `{id}`, [`request`], [`options`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/publishDestroy.html",
                 "data": {
                   "uniqueID": "publishDestroy732227",
@@ -705,6 +782,7 @@
               },
               {
                 "name": "publishRemove.html",
+                "displayName": "# .publishRemove( `{id}`,`attribute`, `idRemoved`, [`request`], [`options`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/publishRemove.html",
                 "data": {
                   "uniqueID": "publishRemove468150",
@@ -713,6 +791,7 @@
               },
               {
                 "name": "publishUpdate.html",
+                "displayName": "# .publishUpdate( `{id}`,[`changes`],[`request`],[`options`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/publishUpdate.html",
                 "data": {
                   "uniqueID": "publishUpdate712330",
@@ -721,6 +800,7 @@
               },
               {
                 "name": "query.html",
+                "displayName": "# .query()\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/query.html",
                 "data": {
                   "uniqueID": "query546204",
@@ -729,6 +809,7 @@
               },
               {
                 "name": "remove.html",
+                "displayName": "# * . *.remove( `primary key` )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/remove.html",
                 "data": {
                   "uniqueID": "remove790682",
@@ -737,6 +818,7 @@
               },
               {
                 "name": "save.html",
+                "displayName": "# * .save(`callback`)\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/save.html",
                 "data": {
                   "uniqueID": "save581656",
@@ -745,6 +827,7 @@
               },
               {
                 "name": "skip.html",
+                "displayName": "# .skip(`integer`)\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/skip.html",
                 "data": {
                   "uniqueID": "skip128737",
@@ -753,6 +836,7 @@
               },
               {
                 "name": "sort.html",
+                "displayName": "# .sort(`string`)\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/sort.html",
                 "data": {
                   "uniqueID": "sort822396",
@@ -761,6 +845,7 @@
               },
               {
                 "name": "stream.html",
+                "displayName": "# .stream( `criteria` )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/stream.html",
                 "data": {
                   "uniqueID": "stream427721",
@@ -769,6 +854,7 @@
               },
               {
                 "name": "subscribe.html",
+                "displayName": "# .subscribe(`request`,`records`,[`contexts`])\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/subscribe.html",
                 "data": {
                   "uniqueID": "subscribe342218",
@@ -777,6 +863,7 @@
               },
               {
                 "name": "toJSON.html",
+                "displayName": "# * .toJSON()\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/toJSON.html",
                 "data": {
                   "uniqueID": "toJSON161307",
@@ -785,6 +872,7 @@
               },
               {
                 "name": "toObject.html",
+                "displayName": "# * .toObject()\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/toObject.html",
                 "data": {
                   "uniqueID": "toObject330342",
@@ -793,6 +881,7 @@
               },
               {
                 "name": "unsubscribe.html",
+                "displayName": "# .unsubscribe(`request`,`records`,[`contexts`])\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/unsubscribe.html",
                 "data": {
                   "uniqueID": "unsubscribe354769",
@@ -801,6 +890,7 @@
               },
               {
                 "name": "unwatch.html",
+                "displayName": "# .unwatch(`request`)\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/unwatch.html",
                 "data": {
                   "uniqueID": "unwatch872661",
@@ -809,6 +899,7 @@
               },
               {
                 "name": "update.html",
+                "displayName": "# .update( `criteria` , `criteria` , [`callback`] )\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/update.html",
                 "data": {
                   "uniqueID": "update727440",
@@ -817,6 +908,7 @@
               },
               {
                 "name": "validate.html",
+                "displayName": "# * .validate(`callback`)\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/validate.html",
                 "data": {
                   "uniqueID": "validate76690",
@@ -825,6 +917,7 @@
               },
               {
                 "name": "watch.html",
+                "displayName": "# .watch(`request`)\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/watch.html",
                 "data": {
                   "uniqueID": "watch67265",
@@ -833,6 +926,7 @@
               },
               {
                 "name": "where.html",
+                "displayName": "# .where(`criteria`)\n",
                 "templatePath": "assets/templates/reference/Models/Model Methods/where.html",
                 "data": {
                   "uniqueID": "where700717",
@@ -848,6 +942,7 @@
           "children": [
             {
               "name": "Policies.html",
+              "displayName": "# Policies\n",
               "templatePath": "assets/templates/reference/Policies/Policies.html",
               "data": {
                 "uniqueID": "Policies766425",
@@ -862,6 +957,7 @@
           "children": [
             {
               "name": "Request.html",
+              "displayName": "# Request\n",
               "templatePath": "assets/templates/reference/Request/Request.html",
               "data": {
                 "uniqueID": "Request35837",
@@ -870,6 +966,7 @@
             },
             {
               "name": "req.accepted.html",
+              "displayName": "# req.accepted\n",
               "templatePath": "assets/templates/reference/Request/req.accepted.html",
               "data": {
                 "uniqueID": "reqaccepted334477",
@@ -878,6 +975,7 @@
             },
             {
               "name": "req.acceptedCharsets.html",
+              "displayName": "# req.acceptedCharsets\n",
               "templatePath": "assets/templates/reference/Request/req.acceptedCharsets.html",
               "data": {
                 "uniqueID": "reqacceptedCharsets230309",
@@ -886,6 +984,7 @@
             },
             {
               "name": "req.acceptedLanguages.html",
+              "displayName": "# req.acceptedLanguages\n",
               "templatePath": "assets/templates/reference/Request/req.acceptedLanguages.html",
               "data": {
                 "uniqueID": "reqacceptedLanguages311952",
@@ -894,6 +993,7 @@
             },
             {
               "name": "req.accepts.html",
+              "displayName": "# req.accepts()\n",
               "templatePath": "assets/templates/reference/Request/req.accepts.html",
               "data": {
                 "uniqueID": "reqaccepts89101",
@@ -902,6 +1002,7 @@
             },
             {
               "name": "req.acceptsCharset.html",
+              "displayName": "# req.acceptsCharset()\n",
               "templatePath": "assets/templates/reference/Request/req.acceptsCharset.html",
               "data": {
                 "uniqueID": "reqacceptsCharset303007",
@@ -910,6 +1011,7 @@
             },
             {
               "name": "req.acceptsLanguage.html",
+              "displayName": "# req.acceptsLanguage()\n",
               "templatePath": "assets/templates/reference/Request/req.acceptsLanguage.html",
               "data": {
                 "uniqueID": "reqacceptsLanguage170988",
@@ -918,6 +1020,7 @@
             },
             {
               "name": "req.allParams.html",
+              "displayName": "# req.allParams()\n",
               "templatePath": "assets/templates/reference/Request/req.allParams.html",
               "data": {
                 "uniqueID": "reqallParams817828",
@@ -926,6 +1029,7 @@
             },
             {
               "name": "req.body.html",
+              "displayName": "# req.body\n",
               "templatePath": "assets/templates/reference/Request/req.body.html",
               "data": {
                 "uniqueID": "reqbody1481",
@@ -934,6 +1038,7 @@
             },
             {
               "name": "req.cookies.html",
+              "displayName": "# req.cookies\n",
               "templatePath": "assets/templates/reference/Request/req.cookies.html",
               "data": {
                 "uniqueID": "reqcookies576909",
@@ -942,6 +1047,7 @@
             },
             {
               "name": "req.file.html",
+              "displayName": "# req.file()\n",
               "templatePath": "assets/templates/reference/Request/req.file.html",
               "data": {
                 "uniqueID": "reqfile784692",
@@ -950,6 +1056,7 @@
             },
             {
               "name": "req.fresh.html",
+              "displayName": "# req.fresh\n",
               "templatePath": "assets/templates/reference/Request/req.fresh.html",
               "data": {
                 "uniqueID": "reqfresh718346",
@@ -958,6 +1065,7 @@
             },
             {
               "name": "req.get.html",
+              "displayName": "# req.get()\n",
               "templatePath": "assets/templates/reference/Request/req.get.html",
               "data": {
                 "uniqueID": "reqget839626",
@@ -966,6 +1074,7 @@
             },
             {
               "name": "req.host.html",
+              "displayName": "# req.host\n",
               "templatePath": "assets/templates/reference/Request/req.host.html",
               "data": {
                 "uniqueID": "reqhost35719",
@@ -974,6 +1083,7 @@
             },
             {
               "name": "req.ip.html",
+              "displayName": "# req.ip\n",
               "templatePath": "assets/templates/reference/Request/req.ip.html",
               "data": {
                 "uniqueID": "reqip681943",
@@ -982,6 +1092,7 @@
             },
             {
               "name": "req.ips.html",
+              "displayName": "# req.ips\n",
               "templatePath": "assets/templates/reference/Request/req.ips.html",
               "data": {
                 "uniqueID": "reqips78262",
@@ -990,6 +1101,7 @@
             },
             {
               "name": "req.is.html",
+              "displayName": "# req.is()\n",
               "templatePath": "assets/templates/reference/Request/req.is.html",
               "data": {
                 "uniqueID": "reqis371514",
@@ -998,6 +1110,7 @@
             },
             {
               "name": "req.isSocket.html",
+              "displayName": "# req.isSocket\n",
               "templatePath": "assets/templates/reference/Request/req.isSocket.html",
               "data": {
                 "uniqueID": "reqisSocket87074",
@@ -1006,6 +1119,7 @@
             },
             {
               "name": "req.method.html",
+              "displayName": "# req.method\n",
               "templatePath": "assets/templates/reference/Request/req.method.html",
               "data": {
                 "uniqueID": "reqmethod305728",
@@ -1014,6 +1128,7 @@
             },
             {
               "name": "req.param.html",
+              "displayName": "# req.param()\n",
               "templatePath": "assets/templates/reference/Request/req.param.html",
               "data": {
                 "uniqueID": "reqparam149618",
@@ -1022,6 +1137,7 @@
             },
             {
               "name": "req.params.html",
+              "displayName": "# req.params\n",
               "templatePath": "assets/templates/reference/Request/req.params.html",
               "data": {
                 "uniqueID": "reqparams977271",
@@ -1030,6 +1146,7 @@
             },
             {
               "name": "req.path.html",
+              "displayName": "# req.path\n",
               "templatePath": "assets/templates/reference/Request/req.path.html",
               "data": {
                 "uniqueID": "reqpath216836",
@@ -1038,6 +1155,7 @@
             },
             {
               "name": "req.protocol.html",
+              "displayName": "# req.protocol\n",
               "templatePath": "assets/templates/reference/Request/req.protocol.html",
               "data": {
                 "uniqueID": "reqprotocol732076",
@@ -1046,6 +1164,7 @@
             },
             {
               "name": "req.query.html",
+              "displayName": "# req.query\n",
               "templatePath": "assets/templates/reference/Request/req.query.html",
               "data": {
                 "uniqueID": "reqquery553014",
@@ -1054,6 +1173,7 @@
             },
             {
               "name": "req.secure.html",
+              "displayName": "# req.secure\n",
               "templatePath": "assets/templates/reference/Request/req.secure.html",
               "data": {
                 "uniqueID": "reqsecure698791",
@@ -1062,6 +1182,7 @@
             },
             {
               "name": "req.signedCookies.html",
+              "displayName": "# req.signedCookies\n",
               "templatePath": "assets/templates/reference/Request/req.signedCookies.html",
               "data": {
                 "uniqueID": "reqsignedCookies113713",
@@ -1070,6 +1191,7 @@
             },
             {
               "name": "req.socket.html",
+              "displayName": "# req.socket\n",
               "templatePath": "assets/templates/reference/Request/req.socket.html",
               "data": {
                 "uniqueID": "reqsocket572002",
@@ -1078,6 +1200,7 @@
             },
             {
               "name": "req.subdomains.html",
+              "displayName": "# req.subdomains\n",
               "templatePath": "assets/templates/reference/Request/req.subdomains.html",
               "data": {
                 "uniqueID": "reqsubdomains686204",
@@ -1086,6 +1209,7 @@
             },
             {
               "name": "req.url.html",
+              "displayName": "# req.url\n",
               "templatePath": "assets/templates/reference/Request/req.url.html",
               "data": {
                 "uniqueID": "requrl810500",
@@ -1094,6 +1218,7 @@
             },
             {
               "name": "req.wantsJSON.html",
+              "displayName": "# req.wantsJSON\n",
               "templatePath": "assets/templates/reference/Request/req.wantsJSON.html",
               "data": {
                 "uniqueID": "reqwantsJSON30891",
@@ -1102,6 +1227,7 @@
             },
             {
               "name": "req.xhr.html",
+              "displayName": "# req.xhr\n",
               "templatePath": "assets/templates/reference/Request/req.xhr.html",
               "data": {
                 "uniqueID": "reqxhr450203",
@@ -1116,6 +1242,7 @@
           "children": [
             {
               "name": "Response.html",
+              "displayName": "# Response\n",
               "templatePath": "assets/templates/reference/Response/Response.html",
               "data": {
                 "uniqueID": "Response550242",
@@ -1124,6 +1251,7 @@
             },
             {
               "name": "res.attachment.html",
+              "displayName": "# res.attachment()\n",
               "templatePath": "assets/templates/reference/Response/res.attachment.html",
               "data": {
                 "uniqueID": "resattachment107506",
@@ -1132,6 +1260,7 @@
             },
             {
               "name": "res.badRequest.html",
+              "displayName": "# res.badRequest()\n",
               "templatePath": "assets/templates/reference/Response/res.badRequest.html",
               "data": {
                 "uniqueID": "resbadRequest631019",
@@ -1140,6 +1269,7 @@
             },
             {
               "name": "res.clearCookie.html",
+              "displayName": "# res.clearCookie()\n",
               "templatePath": "assets/templates/reference/Response/res.clearCookie.html",
               "data": {
                 "uniqueID": "resclearCookie314533",
@@ -1148,6 +1278,7 @@
             },
             {
               "name": "res.cookie.html",
+              "displayName": "# res.cookie()\n",
               "templatePath": "assets/templates/reference/Response/res.cookie.html",
               "data": {
                 "uniqueID": "rescookie624994",
@@ -1156,6 +1287,7 @@
             },
             {
               "name": "res.forbidden.html",
+              "displayName": "# res.forbidden()\n",
               "templatePath": "assets/templates/reference/Response/res.forbidden.html",
               "data": {
                 "uniqueID": "resforbidden97443",
@@ -1164,6 +1296,7 @@
             },
             {
               "name": "res.get.html",
+              "displayName": "# res.get()\n",
               "templatePath": "assets/templates/reference/Response/res.get.html",
               "data": {
                 "uniqueID": "resget697790",
@@ -1172,6 +1305,7 @@
             },
             {
               "name": "res.json.html",
+              "displayName": "# res.json()\n",
               "templatePath": "assets/templates/reference/Response/res.json.html",
               "data": {
                 "uniqueID": "resjson72272",
@@ -1180,6 +1314,7 @@
             },
             {
               "name": "res.jsonp.html",
+              "displayName": "# res.jsonp()\n",
               "templatePath": "assets/templates/reference/Response/res.jsonp.html",
               "data": {
                 "uniqueID": "resjsonp798206",
@@ -1188,6 +1323,7 @@
             },
             {
               "name": "res.location.html",
+              "displayName": "# res.location()\n",
               "templatePath": "assets/templates/reference/Response/res.location.html",
               "data": {
                 "uniqueID": "reslocation779137",
@@ -1196,6 +1332,7 @@
             },
             {
               "name": "res.negotiate.html",
+              "displayName": "# res.negotiate()\n",
               "templatePath": "assets/templates/reference/Response/res.negotiate.html",
               "data": {
                 "uniqueID": "resnegotiate730536",
@@ -1204,6 +1341,7 @@
             },
             {
               "name": "res.notFound.html",
+              "displayName": "# res.notFound()\n",
               "templatePath": "assets/templates/reference/Response/res.notFound.html",
               "data": {
                 "uniqueID": "resnotFound130366",
@@ -1212,6 +1350,7 @@
             },
             {
               "name": "res.ok.html",
+              "displayName": "# res.ok()\n",
               "templatePath": "assets/templates/reference/Response/res.ok.html",
               "data": {
                 "uniqueID": "resok847363",
@@ -1220,6 +1359,7 @@
             },
             {
               "name": "res.redirect.html",
+              "displayName": "# res.redirect()\n",
               "templatePath": "assets/templates/reference/Response/res.redirect.html",
               "data": {
                 "uniqueID": "resredirect444617",
@@ -1228,6 +1368,7 @@
             },
             {
               "name": "res.send.html",
+              "displayName": "# res.send()\n",
               "templatePath": "assets/templates/reference/Response/res.send.html",
               "data": {
                 "uniqueID": "ressend588955",
@@ -1236,6 +1377,7 @@
             },
             {
               "name": "res.serverError.html",
+              "displayName": "# res.serverError()\n",
               "templatePath": "assets/templates/reference/Response/res.serverError.html",
               "data": {
                 "uniqueID": "resserverError551750",
@@ -1244,6 +1386,7 @@
             },
             {
               "name": "res.set.html",
+              "displayName": "# res.set()\n",
               "templatePath": "assets/templates/reference/Response/res.set.html",
               "data": {
                 "uniqueID": "resset167965",
@@ -1252,6 +1395,7 @@
             },
             {
               "name": "res.status.html",
+              "displayName": "# res.status()\n",
               "templatePath": "assets/templates/reference/Response/res.status.html",
               "data": {
                 "uniqueID": "resstatus819458",
@@ -1260,6 +1404,7 @@
             },
             {
               "name": "res.type.html",
+              "displayName": "# res.type()\n",
               "templatePath": "assets/templates/reference/Response/res.type.html",
               "data": {
                 "uniqueID": "restype43929",
@@ -1268,6 +1413,7 @@
             },
             {
               "name": "res.view.html",
+              "displayName": "# res.view()\n",
               "templatePath": "assets/templates/reference/Response/res.view.html",
               "data": {
                 "uniqueID": "resview916814",
@@ -1282,6 +1428,7 @@
           "children": [
             {
               "name": "RouteTargetSyntax.html",
+              "displayName": "# Route Target Syntax\n",
               "templatePath": "assets/templates/reference/Routes/RouteTargetSyntax.html",
               "data": {
                 "uniqueID": "RouteTargetSyntax278177",
@@ -1290,6 +1437,7 @@
             },
             {
               "name": "Routes.html",
+              "displayName": "# Routes\n",
               "templatePath": "assets/templates/reference/Routes/Routes.html",
               "data": {
                 "uniqueID": "Routes849188",
@@ -1298,6 +1446,7 @@
             },
             {
               "name": "URLSlugs.html",
+              "displayName": "# URL Slugs\n",
               "templatePath": "assets/templates/reference/Routes/URLSlugs.html",
               "data": {
                 "uniqueID": "URLSlugs805236",
@@ -1312,6 +1461,7 @@
           "children": [
             {
               "name": "CSRF.html",
+              "displayName": "# CSRF\n",
               "templatePath": "assets/templates/reference/Security/CSRF.html",
               "data": {
                 "uniqueID": "CSRF300312",
@@ -1320,6 +1470,7 @@
             },
             {
               "name": "Clickjacking.html",
+              "displayName": "# Clickjacking\n",
               "templatePath": "assets/templates/reference/Security/Clickjacking.html",
               "data": {
                 "uniqueID": "Clickjacking879453",
@@ -1328,6 +1479,7 @@
             },
             {
               "name": "ContentSecurityPolicy.html",
+              "displayName": "# Content Security Policy\n",
               "templatePath": "assets/templates/reference/Security/ContentSecurityPolicy.html",
               "data": {
                 "uniqueID": "ContentSecurityPolicy649437",
@@ -1336,6 +1488,7 @@
             },
             {
               "name": "DDOS.html",
+              "displayName": "# DDOS\n",
               "templatePath": "assets/templates/reference/Security/DDOS.html",
               "data": {
                 "uniqueID": "DDOS139869",
@@ -1344,6 +1497,7 @@
             },
             {
               "name": "P3P.html",
+              "displayName": "# P3P\n",
               "templatePath": "assets/templates/reference/Security/P3P.html",
               "data": {
                 "uniqueID": "P3P183449",
@@ -1352,6 +1506,7 @@
             },
             {
               "name": "Security.html",
+              "displayName": "# Security\n",
               "templatePath": "assets/templates/reference/Security/Security.html",
               "data": {
                 "uniqueID": "Security59375",
@@ -1360,6 +1515,7 @@
             },
             {
               "name": "SocketHijacking.html",
+              "displayName": "# Socket Hijacking\n",
               "templatePath": "assets/templates/reference/Security/SocketHijacking.html",
               "data": {
                 "uniqueID": "SocketHijacking397141",
@@ -1374,6 +1530,7 @@
           "children": [
             {
               "name": "Services.html",
+              "displayName": "# Services\n",
               "templatePath": "assets/templates/reference/Services/Services.html",
               "data": {
                 "uniqueID": "Services157331",
@@ -1388,6 +1545,7 @@
           "children": [
             {
               "name": "Sockets.html",
+              "displayName": "# Sockets\n",
               "templatePath": "assets/templates/reference/Sockets/Sockets.html",
               "data": {
                 "uniqueID": "Sockets505826",
@@ -1396,6 +1554,7 @@
             },
             {
               "name": "sails.sockets.blast.html",
+              "displayName": "# sails.sockets.blast( [`event`], `data`, [`socketToOmit`] )\n",
               "templatePath": "assets/templates/reference/Sockets/sails.sockets.blast.html",
               "data": {
                 "uniqueID": "sailssocketsblast345475",
@@ -1404,6 +1563,7 @@
             },
             {
               "name": "sails.sockets.broadcast.html",
+              "displayName": "# sails.sockets.broadcast( `roomName`, [`event`], `data`, [`socketToOmit`] )\n",
               "templatePath": "assets/templates/reference/Sockets/sails.sockets.broadcast.html",
               "data": {
                 "uniqueID": "sailssocketsbroadcast253997",
@@ -1412,6 +1572,7 @@
             },
             {
               "name": "sails.sockets.emit.html",
+              "displayName": "# sails.sockets.emit( `socketIds`, [`event`], `data`)\n",
               "templatePath": "assets/templates/reference/Sockets/sails.sockets.emit.html",
               "data": {
                 "uniqueID": "sailssocketsemit963182",
@@ -1420,6 +1581,7 @@
             },
             {
               "name": "sails.sockets.id.html",
+              "displayName": "# sails.sockets.id( `socket` )\n",
               "templatePath": "assets/templates/reference/Sockets/sails.sockets.id.html",
               "data": {
                 "uniqueID": "sailssocketsid240053",
@@ -1428,6 +1590,7 @@
             },
             {
               "name": "sails.sockets.join.html",
+              "displayName": "# sails.sockets.join()\n",
               "templatePath": "assets/templates/reference/Sockets/sails.sockets.join.html",
               "data": {
                 "uniqueID": "sailssocketsjoin958690",
@@ -1436,6 +1599,7 @@
             },
             {
               "name": "sails.sockets.leave.html",
+              "displayName": "# sails.sockets.leave( `socket`, `roomName` )\n",
               "templatePath": "assets/templates/reference/Sockets/sails.sockets.leave.html",
               "data": {
                 "uniqueID": "sailssocketsleave425459",
@@ -1444,6 +1608,7 @@
             },
             {
               "name": "sails.sockets.rooms.html",
+              "displayName": "# sails.sockets.rooms()\n",
               "templatePath": "assets/templates/reference/Sockets/sails.sockets.rooms.html",
               "data": {
                 "uniqueID": "sailssocketsrooms183984",
@@ -1452,6 +1617,7 @@
             },
             {
               "name": "sails.sockets.socketRooms.html",
+              "displayName": "# sails.sockets.socketRooms( `socket` )\n",
               "templatePath": "assets/templates/reference/Sockets/sails.sockets.socketRooms.html",
               "data": {
                 "uniqueID": "sailssocketssocketRooms270469",
@@ -1460,6 +1626,7 @@
             },
             {
               "name": "sails.sockets.subscribeToFirehose.html",
+              "displayName": "# sails.sockets.subscribeToFirehose(socket)\n",
               "templatePath": "assets/templates/reference/Sockets/sails.sockets.subscribeToFirehose.html",
               "data": {
                 "uniqueID": "sailssocketssubscribeToFirehose954078",
@@ -1468,6 +1635,7 @@
             },
             {
               "name": "sails.sockets.subscribers.html",
+              "displayName": "# sails.sockets.subscribers( `roomName` )\n",
               "templatePath": "assets/templates/reference/Sockets/sails.sockets.subscribers.html",
               "data": {
                 "uniqueID": "sailssocketssubscribers65666",
@@ -1476,6 +1644,7 @@
             },
             {
               "name": "sails.sockets.unsubscribeFromFirehose.html",
+              "displayName": "# sails.sockets.unsubscribeFromFirehose(socket)\n",
               "templatePath": "assets/templates/reference/Sockets/sails.sockets.unsubscribeFromFirehose.html",
               "data": {
                 "uniqueID": "sailssocketsunsubscribeFromFirehose999488",
@@ -1490,6 +1659,7 @@
           "children": [
             {
               "name": "Upgrading.html",
+              "displayName": "# Upgrading\n",
               "templatePath": "assets/templates/reference/Upgrading/Upgrading.html",
               "data": {
                 "uniqueID": "Upgrading509472",
@@ -1504,6 +1674,7 @@
           "children": [
             {
               "name": "Layouts.html",
+              "displayName": "# Layouts\n",
               "templatePath": "assets/templates/reference/Views/Layouts.html",
               "data": {
                 "uniqueID": "Layouts870655",
@@ -1512,6 +1683,7 @@
             },
             {
               "name": "Locals.html",
+              "displayName": "# Locals\n",
               "templatePath": "assets/templates/reference/Views/Locals.html",
               "data": {
                 "uniqueID": "Locals453748",
@@ -1520,6 +1692,7 @@
             },
             {
               "name": "Partials.html",
+              "displayName": "# Partials\n",
               "templatePath": "assets/templates/reference/Views/Partials.html",
               "data": {
                 "uniqueID": "Partials610916",
@@ -1528,6 +1701,7 @@
             },
             {
               "name": "ViewEngines.html",
+              "displayName": "# View Engines\n",
               "templatePath": "assets/templates/reference/Views/ViewEngines.html",
               "data": {
                 "uniqueID": "ViewEngines339501",
@@ -1536,6 +1710,7 @@
             },
             {
               "name": "Views.html",
+              "displayName": "# Views\n",
               "templatePath": "assets/templates/reference/Views/Views.html",
               "data": {
                 "uniqueID": "Views426660",
@@ -1550,6 +1725,7 @@
           "children": [
             {
               "name": "Usage.html",
+              "displayName": "# Usage\n",
               "templatePath": "assets/templates/reference/i18n/Usage.html",
               "data": {
                 "uniqueID": "Usage689913",
@@ -1558,6 +1734,7 @@
             },
             {
               "name": "i18n.html",
+              "displayName": "# i18n\n",
               "templatePath": "assets/templates/reference/i18n/i18n.html",
               "data": {
                 "uniqueID": "i18n245343",
@@ -1573,6 +1750,7 @@
         "children": [
           {
             "name": "README.html",
+            "displayName": "sails-docs-anatomy\n",
             "templatePath": "assets/templates/anatomy/README.html",
             "data": {}
           }
@@ -1583,6 +1761,7 @@
           "children": [
             {
               "name": ".gitignore.html",
+              "displayName": "# myApp/.gitignore\n",
               "templatePath": "assets/templates/anatomy/myApp/.gitignore.html",
               "data": {
                 "uniqueID": "gitignore878586",
@@ -1591,6 +1770,7 @@
             },
             {
               "name": ".sailsrc.html",
+              "displayName": "# myApp/.sailsrc\n",
               "templatePath": "assets/templates/anatomy/myApp/.sailsrc.html",
               "data": {
                 "uniqueID": "sailsrc6419",
@@ -1599,6 +1779,7 @@
             },
             {
               "name": "Gruntfile.js.html",
+              "displayName": "# myApp/Gruntfile.js\n",
               "templatePath": "assets/templates/anatomy/myApp/Gruntfile.js.html",
               "data": {
                 "uniqueID": "Gruntfilejs375150",
@@ -1607,6 +1788,7 @@
             },
             {
               "name": "README.html",
+              "displayName": "# myApp/README\n",
               "templatePath": "assets/templates/anatomy/myApp/README.html",
               "data": {
                 "uniqueID": "READMEmd869459",
@@ -1615,6 +1797,7 @@
             },
             {
               "name": "app.js.html",
+              "displayName": "# myApp/app.js\n",
               "templatePath": "assets/templates/anatomy/myApp/app.js.html",
               "data": {
                 "uniqueID": "appjs249761",
@@ -1623,6 +1806,7 @@
             },
             {
               "name": "myApp.html",
+              "displayName": "# myApp\n",
               "templatePath": "assets/templates/anatomy/myApp/myApp.html",
               "data": {
                 "uniqueID": "myAppmd870358",
@@ -1631,6 +1815,7 @@
             },
             {
               "name": "package.json.html",
+              "displayName": "# myApp/package.json\n",
               "templatePath": "assets/templates/anatomy/myApp/package.json.html",
               "data": {
                 "uniqueID": "packagejson891874",
@@ -1644,6 +1829,7 @@
             "children": [
               {
                 "name": "api.html",
+                "displayName": "# myApp/api\n",
                 "templatePath": "assets/templates/anatomy/myApp/api/api.html",
                 "data": {
                   "uniqueID": "apimd840000",
@@ -1657,6 +1843,7 @@
               "children": [
                 {
                   "name": ".gitkeep.html",
+                  "displayName": "# myApp/api/controllers/.gitkeep\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/controllers/.gitkeep.html",
                   "data": {
                     "uniqueID": "gitkeep271990",
@@ -1665,6 +1852,7 @@
                 },
                 {
                   "name": "UserController.js.html",
+                  "displayName": "# myApp/api/controllers/UserController.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/controllers/UserController.js.html",
                   "data": {
                     "uniqueID": "UserControllerjs867576",
@@ -1673,6 +1861,7 @@
                 },
                 {
                   "name": "controllers.html",
+                  "displayName": "# myApp/api/controllers\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/controllers/controllers.html",
                   "data": {
                     "uniqueID": "controllersmd841616",
@@ -1687,6 +1876,7 @@
               "children": [
                 {
                   "name": ".gitkeep.html",
+                  "displayName": "# myApp/api/models/.gitkeep\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/models/.gitkeep.html",
                   "data": {
                     "uniqueID": "gitkeep437760",
@@ -1695,6 +1885,7 @@
                 },
                 {
                   "name": "User.js.html",
+                  "displayName": "# myApp/api/models/User.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/models/User.js.html",
                   "data": {
                     "uniqueID": "Userjs263218",
@@ -1703,6 +1894,7 @@
                 },
                 {
                   "name": "models.html",
+                  "displayName": "# myApp/api/models\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/models/models.html",
                   "data": {
                     "uniqueID": "modelsmd956381",
@@ -1717,6 +1909,7 @@
               "children": [
                 {
                   "name": "policies.html",
+                  "displayName": "# myApp/api/policies\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/policies/policies.html",
                   "data": {
                     "uniqueID": "policiesmd630211",
@@ -1725,6 +1918,7 @@
                 },
                 {
                   "name": "sessionAuth.js.html",
+                  "displayName": "# myApp/api/policies/sessionAuth.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/policies/sessionAuth.js.html",
                   "data": {
                     "uniqueID": "sessionAuthjs444151",
@@ -1739,6 +1933,7 @@
               "children": [
                 {
                   "name": "badRequest.js.html",
+                  "displayName": "# myApp/api/responses/badRequest.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/responses/badRequest.js.html",
                   "data": {
                     "uniqueID": "badRequestjs643116",
@@ -1747,6 +1942,7 @@
                 },
                 {
                   "name": "forbidden.js.html",
+                  "displayName": "# myApp/api/responses/forbidden.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/responses/forbidden.js.html",
                   "data": {
                     "uniqueID": "forbiddenjs655137",
@@ -1755,6 +1951,7 @@
                 },
                 {
                   "name": "notFound.js.html",
+                  "displayName": "# myApp/api/responses/notFound.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/responses/notFound.js.html",
                   "data": {
                     "uniqueID": "notFoundjs935866",
@@ -1763,6 +1960,7 @@
                 },
                 {
                   "name": "ok.js.html",
+                  "displayName": "# myApp/api/responses/ok.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/responses/ok.js.html",
                   "data": {
                     "uniqueID": "okjs629833",
@@ -1771,6 +1969,7 @@
                 },
                 {
                   "name": "responses.html",
+                  "displayName": "# myApp/api/responses\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/responses/responses.html",
                   "data": {
                     "uniqueID": "responsesmd261495",
@@ -1779,6 +1978,7 @@
                 },
                 {
                   "name": "serverError.js.html",
+                  "displayName": "# myApp/api/responses/serverError.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/responses/serverError.js.html",
                   "data": {
                     "uniqueID": "serverErrorjs285178",
@@ -1793,6 +1993,7 @@
               "children": [
                 {
                   "name": ".gitkeep.html",
+                  "displayName": "# myApp/api/services/.gitkeep\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/services/.gitkeep.html",
                   "data": {
                     "uniqueID": "gitkeep306979",
@@ -1801,6 +2002,7 @@
                 },
                 {
                   "name": "services.html",
+                  "displayName": "# myApp/api/services\n",
                   "templatePath": "assets/templates/anatomy/myApp/api/services/services.html",
                   "data": {
                     "uniqueID": "servicesmd572453",
@@ -1816,6 +2018,7 @@
             "children": [
               {
                 "name": "assets.html",
+                "displayName": "# myApp/assets\n",
                 "templatePath": "assets/templates/anatomy/myApp/assets/assets.html",
                 "data": {
                   "uniqueID": "assetsmd466929",
@@ -1824,11 +2027,13 @@
               },
               {
                 "name": "favicon.ico.html",
+                "displayName": "# myApp/assets/favicon.ico\n",
                 "templatePath": "assets/templates/anatomy/myApp/assets/favicon.ico.html",
                 "data": {}
               },
               {
                 "name": "robots.txt.html",
+                "displayName": "# myApp/assets/robots.txt\n",
                 "templatePath": "assets/templates/anatomy/myApp/assets/robots.txt.html",
                 "data": {
                   "uniqueID": "robotstxt863673",
@@ -1842,6 +2047,7 @@
               "children": [
                 {
                   "name": ".gitkeep.html",
+                  "displayName": "# myApp/assets/images/.gitkeep\n",
                   "templatePath": "assets/templates/anatomy/myApp/assets/images/.gitkeep.html",
                   "data": {
                     "uniqueID": "gitkeep510726",
@@ -1850,6 +2056,7 @@
                 },
                 {
                   "name": "images.html",
+                  "displayName": "# myApp/assets/images\n",
                   "templatePath": "assets/templates/anatomy/myApp/assets/images/images.html",
                   "data": {
                     "uniqueID": "imagesmd510380",
@@ -1864,6 +2071,7 @@
               "children": [
                 {
                   "name": "js.html",
+                  "displayName": "# myApp/assets/js\n",
                   "templatePath": "assets/templates/anatomy/myApp/assets/js/js.html",
                   "data": {
                     "uniqueID": "jsmd574851",
@@ -1877,6 +2085,7 @@
                 "children": [
                   {
                     "name": "dependencies.html",
+                    "displayName": "# dependencies\n",
                     "templatePath": "assets/templates/anatomy/myApp/assets/js/dependencies/dependencies.html",
                     "data": {
                       "uniqueID": "dependenciesmd334158",
@@ -1885,6 +2094,7 @@
                   },
                   {
                     "name": "sails.io.js.html",
+                    "displayName": "# myApp/assets/js/dependencies/sails.io.js\n",
                     "templatePath": "assets/templates/anatomy/myApp/assets/js/dependencies/sails.io.js.html",
                     "data": {
                       "uniqueID": "sailsiojs779166",
@@ -1900,6 +2110,7 @@
               "children": [
                 {
                   "name": "importer.less.html",
+                  "displayName": "# myApp/assets/styles/importer.less\n",
                   "templatePath": "assets/templates/anatomy/myApp/assets/styles/importer.less.html",
                   "data": {
                     "uniqueID": "importerless750226",
@@ -1908,6 +2119,7 @@
                 },
                 {
                   "name": "styles.html",
+                  "displayName": "# myApp/assets/styles\n",
                   "templatePath": "assets/templates/anatomy/myApp/assets/styles/styles.html",
                   "data": {
                     "uniqueID": "stylesmd285346",
@@ -1922,6 +2134,7 @@
               "children": [
                 {
                   "name": ".gitkeep.html",
+                  "displayName": "# myApp/assets/templates/.gitkeep\n",
                   "templatePath": "assets/templates/anatomy/myApp/assets/templates/.gitkeep.html",
                   "data": {
                     "uniqueID": "gitkeep45946",
@@ -1930,6 +2143,7 @@
                 },
                 {
                   "name": "templates.html",
+                  "displayName": "# templates\n",
                   "templatePath": "assets/templates/anatomy/myApp/assets/templates/templates.html",
                   "data": {
                     "uniqueID": "templatesmd846667",
@@ -1945,6 +2159,7 @@
             "children": [
               {
                 "name": "blueprints.js.html",
+                "displayName": "# myApp/config/blueprints.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/blueprints.js.html",
                 "data": {
                   "uniqueID": "blueprintsjs106161",
@@ -1953,6 +2168,7 @@
               },
               {
                 "name": "bootstrap.js.html",
+                "displayName": "# myApp/config/bootstrap.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/bootstrap.js.html",
                 "data": {
                   "uniqueID": "bootstrapjs878964",
@@ -1961,6 +2177,7 @@
               },
               {
                 "name": "config.html",
+                "displayName": "# myApp/config\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/config.html",
                 "data": {
                   "uniqueID": "configmd867312",
@@ -1969,6 +2186,7 @@
               },
               {
                 "name": "connections.js.html",
+                "displayName": "# myApp/config/connections.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/connections.js.html",
                 "data": {
                   "uniqueID": "connectionsjs160878",
@@ -1977,6 +2195,7 @@
               },
               {
                 "name": "cors.js.html",
+                "displayName": "# myApp/config/cors.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/cors.js.html",
                 "data": {
                   "uniqueID": "corsjs397059",
@@ -1985,6 +2204,7 @@
               },
               {
                 "name": "csrf.js.html",
+                "displayName": "# myApp/config/csrf.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/csrf.js.html",
                 "data": {
                   "uniqueID": "csrfjs233850",
@@ -1993,6 +2213,7 @@
               },
               {
                 "name": "globals.js.html",
+                "displayName": "# myApp/config/globals.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/globals.js.html",
                 "data": {
                   "uniqueID": "globalsjs86282",
@@ -2001,6 +2222,7 @@
               },
               {
                 "name": "http.js.html",
+                "displayName": "# myApp/config/http.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/http.js.html",
                 "data": {
                   "uniqueID": "httpjs768553",
@@ -2009,6 +2231,7 @@
               },
               {
                 "name": "i18n.js.html",
+                "displayName": "# myApp/config/i18n.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/i18n.js.html",
                 "data": {
                   "uniqueID": "i18njs28306",
@@ -2017,6 +2240,7 @@
               },
               {
                 "name": "local.js.html",
+                "displayName": "# myApp/config/local.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/local.js.html",
                 "data": {
                   "uniqueID": "localjs386958",
@@ -2025,6 +2249,7 @@
               },
               {
                 "name": "log.js.html",
+                "displayName": "# myApp/config/log.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/log.js.html",
                 "data": {
                   "uniqueID": "logjs173177",
@@ -2033,6 +2258,7 @@
               },
               {
                 "name": "models.js.html",
+                "displayName": "# myApp/config/models.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/models.js.html",
                 "data": {
                   "uniqueID": "modelsjs643323",
@@ -2041,6 +2267,7 @@
               },
               {
                 "name": "policies.js.html",
+                "displayName": "# myApp/config/policies.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/policies.js.html",
                 "data": {
                   "uniqueID": "policiesjs831604",
@@ -2049,6 +2276,7 @@
               },
               {
                 "name": "routes.js.html",
+                "displayName": "# myApp/config/routes.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/routes.js.html",
                 "data": {
                   "uniqueID": "routesjs120276",
@@ -2057,6 +2285,7 @@
               },
               {
                 "name": "session.js.html",
+                "displayName": "# myApp/config/session.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/session.js.html",
                 "data": {
                   "uniqueID": "sessionjs736525",
@@ -2065,6 +2294,7 @@
               },
               {
                 "name": "sockets.js.html",
+                "displayName": "# myApp/config/sockets.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/sockets.js.html",
                 "data": {
                   "uniqueID": "socketsjs106184",
@@ -2073,6 +2303,7 @@
               },
               {
                 "name": "views.js.html",
+                "displayName": "# myApp/config/views.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/config/views.js.html",
                 "data": {
                   "uniqueID": "viewsjs122314",
@@ -2086,6 +2317,7 @@
               "children": [
                 {
                   "name": "_README.html",
+                  "displayName": "# myApp/config/locales/_README\n",
                   "templatePath": "assets/templates/anatomy/myApp/config/locales/_README.html",
                   "data": {
                     "uniqueID": "READMEmd329624",
@@ -2094,6 +2326,7 @@
                 },
                 {
                   "name": "de.json.html",
+                  "displayName": "# myApp/config/locales/de.json\n",
                   "templatePath": "assets/templates/anatomy/myApp/config/locales/de.json.html",
                   "data": {
                     "uniqueID": "dejson870097",
@@ -2102,6 +2335,7 @@
                 },
                 {
                   "name": "en.json.html",
+                  "displayName": "# myApp/config/locales/en.json\n",
                   "templatePath": "assets/templates/anatomy/myApp/config/locales/en.json.html",
                   "data": {
                     "uniqueID": "enjson226521",
@@ -2110,6 +2344,7 @@
                 },
                 {
                   "name": "es.json.html",
+                  "displayName": "# myApp/config/locales/es.json\n",
                   "templatePath": "assets/templates/anatomy/myApp/config/locales/es.json.html",
                   "data": {
                     "uniqueID": "esjson685640",
@@ -2118,6 +2353,7 @@
                 },
                 {
                   "name": "fr.json.html",
+                  "displayName": "# myApp/config/locales/fr.json\n",
                   "templatePath": "assets/templates/anatomy/myApp/config/locales/fr.json.html",
                   "data": {
                     "uniqueID": "frjson25047",
@@ -2126,6 +2362,7 @@
                 },
                 {
                   "name": "locales.html",
+                  "displayName": "# myApp/config/locales\n",
                   "templatePath": "assets/templates/anatomy/myApp/config/locales/locales.html",
                   "data": {
                     "uniqueID": "localesmd383129",
@@ -2141,6 +2378,7 @@
             "children": [
               {
                 "name": "README.html",
+                "displayName": "# myApp/README.md\n",
                 "templatePath": "assets/templates/anatomy/myApp/tasks/README.html",
                 "data": {
                   "uniqueID": "READMEmd802820",
@@ -2149,6 +2387,7 @@
               },
               {
                 "name": "pipeline.js.html",
+                "displayName": "# myApp/tasks/pipeline.js\n",
                 "templatePath": "assets/templates/anatomy/myApp/tasks/pipeline.js.html",
                 "data": {
                   "uniqueID": "pipelinejs485817",
@@ -2157,6 +2396,7 @@
               },
               {
                 "name": "tasks.html",
+                "displayName": "# myApp/tasks\n",
                 "templatePath": "assets/templates/anatomy/myApp/tasks/tasks.html",
                 "data": {
                   "uniqueID": "tasksmd668626",
@@ -2170,6 +2410,7 @@
               "children": [
                 {
                   "name": "clean.js.html",
+                  "displayName": "# myApp/tasks/config/clean.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/clean.js.html",
                   "data": {
                     "uniqueID": "cleanjs253199",
@@ -2178,6 +2419,7 @@
                 },
                 {
                   "name": "coffee.js.html",
+                  "displayName": "# myApp/tasks/config/coffee.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/coffee.js.html",
                   "data": {
                     "uniqueID": "coffeejs932693",
@@ -2186,6 +2428,7 @@
                 },
                 {
                   "name": "concat.js.html",
+                  "displayName": "# myApp/tasks/config/concat.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/concat.js.html",
                   "data": {
                     "uniqueID": "concatjs243574",
@@ -2194,6 +2437,7 @@
                 },
                 {
                   "name": "config.html",
+                  "displayName": "# config\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/config.html",
                   "data": {
                     "uniqueID": "configmd719485",
@@ -2202,6 +2446,7 @@
                 },
                 {
                   "name": "copy.js.html",
+                  "displayName": "# myApp/tasks/config/copy.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/copy.js.html",
                   "data": {
                     "uniqueID": "copyjs846396",
@@ -2210,6 +2455,7 @@
                 },
                 {
                   "name": "cssmin.js.html",
+                  "displayName": "# myApp/tasks/config/cssmin.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/cssmin.js.html",
                   "data": {
                     "uniqueID": "cssminjs49702",
@@ -2218,6 +2464,7 @@
                 },
                 {
                   "name": "jst.js.html",
+                  "displayName": "# myApp/tasks/config/jst.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/jst.js.html",
                   "data": {
                     "uniqueID": "jstjs459109",
@@ -2226,6 +2473,7 @@
                 },
                 {
                   "name": "less.js.html",
+                  "displayName": "# myApp/tasks/config/less.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/less.js.html",
                   "data": {
                     "uniqueID": "lessjs876526",
@@ -2234,6 +2482,7 @@
                 },
                 {
                   "name": "sails-linker.js.html",
+                  "displayName": "# myApp/tasks/config/sails-linker.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/sails-linker.js.html",
                   "data": {
                     "uniqueID": "sailslinkerjs717161",
@@ -2242,6 +2491,7 @@
                 },
                 {
                   "name": "sync.js.html",
+                  "displayName": "# myApp/tasks/config/sync.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/sync.js.html",
                   "data": {
                     "uniqueID": "syncjs116962",
@@ -2250,6 +2500,7 @@
                 },
                 {
                   "name": "uglify.js.html",
+                  "displayName": "# myApp/tasks/config/uglify.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/uglify.js.html",
                   "data": {
                     "uniqueID": "uglifyjs687746",
@@ -2258,6 +2509,7 @@
                 },
                 {
                   "name": "watch.js.html",
+                  "displayName": "# myApp/tasks/config/watch.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/config/watch.js.html",
                   "data": {
                     "uniqueID": "watchjs402491",
@@ -2272,6 +2524,7 @@
               "children": [
                 {
                   "name": "build.js.html",
+                  "displayName": "# myApp/tasks/register/build.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/register/build.js.html",
                   "data": {
                     "uniqueID": "buildjs920895",
@@ -2280,6 +2533,7 @@
                 },
                 {
                   "name": "buildProd.js.html",
+                  "displayName": "# myApp/tasks/register/buildProd.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/register/buildProd.js.html",
                   "data": {
                     "uniqueID": "buildProdjs242328",
@@ -2288,6 +2542,7 @@
                 },
                 {
                   "name": "compileAssets.js.html",
+                  "displayName": "# myApp/tasks/register/compileAssets.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/register/compileAssets.js.html",
                   "data": {
                     "uniqueID": "compileAssetsjs631033",
@@ -2296,6 +2551,7 @@
                 },
                 {
                   "name": "default.js.html",
+                  "displayName": "# myApp/tasks/register/default.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/register/default.js.html",
                   "data": {
                     "uniqueID": "defaultjs909775",
@@ -2304,6 +2560,7 @@
                 },
                 {
                   "name": "linkAssets.js.html",
+                  "displayName": "# myApp/tasks/register/linkAssets.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/register/linkAssets.js.html",
                   "data": {
                     "uniqueID": "linkAssetsjs43498",
@@ -2312,6 +2569,7 @@
                 },
                 {
                   "name": "linkAssetsBuild.js.html",
+                  "displayName": "# myApp/tasks/register/linkAssetsBuild.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuild.js.html",
                   "data": {
                     "uniqueID": "linkAssetsBuildjs786345",
@@ -2320,6 +2578,7 @@
                 },
                 {
                   "name": "linkAssetsBuildProd.js.html",
+                  "displayName": "# myApp/tasks/register/linkAssetsBuildProd.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuildProd.js.html",
                   "data": {
                     "uniqueID": "linkAssetsBuildProdjs100842",
@@ -2328,6 +2587,7 @@
                 },
                 {
                   "name": "prod.js.html",
+                  "displayName": "# myApp/tasks/register/prod.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/register/prod.js.html",
                   "data": {
                     "uniqueID": "prodjs338763",
@@ -2336,6 +2596,7 @@
                 },
                 {
                   "name": "register.html",
+                  "displayName": "# register\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/register/register.html",
                   "data": {
                     "uniqueID": "registermd221221",
@@ -2344,6 +2605,7 @@
                 },
                 {
                   "name": "syncAssets.js.html",
+                  "displayName": "# myApp/tasks/register/syncAssets.js\n",
                   "templatePath": "assets/templates/anatomy/myApp/tasks/register/syncAssets.js.html",
                   "data": {
                     "uniqueID": "syncAssetsjs528286",
@@ -2359,6 +2621,7 @@
             "children": [
               {
                 "name": "403.ejs.html",
+                "displayName": "# myApp/views/403.ejs\n",
                 "templatePath": "assets/templates/anatomy/myApp/views/403.ejs.html",
                 "data": {
                   "uniqueID": "403ejs888880",
@@ -2367,6 +2630,7 @@
               },
               {
                 "name": "404.ejs.html",
+                "displayName": "# myApp/views/404.ejs\n",
                 "templatePath": "assets/templates/anatomy/myApp/views/404.ejs.html",
                 "data": {
                   "uniqueID": "404ejs805188",
@@ -2375,6 +2639,7 @@
               },
               {
                 "name": "500.ejs.html",
+                "displayName": "# myApp/views/500.ejs\n",
                 "templatePath": "assets/templates/anatomy/myApp/views/500.ejs.html",
                 "data": {
                   "uniqueID": "500ejs917243",
@@ -2383,6 +2648,7 @@
               },
               {
                 "name": "homepage.ejs.html",
+                "displayName": "# myApp/views/homepage.ejs\n",
                 "templatePath": "assets/templates/anatomy/myApp/views/homepage.ejs.html",
                 "data": {
                   "uniqueID": "homepageejs785450",
@@ -2391,6 +2657,7 @@
               },
               {
                 "name": "layout.ejs.html",
+                "displayName": "# myApp/views/layout.ejs\n",
                 "templatePath": "assets/templates/anatomy/myApp/views/layout.ejs.html",
                 "data": {
                   "uniqueID": "layoutejs708856",
@@ -2399,6 +2666,7 @@
               },
               {
                 "name": "views.html",
+                "displayName": "# myApp/views\n",
                 "templatePath": "assets/templates/anatomy/myApp/views/views.html",
                 "data": {
                   "uniqueID": "viewsmd633977",

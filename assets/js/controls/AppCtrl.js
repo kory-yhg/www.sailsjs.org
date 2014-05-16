@@ -1,63 +1,68 @@
-function getTemplatePath(keyContains){
-      for (var key in JST){
-          if (key.indexOf(keyContains)>=0){
-            return key
-          }
-      }
-};
-function flattenMenu(menuObject,cb){
-    var checkThese = [menuObject];
-    var saveThese = [];
+function getTemplatePath(keyContains) {
+  for (var key in JST) {
+    if (key.indexOf(keyContains) >= 0) {
+      return key;
+    }
+  }
+}
 
-    function findLineage(sectionName,arrayOfChildren){
-      var findFather = _.findIndex(arrayOfChildren, { 'name': sectionName+'.html' });
-      var father = arrayOfChildren.splice(findFather,1).pop();      
-      var children = arrayOfChildren;
-      father.children = _.pluck(children,'templatePath')
+function flattenMenu(menuObject, cb) {
+  var checkThese = [menuObject];
+  var saveThese = [];
 
-      var returnThis = [father].concat(_.map(children, function(kid) {
-        kid.father = father.templatePath;
-        // console.log(kid.name,'is child of',father.name,father);
-        return kid
-      }));
+  function findLineage(sectionName, arrayOfChildren) {
+    var findFather = _.findIndex(arrayOfChildren, {
+      'name': sectionName + '.html'
+    });
+    var father = arrayOfChildren.splice(findFather, 1).pop();
+    var children = arrayOfChildren;
+    father.children = _.pluck(children, 'templatePath')
 
-      // Add JST template to every docObject and return
-      return _.forEach(returnThis,function(obj) {obj.linkerTemplate = JST[getTemplatePath(obj.templatePath)]});
-      // return returnThis;
-};
+    var returnThis = [father].concat(_.map(children, function(kid) {
+      kid.father = father.templatePath;
+      // console.log(kid.name,'is child of',father.name,father);
+      return kid
+    }));
 
-function flattenSection(){
-      var section = checkThese.shift();
-        for (key in section){
-          if (section[key].children && section[key].children.length){
-            saveThese = saveThese.concat(findLineage(key,section[key].children));
-            checkThese.push(section[key])
-          }
+    // Add JST template to every docObject and return
+    return _.forEach(returnThis, function(obj) {
+      obj.linkerTemplate = JST[getTemplatePath(obj.templatePath)]
+    });
+    // return returnThis;
+  };
 
-        }
-
-      if (!checkThese.length){
-        //console.log('done',saveThese)
-        return cb(saveThese)
-      } else {
-        flattenSection()
+  function flattenSection() {
+    var section = checkThese.shift();
+    for (key in section) {
+      if (section[key].children && section[key].children.length) {
+        saveThese = saveThese.concat(findLineage(key, section[key].children));
+        checkThese.push(section[key])
       }
 
+    }
 
-    };
+    if (!checkThese.length) {
+      //console.log('done',saveThese)
+      return cb(saveThese)
+    } else {
+      flattenSection()
+    }
 
-    flattenSection();
+
+  };
+
+  flattenSection();
 };
 
-function parseMenu(menuObject){
-      console.log('trying to parse menu')
-          try {
-              var theMenu = JSON.parse(menuObject());
-              return theMenu;
-          } catch(menuParseError){
-              console.log('error:',menuParseError)
-              return {};
-          };
+function parseMenu(menuObject) {
+  console.log('trying to parse menu')
+  try {
+    var theMenu = JSON.parse(menuObject());
+    return theMenu;
+  } catch (menuParseError) {
+    console.log('error:', menuParseError)
+    return {};
+  };
 };
 
 var datMenu = [];
@@ -71,9 +76,9 @@ angular.module('Sails').controller('AppCtrl', [
     var getReferenceMenu = parseMenu(JST[getTemplatePath('assets/templates/jsmenus/reference.jsmenu')]);
     var referenceMenu = getReferenceMenu.assets.templates.reference;
 
-    flattenMenu(referenceMenu,function(menu){
-      console.log('Heres the flat menu!',menu);
-    datMenu = menu;
+    flattenMenu(referenceMenu, function(menu) {
+      console.log('Heres the flat menu!', menu);
+      datMenu = menu;
     });
     // Houses the state for the documentation pages.
     // Should never be reset (only its properties changed)
@@ -92,9 +97,9 @@ angular.module('Sails').controller('AppCtrl', [
 
 
     // Qualifiers
-    $scope.getIsCurrentPage = function( path ) {
+    $scope.getIsCurrentPage = function(path) {
       var current = window.location.hash;
-      return current === '#'+path;
+      return current === '#' + path;
     };
 
     $scope.intent = angular.extend($scope.intent || {}, {
@@ -106,40 +111,43 @@ angular.module('Sails').controller('AppCtrl', [
        *
        * @param  {String} hash (e.g. #/foo/bar, #/blah)
        */
-      goto: function (hash) {
+      goto: function(hash) {
         window.location.hash = hash;
       },
 
-      toggleMenuItem: function (id) {
-        var $menuItem = $scope.docs.findMenuItemByID(id,$scope.docs.visibleMenu);
+      toggleMenuItem: function(id) {
+        var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu);
 
         if ($menuItem.expanded) {
           $scope.intent.collapseMenuItem(id);
-        }
-        else {
+        } else {
           $scope.intent.expandMenuItem(id);
         }
       },
 
-      expandMenuItem: function (id) {
+      expandMenuItem: function(id) {
         var globalMenu = Menu.all($scope.docs.sectionID);
 
         // Find the targeted menu item in the visible menu and expand it
-        var $menuItem = $scope.docs.findMenuItemByID(id,$scope.docs.visibleMenu);
+        var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu);
 
-        if (!$menuItem){
-          if (typeof console !== 'undefined') console.error('couldn\'t expand because couldnt find ('+id+')');
+        if (!$menuItem) {
+          if (typeof console !== 'undefined') console.error('couldn\'t expand because couldnt find (' + id + ')');
           return;
         }
 
         $menuItem.expanded = true;
-        $menuItem.visibleChildren = _.where(globalMenu,{ parentName: $menuItem.name });
+        $menuItem.visibleChildren = _.where(globalMenu, {
+          parentName: $menuItem.name
+        });
       },
 
-      collapseMenuItem: function (id) {
-        var $menuItem =_.find($scope.docs.visibleMenu, {name:id});
-        if (!$menuItem){
-          if (typeof console !== 'undefined') console.error('couldn\'t collapse because couldnt find ('+id+')');
+      collapseMenuItem: function(id) {
+        var $menuItem = _.find($scope.docs.visibleMenu, {
+          name: id
+        });
+        if (!$menuItem) {
+          if (typeof console !== 'undefined') console.error('couldn\'t collapse because couldnt find (' + id + ')');
           return;
         }
         $menuItem.expanded = false;

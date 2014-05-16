@@ -5,15 +5,20 @@ angular.module('Sails').directive('newsBanner', ['$http', function ($http) {
     scope: {},
     link: function (scope) {
 
-      // $http.get('/')
-      var options = {
-        lastUpdateOnGithub: {
-          date: new Date(),
-          url: 'https://github.com/'+'balderdashy/sails'
-        }
-      };
+      scope.options={};
 
-      scope.options = options;
+      $http.get('/news').then(function (res) {
+        var repo = res.data;
+
+        scope.options.lastUpdateOnGithub= {
+          date: repo.updated_at,
+          url: repo.commits_url
+        };
+
+      }, function onError(err) {
+        scope.options.error = err;
+      });
+
     },
   };
 }]);
