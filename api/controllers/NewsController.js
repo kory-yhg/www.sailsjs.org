@@ -8,14 +8,6 @@
 module.exports = {
 
 
-  foo: function (req, res) {
-    res.serverError({wtf: 'omg'});
-  },
-
-  bar: function (req, res) {
-    res.render('foo');
-  },
-
   /**
    * `NewsController.find()`
    */
@@ -24,13 +16,10 @@ module.exports = {
     GithubRepo.fn({
       repo: 'sails',
       user: 'balderdashy'
-    }, {
-      error: function(err) {
-        return res.serverError(err);
-      },
-      success: function (repo) {
-        res.json(repo);
-      }
+    })
+    .on('error', res.serverError)
+    .on('success', function (repo) {
+      res.json(repo);
     });
   }
 };

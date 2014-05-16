@@ -5,17 +5,19 @@
 var Github = require('github');
 var switchback = require('node-switchback');
 
+
 // Constants
 var _3HOURS = 1000*60*60*3;
 
 module.exports = {
 
   fn: function (opts, cb) {
-    sb = switchback(cb);
+    var sb = switchback(cb);
 
     // Cache results to avoid exceeding our github rate limit
     var _3hoursago = new Date((new Date())-_3HOURS);
-    News.find({
+    Cache.find()
+    .where({
       createdAt: { '>': _3hoursago },
       repo: opts.repo,
       user: opts.user
@@ -24,9 +26,9 @@ module.exports = {
     .limit(1)
     .exec({
       error: sb.error,
-      success: function (cachedNews) {
-        if (cachedNews.length) {
-          return sb.success(cachedNews[0].data);
+      success: function (cached) {
+        if (cached.length) {
+          return sb.success(cached[0].data);
         }
 
         var github = new Github({
@@ -42,13 +44,15 @@ module.exports = {
 
 
         github.repos.get({
-          repo: opts.repo||'sails',
-          user: opts.user||'balderdashy'
+          repo: opts.repo,
+          user: opts.user
         }, function (err, data) {
           if (err) return sb(err);
 
+          console.log(data.length);
+
           // Cache the result
-          News.create({
+          Cache.create({
             repo: opts.repo,
             user: opts.user,
             data: data
@@ -61,6 +65,31 @@ module.exports = {
       },
     });
 
+    // Chainable event emitter
+    return sb;
   }
 
 };
+
+
+// /**
+//  * [buildChainableSwitchback description]
+//  * @param  {Function|Object} _sb
+//  * @return {[type]}      [description]
+//  */
+// function buildChainableSwitchback(_sb) {
+//   var ev = new EventEmitter();
+//   var sb = switchback(function (err, result) {
+//     if (err) {
+//       if (_sb) { return switchback(_sb).error(err); }
+//       else ev.emit('error', err);
+//     }
+//     else {
+//       console.log('ok success!', _sb);
+//       if (_sb) { return switchback(_sb).success(result); }
+//       else ev.emit('success', result);
+//     }
+//   });
+//   return sb;
+// }
+

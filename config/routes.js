@@ -22,6 +22,8 @@
 //
 module.exports.routes = {
 
+  'get /news': 'NewsController.find',
+
 	// To route the home page to the "index" action of FooController
 	// (if no controller exists, Sails will look for a view called `views/home/index.*`)
 	// '/' : {
