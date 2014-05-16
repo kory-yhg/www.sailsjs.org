@@ -16,7 +16,7 @@ module.exports = {
     // Cache results to avoid exceeding our github rate limit
     var _3hoursago = new Date((new Date())-_3HOURS);
     News.find({
-      createdAt: { '>=': _3hoursago },
+      createdAt: { '>': _3hoursago },
       repo: opts.repo,
       user: opts.user
     })
@@ -28,8 +28,6 @@ module.exports = {
         if (cachedNews.length) {
           return sb.success(cachedNews[0].data);
         }
-
-        // console.log('FETCHING IT AGAIN');
 
         var github = new Github({
             // required
