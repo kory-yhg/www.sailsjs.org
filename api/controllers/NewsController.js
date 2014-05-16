@@ -13,7 +13,7 @@ module.exports = {
    */
   find: function(req, res) {
 
-    GithubRepo.fn({
+    GetRepoCommits.fn({
       repo: 'sails',
       user: 'balderdashy'
     })

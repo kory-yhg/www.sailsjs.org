@@ -1,6 +1,13 @@
 <div class="update-banner white-banner">
     <div class="banner-container">
-      <p ng-hide="options.error">Latest update on Github <a target="_blank" href="{{options.lastUpdateOnGithub.url}}">{{options.lastUpdateOnGithub.date | date: 'short'}}</a></p>
+
+      <p ng-hide="options.error">Latest commit by <a target="_blank" href="{{options.latestCommit.author.html_url}}">@{{options.latestCommit.author.login}}</a> <a target="_blank" href="{{options.latestCommit.html_url}}">{{options.latestCommit.date}}</a></p>
+
+      <!-- other news can go here.... -->
+
+      <!-- e.g.: -->
+      <!-- <p ng-hide="options.error">Latest update on Github <a target="_blank" href="{{options.latestCommit.url}}">{{options.latestCommit.date | date: 'short'}}</a></p> -->
+
       <div class="sharing">
         <div>
           <iframe src="http://ghbtns.com/github-btn.html?user=balderdashy&amp;repo=sails&amp;type=watch&amp;count=true"
