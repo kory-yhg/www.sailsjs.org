@@ -1,18 +1,19 @@
-angular.module('Sails').directive('newsBanner', function () {
+angular.module('Sails').directive('newsBanner', ['$http', function ($http) {
   return {
     restrict: 'E',
     templateUrl: '/templates/NewsBanner.html',
-    scope: true,
+    scope: {},
     link: function (scope) {
-      // console.log('ok!');
 
+      // $http.get('/')
       var options = {
         lastUpdateOnGithub: {
           date: new Date(),
-          url: 'https://github.com/balderdashy/sails'
+          url: 'https://github.com/'+'balderdashy/sails'
         }
       };
+
       scope.options = options;
     },
   };
-});
+}]);
