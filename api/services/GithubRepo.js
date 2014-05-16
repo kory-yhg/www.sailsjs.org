@@ -5,7 +5,8 @@
 var Github = require('github');
 var switchback = require('node-switchback');
 
-
+// Constants
+var _3HOURS = 1000*60*60*3;
 
 module.exports = {
 
@@ -13,7 +14,6 @@ module.exports = {
     sb = switchback(cb);
 
     // Cache results to avoid exceeding our github rate limit
-    var _3HOURS = 1000*60*60*3;
     var _3hoursago = new Date((new Date())-_3HOURS);
     News.find({
       createdAt: { '>=': _3hoursago },
