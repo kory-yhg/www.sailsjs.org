@@ -14,8 +14,8 @@ module.exports = {
   find: function(req, res) {
 
     GetRepoCommits.fn({
-      repo: 'sails',
-      user: 'balderdashy'
+      repo: req.param('repo'),
+      user: req.param('user')
     })
     .on('error', res.serverError)
     .on('success', function (repo) {

@@ -24,7 +24,10 @@ module.exports = {
 
   exits: {
     error: {
-      example: new Error()
+      example: {
+        "message": "Not Found",
+        "documentation_url": "https://developer.github.com/v3"
+      }
     },
     success: {
       example: {
@@ -204,4 +207,3 @@ module.exports = {
   }
 
 };
-
