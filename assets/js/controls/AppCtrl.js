@@ -1,9 +1,80 @@
+function getTemplatePath(keyContains){
+      for (var key in JST){
+          if (key.indexOf(keyContains)>=0){
+            return key
+          }
+      }
+};
+function flattenMenu(menuObject,cb){
+    var checkThese = [menuObject];
+    var saveThese = [];
+
+    function findLineage(sectionName,arrayOfChildren){
+      var findFather = _.findIndex(arrayOfChildren, { 'name': sectionName+'.html' });
+      var father = arrayOfChildren.splice(findFather,1).pop();      
+      var children = arrayOfChildren;
+      father.children = _.pluck(children,'templatePath')
+
+      var returnThis = [father].concat(_.map(children, function(kid) {
+        kid.father = father.templatePath;
+        // console.log(kid.name,'is child of',father.name,father);
+        return kid
+      }));
+
+      // Add JST template to every docObject and return
+      return _.forEach(returnThis,function(obj) {obj.linkerTemplate = JST[getTemplatePath(obj.templatePath)]});
+      // return returnThis;
+};
+
+function flattenSection(){
+      var section = checkThese.shift();
+        for (key in section){
+          if (section[key].children && section[key].children.length){
+            saveThese = saveThese.concat(findLineage(key,section[key].children));
+            checkThese.push(section[key])
+          }
+
+        }
+
+      if (!checkThese.length){
+        //console.log('done',saveThese)
+        return cb(saveThese)
+      } else {
+        flattenSection()
+      }
+
+
+    };
+
+    flattenSection();
+};
+
+function parseMenu(menuObject){
+      console.log('trying to parse menu')
+          try {
+              var theMenu = JSON.parse(menuObject());
+              return theMenu;
+          } catch(menuParseError){
+              console.log('error:',menuParseError)
+              return {};
+          };
+};
+
+var datMenu = [];
+
 angular.module('Sails').controller('AppCtrl', [
   '$scope',
   'Menu',
 
   function($scope, Menu) {
 
+    var getReferenceMenu = parseMenu(JST[getTemplatePath('assets/templates/jsmenus/reference.jsmenu')]);
+    var referenceMenu = getReferenceMenu.assets.templates.reference;
+
+    flattenMenu(referenceMenu,function(menu){
+      console.log('Heres the flat menu!',menu);
+    datMenu = menu;
+    });
     // Houses the state for the documentation pages.
     // Should never be reset (only its properties changed)
     $scope.docs = {};

@@ -1,3 +1,4 @@
+
 /**
  * [flattenJST description]
  * @param  {String} subsection [the subfolder to parse (e.g. the "foo" in "assets/templates/foo")]
