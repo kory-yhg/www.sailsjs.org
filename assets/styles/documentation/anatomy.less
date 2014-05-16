@@ -2,24 +2,19 @@
 	.clearfix();
 	font-family: @mainFont;
 
-  @anatomyNavWidth: 300px;
 	//The content of the anatomy section
 	.anatomy-container {
 		.container();
     .borderBox();
     .clearfix();
-    padding-left: @anatomyNavWidth + 25;
-    position: relative;
     z-index: 2;
 		div.navigation {
 			.borderBox();
-      width: @anatomyNavWidth;
-      position: absolute;
-      left: 0;
-      top: 50px;
+      width: 25%;
+      float: left;
 			// background-color: @bgLtGray;
 			height: 100%;
-			padding: 15px 0px 25px;
+			padding: 15px 25px 25px 0;
 			h2 {
 				text-align: left;
 				padding: 5px 0px 15px;
@@ -88,7 +83,8 @@
 		.anatomy-content {
       .borderBox();
       padding-top: 50px;
-      width: 100%;
+      width: 75%;
+      float: left;
     }
 	}
 }
