@@ -12,8 +12,7 @@ angular.module('Sails').factory('getRepoCommits', ['$http', function ($http) {
         var mostRecentActivity = res.data[0];
         return {
           latestCommit: angular.extend(mostRecentActivity, {
-            date: moment(mostRecentActivity.commit.author.date).fromNow(),
-            url: 'https://github.com/balderdashy/sails'
+            date: moment(mostRecentActivity.commit.author.date).fromNow()
           })
         };
       });

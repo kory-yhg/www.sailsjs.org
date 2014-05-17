@@ -7,8 +7,7 @@
 (function () {
   var dependencies = [
     'ngRoute',
-    'directive.stopPropagation',
-    'angularMoment'
+    'directive.stopPropagation'
   ];
 
   // Don't do this crazy parallax business on mobile

@@ -17,7 +17,9 @@
 
 		<!-- Region with the information about the selected file -->
     <div class="anatomy-content">
-  		<div class="anatomy-section" ng-include src="docs.currentPage.templatePath"></div>
+  		<div class="anatomy-section"
+        ng-include
+        src="docs.currentPage.templateSrc"></div>
   		<div class="contribution-message">
   			<h2>Something to add?</h2>
   			<p>If you notice something we've missed, please visit the <a href="https://github.com/balderdashy/sails-docs/tree/master/anatomy">sails-docs</a> repo on GitHub and edit the page to submit a pull request.</p>
