@@ -1,7 +1,8 @@
 <div class="reference-page">
   <!-- The documentation content pulled in from GitHub -->
   <div class="left-column">
-    <div class="reference-item" ng-include src="docs.currentPage.templatePath"></div>
+    <div class="reference-item"
+      ng-include src="docs.currentPage.templateSrc"></div>
     <div class="contribution-message">
         <h2>Something to add?</h2>
         <p>If you notice something we've missed, please visit the <a href="https://github.com/balderdashy/sails-docs/tree/master/reference" target="_blank">sails-docs</a> repo on GitHub and edit the page to submit a pull request.</p>
@@ -14,11 +15,9 @@
     <ul class="main-sections">
       <li ng-repeat="menuItem in docs.visibleMenu"
         class="main-section"
-        ng-class="{'current-section': docs.currentPage.name === menuItem.name, 'parent-section': docs.currentPage.parentName === menuItem.name }"
+        ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'parent-section': docs.currentPage.father === menuItem.id }"
         stop-propagation="click"
         ng-include src="'templates/pages/Documentation/sections/NavItem.html'"></li>
     </ul>
   </div>
-        <!-- formerly -->
-        <!-- ng-init="intent.toggleReferenceItemExpanded(menuItem.name)" -->
 </div>

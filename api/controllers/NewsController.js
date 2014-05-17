@@ -8,29 +8,18 @@
 module.exports = {
 
 
-  foo: function (req, res) {
-    res.serverError({wtf: 'omg'});
-  },
-
-  bar: function (req, res) {
-    res.render('foo');
-  },
-
   /**
    * `NewsController.find()`
    */
   find: function(req, res) {
 
-    GithubRepo.fn({
-      repo: 'sails',
-      user: 'balderdashy'
-    }, {
-      error: function(err) {
-        return res.serverError(err);
-      },
-      success: function (repo) {
-        res.json(repo);
-      }
+    GetRepoCommits.fn({
+      repo: req.param('repo'),
+      user: req.param('user')
+    })
+    .on('error', res.serverError)
+    .on('success', function (repo) {
+      res.json(repo);
     });
   }
 };

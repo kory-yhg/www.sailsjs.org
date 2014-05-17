@@ -1,22 +1,19 @@
-angular.module('Sails').directive('newsBanner', ['$http', function ($http) {
+angular.module('Sails').directive('newsBanner', ['getRepoCommits', function (getRepoCommits) {
   return {
     restrict: 'E',
     templateUrl: '/templates/NewsBanner.html',
     scope: {},
     link: function (scope) {
 
-      scope.options={};
 
-      $http.get('/news').then(function (res) {
-        var repo = res.data;
-
-        scope.options.lastUpdateOnGithub= {
-          date: repo.updated_at,
-          url: repo.commits_url
-        };
-
-      }, function onError(err) {
-        scope.options.error = err;
+      getRepoCommits.fn({
+        user: 'balderdashy',
+        repo: 'sails'
+      })
+      .then(function (_options) {
+        scope.options = _options;
+      }, function (err) {
+        scope.options.error = true;
       });
 
     },
