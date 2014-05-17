@@ -7,6 +7,6 @@
   <li ng-repeat="menuItem in menuItem.visibleChildren"
     stop-propagation="click"
     ng-include="'templates/pages/Documentation/sections/NavItem.html'"
-    ng-class="{'current-section': docs.currentPage.name === menuItem.name, 'parent-section': docs.currentPage.parentName === menuItem.name }">
+    ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'parent-section': docs.currentPage.father === menuItem.id }">
   </li>
 </ul>

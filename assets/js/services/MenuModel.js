@@ -51,9 +51,21 @@ angular.module('Sails').factory('Menu', function() {
         // Set the "href" (where to go when this thing is clicked)
         mItem.href = '#/documentation/'+mItem.id.replace(new RegExp('^assets/templates/?'), '');
         // If this menu item has children, snip off the last part of its href
-        if (mItem.children) { mItem.href = mItem.href.replace(/\/[^\/]*\.html$/, ''); }
-        // Finally, slugify the href
-        mItem.href = mItem.href.replace(/[\s\.\(\)\\\[\]\{\}]/, '-');
+        if (mItem.children) {
+          // But save the original as `alternateHref` to avoid breaking links
+          mItem.alternateHref = mItem.href;
+          mItem.href = mItem.href.replace(/\/[^\/]*\.html$/, '');
+        }
+        // Finally, trim trailing slashes & slugify the href
+        mItem.href = mItem.href
+        .replace(/[\s\(\)\\\[\]\{\}]/, '-')
+        .replace(/\/$/,'');
+        if (mItem.alternateHref) {
+          // Only partially slugify `alternateHref`s to avoid breaking links
+          mItem.alternateHref = mItem.alternateHref
+          .replace(/[\s\(\)\\\[\]\{\}]/, '-')
+          .replace(/\/$/,'');
+        }
 
         return mItem;
       });

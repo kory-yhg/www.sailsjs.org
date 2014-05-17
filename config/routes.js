@@ -22,6 +22,12 @@
 //
 module.exports.routes = {
 
+  // Serve .jsmenu files with a "Content-Type: text/json" header
+  'get /*.jsmenu': function (req, res, next) {
+    res.type('json');
+    next();
+  },
+
   'get /news': 'NewsController.find',
 
 	// To route the home page to the "index" action of FooController

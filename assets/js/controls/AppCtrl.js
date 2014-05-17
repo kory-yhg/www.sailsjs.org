@@ -45,6 +45,7 @@ angular.module('Sails').controller('AppCtrl', [
 
         // Find the targeted menu item in the visible menu and expand it
         var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu);
+        console.log($scope.docs.visibleMenu.length, $scope.docs.visibleMenu);
 
         if (!$menuItem) {
           if (typeof console !== 'undefined') console.error('couldn\'t expand because couldnt find (' + id + ')');
