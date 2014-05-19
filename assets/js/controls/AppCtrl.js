@@ -10,12 +10,25 @@ angular.module('Sails').controller('AppCtrl', [
     // Should never be reset (only its properties changed)
     $scope.docs = {};
 
-
     // Qualifiers
     $scope.getIsCurrentPage = function(path) {
       var current = window.location.hash;
       return current === '#' + path;
     };
+
+    // Fires on load and on route change success
+    $scope.$on('$locationChangeSuccess', function(event) {
+      // Wait for skrollr directive to initialize
+      setTimeout(function(){
+        if($scope.skrollr){
+          $scope.skrollr.destroy();
+        }
+        // Add skrollr to $scope
+        $scope.skrollr = skrollr.get();
+        // Refresh all skroller elements
+        $scope.skrollr.refresh();
+      }, 0);
+    });
 
     $scope.intent = angular.extend($scope.intent || {}, {
 

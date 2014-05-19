@@ -12,7 +12,7 @@
 
   // Don't do this crazy parallax business on mobile
   if (window.innerWidth >= 768) {
-    dependencies.push('directives.skrollr');
+    dependencies.push('directive.skrollr');
   }
 
   angular.module('Sails', dependencies);
