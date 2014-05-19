@@ -1,142 +1,182 @@
 .get-started {
-	.container();
-	.clearfix();
-	font-family: @mainFont;
-	padding-top: 75px;
+  background-image: url('images/bkgd_bubbles01.png') repeat fixed;
 
-	.description {
-		.borderBox();
-		float: left;
-		width: 25%;
+  .get-started-container {
+  	.container();
+  	.clearfix();
+  	font-family: @mainFont;
+  	padding: 75px 0 150px;
 
-		h1 {
-			margin-top: 50px;
-			margin-bottom: 22px;
-			.pageHeader(@turquoise);
-		}
+    // left-side navigation
+  	.navigation {
+  		.borderBox();
+  		float: left;
+  		width: 20%;
+      li {
+        line-height: 2;
+        a {
+          color: @turquoise;
+          &:hover {
+            font-weight: 600;
+          }
+        }
+      }
 
-		p {
-			font-style: italic;
-			font-size: 1.2em;
-			font-weight: lighter;
-			margin-bottom: 20px;
-		}
-
-		img {
-			margin-top: 50px;
-			width: 100%;
-		}
-	}
-
-	.getting-started {
-		.borderBox();
-		float: left;
-		width: 75%;
-		padding: 45px 0 100px 100px;
-	}
+  		h1 {
+  			margin-top: 50px;
+  			margin-bottom: 22px;
+  			.pageHeader(@turquoise);
+  		}
+    } // left-side navigation
 
 
-	@media screen and (max-width: 900px) {
-		padding-top: 60px;
+    // IMAGES
+    .bubbles {
+      position: absolute;
+      z-index: 1;
+      &.one {
+        top: 2700px;
+        left: 300px;
+      }
+      &.two {
+        top: 3300px;
+        right: 100px;
+      }
+      &.three {
+        top: 3600px;
+        left: 100px;
+      }
+      &.four {
+        top: 600px;
+        left: 300px;
+      }
+    }
 
-		.description{
-			float: none;
-			width: 90%;
-			margin: auto;
-			text-align: center;
-
-			img {
-				display: none;
-			}
-		}
-
-		.getting-started {
-			float: none;
-			width: 90%;
-			max-width: 90%;
-			padding-left: 0;
-			margin: auto;
-		}
-	}
-
-	@media screen and (max-width: 480px) {
-
-		h1 {
-			text-align: center;
-		}
-	}
+    .fish {
+      background-color: red;
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      top: 700px;
+      display: none;
+    }
 
 
-	//Rainbow styles:
-	pre {
-	    background: #272822;
-	    word-wrap: break-word;
-	    margin: 0px;
-	    padding: 10px;
-	    color: #fff;
-	    font-size: 14px;
-	    margin-bottom: 20px;
-	}
+    // CONTENT CONTAINER
+    .get-started-content {
+      .borderBox();
+      background-color: rgba(255,255,255,0.6);
+      width: 70%;
+      float: right;
+      margin-top: 50px;
+      padding: 20px 50px;
+      position: relative;
+    }
 
-	pre, code {
-	    font-family: 'Monaco', courier, monospace;
-	}
 
-	pre .comment {
-	    color: #75715E;
-	}
+  	@media screen and (max-width: 900px) {
+  		padding-top: 60px;
 
-	pre .constant {
-	    color: #AE81FF;
-	}
+  		.navigation {
+  			float: none;
+  			width: 90%;
+  			margin: auto;
+  			text-align: center;
+  		}
 
-	pre .storage {
-	    color: #66D9EF;
-	}
+  		.get-started-content {
+  			float: none;
+  			width: 90%;
+  			max-width: 90%;
+  			padding-left: 0;
+  			margin: auto;
+  		}
+  	}
 
-	pre .string, pre .comment.docstring {
-	    color: #E6DB74;
-	}
 
-	pre .support.tag {
-	    color: #fff;
-	}
+  	@media screen and (max-width: 480px) {
 
-	pre .keyword {
-	    /* @todo some keywords use this light blue, most use the pink */
-	    /*color: #66D9EF;*/
-	    color: #F92672;
-	}
+  		h1 {
+  			text-align: center;
+  		}
+  	}
 
-	pre .selector {
-	    color: #F92672;
-	}
 
-	pre .inherited-class {
-	    font-style: italic;
-	}
+    // ************************************************
+    // we can probably move this to a global stylesheet:
+    // ************************************************
 
-	pre .operator, pre .support.tag-name , pre .entity.tag {
-	    color: #F92672;
-	}
+  	// Rainbow styles:
+  	// pre {
+  	//     background: #272822;
+  	//     word-wrap: break-word;
+  	//     margin: 0px;
+  	//     padding: 10px;
+  	//     color: #fff;
+  	//     font-size: 14px;
+  	//     margin-bottom: 20px;
+  	// }
 
-	pre .entity, pre .support.attribute, pre .entity.attribute {
-	    color: #A6E22E;
-	}
+  	// pre, code {
+  	//     font-family: 'Monaco', courier, monospace;
+  	// }
 
-	pre .support, *[data-language="c"] .function.call {
-	    color: #66D9EF;
-	}
+  	// pre .comment {
+  	//     color: #75715E;
+  	// }
 
-	*[data-language="html"] .support.operator {
-	    color: #fff;
-	}
+  	// pre .constant {
+  	//     color: #AE81FF;
+  	// }
 
-	pre .css-property, pre .storage.function {
-	    font-style: italic;
-	}
+  	// pre .storage {
+  	//     color: #66D9EF;
+  	// }
 
-	pre .variable.global, pre .variable.class, pre .variable.instance {
-	    color: #A6E22E;
-	}
+  	// pre .string, pre .comment.docstring {
+  	//     color: #E6DB74;
+  	// }
+
+  	// pre .support.tag {
+  	//     color: #fff;
+  	// }
+
+  	// pre .keyword {
+  	//     /* @todo some keywords use this light blue, most use the pink */
+  	//     /*color: #66D9EF;*/
+  	//     color: #F92672;
+  	// }
+
+  	// pre .selector {
+  	//     color: #F92672;
+  	// }
+
+  	// pre .inherited-class {
+  	//     font-style: italic;
+  	// }
+
+  	// pre .operator, pre .support.tag-name , pre .entity.tag {
+  	//     color: #F92672;
+  	// }
+
+  	// pre .entity, pre .support.attribute, pre .entity.attribute {
+  	//     color: #A6E22E;
+  	// }
+
+  	// pre .support, *[data-language="c"] .function.call {
+  	//     color: #66D9EF;
+  	// }
+
+  	// *[data-language="html"] .support.operator {
+  	//     color: #fff;
+  	// }
+
+  	// pre .css-property, pre .storage.function {
+  	//     font-style: italic;
+  	// }
+
+  	// pre .variable.global, pre .variable.class, pre .variable.instance {
+  	//     color: #A6E22E;
+  	// }
+  }
 }

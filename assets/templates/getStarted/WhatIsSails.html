@@ -1,0 +1,78 @@
+<h1 id="res-notfound-">what is sails</h1>
+<p>This method is used to send a <a href="">404</a> (&quot;Not Found&quot;) response back down to the client.  This is normally used to indicate that the user-agent tried to get, update, or delete something that doesn&#39;t exist.</p>
+<h3 id="usage">Usage</h3>
+<pre><code class="lang-js">return res.notFound(err, pathToView);</code></pre>
+<p>-or-</p>
+<pre><code class="lang-js">return res.notFound(err, url);</code></pre>
+<p>-or-</p>
+<pre><code class="lang-js">return res.notFound(err);</code></pre>
+<p>-or-</p>
+<pre><code class="lang-js">return res.notFound();</code></pre>
+<h3 id="details">Details</h3>
+<p>By default, <code>res.notFound()</code> performs content-negotiation based on its arguments, your app&#39;s environment, and the type of request.</p>
+<p>If the request &quot;wants JSON&quot;, Sails will send a JSON response.  Otherwise it calls <code>res.redirect()</code> using the specified <code>url</code>.  If a view (<code>pathToView</code>) is specified, Sails will serve the view.  In any case, a 404 (&quot;Not Found&quot;) status code will be sent.</p>
+<p><code>res.notFound()</code> includes the specified error (<code>err</code>) in its JSON response unless the app is running in the &quot;production&quot; environment (i.e. <code>process.env.NODE_ENV === &#39;production&#39;</code>.</p>
+<p>If a request &quot;wants JSON&quot;, but no <code>err</code> argument is provided, a default response body will be sent:</p>
+<pre><code class="lang-json">{
+  &quot;status&quot;: 403
+}</code></pre>
+<p>If a request &quot;wants JSON&quot; and a string <code>err</code> argument is provided, the error message will be wrapped in an object under the &quot;error&quot; key:</p>
+<pre><code class="lang-json">{
+  &quot;status&quot;: 403,
+  &quot;error&quot;: &quot;...&quot;
+}</code></pre>
+<h3 id="example">Example</h3>
+<pre><code class="lang-javascript">if ( !req.session.authorized ) {
+  return res.notFound(&#39;YOU SHALL NOT PASS!&#39;);
+}</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<ul>
+<li>This method is <strong>terminal</strong>, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of <code>return</code> throughout these docs).</li>
+<li><code>res.notFound()</code> (like other userland response methods) can be overridden or modified.  It runs the response method defined in <code>/responses/notFound.js</code>, which is bundled automatically in newly generated Sails apps.  If a <code>notFound.js</code> response method does not exist in your app, Sails will implicitly use the default behavior.</li>
+<li>If <code>pathToView</code> refers to a missing view, this method will respond as if the request &quot;wants JSON&quot;.
++By default, the specified error (<code>err</code>) will be excluded if the app is running in the &quot;production&quot; environment (i.e. <code>process.env.NODE_ENV === &#39;production&#39;</code>).</li>
+</ul>
+</blockquote>
+<p><docmeta name="uniqueID" value="resnotFound130366"></p>
+<docmeta name="displayName" value="res.notFound()">
+
+<h1 id="res-notfound-">what is sails</h1>
+<p>This method is used to send a <a href="">404</a> (&quot;Not Found&quot;) response back down to the client.  This is normally used to indicate that the user-agent tried to get, update, or delete something that doesn&#39;t exist.</p>
+<h3 id="usage">Usage</h3>
+<pre><code class="lang-js">return res.notFound(err, pathToView);</code></pre>
+<p>-or-</p>
+<pre><code class="lang-js">return res.notFound(err, url);</code></pre>
+<p>-or-</p>
+<pre><code class="lang-js">return res.notFound(err);</code></pre>
+<p>-or-</p>
+<pre><code class="lang-js">return res.notFound();</code></pre>
+<h3 id="details">Details</h3>
+<p>By default, <code>res.notFound()</code> performs content-negotiation based on its arguments, your app&#39;s environment, and the type of request.</p>
+<p>If the request &quot;wants JSON&quot;, Sails will send a JSON response.  Otherwise it calls <code>res.redirect()</code> using the specified <code>url</code>.  If a view (<code>pathToView</code>) is specified, Sails will serve the view.  In any case, a 404 (&quot;Not Found&quot;) status code will be sent.</p>
+<p><code>res.notFound()</code> includes the specified error (<code>err</code>) in its JSON response unless the app is running in the &quot;production&quot; environment (i.e. <code>process.env.NODE_ENV === &#39;production&#39;</code>.</p>
+<p>If a request &quot;wants JSON&quot;, but no <code>err</code> argument is provided, a default response body will be sent:</p>
+<pre><code class="lang-json">{
+  &quot;status&quot;: 403
+}</code></pre>
+<p>If a request &quot;wants JSON&quot; and a string <code>err</code> argument is provided, the error message will be wrapped in an object under the &quot;error&quot; key:</p>
+<pre><code class="lang-json">{
+  &quot;status&quot;: 403,
+  &quot;error&quot;: &quot;...&quot;
+}</code></pre>
+<h3 id="example">Example</h3>
+<pre><code class="lang-javascript">if ( !req.session.authorized ) {
+  return res.notFound(&#39;YOU SHALL NOT PASS!&#39;);
+}</code></pre>
+<h3 id="notes">Notes</h3>
+<blockquote>
+<ul>
+<li>This method is <strong>terminal</strong>, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of <code>return</code> throughout these docs).</li>
+<li><code>res.notFound()</code> (like other userland response methods) can be overridden or modified.  It runs the response method defined in <code>/responses/notFound.js</code>, which is bundled automatically in newly generated Sails apps.  If a <code>notFound.js</code> response method does not exist in your app, Sails will implicitly use the default behavior.</li>
+<li>If <code>pathToView</code> refers to a missing view, this method will respond as if the request &quot;wants JSON&quot;.
++By default, the specified error (<code>err</code>) will be excluded if the app is running in the &quot;production&quot; environment (i.e. <code>process.env.NODE_ENV === &#39;production&#39;</code>).</li>
+</ul>
+</blockquote>
+<p><docmeta name="uniqueID" value="resnotFound130366"></p>
+<docmeta name="displayName" value="res.notFound()">
+

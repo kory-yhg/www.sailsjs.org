@@ -1,15 +1,47 @@
-<div class="page get-started">
-    <div class="description">
-      <h1>Get Started</h1>
-      <p>
-      We've worked really hard to make this as simple as possible.
-      </p>
-      <p>
-      Just install Sails.js, create a new project, and then lift your server.
-      </p>
-      <img src="/images/image_devInTub.png"/>
-    </div>
-    <div ng-include src="'templates/docs/getting-started.html'"></div>
-</div>
+<div skrollr class="page get-started" data-anchor-target="#get-started-content" data-0="background-position: 0px 0px; background-color:rgb(231,245,246);" data-3000="background-position: 0px -2000px; background-color:rgb(22,171,193);">
 
-<div ng-include src="'templates/Footer.html'"></div>
+  <div class="get-started-container">
+
+    <!-- Left-side navigation -->
+    <div class="navigation" skrollr style="position:fixed;" data-anchor-target="#get-started-content">
+      <h1 skrollr data-0="color:rgb(11,143,162);" data-800="color:rgb(11,143,162);" data-1000="color:rgb(255,255,255);">Get Started</h1>
+      <ul>
+        <li><a href="" skrollr data-0="color:rgb(11,143,162);" data-800="color:rgb(11,143,162);" data-1000="color:rgb(255,255,255);">Get Started</a></li>
+        <li><a href="" skrollr data-0="color:rgb(11,143,162);" data-800="color:rgb(11,143,162);" data-1000="color:rgb(255,255,255);">What is Sails?</a></li>
+        <li><a href="" skrollr data-0="color:rgb(11,143,162);" data-800="color:rgb(11,143,162);" data-1000="color:rgb(255,255,255);">Convention over configuration</a></li>
+        <li><a href="" skrollr data-0="color:rgb(11,143,162);" data-800="color:rgb(11,143,162);" data-1000="color:rgb(255,255,255);">Getting help</a></li>
+        <li><a href="" skrollr data-0="color:rgb(11,143,162);" data-800="color:rgb(11,143,162);" data-1000="color:rgb(255,255,255);">More resources</a></li>
+      </ul>
+      <!-- <img src="/images/image_devInTub.png"/> -->
+    </div>
+
+    <!-- IMAGES -->
+    <div class="bubbles one">
+      <img src="/images/bkgd_bubbles01.png"/>
+    </div>
+    <div class="bubbles two">
+      <img src="/images/bkgd_bubbles01.png"/>
+    </div>
+    <div class="bubbles three">
+      <img src="/images/bkgd_bubbles01.png"/>
+    </div>
+    <div class="bubbles four">
+      <img src="/images/bkgd_bubbles01.png"/>
+    </div>
+
+    <div class="fish-wrapper" data-0="display:none;" data-300="display:block;">
+      <div class="fish" data-300="left:100%;" data-700="left:10%"></div>
+    </div>
+
+    <div class="get-started-content documentation-style-guide" id="get-started-content">
+      <div ng-include src="'templates/getStarted/intro.html'"></div>
+      <div ng-include src="'templates/getStarted/WhatIsSails.html'"></div>
+    </div>
+  </div>
+</div> <!-- end of getting started page -->
+
+<div class="sails-footer-wrapper" id="footer-target">
+  <div skrollr style="position:relative;" data-0-bottom="top:0px;" data--500-bottom="top:-60px">
+    <div ng-include src="'templates/Footer.html'"></div>
+  </div>
+</div>
