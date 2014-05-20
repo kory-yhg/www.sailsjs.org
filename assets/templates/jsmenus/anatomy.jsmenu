@@ -1,7 +1,1044 @@
-{
-  "assets": {
-    "name": "assets",
+[
+  {
+    "templateTitle": "api",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/api.html",
     "isParent": true,
+    "data": {
+      "uniqueID": "apimd840000",
+      "displayName": "api"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/controllers/controllers.html",
+      "assets/templates/anatomy/myApp/api/models/models.html",
+      "assets/templates/anatomy/myApp/api/policies/policies.html",
+      "assets/templates/anatomy/myApp/api/responses/responses.html",
+      "assets/templates/anatomy/myApp/api/services/services.html"
+    ]
+  },
+  {
+    "templateTitle": "assets",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/assets.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "assetsmd466929",
+      "displayName": "assets"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/images/images.html",
+      "assets/templates/anatomy/myApp/assets/js/js.html",
+      "assets/templates/anatomy/myApp/assets/styles/styles.html",
+      "assets/templates/anatomy/myApp/assets/templates/templates.html",
+      "assets/templates/anatomy/myApp/assets/favicon.ico.html",
+      "assets/templates/anatomy/myApp/assets/robots.txt.html"
+    ]
+  },
+  {
+    "templateTitle": "config",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/config.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "configmd867312",
+      "displayName": "config"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html",
+    "children": [
+      "assets/templates/anatomy/myApp/config/locales/locales.html",
+      "assets/templates/anatomy/myApp/config/blueprints.js.html",
+      "assets/templates/anatomy/myApp/config/bootstrap.js.html",
+      "assets/templates/anatomy/myApp/config/connections.js.html",
+      "assets/templates/anatomy/myApp/config/cors.js.html",
+      "assets/templates/anatomy/myApp/config/csrf.js.html",
+      "assets/templates/anatomy/myApp/config/globals.js.html",
+      "assets/templates/anatomy/myApp/config/http.js.html",
+      "assets/templates/anatomy/myApp/config/i18n.js.html",
+      "assets/templates/anatomy/myApp/config/local.js.html",
+      "assets/templates/anatomy/myApp/config/log.js.html",
+      "assets/templates/anatomy/myApp/config/models.js.html",
+      "assets/templates/anatomy/myApp/config/policies.js.html",
+      "assets/templates/anatomy/myApp/config/routes.js.html",
+      "assets/templates/anatomy/myApp/config/session.js.html",
+      "assets/templates/anatomy/myApp/config/sockets.js.html",
+      "assets/templates/anatomy/myApp/config/views.js.html"
+    ]
+  },
+  {
+    "templateTitle": "tasks",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/tasks.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "tasksmd668626",
+      "displayName": "tasks"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html",
+    "children": [
+      "assets/templates/anatomy/myApp/tasks/config/config.html",
+      "assets/templates/anatomy/myApp/tasks/register/register.html",
+      "assets/templates/anatomy/myApp/tasks/README.html",
+      "assets/templates/anatomy/myApp/tasks/pipeline.js.html"
+    ]
+  },
+  {
+    "templateTitle": "views",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/views.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "viewsmd633977",
+      "displayName": "views"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html",
+    "children": [
+      "assets/templates/anatomy/myApp/views/403.ejs.html",
+      "assets/templates/anatomy/myApp/views/404.ejs.html",
+      "assets/templates/anatomy/myApp/views/500.ejs.html",
+      "assets/templates/anatomy/myApp/views/homepage.ejs.html",
+      "assets/templates/anatomy/myApp/views/layout.ejs.html"
+    ]
+  },
+  {
+    "templateTitle": ".gitignore",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/.gitignore.html",
+    "data": {
+      "uniqueID": "gitignore878586",
+      "displayName": ".gitignore"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": ".sailsrc",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/.sailsrc.html",
+    "data": {
+      "uniqueID": "sailsrc6419",
+      "displayName": ".sailsrc"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": "Gruntfile.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/Gruntfile.js.html",
+    "data": {
+      "uniqueID": "Gruntfilejs375150",
+      "displayName": "Gruntfile.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": "README",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/README.html",
+    "data": {
+      "uniqueID": "READMEmd869459",
+      "displayName": "README"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": "app.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/app.js.html",
+    "data": {
+      "uniqueID": "appjs249761",
+      "displayName": "app.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": "package.json",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/package.json.html",
+    "data": {
+      "uniqueID": "packagejson891874",
+      "displayName": "package.json"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": "controllers",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/controllers/controllers.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "controllersmd841616",
+      "displayName": "controllers"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/api.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/controllers/.gitkeep.html",
+      "assets/templates/anatomy/myApp/api/controllers/UserController.js.html"
+    ]
+  },
+  {
+    "templateTitle": "models",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/models/models.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "modelsmd956381",
+      "displayName": "models"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/api.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/models/.gitkeep.html",
+      "assets/templates/anatomy/myApp/api/models/User.js.html"
+    ]
+  },
+  {
+    "templateTitle": "policies",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/policies/policies.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "policiesmd630211",
+      "displayName": "policies"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/api.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/policies/sessionAuth.js.html"
+    ]
+  },
+  {
+    "templateTitle": "responses",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/responses.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "responsesmd261495",
+      "displayName": "responses"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/api.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/responses/badRequest.js.html",
+      "assets/templates/anatomy/myApp/api/responses/forbidden.js.html",
+      "assets/templates/anatomy/myApp/api/responses/notFound.js.html",
+      "assets/templates/anatomy/myApp/api/responses/ok.js.html",
+      "assets/templates/anatomy/myApp/api/responses/serverError.js.html"
+    ]
+  },
+  {
+    "templateTitle": "services",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/services/services.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "servicesmd572453",
+      "displayName": "services"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/api.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/services/.gitkeep.html"
+    ]
+  },
+  {
+    "templateTitle": "images",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/images/images.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "imagesmd510380",
+      "displayName": "images"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/images/.gitkeep.html"
+    ]
+  },
+  {
+    "templateTitle": "js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/js/js.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "jsmd574851",
+      "displayName": "js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/js/dependencies/dependencies.html"
+    ]
+  },
+  {
+    "templateTitle": "styles",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/styles/styles.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "stylesmd285346",
+      "displayName": "styles"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/styles/importer.less.html"
+    ]
+  },
+  {
+    "templateTitle": "templates",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/templates/templates.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "templatesmd846667",
+      "displayName": "templates"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/templates/.gitkeep.html"
+    ]
+  },
+  {
+    "templateTitle": "favicon.ico",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/favicon.ico.html",
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html"
+  },
+  {
+    "templateTitle": "robots.txt",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/robots.txt.html",
+    "data": {
+      "uniqueID": "robotstxt863673",
+      "displayName": "robots.txt"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html"
+  },
+  {
+    "templateTitle": "locales",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/locales.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "localesmd383129",
+      "displayName": "locales"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html",
+    "children": [
+      "assets/templates/anatomy/myApp/config/locales/_README.html",
+      "assets/templates/anatomy/myApp/config/locales/de.json.html",
+      "assets/templates/anatomy/myApp/config/locales/en.json.html",
+      "assets/templates/anatomy/myApp/config/locales/es.json.html",
+      "assets/templates/anatomy/myApp/config/locales/fr.json.html"
+    ]
+  },
+  {
+    "templateTitle": "blueprints.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/blueprints.js.html",
+    "data": {
+      "uniqueID": "blueprintsjs106161",
+      "displayName": "blueprints.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "bootstrap.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/bootstrap.js.html",
+    "data": {
+      "uniqueID": "bootstrapjs878964",
+      "displayName": "bootstrap.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "connections.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/connections.js.html",
+    "data": {
+      "uniqueID": "connectionsjs160878",
+      "displayName": "connections.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "cors.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/cors.js.html",
+    "data": {
+      "uniqueID": "corsjs397059",
+      "displayName": "cors.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "csrf.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/csrf.js.html",
+    "data": {
+      "uniqueID": "csrfjs233850",
+      "displayName": "csrf.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "globals.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/globals.js.html",
+    "data": {
+      "uniqueID": "globalsjs86282",
+      "displayName": "globals.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "http.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/http.js.html",
+    "data": {
+      "uniqueID": "httpjs768553",
+      "displayName": "http.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "i18n.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/i18n.js.html",
+    "data": {
+      "uniqueID": "i18njs28306",
+      "displayName": "i18n.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "local.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/local.js.html",
+    "data": {
+      "uniqueID": "localjs386958",
+      "displayName": "local.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "log.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/log.js.html",
+    "data": {
+      "uniqueID": "logjs173177",
+      "displayName": "log.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "models.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/models.js.html",
+    "data": {
+      "uniqueID": "modelsjs643323",
+      "displayName": "models.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "policies.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/policies.js.html",
+    "data": {
+      "uniqueID": "policiesjs831604",
+      "displayName": "policies.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "routes.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/routes.js.html",
+    "data": {
+      "uniqueID": "routesjs120276",
+      "displayName": "routes.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "session.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/session.js.html",
+    "data": {
+      "uniqueID": "sessionjs736525",
+      "displayName": "session.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "sockets.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/sockets.js.html",
+    "data": {
+      "uniqueID": "socketsjs106184",
+      "displayName": "sockets.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "views.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/views.js.html",
+    "data": {
+      "uniqueID": "viewsjs122314",
+      "displayName": "views.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "config",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/config.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "configmd719485",
+      "displayName": "config"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/tasks.html",
+    "children": [
+      "assets/templates/anatomy/myApp/tasks/config/clean.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/coffee.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/concat.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/copy.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/cssmin.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/jst.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/less.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/sails-linker.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/sync.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/uglify.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/watch.js.html"
+    ]
+  },
+  {
+    "templateTitle": "register",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/register.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "registermd221221",
+      "displayName": "register"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/tasks.html",
+    "children": [
+      "assets/templates/anatomy/myApp/tasks/register/build.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/buildProd.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/compileAssets.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/default.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/linkAssets.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuild.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuildProd.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/prod.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/syncAssets.js.html"
+    ]
+  },
+  {
+    "templateTitle": "README",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/README.html",
+    "data": {
+      "uniqueID": "READMEmd802820",
+      "displayName": "README"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/tasks.html"
+  },
+  {
+    "templateTitle": "pipeline.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/pipeline.js.html",
+    "data": {
+      "uniqueID": "pipelinejs485817",
+      "displayName": "pipeline.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/tasks.html"
+  },
+  {
+    "templateTitle": "403.ejs",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/403.ejs.html",
+    "data": {
+      "uniqueID": "403ejs888880",
+      "displayName": "403.ejs"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/views/views.html"
+  },
+  {
+    "templateTitle": "404.ejs",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/404.ejs.html",
+    "data": {
+      "uniqueID": "404ejs805188",
+      "displayName": "404.ejs"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/views/views.html"
+  },
+  {
+    "templateTitle": "500.ejs",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/500.ejs.html",
+    "data": {
+      "uniqueID": "500ejs917243",
+      "displayName": "500.ejs"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/views/views.html"
+  },
+  {
+    "templateTitle": "homepage.ejs",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/homepage.ejs.html",
+    "data": {
+      "uniqueID": "homepageejs785450",
+      "displayName": "homepage.ejs"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/views/views.html"
+  },
+  {
+    "templateTitle": "layout.ejs",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/layout.ejs.html",
+    "data": {
+      "uniqueID": "layoutejs708856",
+      "displayName": "layout.ejs"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/views/views.html"
+  },
+  {
+    "templateTitle": ".gitkeep",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/controllers/.gitkeep.html",
+    "data": {
+      "uniqueID": "gitkeep271990",
+      "displayName": ".gitkeep"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/controllers/controllers.html"
+  },
+  {
+    "templateTitle": "UserController.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/controllers/UserController.js.html",
+    "data": {
+      "uniqueID": "UserControllerjs867576",
+      "displayName": "UserController.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/controllers/controllers.html"
+  },
+  {
+    "templateTitle": ".gitkeep",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/models/.gitkeep.html",
+    "data": {
+      "uniqueID": "gitkeep437760",
+      "displayName": ".gitkeep"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/models/models.html"
+  },
+  {
+    "templateTitle": "User.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/models/User.js.html",
+    "data": {
+      "uniqueID": "Userjs263218",
+      "displayName": "User.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/models/models.html"
+  },
+  {
+    "templateTitle": "sessionAuth.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/policies/sessionAuth.js.html",
+    "data": {
+      "uniqueID": "sessionAuthjs444151",
+      "displayName": "sessionAuth.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/policies/policies.html"
+  },
+  {
+    "templateTitle": "badRequest.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/badRequest.js.html",
+    "data": {
+      "uniqueID": "badRequestjs643116",
+      "displayName": "badRequest.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/responses/responses.html"
+  },
+  {
+    "templateTitle": "forbidden.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/forbidden.js.html",
+    "data": {
+      "uniqueID": "forbiddenjs655137",
+      "displayName": "forbidden.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/responses/responses.html"
+  },
+  {
+    "templateTitle": "notFound.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/notFound.js.html",
+    "data": {
+      "uniqueID": "notFoundjs935866",
+      "displayName": "notFound.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/responses/responses.html"
+  },
+  {
+    "templateTitle": "ok.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/ok.js.html",
+    "data": {
+      "uniqueID": "okjs629833",
+      "displayName": "ok.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/responses/responses.html"
+  },
+  {
+    "templateTitle": "serverError.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/serverError.js.html",
+    "data": {
+      "uniqueID": "serverErrorjs285178",
+      "displayName": "serverError.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/responses/responses.html"
+  },
+  {
+    "templateTitle": ".gitkeep",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/services/.gitkeep.html",
+    "data": {
+      "uniqueID": "gitkeep306979",
+      "displayName": ".gitkeep"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/services/services.html"
+  },
+  {
+    "templateTitle": ".gitkeep",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/images/.gitkeep.html",
+    "data": {
+      "uniqueID": "gitkeep510726",
+      "displayName": ".gitkeep"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/images/images.html"
+  },
+  {
+    "templateTitle": "dependencies",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/js/dependencies/dependencies.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "dependenciesmd334158",
+      "displayName": "dependencies"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/js/js.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/js/dependencies/sails.io.js.html"
+    ]
+  },
+  {
+    "templateTitle": "importer.less",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/styles/importer.less.html",
+    "data": {
+      "uniqueID": "importerless750226",
+      "displayName": "importer.less"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/styles/styles.html"
+  },
+  {
+    "templateTitle": ".gitkeep",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/templates/.gitkeep.html",
+    "data": {
+      "uniqueID": "gitkeep45946",
+      "displayName": ".gitkeep"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/templates/templates.html"
+  },
+  {
+    "templateTitle": "_README",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/_README.html",
+    "data": {
+      "uniqueID": "READMEmd329624",
+      "displayName": "_README"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/locales/locales.html"
+  },
+  {
+    "templateTitle": "de.json",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/de.json.html",
+    "data": {
+      "uniqueID": "dejson870097",
+      "displayName": "de.json"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/locales/locales.html"
+  },
+  {
+    "templateTitle": "en.json",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/en.json.html",
+    "data": {
+      "uniqueID": "enjson226521",
+      "displayName": "en.json"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/locales/locales.html"
+  },
+  {
+    "templateTitle": "es.json",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/es.json.html",
+    "data": {
+      "uniqueID": "esjson685640",
+      "displayName": "es.json"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/locales/locales.html"
+  },
+  {
+    "templateTitle": "fr.json",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/fr.json.html",
+    "data": {
+      "uniqueID": "frjson25047",
+      "displayName": "fr.json"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/locales/locales.html"
+  },
+  {
+    "templateTitle": "clean.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/clean.js.html",
+    "data": {
+      "uniqueID": "cleanjs253199",
+      "displayName": "clean.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "coffee.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/coffee.js.html",
+    "data": {
+      "uniqueID": "coffeejs932693",
+      "displayName": "coffee.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "concat.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/concat.js.html",
+    "data": {
+      "uniqueID": "concatjs243574",
+      "displayName": "concat.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "copy.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/copy.js.html",
+    "data": {
+      "uniqueID": "copyjs846396",
+      "displayName": "copy.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "cssmin.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/cssmin.js.html",
+    "data": {
+      "uniqueID": "cssminjs49702",
+      "displayName": "cssmin.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "jst.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/jst.js.html",
+    "data": {
+      "uniqueID": "jstjs459109",
+      "displayName": "jst.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "less.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/less.js.html",
+    "data": {
+      "uniqueID": "lessjs876526",
+      "displayName": "less.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "sails-linker.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/sails-linker.js.html",
+    "data": {
+      "uniqueID": "sailslinkerjs717161",
+      "displayName": "sails-linker.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "sync.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/sync.js.html",
+    "data": {
+      "uniqueID": "syncjs116962",
+      "displayName": "sync.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "uglify.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/uglify.js.html",
+    "data": {
+      "uniqueID": "uglifyjs687746",
+      "displayName": "uglify.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "watch.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/watch.js.html",
+    "data": {
+      "uniqueID": "watchjs402491",
+      "displayName": "watch.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "build.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/build.js.html",
+    "data": {
+      "uniqueID": "buildjs920895",
+      "displayName": "build.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "buildProd.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/buildProd.js.html",
+    "data": {
+      "uniqueID": "buildProdjs242328",
+      "displayName": "buildProd.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "compileAssets.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/compileAssets.js.html",
+    "data": {
+      "uniqueID": "compileAssetsjs631033",
+      "displayName": "compileAssets.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "default.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/default.js.html",
+    "data": {
+      "uniqueID": "defaultjs909775",
+      "displayName": "default.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "linkAssets.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/linkAssets.js.html",
+    "data": {
+      "uniqueID": "linkAssetsjs43498",
+      "displayName": "linkAssets.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "linkAssetsBuild.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuild.js.html",
+    "data": {
+      "uniqueID": "linkAssetsBuildjs786345",
+      "displayName": "linkAssetsBuild.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "linkAssetsBuildProd.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuildProd.js.html",
+    "data": {
+      "uniqueID": "linkAssetsBuildProdjs100842",
+      "displayName": "linkAssetsBuildProd.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "prod.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/prod.js.html",
+    "data": {
+      "uniqueID": "prodjs338763",
+      "displayName": "prod.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "syncAssets.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/syncAssets.js.html",
+    "data": {
+      "uniqueID": "syncAssetsjs528286",
+      "displayName": "syncAssets.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "sails.io.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/js/dependencies/sails.io.js.html",
+    "data": {
+      "uniqueID": "sailsiojs779166",
+      "displayName": "sails.io.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/js/dependencies/dependencies.html"
+  },
+  {
+    "templateTitle": "myApp",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/myApp.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "myAppmd870358",
+      "displayName": "myApp"
+    },
+    "children": [
+      "assets/templates/anatomy/myApp/api/api.html",
+      "assets/templates/anatomy/myApp/assets/assets.html",
+      "assets/templates/anatomy/myApp/config/config.html",
+      "assets/templates/anatomy/myApp/tasks/tasks.html",
+      "assets/templates/anatomy/myApp/views/views.html",
+      "assets/templates/anatomy/myApp/.gitignore.html",
+      "assets/templates/anatomy/myApp/.sailsrc.html",
+      "assets/templates/anatomy/myApp/Gruntfile.js.html",
+      "assets/templates/anatomy/myApp/README.html",
+      "assets/templates/anatomy/myApp/app.js.html",
+      "assets/templates/anatomy/myApp/package.json.html"
+    ]
+=======
     "children": [],
     "templates": {
       "name": "templates",
@@ -2411,4 +3448,4 @@
       }
     }
   }
-}
+]
