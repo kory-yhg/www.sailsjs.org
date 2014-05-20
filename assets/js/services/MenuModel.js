@@ -1,22 +1,12 @@
+var menu = {};
 angular.module('Sails').factory('Menu', function() {
 
   var Menu = function() {};
 
 
-  // Menu.prototype.originalWay = function(topLevelSectionID) {
-  //   return flattenJST(topLevelSectionID, JST);
-  // };
-
   Menu.prototype.all = _all();
 
   return new Menu();
-
-
-
-
-
-
-
 
 
   ///////                 /////////
@@ -36,20 +26,26 @@ angular.module('Sails').factory('Menu', function() {
   function _all (){
     return _.memoize(function(_jsMenuIdentity) {
       var pathToJSMenu = getTemplatePath('assets/templates/jsmenus/'+_jsMenuIdentity+'.jsmenu');
-      var jsMenu = parseMenu(JST[pathToJSMenu]);
-      var subMenu = jsMenu.assets.templates[_jsMenuIdentity];
-      var flatSubMenu = []; flattenMenu(subMenu, function(_menu) {flatSubMenu = _menu;});
 
-      _(flatSubMenu).map(function(mItem) {
-        // Tag w/ id (id===templatePath)
-        mItem.id = mItem.id||mItem.templatePath;
+      // Call the menu from the JST object then get rid of 'assets/templates' prefix
+      // on every key before the text is parsed into JSON.
+      var jsMenu = parseMenu(JST[pathToJSMenu]().replace(/assets\/templates\//ig,''));
+      // console.log(JSON.stringify(jsMenu))
+
+      console.log('Parsed',_jsMenuIdentity,':',jsMenu);
+
+      _(jsMenu).map(function(mItem) {
+        mItem.id = mItem.id||mItem.fullPathAndFileName;
+
         // Derive the `templateSrc` from `templatePath` (so ngIncludes will work)
-        mItem.templateSrc = mItem.templatePath.replace(/^assets\//, '/');
+        mItem.templateSrc = '/templates/'+mItem.fullPathAndFileName;
+
         // Tag w/ label (label===data.displayName)
         mItem.label = mItem.label||(mItem.data && mItem.data.displayName);
 
         // Set the "href" (where to go when this thing is clicked)
-        mItem.href = '#/documentation/'+mItem.id.replace(new RegExp('^assets/templates/?'), '');
+        mItem.href = '#/documentation/'+mItem.fullPathAndFileName;
+
         // If this menu item has children, snip off the last part of its href
         if (mItem.children) {
           // But save the original as `alternateHref` to avoid breaking links
@@ -70,7 +66,7 @@ angular.module('Sails').factory('Menu', function() {
         return mItem;
       });
 
-      return flatSubMenu;
+      return jsMenu;
     });
   }
 
@@ -80,10 +76,9 @@ angular.module('Sails').factory('Menu', function() {
    * @param  {[type]} menuObject [description]
    * @return {[type]}            [description]
    */
-  function parseMenu(menuObject) {
-    console.log('trying to parse menu');
+  function parseMenu(menuObjectReturnValue) {
     try {
-      var theMenu = JSON.parse(menuObject());
+      var theMenu = JSON.parse(menuObjectReturnValue);
       return theMenu;
     } catch (menuParseError) {
       console.error('error:', menuParseError);
@@ -103,57 +98,5 @@ angular.module('Sails').factory('Menu', function() {
       }
     }
   }
-
-  /**
-   * [flattenMenu description]
-   * @param  {[type]}   menuObject [description]
-   * @param  {Function} cb         [description]
-   * @return {[type]}              [description]
-   */
-  function flattenMenu(menuObject, cb) {
-    var checkThese = [menuObject];
-    var saveThese = [];
-
-    function findLineage(sectionName, arrayOfChildren) {
-      var findFather = _.findIndex(arrayOfChildren, {
-        'name': sectionName + '.html'
-      });
-      var father = arrayOfChildren.splice(findFather, 1).pop();
-      var children = arrayOfChildren;
-      father.children = _.pluck(children, 'templatePath');
-
-      var returnThis = [father].concat(_.map(children, function(kid) {
-        kid.father = father.templatePath;
-        // console.log(kid.name,'is child of',father.name,father);
-        return kid;
-      }));
-
-      // Add JST template to every docObject and return
-      return _.forEach(returnThis, function(obj) {
-        obj.linkerTemplate = JST[getTemplatePath(obj.templatePath)];
-      });
-      // return returnThis;
-    }
-
-    function flattenSection() {
-      var section = checkThese.shift();
-      for (var key in section) {
-        if (section[key].children && section[key].children.length) {
-          saveThese = saveThese.concat(findLineage(key, section[key].children));
-          checkThese.push(section[key]);
-        }
-      }
-
-      if (!checkThese.length) {
-        //console.log('done',saveThese)
-        return cb(saveThese);
-      } else {
-        flattenSection();
-      }
-    }
-
-    flattenSection();
-  }
-
 
 });

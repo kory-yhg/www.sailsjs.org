@@ -3,10 +3,10 @@
 </span>
 
 
-<ul ng-show="menuItem.visibleChildren.length">
+<ul ng-show="menuItem.visibleChildren.length">{{menuItem.visibleChildren.length}}
   <li ng-repeat="menuItem in menuItem.visibleChildren"
     stop-propagation="click"
     ng-include="'templates/pages/Documentation/sections/NavItem.html'"
-    ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'parent-section': docs.currentPage.father === menuItem.id }">
+    ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'parent-section': docs.currentPage.parent === menuItem.id }">
   </li>
 </ul>

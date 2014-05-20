@@ -1,2682 +1,1042 @@
-{
-  "assets": {
-    "name": "assets",
+[
+  {
+    "templateTitle": "api",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/api.html",
     "isParent": true,
-    "children": [],
-    "templates": {
-      "name": "templates",
-      "isParent": true,
-      "children": [],
-      "reference": {
-        "name": "reference",
-        "isParent": true,
-        "children": [
-          {
-            "name": "README.html",
-            "displayName": "sails-docs-reference\n",
-            "templatePath": "assets/templates/reference/README.html",
-            "data": {
-              "uniqueID": "README541912",
-              "displayName": "error"
-            }
-          }
-        ],
-        "Assets": {
-          "name": "Assets",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Assets.html",
-              "displayName": "# Assets\n",
-              "templatePath": "assets/templates/reference/Assets/Assets.html",
-              "data": {
-                "uniqueID": "Assets220313",
-                "displayName": "Assets"
-              }
-            },
-            {
-              "name": "DefaultTasks.html",
-              "displayName": "# Default Tasks\n",
-              "templatePath": "assets/templates/reference/Assets/DefaultTasks.html",
-              "data": {
-                "uniqueID": "DefaultTasks764297",
-                "displayName": "Default Tasks"
-              }
-            },
-            {
-              "name": "DisablingGrunt.html",
-              "displayName": "# Disabling Grunt\n",
-              "templatePath": "assets/templates/reference/Assets/DisablingGrunt.html",
-              "data": {
-                "uniqueID": "DisablingGrunt970874",
-                "displayName": "Disabling Grunt"
-              }
-            },
-            {
-              "name": "TaskAutomation.html",
-              "displayName": "# Task Automation\n",
-              "templatePath": "assets/templates/reference/Assets/TaskAutomation.html",
-              "data": {
-                "uniqueID": "TaskAutomation282238",
-                "displayName": "Task Automation"
-              }
-            }
-          ]
-        },
-        "Blueprints": {
-          "name": "Blueprints",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Blueprints.html",
-              "displayName": "# Blueprints\n",
-              "templatePath": "assets/templates/reference/Blueprints/Blueprints.html",
-              "data": {
-                "uniqueID": "Blueprints170785",
-                "displayName": "Blueprints"
-              }
-            },
-            {
-              "name": "CreateARecord.html",
-              "displayName": "# Create A Record\n",
-              "templatePath": "assets/templates/reference/Blueprints/CreateARecord.html",
-              "data": {
-                "uniqueID": "CreateARecord744986",
-                "displayName": "Create A Record"
-              }
-            },
-            {
-              "name": "DestroyARecord.html",
-              "displayName": "# Destroy A Record\n",
-              "templatePath": "assets/templates/reference/Blueprints/DestroyARecord.html",
-              "data": {
-                "uniqueID": "DestroyARecord867513",
-                "displayName": "Destroy A Record"
-              }
-            },
-            {
-              "name": "Find.html",
-              "displayName": "# Find\n",
-              "templatePath": "assets/templates/reference/Blueprints/Find.html",
-              "data": {
-                "uniqueID": "Find290807",
-                "displayName": "Find"
-              }
-            },
-            {
-              "name": "FindOne.html",
-              "displayName": "# Find One\n",
-              "templatePath": "assets/templates/reference/Blueprints/FindOne.html",
-              "data": {
-                "uniqueID": "FindOne259267",
-                "displayName": "Find One"
-              }
-            },
-            {
-              "name": "UpdateARecord.html",
-              "displayName": "# Update A Record\n",
-              "templatePath": "assets/templates/reference/Blueprints/UpdateARecord.html",
-              "data": {
-                "uniqueID": "UpdateARecord421031",
-                "displayName": "Update A Record"
-              }
-            }
-          ]
-        },
-        "Browser SDK": {
-          "name": "Browser SDK",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Browser SDK.html",
-              "displayName": "# Browser SDK\n",
-              "templatePath": "assets/templates/reference/Browser SDK/Browser SDK.html",
-              "data": {
-                "uniqueID": "BrowserSDK293544",
-                "displayName": "Browser SDK"
-              }
-            },
-            {
-              "name": "socket.delete.html",
-              "displayName": "# socket.delete( `url`, [`params`], [`callback`] )\n",
-              "templatePath": "assets/templates/reference/Browser SDK/socket.delete.html",
-              "data": {
-                "uniqueID": "socketdelete671580",
-                "displayName": "socket.delete( `url`, [`params`], [`callback`] )"
-              }
-            },
-            {
-              "name": "socket.get.html",
-              "displayName": "# socket.get( `url`, [`params`], [`callback`] )\n",
-              "templatePath": "assets/templates/reference/Browser SDK/socket.get.html",
-              "data": {
-                "uniqueID": "socketget480208",
-                "displayName": "socket.get( `url`, [`params`], [`callback`] )"
-              }
-            },
-            {
-              "name": "socket.post.html",
-              "displayName": "# socket.post( `url`, [`params`], [`callback`] )\n",
-              "templatePath": "assets/templates/reference/Browser SDK/socket.post.html",
-              "data": {
-                "uniqueID": "socketpost175407",
-                "displayName": "socket.post( `url`, [`params`], [`callback`] )"
-              }
-            },
-            {
-              "name": "socket.put.html",
-              "displayName": "# socket.put( `url`, [`params`], [`callback`] )\n",
-              "templatePath": "assets/templates/reference/Browser SDK/socket.put.html",
-              "data": {
-                "uniqueID": "socketput168503",
-                "displayName": "socket.put( `url`, [`params`], [`callback`] )"
-              }
-            },
-            {
-              "name": "socket.request.html",
-              "displayName": "# socket.request( `url`, [`params`], [`callback`], [`method`] )\n",
-              "templatePath": "assets/templates/reference/Browser SDK/socket.request.html",
-              "data": {
-                "uniqueID": "socketrequest682488",
-                "displayName": "socket.request( `url`, [`params`], [`callback`], [`method`] )"
-              }
-            }
-          ]
-        },
-        "Command Line": {
-          "name": "Command Line",
-          "isParent": true,
-          "children": [
-            {
-              "name": "CommandLine.html",
-              "displayName": "# CommandLine\n",
-              "templatePath": "assets/templates/reference/Command Line/CommandLine.html",
-              "data": {
-                "uniqueID": "CommandLine83196",
-                "displayName": "CommandLine"
-              }
-            },
-            {
-              "name": "sailsconsole.html",
-              "displayName": "# sails console\n",
-              "templatePath": "assets/templates/reference/Command Line/sailsconsole.html",
-              "data": {
-                "uniqueID": "sailsconsole198558",
-                "displayName": "sails console"
-              }
-            },
-            {
-              "name": "sailsdebug.html",
-              "displayName": "# sails debug\n",
-              "templatePath": "assets/templates/reference/Command Line/sailsdebug.html",
-              "data": {
-                "uniqueID": "sailsdebug521538",
-                "displayName": "sails debug"
-              }
-            },
-            {
-              "name": "sailsgenerate.html",
-              "displayName": "# sails generate\n",
-              "templatePath": "assets/templates/reference/Command Line/sailsgenerate.html",
-              "data": {
-                "uniqueID": "sailsgenerate197041",
-                "displayName": "sails generate"
-              }
-            },
-            {
-              "name": "sailslift.html",
-              "displayName": "# sails lift\n",
-              "templatePath": "assets/templates/reference/Command Line/sailslift.html",
-              "data": {
-                "uniqueID": "sailslift482554",
-                "displayName": "sails lift"
-              }
-            },
-            {
-              "name": "sailsnew.html",
-              "displayName": "# sails new\n",
-              "templatePath": "assets/templates/reference/Command Line/sailsnew.html",
-              "data": {
-                "uniqueID": "sailsnew912235",
-                "displayName": "sails new"
-              }
-            },
-            {
-              "name": "sailsversion.html",
-              "displayName": "# sails version\n",
-              "templatePath": "assets/templates/reference/Command Line/sailsversion.html",
-              "data": {
-                "uniqueID": "sailsversion892721",
-                "displayName": "sails version"
-              }
-            }
-          ]
-        },
-        "Configuration": {
-          "name": "Configuration",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Blueprints.html",
-              "displayName": "# Blueprints\n",
-              "templatePath": "assets/templates/reference/Configuration/Blueprints.html",
-              "data": {
-                "uniqueID": "Blueprints187690",
-                "displayName": "Blueprints"
-              }
-            },
-            {
-              "name": "Bootstrap.html",
-              "displayName": "# Bootstrap\n",
-              "templatePath": "assets/templates/reference/Configuration/Bootstrap.html",
-              "data": {
-                "uniqueID": "Bootstrap85232",
-                "displayName": "Bootstrap"
-              }
-            },
-            {
-              "name": "CSRF.html",
-              "displayName": "# CSRF\n",
-              "templatePath": "assets/templates/reference/Configuration/CSRF.html",
-              "data": {
-                "uniqueID": "CSRF353281",
-                "displayName": "CSRF"
-              }
-            },
-            {
-              "name": "Configuration.html",
-              "displayName": "# Configuration\n",
-              "templatePath": "assets/templates/reference/Configuration/Configuration.html",
-              "data": {
-                "uniqueID": "Configuration615655",
-                "displayName": "Configuration"
-              }
-            },
-            {
-              "name": "ConfiguringtheCLI.html",
-              "displayName": "# Configuring the CLI\n",
-              "templatePath": "assets/templates/reference/Configuration/ConfiguringtheCLI.html",
-              "data": {
-                "uniqueID": "ConfiguringtheCLI374211",
-                "displayName": "Configuring the CLI"
-              }
-            },
-            {
-              "name": "Connections.html",
-              "displayName": "# Connections\n",
-              "templatePath": "assets/templates/reference/Configuration/Connections.html",
-              "data": {
-                "uniqueID": "Connections100765",
-                "displayName": "Connections"
-              }
-            },
-            {
-              "name": "Express.html",
-              "displayName": "# Express\n",
-              "templatePath": "assets/templates/reference/Configuration/Express.html",
-              "data": {
-                "uniqueID": "Express178274",
-                "displayName": "Express"
-              }
-            },
-            {
-              "name": "Globals.html",
-              "displayName": "# sails.config.globals\n",
-              "templatePath": "assets/templates/reference/Configuration/Globals.html",
-              "data": {
-                "uniqueID": "sailsconfigglobals588825999999",
-                "displayName": "sails.config.globals"
-              }
-            },
-            {
-              "name": "Local.html",
-              "displayName": "# Local\n",
-              "templatePath": "assets/templates/reference/Configuration/Local.html",
-              "data": {
-                "uniqueID": "Local760410",
-                "displayName": "Local"
-              }
-            },
-            {
-              "name": "Locales.html",
-              "displayName": "# Locales\n",
-              "templatePath": "assets/templates/reference/Configuration/Locales.html",
-              "data": {
-                "uniqueID": "Locales998452",
-                "displayName": "Locales"
-              }
-            },
-            {
-              "name": "Log.html",
-              "displayName": "# Log\n",
-              "templatePath": "assets/templates/reference/Configuration/Log.html",
-              "data": {
-                "uniqueID": "Log812909",
-                "displayName": "Log"
-              }
-            },
-            {
-              "name": "Policies.html",
-              "displayName": "# Policies\n",
-              "templatePath": "assets/templates/reference/Configuration/Policies.html",
-              "data": {
-                "uniqueID": "Policies753862",
-                "displayName": "Policies"
-              }
-            },
-            {
-              "name": "Routes.html",
-              "displayName": "# Routes\n",
-              "templatePath": "assets/templates/reference/Configuration/Routes.html",
-              "data": {
-                "uniqueID": "Routes141736",
-                "displayName": "Routes"
-              }
-            },
-            {
-              "name": "Session.html",
-              "displayName": "# Session\n",
-              "templatePath": "assets/templates/reference/Configuration/Session.html",
-              "data": {
-                "uniqueID": "Session786744",
-                "displayName": "Session"
-              }
-            },
-            {
-              "name": "Sockets.html",
-              "displayName": "# Sockets\n",
-              "templatePath": "assets/templates/reference/Configuration/Sockets.html",
-              "data": {
-                "uniqueID": "Sockets959426",
-                "displayName": "Sockets"
-              }
-            },
-            {
-              "name": "sails.config.views.html",
-              "displayName": "# sails.config.views\n",
-              "templatePath": "assets/templates/reference/Configuration/sails.config.views.html",
-              "data": {
-                "uniqueID": "sailsconfigviews588825",
-                "displayName": "sails.config.views"
-              }
-            }
-          ]
-        },
-        "Controllers": {
-          "name": "Controllers",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Controllers.html",
-              "displayName": "# Controllers\n",
-              "templatePath": "assets/templates/reference/Controllers/Controllers.html",
-              "data": {
-                "uniqueID": "Controllers464694",
-                "displayName": "Controllers"
-              }
-            }
-          ]
-        },
-        "Custom Responses": {
-          "name": "Custom Responses",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Custom Responses.html",
-              "displayName": "# Custom Responses\n",
-              "templatePath": "assets/templates/reference/Custom Responses/Custom Responses.html",
-              "data": {
-                "uniqueID": "CustomResponses867259",
-                "displayName": "Custom Responses"
-              }
-            }
-          ]
-        },
-        "Deployment": {
-          "name": "Deployment",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Deployment.html",
-              "displayName": "# Deployment\n",
-              "templatePath": "assets/templates/reference/Deployment/Deployment.html",
-              "data": {
-                "uniqueID": "Deployment402941",
-                "displayName": "Deployment"
-              }
-            },
-            {
-              "name": "FAQ.html",
-              "displayName": "# FAQ\n",
-              "templatePath": "assets/templates/reference/Deployment/FAQ.html",
-              "data": {
-                "uniqueID": "FAQ475097",
-                "displayName": "FAQ"
-              }
-            },
-            {
-              "name": "Hosting.html",
-              "displayName": "# Hosting\n",
-              "templatePath": "assets/templates/reference/Deployment/Hosting.html",
-              "data": {
-                "uniqueID": "Hosting276234",
-                "displayName": "Hosting"
-              }
-            },
-            {
-              "name": "Scaling.html",
-              "displayName": "# Scaling\n",
-              "templatePath": "assets/templates/reference/Deployment/Scaling.html",
-              "data": {
-                "uniqueID": "Scaling291270",
-                "displayName": "Scaling"
-              }
-            }
-          ]
-        },
-        "Globals": {
-          "name": "Globals",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Globals.html",
-              "displayName": "# Globals\n",
-              "templatePath": "assets/templates/reference/Globals/Globals.html",
-              "data": {
-                "uniqueID": "Globals668238",
-                "displayName": "Globals"
-              }
-            }
-          ]
-        },
-        "Logs": {
-          "name": "Logs",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Logs.html",
-              "displayName": "# Logs\n",
-              "templatePath": "assets/templates/reference/Logs/Logs.html",
-              "data": {
-                "uniqueID": "Logs277763",
-                "displayName": "Logs"
-              }
-            },
-            {
-              "name": "sails.log.html",
-              "displayName": "# sails.log()\n",
-              "templatePath": "assets/templates/reference/Logs/sails.log.html",
-              "data": {
-                "uniqueID": "sailslog321347",
-                "displayName": "sails.log()"
-              }
-            }
-          ]
-        },
-        "Models": {
-          "name": "Models",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Attributes.html",
-              "displayName": "# Attributes\n",
-              "templatePath": "assets/templates/reference/Models/Attributes.html",
-              "data": {
-                "uniqueID": "Attributes951609",
-                "displayName": "Attributes"
-              }
-            },
-            {
-              "name": "Lifecyclecallbacks.html",
-              "displayName": "# Lifecycle callbacks\n",
-              "templatePath": "assets/templates/reference/Models/Lifecyclecallbacks.html",
-              "data": {
-                "uniqueID": "Lifecyclecallbacks631538",
-                "displayName": "Lifecycle callbacks"
-              }
-            },
-            {
-              "name": "Modelconfiguration.html",
-              "displayName": "# Model configuration\n",
-              "templatePath": "assets/templates/reference/Models/Modelconfiguration.html",
-              "data": {
-                "uniqueID": "Modelconfiguration960213",
-                "displayName": "Model configuration"
-              }
-            },
-            {
-              "name": "Models.html",
-              "displayName": "# Models\n",
-              "templatePath": "assets/templates/reference/Models/Models.html",
-              "data": {
-                "uniqueID": "Models416997",
-                "displayName": "Models"
-              }
-            },
-            {
-              "name": "Validations.html",
-              "displayName": "# Validations\n",
-              "templatePath": "assets/templates/reference/Models/Validations.html",
-              "data": {
-                "uniqueID": "Validations576587",
-                "displayName": "Validations"
-              }
-            }
-          ],
-          "Associations": {
-            "name": "Associations",
-            "isParent": true,
-            "children": [
-              {
-                "name": "Associations.html",
-                "displayName": "# Model Associations\n",
-                "templatePath": "assets/templates/reference/Models/Associations/Associations.html",
-                "data": {
-                  "uniqueID": "Associations913185",
-                  "displayName": "Model Associations"
-                }
-              },
-              {
-                "name": "Dominance.html",
-                "displayName": "# Dominance\n",
-                "templatePath": "assets/templates/reference/Models/Associations/Dominance.html",
-                "data": {
-                  "uniqueID": "Dominance904539",
-                  "displayName": "Dominance"
-                }
-              },
-              {
-                "name": "ManytoMany.html",
-                "displayName": "# Many-to-Many\n",
-                "templatePath": "assets/templates/reference/Models/Associations/ManytoMany.html",
-                "data": {
-                  "uniqueID": "ManytoMany276455",
-                  "displayName": "Many-to-Many"
-                }
-              },
-              {
-                "name": "OneWayAssociation.html",
-                "displayName": "# One Way Association\n",
-                "templatePath": "assets/templates/reference/Models/Associations/OneWayAssociation.html",
-                "data": {
-                  "uniqueID": "OneWayAssociation708096",
-                  "displayName": "One Way Association"
-                }
-              },
-              {
-                "name": "OnetoMany.html",
-                "displayName": "# One-to-Many\n",
-                "templatePath": "assets/templates/reference/Models/Associations/OnetoMany.html",
-                "data": {
-                  "uniqueID": "OnetoMany478093",
-                  "displayName": "One-to-Many"
-                }
-              },
-              {
-                "name": "OnetoOne.html",
-                "displayName": "# One-to-One\n",
-                "templatePath": "assets/templates/reference/Models/Associations/OnetoOne.html",
-                "data": {
-                  "uniqueID": "OnetoOne169258",
-                  "displayName": "One-to-One"
-                }
-              },
-              {
-                "name": "ThroughAssociations.html",
-                "displayName": "# Through Associations\n",
-                "templatePath": "assets/templates/reference/Models/Associations/ThroughAssociations.html",
-                "data": {
-                  "uniqueID": "ThroughAssociations740718",
-                  "displayName": "Through Associations"
-                }
-              }
-            ]
-          },
-          "Model Methods": {
-            "name": "Model Methods",
-            "isParent": true,
-            "children": [
-              {
-                "name": "Model Methods.html",
-                "displayName": "# Model Methods\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/Model Methods.html",
-                "data": {
-                  "uniqueID": "ModelMethods528291",
-                  "displayName": "Model Methods"
-                }
-              },
-              {
-                "name": "add.html",
-                "displayName": "# * . * .add( `primary key` )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/add.html",
-                "data": {
-                  "uniqueID": "add574043",
-                  "displayName": "* . * .add( `primary key` )"
-                }
-              },
-              {
-                "name": "count.html",
-                "displayName": "# .count( `criteria` , `criteria` , [`callback`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/count.html",
-                "data": {
-                  "uniqueID": "count42579",
-                  "displayName": ".count( `criteria` , `criteria` , [`callback`] )"
-                }
-              },
-              {
-                "name": "create.html",
-                "displayName": "# .create( `values`, [`callback`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/create.html",
-                "data": {
-                  "uniqueID": "create312605",
-                  "displayName": ".create( `values`, [`callback`] )"
-                }
-              },
-              {
-                "name": "destroy.html",
-                "displayName": "# .destroy( `criteria` , [`callback`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/destroy.html",
-                "data": {
-                  "uniqueID": "destroy398816",
-                  "displayName": ".destroy( `criteria` , [`callback`] )"
-                }
-              },
-              {
-                "name": "exec.html",
-                "displayName": "# .exec(`callback`)\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/exec.html",
-                "data": {
-                  "uniqueID": "exec550068",
-                  "displayName": ".exec(`callback`)"
-                }
-              },
-              {
-                "name": "find.html",
-                "displayName": "# .find(`criteria` , [`callback`])\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/find.html",
-                "data": {
-                  "uniqueID": "find816978",
-                  "displayName": ".find(`criteria` , [`callback`])"
-                }
-              },
-              {
-                "name": "findOne.html",
-                "displayName": "# .findOne( `criteria` , [`callback`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/findOne.html",
-                "data": {
-                  "uniqueID": "findOne423345",
-                  "displayName": ".findOne( `criteria` , [`callback`] )"
-                }
-              },
-              {
-                "name": "findOrCreate.html",
-                "displayName": "# .findOrCreate( `criteria` , `criteria` , [`callback`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/findOrCreate.html",
-                "data": {
-                  "uniqueID": "findOrCreate760631",
-                  "displayName": ".findOrCreate( `criteria` , `criteria` , [`callback`] )"
-                }
-              },
-              {
-                "name": "limit.html",
-                "displayName": "# .limit(`integer`)\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/limit.html",
-                "data": {
-                  "uniqueID": "limit203606",
-                  "displayName": ".limit(`integer`)"
-                }
-              },
-              {
-                "name": "message.html",
-                "displayName": "# .message( `models`,`data`, [`request`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/message.html",
-                "data": {
-                  "uniqueID": "message373731",
-                  "displayName": ".message( `models`,`data`, [`request`] )"
-                }
-              },
-              {
-                "name": "native.html",
-                "displayName": "# .native()\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/native.html",
-                "data": {
-                  "uniqueID": "native900002",
-                  "displayName": ".native()"
-                }
-              },
-              {
-                "name": "populate.html",
-                "displayName": "# .populate( `foreignKey` )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/populate.html",
-                "data": {
-                  "uniqueID": "populate245634",
-                  "displayName": ".populate( `foreignKey` )"
-                }
-              },
-              {
-                "name": "publishAdd.html",
-                "displayName": "# .publishAdd( `{id}`,`attribute`, `idAdded`, [`request`], [`options`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/publishAdd.html",
-                "data": {
-                  "uniqueID": "publishAdd129964",
-                  "displayName": ".publishAdd( `{id}`,`attribute`, `idAdded`, [`request`], [`options`] )"
-                }
-              },
-              {
-                "name": "publishCreate.html",
-                "displayName": "# .publishCreate( `data`,[`request`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/publishCreate.html",
-                "data": {
-                  "uniqueID": "publishCreate671839",
-                  "displayName": ".publishCreate( `data`,[`request`] )"
-                }
-              },
-              {
-                "name": "publishDestroy.html",
-                "displayName": "# .publishDestroy( `{id}`, [`request`], [`options`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/publishDestroy.html",
-                "data": {
-                  "uniqueID": "publishDestroy732227",
-                  "displayName": ".publishDestroy( `{id}`, [`request`], [`options`] )"
-                }
-              },
-              {
-                "name": "publishRemove.html",
-                "displayName": "# .publishRemove( `{id}`,`attribute`, `idRemoved`, [`request`], [`options`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/publishRemove.html",
-                "data": {
-                  "uniqueID": "publishRemove468150",
-                  "displayName": ".publishRemove( `{id}`,`attribute`, `idRemoved`, [`request`], [`options`] )"
-                }
-              },
-              {
-                "name": "publishUpdate.html",
-                "displayName": "# .publishUpdate( `{id}`,[`changes`],[`request`],[`options`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/publishUpdate.html",
-                "data": {
-                  "uniqueID": "publishUpdate712330",
-                  "displayName": ".publishUpdate( `{id}`,[`changes`],[`request`],[`options`] )"
-                }
-              },
-              {
-                "name": "query.html",
-                "displayName": "# .query()\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/query.html",
-                "data": {
-                  "uniqueID": "query546204",
-                  "displayName": ".query()"
-                }
-              },
-              {
-                "name": "remove.html",
-                "displayName": "# * . *.remove( `primary key` )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/remove.html",
-                "data": {
-                  "uniqueID": "remove790682",
-                  "displayName": "* . *.remove( `primary key` )"
-                }
-              },
-              {
-                "name": "save.html",
-                "displayName": "# * .save(`callback`)\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/save.html",
-                "data": {
-                  "uniqueID": "save581656",
-                  "displayName": "* .save(`callback`)"
-                }
-              },
-              {
-                "name": "skip.html",
-                "displayName": "# .skip(`integer`)\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/skip.html",
-                "data": {
-                  "uniqueID": "skip128737",
-                  "displayName": ".skip(`integer`)"
-                }
-              },
-              {
-                "name": "sort.html",
-                "displayName": "# .sort(`string`)\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/sort.html",
-                "data": {
-                  "uniqueID": "sort822396",
-                  "displayName": ".sort(`string`)"
-                }
-              },
-              {
-                "name": "stream.html",
-                "displayName": "# .stream( `criteria` )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/stream.html",
-                "data": {
-                  "uniqueID": "stream427721",
-                  "displayName": ".stream( `criteria` )"
-                }
-              },
-              {
-                "name": "subscribe.html",
-                "displayName": "# .subscribe(`request`,`records`,[`contexts`])\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/subscribe.html",
-                "data": {
-                  "uniqueID": "subscribe342218",
-                  "displayName": ".subscribe(`request`,`records`,[`contexts`])"
-                }
-              },
-              {
-                "name": "toJSON.html",
-                "displayName": "# * .toJSON()\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/toJSON.html",
-                "data": {
-                  "uniqueID": "toJSON161307",
-                  "displayName": "* .toJSON()"
-                }
-              },
-              {
-                "name": "toObject.html",
-                "displayName": "# * .toObject()\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/toObject.html",
-                "data": {
-                  "uniqueID": "toObject330342",
-                  "displayName": "* .toObject()"
-                }
-              },
-              {
-                "name": "unsubscribe.html",
-                "displayName": "# .unsubscribe(`request`,`records`,[`contexts`])\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/unsubscribe.html",
-                "data": {
-                  "uniqueID": "unsubscribe354769",
-                  "displayName": ".unsubscribe(`request`,`records`,[`contexts`])"
-                }
-              },
-              {
-                "name": "unwatch.html",
-                "displayName": "# .unwatch(`request`)\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/unwatch.html",
-                "data": {
-                  "uniqueID": "unwatch872661",
-                  "displayName": ".unwatch(`request`)"
-                }
-              },
-              {
-                "name": "update.html",
-                "displayName": "# .update( `criteria` , `criteria` , [`callback`] )\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/update.html",
-                "data": {
-                  "uniqueID": "update727440",
-                  "displayName": ".update( `criteria` , `criteria` , [`callback`] )"
-                }
-              },
-              {
-                "name": "validate.html",
-                "displayName": "# * .validate(`callback`)\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/validate.html",
-                "data": {
-                  "uniqueID": "validate76690",
-                  "displayName": "* .validate(`callback`)"
-                }
-              },
-              {
-                "name": "watch.html",
-                "displayName": "# .watch(`request`)\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/watch.html",
-                "data": {
-                  "uniqueID": "watch67265",
-                  "displayName": ".watch(`request`)"
-                }
-              },
-              {
-                "name": "where.html",
-                "displayName": "# .where(`criteria`)\n",
-                "templatePath": "assets/templates/reference/Models/Model Methods/where.html",
-                "data": {
-                  "uniqueID": "where700717",
-                  "displayName": ".where(`criteria`)"
-                }
-              }
-            ]
-          }
-        },
-        "Policies": {
-          "name": "Policies",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Policies.html",
-              "displayName": "# Policies\n",
-              "templatePath": "assets/templates/reference/Policies/Policies.html",
-              "data": {
-                "uniqueID": "Policies766425",
-                "displayName": "Policies"
-              }
-            }
-          ]
-        },
-        "Request": {
-          "name": "Request",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Request.html",
-              "displayName": "# Request\n",
-              "templatePath": "assets/templates/reference/Request/Request.html",
-              "data": {
-                "uniqueID": "Request35837",
-                "displayName": "Request"
-              }
-            },
-            {
-              "name": "req.accepted.html",
-              "displayName": "# req.accepted\n",
-              "templatePath": "assets/templates/reference/Request/req.accepted.html",
-              "data": {
-                "uniqueID": "reqaccepted334477",
-                "displayName": "req.accepted"
-              }
-            },
-            {
-              "name": "req.acceptedCharsets.html",
-              "displayName": "# req.acceptedCharsets\n",
-              "templatePath": "assets/templates/reference/Request/req.acceptedCharsets.html",
-              "data": {
-                "uniqueID": "reqacceptedCharsets230309",
-                "displayName": "req.acceptedCharsets"
-              }
-            },
-            {
-              "name": "req.acceptedLanguages.html",
-              "displayName": "# req.acceptedLanguages\n",
-              "templatePath": "assets/templates/reference/Request/req.acceptedLanguages.html",
-              "data": {
-                "uniqueID": "reqacceptedLanguages311952",
-                "displayName": "req.acceptedLanguages"
-              }
-            },
-            {
-              "name": "req.accepts.html",
-              "displayName": "# req.accepts()\n",
-              "templatePath": "assets/templates/reference/Request/req.accepts.html",
-              "data": {
-                "uniqueID": "reqaccepts89101",
-                "displayName": "req.accepts()"
-              }
-            },
-            {
-              "name": "req.acceptsCharset.html",
-              "displayName": "# req.acceptsCharset()\n",
-              "templatePath": "assets/templates/reference/Request/req.acceptsCharset.html",
-              "data": {
-                "uniqueID": "reqacceptsCharset303007",
-                "displayName": "req.acceptsCharset()"
-              }
-            },
-            {
-              "name": "req.acceptsLanguage.html",
-              "displayName": "# req.acceptsLanguage()\n",
-              "templatePath": "assets/templates/reference/Request/req.acceptsLanguage.html",
-              "data": {
-                "uniqueID": "reqacceptsLanguage170988",
-                "displayName": "req.acceptsLanguage()"
-              }
-            },
-            {
-              "name": "req.allParams.html",
-              "displayName": "# req.allParams()\n",
-              "templatePath": "assets/templates/reference/Request/req.allParams.html",
-              "data": {
-                "uniqueID": "reqallParams817828",
-                "displayName": "req.allParams()"
-              }
-            },
-            {
-              "name": "req.body.html",
-              "displayName": "# req.body\n",
-              "templatePath": "assets/templates/reference/Request/req.body.html",
-              "data": {
-                "uniqueID": "reqbody1481",
-                "displayName": "req.body"
-              }
-            },
-            {
-              "name": "req.cookies.html",
-              "displayName": "# req.cookies\n",
-              "templatePath": "assets/templates/reference/Request/req.cookies.html",
-              "data": {
-                "uniqueID": "reqcookies576909",
-                "displayName": "req.cookies"
-              }
-            },
-            {
-              "name": "req.file.html",
-              "displayName": "# req.file()\n",
-              "templatePath": "assets/templates/reference/Request/req.file.html",
-              "data": {
-                "uniqueID": "reqfile784692",
-                "displayName": "req.file()"
-              }
-            },
-            {
-              "name": "req.fresh.html",
-              "displayName": "# req.fresh\n",
-              "templatePath": "assets/templates/reference/Request/req.fresh.html",
-              "data": {
-                "uniqueID": "reqfresh718346",
-                "displayName": "req.fresh"
-              }
-            },
-            {
-              "name": "req.get.html",
-              "displayName": "# req.get()\n",
-              "templatePath": "assets/templates/reference/Request/req.get.html",
-              "data": {
-                "uniqueID": "reqget839626",
-                "displayName": "req.get()"
-              }
-            },
-            {
-              "name": "req.host.html",
-              "displayName": "# req.host\n",
-              "templatePath": "assets/templates/reference/Request/req.host.html",
-              "data": {
-                "uniqueID": "reqhost35719",
-                "displayName": "req.host"
-              }
-            },
-            {
-              "name": "req.ip.html",
-              "displayName": "# req.ip\n",
-              "templatePath": "assets/templates/reference/Request/req.ip.html",
-              "data": {
-                "uniqueID": "reqip681943",
-                "displayName": "req.ip"
-              }
-            },
-            {
-              "name": "req.ips.html",
-              "displayName": "# req.ips\n",
-              "templatePath": "assets/templates/reference/Request/req.ips.html",
-              "data": {
-                "uniqueID": "reqips78262",
-                "displayName": "req.ips"
-              }
-            },
-            {
-              "name": "req.is.html",
-              "displayName": "# req.is()\n",
-              "templatePath": "assets/templates/reference/Request/req.is.html",
-              "data": {
-                "uniqueID": "reqis371514",
-                "displayName": "req.is()"
-              }
-            },
-            {
-              "name": "req.isSocket.html",
-              "displayName": "# req.isSocket\n",
-              "templatePath": "assets/templates/reference/Request/req.isSocket.html",
-              "data": {
-                "uniqueID": "reqisSocket87074",
-                "displayName": "req.isSocket"
-              }
-            },
-            {
-              "name": "req.method.html",
-              "displayName": "# req.method\n",
-              "templatePath": "assets/templates/reference/Request/req.method.html",
-              "data": {
-                "uniqueID": "reqmethod305728",
-                "displayName": "req.method"
-              }
-            },
-            {
-              "name": "req.param.html",
-              "displayName": "# req.param()\n",
-              "templatePath": "assets/templates/reference/Request/req.param.html",
-              "data": {
-                "uniqueID": "reqparam149618",
-                "displayName": "req.param()"
-              }
-            },
-            {
-              "name": "req.params.html",
-              "displayName": "# req.params\n",
-              "templatePath": "assets/templates/reference/Request/req.params.html",
-              "data": {
-                "uniqueID": "reqparams977271",
-                "displayName": "req.params"
-              }
-            },
-            {
-              "name": "req.path.html",
-              "displayName": "# req.path\n",
-              "templatePath": "assets/templates/reference/Request/req.path.html",
-              "data": {
-                "uniqueID": "reqpath216836",
-                "displayName": "req.path"
-              }
-            },
-            {
-              "name": "req.protocol.html",
-              "displayName": "# req.protocol\n",
-              "templatePath": "assets/templates/reference/Request/req.protocol.html",
-              "data": {
-                "uniqueID": "reqprotocol732076",
-                "displayName": "req.protocol"
-              }
-            },
-            {
-              "name": "req.query.html",
-              "displayName": "# req.query\n",
-              "templatePath": "assets/templates/reference/Request/req.query.html",
-              "data": {
-                "uniqueID": "reqquery553014",
-                "displayName": "req.query"
-              }
-            },
-            {
-              "name": "req.secure.html",
-              "displayName": "# req.secure\n",
-              "templatePath": "assets/templates/reference/Request/req.secure.html",
-              "data": {
-                "uniqueID": "reqsecure698791",
-                "displayName": "req.secure"
-              }
-            },
-            {
-              "name": "req.signedCookies.html",
-              "displayName": "# req.signedCookies\n",
-              "templatePath": "assets/templates/reference/Request/req.signedCookies.html",
-              "data": {
-                "uniqueID": "reqsignedCookies113713",
-                "displayName": "req.signedCookies"
-              }
-            },
-            {
-              "name": "req.socket.html",
-              "displayName": "# req.socket\n",
-              "templatePath": "assets/templates/reference/Request/req.socket.html",
-              "data": {
-                "uniqueID": "reqsocket572002",
-                "displayName": "req.socket"
-              }
-            },
-            {
-              "name": "req.subdomains.html",
-              "displayName": "# req.subdomains\n",
-              "templatePath": "assets/templates/reference/Request/req.subdomains.html",
-              "data": {
-                "uniqueID": "reqsubdomains686204",
-                "displayName": "req.subdomains"
-              }
-            },
-            {
-              "name": "req.url.html",
-              "displayName": "# req.url\n",
-              "templatePath": "assets/templates/reference/Request/req.url.html",
-              "data": {
-                "uniqueID": "requrl810500",
-                "displayName": "req.url"
-              }
-            },
-            {
-              "name": "req.wantsJSON.html",
-              "displayName": "# req.wantsJSON\n",
-              "templatePath": "assets/templates/reference/Request/req.wantsJSON.html",
-              "data": {
-                "uniqueID": "reqwantsJSON30891",
-                "displayName": "req.wantsJSON"
-              }
-            },
-            {
-              "name": "req.xhr.html",
-              "displayName": "# req.xhr\n",
-              "templatePath": "assets/templates/reference/Request/req.xhr.html",
-              "data": {
-                "uniqueID": "reqxhr450203",
-                "displayName": "req.xhr"
-              }
-            }
-          ]
-        },
-        "Response": {
-          "name": "Response",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Response.html",
-              "displayName": "# Response\n",
-              "templatePath": "assets/templates/reference/Response/Response.html",
-              "data": {
-                "uniqueID": "Response550242",
-                "displayName": "Response"
-              }
-            },
-            {
-              "name": "res.attachment.html",
-              "displayName": "# res.attachment()\n",
-              "templatePath": "assets/templates/reference/Response/res.attachment.html",
-              "data": {
-                "uniqueID": "resattachment107506",
-                "displayName": "res.attachment()"
-              }
-            },
-            {
-              "name": "res.badRequest.html",
-              "displayName": "# res.badRequest()\n",
-              "templatePath": "assets/templates/reference/Response/res.badRequest.html",
-              "data": {
-                "uniqueID": "resbadRequest631019",
-                "displayName": "res.badRequest()"
-              }
-            },
-            {
-              "name": "res.clearCookie.html",
-              "displayName": "# res.clearCookie()\n",
-              "templatePath": "assets/templates/reference/Response/res.clearCookie.html",
-              "data": {
-                "uniqueID": "resclearCookie314533",
-                "displayName": "res.clearCookie()"
-              }
-            },
-            {
-              "name": "res.cookie.html",
-              "displayName": "# res.cookie()\n",
-              "templatePath": "assets/templates/reference/Response/res.cookie.html",
-              "data": {
-                "uniqueID": "rescookie624994",
-                "displayName": "res.cookie()"
-              }
-            },
-            {
-              "name": "res.forbidden.html",
-              "displayName": "# res.forbidden()\n",
-              "templatePath": "assets/templates/reference/Response/res.forbidden.html",
-              "data": {
-                "uniqueID": "resforbidden97443",
-                "displayName": "res.forbidden()"
-              }
-            },
-            {
-              "name": "res.get.html",
-              "displayName": "# res.get()\n",
-              "templatePath": "assets/templates/reference/Response/res.get.html",
-              "data": {
-                "uniqueID": "resget697790",
-                "displayName": "res.get()"
-              }
-            },
-            {
-              "name": "res.json.html",
-              "displayName": "# res.json()\n",
-              "templatePath": "assets/templates/reference/Response/res.json.html",
-              "data": {
-                "uniqueID": "resjson72272",
-                "displayName": "res.json()"
-              }
-            },
-            {
-              "name": "res.jsonp.html",
-              "displayName": "# res.jsonp()\n",
-              "templatePath": "assets/templates/reference/Response/res.jsonp.html",
-              "data": {
-                "uniqueID": "resjsonp798206",
-                "displayName": "res.jsonp()"
-              }
-            },
-            {
-              "name": "res.location.html",
-              "displayName": "# res.location()\n",
-              "templatePath": "assets/templates/reference/Response/res.location.html",
-              "data": {
-                "uniqueID": "reslocation779137",
-                "displayName": "res.location()"
-              }
-            },
-            {
-              "name": "res.negotiate.html",
-              "displayName": "# res.negotiate()\n",
-              "templatePath": "assets/templates/reference/Response/res.negotiate.html",
-              "data": {
-                "uniqueID": "resnegotiate730536",
-                "displayName": "res.negotiate()"
-              }
-            },
-            {
-              "name": "res.notFound.html",
-              "displayName": "# res.notFound()\n",
-              "templatePath": "assets/templates/reference/Response/res.notFound.html",
-              "data": {
-                "uniqueID": "resnotFound130366",
-                "displayName": "res.notFound()"
-              }
-            },
-            {
-              "name": "res.ok.html",
-              "displayName": "# res.ok()\n",
-              "templatePath": "assets/templates/reference/Response/res.ok.html",
-              "data": {
-                "uniqueID": "resok847363",
-                "displayName": "res.ok()"
-              }
-            },
-            {
-              "name": "res.redirect.html",
-              "displayName": "# res.redirect()\n",
-              "templatePath": "assets/templates/reference/Response/res.redirect.html",
-              "data": {
-                "uniqueID": "resredirect444617",
-                "displayName": "res.redirect()"
-              }
-            },
-            {
-              "name": "res.send.html",
-              "displayName": "# res.send()\n",
-              "templatePath": "assets/templates/reference/Response/res.send.html",
-              "data": {
-                "uniqueID": "ressend588955",
-                "displayName": "res.send()"
-              }
-            },
-            {
-              "name": "res.serverError.html",
-              "displayName": "# res.serverError()\n",
-              "templatePath": "assets/templates/reference/Response/res.serverError.html",
-              "data": {
-                "uniqueID": "resserverError551750",
-                "displayName": "res.serverError()"
-              }
-            },
-            {
-              "name": "res.set.html",
-              "displayName": "# res.set()\n",
-              "templatePath": "assets/templates/reference/Response/res.set.html",
-              "data": {
-                "uniqueID": "resset167965",
-                "displayName": "res.set()"
-              }
-            },
-            {
-              "name": "res.status.html",
-              "displayName": "# res.status()\n",
-              "templatePath": "assets/templates/reference/Response/res.status.html",
-              "data": {
-                "uniqueID": "resstatus819458",
-                "displayName": "res.status()"
-              }
-            },
-            {
-              "name": "res.type.html",
-              "displayName": "# res.type()\n",
-              "templatePath": "assets/templates/reference/Response/res.type.html",
-              "data": {
-                "uniqueID": "restype43929",
-                "displayName": "res.type()"
-              }
-            },
-            {
-              "name": "res.view.html",
-              "displayName": "# res.view()\n",
-              "templatePath": "assets/templates/reference/Response/res.view.html",
-              "data": {
-                "uniqueID": "resview916814",
-                "displayName": "res.view()"
-              }
-            }
-          ]
-        },
-        "Routes": {
-          "name": "Routes",
-          "isParent": true,
-          "children": [
-            {
-              "name": "RouteTargetSyntax.html",
-              "displayName": "# Route Target Syntax\n",
-              "templatePath": "assets/templates/reference/Routes/RouteTargetSyntax.html",
-              "data": {
-                "uniqueID": "RouteTargetSyntax278177",
-                "displayName": "Route Target Syntax"
-              }
-            },
-            {
-              "name": "Routes.html",
-              "displayName": "# Routes\n",
-              "templatePath": "assets/templates/reference/Routes/Routes.html",
-              "data": {
-                "uniqueID": "Routes849188",
-                "displayName": "Routes"
-              }
-            },
-            {
-              "name": "URLSlugs.html",
-              "displayName": "# URL Slugs\n",
-              "templatePath": "assets/templates/reference/Routes/URLSlugs.html",
-              "data": {
-                "uniqueID": "URLSlugs805236",
-                "displayName": "URL Slugs"
-              }
-            }
-          ]
-        },
-        "Security": {
-          "name": "Security",
-          "isParent": true,
-          "children": [
-            {
-              "name": "CSRF.html",
-              "displayName": "# CSRF\n",
-              "templatePath": "assets/templates/reference/Security/CSRF.html",
-              "data": {
-                "uniqueID": "CSRF300312",
-                "displayName": "CSRF"
-              }
-            },
-            {
-              "name": "Clickjacking.html",
-              "displayName": "# Clickjacking\n",
-              "templatePath": "assets/templates/reference/Security/Clickjacking.html",
-              "data": {
-                "uniqueID": "Clickjacking879453",
-                "displayName": "Clickjacking"
-              }
-            },
-            {
-              "name": "ContentSecurityPolicy.html",
-              "displayName": "# Content Security Policy\n",
-              "templatePath": "assets/templates/reference/Security/ContentSecurityPolicy.html",
-              "data": {
-                "uniqueID": "ContentSecurityPolicy649437",
-                "displayName": "Content Security Policy"
-              }
-            },
-            {
-              "name": "DDOS.html",
-              "displayName": "# DDOS\n",
-              "templatePath": "assets/templates/reference/Security/DDOS.html",
-              "data": {
-                "uniqueID": "DDOS139869",
-                "displayName": "DDOS"
-              }
-            },
-            {
-              "name": "P3P.html",
-              "displayName": "# P3P\n",
-              "templatePath": "assets/templates/reference/Security/P3P.html",
-              "data": {
-                "uniqueID": "P3P183449",
-                "displayName": "P3P"
-              }
-            },
-            {
-              "name": "Security.html",
-              "displayName": "# Security\n",
-              "templatePath": "assets/templates/reference/Security/Security.html",
-              "data": {
-                "uniqueID": "Security59375",
-                "displayName": "Security"
-              }
-            },
-            {
-              "name": "SocketHijacking.html",
-              "displayName": "# Socket Hijacking\n",
-              "templatePath": "assets/templates/reference/Security/SocketHijacking.html",
-              "data": {
-                "uniqueID": "SocketHijacking397141",
-                "displayName": "Socket Hijacking"
-              }
-            }
-          ]
-        },
-        "Services": {
-          "name": "Services",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Services.html",
-              "displayName": "# Services\n",
-              "templatePath": "assets/templates/reference/Services/Services.html",
-              "data": {
-                "uniqueID": "Services157331",
-                "displayName": "Services"
-              }
-            }
-          ]
-        },
-        "Sockets": {
-          "name": "Sockets",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Sockets.html",
-              "displayName": "# Sockets\n",
-              "templatePath": "assets/templates/reference/Sockets/Sockets.html",
-              "data": {
-                "uniqueID": "Sockets505826",
-                "displayName": "Sockets"
-              }
-            },
-            {
-              "name": "sails.sockets.blast.html",
-              "displayName": "# sails.sockets.blast( [`event`], `data`, [`socketToOmit`] )\n",
-              "templatePath": "assets/templates/reference/Sockets/sails.sockets.blast.html",
-              "data": {
-                "uniqueID": "sailssocketsblast345475",
-                "displayName": "sails.sockets.blast( [`event`], `data`, [`socketToOmit`] )"
-              }
-            },
-            {
-              "name": "sails.sockets.broadcast.html",
-              "displayName": "# sails.sockets.broadcast( `roomName`, [`event`], `data`, [`socketToOmit`] )\n",
-              "templatePath": "assets/templates/reference/Sockets/sails.sockets.broadcast.html",
-              "data": {
-                "uniqueID": "sailssocketsbroadcast253997",
-                "displayName": "sails.sockets.broadcast( `roomName`, [`event`], `data`, [`socketToOmit`] )"
-              }
-            },
-            {
-              "name": "sails.sockets.emit.html",
-              "displayName": "# sails.sockets.emit( `socketIds`, [`event`], `data`)\n",
-              "templatePath": "assets/templates/reference/Sockets/sails.sockets.emit.html",
-              "data": {
-                "uniqueID": "sailssocketsemit963182",
-                "displayName": "sails.sockets.emit( `socketIds`, [`event`], `data`)"
-              }
-            },
-            {
-              "name": "sails.sockets.id.html",
-              "displayName": "# sails.sockets.id( `socket` )\n",
-              "templatePath": "assets/templates/reference/Sockets/sails.sockets.id.html",
-              "data": {
-                "uniqueID": "sailssocketsid240053",
-                "displayName": "sails.sockets.id( `socket` )"
-              }
-            },
-            {
-              "name": "sails.sockets.join.html",
-              "displayName": "# sails.sockets.join()\n",
-              "templatePath": "assets/templates/reference/Sockets/sails.sockets.join.html",
-              "data": {
-                "uniqueID": "sailssocketsjoin958690",
-                "displayName": "sails.sockets.join()"
-              }
-            },
-            {
-              "name": "sails.sockets.leave.html",
-              "displayName": "# sails.sockets.leave( `socket`, `roomName` )\n",
-              "templatePath": "assets/templates/reference/Sockets/sails.sockets.leave.html",
-              "data": {
-                "uniqueID": "sailssocketsleave425459",
-                "displayName": "sails.sockets.leave( `socket`, `roomName` )"
-              }
-            },
-            {
-              "name": "sails.sockets.rooms.html",
-              "displayName": "# sails.sockets.rooms()\n",
-              "templatePath": "assets/templates/reference/Sockets/sails.sockets.rooms.html",
-              "data": {
-                "uniqueID": "sailssocketsrooms183984",
-                "displayName": "sails.sockets.rooms()"
-              }
-            },
-            {
-              "name": "sails.sockets.socketRooms.html",
-              "displayName": "# sails.sockets.socketRooms( `socket` )\n",
-              "templatePath": "assets/templates/reference/Sockets/sails.sockets.socketRooms.html",
-              "data": {
-                "uniqueID": "sailssocketssocketRooms270469",
-                "displayName": "sails.sockets.socketRooms( `socket` )"
-              }
-            },
-            {
-              "name": "sails.sockets.subscribeToFirehose.html",
-              "displayName": "# sails.sockets.subscribeToFirehose(socket)\n",
-              "templatePath": "assets/templates/reference/Sockets/sails.sockets.subscribeToFirehose.html",
-              "data": {
-                "uniqueID": "sailssocketssubscribeToFirehose954078",
-                "displayName": "sails.sockets.subscribeToFirehose(socket)"
-              }
-            },
-            {
-              "name": "sails.sockets.subscribers.html",
-              "displayName": "# sails.sockets.subscribers( `roomName` )\n",
-              "templatePath": "assets/templates/reference/Sockets/sails.sockets.subscribers.html",
-              "data": {
-                "uniqueID": "sailssocketssubscribers65666",
-                "displayName": "sails.sockets.subscribers( `roomName` )"
-              }
-            },
-            {
-              "name": "sails.sockets.unsubscribeFromFirehose.html",
-              "displayName": "# sails.sockets.unsubscribeFromFirehose(socket)\n",
-              "templatePath": "assets/templates/reference/Sockets/sails.sockets.unsubscribeFromFirehose.html",
-              "data": {
-                "uniqueID": "sailssocketsunsubscribeFromFirehose999488",
-                "displayName": "sails.sockets.unsubscribeFromFirehose(socket)"
-              }
-            }
-          ]
-        },
-        "Upgrading": {
-          "name": "Upgrading",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Upgrading.html",
-              "displayName": "# Upgrading\n",
-              "templatePath": "assets/templates/reference/Upgrading/Upgrading.html",
-              "data": {
-                "uniqueID": "Upgrading509472",
-                "displayName": "Upgrading"
-              }
-            }
-          ]
-        },
-        "Views": {
-          "name": "Views",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Layouts.html",
-              "displayName": "# Layouts\n",
-              "templatePath": "assets/templates/reference/Views/Layouts.html",
-              "data": {
-                "uniqueID": "Layouts870655",
-                "displayName": "Layouts"
-              }
-            },
-            {
-              "name": "Locals.html",
-              "displayName": "# Locals\n",
-              "templatePath": "assets/templates/reference/Views/Locals.html",
-              "data": {
-                "uniqueID": "Locals453748",
-                "displayName": "Locals"
-              }
-            },
-            {
-              "name": "Partials.html",
-              "displayName": "# Partials\n",
-              "templatePath": "assets/templates/reference/Views/Partials.html",
-              "data": {
-                "uniqueID": "Partials610916",
-                "displayName": "Partials"
-              }
-            },
-            {
-              "name": "ViewEngines.html",
-              "displayName": "# View Engines\n",
-              "templatePath": "assets/templates/reference/Views/ViewEngines.html",
-              "data": {
-                "uniqueID": "ViewEngines339501",
-                "displayName": "View Engines"
-              }
-            },
-            {
-              "name": "Views.html",
-              "displayName": "# Views\n",
-              "templatePath": "assets/templates/reference/Views/Views.html",
-              "data": {
-                "uniqueID": "Views426660",
-                "displayName": "Views"
-              }
-            }
-          ]
-        },
-        "i18n": {
-          "name": "i18n",
-          "isParent": true,
-          "children": [
-            {
-              "name": "Usage.html",
-              "displayName": "# Usage\n",
-              "templatePath": "assets/templates/reference/i18n/Usage.html",
-              "data": {
-                "uniqueID": "Usage689913",
-                "displayName": "Usage"
-              }
-            },
-            {
-              "name": "i18n.html",
-              "displayName": "# i18n\n",
-              "templatePath": "assets/templates/reference/i18n/i18n.html",
-              "data": {
-                "uniqueID": "i18n245343",
-                "displayName": "i18n"
-              }
-            }
-          ]
-        }
-      },
-      "anatomy": {
-        "name": "anatomy",
-        "isParent": true,
-        "children": [
-          {
-            "name": "README.html",
-            "displayName": "sails-docs-anatomy\n",
-            "templatePath": "assets/templates/anatomy/README.html",
-            "data": {}
-          }
-        ],
-        "myApp": {
-          "name": "myApp",
-          "isParent": true,
-          "children": [
-            {
-              "name": ".gitignore.html",
-              "displayName": "# myApp/.gitignore\n",
-              "templatePath": "assets/templates/anatomy/myApp/.gitignore.html",
-              "data": {
-                "uniqueID": "gitignore878586",
-                "displayName": ".gitignore"
-              }
-            },
-            {
-              "name": ".sailsrc.html",
-              "displayName": "# myApp/.sailsrc\n",
-              "templatePath": "assets/templates/anatomy/myApp/.sailsrc.html",
-              "data": {
-                "uniqueID": "sailsrc6419",
-                "displayName": ".sailsrc"
-              }
-            },
-            {
-              "name": "Gruntfile.js.html",
-              "displayName": "# myApp/Gruntfile.js\n",
-              "templatePath": "assets/templates/anatomy/myApp/Gruntfile.js.html",
-              "data": {
-                "uniqueID": "Gruntfilejs375150",
-                "displayName": "Gruntfile.js"
-              }
-            },
-            {
-              "name": "README.html",
-              "displayName": "# myApp/README\n",
-              "templatePath": "assets/templates/anatomy/myApp/README.html",
-              "data": {
-                "uniqueID": "READMEmd869459",
-                "displayName": "README"
-              }
-            },
-            {
-              "name": "app.js.html",
-              "displayName": "# myApp/app.js\n",
-              "templatePath": "assets/templates/anatomy/myApp/app.js.html",
-              "data": {
-                "uniqueID": "appjs249761",
-                "displayName": "app.js"
-              }
-            },
-            {
-              "name": "myApp.html",
-              "displayName": "# myApp\n",
-              "templatePath": "assets/templates/anatomy/myApp/myApp.html",
-              "data": {
-                "uniqueID": "myAppmd870358",
-                "displayName": "myApp"
-              }
-            },
-            {
-              "name": "package.json.html",
-              "displayName": "# myApp/package.json\n",
-              "templatePath": "assets/templates/anatomy/myApp/package.json.html",
-              "data": {
-                "uniqueID": "packagejson891874",
-                "displayName": "package.json"
-              }
-            }
-          ],
-          "api": {
-            "name": "api",
-            "isParent": true,
-            "children": [
-              {
-                "name": "api.html",
-                "displayName": "# myApp/api\n",
-                "templatePath": "assets/templates/anatomy/myApp/api/api.html",
-                "data": {
-                  "uniqueID": "apimd840000",
-                  "displayName": "api"
-                }
-              }
-            ],
-            "controllers": {
-              "name": "controllers",
-              "isParent": true,
-              "children": [
-                {
-                  "name": ".gitkeep.html",
-                  "displayName": "# myApp/api/controllers/.gitkeep\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/controllers/.gitkeep.html",
-                  "data": {
-                    "uniqueID": "gitkeep271990",
-                    "displayName": ".gitkeep"
-                  }
-                },
-                {
-                  "name": "UserController.js.html",
-                  "displayName": "# myApp/api/controllers/UserController.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/controllers/UserController.js.html",
-                  "data": {
-                    "uniqueID": "UserControllerjs867576",
-                    "displayName": "UserController.js"
-                  }
-                },
-                {
-                  "name": "controllers.html",
-                  "displayName": "# myApp/api/controllers\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/controllers/controllers.html",
-                  "data": {
-                    "uniqueID": "controllersmd841616",
-                    "displayName": "controllers"
-                  }
-                }
-              ]
-            },
-            "models": {
-              "name": "models",
-              "isParent": true,
-              "children": [
-                {
-                  "name": ".gitkeep.html",
-                  "displayName": "# myApp/api/models/.gitkeep\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/models/.gitkeep.html",
-                  "data": {
-                    "uniqueID": "gitkeep437760",
-                    "displayName": ".gitkeep"
-                  }
-                },
-                {
-                  "name": "User.js.html",
-                  "displayName": "# myApp/api/models/User.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/models/User.js.html",
-                  "data": {
-                    "uniqueID": "Userjs263218",
-                    "displayName": "User.js"
-                  }
-                },
-                {
-                  "name": "models.html",
-                  "displayName": "# myApp/api/models\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/models/models.html",
-                  "data": {
-                    "uniqueID": "modelsmd956381",
-                    "displayName": "models"
-                  }
-                }
-              ]
-            },
-            "policies": {
-              "name": "policies",
-              "isParent": true,
-              "children": [
-                {
-                  "name": "policies.html",
-                  "displayName": "# myApp/api/policies\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/policies/policies.html",
-                  "data": {
-                    "uniqueID": "policiesmd630211",
-                    "displayName": "policies"
-                  }
-                },
-                {
-                  "name": "sessionAuth.js.html",
-                  "displayName": "# myApp/api/policies/sessionAuth.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/policies/sessionAuth.js.html",
-                  "data": {
-                    "uniqueID": "sessionAuthjs444151",
-                    "displayName": "sessionAuth.js"
-                  }
-                }
-              ]
-            },
-            "responses": {
-              "name": "responses",
-              "isParent": true,
-              "children": [
-                {
-                  "name": "badRequest.js.html",
-                  "displayName": "# myApp/api/responses/badRequest.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/responses/badRequest.js.html",
-                  "data": {
-                    "uniqueID": "badRequestjs643116",
-                    "displayName": "badRequest.js"
-                  }
-                },
-                {
-                  "name": "forbidden.js.html",
-                  "displayName": "# myApp/api/responses/forbidden.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/responses/forbidden.js.html",
-                  "data": {
-                    "uniqueID": "forbiddenjs655137",
-                    "displayName": "forbidden.js"
-                  }
-                },
-                {
-                  "name": "notFound.js.html",
-                  "displayName": "# myApp/api/responses/notFound.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/responses/notFound.js.html",
-                  "data": {
-                    "uniqueID": "notFoundjs935866",
-                    "displayName": "notFound.js"
-                  }
-                },
-                {
-                  "name": "ok.js.html",
-                  "displayName": "# myApp/api/responses/ok.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/responses/ok.js.html",
-                  "data": {
-                    "uniqueID": "okjs629833",
-                    "displayName": "ok.js"
-                  }
-                },
-                {
-                  "name": "responses.html",
-                  "displayName": "# myApp/api/responses\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/responses/responses.html",
-                  "data": {
-                    "uniqueID": "responsesmd261495",
-                    "displayName": "responses"
-                  }
-                },
-                {
-                  "name": "serverError.js.html",
-                  "displayName": "# myApp/api/responses/serverError.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/responses/serverError.js.html",
-                  "data": {
-                    "uniqueID": "serverErrorjs285178",
-                    "displayName": "serverError.js"
-                  }
-                }
-              ]
-            },
-            "services": {
-              "name": "services",
-              "isParent": true,
-              "children": [
-                {
-                  "name": ".gitkeep.html",
-                  "displayName": "# myApp/api/services/.gitkeep\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/services/.gitkeep.html",
-                  "data": {
-                    "uniqueID": "gitkeep306979",
-                    "displayName": ".gitkeep"
-                  }
-                },
-                {
-                  "name": "services.html",
-                  "displayName": "# myApp/api/services\n",
-                  "templatePath": "assets/templates/anatomy/myApp/api/services/services.html",
-                  "data": {
-                    "uniqueID": "servicesmd572453",
-                    "displayName": "services"
-                  }
-                }
-              ]
-            }
-          },
-          "assets": {
-            "name": "assets",
-            "isParent": true,
-            "children": [
-              {
-                "name": "assets.html",
-                "displayName": "# myApp/assets\n",
-                "templatePath": "assets/templates/anatomy/myApp/assets/assets.html",
-                "data": {
-                  "uniqueID": "assetsmd466929",
-                  "displayName": "assets"
-                }
-              },
-              {
-                "name": "favicon.ico.html",
-                "displayName": "# myApp/assets/favicon.ico\n",
-                "templatePath": "assets/templates/anatomy/myApp/assets/favicon.ico.html",
-                "data": {}
-              },
-              {
-                "name": "robots.txt.html",
-                "displayName": "# myApp/assets/robots.txt\n",
-                "templatePath": "assets/templates/anatomy/myApp/assets/robots.txt.html",
-                "data": {
-                  "uniqueID": "robotstxt863673",
-                  "displayName": "robots.txt"
-                }
-              }
-            ],
-            "images": {
-              "name": "images",
-              "isParent": true,
-              "children": [
-                {
-                  "name": ".gitkeep.html",
-                  "displayName": "# myApp/assets/images/.gitkeep\n",
-                  "templatePath": "assets/templates/anatomy/myApp/assets/images/.gitkeep.html",
-                  "data": {
-                    "uniqueID": "gitkeep510726",
-                    "displayName": ".gitkeep"
-                  }
-                },
-                {
-                  "name": "images.html",
-                  "displayName": "# myApp/assets/images\n",
-                  "templatePath": "assets/templates/anatomy/myApp/assets/images/images.html",
-                  "data": {
-                    "uniqueID": "imagesmd510380",
-                    "displayName": "images"
-                  }
-                }
-              ]
-            },
-            "js": {
-              "name": "js",
-              "isParent": true,
-              "children": [
-                {
-                  "name": "js.html",
-                  "displayName": "# myApp/assets/js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/assets/js/js.html",
-                  "data": {
-                    "uniqueID": "jsmd574851",
-                    "displayName": "js"
-                  }
-                }
-              ],
-              "dependencies": {
-                "name": "dependencies",
-                "isParent": true,
-                "children": [
-                  {
-                    "name": "dependencies.html",
-                    "displayName": "# dependencies\n",
-                    "templatePath": "assets/templates/anatomy/myApp/assets/js/dependencies/dependencies.html",
-                    "data": {
-                      "uniqueID": "dependenciesmd334158",
-                      "displayName": "dependencies"
-                    }
-                  },
-                  {
-                    "name": "sails.io.js.html",
-                    "displayName": "# myApp/assets/js/dependencies/sails.io.js\n",
-                    "templatePath": "assets/templates/anatomy/myApp/assets/js/dependencies/sails.io.js.html",
-                    "data": {
-                      "uniqueID": "sailsiojs779166",
-                      "displayName": "sails.io.js"
-                    }
-                  }
-                ]
-              }
-            },
-            "styles": {
-              "name": "styles",
-              "isParent": true,
-              "children": [
-                {
-                  "name": "importer.less.html",
-                  "displayName": "# myApp/assets/styles/importer.less\n",
-                  "templatePath": "assets/templates/anatomy/myApp/assets/styles/importer.less.html",
-                  "data": {
-                    "uniqueID": "importerless750226",
-                    "displayName": "importer.less"
-                  }
-                },
-                {
-                  "name": "styles.html",
-                  "displayName": "# myApp/assets/styles\n",
-                  "templatePath": "assets/templates/anatomy/myApp/assets/styles/styles.html",
-                  "data": {
-                    "uniqueID": "stylesmd285346",
-                    "displayName": "styles"
-                  }
-                }
-              ]
-            },
-            "templates": {
-              "name": "templates",
-              "isParent": true,
-              "children": [
-                {
-                  "name": ".gitkeep.html",
-                  "displayName": "# myApp/assets/templates/.gitkeep\n",
-                  "templatePath": "assets/templates/anatomy/myApp/assets/templates/.gitkeep.html",
-                  "data": {
-                    "uniqueID": "gitkeep45946",
-                    "displayName": ".gitkeep"
-                  }
-                },
-                {
-                  "name": "templates.html",
-                  "displayName": "# templates\n",
-                  "templatePath": "assets/templates/anatomy/myApp/assets/templates/templates.html",
-                  "data": {
-                    "uniqueID": "templatesmd846667",
-                    "displayName": "templates"
-                  }
-                }
-              ]
-            }
-          },
-          "config": {
-            "name": "config",
-            "isParent": true,
-            "children": [
-              {
-                "name": "blueprints.js.html",
-                "displayName": "# myApp/config/blueprints.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/blueprints.js.html",
-                "data": {
-                  "uniqueID": "blueprintsjs106161",
-                  "displayName": "blueprints.js"
-                }
-              },
-              {
-                "name": "bootstrap.js.html",
-                "displayName": "# myApp/config/bootstrap.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/bootstrap.js.html",
-                "data": {
-                  "uniqueID": "bootstrapjs878964",
-                  "displayName": "bootstrap.js"
-                }
-              },
-              {
-                "name": "config.html",
-                "displayName": "# myApp/config\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/config.html",
-                "data": {
-                  "uniqueID": "configmd867312",
-                  "displayName": "config"
-                }
-              },
-              {
-                "name": "connections.js.html",
-                "displayName": "# myApp/config/connections.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/connections.js.html",
-                "data": {
-                  "uniqueID": "connectionsjs160878",
-                  "displayName": "connections.js"
-                }
-              },
-              {
-                "name": "cors.js.html",
-                "displayName": "# myApp/config/cors.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/cors.js.html",
-                "data": {
-                  "uniqueID": "corsjs397059",
-                  "displayName": "cors.js"
-                }
-              },
-              {
-                "name": "csrf.js.html",
-                "displayName": "# myApp/config/csrf.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/csrf.js.html",
-                "data": {
-                  "uniqueID": "csrfjs233850",
-                  "displayName": "csrf.js"
-                }
-              },
-              {
-                "name": "globals.js.html",
-                "displayName": "# myApp/config/globals.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/globals.js.html",
-                "data": {
-                  "uniqueID": "globalsjs86282",
-                  "displayName": "globals.js"
-                }
-              },
-              {
-                "name": "http.js.html",
-                "displayName": "# myApp/config/http.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/http.js.html",
-                "data": {
-                  "uniqueID": "httpjs768553",
-                  "displayName": "http.js"
-                }
-              },
-              {
-                "name": "i18n.js.html",
-                "displayName": "# myApp/config/i18n.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/i18n.js.html",
-                "data": {
-                  "uniqueID": "i18njs28306",
-                  "displayName": "i18n.js"
-                }
-              },
-              {
-                "name": "local.js.html",
-                "displayName": "# myApp/config/local.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/local.js.html",
-                "data": {
-                  "uniqueID": "localjs386958",
-                  "displayName": "local.js"
-                }
-              },
-              {
-                "name": "log.js.html",
-                "displayName": "# myApp/config/log.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/log.js.html",
-                "data": {
-                  "uniqueID": "logjs173177",
-                  "displayName": "log.js"
-                }
-              },
-              {
-                "name": "models.js.html",
-                "displayName": "# myApp/config/models.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/models.js.html",
-                "data": {
-                  "uniqueID": "modelsjs643323",
-                  "displayName": "models.js"
-                }
-              },
-              {
-                "name": "policies.js.html",
-                "displayName": "# myApp/config/policies.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/policies.js.html",
-                "data": {
-                  "uniqueID": "policiesjs831604",
-                  "displayName": "policies.js"
-                }
-              },
-              {
-                "name": "routes.js.html",
-                "displayName": "# myApp/config/routes.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/routes.js.html",
-                "data": {
-                  "uniqueID": "routesjs120276",
-                  "displayName": "routes.js"
-                }
-              },
-              {
-                "name": "session.js.html",
-                "displayName": "# myApp/config/session.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/session.js.html",
-                "data": {
-                  "uniqueID": "sessionjs736525",
-                  "displayName": "session.js"
-                }
-              },
-              {
-                "name": "sockets.js.html",
-                "displayName": "# myApp/config/sockets.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/sockets.js.html",
-                "data": {
-                  "uniqueID": "socketsjs106184",
-                  "displayName": "sockets.js"
-                }
-              },
-              {
-                "name": "views.js.html",
-                "displayName": "# myApp/config/views.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/config/views.js.html",
-                "data": {
-                  "uniqueID": "viewsjs122314",
-                  "displayName": "views.js"
-                }
-              }
-            ],
-            "locales": {
-              "name": "locales",
-              "isParent": true,
-              "children": [
-                {
-                  "name": "_README.html",
-                  "displayName": "# myApp/config/locales/_README\n",
-                  "templatePath": "assets/templates/anatomy/myApp/config/locales/_README.html",
-                  "data": {
-                    "uniqueID": "READMEmd329624",
-                    "displayName": "_README"
-                  }
-                },
-                {
-                  "name": "de.json.html",
-                  "displayName": "# myApp/config/locales/de.json\n",
-                  "templatePath": "assets/templates/anatomy/myApp/config/locales/de.json.html",
-                  "data": {
-                    "uniqueID": "dejson870097",
-                    "displayName": "de.json"
-                  }
-                },
-                {
-                  "name": "en.json.html",
-                  "displayName": "# myApp/config/locales/en.json\n",
-                  "templatePath": "assets/templates/anatomy/myApp/config/locales/en.json.html",
-                  "data": {
-                    "uniqueID": "enjson226521",
-                    "displayName": "en.json"
-                  }
-                },
-                {
-                  "name": "es.json.html",
-                  "displayName": "# myApp/config/locales/es.json\n",
-                  "templatePath": "assets/templates/anatomy/myApp/config/locales/es.json.html",
-                  "data": {
-                    "uniqueID": "esjson685640",
-                    "displayName": "es.json"
-                  }
-                },
-                {
-                  "name": "fr.json.html",
-                  "displayName": "# myApp/config/locales/fr.json\n",
-                  "templatePath": "assets/templates/anatomy/myApp/config/locales/fr.json.html",
-                  "data": {
-                    "uniqueID": "frjson25047",
-                    "displayName": "fr.json"
-                  }
-                },
-                {
-                  "name": "locales.html",
-                  "displayName": "# myApp/config/locales\n",
-                  "templatePath": "assets/templates/anatomy/myApp/config/locales/locales.html",
-                  "data": {
-                    "uniqueID": "localesmd383129",
-                    "displayName": "locales"
-                  }
-                }
-              ]
-            }
-          },
-          "tasks": {
-            "name": "tasks",
-            "isParent": true,
-            "children": [
-              {
-                "name": "README.html",
-                "displayName": "# myApp/README.md\n",
-                "templatePath": "assets/templates/anatomy/myApp/tasks/README.html",
-                "data": {
-                  "uniqueID": "READMEmd802820",
-                  "displayName": "README"
-                }
-              },
-              {
-                "name": "pipeline.js.html",
-                "displayName": "# myApp/tasks/pipeline.js\n",
-                "templatePath": "assets/templates/anatomy/myApp/tasks/pipeline.js.html",
-                "data": {
-                  "uniqueID": "pipelinejs485817",
-                  "displayName": "pipeline.js"
-                }
-              },
-              {
-                "name": "tasks.html",
-                "displayName": "# myApp/tasks\n",
-                "templatePath": "assets/templates/anatomy/myApp/tasks/tasks.html",
-                "data": {
-                  "uniqueID": "tasksmd668626",
-                  "displayName": "tasks"
-                }
-              }
-            ],
-            "config": {
-              "name": "config",
-              "isParent": true,
-              "children": [
-                {
-                  "name": "clean.js.html",
-                  "displayName": "# myApp/tasks/config/clean.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/clean.js.html",
-                  "data": {
-                    "uniqueID": "cleanjs253199",
-                    "displayName": "clean.js"
-                  }
-                },
-                {
-                  "name": "coffee.js.html",
-                  "displayName": "# myApp/tasks/config/coffee.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/coffee.js.html",
-                  "data": {
-                    "uniqueID": "coffeejs932693",
-                    "displayName": "coffee.js"
-                  }
-                },
-                {
-                  "name": "concat.js.html",
-                  "displayName": "# myApp/tasks/config/concat.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/concat.js.html",
-                  "data": {
-                    "uniqueID": "concatjs243574",
-                    "displayName": "concat.js"
-                  }
-                },
-                {
-                  "name": "config.html",
-                  "displayName": "# config\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/config.html",
-                  "data": {
-                    "uniqueID": "configmd719485",
-                    "displayName": "config"
-                  }
-                },
-                {
-                  "name": "copy.js.html",
-                  "displayName": "# myApp/tasks/config/copy.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/copy.js.html",
-                  "data": {
-                    "uniqueID": "copyjs846396",
-                    "displayName": "copy.js"
-                  }
-                },
-                {
-                  "name": "cssmin.js.html",
-                  "displayName": "# myApp/tasks/config/cssmin.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/cssmin.js.html",
-                  "data": {
-                    "uniqueID": "cssminjs49702",
-                    "displayName": "cssmin.js"
-                  }
-                },
-                {
-                  "name": "jst.js.html",
-                  "displayName": "# myApp/tasks/config/jst.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/jst.js.html",
-                  "data": {
-                    "uniqueID": "jstjs459109",
-                    "displayName": "jst.js"
-                  }
-                },
-                {
-                  "name": "less.js.html",
-                  "displayName": "# myApp/tasks/config/less.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/less.js.html",
-                  "data": {
-                    "uniqueID": "lessjs876526",
-                    "displayName": "less.js"
-                  }
-                },
-                {
-                  "name": "sails-linker.js.html",
-                  "displayName": "# myApp/tasks/config/sails-linker.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/sails-linker.js.html",
-                  "data": {
-                    "uniqueID": "sailslinkerjs717161",
-                    "displayName": "sails-linker.js"
-                  }
-                },
-                {
-                  "name": "sync.js.html",
-                  "displayName": "# myApp/tasks/config/sync.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/sync.js.html",
-                  "data": {
-                    "uniqueID": "syncjs116962",
-                    "displayName": "sync.js"
-                  }
-                },
-                {
-                  "name": "uglify.js.html",
-                  "displayName": "# myApp/tasks/config/uglify.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/uglify.js.html",
-                  "data": {
-                    "uniqueID": "uglifyjs687746",
-                    "displayName": "uglify.js"
-                  }
-                },
-                {
-                  "name": "watch.js.html",
-                  "displayName": "# myApp/tasks/config/watch.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/config/watch.js.html",
-                  "data": {
-                    "uniqueID": "watchjs402491",
-                    "displayName": "watch.js"
-                  }
-                }
-              ]
-            },
-            "register": {
-              "name": "register",
-              "isParent": true,
-              "children": [
-                {
-                  "name": "build.js.html",
-                  "displayName": "# myApp/tasks/register/build.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/register/build.js.html",
-                  "data": {
-                    "uniqueID": "buildjs920895",
-                    "displayName": "build.js"
-                  }
-                },
-                {
-                  "name": "buildProd.js.html",
-                  "displayName": "# myApp/tasks/register/buildProd.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/register/buildProd.js.html",
-                  "data": {
-                    "uniqueID": "buildProdjs242328",
-                    "displayName": "buildProd.js"
-                  }
-                },
-                {
-                  "name": "compileAssets.js.html",
-                  "displayName": "# myApp/tasks/register/compileAssets.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/register/compileAssets.js.html",
-                  "data": {
-                    "uniqueID": "compileAssetsjs631033",
-                    "displayName": "compileAssets.js"
-                  }
-                },
-                {
-                  "name": "default.js.html",
-                  "displayName": "# myApp/tasks/register/default.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/register/default.js.html",
-                  "data": {
-                    "uniqueID": "defaultjs909775",
-                    "displayName": "default.js"
-                  }
-                },
-                {
-                  "name": "linkAssets.js.html",
-                  "displayName": "# myApp/tasks/register/linkAssets.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/register/linkAssets.js.html",
-                  "data": {
-                    "uniqueID": "linkAssetsjs43498",
-                    "displayName": "linkAssets.js"
-                  }
-                },
-                {
-                  "name": "linkAssetsBuild.js.html",
-                  "displayName": "# myApp/tasks/register/linkAssetsBuild.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuild.js.html",
-                  "data": {
-                    "uniqueID": "linkAssetsBuildjs786345",
-                    "displayName": "linkAssetsBuild.js"
-                  }
-                },
-                {
-                  "name": "linkAssetsBuildProd.js.html",
-                  "displayName": "# myApp/tasks/register/linkAssetsBuildProd.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuildProd.js.html",
-                  "data": {
-                    "uniqueID": "linkAssetsBuildProdjs100842",
-                    "displayName": "linkAssetsBuildProd.js"
-                  }
-                },
-                {
-                  "name": "prod.js.html",
-                  "displayName": "# myApp/tasks/register/prod.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/register/prod.js.html",
-                  "data": {
-                    "uniqueID": "prodjs338763",
-                    "displayName": "prod.js"
-                  }
-                },
-                {
-                  "name": "register.html",
-                  "displayName": "# register\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/register/register.html",
-                  "data": {
-                    "uniqueID": "registermd221221",
-                    "displayName": "register"
-                  }
-                },
-                {
-                  "name": "syncAssets.js.html",
-                  "displayName": "# myApp/tasks/register/syncAssets.js\n",
-                  "templatePath": "assets/templates/anatomy/myApp/tasks/register/syncAssets.js.html",
-                  "data": {
-                    "uniqueID": "syncAssetsjs528286",
-                    "displayName": "syncAssets.js"
-                  }
-                }
-              ]
-            }
-          },
-          "views": {
-            "name": "views",
-            "isParent": true,
-            "children": [
-              {
-                "name": "403.ejs.html",
-                "displayName": "# myApp/views/403.ejs\n",
-                "templatePath": "assets/templates/anatomy/myApp/views/403.ejs.html",
-                "data": {
-                  "uniqueID": "403ejs888880",
-                  "displayName": "403.ejs"
-                }
-              },
-              {
-                "name": "404.ejs.html",
-                "displayName": "# myApp/views/404.ejs\n",
-                "templatePath": "assets/templates/anatomy/myApp/views/404.ejs.html",
-                "data": {
-                  "uniqueID": "404ejs805188",
-                  "displayName": "404.ejs"
-                }
-              },
-              {
-                "name": "500.ejs.html",
-                "displayName": "# myApp/views/500.ejs\n",
-                "templatePath": "assets/templates/anatomy/myApp/views/500.ejs.html",
-                "data": {
-                  "uniqueID": "500ejs917243",
-                  "displayName": "500.ejs"
-                }
-              },
-              {
-                "name": "homepage.ejs.html",
-                "displayName": "# myApp/views/homepage.ejs\n",
-                "templatePath": "assets/templates/anatomy/myApp/views/homepage.ejs.html",
-                "data": {
-                  "uniqueID": "homepageejs785450",
-                  "displayName": "homepage.ejs"
-                }
-              },
-              {
-                "name": "layout.ejs.html",
-                "displayName": "# myApp/views/layout.ejs\n",
-                "templatePath": "assets/templates/anatomy/myApp/views/layout.ejs.html",
-                "data": {
-                  "uniqueID": "layoutejs708856",
-                  "displayName": "layout.ejs"
-                }
-              },
-              {
-                "name": "views.html",
-                "displayName": "# myApp/views\n",
-                "templatePath": "assets/templates/anatomy/myApp/views/views.html",
-                "data": {
-                  "uniqueID": "viewsmd633977",
-                  "displayName": "views"
-                }
-              }
-            ]
-          }
-        }
-      }
-    }
+    "data": {
+      "uniqueID": "apimd840000",
+      "displayName": "api"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/controllers/controllers.html",
+      "assets/templates/anatomy/myApp/api/models/models.html",
+      "assets/templates/anatomy/myApp/api/policies/policies.html",
+      "assets/templates/anatomy/myApp/api/responses/responses.html",
+      "assets/templates/anatomy/myApp/api/services/services.html"
+    ]
+  },
+  {
+    "templateTitle": "assets",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/assets.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "assetsmd466929",
+      "displayName": "assets"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/images/images.html",
+      "assets/templates/anatomy/myApp/assets/js/js.html",
+      "assets/templates/anatomy/myApp/assets/styles/styles.html",
+      "assets/templates/anatomy/myApp/assets/templates/templates.html",
+      "assets/templates/anatomy/myApp/assets/favicon.ico.html",
+      "assets/templates/anatomy/myApp/assets/robots.txt.html"
+    ]
+  },
+  {
+    "templateTitle": "config",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/config.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "configmd867312",
+      "displayName": "config"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html",
+    "children": [
+      "assets/templates/anatomy/myApp/config/locales/locales.html",
+      "assets/templates/anatomy/myApp/config/blueprints.js.html",
+      "assets/templates/anatomy/myApp/config/bootstrap.js.html",
+      "assets/templates/anatomy/myApp/config/connections.js.html",
+      "assets/templates/anatomy/myApp/config/cors.js.html",
+      "assets/templates/anatomy/myApp/config/csrf.js.html",
+      "assets/templates/anatomy/myApp/config/globals.js.html",
+      "assets/templates/anatomy/myApp/config/http.js.html",
+      "assets/templates/anatomy/myApp/config/i18n.js.html",
+      "assets/templates/anatomy/myApp/config/local.js.html",
+      "assets/templates/anatomy/myApp/config/log.js.html",
+      "assets/templates/anatomy/myApp/config/models.js.html",
+      "assets/templates/anatomy/myApp/config/policies.js.html",
+      "assets/templates/anatomy/myApp/config/routes.js.html",
+      "assets/templates/anatomy/myApp/config/session.js.html",
+      "assets/templates/anatomy/myApp/config/sockets.js.html",
+      "assets/templates/anatomy/myApp/config/views.js.html"
+    ]
+  },
+  {
+    "templateTitle": "tasks",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/tasks.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "tasksmd668626",
+      "displayName": "tasks"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html",
+    "children": [
+      "assets/templates/anatomy/myApp/tasks/config/config.html",
+      "assets/templates/anatomy/myApp/tasks/register/register.html",
+      "assets/templates/anatomy/myApp/tasks/README.html",
+      "assets/templates/anatomy/myApp/tasks/pipeline.js.html"
+    ]
+  },
+  {
+    "templateTitle": "views",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/views.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "viewsmd633977",
+      "displayName": "views"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html",
+    "children": [
+      "assets/templates/anatomy/myApp/views/403.ejs.html",
+      "assets/templates/anatomy/myApp/views/404.ejs.html",
+      "assets/templates/anatomy/myApp/views/500.ejs.html",
+      "assets/templates/anatomy/myApp/views/homepage.ejs.html",
+      "assets/templates/anatomy/myApp/views/layout.ejs.html"
+    ]
+  },
+  {
+    "templateTitle": ".gitignore",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/.gitignore.html",
+    "data": {
+      "uniqueID": "gitignore878586",
+      "displayName": ".gitignore"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": ".sailsrc",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/.sailsrc.html",
+    "data": {
+      "uniqueID": "sailsrc6419",
+      "displayName": ".sailsrc"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": "Gruntfile.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/Gruntfile.js.html",
+    "data": {
+      "uniqueID": "Gruntfilejs375150",
+      "displayName": "Gruntfile.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": "README",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/README.html",
+    "data": {
+      "uniqueID": "READMEmd869459",
+      "displayName": "README"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": "app.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/app.js.html",
+    "data": {
+      "uniqueID": "appjs249761",
+      "displayName": "app.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": "package.json",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/package.json.html",
+    "data": {
+      "uniqueID": "packagejson891874",
+      "displayName": "package.json"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/myApp.html"
+  },
+  {
+    "templateTitle": "controllers",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/controllers/controllers.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "controllersmd841616",
+      "displayName": "controllers"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/api.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/controllers/.gitkeep.html",
+      "assets/templates/anatomy/myApp/api/controllers/UserController.js.html"
+    ]
+  },
+  {
+    "templateTitle": "models",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/models/models.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "modelsmd956381",
+      "displayName": "models"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/api.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/models/.gitkeep.html",
+      "assets/templates/anatomy/myApp/api/models/User.js.html"
+    ]
+  },
+  {
+    "templateTitle": "policies",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/policies/policies.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "policiesmd630211",
+      "displayName": "policies"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/api.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/policies/sessionAuth.js.html"
+    ]
+  },
+  {
+    "templateTitle": "responses",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/responses.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "responsesmd261495",
+      "displayName": "responses"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/api.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/responses/badRequest.js.html",
+      "assets/templates/anatomy/myApp/api/responses/forbidden.js.html",
+      "assets/templates/anatomy/myApp/api/responses/notFound.js.html",
+      "assets/templates/anatomy/myApp/api/responses/ok.js.html",
+      "assets/templates/anatomy/myApp/api/responses/serverError.js.html"
+    ]
+  },
+  {
+    "templateTitle": "services",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/services/services.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "servicesmd572453",
+      "displayName": "services"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/api.html",
+    "children": [
+      "assets/templates/anatomy/myApp/api/services/.gitkeep.html"
+    ]
+  },
+  {
+    "templateTitle": "images",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/images/images.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "imagesmd510380",
+      "displayName": "images"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/images/.gitkeep.html"
+    ]
+  },
+  {
+    "templateTitle": "js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/js/js.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "jsmd574851",
+      "displayName": "js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/js/dependencies/dependencies.html"
+    ]
+  },
+  {
+    "templateTitle": "styles",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/styles/styles.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "stylesmd285346",
+      "displayName": "styles"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/styles/importer.less.html"
+    ]
+  },
+  {
+    "templateTitle": "templates",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/templates/templates.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "templatesmd846667",
+      "displayName": "templates"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/templates/.gitkeep.html"
+    ]
+  },
+  {
+    "templateTitle": "favicon.ico",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/favicon.ico.html",
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html"
+  },
+  {
+    "templateTitle": "robots.txt",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/robots.txt.html",
+    "data": {
+      "uniqueID": "robotstxt863673",
+      "displayName": "robots.txt"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/assets.html"
+  },
+  {
+    "templateTitle": "locales",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/locales.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "localesmd383129",
+      "displayName": "locales"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html",
+    "children": [
+      "assets/templates/anatomy/myApp/config/locales/_README.html",
+      "assets/templates/anatomy/myApp/config/locales/de.json.html",
+      "assets/templates/anatomy/myApp/config/locales/en.json.html",
+      "assets/templates/anatomy/myApp/config/locales/es.json.html",
+      "assets/templates/anatomy/myApp/config/locales/fr.json.html"
+    ]
+  },
+  {
+    "templateTitle": "blueprints.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/blueprints.js.html",
+    "data": {
+      "uniqueID": "blueprintsjs106161",
+      "displayName": "blueprints.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "bootstrap.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/bootstrap.js.html",
+    "data": {
+      "uniqueID": "bootstrapjs878964",
+      "displayName": "bootstrap.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "connections.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/connections.js.html",
+    "data": {
+      "uniqueID": "connectionsjs160878",
+      "displayName": "connections.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "cors.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/cors.js.html",
+    "data": {
+      "uniqueID": "corsjs397059",
+      "displayName": "cors.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "csrf.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/csrf.js.html",
+    "data": {
+      "uniqueID": "csrfjs233850",
+      "displayName": "csrf.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "globals.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/globals.js.html",
+    "data": {
+      "uniqueID": "globalsjs86282",
+      "displayName": "globals.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "http.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/http.js.html",
+    "data": {
+      "uniqueID": "httpjs768553",
+      "displayName": "http.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "i18n.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/i18n.js.html",
+    "data": {
+      "uniqueID": "i18njs28306",
+      "displayName": "i18n.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "local.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/local.js.html",
+    "data": {
+      "uniqueID": "localjs386958",
+      "displayName": "local.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "log.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/log.js.html",
+    "data": {
+      "uniqueID": "logjs173177",
+      "displayName": "log.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "models.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/models.js.html",
+    "data": {
+      "uniqueID": "modelsjs643323",
+      "displayName": "models.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "policies.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/policies.js.html",
+    "data": {
+      "uniqueID": "policiesjs831604",
+      "displayName": "policies.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "routes.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/routes.js.html",
+    "data": {
+      "uniqueID": "routesjs120276",
+      "displayName": "routes.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "session.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/session.js.html",
+    "data": {
+      "uniqueID": "sessionjs736525",
+      "displayName": "session.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "sockets.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/sockets.js.html",
+    "data": {
+      "uniqueID": "socketsjs106184",
+      "displayName": "sockets.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "views.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/views.js.html",
+    "data": {
+      "uniqueID": "viewsjs122314",
+      "displayName": "views.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/config.html"
+  },
+  {
+    "templateTitle": "config",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/config.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "configmd719485",
+      "displayName": "config"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/tasks.html",
+    "children": [
+      "assets/templates/anatomy/myApp/tasks/config/clean.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/coffee.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/concat.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/copy.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/cssmin.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/jst.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/less.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/sails-linker.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/sync.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/uglify.js.html",
+      "assets/templates/anatomy/myApp/tasks/config/watch.js.html"
+    ]
+  },
+  {
+    "templateTitle": "register",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/register.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "registermd221221",
+      "displayName": "register"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/tasks.html",
+    "children": [
+      "assets/templates/anatomy/myApp/tasks/register/build.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/buildProd.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/compileAssets.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/default.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/linkAssets.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuild.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuildProd.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/prod.js.html",
+      "assets/templates/anatomy/myApp/tasks/register/syncAssets.js.html"
+    ]
+  },
+  {
+    "templateTitle": "README",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/README.html",
+    "data": {
+      "uniqueID": "READMEmd802820",
+      "displayName": "README"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/tasks.html"
+  },
+  {
+    "templateTitle": "pipeline.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/pipeline.js.html",
+    "data": {
+      "uniqueID": "pipelinejs485817",
+      "displayName": "pipeline.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/tasks.html"
+  },
+  {
+    "templateTitle": "403.ejs",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/403.ejs.html",
+    "data": {
+      "uniqueID": "403ejs888880",
+      "displayName": "403.ejs"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/views/views.html"
+  },
+  {
+    "templateTitle": "404.ejs",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/404.ejs.html",
+    "data": {
+      "uniqueID": "404ejs805188",
+      "displayName": "404.ejs"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/views/views.html"
+  },
+  {
+    "templateTitle": "500.ejs",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/500.ejs.html",
+    "data": {
+      "uniqueID": "500ejs917243",
+      "displayName": "500.ejs"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/views/views.html"
+  },
+  {
+    "templateTitle": "homepage.ejs",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/homepage.ejs.html",
+    "data": {
+      "uniqueID": "homepageejs785450",
+      "displayName": "homepage.ejs"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/views/views.html"
+  },
+  {
+    "templateTitle": "layout.ejs",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/views/layout.ejs.html",
+    "data": {
+      "uniqueID": "layoutejs708856",
+      "displayName": "layout.ejs"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/views/views.html"
+  },
+  {
+    "templateTitle": ".gitkeep",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/controllers/.gitkeep.html",
+    "data": {
+      "uniqueID": "gitkeep271990",
+      "displayName": ".gitkeep"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/controllers/controllers.html"
+  },
+  {
+    "templateTitle": "UserController.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/controllers/UserController.js.html",
+    "data": {
+      "uniqueID": "UserControllerjs867576",
+      "displayName": "UserController.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/controllers/controllers.html"
+  },
+  {
+    "templateTitle": ".gitkeep",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/models/.gitkeep.html",
+    "data": {
+      "uniqueID": "gitkeep437760",
+      "displayName": ".gitkeep"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/models/models.html"
+  },
+  {
+    "templateTitle": "User.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/models/User.js.html",
+    "data": {
+      "uniqueID": "Userjs263218",
+      "displayName": "User.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/models/models.html"
+  },
+  {
+    "templateTitle": "sessionAuth.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/policies/sessionAuth.js.html",
+    "data": {
+      "uniqueID": "sessionAuthjs444151",
+      "displayName": "sessionAuth.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/policies/policies.html"
+  },
+  {
+    "templateTitle": "badRequest.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/badRequest.js.html",
+    "data": {
+      "uniqueID": "badRequestjs643116",
+      "displayName": "badRequest.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/responses/responses.html"
+  },
+  {
+    "templateTitle": "forbidden.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/forbidden.js.html",
+    "data": {
+      "uniqueID": "forbiddenjs655137",
+      "displayName": "forbidden.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/responses/responses.html"
+  },
+  {
+    "templateTitle": "notFound.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/notFound.js.html",
+    "data": {
+      "uniqueID": "notFoundjs935866",
+      "displayName": "notFound.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/responses/responses.html"
+  },
+  {
+    "templateTitle": "ok.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/ok.js.html",
+    "data": {
+      "uniqueID": "okjs629833",
+      "displayName": "ok.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/responses/responses.html"
+  },
+  {
+    "templateTitle": "serverError.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/responses/serverError.js.html",
+    "data": {
+      "uniqueID": "serverErrorjs285178",
+      "displayName": "serverError.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/responses/responses.html"
+  },
+  {
+    "templateTitle": ".gitkeep",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/api/services/.gitkeep.html",
+    "data": {
+      "uniqueID": "gitkeep306979",
+      "displayName": ".gitkeep"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/api/services/services.html"
+  },
+  {
+    "templateTitle": ".gitkeep",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/images/.gitkeep.html",
+    "data": {
+      "uniqueID": "gitkeep510726",
+      "displayName": ".gitkeep"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/images/images.html"
+  },
+  {
+    "templateTitle": "dependencies",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/js/dependencies/dependencies.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "dependenciesmd334158",
+      "displayName": "dependencies"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/js/js.html",
+    "children": [
+      "assets/templates/anatomy/myApp/assets/js/dependencies/sails.io.js.html"
+    ]
+  },
+  {
+    "templateTitle": "importer.less",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/styles/importer.less.html",
+    "data": {
+      "uniqueID": "importerless750226",
+      "displayName": "importer.less"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/styles/styles.html"
+  },
+  {
+    "templateTitle": ".gitkeep",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/templates/.gitkeep.html",
+    "data": {
+      "uniqueID": "gitkeep45946",
+      "displayName": ".gitkeep"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/templates/templates.html"
+  },
+  {
+    "templateTitle": "_README",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/_README.html",
+    "data": {
+      "uniqueID": "READMEmd329624",
+      "displayName": "_README"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/locales/locales.html"
+  },
+  {
+    "templateTitle": "de.json",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/de.json.html",
+    "data": {
+      "uniqueID": "dejson870097",
+      "displayName": "de.json"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/locales/locales.html"
+  },
+  {
+    "templateTitle": "en.json",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/en.json.html",
+    "data": {
+      "uniqueID": "enjson226521",
+      "displayName": "en.json"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/locales/locales.html"
+  },
+  {
+    "templateTitle": "es.json",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/es.json.html",
+    "data": {
+      "uniqueID": "esjson685640",
+      "displayName": "es.json"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/locales/locales.html"
+  },
+  {
+    "templateTitle": "fr.json",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/config/locales/fr.json.html",
+    "data": {
+      "uniqueID": "frjson25047",
+      "displayName": "fr.json"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/config/locales/locales.html"
+  },
+  {
+    "templateTitle": "clean.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/clean.js.html",
+    "data": {
+      "uniqueID": "cleanjs253199",
+      "displayName": "clean.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "coffee.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/coffee.js.html",
+    "data": {
+      "uniqueID": "coffeejs932693",
+      "displayName": "coffee.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "concat.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/concat.js.html",
+    "data": {
+      "uniqueID": "concatjs243574",
+      "displayName": "concat.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "copy.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/copy.js.html",
+    "data": {
+      "uniqueID": "copyjs846396",
+      "displayName": "copy.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "cssmin.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/cssmin.js.html",
+    "data": {
+      "uniqueID": "cssminjs49702",
+      "displayName": "cssmin.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "jst.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/jst.js.html",
+    "data": {
+      "uniqueID": "jstjs459109",
+      "displayName": "jst.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "less.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/less.js.html",
+    "data": {
+      "uniqueID": "lessjs876526",
+      "displayName": "less.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "sails-linker.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/sails-linker.js.html",
+    "data": {
+      "uniqueID": "sailslinkerjs717161",
+      "displayName": "sails-linker.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "sync.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/sync.js.html",
+    "data": {
+      "uniqueID": "syncjs116962",
+      "displayName": "sync.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "uglify.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/uglify.js.html",
+    "data": {
+      "uniqueID": "uglifyjs687746",
+      "displayName": "uglify.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "watch.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/config/watch.js.html",
+    "data": {
+      "uniqueID": "watchjs402491",
+      "displayName": "watch.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/config/config.html"
+  },
+  {
+    "templateTitle": "build.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/build.js.html",
+    "data": {
+      "uniqueID": "buildjs920895",
+      "displayName": "build.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "buildProd.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/buildProd.js.html",
+    "data": {
+      "uniqueID": "buildProdjs242328",
+      "displayName": "buildProd.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "compileAssets.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/compileAssets.js.html",
+    "data": {
+      "uniqueID": "compileAssetsjs631033",
+      "displayName": "compileAssets.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "default.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/default.js.html",
+    "data": {
+      "uniqueID": "defaultjs909775",
+      "displayName": "default.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "linkAssets.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/linkAssets.js.html",
+    "data": {
+      "uniqueID": "linkAssetsjs43498",
+      "displayName": "linkAssets.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "linkAssetsBuild.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuild.js.html",
+    "data": {
+      "uniqueID": "linkAssetsBuildjs786345",
+      "displayName": "linkAssetsBuild.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "linkAssetsBuildProd.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/linkAssetsBuildProd.js.html",
+    "data": {
+      "uniqueID": "linkAssetsBuildProdjs100842",
+      "displayName": "linkAssetsBuildProd.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "prod.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/prod.js.html",
+    "data": {
+      "uniqueID": "prodjs338763",
+      "displayName": "prod.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "syncAssets.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/tasks/register/syncAssets.js.html",
+    "data": {
+      "uniqueID": "syncAssetsjs528286",
+      "displayName": "syncAssets.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/tasks/register/register.html"
+  },
+  {
+    "templateTitle": "sails.io.js",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/assets/js/dependencies/sails.io.js.html",
+    "data": {
+      "uniqueID": "sailsiojs779166",
+      "displayName": "sails.io.js"
+    },
+    "isChild": true,
+    "parent": "assets/templates/anatomy/myApp/assets/js/dependencies/dependencies.html"
+  },
+  {
+    "templateTitle": "myApp",
+    "fullPathAndFileName": "assets/templates/anatomy/myApp/myApp.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "myAppmd870358",
+      "displayName": "myApp"
+    },
+    "children": [
+      "assets/templates/anatomy/myApp/api/api.html",
+      "assets/templates/anatomy/myApp/assets/assets.html",
+      "assets/templates/anatomy/myApp/config/config.html",
+      "assets/templates/anatomy/myApp/tasks/tasks.html",
+      "assets/templates/anatomy/myApp/views/views.html",
+      "assets/templates/anatomy/myApp/.gitignore.html",
+      "assets/templates/anatomy/myApp/.sailsrc.html",
+      "assets/templates/anatomy/myApp/Gruntfile.js.html",
+      "assets/templates/anatomy/myApp/README.html",
+      "assets/templates/anatomy/myApp/app.js.html",
+      "assets/templates/anatomy/myApp/package.json.html"
+    ]
   }
-}
+]

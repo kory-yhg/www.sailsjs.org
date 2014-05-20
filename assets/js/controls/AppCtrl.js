@@ -44,8 +44,8 @@ angular.module('Sails').controller('AppCtrl', [
       },
 
       toggleMenuItem: function(id) {
-        var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu);
-
+        var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu.concat($scope.docs.subMenus));
+console.log('toggling visibility of item',id)
         if ($menuItem.expanded) {
           $scope.intent.collapseMenuItem(id);
         } else {
@@ -54,21 +54,24 @@ angular.module('Sails').controller('AppCtrl', [
       },
 
       expandMenuItem: function(id) {
-        var globalMenu = Menu.all($scope.docs.sectionID);
 
+        var globalMenu = Menu.all($scope.docs.sectionID);
+console.log('expanding item',id)
         // Find the targeted menu item in the visible menu and expand it
-        var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu);
-        console.log($scope.docs.visibleMenu.length, $scope.docs.visibleMenu);
+        var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu.concat($scope.docs.subMenus));
+        // console.log($scope.docs.visibleMenu.length, $scope.docs.visibleMenu);
 
         if (!$menuItem) {
-          if (typeof console !== 'undefined') console.error('couldn\'t expand because couldnt find (' + id + ')');
+          // if (typeof console !== 'undefined')
+          console.error('couldn\'t expand because couldnt find (' + id + ')');
           return;
         }
 
         $menuItem.expanded = true;
         $menuItem.visibleChildren = _.where(globalMenu, {
-          father: $menuItem.id
+          parent: $menuItem.id
         });
+        console.log('Found these subItems:',$menuItem.visibleChildren)
       },
 
       collapseMenuItem: function(id) {
