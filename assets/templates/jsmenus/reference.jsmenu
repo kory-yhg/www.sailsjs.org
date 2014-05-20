@@ -1,7 +1,1940 @@
-{
-  "assets": {
-    "name": "assets",
+[
+  {
+    "templateTitle": "DefaultTasks",
+    "fullPathAndFileName": "assets/templates/reference/Assets/DefaultTasks.html",
+    "data": {
+      "uniqueID": "DefaultTasks764297",
+      "displayName": "Default Tasks"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Assets/Assets.html"
+  },
+  {
+    "templateTitle": "DisablingGrunt",
+    "fullPathAndFileName": "assets/templates/reference/Assets/DisablingGrunt.html",
+    "data": {
+      "uniqueID": "DisablingGrunt970874",
+      "displayName": "Disabling Grunt"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Assets/Assets.html"
+  },
+  {
+    "templateTitle": "TaskAutomation",
+    "fullPathAndFileName": "assets/templates/reference/Assets/TaskAutomation.html",
+    "data": {
+      "uniqueID": "TaskAutomation282238",
+      "displayName": "Task Automation"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Assets/Assets.html"
+  },
+  {
+    "templateTitle": "CreateARecord",
+    "fullPathAndFileName": "assets/templates/reference/Blueprints/CreateARecord.html",
+    "data": {
+      "uniqueID": "CreateARecord744986",
+      "displayName": "Create A Record"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Blueprints/Blueprints.html"
+  },
+  {
+    "templateTitle": "DestroyARecord",
+    "fullPathAndFileName": "assets/templates/reference/Blueprints/DestroyARecord.html",
+    "data": {
+      "uniqueID": "DestroyARecord867513",
+      "displayName": "Destroy A Record"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Blueprints/Blueprints.html"
+  },
+  {
+    "templateTitle": "Find",
+    "fullPathAndFileName": "assets/templates/reference/Blueprints/Find.html",
+    "data": {
+      "uniqueID": "Find290807",
+      "displayName": "Find"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Blueprints/Blueprints.html"
+  },
+  {
+    "templateTitle": "FindOne",
+    "fullPathAndFileName": "assets/templates/reference/Blueprints/FindOne.html",
+    "data": {
+      "uniqueID": "FindOne259267",
+      "displayName": "Find One"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Blueprints/Blueprints.html"
+  },
+  {
+    "templateTitle": "UpdateARecord",
+    "fullPathAndFileName": "assets/templates/reference/Blueprints/UpdateARecord.html",
+    "data": {
+      "uniqueID": "UpdateARecord421031",
+      "displayName": "Update A Record"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Blueprints/Blueprints.html"
+  },
+  {
+    "templateTitle": "socket.delete",
+    "fullPathAndFileName": "assets/templates/reference/Browser SDK/socket.delete.html",
+    "data": {
+      "uniqueID": "socketdelete671580",
+      "displayName": "socket.delete( `url`, [`params`], [`callback`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Browser SDK/Browser SDK.html"
+  },
+  {
+    "templateTitle": "socket.get",
+    "fullPathAndFileName": "assets/templates/reference/Browser SDK/socket.get.html",
+    "data": {
+      "uniqueID": "socketget480208",
+      "displayName": "socket.get( `url`, [`params`], [`callback`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Browser SDK/Browser SDK.html"
+  },
+  {
+    "templateTitle": "socket.post",
+    "fullPathAndFileName": "assets/templates/reference/Browser SDK/socket.post.html",
+    "data": {
+      "uniqueID": "socketpost175407",
+      "displayName": "socket.post( `url`, [`params`], [`callback`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Browser SDK/Browser SDK.html"
+  },
+  {
+    "templateTitle": "socket.put",
+    "fullPathAndFileName": "assets/templates/reference/Browser SDK/socket.put.html",
+    "data": {
+      "uniqueID": "socketput168503",
+      "displayName": "socket.put( `url`, [`params`], [`callback`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Browser SDK/Browser SDK.html"
+  },
+  {
+    "templateTitle": "socket.request",
+    "fullPathAndFileName": "assets/templates/reference/Browser SDK/socket.request.html",
+    "data": {
+      "uniqueID": "socketrequest682488",
+      "displayName": "socket.request( `url`, [`params`], [`callback`], [`method`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Browser SDK/Browser SDK.html"
+  },
+  {
+    "templateTitle": "sailsconsole",
+    "fullPathAndFileName": "assets/templates/reference/Command Line/sailsconsole.html",
+    "data": {
+      "uniqueID": "sailsconsole198558",
+      "displayName": "sails console"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Command Line/Command Line.html"
+  },
+  {
+    "templateTitle": "sailsdebug",
+    "fullPathAndFileName": "assets/templates/reference/Command Line/sailsdebug.html",
+    "data": {
+      "uniqueID": "sailsdebug521538",
+      "displayName": "sails debug"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Command Line/Command Line.html"
+  },
+  {
+    "templateTitle": "sailsgenerate",
+    "fullPathAndFileName": "assets/templates/reference/Command Line/sailsgenerate.html",
+    "data": {
+      "uniqueID": "sailsgenerate197041",
+      "displayName": "sails generate"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Command Line/Command Line.html"
+  },
+  {
+    "templateTitle": "sailslift",
+    "fullPathAndFileName": "assets/templates/reference/Command Line/sailslift.html",
+    "data": {
+      "uniqueID": "sailslift482554",
+      "displayName": "sails lift"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Command Line/Command Line.html"
+  },
+  {
+    "templateTitle": "sailsnew",
+    "fullPathAndFileName": "assets/templates/reference/Command Line/sailsnew.html",
+    "data": {
+      "uniqueID": "sailsnew912235",
+      "displayName": "sails new"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Command Line/Command Line.html"
+  },
+  {
+    "templateTitle": "sailsversion",
+    "fullPathAndFileName": "assets/templates/reference/Command Line/sailsversion.html",
+    "data": {
+      "uniqueID": "sailsversion892721",
+      "displayName": "sails version"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Command Line/Command Line.html"
+  },
+  {
+    "templateTitle": "Blueprints",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Blueprints.html",
+    "data": {
+      "uniqueID": "Blueprints187690",
+      "displayName": "Blueprints"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "Bootstrap",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Bootstrap.html",
+    "data": {
+      "uniqueID": "Bootstrap85232",
+      "displayName": "Bootstrap"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "CSRF",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/CSRF.html",
+    "data": {
+      "uniqueID": "CSRF353281",
+      "displayName": "CSRF"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "ConfiguringtheCLI",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/ConfiguringtheCLI.html",
+    "data": {
+      "uniqueID": "ConfiguringtheCLI374211",
+      "displayName": "Configuring the CLI"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "Connections",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Connections.html",
+    "data": {
+      "uniqueID": "Connections100765",
+      "displayName": "Connections"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "Express",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Express.html",
+    "data": {
+      "uniqueID": "Express178274",
+      "displayName": "Express"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "Globals",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Globals.html",
+    "data": {
+      "uniqueID": "sailsconfigglobals588825999999",
+      "displayName": "sails.config.globals"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "Local",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Local.html",
+    "data": {
+      "uniqueID": "Local760410",
+      "displayName": "Local"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "Locales",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Locales.html",
+    "data": {
+      "uniqueID": "Locales998452",
+      "displayName": "Locales"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "Log",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Log.html",
+    "data": {
+      "uniqueID": "Log812909",
+      "displayName": "Log"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "Policies",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Policies.html",
+    "data": {
+      "uniqueID": "Policies753862",
+      "displayName": "Policies"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "Routes",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Routes.html",
+    "data": {
+      "uniqueID": "Routes141736",
+      "displayName": "Routes"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "Session",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Session.html",
+    "data": {
+      "uniqueID": "Session786744",
+      "displayName": "Session"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "Sockets",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Sockets.html",
+    "data": {
+      "uniqueID": "Sockets959426",
+      "displayName": "Sockets"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "sails.config.views",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/sails.config.views.html",
+    "data": {
+      "uniqueID": "sailsconfigviews588825",
+      "displayName": "sails.config.views"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Configuration/Configuration.html"
+  },
+  {
+    "templateTitle": "FAQ",
+    "fullPathAndFileName": "assets/templates/reference/Deployment/FAQ.html",
+    "data": {
+      "uniqueID": "FAQ475097",
+      "displayName": "FAQ"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Deployment/Deployment.html"
+  },
+  {
+    "templateTitle": "Hosting",
+    "fullPathAndFileName": "assets/templates/reference/Deployment/Hosting.html",
+    "data": {
+      "uniqueID": "Hosting276234",
+      "displayName": "Hosting"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Deployment/Deployment.html"
+  },
+  {
+    "templateTitle": "Scaling",
+    "fullPathAndFileName": "assets/templates/reference/Deployment/Scaling.html",
+    "data": {
+      "uniqueID": "Scaling291270",
+      "displayName": "Scaling"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Deployment/Deployment.html"
+  },
+  {
+    "templateTitle": "sails.log",
+    "fullPathAndFileName": "assets/templates/reference/Logs/sails.log.html",
+    "data": {
+      "uniqueID": "sailslog321347",
+      "displayName": "sails.log()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Logs/Logs.html"
+  },
+  {
+    "templateTitle": "Associations",
+    "fullPathAndFileName": "assets/templates/reference/Models/Associations/Associations.html",
     "isParent": true,
+    "data": {
+      "uniqueID": "Associations913185",
+      "displayName": "Model Associations"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Models.html",
+    "children": [
+      "assets/templates/reference/Models/Associations/Dominance.html",
+      "assets/templates/reference/Models/Associations/ManytoMany.html",
+      "assets/templates/reference/Models/Associations/OneWayAssociation.html",
+      "assets/templates/reference/Models/Associations/OnetoMany.html",
+      "assets/templates/reference/Models/Associations/OnetoOne.html",
+      "assets/templates/reference/Models/Associations/ThroughAssociations.html"
+    ]
+  },
+  {
+    "templateTitle": "Model Methods",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/Model Methods.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "ModelMethods528291",
+      "displayName": "Model Methods"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Models.html",
+    "children": [
+      "assets/templates/reference/Models/Model Methods/add.html",
+      "assets/templates/reference/Models/Model Methods/count.html",
+      "assets/templates/reference/Models/Model Methods/create.html",
+      "assets/templates/reference/Models/Model Methods/destroy.html",
+      "assets/templates/reference/Models/Model Methods/exec.html",
+      "assets/templates/reference/Models/Model Methods/find.html",
+      "assets/templates/reference/Models/Model Methods/findOne.html",
+      "assets/templates/reference/Models/Model Methods/findOrCreate.html",
+      "assets/templates/reference/Models/Model Methods/limit.html",
+      "assets/templates/reference/Models/Model Methods/message.html",
+      "assets/templates/reference/Models/Model Methods/native.html",
+      "assets/templates/reference/Models/Model Methods/populate.html",
+      "assets/templates/reference/Models/Model Methods/publishAdd.html",
+      "assets/templates/reference/Models/Model Methods/publishCreate.html",
+      "assets/templates/reference/Models/Model Methods/publishDestroy.html",
+      "assets/templates/reference/Models/Model Methods/publishRemove.html",
+      "assets/templates/reference/Models/Model Methods/publishUpdate.html",
+      "assets/templates/reference/Models/Model Methods/query.html",
+      "assets/templates/reference/Models/Model Methods/remove.html",
+      "assets/templates/reference/Models/Model Methods/save.html",
+      "assets/templates/reference/Models/Model Methods/skip.html",
+      "assets/templates/reference/Models/Model Methods/sort.html",
+      "assets/templates/reference/Models/Model Methods/stream.html",
+      "assets/templates/reference/Models/Model Methods/subscribe.html",
+      "assets/templates/reference/Models/Model Methods/toJSON.html",
+      "assets/templates/reference/Models/Model Methods/toObject.html",
+      "assets/templates/reference/Models/Model Methods/unsubscribe.html",
+      "assets/templates/reference/Models/Model Methods/unwatch.html",
+      "assets/templates/reference/Models/Model Methods/update.html",
+      "assets/templates/reference/Models/Model Methods/validate.html",
+      "assets/templates/reference/Models/Model Methods/watch.html",
+      "assets/templates/reference/Models/Model Methods/where.html"
+    ]
+  },
+  {
+    "templateTitle": "Attributes",
+    "fullPathAndFileName": "assets/templates/reference/Models/Attributes.html",
+    "data": {
+      "uniqueID": "Attributes951609",
+      "displayName": "Attributes"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Models.html"
+  },
+  {
+    "templateTitle": "Lifecyclecallbacks",
+    "fullPathAndFileName": "assets/templates/reference/Models/Lifecyclecallbacks.html",
+    "data": {
+      "uniqueID": "Lifecyclecallbacks631538",
+      "displayName": "Lifecycle callbacks"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Models.html"
+  },
+  {
+    "templateTitle": "Modelconfiguration",
+    "fullPathAndFileName": "assets/templates/reference/Models/Modelconfiguration.html",
+    "data": {
+      "uniqueID": "Modelconfiguration960213",
+      "displayName": "Model configuration"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Models.html"
+  },
+  {
+    "templateTitle": "Validations",
+    "fullPathAndFileName": "assets/templates/reference/Models/Validations.html",
+    "data": {
+      "uniqueID": "Validations576587",
+      "displayName": "Validations"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Models.html"
+  },
+  {
+    "templateTitle": "req.accepted",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.accepted.html",
+    "data": {
+      "uniqueID": "reqaccepted334477",
+      "displayName": "req.accepted"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.acceptedCharsets",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.acceptedCharsets.html",
+    "data": {
+      "uniqueID": "reqacceptedCharsets230309",
+      "displayName": "req.acceptedCharsets"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.acceptedLanguages",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.acceptedLanguages.html",
+    "data": {
+      "uniqueID": "reqacceptedLanguages311952",
+      "displayName": "req.acceptedLanguages"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.accepts",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.accepts.html",
+    "data": {
+      "uniqueID": "reqaccepts89101",
+      "displayName": "req.accepts()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.acceptsCharset",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.acceptsCharset.html",
+    "data": {
+      "uniqueID": "reqacceptsCharset303007",
+      "displayName": "req.acceptsCharset()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.acceptsLanguage",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.acceptsLanguage.html",
+    "data": {
+      "uniqueID": "reqacceptsLanguage170988",
+      "displayName": "req.acceptsLanguage()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.allParams",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.allParams.html",
+    "data": {
+      "uniqueID": "reqallParams817828",
+      "displayName": "req.allParams()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.body",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.body.html",
+    "data": {
+      "uniqueID": "reqbody1481",
+      "displayName": "req.body"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.cookies",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.cookies.html",
+    "data": {
+      "uniqueID": "reqcookies576909",
+      "displayName": "req.cookies"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.file",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.file.html",
+    "data": {
+      "uniqueID": "reqfile784692",
+      "displayName": "req.file()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.fresh",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.fresh.html",
+    "data": {
+      "uniqueID": "reqfresh718346",
+      "displayName": "req.fresh"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.get",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.get.html",
+    "data": {
+      "uniqueID": "reqget839626",
+      "displayName": "req.get()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.host",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.host.html",
+    "data": {
+      "uniqueID": "reqhost35719",
+      "displayName": "req.host"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.ip",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.ip.html",
+    "data": {
+      "uniqueID": "reqip681943",
+      "displayName": "req.ip"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.ips",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.ips.html",
+    "data": {
+      "uniqueID": "reqips78262",
+      "displayName": "req.ips"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.is",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.is.html",
+    "data": {
+      "uniqueID": "reqis371514",
+      "displayName": "req.is()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.isSocket",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.isSocket.html",
+    "data": {
+      "uniqueID": "reqisSocket87074",
+      "displayName": "req.isSocket"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.method",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.method.html",
+    "data": {
+      "uniqueID": "reqmethod305728",
+      "displayName": "req.method"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.param",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.param.html",
+    "data": {
+      "uniqueID": "reqparam149618",
+      "displayName": "req.param()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.params",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.params.html",
+    "data": {
+      "uniqueID": "reqparams977271",
+      "displayName": "req.params"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.path",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.path.html",
+    "data": {
+      "uniqueID": "reqpath216836",
+      "displayName": "req.path"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.protocol",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.protocol.html",
+    "data": {
+      "uniqueID": "reqprotocol732076",
+      "displayName": "req.protocol"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.query",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.query.html",
+    "data": {
+      "uniqueID": "reqquery553014",
+      "displayName": "req.query"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.secure",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.secure.html",
+    "data": {
+      "uniqueID": "reqsecure698791",
+      "displayName": "req.secure"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.signedCookies",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.signedCookies.html",
+    "data": {
+      "uniqueID": "reqsignedCookies113713",
+      "displayName": "req.signedCookies"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.socket",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.socket.html",
+    "data": {
+      "uniqueID": "reqsocket572002",
+      "displayName": "req.socket"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.subdomains",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.subdomains.html",
+    "data": {
+      "uniqueID": "reqsubdomains686204",
+      "displayName": "req.subdomains"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.url",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.url.html",
+    "data": {
+      "uniqueID": "requrl810500",
+      "displayName": "req.url"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.wantsJSON",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.wantsJSON.html",
+    "data": {
+      "uniqueID": "reqwantsJSON30891",
+      "displayName": "req.wantsJSON"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "req.xhr",
+    "fullPathAndFileName": "assets/templates/reference/Request/req.xhr.html",
+    "data": {
+      "uniqueID": "reqxhr450203",
+      "displayName": "req.xhr"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Request/Request.html"
+  },
+  {
+    "templateTitle": "res.attachment",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.attachment.html",
+    "data": {
+      "uniqueID": "resattachment107506",
+      "displayName": "res.attachment()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.badRequest",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.badRequest.html",
+    "data": {
+      "uniqueID": "resbadRequest631019",
+      "displayName": "res.badRequest()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.clearCookie",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.clearCookie.html",
+    "data": {
+      "uniqueID": "resclearCookie314533",
+      "displayName": "res.clearCookie()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.cookie",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.cookie.html",
+    "data": {
+      "uniqueID": "rescookie624994",
+      "displayName": "res.cookie()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.forbidden",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.forbidden.html",
+    "data": {
+      "uniqueID": "resforbidden97443",
+      "displayName": "res.forbidden()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.get",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.get.html",
+    "data": {
+      "uniqueID": "resget697790",
+      "displayName": "res.get()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.json",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.json.html",
+    "data": {
+      "uniqueID": "resjson72272",
+      "displayName": "res.json()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.jsonp",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.jsonp.html",
+    "data": {
+      "uniqueID": "resjsonp798206",
+      "displayName": "res.jsonp()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.location",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.location.html",
+    "data": {
+      "uniqueID": "reslocation779137",
+      "displayName": "res.location()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.negotiate",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.negotiate.html",
+    "data": {
+      "uniqueID": "resnegotiate730536",
+      "displayName": "res.negotiate()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.notFound",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.notFound.html",
+    "data": {
+      "uniqueID": "resnotFound130366",
+      "displayName": "res.notFound()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.ok",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.ok.html",
+    "data": {
+      "uniqueID": "resok847363",
+      "displayName": "res.ok()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.redirect",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.redirect.html",
+    "data": {
+      "uniqueID": "resredirect444617",
+      "displayName": "res.redirect()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.send",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.send.html",
+    "data": {
+      "uniqueID": "ressend588955",
+      "displayName": "res.send()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.serverError",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.serverError.html",
+    "data": {
+      "uniqueID": "resserverError551750",
+      "displayName": "res.serverError()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.set",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.set.html",
+    "data": {
+      "uniqueID": "resset167965",
+      "displayName": "res.set()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.status",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.status.html",
+    "data": {
+      "uniqueID": "resstatus819458",
+      "displayName": "res.status()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.type",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.type.html",
+    "data": {
+      "uniqueID": "restype43929",
+      "displayName": "res.type()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "res.view",
+    "fullPathAndFileName": "assets/templates/reference/Response/res.view.html",
+    "data": {
+      "uniqueID": "resview916814",
+      "displayName": "res.view()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Response/Response.html"
+  },
+  {
+    "templateTitle": "RouteTargetSyntax",
+    "fullPathAndFileName": "assets/templates/reference/Routes/RouteTargetSyntax.html",
+    "data": {
+      "uniqueID": "RouteTargetSyntax278177",
+      "displayName": "Route Target Syntax"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Routes/Routes.html"
+  },
+  {
+    "templateTitle": "URLSlugs",
+    "fullPathAndFileName": "assets/templates/reference/Routes/URLSlugs.html",
+    "data": {
+      "uniqueID": "URLSlugs805236",
+      "displayName": "URL Slugs"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Routes/Routes.html"
+  },
+  {
+    "templateTitle": "CSRF",
+    "fullPathAndFileName": "assets/templates/reference/Security/CSRF.html",
+    "data": {
+      "uniqueID": "CSRF300312",
+      "displayName": "CSRF"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Security/Security.html"
+  },
+  {
+    "templateTitle": "Clickjacking",
+    "fullPathAndFileName": "assets/templates/reference/Security/Clickjacking.html",
+    "data": {
+      "uniqueID": "Clickjacking879453",
+      "displayName": "Clickjacking"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Security/Security.html"
+  },
+  {
+    "templateTitle": "ContentSecurityPolicy",
+    "fullPathAndFileName": "assets/templates/reference/Security/ContentSecurityPolicy.html",
+    "data": {
+      "uniqueID": "ContentSecurityPolicy649437",
+      "displayName": "Content Security Policy"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Security/Security.html"
+  },
+  {
+    "templateTitle": "DDOS",
+    "fullPathAndFileName": "assets/templates/reference/Security/DDOS.html",
+    "data": {
+      "uniqueID": "DDOS139869",
+      "displayName": "DDOS"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Security/Security.html"
+  },
+  {
+    "templateTitle": "P3P",
+    "fullPathAndFileName": "assets/templates/reference/Security/P3P.html",
+    "data": {
+      "uniqueID": "P3P183449",
+      "displayName": "P3P"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Security/Security.html"
+  },
+  {
+    "templateTitle": "SocketHijacking",
+    "fullPathAndFileName": "assets/templates/reference/Security/SocketHijacking.html",
+    "data": {
+      "uniqueID": "SocketHijacking397141",
+      "displayName": "Socket Hijacking"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Security/Security.html"
+  },
+  {
+    "templateTitle": "sails.sockets.blast",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/sails.sockets.blast.html",
+    "data": {
+      "uniqueID": "sailssocketsblast345475",
+      "displayName": "sails.sockets.blast( [`event`], `data`, [`socketToOmit`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Sockets/Sockets.html"
+  },
+  {
+    "templateTitle": "sails.sockets.broadcast",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/sails.sockets.broadcast.html",
+    "data": {
+      "uniqueID": "sailssocketsbroadcast253997",
+      "displayName": "sails.sockets.broadcast( `roomName`, [`event`], `data`, [`socketToOmit`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Sockets/Sockets.html"
+  },
+  {
+    "templateTitle": "sails.sockets.emit",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/sails.sockets.emit.html",
+    "data": {
+      "uniqueID": "sailssocketsemit963182",
+      "displayName": "sails.sockets.emit( `socketIds`, [`event`], `data`)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Sockets/Sockets.html"
+  },
+  {
+    "templateTitle": "sails.sockets.id",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/sails.sockets.id.html",
+    "data": {
+      "uniqueID": "sailssocketsid240053",
+      "displayName": "sails.sockets.id( `socket` )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Sockets/Sockets.html"
+  },
+  {
+    "templateTitle": "sails.sockets.join",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/sails.sockets.join.html",
+    "data": {
+      "uniqueID": "sailssocketsjoin958690",
+      "displayName": "sails.sockets.join()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Sockets/Sockets.html"
+  },
+  {
+    "templateTitle": "sails.sockets.leave",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/sails.sockets.leave.html",
+    "data": {
+      "uniqueID": "sailssocketsleave425459",
+      "displayName": "sails.sockets.leave( `socket`, `roomName` )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Sockets/Sockets.html"
+  },
+  {
+    "templateTitle": "sails.sockets.rooms",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/sails.sockets.rooms.html",
+    "data": {
+      "uniqueID": "sailssocketsrooms183984",
+      "displayName": "sails.sockets.rooms()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Sockets/Sockets.html"
+  },
+  {
+    "templateTitle": "sails.sockets.socketRooms",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/sails.sockets.socketRooms.html",
+    "data": {
+      "uniqueID": "sailssocketssocketRooms270469",
+      "displayName": "sails.sockets.socketRooms( `socket` )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Sockets/Sockets.html"
+  },
+  {
+    "templateTitle": "sails.sockets.subscribeToFirehose",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/sails.sockets.subscribeToFirehose.html",
+    "data": {
+      "uniqueID": "sailssocketssubscribeToFirehose954078",
+      "displayName": "sails.sockets.subscribeToFirehose(socket)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Sockets/Sockets.html"
+  },
+  {
+    "templateTitle": "sails.sockets.subscribers",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/sails.sockets.subscribers.html",
+    "data": {
+      "uniqueID": "sailssocketssubscribers65666",
+      "displayName": "sails.sockets.subscribers( `roomName` )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Sockets/Sockets.html"
+  },
+  {
+    "templateTitle": "sails.sockets.unsubscribeFromFirehose",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/sails.sockets.unsubscribeFromFirehose.html",
+    "data": {
+      "uniqueID": "sailssocketsunsubscribeFromFirehose999488",
+      "displayName": "sails.sockets.unsubscribeFromFirehose(socket)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Sockets/Sockets.html"
+  },
+  {
+    "templateTitle": "Layouts",
+    "fullPathAndFileName": "assets/templates/reference/Views/Layouts.html",
+    "data": {
+      "uniqueID": "Layouts870655",
+      "displayName": "Layouts"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Views/Views.html"
+  },
+  {
+    "templateTitle": "Locals",
+    "fullPathAndFileName": "assets/templates/reference/Views/Locals.html",
+    "data": {
+      "uniqueID": "Locals453748",
+      "displayName": "Locals"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Views/Views.html"
+  },
+  {
+    "templateTitle": "Partials",
+    "fullPathAndFileName": "assets/templates/reference/Views/Partials.html",
+    "data": {
+      "uniqueID": "Partials610916",
+      "displayName": "Partials"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Views/Views.html"
+  },
+  {
+    "templateTitle": "ViewEngines",
+    "fullPathAndFileName": "assets/templates/reference/Views/ViewEngines.html",
+    "data": {
+      "uniqueID": "ViewEngines339501",
+      "displayName": "View Engines"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Views/Views.html"
+  },
+  {
+    "templateTitle": "Usage",
+    "fullPathAndFileName": "assets/templates/reference/i18n/Usage.html",
+    "data": {
+      "uniqueID": "Usage689913",
+      "displayName": "Usage"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/i18n/i18n.html"
+  },
+  {
+    "templateTitle": "Dominance",
+    "fullPathAndFileName": "assets/templates/reference/Models/Associations/Dominance.html",
+    "data": {
+      "uniqueID": "Dominance904539",
+      "displayName": "Dominance"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Associations/Associations.html"
+  },
+  {
+    "templateTitle": "ManytoMany",
+    "fullPathAndFileName": "assets/templates/reference/Models/Associations/ManytoMany.html",
+    "data": {
+      "uniqueID": "ManytoMany276455",
+      "displayName": "Many-to-Many"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Associations/Associations.html"
+  },
+  {
+    "templateTitle": "OneWayAssociation",
+    "fullPathAndFileName": "assets/templates/reference/Models/Associations/OneWayAssociation.html",
+    "data": {
+      "uniqueID": "OneWayAssociation708096",
+      "displayName": "One Way Association"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Associations/Associations.html"
+  },
+  {
+    "templateTitle": "OnetoMany",
+    "fullPathAndFileName": "assets/templates/reference/Models/Associations/OnetoMany.html",
+    "data": {
+      "uniqueID": "OnetoMany478093",
+      "displayName": "One-to-Many"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Associations/Associations.html"
+  },
+  {
+    "templateTitle": "OnetoOne",
+    "fullPathAndFileName": "assets/templates/reference/Models/Associations/OnetoOne.html",
+    "data": {
+      "uniqueID": "OnetoOne169258",
+      "displayName": "One-to-One"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Associations/Associations.html"
+  },
+  {
+    "templateTitle": "ThroughAssociations",
+    "fullPathAndFileName": "assets/templates/reference/Models/Associations/ThroughAssociations.html",
+    "data": {
+      "uniqueID": "ThroughAssociations740718",
+      "displayName": "Through Associations"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Associations/Associations.html"
+  },
+  {
+    "templateTitle": "add",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/add.html",
+    "data": {
+      "uniqueID": "add574043",
+      "displayName": "* . * .add( `primary key` )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "count",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/count.html",
+    "data": {
+      "uniqueID": "count42579",
+      "displayName": ".count( `criteria` , `criteria` , [`callback`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "create",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/create.html",
+    "data": {
+      "uniqueID": "create312605",
+      "displayName": ".create( `values`, [`callback`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "destroy",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/destroy.html",
+    "data": {
+      "uniqueID": "destroy398816",
+      "displayName": ".destroy( `criteria` , [`callback`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "exec",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/exec.html",
+    "data": {
+      "uniqueID": "exec550068",
+      "displayName": ".exec(`callback`)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "find",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/find.html",
+    "data": {
+      "uniqueID": "find816978",
+      "displayName": ".find(`criteria` , [`callback`])"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "findOne",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/findOne.html",
+    "data": {
+      "uniqueID": "findOne423345",
+      "displayName": ".findOne( `criteria` , [`callback`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "findOrCreate",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/findOrCreate.html",
+    "data": {
+      "uniqueID": "findOrCreate760631",
+      "displayName": ".findOrCreate( `criteria` , `criteria` , [`callback`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "limit",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/limit.html",
+    "data": {
+      "uniqueID": "limit203606",
+      "displayName": ".limit(`integer`)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "message",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/message.html",
+    "data": {
+      "uniqueID": "message373731",
+      "displayName": ".message( `models`,`data`, [`request`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "native",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/native.html",
+    "data": {
+      "uniqueID": "native900002",
+      "displayName": ".native()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "populate",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/populate.html",
+    "data": {
+      "uniqueID": "populate245634",
+      "displayName": ".populate( `foreignKey` )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "publishAdd",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/publishAdd.html",
+    "data": {
+      "uniqueID": "publishAdd129964",
+      "displayName": ".publishAdd( `{id}`,`attribute`, `idAdded`, [`request`], [`options`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "publishCreate",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/publishCreate.html",
+    "data": {
+      "uniqueID": "publishCreate671839",
+      "displayName": ".publishCreate( `data`,[`request`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "publishDestroy",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/publishDestroy.html",
+    "data": {
+      "uniqueID": "publishDestroy732227",
+      "displayName": ".publishDestroy( `{id}`, [`request`], [`options`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "publishRemove",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/publishRemove.html",
+    "data": {
+      "uniqueID": "publishRemove468150",
+      "displayName": ".publishRemove( `{id}`,`attribute`, `idRemoved`, [`request`], [`options`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "publishUpdate",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/publishUpdate.html",
+    "data": {
+      "uniqueID": "publishUpdate712330",
+      "displayName": ".publishUpdate( `{id}`,[`changes`],[`request`],[`options`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "query",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/query.html",
+    "data": {
+      "uniqueID": "query546204",
+      "displayName": ".query()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "remove",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/remove.html",
+    "data": {
+      "uniqueID": "remove790682",
+      "displayName": "* . *.remove( `primary key` )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "save",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/save.html",
+    "data": {
+      "uniqueID": "save581656",
+      "displayName": "* .save(`callback`)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "skip",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/skip.html",
+    "data": {
+      "uniqueID": "skip128737",
+      "displayName": ".skip(`integer`)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "sort",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/sort.html",
+    "data": {
+      "uniqueID": "sort822396",
+      "displayName": ".sort(`string`)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "stream",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/stream.html",
+    "data": {
+      "uniqueID": "stream427721",
+      "displayName": ".stream( `criteria` )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "subscribe",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/subscribe.html",
+    "data": {
+      "uniqueID": "subscribe342218",
+      "displayName": ".subscribe(`request`,`records`,[`contexts`])"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "toJSON",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/toJSON.html",
+    "data": {
+      "uniqueID": "toJSON161307",
+      "displayName": "* .toJSON()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "toObject",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/toObject.html",
+    "data": {
+      "uniqueID": "toObject330342",
+      "displayName": "* .toObject()"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "unsubscribe",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/unsubscribe.html",
+    "data": {
+      "uniqueID": "unsubscribe354769",
+      "displayName": ".unsubscribe(`request`,`records`,[`contexts`])"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "unwatch",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/unwatch.html",
+    "data": {
+      "uniqueID": "unwatch872661",
+      "displayName": ".unwatch(`request`)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "update",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/update.html",
+    "data": {
+      "uniqueID": "update727440",
+      "displayName": ".update( `criteria` , `criteria` , [`callback`] )"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "validate",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/validate.html",
+    "data": {
+      "uniqueID": "validate76690",
+      "displayName": "* .validate(`callback`)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "watch",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/watch.html",
+    "data": {
+      "uniqueID": "watch67265",
+      "displayName": ".watch(`request`)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "where",
+    "fullPathAndFileName": "assets/templates/reference/Models/Model Methods/where.html",
+    "data": {
+      "uniqueID": "where700717",
+      "displayName": ".where(`criteria`)"
+    },
+    "isChild": true,
+    "parent": "assets/templates/reference/Models/Model Methods/Model Methods.html"
+  },
+  {
+    "templateTitle": "Assets",
+    "fullPathAndFileName": "assets/templates/reference/Assets/Assets.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Assets220313",
+      "displayName": "Assets"
+    },
+    "children": [
+      "assets/templates/reference/Assets/DefaultTasks.html",
+      "assets/templates/reference/Assets/DisablingGrunt.html",
+      "assets/templates/reference/Assets/TaskAutomation.html"
+    ]
+  },
+  {
+    "templateTitle": "Blueprints",
+    "fullPathAndFileName": "assets/templates/reference/Blueprints/Blueprints.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Blueprints170785",
+      "displayName": "Blueprints"
+    },
+    "children": [
+      "assets/templates/reference/Blueprints/CreateARecord.html",
+      "assets/templates/reference/Blueprints/DestroyARecord.html",
+      "assets/templates/reference/Blueprints/Find.html",
+      "assets/templates/reference/Blueprints/FindOne.html",
+      "assets/templates/reference/Blueprints/UpdateARecord.html"
+    ]
+  },
+  {
+    "templateTitle": "Browser SDK",
+    "fullPathAndFileName": "assets/templates/reference/Browser SDK/Browser SDK.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "BrowserSDK293544",
+      "displayName": "Browser SDK"
+    },
+    "children": [
+      "assets/templates/reference/Browser SDK/socket.delete.html",
+      "assets/templates/reference/Browser SDK/socket.get.html",
+      "assets/templates/reference/Browser SDK/socket.post.html",
+      "assets/templates/reference/Browser SDK/socket.put.html",
+      "assets/templates/reference/Browser SDK/socket.request.html"
+    ]
+  },
+  {
+    "templateTitle": "Command Line",
+    "fullPathAndFileName": "assets/templates/reference/Command Line/Command Line.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "CommandLine83196",
+      "displayName": "CommandLine"
+    },
+    "children": [
+      "assets/templates/reference/Command Line/sailsconsole.html",
+      "assets/templates/reference/Command Line/sailsdebug.html",
+      "assets/templates/reference/Command Line/sailsgenerate.html",
+      "assets/templates/reference/Command Line/sailslift.html",
+      "assets/templates/reference/Command Line/sailsnew.html",
+      "assets/templates/reference/Command Line/sailsversion.html"
+    ]
+  },
+  {
+    "templateTitle": "Configuration",
+    "fullPathAndFileName": "assets/templates/reference/Configuration/Configuration.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Configuration615655",
+      "displayName": "Configuration"
+    },
+    "children": [
+      "assets/templates/reference/Configuration/Blueprints.html",
+      "assets/templates/reference/Configuration/Bootstrap.html",
+      "assets/templates/reference/Configuration/CSRF.html",
+      "assets/templates/reference/Configuration/ConfiguringtheCLI.html",
+      "assets/templates/reference/Configuration/Connections.html",
+      "assets/templates/reference/Configuration/Express.html",
+      "assets/templates/reference/Configuration/Globals.html",
+      "assets/templates/reference/Configuration/Local.html",
+      "assets/templates/reference/Configuration/Locales.html",
+      "assets/templates/reference/Configuration/Log.html",
+      "assets/templates/reference/Configuration/Policies.html",
+      "assets/templates/reference/Configuration/Routes.html",
+      "assets/templates/reference/Configuration/Session.html",
+      "assets/templates/reference/Configuration/Sockets.html",
+      "assets/templates/reference/Configuration/sails.config.views.html"
+    ]
+  },
+  {
+    "templateTitle": "Controllers",
+    "fullPathAndFileName": "assets/templates/reference/Controllers/Controllers.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Controllers464694",
+      "displayName": "Controllers"
+    },
+    "children": []
+  },
+  {
+    "templateTitle": "Custom Responses",
+    "fullPathAndFileName": "assets/templates/reference/Custom Responses/Custom Responses.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "CustomResponses867259",
+      "displayName": "Custom Responses"
+    },
+    "children": []
+  },
+  {
+    "templateTitle": "Deployment",
+    "fullPathAndFileName": "assets/templates/reference/Deployment/Deployment.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Deployment402941",
+      "displayName": "Deployment"
+    },
+    "children": [
+      "assets/templates/reference/Deployment/FAQ.html",
+      "assets/templates/reference/Deployment/Hosting.html",
+      "assets/templates/reference/Deployment/Scaling.html"
+    ]
+  },
+  {
+    "templateTitle": "Globals",
+    "fullPathAndFileName": "assets/templates/reference/Globals/Globals.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Globals668238",
+      "displayName": "Globals"
+    },
+    "children": []
+  },
+  {
+    "templateTitle": "Logs",
+    "fullPathAndFileName": "assets/templates/reference/Logs/Logs.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Logs277763",
+      "displayName": "Logs"
+    },
+    "children": [
+      "assets/templates/reference/Logs/sails.log.html"
+    ]
+  },
+  {
+    "templateTitle": "Models",
+    "fullPathAndFileName": "assets/templates/reference/Models/Models.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Models416997",
+      "displayName": "Models"
+    },
+    "children": [
+      "assets/templates/reference/Models/Associations/Associations.html",
+      "assets/templates/reference/Models/Model Methods/Model Methods.html",
+      "assets/templates/reference/Models/Attributes.html",
+      "assets/templates/reference/Models/Lifecyclecallbacks.html",
+      "assets/templates/reference/Models/Modelconfiguration.html",
+      "assets/templates/reference/Models/Validations.html"
+    ]
+  },
+  {
+    "templateTitle": "Policies",
+    "fullPathAndFileName": "assets/templates/reference/Policies/Policies.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Policies766425",
+      "displayName": "Policies"
+    },
+    "children": []
+  },
+  {
+    "templateTitle": "Request",
+    "fullPathAndFileName": "assets/templates/reference/Request/Request.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Request35837",
+      "displayName": "Request"
+    },
+    "children": [
+      "assets/templates/reference/Request/req.accepted.html",
+      "assets/templates/reference/Request/req.acceptedCharsets.html",
+      "assets/templates/reference/Request/req.acceptedLanguages.html",
+      "assets/templates/reference/Request/req.accepts.html",
+      "assets/templates/reference/Request/req.acceptsCharset.html",
+      "assets/templates/reference/Request/req.acceptsLanguage.html",
+      "assets/templates/reference/Request/req.allParams.html",
+      "assets/templates/reference/Request/req.body.html",
+      "assets/templates/reference/Request/req.cookies.html",
+      "assets/templates/reference/Request/req.file.html",
+      "assets/templates/reference/Request/req.fresh.html",
+      "assets/templates/reference/Request/req.get.html",
+      "assets/templates/reference/Request/req.host.html",
+      "assets/templates/reference/Request/req.ip.html",
+      "assets/templates/reference/Request/req.ips.html",
+      "assets/templates/reference/Request/req.is.html",
+      "assets/templates/reference/Request/req.isSocket.html",
+      "assets/templates/reference/Request/req.method.html",
+      "assets/templates/reference/Request/req.param.html",
+      "assets/templates/reference/Request/req.params.html",
+      "assets/templates/reference/Request/req.path.html",
+      "assets/templates/reference/Request/req.protocol.html",
+      "assets/templates/reference/Request/req.query.html",
+      "assets/templates/reference/Request/req.secure.html",
+      "assets/templates/reference/Request/req.signedCookies.html",
+      "assets/templates/reference/Request/req.socket.html",
+      "assets/templates/reference/Request/req.subdomains.html",
+      "assets/templates/reference/Request/req.url.html",
+      "assets/templates/reference/Request/req.wantsJSON.html",
+      "assets/templates/reference/Request/req.xhr.html"
+    ]
+  },
+  {
+    "templateTitle": "Response",
+    "fullPathAndFileName": "assets/templates/reference/Response/Response.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Response550242",
+      "displayName": "Response"
+    },
+    "children": [
+      "assets/templates/reference/Response/res.attachment.html",
+      "assets/templates/reference/Response/res.badRequest.html",
+      "assets/templates/reference/Response/res.clearCookie.html",
+      "assets/templates/reference/Response/res.cookie.html",
+      "assets/templates/reference/Response/res.forbidden.html",
+      "assets/templates/reference/Response/res.get.html",
+      "assets/templates/reference/Response/res.json.html",
+      "assets/templates/reference/Response/res.jsonp.html",
+      "assets/templates/reference/Response/res.location.html",
+      "assets/templates/reference/Response/res.negotiate.html",
+      "assets/templates/reference/Response/res.notFound.html",
+      "assets/templates/reference/Response/res.ok.html",
+      "assets/templates/reference/Response/res.redirect.html",
+      "assets/templates/reference/Response/res.send.html",
+      "assets/templates/reference/Response/res.serverError.html",
+      "assets/templates/reference/Response/res.set.html",
+      "assets/templates/reference/Response/res.status.html",
+      "assets/templates/reference/Response/res.type.html",
+      "assets/templates/reference/Response/res.view.html"
+    ]
+  },
+  {
+    "templateTitle": "Routes",
+    "fullPathAndFileName": "assets/templates/reference/Routes/Routes.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Routes849188",
+      "displayName": "Routes"
+    },
+    "children": [
+      "assets/templates/reference/Routes/RouteTargetSyntax.html",
+      "assets/templates/reference/Routes/URLSlugs.html"
+    ]
+  },
+  {
+    "templateTitle": "Security",
+    "fullPathAndFileName": "assets/templates/reference/Security/Security.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Security59375",
+      "displayName": "Security"
+    },
+    "children": [
+      "assets/templates/reference/Security/CSRF.html",
+      "assets/templates/reference/Security/Clickjacking.html",
+      "assets/templates/reference/Security/ContentSecurityPolicy.html",
+      "assets/templates/reference/Security/DDOS.html",
+      "assets/templates/reference/Security/P3P.html",
+      "assets/templates/reference/Security/SocketHijacking.html"
+    ]
+  },
+  {
+    "templateTitle": "Services",
+    "fullPathAndFileName": "assets/templates/reference/Services/Services.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Services157331",
+      "displayName": "Services"
+    },
+    "children": []
+  },
+  {
+    "templateTitle": "Sockets",
+    "fullPathAndFileName": "assets/templates/reference/Sockets/Sockets.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Sockets505826",
+      "displayName": "Sockets"
+    },
+    "children": [
+      "assets/templates/reference/Sockets/sails.sockets.blast.html",
+      "assets/templates/reference/Sockets/sails.sockets.broadcast.html",
+      "assets/templates/reference/Sockets/sails.sockets.emit.html",
+      "assets/templates/reference/Sockets/sails.sockets.id.html",
+      "assets/templates/reference/Sockets/sails.sockets.join.html",
+      "assets/templates/reference/Sockets/sails.sockets.leave.html",
+      "assets/templates/reference/Sockets/sails.sockets.rooms.html",
+      "assets/templates/reference/Sockets/sails.sockets.socketRooms.html",
+      "assets/templates/reference/Sockets/sails.sockets.subscribeToFirehose.html",
+      "assets/templates/reference/Sockets/sails.sockets.subscribers.html",
+      "assets/templates/reference/Sockets/sails.sockets.unsubscribeFromFirehose.html"
+    ]
+  },
+  {
+    "templateTitle": "Upgrading",
+    "fullPathAndFileName": "assets/templates/reference/Upgrading/Upgrading.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Upgrading509472",
+      "displayName": "Upgrading"
+    },
+    "children": []
+  },
+  {
+    "templateTitle": "Views",
+    "fullPathAndFileName": "assets/templates/reference/Views/Views.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "Views426660",
+      "displayName": "Views"
+    },
+    "children": [
+      "assets/templates/reference/Views/Layouts.html",
+      "assets/templates/reference/Views/Locals.html",
+      "assets/templates/reference/Views/Partials.html",
+      "assets/templates/reference/Views/ViewEngines.html"
+    ]
+  },
+  {
+    "templateTitle": "i18n",
+    "fullPathAndFileName": "assets/templates/reference/i18n/i18n.html",
+    "isParent": true,
+    "data": {
+      "uniqueID": "i18n245343",
+      "displayName": "i18n"
+    },
+    "children": [
+      "assets/templates/reference/i18n/Usage.html"
+    ]
+=======
     "children": [],
     "templates": {
       "name": "templates",
@@ -1569,4 +3502,4 @@
       }
     }
   }
-}
+]
