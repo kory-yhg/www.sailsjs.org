@@ -27,7 +27,7 @@ angular.module('Sails').controller('AppCtrl', [
         // Add skrollr to $scope
         $scope.skrollr = skrollr.get();
         // Refresh all skroller elements
-        $scope.skrollr.refresh();
+        // $scope.skrollr.refresh();  IM TIRED OF THIS ERROR!!!!
       }, 150);
     });
 
@@ -63,19 +63,21 @@ angular.module('Sails').controller('AppCtrl', [
 
         if (!$menuItem) {
           // if (typeof console !== 'undefined')
-          console.error('couldn\'t expand because couldnt find (' + id + ')');
+          console.log('couldn\'t expand because couldnt find (' + id + ')');
           return;
         }
-
+console.log('menuItem:',$menuItem)
         $menuItem.expanded = true;
         $menuItem.visibleChildren = _.where(globalMenu, {
           parent: $menuItem.id
         });
 
+        // $menuItem.visibleChildren = _.unique($menuItem.visibleChildren.concat(_.where(globalMenu, {
+        //   parent: id
+        // })));
         $menuItem.visibleChildren = _.unique($menuItem.visibleChildren.concat(_.where(globalMenu, {
           parent: id
         })));
-
         console.log('Found these subItems:',$menuItem.visibleChildren)
       },
 

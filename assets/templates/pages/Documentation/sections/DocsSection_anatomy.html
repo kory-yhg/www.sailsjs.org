@@ -8,7 +8,7 @@
 				<!-- The top-level folder containing the "active" file also gets the class "active" -->
         <li ng-repeat="menuItem in docs.visibleMenu"
           stop-propagation="click"
-          ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'parent-section': docs.currentPage.father === menuItem.id }"
+          ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'parent-section': docs.currentPage.parent === menuItem.id }"
           ng-click="intent.toggleMenuItem(menuItem.id)">
           <div ng-include="'templates/pages/Documentation/sections/NavItem.html'"></div>
         </li>

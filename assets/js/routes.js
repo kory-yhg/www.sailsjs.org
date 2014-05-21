@@ -94,6 +94,7 @@ angular.module('Sails')
           return _.find($submenu, function ($menuItem) {
             // console.log('comparing',$menuItem.id,'to',id);
             if ($menuItem.id === id) {
+              console.log('Found menu item!',$menuItem)
               return $menuItem;
             }
             else return $scope.docs.findMenuItemByID(id, $menuItem.visibleChildren);
@@ -116,19 +117,19 @@ angular.module('Sails')
 
         // Lookup current page
         var target = _.find(menu, function(checkItem){
-          if (currentHashURL.indexOf(checkItem.href) > -1)
+          // console.log('checking ',currentHashURL,'against',checkItem.href)
+          if (currentHashURL === checkItem.href)
             return checkItem
 
-
         });
-        if (!target) target = _.find(menu, {alternateHref: currentHashURL});
+
+        if (!target) target = _.find(menu, {href: currentHashURL});
         if (!target) target = _.find(menu, {label: 'Assets'});
 
         // Then show the appropriate sub-section
         $scope.docs.subSectionID = target.id;
         $scope.docs.currentPage = target;
-  if (target.id)
-    console.log('SubSectionID:',target.id);
+
         // Now collapse all other top-level sections
         // (TODO: play w/ this-- is this even a good thing UX-wise?)
         _($scope.docs.visibleMenu).where({parent: undefined}).each(function (topLevelItem) {
@@ -142,18 +143,18 @@ angular.module('Sails')
         var parent = _.find(menu, {id: target.parent});
         while (parent) {
           ancestors.push(parent);
-          console.log('expanding where parent is ',parent.id)
+          // console.log('expanding where parent is ',parent.id)
           parent = _.find(menu, {id: parent.parent});
         }
 
         // Now expand the menu item's ancestors
         while (ancestors.length) {
           var toExpand = ancestors.shift();
-          console.log('trying to expand ancestor',toExpand);
+          // console.log('trying to expand ancestor',toExpand);
           $scope.intent.expandMenuItem(toExpand.id);
         }
         // Finally, expand the target menu item itself
-        console.log('trying to expand',target);
+        // console.log('trying to expand',target);
         $scope.intent.expandMenuItem(target.id);
       }]
     });
