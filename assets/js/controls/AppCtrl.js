@@ -17,8 +17,9 @@ angular.module('Sails').controller('AppCtrl', [
     };
 
     // Fires on load and on route change success
+    // Likely moving all of this to skrollr.directive
     $scope.$on('$locationChangeSuccess', function(event) {
-      // Wait for skrollr directive to initialize
+      // Wait on ngInclude (temporary solution, need to implement ngInclude onLoad())
       setTimeout(function(){
         if($scope.skrollr){
           $scope.skrollr.destroy();
@@ -27,7 +28,7 @@ angular.module('Sails').controller('AppCtrl', [
         $scope.skrollr = skrollr.get();
         // Refresh all skroller elements
         $scope.skrollr.refresh();
-      }, 0);
+      }, 150);
     });
 
     $scope.intent = angular.extend($scope.intent || {}, {

@@ -5,8 +5,15 @@ angular.module('directive.skrollr', [])
   var directiveDefinitionObject = {
     link: function() {
 
-    	skrollr.init();
+    	// Wait on ngInclude (temporary solution, need to implement ngInclude onLoad())
+    	setTimeout(function(){
+    		skrollr.init({
+    			forceHeight: false
+    		});
+    	}, 150);
 
+    	// Beginnings of new directive
+    	
       	// Refresh all skroller elements
 	    // $scope.refreshSkrollr = function(){
 	    //   $scope.skrollr.refresh();
