@@ -186,16 +186,26 @@
           color: @turquoise;
         }
       }
-      li.parent-section {
+      li.current-parent-section {
         >span {
           border-right: 4px solid @turquoise;
           padding-right: 7px;
+        }
+      }
+      li.parent-section {
+        >span {
+          font-weight: 600;
+          color: @black;
+        }
+        &.subsection-current-parent >span {
+          color: @turquoise;
         }
       }
 
       >li {
         font-weight: 600;
         color: @black;
+        font-size: 16px;
         span {
           cursor: pointer;
           padding-right: 11px;
@@ -212,6 +222,7 @@
         }
         >ul >li {
           font-weight: 400;
+          font-size: 14px;
           color: @headerGray;
           // color: @black;
         }
