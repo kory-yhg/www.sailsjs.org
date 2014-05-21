@@ -3,7 +3,7 @@
 </span>
 
 
-<ul ng-show="menuItem.visibleChildren.length">{{menuItem.visibleChildren.length}}
+<ul ng-show="menuItem.visibleChildren.length">
   <li ng-repeat="menuItem in menuItem.visibleChildren"
     stop-propagation="click"
     ng-include="'templates/pages/Documentation/sections/NavItem.html'"

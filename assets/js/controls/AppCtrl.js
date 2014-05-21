@@ -45,7 +45,7 @@ angular.module('Sails').controller('AppCtrl', [
 
       toggleMenuItem: function(id) {
         var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu.concat($scope.docs.subMenus));
-console.log('toggling visibility of item',id)
+
         if ($menuItem.expanded) {
           $scope.intent.collapseMenuItem(id);
         } else {
@@ -56,7 +56,6 @@ console.log('toggling visibility of item',id)
       expandMenuItem: function(id) {
 
         var globalMenu = Menu.all($scope.docs.sectionID);
-console.log('expanding item',id)
         // Find the targeted menu item in the visible menu and expand it
         var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu.concat($scope.docs.subMenus));
         // console.log($scope.docs.visibleMenu.length, $scope.docs.visibleMenu);
