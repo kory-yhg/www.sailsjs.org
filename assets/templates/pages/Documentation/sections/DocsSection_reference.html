@@ -1,4 +1,4 @@
-<div class="reference-page">CurrentPageID:{{docs.currentPage.id}} CurrentPageParent:{{docs.parentPage.id}}
+<div class="reference-page"><!-- CurrentPageID:{{docs.currentPage.id}} CurrentPageParent:{{docs.parentPage.id}} -->
   <!-- The documentation content pulled in from GitHub -->
   <div class="left-column">
     <div class="reference-item"
@@ -15,7 +15,7 @@
     <ul class="main-sections">
       <li ng-repeat="menuItem in docs.visibleMenu"
         class="main-section"
-        ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'current-parent-section': docs.currentPage.parent === menuItem.id || docs.parentPage.id === menuItem.id}"
+        ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'current-parent-section': docs.currentPage.parent === menuItem.id}"
         stop-propagation="click"
         ng-include src="'templates/pages/Documentation/sections/NavItem.html'"></li>
     </ul>

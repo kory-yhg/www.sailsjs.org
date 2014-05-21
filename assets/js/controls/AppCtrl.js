@@ -54,7 +54,10 @@ angular.module('Sails').controller('AppCtrl', [
         }
       },
 
-      expandMenuItem: function(id) {
+      expandMenuItem: function(id,withoutThese) {
+
+        // TODO: remove the 'non-subsection children' when a sub-section is selected 
+        var removeUncles = withoutThese||[];
 
         var globalMenu = Menu.all($scope.docs.sectionID);
         // Find the targeted menu item in the visible menu and expand it
@@ -72,13 +75,17 @@ console.log('menuItem:',$menuItem)
           parent: $menuItem.id
         });
 
-        // $menuItem.visibleChildren = _.unique($menuItem.visibleChildren.concat(_.where(globalMenu, {
-        //   parent: id
+        // $menuItem.visibleChildren = _.unique($menuItem.visibleChildren.concat(_.where(globalMenu, function(thisItem){
+        //   if (thisItem.parent === id && removeUncles.indexOf(id) < 0)
+        //     return thisItem
+        //   // parent: id
         // })));
         $menuItem.visibleChildren = _.unique($menuItem.visibleChildren.concat(_.where(globalMenu, {
           parent: id
         })));
+
         console.log('Found these subItems:',$menuItem.visibleChildren)
+
       },
 
       collapseMenuItem: function(id) {
@@ -86,7 +93,7 @@ console.log('menuItem:',$menuItem)
           id: id
         });
         if (!$menuItem) {
-          if (typeof console !== 'undefined') console.error('couldn\'t collapse because couldnt find (' + id + ')');
+          if (typeof console !== 'undefined') console.log('couldn\'t collapse because couldnt find (' + id + ')');
           return;
         }
         $menuItem.expanded = false;

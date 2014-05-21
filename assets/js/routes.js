@@ -84,7 +84,13 @@ angular.module('Sails')
         var menu = Menu.all(topLevelSectionID);
 
         // Expose top-level menu in scope (i.e. orphans)
-        $scope.docs.visibleMenu = _.where(menu, {isParent: true, isChild: undefined});
+        // $scope.docs.visibleMenu = _.where(menu, {isParent: true, isChild: undefined});
+        $scope.docs.visibleMenu = _.where(menu, function(anItem){
+          if (anItem.isParent && !anItem.isChild){
+            console.log('making',anItem.id,'visible')
+            return anItem
+          }
+        });
         $scope.docs.subMenus = _.where(menu, {isParent: true, isChild: true});
         ORPHANS=$scope.docs.visibleMenu;
 
@@ -130,7 +136,7 @@ angular.module('Sails')
         $scope.docs.subSectionID = target.id;
         $scope.docs.currentPage = target;
         $scope.docs.parentPage = _.find(menu,{id:target.parent});
-        console.log('Found Parent!!!!',$scope.docs.parentPage)
+        // console.log('Found Parent!!!!',$scope.docs.parentPage)
         // Now collapse all other top-level sections
         // (TODO: play w/ this-- is this even a good thing UX-wise?)
         _($scope.docs.visibleMenu).where({parent: undefined}).each(function (topLevelItem) {
