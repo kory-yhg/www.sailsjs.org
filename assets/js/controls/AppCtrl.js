@@ -71,6 +71,11 @@ console.log('expanding item',id)
         $menuItem.visibleChildren = _.where(globalMenu, {
           parent: $menuItem.id
         });
+
+        $menuItem.visibleChildren = _.unique($menuItem.visibleChildren.concat(_.where(globalMenu, {
+          parent: id
+        })));
+
         console.log('Found these subItems:',$menuItem.visibleChildren)
       },
 
