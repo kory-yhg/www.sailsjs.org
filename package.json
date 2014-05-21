@@ -11,7 +11,7 @@
     "include-all": "~0.1.3",
     "ejs": "~0.8.4",
     "fs-extra": "~0.8.1",
-    "doc-templater": "git://github.com/uncletammy/doc-templater.git",
+    "doc-templater": "~0.0.9",
     "marked": "~0.3.1",
     "jquery": "~2.1.0",
     "jsdom": "~0.10.3",
