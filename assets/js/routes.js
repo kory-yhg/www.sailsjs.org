@@ -129,7 +129,8 @@ angular.module('Sails')
         // Then show the appropriate sub-section
         $scope.docs.subSectionID = target.id;
         $scope.docs.currentPage = target;
-
+        $scope.docs.parentPage = _.find(menu,{id:target.parent});
+        console.log('Found Parent!!!!',$scope.docs.parentPage)
         // Now collapse all other top-level sections
         // (TODO: play w/ this-- is this even a good thing UX-wise?)
         _($scope.docs.visibleMenu).where({parent: undefined}).each(function (topLevelItem) {
