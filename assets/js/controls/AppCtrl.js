@@ -1,8 +1,10 @@
 angular.module('Sails').controller('AppCtrl', [
   '$scope',
+  '$window',
+  '$timeout',
   'Menu',
 
-  function($scope, Menu) {
+  function($scope, $window, $timeout, Menu) {
 
     MENU = Menu;
 
@@ -16,19 +18,24 @@ angular.module('Sails').controller('AppCtrl', [
       return current === '#' + path;
     };
 
+
+    // Skrollr handling
     // Fires on load and on route change success
-    // Likely moving all of this to skrollr.directive
     $scope.$on('$locationChangeSuccess', function(event) {
-      // Wait on ngInclude (temporary solution, need to implement ngInclude onLoad())
-      setTimeout(function(){
-        if($scope.skrollr){
-          $scope.skrollr.destroy();
-        }
-        // Add skrollr to $scope
-        $scope.skrollr = skrollr.get();
-        // Refresh all skroller elements
-        // $scope.skrollr.refresh();  IM TIRED OF THIS ERROR!!!!
-      }, 150);
+      // Init skrollr if layout is not mobile
+      if($window.innerWidth >= 768){
+        // Timeout to wait for ng-include to finish
+        $timeout(function(){
+          // If there's already an instance of skroller in the scope, destroy it
+          if($scope.s){
+            $scope.s.destroy();
+          }
+          // Init skroller
+          $scope.s = skrollr.init({
+            forceHeight: false
+          });
+        }, 50);
+      }
     });
 
     $scope.intent = angular.extend($scope.intent || {}, {
