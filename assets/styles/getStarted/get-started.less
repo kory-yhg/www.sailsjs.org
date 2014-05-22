@@ -9,6 +9,24 @@
     background-position: -400px 50px;
   	font-family: @mainFont;
   	padding: 100px 0 150px;
+    a.return-top {
+      display: none;
+      background-color: @turquoise;
+      font-weight: 500;
+      color: @white;
+      text-align: center;
+      width: 20%;
+      margin: 0 auto 40px;
+      padding: 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      opacity: .5;
+        &:hover {
+          cursor: pointer;
+          font-weight: 600;
+          opacity: 1;
+        }
+    }
 
     // left-side navigation
   	.navigation {
@@ -89,23 +107,40 @@
   			width: 90%;
   			margin: auto;
   			text-align: center;
+        margin: 30px 0;
+        position: static!important;
   		}
+
+      .bubbles {
+        display: none;
+      }
 
   		.get-started-content {
   			float: none;
   			width: 90%;
   			max-width: 90%;
-  			padding-left: 0;
   			margin: auto;
+        h1 {
+          text-align: center;
+        }
+        .return-top {
+          display: block;
+        }
   		}
   	}
 
 
   	@media screen and (max-width: 480px) {
 
-  		h1 {
-  			text-align: center;
-  		}
+
+      .get-started-content {
+        .return-top {
+          width: 55%;
+        }
+    		h1 {
+    			text-align: center;
+    		}
+      }
   	}
 
 
