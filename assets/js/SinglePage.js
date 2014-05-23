@@ -7,13 +7,9 @@
 (function () {
   var dependencies = [
     'ngRoute',
-    'directive.stopPropagation'
+    'directive.stopPropagation',
+    'duScroll'
   ];
-
-  // Don't do this crazy parallax business on mobile
-  // if (window.innerWidth >= 768) {
-  //   dependencies.push('directive.skrollr');
-  // }
 
   angular.module('Sails', dependencies);
 })();
