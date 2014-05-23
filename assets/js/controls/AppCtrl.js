@@ -68,7 +68,7 @@ angular.module('Sails').controller('AppCtrl', [
 
       expandMenuItem: function(id,withoutThese) {
 
-        // TODO: remove the 'non-subsection children' when a sub-section is selected 
+        // TODO: remove the 'non-subsection children' when a sub-section is selected
         var removeUncles = withoutThese||[];
 
         var globalMenu = Menu.all($scope.docs.sectionID);

@@ -15,6 +15,7 @@
 			// background-color: @bgLtGray;
 			height: 100%;
 			padding: 15px 25px 25px 0;
+      position: relative;
 			h2 {
 				text-align: left;
 				padding: 5px 0px 15px;
@@ -23,37 +24,63 @@
 				font-weight: 300;
 			}
 			ul.file-list {
+        position: relative;
+        z-index: 10;
 				li {
     			font-size: 15px;
 					font-weight: 400;
-					padding: 0px 0px 9px 12px;
-					&:last-child {
-						padding-bottom: 0px;
-					}
-        			&.folder {
-    					background: url('/images/img_collapsedArrow@2x.png') no-repeat left 9px;
-    					background-size: 6px;
+					padding-left: 12px;
+          line-height: 1.8em;
+          position: relative;
+          .expand-arrow {
+            .transition(all 250ms);
+            display: none;
+            width: 6px;
+            position: absolute;
+            left: 0px;
+            top: 11px;
+          }
+					&.current-section {
+            >div >span {
+              color: @turquoise;
+            }
+          }
+    			&.folder {
+              >div >.expand-arrow {
+                display: block;
+              }
     					span {
     						cursor: pointer;
-							&:hover {
-								color: @turquoise;
-							}
+  							&:hover {
+  								color: @turquoise;
+  							}
     					}
-    					ul {
-    						display: none;
-    						padding: 5px 0px;
-    						&:last-child {
-    							padding-bottom: 0px;
-    						}
-    					}
-    					&.expanded {
-	    					background: url('/images/img_expandedArrow@2x.png') no-repeat left 8px;
-	    					background-size: 6px;
-    						> ul {
-    							display: block;
-    						}
-    					}
-        			}
+            &.current-parent-section {
+              >div >span {
+                font-weight: 700;
+                color: @turquoise;
+              }
+            }
+            &.expanded {
+              >div >.expand-arrow {
+                .rotate(90deg);
+              }
+            }
+  					// ul {
+  					// 	display: none;
+  					// 	padding: 5px 0px;
+  					// 	&:last-child {
+  					// 		padding-bottom: 0px;
+  					// 	}
+  					// }
+  					// &.expanded {
+    			// 		background: url('/images/img_expandedArrow@2x.png') no-repeat left 8px;
+    			// 		background-size: 6px;
+  					// 	> ul {
+  					// 		display: block;
+  					// 	}
+  					// }
+    			}
 					&.file {
 						cursor: pointer;
 						&:hover {
