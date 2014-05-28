@@ -32,7 +32,10 @@ angular.module('Sails').factory('Menu', function() {
       var jsMenu = parseMenu(JST[pathToJSMenu]().replace(/assets\/templates\//ig,''));
       // console.log(JSON.stringify(jsMenu))
 
+      menu[_jsMenuIdentity] = jsMenu;
+
       console.log('Parsed',_jsMenuIdentity,':',jsMenu);
+
 
       _(jsMenu).map(function(mItem) {
         mItem.id = mItem.id||mItem.fullPathAndFileName;
@@ -54,12 +57,12 @@ angular.module('Sails').factory('Menu', function() {
         }
         // Finally, trim trailing slashes & slugify the href
         mItem.href = mItem.href
-        .replace(/[\s\(\)\\\[\]\{\}]/, '-')
+        .replace(/[\s\(\)\\\[\]\{\}]/g, '-')
         .replace(/\/$/,'');
         if (mItem.alternateHref) {
           // Only partially slugify `alternateHref`s to avoid breaking links
           mItem.alternateHref = mItem.alternateHref
-          .replace(/[\s\(\)\\\[\]\{\}]/, '-')
+          .replace(/[\s\(\)\\\[\]\{\}]/g, '-')
           .replace(/\/$/,'');
         }
 

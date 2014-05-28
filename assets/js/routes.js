@@ -77,34 +77,28 @@ angular.module('Sails')
         // Get topLevelSectionID (e.g. "anatomy", "reference")
         var topLevelSectionID = pieces[0];
         $scope.docs.sectionID = topLevelSectionID;
-        console.log('topLevelSectionID', topLevelSectionID);
-        console.log('SubSection',pieces[1]);
 
         // Build the menu
         var menu = Menu.all(topLevelSectionID);
 
-        // Expose top-level menu in scope (i.e. orphans)
-        // $scope.docs.visibleMenu = _.where(menu, {isParent: true, isChild: undefined});
+        // Expose top-level menu in scope 
+        // Show only the menus that are parents but not children
         $scope.docs.visibleMenu = _.where(menu, function(anItem){
           if (anItem.isParent && !anItem.isChild){
-            console.log('making',anItem.id,'visible')
+            // console.log('making',anItem.id,'visible')
             return anItem
           }
         });
         $scope.docs.subMenus = _.where(menu, {isParent: true, isChild: true});
-        ORPHANS=$scope.docs.visibleMenu;
 
-        // Add some methods for accessing the visibleMenu's items
-        $scope.docs.findMenuItemByID = function (id, $submenu) {
-          // console.log('looking in', _.pluck($submenu, 'name'), 'for ', id);
-          return _.find($submenu, function ($menuItem) {
-            // console.log('comparing',$menuItem.id,'to',id);
-            if ($menuItem.id === id) {
-              console.log('Found menu item!',$menuItem)
-              return $menuItem;
-            }
-            else return $scope.docs.findMenuItemByID(id, $menuItem.visibleChildren);
-          });
+
+        $scope.docs.findMenuItemByID = function (id, findIn) {
+          var grabItem = _.find(findIn,{fullPathAndFileName:id})
+          if (grabItem){       
+            return grabItem
+          } else {
+            return {};
+          }
         };
 
         // Then show the top-level docs section (e.g. anatomy, reference)
@@ -123,7 +117,6 @@ angular.module('Sails')
 
         // Lookup current page
         var target = _.find(menu, function(checkItem){
-          // console.log('checking ',currentHashURL,'against',checkItem.href)
           if (currentHashURL === checkItem.href)
             return checkItem
 
@@ -136,9 +129,9 @@ angular.module('Sails')
         $scope.docs.subSectionID = target.id;
         $scope.docs.currentPage = target;
         $scope.docs.parentPage = _.find(menu,{id:target.parent});
-        // console.log('Found Parent!!!!',$scope.docs.parentPage)
+
+
         // Now collapse all other top-level sections
-        // (TODO: play w/ this-- is this even a good thing UX-wise?)
         _($scope.docs.visibleMenu).where({parent: undefined}).each(function (topLevelItem) {
           $scope.intent.collapseMenuItem(topLevelItem.id);
         });
@@ -146,46 +139,49 @@ angular.module('Sails')
         // In order to expand the appropriate parts of the menu
         // (expand the current page, and expand its parent, and then its parent, etc.)
         // we must find the menu item's ancestors
+
         var ancestors = [];
-        var parent = _.find(menu, {id: target.parent});
-        while (parent) {
-          ancestors.push(parent);
-          // console.log('expanding where parent is ',parent.id)
-          parent = _.find(menu, {id: parent.parent});
+        var findParentsOfThese = [target];
+
+        // Recursively pushes all parents of 'target'
+        // to the ancestors array
+        var grabParents = function(){
+
+          if (findParentsOfThese.length){
+
+            var navItem = findParentsOfThese.shift();
+
+            if (navItem.parent){
+              var parent = $scope.docs.findMenuItemByID(navItem.parent,menu);
+              findParentsOfThese.push(parent)
+              ancestors.push(parent)
+
+            }
+
+            grabParents();
+
+          } else {
+
+              // Since there are no more ancestors to find,
+              // expand all of the ancestors and the current target
+
+              _.each(ancestors,function(ancestor){
+                $scope.intent.expandMenuItem(ancestor.id);
+              })
+
+              $scope.intent.expandMenuItem(target.id);
+
+              // Close all submenus that arent in lineage 
+              _.where($scope.docs.subMenus,function (lilMenu) {
+                if (!(_.contains(ancestors, lilMenu) || _.isEqual(lilMenu, target)))
+                  $scope.intent.collapseMenuItem(lilMenu.id)
+              });
+          }
+
         }
 
-        // Now expand the menu item's ancestors
-        while (ancestors.length) {
-          var toExpand = ancestors.shift();
-          // console.log('trying to expand ancestor',toExpand);
-          $scope.intent.expandMenuItem(toExpand.id);
-        }
-        // Finally, expand the target menu item itself
-        // console.log('trying to expand',target);
-        $scope.intent.expandMenuItem(target.id);
+      grabParents();
+
       }]
     });
 }]);
-
-    // .when('/documentation/anatomy/:sectionPath*?', {
-    //   templateUrl: 'templates/pages/Documentation/DocsSection.html',
-    //   controller: function ($scope) {
-    //     console.log(window.location.hash);
-    //     $scope.intent.changeDocsTab('anatomy');
-    //   }
-    // })
-    // .when('/documentation/guides', {
-    //   templateUrl: 'templates/pages/Documentation/DocsSection.html',
-    //   controller: function ($scope) {
-    //     $scope.intent.changeDocsTab('guides');
-    //   }
-    // })
-
-    // .otherwise({
-      // redirectTo: '/'
-    // });
-// ]);
-
-
-
-

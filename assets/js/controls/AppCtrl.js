@@ -59,29 +59,18 @@ angular.module('Sails').controller('AppCtrl', [
       toggleMenuItem: function(id) {
         var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu.concat($scope.docs.subMenus));
 
-        if ($menuItem.expanded) {
+        if ($menuItem && $menuItem.expanded) {
           $scope.intent.collapseMenuItem(id);
         } else {
           $scope.intent.expandMenuItem(id);
         }
       },
 
-      expandMenuItem: function(id,withoutThese) {
-
-        // TODO: remove the 'non-subsection children' when a sub-section is selected
-        var removeUncles = withoutThese||[];
-
+      expandMenuItem: function(id) {
         var globalMenu = Menu.all($scope.docs.sectionID);
         // Find the targeted menu item in the visible menu and expand it
         var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu.concat($scope.docs.subMenus));
-        // console.log($scope.docs.visibleMenu.length, $scope.docs.visibleMenu);
 
-        if (!$menuItem) {
-          // if (typeof console !== 'undefined')
-          console.log('couldn\'t expand because couldnt find (' + id + ')');
-          return;
-        }
-console.log('menuItem:',$menuItem)
         $menuItem.expanded = true;
         $menuItem.visibleChildren = _.where(globalMenu, {
           parent: $menuItem.id
@@ -92,21 +81,19 @@ console.log('menuItem:',$menuItem)
         //     return thisItem
         //   // parent: id
         // })));
+
+        // add
         $menuItem.visibleChildren = _.unique($menuItem.visibleChildren.concat(_.where(globalMenu, {
           parent: id
         })));
-
-        console.log('Found these subItems:',$menuItem.visibleChildren)
-
       },
 
       collapseMenuItem: function(id) {
-        var $menuItem = _.find($scope.docs.visibleMenu, {
+        var $menuItem = _.find($scope.docs.visibleMenu.concat($scope.docs.subMenus), {
           id: id
         });
-        if (!$menuItem) {
-          if (typeof console !== 'undefined') console.log('couldn\'t collapse because couldnt find (' + id + ')');
-          return;
+        // console.log('Collapsing Menu Item:',$menuItem)
+        if (!$menuItem) {          return;
         }
         $menuItem.expanded = false;
         $menuItem.visibleChildren = [];

@@ -5,7 +5,7 @@
 
 
 <ul ng-show="menuItem.visibleChildren.length">
-  <li ng-repeat="menuItem in menuItem.visibleChildren"
+  <li ng-repeat="menuItem in menuItem.visibleChildren | orderBy:['isChild','isParent']"
     stop-propagation="click"
     ng-include="'templates/pages/Documentation/sections/NavItem.html'"
     ng-click="intent.toggleMenuItem(menuItem.id)"
