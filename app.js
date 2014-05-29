@@ -19,6 +19,8 @@
  */
 
 // Ensure a "sails" can be located:
+
+var DocCompiler = require('./api/services/DocCompiler')
 var sails;
 try {
 	sails = require('sails');
@@ -50,4 +52,13 @@ try {
 
 
 // Start server
-sails.lift(rc('sails'));
+
+DocCompiler(function(err,cb){
+	if (err)
+		return err
+	else
+		console.log('Docs pulled from Github!')
+
+	sails.lift(rc('sails'));
+})
+

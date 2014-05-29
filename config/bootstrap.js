@@ -10,14 +10,9 @@
 
 module.exports.bootstrap = function (cb) {
 
-	sails.after(['hook:services:loaded'], function(){
-		DocCompiler(function(err,cb){
-			if (err)
-				return err
-			else
-				console.log('Docs pulled from Github!')
-		})
-	});
+	// sails.after(['hook:services:loaded'], function(){
+
+	// });
 
   // It's very important to trigger this callack method when you are finished 
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
