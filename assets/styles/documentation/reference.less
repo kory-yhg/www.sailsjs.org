@@ -188,6 +188,14 @@
           .borderBox();
           color: @turquoise;
         }
+        li.parent-section {
+          >span {
+            color: @headerGray!important;
+          }
+          li >span {
+            color: @turquoise;
+          }
+        }
       }
       li.current-parent-section {
         >span {
@@ -202,6 +210,9 @@
         }
         &.subsection-current-parent >span {
           color: @turquoise;
+        }
+       li {
+          color: @turquoise!important;
         }
       }
 
@@ -228,6 +239,9 @@
           font-size: 14px;
           color: @headerGray;
           // color: @black;
+          li {
+            color: @black;
+          }
         }
       }
     }
