@@ -13,7 +13,8 @@ angular.module('Sails').directive('newsBanner', ['getRepoCommits', function (get
       .then(function (_options) {
         scope.options = _options;
       }, function (err) {
-        scope.options.error = true;
+        if (scope && scope.options)
+          scope.options.error = true;
       });
 
     },
