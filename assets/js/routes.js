@@ -13,6 +13,7 @@ angular.module('Sails')
 
     .when('/getStarted', {
       templateUrl: 'templates/pages/GetStartedPage.html'
+      // templateUrl: 'templates/gettingStarted/gettingStarted.html'
     })
 
     .when('/logos', {

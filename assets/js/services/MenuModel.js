@@ -29,7 +29,9 @@ angular.module('Sails').factory('Menu', function() {
 
       // Call the menu from the JST object then get rid of 'assets/templates' prefix
       // on every key before the text is parsed into JSON.
-      var jsMenu = parseMenu(JST[pathToJSMenu]().replace(/assets\/templates\//ig,''));
+      // var jsMenu = parseMenu(JST[pathToJSMenu]().replace(/assets\/templates\//ig,''));
+     var jsMenu = parseMenu(JST[pathToJSMenu]());
+ 
       // console.log(JSON.stringify(jsMenu))
 
       menu[_jsMenuIdentity] = jsMenu;
