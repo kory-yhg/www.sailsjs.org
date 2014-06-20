@@ -45,6 +45,8 @@ angular.module('Sails').factory('Menu', function() {
         // Derive the `templateSrc` from `templatePath` (so ngIncludes will work)
         mItem.templateSrc = '/templates/'+mItem.fullPathAndFileName;
 
+
+        mItem.fileOnGithub = 'https://github.com/balderdashy/sails-docs/tree/master/'+mItem.fullPathAndFileName.replace('.html','.md');
         // Tag w/ label (label===data.displayName)
         mItem.label = mItem.label||(mItem.data && mItem.data.displayName);
 
