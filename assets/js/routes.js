@@ -13,8 +13,16 @@ angular.module('Sails')
 
     .when('/getStarted', {
       templateUrl: 'templates/pages/GetStartedPage.html'
-      // templateUrl: 'templates/gettingStarted/gettingStarted.html'
     })
+    // .when('/getStarted/WhatIsSails', {
+    //   templateUrl: 'templates/gettingStarted/WhatIsSails.html'
+    // })
+    // .when('/getStarted/NewToNode', {
+    //   templateUrl: 'templates/gettingStarted/NewToNode.html'
+    // })
+
+
+
 
     .when('/logos', {
       templateUrl: 'templates/pages/LogosPage.html'
@@ -59,6 +67,11 @@ angular.module('Sails')
       templateUrl: 'templates/pages/Documentation/DocsSection.html',
       redirectTo: '/documentation/anatomy/myApp'
     })
+
+    .when('/documentation/irc', {
+      templateUrl: 'templates/pages/Documentation/irc.html'
+    })
+
 
     .when('/documentation/reference', {
       templateUrl: 'templates/pages/Documentation/DocsSection.html',
