@@ -3,8 +3,9 @@ angular.module('Sails').controller('AppCtrl', [
   '$window',
   '$timeout',
   'Menu',
-
-  function($scope, $window, $timeout, Menu) {
+  '$location',
+  '$anchorScroll',
+  function($scope, $window, $timeout, Menu, $location, $anchorScroll) {
 
     MENU = Menu;
 
@@ -39,11 +40,33 @@ angular.module('Sails').controller('AppCtrl', [
           // Init skrollr hash menu plugin
           //skrollr.menu.init($scope.s);
 
-        }, 50);
+        }, 1000); // In the past, this timeout was causing issues with the nav not loading
       }
     });
+    $scope.scrollToTopOfPage = function(thenDownBy){
+
+        // Compensate for the fixed topbar
+        var topBarHeight=Number($('.topbar').height());
+
+        if (thenDownBy){
+          $('body').scrollTop(thenDownBy-topBarHeight-20);
+        } else {
+          $('body').scrollTop(-(topBarHeight+20));
+        }
+
+    };
+    $scope.scrollTo = function(anchor) {
+        var old = $location.hash();
+     
+        $location.hash(anchor);
+        $anchorScroll();
+        $location.hash(old);
+
+        $scope.scrollToTopOfPage($('body').scrollTop());
+    };
 
     $scope.intent = angular.extend($scope.intent || {}, {
+
 
       /**
        * goto()
@@ -54,6 +77,7 @@ angular.module('Sails').controller('AppCtrl', [
        */
       goto: function(hash) {
         window.location.hash = hash;
+        $scope.scrollToTopOfPage();
       },
 
       toggleMenuItem: function(id) {

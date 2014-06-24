@@ -1,15 +1,15 @@
 <div skrollr class="page get-started" data-0="background-position: 0px 0px; background-color:rgb(193,231,234);" data-4200="background-position: 0px -4200px; background-color:rgb(22,171,193);" data-4600="background-position: 0px -5000px">
 
   <div class="get-started-container">
-
+  <a name="the-top"></a>
     <!-- Left-side navigation -->
     <div class="navigation" style="position:fixed;opacity:1;" skrollr data-anchor-target="#get-started-content" data-0-bottom="opacity:1;top:100px;" data--500-bottom="opacity:0;top:-100px;">
       <ul>
-        <li><a href="/#/getStarted/#get-started" skrollr data-0="color:rgb(11,143,162);" data-1100="color:rgb(11,143,162);" data-1300="color:rgb(255,255,255);">Get Started</a></li>
-        <li><a href="/#/getStarted/#what-is-sails" skrollr data-0="color:rgb(11,143,162);" data-1200="color:rgb(11,143,162);" data-1300="color:rgb(255,255,255);">What is Sails?</a></li>
-        <li><a href="/#/getStarted/#new-to-node" skrollr data-0="color:rgb(11,143,162);" data-1300="color:rgb(11,143,162);" data-1400="color:rgb(255,255,255);">New To Node?</a></li>
-        <li><a href="/documentatio" skrollr data-0="color:rgb(11,143,162);" data-1400="color:rgb(11,143,162);" data-1500="color:rgb(255,255,255);">Getting help</a></li>
-        <li><a href="http://www.google.com" skrollr data-0="color:rgb(11,143,162);" data-1500="color:rgb(11,143,162);" data-1600="color:rgb(255,255,255);">More resources</a></li>
+        <li><a data-ng-click="scrollTo('get-started')" skrollr data-0="color:rgb(11,143,162);" data-1100="color:rgb(11,143,162);" data-1300="color:rgb(255,255,255);">Get Started</a></li>
+        <li><a data-ng-click="scrollTo('what-is-sails')" skrollr data-0="color:rgb(11,143,162);" data-1200="color:rgb(11,143,162);" data-1300="color:rgb(255,255,255);">What is Sails?</a></li>
+        <li><a data-ng-click="scrollTo('new-to-node')" skrollr data-0="color:rgb(11,143,162);" data-1300="color:rgb(11,143,162);" data-1400="color:rgb(255,255,255);">New To Node?</a></li>
+        <li><a href="#/documentation" skrollr data-0="color:rgb(11,143,162);" data-1400="color:rgb(11,143,162);" data-1500="color:rgb(255,255,255);">Getting help</a></li>
+        <li><a href="https://www.google.com" skrollr data-0="color:rgb(11,143,162);" data-1500="color:rgb(11,143,162);" data-1600="color:rgb(255,255,255);">More resources</a></li>
       </ul>
     </div>
 
@@ -30,14 +30,17 @@
    <!--  <div class="fish-wrapper" data-0="display:none;" data-300="display:block;">
       <div class="fish" data-2200="left:50%;" data-2800="left:0%"></div>
     </div> -->
-
-    <div class="get-started-content documentation-style-guide" id="get-started-content">
+      
+      <div class="get-started-content documentation-style-guide" id="get-started-content">
+      <a name="get-started"></a>
       <div ng-include src="'templates/gettingStarted/gettingStarted.html'"></div>
-      <a class="return-top">back to top</a>
+      <a class="return-top" data-ng-click="scrollTo('the-top')">back to top</a>
+      <a name="what-is-sails"></a>
       <div ng-include src="'templates/gettingStarted/WhatIsSails.html'"></div>
-      <a class="return-top">back to top</a>
+      <a class="return-top" data-ng-click="scrollTo('the-top')">back to top</a>
+      <a name="new-to-node"></a>
       <div ng-include src="'templates/gettingStarted/NewToNode.html'"></div>
-      <a class="return-top">back to top</a>
+      <a class="return-top" data-ng-click="scrollTo('the-top')">back to top</a>
 
     </div>
   </div>
