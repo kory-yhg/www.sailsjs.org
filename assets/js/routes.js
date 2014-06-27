@@ -22,8 +22,6 @@ angular.module('Sails')
     // })
 
 
-
-
     .when('/logos', {
       templateUrl: 'templates/pages/LogosPage.html'
     })
@@ -68,9 +66,25 @@ angular.module('Sails')
       redirectTo: '/documentation/anatomy/myApp'
     })
 
-    .when('/documentation/irc', {
-      templateUrl: 'templates/pages/Documentation/irc.html'
+    .when('/support', {
+      templateUrl: 'templates/pages/support/supportHome.html',
+      // redirectTo: '/support/irc'
     })
+    .when('/irc', {
+      templateUrl: 'templates/pages/irc.html',
+      // redirectTo: '/support/irc'
+    })
+
+
+    // .when('/support/:sectionPath*?', {
+    //   templateUrl: 'templates/pages/support/supportHome.html',
+    //  controller: ['$scope', '$routeParams', function ($scope, $routeParams) {
+    //     var pieces = $routeParams.sectionPath.split('/');
+    //     var subsection = pieces[0];
+    //     $scope.support.sectionTemplate = './templates/pages/support/'+subsection+'.html';
+    //     console.log('Changed template to',$scope.support.sectionTemplate)
+    //   }]
+    // })
 
 
     .when('/documentation/reference', {

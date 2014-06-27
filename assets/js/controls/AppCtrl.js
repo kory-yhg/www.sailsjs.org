@@ -47,7 +47,6 @@ angular.module('Sails').controller('AppCtrl', [
 
         // Compensate for the fixed topbar
         var topBarHeight=Number($('.topbar').height());
-
         if (thenDownBy){
           $('body').scrollTop(thenDownBy-topBarHeight-20);
         } else {
@@ -57,7 +56,8 @@ angular.module('Sails').controller('AppCtrl', [
     };
     $scope.scrollTo = function(anchor) {
         var old = $location.hash();
-     
+        
+        console.log('Scrolling to',anchor)     
         $location.hash(anchor);
         $anchorScroll();
         $location.hash(old);
@@ -79,7 +79,6 @@ angular.module('Sails').controller('AppCtrl', [
         window.location.hash = hash;
         $scope.scrollToTopOfPage();
       },
-
       toggleMenuItem: function(id) {
         var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu.concat($scope.docs.subMenus));
 

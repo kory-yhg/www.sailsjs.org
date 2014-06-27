@@ -83,6 +83,14 @@ module.exports = function compileDocumentationMarkdown (cb) {
       beforeConvert: beforeConvert,
       afterConvert: afterConvert
     }
+  },{
+    docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
+    dirNameInRepo: 'irc',
+    parsedTemplatesDirectory: 'assets/templates/irc/',
+    applyToTemplates: {
+      beforeConvert: beforeConvert,
+      afterConvert: afterConvert
+    }
   }], afterTemplateCB);
 
 }
