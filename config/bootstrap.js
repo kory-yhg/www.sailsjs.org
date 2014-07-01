@@ -10,11 +10,13 @@
 
 module.exports.bootstrap = function (cb) {
 
+  Cache.destroy({}).exec(cb);
+
 	// sails.after(['hook:services:loaded'], function(){
 
 	// });
 
-  // It's very important to trigger this callack method when you are finished 
+  // It's very important to trigger this callack method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
-  cb();
+  // cb();
 };

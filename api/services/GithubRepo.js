@@ -182,6 +182,19 @@ module.exports = {
           });
 
 
+          // Authenticate (if credentials are provided) to increase
+          // our rate limit.
+          if (sails.config.githubusername && sails.config.githubpassword) {
+            sails.console('Using provided credentials (%s / *****)',sails.config.githubusername);
+            github.authenticate({
+              type: 'basic',
+              username: sails.config.githubusername,
+              password: sails.config.githubpassword
+            });
+          }
+          else sails.console.warn('Either `githubusername` or `githubpassword` config were not provided - sending request to Github w/ no credentials..');
+
+
           github.repos.get({
             repo: opts.repo,
             user: opts.user
