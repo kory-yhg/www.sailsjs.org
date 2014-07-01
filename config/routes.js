@@ -58,5 +58,6 @@ module.exports.routes = {
 	*/
 
 	'get /': 'ProxyController.fetch',
-	'get /refresh': 'refreshController.index'
+	'get /refresh': 'RefreshController.index',
+	'get /irc/chat': 'IrcController.index'
 };
