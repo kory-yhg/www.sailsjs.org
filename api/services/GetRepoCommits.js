@@ -172,55 +172,56 @@ module.exports = {
       })
       .sort('createdAt DESC')
       .limit(1)
-      .exec({
-        error: sb.error,
-        success: function(cached) {
-          if (cached.length) {
-            return sb.success(cached[0].data);
-          }
+      .exec(function(err, cached) {
+        if (err) return sb(err);
 
-          var github = new Github({
-            // required
-            version: '3.0.0',
-            // optional
-            // debug: true,
-            // protocol: 'https',
-            // host: 'github.my-GHE-enabled-company.com',
-            // pathPrefix: '/api/v3', // for some GHEs
-            // timeout: 5000
+        if (cached.length) {
+          sails.log('Using cached github data...',cached);
+          return sb(null, cached[0].data);
+        }
+
+        var github = new Github({
+          // required
+          version: '3.0.0',
+          // optional
+          // debug: true,
+          // protocol: 'https',
+          // host: 'github.my-GHE-enabled-company.com',
+          // pathPrefix: '/api/v3', // for some GHEs
+          // timeout: 5000
+        });
+
+        // Authenticate (if credentials are provided) to increase
+        // our rate limit.
+        if (sails.config.githubusername && sails.config.githubpassword) {
+          sails.log('Using provided credentials (%s / *****)', sails.config.githubusername);
+          github.authenticate({
+            type: 'basic',
+            username: sails.config.githubusername,
+            password: sails.config.githubpassword
           });
-
-          // Authenticate (if credentials are provided) to increase
-          // our rate limit.
-          if (sails.config.githubusername && sails.config.githubpassword) {
-            sails.log('Using provided credentials (%s / *****)',sails.config.githubusername);
-            github.authenticate({
-              type: 'basic',
-              username: sails.config.githubusername,
-              password: sails.config.githubpassword
-            });
-          }
-          else sails.log.warn('Either `githubusername` or `githubpassword` config were not provided - sending request to Github w/ no credentials..');
+        }
+        else sails.log.warn('Either `githubusername` or `githubpassword` config were not provided - sending request to Github w/ no credentials..');
 
 
-          github.repos.getCommits({
+
+        github.repos.getCommits({
+          repo: opts.repo,
+          user: opts.user
+        }, function(err, data) {
+          if (err) return sb(err);
+
+          // Cache the result
+          Cache.create({
             repo: opts.repo,
-            user: opts.user
-          }, function(err, data) {
+            user: opts.user,
+            data: data
+          }).exec(function(err) {
             if (err) return sb(err);
-
-            // Cache the result
-            Cache.create({
-              repo: opts.repo,
-              user: opts.user,
-              data: data
-            }).exec(function(err) {
-              if (err) return sb(err);
-              return sb.success(data);
-            });
-
+            return sb.success(data);
           });
-        },
+
+        });
       });
 
     // Chainable event emitter
