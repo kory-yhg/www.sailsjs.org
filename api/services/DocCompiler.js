@@ -35,7 +35,7 @@ module.exports = function compileDocumentationMarkdown (cb) {
 
 
     // Replace ((bubble))s with HTML
-    html = html.replace(/\(\(([^())]*)\)\)/g, '<bubble>$1</bubble>');
+    html = html.replace(/\(\(([^())]*)\)\)/g, '<bubble type="$1" colors="true"></bubble>');
 
     writeFileObject.templateHTML = html;
     return cb(writeFileObject);
