@@ -15,15 +15,15 @@
       <img class="logo" src="/images/sails-logo.jpg" alt="Sails" />
     </a>
     <ul class="nav" ng-class="{'menu-open': menuVisible === true}">
-      <li ng-click="menuVisible = false"><a class="sails-site"
+      <!-- <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: getIsCurrentPage('/')}"
-          href="#/">Home</a></li>
-      <li ng-click="menuVisible = false"><a class="sails-site"
-          ng-class="{current: getIsCurrentPage('/features')}"
-          href="#/features">Features</a></li>
+          href="#/">Home</a></li> -->
       <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: getIsCurrentPage('/getStarted')}"
           href="#/getStarted">Get Started</a></li>
+      <li ng-click="menuVisible = false"><a class="sails-site"
+          ng-class="{current: getIsCurrentPage('/features')}"
+          href="#/features">Features</a></li>
       <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: getIsCurrentPage('/documentation')}"
           href="#/documentation/reference">Documentation</a></li>
