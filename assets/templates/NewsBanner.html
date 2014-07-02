@@ -1,7 +1,9 @@
 <div class="update-banner white-banner">
     <div class="banner-container">
 
-      <p ng-hide="options.error">Latest commit by <a target="_blank" href="{{options.latestCommit.author.html_url}}">@{{options.latestCommit.author.login}}</a> <a target="_blank" href="{{options.latestCommit.html_url}}">{{options.latestCommit.date}}</a></p>
+      <p ng-hide="options.error || loading">
+        Latest commit by <a target="_blank" href="{{options.latestCommit.author.html_url}}">@{{options.latestCommit.author.login}}</a> <a target="_blank" href="{{options.latestCommit.html_url}}">{{options.latestCommit.date}}</a>
+      </p>
 
       <!-- other news can go here.... -->
 

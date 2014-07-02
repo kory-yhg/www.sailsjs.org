@@ -176,7 +176,7 @@ module.exports = {
         if (err) return sb(err);
 
         if (cached.length) {
-          sails.log('Using cached github data...',cached);
+          sails.log.silly('Using cached github data...',cached);
           return sb(null, cached[0].data);
         }
 
@@ -194,7 +194,7 @@ module.exports = {
         // Authenticate (if credentials are provided) to increase
         // our rate limit.
         if (sails.config.githubusername && sails.config.githubpassword) {
-          sails.log('Using provided credentials (%s / *****)', sails.config.githubusername);
+          sails.log.silly('Using provided credentials (%s / *****)', sails.config.githubusername);
           github.authenticate({
             type: 'basic',
             username: sails.config.githubusername,

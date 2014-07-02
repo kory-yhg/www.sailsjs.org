@@ -6,13 +6,16 @@ angular.module('Sails').directive('newsBanner', ['getRepoCommits', function (get
     link: function (scope) {
 
 
+      scope.loading = true;
       getRepoCommits.fn({
         user: 'balderdashy',
         repo: 'sails'
       })
       .then(function (_options) {
         scope.options = _options;
-      }, function (err) {
+        scope.loading = false;
+      })
+      .catch(function (err) {
         if (scope && scope.options)
           scope.options.error = true;
       });
