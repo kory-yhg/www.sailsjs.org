@@ -5,6 +5,13 @@
 var Github = require('github');
 var switchback = require('node-switchback');
 
+//**********************************************************************
+//
+// NOTE:
+// CURRENTLY UNUSED!!!!
+//
+//**********************************************************************
+
 
 // Constants
 var _3HOURS = 1000 * 60 * 60 * 3;
