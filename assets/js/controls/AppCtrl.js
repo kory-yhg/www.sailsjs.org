@@ -25,11 +25,11 @@ angular.module('Sails').controller('AppCtrl', [
     */
     $scope.$on('$locationChangeSuccess', function(event) {
       // Init skrollr if wider than mobile layout
-      if($window.innerWidth >= 768){
+      if ($window.innerWidth >= 768) {
         // Move to end of digest, allows ng-include to finish
-        $timeout(function(){
+        $timeout(function() {
           // If there's already an instance of skroller in the scope, destroy it
-          if($scope.s){
+          if ($scope.s) {
             $scope.s.destroy();
           }
           // Init skroller
@@ -43,26 +43,26 @@ angular.module('Sails').controller('AppCtrl', [
         }, 1000); // In the past, this timeout was causing issues with the nav not loading
       }
     });
-    $scope.scrollToTopOfPage = function(thenDownBy){
+    $scope.scrollToTopOfPage = function(thenDownBy) {
 
-        // Compensate for the fixed topbar
-        var topBarHeight=Number($('.topbar').height());
-        if (thenDownBy){
-          $('body').scrollTop(thenDownBy-topBarHeight-20);
-        } else {
-          $('body').scrollTop(-(topBarHeight+20));
-        }
+      // Compensate for the fixed topbar
+      var topBarHeight = Number($('.topbar').height());
+      if (thenDownBy) {
+        $('body').scrollTop(thenDownBy - topBarHeight - 20);
+      } else {
+        $('body').scrollTop(-(topBarHeight + 20));
+      }
 
     };
     $scope.scrollTo = function(anchor) {
-        var old = $location.hash();
-        
-        console.log('Scrolling to',anchor)     
-        $location.hash(anchor);
-        $anchorScroll();
-        $location.hash(old);
+      var old = $location.hash();
 
-        $scope.scrollToTopOfPage($('body').scrollTop());
+      // console.log('Scrolling to', anchor)
+      $location.hash(anchor);
+      $anchorScroll();
+      $location.hash(old);
+
+      $scope.scrollToTopOfPage($('body').scrollTop());
     };
 
     $scope.intent = angular.extend($scope.intent || {}, {
@@ -91,6 +91,7 @@ angular.module('Sails').controller('AppCtrl', [
 
       expandMenuItem: function(id) {
         var globalMenu = Menu.all($scope.docs.sectionID);
+
         // Find the targeted menu item in the visible menu and expand it
         var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu.concat($scope.docs.subMenus));
 
@@ -98,12 +99,6 @@ angular.module('Sails').controller('AppCtrl', [
         $menuItem.visibleChildren = _.where(globalMenu, {
           parent: $menuItem.id
         });
-
-        // $menuItem.visibleChildren = _.unique($menuItem.visibleChildren.concat(_.where(globalMenu, function(thisItem){
-        //   if (thisItem.parent === id && removeUncles.indexOf(id) < 0)
-        //     return thisItem
-        //   // parent: id
-        // })));
 
         // add
         $menuItem.visibleChildren = _.unique($menuItem.visibleChildren.concat(_.where(globalMenu, {
@@ -115,8 +110,9 @@ angular.module('Sails').controller('AppCtrl', [
         var $menuItem = _.find($scope.docs.visibleMenu.concat($scope.docs.subMenus), {
           id: id
         });
-        // console.log('Collapsing Menu Item:',$menuItem)
-        if (!$menuItem) {          return;
+
+        if (!$menuItem) {
+          return;
         }
         $menuItem.expanded = false;
         $menuItem.visibleChildren = [];
