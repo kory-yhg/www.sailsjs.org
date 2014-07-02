@@ -1,0 +1,26 @@
+<div class="update-banner white-banner">
+    <div class="banner-container">
+
+      <p ng-hide="options.error">Latest commit by <a target="_blank" href="{{options.latestCommit.author.html_url}}">@{{options.latestCommit.author.login}}</a> <a target="_blank" href="{{options.latestCommit.html_url}}">{{options.latestCommit.date}}</a></p>
+
+      <!-- other news can go here.... -->
+
+      <!-- e.g.: -->
+      <!-- <p ng-hide="options.error">Latest update on Github <a target="_blank" href="{{options.latestCommit.url}}">{{options.latestCommit.date | date: 'short'}}</a></p> -->
+
+      <div class="sharing">
+        <div>
+          <iframe src="http://ghbtns.com/github-btn.html?user=balderdashy&amp;repo=sails&amp;type=watch&amp;count=true"
+          allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+        </div>
+
+        <div>
+          <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fsailsjs&amp;width=75&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:86px; height:21px;" allowTransparency="true"></iframe>
+        </div>
+
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="#sailsjs, the realtime MVC framework for Node.js:" data-url="http://sailsjs.org" data-lang="en">Tweet</a>
+
+        <a href="https://twitter.com/sailsjs" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @sailsjs</a>
+      </div> <!-- sharing -->
+    </div>
+</div> <!-- white bar -->

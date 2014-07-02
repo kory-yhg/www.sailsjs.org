@@ -124,6 +124,8 @@ assets/markdown
 wiki
 assets/templates/reference*
 assets/templates/anatomy*
+assets/templates/jsmenus*
+assets/templates/gettingStarted*
 
 ####################################
 # Local copy of sails-docs repo

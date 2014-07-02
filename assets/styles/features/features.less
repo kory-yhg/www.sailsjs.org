@@ -1,0 +1,148 @@
+.features-page {
+  font-family: @mainFont;
+  .banner {
+    background-color: #E2F0F1;
+    padding: 61px 0 0;
+    background-image: none;
+
+    h1 {
+      .pageHeader(@turquoise);
+      text-align: center;
+      padding: 50px 0 20px;
+    }
+
+    p.sub-header {
+      .featuresSubHeader();
+      text-align: center;
+      padding: 0 20%;
+      opacity: .7;
+    }
+
+    img.squiddy {
+      height: 340px;
+      width: 587px;
+      margin: 0 auto;
+      padding: 50px 0;
+    }
+  }
+  // Features Container
+  .features-container {
+    .borderBox();
+    .container();
+    .clearfix();
+    padding: 100px 0px 100px 250px;
+    position: relative;
+    // Features Navigation
+    .features {
+      .borderBox();
+      width: 225px;
+      position: absolute;
+      top: 100px;
+      left: 0;
+      ul {
+        li {
+          padding: 5px 0;
+          font-size: 15px;
+          a {
+            color: @turquoise;
+            &:hover {
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    } // features navigation
+
+    // Features List
+    .feature-list {
+      padding-left: 0px;
+      ul {
+        li {
+          .borderBox();
+          .clearfix();
+          position: relative;
+          width: 100%;
+          clear: both;
+          padding: 35px 0 35px 115px;
+          h5 {
+            .featuresSectionHeader();
+            padding: 0 0 10px 20px;
+          }
+          p {
+            .smallParagraph(@black);
+            padding-left: 20px;
+            font-weight: 500;
+            a {
+              color: @turquoise;
+            }
+            code {
+              .docs_inlinecode();
+            }
+          }
+          .icon-container {
+            position: absolute;
+            left: 0;
+            top: 40px;
+            img {
+              width: 100px;
+            }
+          }
+        }
+      } // feature list
+    }
+  } // features section
+
+  @media screen and (max-width: 1000px) {
+    .features-container {
+      .feature-list ul li {
+        padding: 35px 0 35px 90px;
+        .icon-container img {
+          width: 75px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .banner {
+      h1.mobile {
+        font-size: 32px;
+      }
+      p.sub-header {
+        font-size: 20px;
+        padding: 0 20px;
+        opacity: .7;
+      }
+      img.squiddy {
+        width: 90%;
+        height: auto;
+      }
+    }
+    .features-container {
+      padding-left: 0;
+      .features {
+        position: static;
+        width: 100%;
+        h1 {
+          text-align: center;
+        }
+        ul {
+          display: none;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .features-container {
+      padding: 50px 0px 50px 0px;
+      .feature-list {
+        padding-top: 25px;
+        ul li {
+          padding: 15px 0;
+          .icon-container {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

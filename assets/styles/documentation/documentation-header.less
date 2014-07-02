@@ -2,7 +2,7 @@
 .documentation-section {
 	min-width: 900px;
 	.documentation-section-header {
-		font-family: @nav-font-family;
+		font-family: @mainFont;
 		width: 100%;
 		background-color: @turquoise;
 		z-index: 95;
@@ -30,12 +30,11 @@
 					color: @white;
 					font-weight: 400;
 					padding: 10px 20px;
-					// float: left;
 					&:hover {
 						color: @taglineBlue;
 						.transition(all 300ms);
 					}
-					&.selected {
+					&.current {
 						background-color: @darkTurquoise;
 						font-weight: 600;
 						&:hover {

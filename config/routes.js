@@ -22,6 +22,14 @@
 //
 module.exports.routes = {
 
+  // Serve .jsmenu files with a "Content-Type: text/json" header
+  'get /*.jsmenu': function (req, res, next) {
+    res.type('json');
+    next();
+  },
+
+  'get /news': 'NewsController.find',
+
 	// To route the home page to the "index" action of FooController
 	// (if no controller exists, Sails will look for a view called `views/home/index.*`)
 	// '/' : {
@@ -50,5 +58,6 @@ module.exports.routes = {
 	*/
 
 	'get /': 'ProxyController.fetch',
-	'get /refresh': 'refreshController.index'
+	'get /refresh': 'RefreshController.index',
+	'get /irc/chat': 'IrcController.index'
 };

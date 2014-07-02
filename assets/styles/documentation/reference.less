@@ -1,309 +1,252 @@
 .reference-page {
-	.container();
-	.clearfix();
-	padding: 50px 0 100px;
-	font-family: @nav-font-family;
+  .container();
+  .clearfix();
+  .borderBox();
+  position: relative;
+  padding: 50px 0px 100px 0px;
+  font-family: @mainFont;
 
-	.left-column {
-		width: 75%;
-		float: left;
+  .left-column {
+    .borderBox();
+    width: 70%;
+    float: left;
 
+    .reference-item {
+      padding-bottom: 50px;
+    }
+    // Section with links and comments
+    // at the bottom
+    .link-comment-section {
+      border-top: 3px solid @ltestGray;
+      h3 {
+        font-size: 1.4em;
+        font-weight: 300;
+        padding: 12px 0 12px 50px;
+      }
+      a {
+        font-size: 0.8em;
+        text-decoration: underline;
+        font-weight: inherit;
+      }
+      button {
+        .borderBox();
+        height: 36px;
+        background-color: @turquoise;
+        border: none;
+        color: @white;
+        text-transform: uppercase;
+        cursor: pointer;
+        &:active {
+          background-color: @darkTurquoise;
+        }
+        &:hover {
+          color: @taglineBlue;
+          .transition(all 0.25s);
+        }
+        .loading-spinner {
+          display: none;
+          margin: auto;
+        }
+      }
+      .link-section {
+        .borderBox();
+        padding: 25px 0 40px;
+        h3 {
+          background: url('/images/icon_stackoverflow.png') no-repeat left center;
+        }
+        input {
+          .borderBox();
+          width: 80%;
+          height: 36px;
+          border: 1px solid @ltestGray;
+          padding: 5px 10px;
+          font-size: 0.9em;
+          font-weight: 300;
+        }
+        button {
+          width: 18.5%;
+          font-size: 0.9em;
+          float: right;
+        }
+        .link-list {
+          background-color: @seaGreen;
+          padding: 10px;
+          margin-top: 10px;
+          .link {
+            white-space: nowrap;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            font-weight: 600;
+            padding: 3px;
+          }
+          .loading-spinner {
+            margin: 10px auto;
+            display: none;
+          }
+          .empty-message, .error-message, .server-error-message {
+            font-weight: 300;
+            font-style: italic;
+            display: none;
+          }
+        }
+      }
+      .comment-section {
+        h3 {
+          background: url('/images/icon_comments.png') no-repeat left center;
+        }
+        .sorting-links {
+          font-size: 0.8em;
+          padding-bottom: 10px;
+          color: @ltGray;
+          span {
+            cursor: pointer;
+          }
+          span.active {
+            color: @turquoise;
+            font-weight: 600;
+          }
+        }
+        .comment-form {
+          padding-bottom: 40px;
+          textarea {
+            .borderBox();
+            width: 100%;
+            height: 100px;
+            border: 1px solid @ltestGray;
+            padding: 10px;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+          }
+          button {
+            width: 100%;
+            font-size: 1.1em;
+          }
+          span.error {
+            display: none;
+          }
+        }
+        .comment-list {
+          .clearfix();
+          border-top: 3px solid @ltestGray;
+          color: @medGray;
+          .comment {
+            padding: 15px 0px 25px 80px;
+            border-bottom: 2px solid @ltestGray;
+            position: relative;
+            div.avatar {
+              width: 65px;
+              height: 65px;
+              position: absolute;
+              top: 20px;
+              left: 0px;
+            }
+            span {
+              position: absolute;
+              right: 0px;
+              top: 15px;
+              font-size: 0.8em;
+              font-weight: 300;
+            }
+            h4, p {
+              .borderBox();
+            }
+            h4 {
+              font-size: 1.2em;
+              padding-bottom: 10px;
+            }
+            p {
+              font-size: 0.8em;
+            }
+          }
+          .loading-spinner {
+            margin: 25px auto;
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  //Styles for the navigation sidebar
+  .reference-sidebar {
+    .borderBox();
+    width: 25%;
+    float: right;
+    text-align: right;
+    h4 {
+      font-size: 1.6em;
+      color: @turquoise;
+      font-weight: 300;
+      padding: 0px 7px 0px 5px;
+    }
+    ul {
+      line-height: 1.8em;
+      .expand-arrow {
+        display: none;
+      }
+      li.current-section {
+        >span {
+          .borderBox();
+          color: @turquoise;
+        }
+        li.parent-section {
+          >span {
+            color: @headerGray!important;
+          }
+          li >span {
+            color: @turquoise;
+          }
+        }
+      }
+      li.current-parent-section {
+        >span {
+          border-right: 4px solid @turquoise;
+          padding-right: 7px;
+        }
+      }
+      li.parent-section {
+        >span {
+          font-weight: 600;
+          color: @black;
+        }
+        &.subsection-current-parent >span {
+          color: @turquoise;
+        }
+       li {
+          color: @turquoise!important;
+        }
+      }
 
-		.reference-item {
-			padding-bottom: 50px;
-		}
-
-
-		// Section with links and comments
-		// at the bottom
-		.link-comment-section {
-			border-top: 3px solid @ltestGray;
-
-			h3 {
-				font-size: 1.4em;
-				font-weight: 300;
-				padding: 12px 0 12px 50px;
-			}
-
-			a {
-				font-size: 0.8em;
-				text-decoration: underline;
-				font-weight: inherit;
-			}
-
-			button {
-				.borderBox();
-				height: 36px;
-				background-color: @turquoise;
-				border: none;
-				color: @white;
-				text-transform: uppercase;
-				cursor: pointer;
-				&:active {
-					background-color: @darkTurquoise;
-				}
-				&:hover {
-					color: @taglineBlue;
-					.transition(all 0.25s);
-				}
-				.loading-spinner {
-					display: none;
-					margin: auto;
-				}
-			}
-
-			.link-section {
-				.borderBox();
-				padding: 25px 0 40px;
-
-				h3 {
-					background: url('/images/icon_stackoverflow.png') no-repeat left center;
-				}
-
-				input {
-					.borderBox();
-					width: 80%;
-					height: 36px;
-					border: 1px solid @ltestGray;
-					padding: 5px 10px;
-					font-size: 0.9em;
-					font-weight: 300;
-				}
-
-				button {
-					width: 18.5%;
-					font-size: 0.9em;
-					float: right;
-				}
-
-				.link-list {
-					background-color: @seaGreen;
-					padding: 10px;
-					margin-top: 10px;
-					.link {
-						white-space: nowrap;
-						overflow-x: hidden;
-						text-overflow: ellipsis;
-						font-weight: 600;
-						padding: 3px;
-					}
-					.loading-spinner {
-						margin: 10px auto;
-						display: none;
-					}
-					.empty-message, .error-message, .server-error-message {
-						font-weight: 300;
-						font-style: italic;
-						display: none;
-					}
-				}
-				//change to use data attributes!
-				&.submitting {
-					button.add-button {
-						span {
-							display: none;
-						}
-						.loading-spinner {
-							display: block;
-						}
-					}
-				}
-				&.syncing {
-					.link-list {
-						.loading-spinner {
-							display: block;
-						}
-					}
-				}
-				&.empty {
-					.empty-message {
-						display: block;
-					}
-				}
-				&.error {
-					.error-message {
-						display: block;
-					}
-				}
-
-                &.server-error {
-                    .server-error-message {
-                        display: block;
-                    }
-                }
-			}
-
-			.comment-section {
-
-				h3 {
-					background: url('/images/icon_comments.png') no-repeat left center;
-				}
-
-				.sorting-links {
-					font-size: 0.8em;
-					padding-bottom: 10px;
-					color: @ltGray;
-
-					span {
-						cursor: pointer;
-					}
-
-					span.active {
-						color: @turquoise;
-						font-weight: 600;
-					}
-				}
-
-				.comment-form {
-					padding-bottom: 40px;
-
-					textarea {
-						.borderBox();
-						width: 100%;
-						height: 100px;
-						border: 1px solid @ltestGray;
-						padding: 10px;
-						font-size: 0.9em;
-						margin-bottom: 10px;
-					}
-
-					button {
-						width: 100%;
-						font-size: 1.1em;
-					}
-					span.error {
-						display: none;
-					}
-				}
-
-				.comment-list {
-					.clearfix();
-					border-top: 3px solid @ltestGray;
-					color: @medGray;
-
-					.comment {
-						padding: 15px 0px 25px 80px;
-						border-bottom: 2px solid @ltestGray;
-						position: relative;
-						div.avatar {
-							width: 65px;
-							height: 65px;
-							position: absolute;
-							top: 20px;
-							left: 0px;
-						}
-
-						span {
-							position: absolute;
-							right: 0px;
-							top: 15px;
-							font-size: 0.8em;
-							font-weight: 300;
-						}
-
-						h4, p {
-							.borderBox();
-						}
-						h4 {
-							font-size: 1.2em;
-							padding-bottom: 10px;
-						}
-						p {
-							font-size: 0.8em;
-						}
-					}
-					.loading-spinner {
-						margin: 25px auto;
-						display: none;
-					}
-				}
-				//change to use data attributes!
-				&.submitting {
-					.comment-form button.submit-button {
-						span {
-							display: none;
-						}
-						.loading-spinner {
-							display: block;
-						}
-					}
-				}
-				&.syncing {
-
-				}
-			}
-		}
-	}
-
-
-	//Styles for the navigation sidebar
-	.reference-sidebar {
-		width: 20%;
-		.borderBox();
-		float: right;
-		text-align: right;
-
-		h4 {
-			font-size: 1.6em;
-			color: @turquoise;
-			font-weight: 300;
-			padding: 0px 15px 0px 5px;
-		}
-
-		.ref-links {
-			display: none;
-			color: @ltGray;
-			font-weight: 300;
-		}
-
-		.main-sections {
-			line-height: 1.7em;
-			.main-section-title {
-				padding-right: 15px;
-				font-size: 15px;
-				>a {
-					color: black;
-					font-weight: 600;
-					text-decoration: none;
-					cursor: pointer;
-					&:hover {
-						color: @turquoise;
-						.transition(all 0.25s);
-					}
-				}
-
-                > a.active {
-                    color: @turquoise;
-                }
-
-				&.expanded {
-					padding-right: 0px;
-					> a {
-						padding-right: 10px;
-						border-right: 5px solid @turquoise;
-					}
-					li {
-						padding-right: 15px;
-						white-space: nowrap;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						a {
-							// color: @ltGray;
-							color: @medGray;
-							font-weight: 400;
-    						&.active {
-    							color: @turquoise;
-    						}
-							&:hover {
-								color: @turquoise;
-							}
-                        }
-					}
-					.ref-links {
-						display: block;
-					}
-				}
-			}
-		}
-	}
+      >li {
+        font-weight: 600;
+        color: @black;
+        font-size: 12px;
+        span {
+          cursor: pointer;
+          padding-right: 11px;
+          &:hover {
+           color: @turquoise;
+           .transition(all 250ms);
+          }
+        }
+        &.main-section.current-section {
+          >span {
+            border-right: 4px solid @turquoise;
+            padding-right: 7px;
+          }
+        }
+        >ul >li {
+          font-weight: 400;
+          font-size: 12px;
+          color: @headerGray;
+          &:last-child {
+            padding-bottom: 10px;
+          }
+          // color: @black;
+          li {
+            color: @black;
+          }
+        }
+      }
+    }
+  }
 }

@@ -22,13 +22,23 @@ var cssFilesToInject = [
 // Client-side javascript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
-  'mixins/jquery.js',
-  'mixins/lodash.js',
-  'mixins/backbone.js',
-  'mixins/mast.js',
-  'mixins/nameframework.js',
-  'data/models/**/*.js',
-  'data/collections/**/*.js',
+
+
+  // Other stuff
+  'dependencies/jquery.js',
+  'dependencies/lodash.js',
+
+  // Angular
+  'dependencies/angular.min.js',
+  'dependencies/angular-route.min.js',
+  'dependencies/*.dir.js',
+  'dependencies/directive.*.js',
+
+  // Other dependencies
+  'dependencies/**/*.js',
+
+  // Our single page app
+  'js/SinglePage.js',
   'js/**/*.js'
 ];
 
@@ -43,9 +53,9 @@ var jsFilesToInject = [
 // templates get spit out to the same file.  Be sure and check out `tasks/README.md`
 // for information on customizing and installing new tasks.
 var templateFilesToInject = [
-  'templates/**/*.html'
+  // 'templates/**/*.html',
+  'templates/**/*.jsmenu'
 ];
-
 
 
 

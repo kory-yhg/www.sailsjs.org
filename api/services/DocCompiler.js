@@ -33,15 +33,6 @@ module.exports = function compileDocumentationMarkdown (cb) {
     html = html.replace(/\:white_large_square\:/g, '<div class="replacementIcon no"></div>');
     html = html.replace(/\:heavy_multiplication_x\:/g, '<div class="replacementIcon never"></div>');
 
-    try {
-
-        var loseExtension = writeFileObject.fullPathAndFileName.split('.html')[0];
-        loseExtension = loseExtension.replace(/\./g,'_d_')+'.html';
-    } catch (replaceError) {
-        console.log('Template ',writeFileObject.templateName,'doesnt have .html extension',replaceError)
-        loseExtension = writeFileObject.fullPathAndFileName;
-    }
-    writeFileObject.fullPathAndFileName = loseExtension;
 
     // Replace ((bubble))s with HTML
     html = html.replace(/\(\(([^())]*)\)\)/g, '<bubble>$1</bubble>');
@@ -73,11 +64,33 @@ module.exports = function compileDocumentationMarkdown (cb) {
     applyToTemplates: {
       beforeConvert: beforeConvert,
       afterConvert: afterConvert
-    }
-  }, {
+    },
+    saveJsonMenu: 'assets/templates/jsmenus/reference.jsmenu'
+  },{
     docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
     dirNameInRepo: 'anatomy',
-    parsedTemplatesDirectory: 'assets/templates/anatomy/'
+    parsedTemplatesDirectory: 'assets/templates/anatomy/',
+    applyToTemplates: {
+      beforeConvert: beforeConvert,
+      afterConvert: afterConvert
+    },
+    saveJsonMenu: 'assets/templates/jsmenus/anatomy.jsmenu'
+  },{
+    docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
+    dirNameInRepo: 'gettingStarted',
+    parsedTemplatesDirectory: 'assets/templates/gettingStarted/',
+    applyToTemplates: {
+      beforeConvert: beforeConvert,
+      afterConvert: afterConvert
+    }
+  },{
+    docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
+    dirNameInRepo: 'irc',
+    parsedTemplatesDirectory: 'assets/templates/irc/',
+    applyToTemplates: {
+      beforeConvert: beforeConvert,
+      afterConvert: afterConvert
+    }
   }], afterTemplateCB);
 
 }

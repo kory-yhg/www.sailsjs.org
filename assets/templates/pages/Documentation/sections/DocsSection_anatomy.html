@@ -1,0 +1,29 @@
+<div class="anatomy-page">
+	<div class="anatomy-container">
+		<div class="navigation">
+			<h2>myApp</h2>
+			<ul class="file-list">
+				<!-- Folders get class "expanded" to show their contents -->
+				<!-- Files get class "active" to show which one you're looking at.-->
+				<!-- The top-level folder containing the "active" file also gets the class "active" -->
+        <li ng-repeat="menuItem in docs.visibleMenu"
+          stop-propagation="click"
+          ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'current-parent-section': docs.currentPage.parent === menuItem.id, 'folder': menuItem.isParent === true, 'expanded': menuItem.expanded === true}"
+          ng-click="intent.toggleMenuItem(menuItem.id)">
+          <div ng-include="'templates/pages/Documentation/sections/NavItem.html'"></div>
+        </li>
+      </ul>
+    </div>
+
+		<!-- Region with the information about the selected file -->
+    <div class="anatomy-content">
+  		<div class="anatomy-section"
+        ng-include
+        src="docs.currentPage.templateSrc"></div>
+  		<div class="contribution-message">
+        <h2>Is something missing?</h2>
+        <p>If you notice something we've missed or could be improved on, please follow <a href="{{docs.currentPage.fileOnGithub}}" target="_blank">this link</a> and submit a pull request to the sails-docs repo.  Once we merge it, the changes will be immediately reflected on the website.</p>
+  		</div>
+    </div>
+	</div>
+</div>

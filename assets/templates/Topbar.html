@@ -1,7 +1,9 @@
 <div class="topbar">
-  
+
   <!--Mobile menu button-->
-  <div class="menu">
+  <div class="menu"
+    ng-click="menuVisible = !menuVisible"
+    ng-class="{'menu-open': menuVisible === true}">
     <div class="menu-button-stripe"></div>
     <div class="menu-button-stripe"></div>
     <div class="menu-button-stripe"></div>
@@ -9,15 +11,31 @@
 
   <!--Navigation list-->
   <div class="nav-container">
-    <a href="#!">
+    <a href="#/">
       <img class="logo" src="/images/sails-logo.jpg" alt="Sails" />
     </a>
-    <ul class="nav">
-      <!-- <li><a class="sails-site" data-page="HomePage" href="#!" id="home">Home</a></li> -->
-      <li><a class="sails-site" data-page="GetStartedPage" href="#!getStarted">Get Started</a></li>
-      <li><a class="sails-site" data-page="DocsSection" href="#!documentation">Documentation</a></li>
-      <li class="no-mobile"><a class="sails-site" data-page="LogosPage" href="#!logos">Logos</a></li>
-      <li><a target="_blank" href="http://michaelmcneil.com">Blog</a></li>
+    <ul class="nav" ng-class="{'menu-open': menuVisible === true}">
+      <li ng-click="menuVisible = false"><a class="sails-site"
+          ng-class="{current: getIsCurrentPage('/')}"
+          href="#/">Home</a></li>
+      <li ng-click="menuVisible = false"><a class="sails-site"
+          ng-class="{current: getIsCurrentPage('/features')}"
+          href="#/features">Features</a></li>
+      <li ng-click="menuVisible = false"><a class="sails-site"
+          ng-class="{current: getIsCurrentPage('/getStarted')}"
+          href="#/getStarted">Get Started</a></li>
+      <li ng-click="menuVisible = false"><a class="sails-site"
+          ng-class="{current: getIsCurrentPage('/documentation')}"
+          href="#/documentation/reference">Documentation</a></li>
+      <li ng-click="menuVisible = false"><a class="sails-site"
+          ng-class="{current: getIsCurrentPage('/support')}"
+          href="#/support">Support</a></li>
+     <!--  <li class="no-mobile">
+        <a class="sails-site"
+          ng-class="{current: getIsCurrentPage('/logos')}"
+          href="#/logos">Logos</a>
+      </li> -->
+<!--       <li><a target="_blank" href="http://michaelmcneil.com">Blog</a></li> -->
     </ul>
   </div>
 </div>

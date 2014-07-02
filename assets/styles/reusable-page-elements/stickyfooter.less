@@ -1,0 +1,22 @@
+html,body {
+  height: 100%;
+}
+
+/* The bottom margin on #wrap must be the negative value of the height on #push and #footer.
+ *
+ * e.g.
+ * ------------------------------------------
+ * #push and footer height is 60px;
+ * #wrap margin bottom is -60px;
+ */
+.wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -60px;
+}
+
+/* Make sure that #push and #footer have the same height. */
+#push {
+  height: 60px;
+}

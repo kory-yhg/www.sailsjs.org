@@ -1,11 +1,12 @@
 .documentation-main-page {
-	font-family: @nav-font-family;
+	font-family: @mainFont;
 	min-width: 900px;
 	div.page-header {
 		.pageHeader();
+    .footerGradient();
 		div.page-header-container {
 			background: url('/images/img_sailsShadow.png') no-repeat 42% bottom;
-			padding: 150px 0 75px;
+			padding: 160px 0 80px;
 			h5 {
 				font-style: italic;
 			}
@@ -14,7 +15,7 @@
 	div.main-container {
 		.container();
 		.clearfix();
-		padding: 50px 0 0;
+		padding: 50px 0 50px;
 
 		ul.link-list {
 			.borderBox();
@@ -57,6 +58,19 @@
 					}
 				}
 			}
+      .irc-directions {
+        // background-color: @turquoise;
+        padding: 20px;
+        border-radius: 10px;
+        h4 {
+          color: @turquoise;
+          font-weight: 300;
+          font-size: 1.2em;
+        }
+        p {
+          font-size: .8em;
+        }
+      }
 		}
 
 		div.version-notes-links {
