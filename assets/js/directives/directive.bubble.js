@@ -1,12 +1,16 @@
 /**
  * Bubble directive.
  * ------------------------------------------------------------------------
- * This is a custom directive that shows type labels
+ * This is a custom directive that shows type labels.
  *
  * Usage:
  * ```
  * <bubble type="typeOfThing" colors="boolean"></bubble>
  * ```
+ *
+ * ------------------------------------------------------------------------
+ * MIT License
+ * © 2014 Rachael Shaw & contributors
  */
 angular.module('Sails')
 
@@ -24,4 +28,3 @@ angular.module('Sails')
   };
 
 }]);
-bubbles.js
