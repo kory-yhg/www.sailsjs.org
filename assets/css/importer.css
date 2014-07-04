@@ -1,3 +1,14 @@
+/**
+ * wtf is this
+ * <3 mike
+ *
+ * maybe it is the reset?
+ */
+
+* {
+  background: red!important;
+}
+
 html,
 body {
   text-align: left;
@@ -739,28 +750,28 @@ region[default="Topbar"] {
   .banner {
     background: #118798;
     /* Old browsers */
-  
+
     background: -moz-linear-gradient(top, #118798 0%, #118798 0%, #0597ac 100%, #0597ac 100%);
     /* FF3.6+ */
-  
+
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #118798), color-stop(0%, #118798), color-stop(100%, #0597ac), color-stop(100%, #0597ac));
     /* Chrome,Safari4+ */
-  
+
     background: -webkit-linear-gradient(top, #118798 0%, #118798 0%, #0597ac 100%, #0597ac 100%);
     /* Chrome10+,Safari5.1+ */
-  
+
     background: -o-linear-gradient(top, #118798 0%, #118798 0%, #0597ac 100%, #0597ac 100%);
     /* Opera 11.10+ */
-  
+
     background: -ms-linear-gradient(top, #118798 0%, #118798 0%, #0597ac 100%, #0597ac 100%);
     /* IE10+ */
-  
+
     background: linear-gradient(to bottom, #118798 0%, #118798 0%, #0597ac 100%, #0597ac 100%);
     /* W3C */
-  
+
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#118798', endColorstr='#0597ac', GradientType=0);
     /* IE6-9 */
-  
+
     height: auto;
     text-align: center;
     padding: 100px 0 0;
@@ -1817,7 +1828,7 @@ region[default="Topbar"] {
   min-width: 700px;
 }
 @media screen and (max-width: 1024px) {
-  
+
 }
 @media screen and (max-width: 500px) {
   .documentation .mobile-docs {
