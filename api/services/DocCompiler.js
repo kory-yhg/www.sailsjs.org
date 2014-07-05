@@ -1,4 +1,10 @@
+/**
+ * Module dependencies
+ */
+
 var DocTemplater = require('doc-templater');
+
+
 
 
 /**
@@ -9,23 +15,15 @@ var DocTemplater = require('doc-templater');
 module.exports = function compileDocumentationMarkdown (cb) {
 
   var compiler = DocTemplater({logger:true});
-  var afterTemplateCB = function(err, stuff) {
-    if (err) {
-      return cb(err);
-    } else {
-      cb(null, stuff);
-    }
-  };
 
   // This function is applied to each template before the markdown is converted to markup
-  var beforeConvert = function(writeFileObject, cb) {
-    return cb(writeFileObject);
+  var beforeConvert = function(writeFileObject, done) {
+    return done(writeFileObject);
   };
 
   // This function is applied to each template after the markdown is converted to markup
-  var afterConvert = function(writeFileObject, cb) {
-    //writeFileObject.templateHTML = '*|'+writeFileObject.fullPathAndFileName+'|*\n'+writeFileObject.templateHTML;
-    // var JQUERY = require('jquery');
+  var afterConvert = function(writeFileObject, done) {
+
     var html = writeFileObject.templateHTML;
 
     // Replace github emoji with HTML
@@ -33,27 +31,11 @@ module.exports = function compileDocumentationMarkdown (cb) {
     html = html.replace(/\:white_large_square\:/g, '<div class="replacementIcon no"></div>');
     html = html.replace(/\:heavy_multiplication_x\:/g, '<div class="replacementIcon never"></div>');
 
-
     // Replace ((bubble))s with HTML
     html = html.replace(/\(\(([^())]*)\)\)/g, '<bubble type="$1" colors="true"></bubble>');
 
     writeFileObject.templateHTML = html;
-    return cb(writeFileObject);
-    // first argument can be html string, filename, or url
-    // require('jsdom').env(html, function (errors, window) {
-    //   if (errors) return cb(errors);
-    //   var $ = JQUERY(window);
-    //   // $('*:contains("white_check_mark")').html('<div class="replacementIcon"></div>')
-    //   // $('*:contains("white_check_mark")').addClass('yes');
-    //   // $('td:contains("white_check_mark"),li:contains("white_check_mark")').html('');
-    //   // $('td:contains("white_large_square"),li:contains("white_large_square")').addClass('no').addClass('notyet');
-    //   // $('td:contains("white_large_square"),li:contains("white_large_square")').html('<div class="replacementIcon"></div>');
-    //   // $('td:contains("heavy_multiplication_x"),li:contains("heavy_multiplication_x")').addClass('never');
-    //   // $('td:contains("heavy_multiplication_x"),li:contains("heavy_multiplication_x")').html('<div class="replacementIcon"></div>');
-    //   // Convert transformed HTML into a string and send it back
-    //   writeFileObject.templateHTML = window.document.documentElement.outerHTML;
-    //   return cb(writeFileObject)
-    // });
+    return done(writeFileObject);
   };
 
 
@@ -91,6 +73,6 @@ module.exports = function compileDocumentationMarkdown (cb) {
       beforeConvert: beforeConvert,
       afterConvert: afterConvert
     }
-  }], afterTemplateCB);
+  }], cb);
 
-}
+};
