@@ -31,7 +31,7 @@ angular.module('Sails').factory('Menu', function() {
       // on every key before the text is parsed into JSON.
       // var jsMenu = parseMenu(JST[pathToJSMenu]().replace(/assets\/templates\//ig,''));
      var jsMenu = parseMenu(JST[pathToJSMenu]());
- 
+
       // console.log(JSON.stringify(jsMenu))
 
       menu[_jsMenuIdentity] = jsMenu;
@@ -86,6 +86,13 @@ angular.module('Sails').factory('Menu', function() {
   function parseMenu(menuObjectReturnValue) {
     try {
       var theMenu = JSON.parse(menuObjectReturnValue);
+
+      // Expose `displayName` on top level of each menu item object
+      // to facilitate easier lookup in ctrls.
+      theMenu = _.map(theMenu, function (item){
+        item.displayName = item.displayName||(item.data&&item.data.displayName);
+        return item;
+      });
       return theMenu;
     } catch (menuParseError) {
       console.error('error:', menuParseError);

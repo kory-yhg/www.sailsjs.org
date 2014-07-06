@@ -6,15 +6,16 @@ var DocTemplater = require('doc-templater');
 
 
 
-
 /**
  * Used for compiling markdown documentation into HTML templates.
  * @param  {Function} cb
  */
 
-module.exports = function compileDocumentationMarkdown (cb) {
+module.exports = function compileDocumentationMarkdown(cb) {
 
-  var compiler = DocTemplater({logger:true});
+  var compiler = DocTemplater({
+    logger: true
+  });
 
   // This function is applied to each template before the markdown is converted to markup
   var beforeConvert = function(writeFileObject, done) {
@@ -48,6 +49,17 @@ module.exports = function compileDocumentationMarkdown (cb) {
       afterConvert: afterConvert
     },
     saveJsonMenu: 'assets/templates/jsmenus/reference.jsmenu'
+  }, {
+
+    docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
+    dirNameInRepo: 'concepts',
+    parsedTemplatesDirectory: 'assets/templates/concepts/',
+    applyToTemplates: {
+      beforeConvert: beforeConvert,
+      afterConvert: afterConvert
+    },
+    saveJsonMenu: 'assets/templates/jsmenus/concepts.jsmenu'
+
   },{
     docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
     dirNameInRepo: 'anatomy',
@@ -57,7 +69,7 @@ module.exports = function compileDocumentationMarkdown (cb) {
       afterConvert: afterConvert
     },
     saveJsonMenu: 'assets/templates/jsmenus/anatomy.jsmenu'
-  },{
+  }, {
     docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
     dirNameInRepo: 'gettingStarted',
     parsedTemplatesDirectory: 'assets/templates/gettingStarted/',
@@ -65,7 +77,7 @@ module.exports = function compileDocumentationMarkdown (cb) {
       beforeConvert: beforeConvert,
       afterConvert: afterConvert
     }
-  },{
+  }, {
     docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
     dirNameInRepo: 'irc',
     parsedTemplatesDirectory: 'assets/templates/irc/',

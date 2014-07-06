@@ -1,0 +1,23 @@
+<div class="reference-page">
+  <!-- The documentation content pulled in from GitHub -->
+  <div class="left-column">
+    <div class="reference-item"
+      ng-include src="docs.currentPage.templateSrc"></div>
+    <div class="contribution-message">
+        <h2>Is something missing?</h2>
+        <p>If you notice something we've missed or could be improved on, please follow <a href="{{docs.currentPage.fileOnGithub}}" target="_blank">this link</a> and submit a pull request to the sails-docs repo.  Once we merge it, the changes will be immediately reflected on the website.</p>
+    </div>
+  </div>
+
+  <!-- Navigation around the different reference pages -->
+  <div class="reference-sidebar">
+    <h4>Concepts</h4>
+    <ul class="main-sections">
+      <li ng-repeat="menuItem in docs.visibleMenu"
+        class="main-section"
+        ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'current-parent-section': docs.currentPage.parent === menuItem.id}"
+        stop-propagation="click"
+        ng-include src="'templates/pages/Documentation/sections/NavItem.html'"></li>
+    </ul>
+  </div>
+</div>
