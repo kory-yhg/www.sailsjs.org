@@ -8,7 +8,8 @@
   var dependencies = [
     'ngRoute',
     'directive.stopPropagation',
-    'duScroll'
+    'duScroll',
+    'ngAnimate'
   ];
 
   angular.module('Sails', dependencies);

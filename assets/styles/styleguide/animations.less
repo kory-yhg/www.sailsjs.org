@@ -80,3 +80,44 @@
     -o-animation-direction: @direction;
     animation-direction: @direction;
 }
+
+//Animations:
+.fadeIn() {
+  .animationName(fade-in);
+  @-webkit-keyframes fade-in {
+    0%    {opacity: 0;}
+    100%  {opacity: 1;}
+  }
+  @-moz-keyframes fade-in {
+    0%    {opacity: 0;}
+    100%  {opacity: 1;}
+  }
+  @-o-keyframes fade-in {
+    0%    {opacity: 0;}
+    100%  {opacity: 1;}
+  }
+  @keyframes fade-in {
+    0%    {opacity: 0;}
+    100%  {opacity: 1;}
+  }
+}
+
+.fadeOut() {
+  .animationName(fade-out);
+  @-webkit-keyframes fade-out {
+    0%    {opacity: 1;}
+    100%  {opacity: 0;}
+  }
+  @-moz-keyframes fade-out {
+    0%    {opacity: 1;}
+    100%  {opacity: 0;}
+  }
+  @-o-keyframes fade-out {
+    0%    {opacity: 1;}
+    100%  {opacity: 0;}
+  }
+  @keyframes fade-out {
+    0%    {opacity: 1;}
+    100%  {opacity: 0;}
+  }
+}

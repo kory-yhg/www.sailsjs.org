@@ -13,6 +13,14 @@
 
     .reference-item {
       padding-bottom: 50px;
+      &.ng-enter {
+        .fadeIn();
+        .animationDuration(800ms);
+      }
+      &.ng-leave {
+        .fadeOut();
+        .animationDuration(200ms);
+      }
     }
     // Section with links and comments
     // at the bottom
