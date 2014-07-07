@@ -126,25 +126,35 @@
 .fadeAnimation() {
   //(uncomment the bg colors to see when each class is being added)
   &.ng-enter, &.ng-leave {
-    .transition(all 650ms);
+    .transition(all 250ms);
+    -webkit-transition-delay:100ms;
+    -moz-transition-delay:100ms;
+    -o-transition-delay:100ms;
+    transition-delay:100ms;
   }
   &.ng-enter {
     opacity: 0;
-    z-index: 50;
-    // background-color: lightblue;
     &.ng-enter-active {
       opacity: 1;
-      // background-color: blue;
     }
   }
-  &.ng-leave {
-    opacity: 1;
-    z-index: 55;
-    // background-color: pink;
-    &.ng-leave-active {
-      opacity: 0;
-      // background-color: red;
-    }
+  // &.ng-enter {
+  //   .fadeIn();
+  //   .animationDelay(25ms);
+  //   .animationDuration(500ms);
+  // }
+  &.animating-out {
+    .fadeOut();
+    .animationDuration(250ms);
   }
+  // &.ng-leave {
+  //   opacity: 1;
+  //   z-index: 55;
+  //   // background-color: pink;
+  //   &.ng-leave-active {
+  //     opacity: 0;
+  //     // background-color: red;
+  //   }
+  // }
 }
 

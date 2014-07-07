@@ -1,8 +1,8 @@
 <div class="reference-page"><!-- CurrentPageID:{{docs.currentPage.id}} CurrentPageParent:{{docs.parentPage.id}} -->
   <!-- The documentation content pulled in from GitHub -->
-  <div class="left-column">
+  <div class="left-column" ng-class="{'animating-out': animatingOut === true}">
     <div class="reference-item"
-      ng-include src="docs.currentPage.templateSrc"></div>
+      ng-include src="docs.currentPage.templateSrc" ng-cloak></div>
     <div class="contribution-message">
         <h2>Is something missing?</h2>
         <p>If you notice something we've missed or could be improved on, please follow <a href="{{docs.currentPage.fileOnGithub}}" target="_blank">this link</a> and submit a pull request to the sails-docs repo.  Once we merge it, the changes will be immediately reflected on the website.</p>

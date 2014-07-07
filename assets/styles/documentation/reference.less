@@ -12,6 +12,11 @@
     float: left;
     position: relative;
 
+    &.animating-out {
+      .fadeOut();
+      .animationDuration(500ms);
+    }
+
     .reference-item {
       .fadeAnimation();
       padding-bottom: 50px;

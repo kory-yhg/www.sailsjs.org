@@ -77,8 +77,12 @@ angular.module('Sails').controller('AppCtrl', [
        * @param  {String} hash (e.g. #/foo/bar, #/blah)
        */
       goto: function(hash) {
-        window.location.hash = hash;
-        $scope.scrollToTopOfPage();
+        $scope.animatingOut = true;
+        $timeout(function() {
+          window.location.hash = hash;
+          $scope.scrollToTopOfPage();
+          $scope.animatingOut = false;
+        }, 150);
       },
       toggleMenuItem: function(id) {
         var $menuItem = $scope.docs.findMenuItemByID(id, $scope.docs.visibleMenu.concat($scope.docs.subMenus));
