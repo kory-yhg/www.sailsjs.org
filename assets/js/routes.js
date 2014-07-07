@@ -85,15 +85,15 @@ angular.module('Sails').config(['$routeProvider',function($routeProvider) {
   //   }]
   // })
 
-  .when('/documentation/concepts', {
-    templateUrl: 'templates/pages/Documentation/DocsSection.html',
-    redirectTo: '/documentation/concepts/Home'
-  })
+  // .when('/documentation/concepts', {
+  //   templateUrl: 'templates/pages/Documentation/DocsSection.html',
+  //   redirectTo: '/documentation/concepts'
+  // })
 
-  .when('/documentation/reference', {
-    templateUrl: 'templates/pages/Documentation/DocsSection.html',
-    redirectTo: '/documentation/reference/Home'
-  })
+  // .when('/documentation/reference', {
+  //   templateUrl: 'templates/pages/Documentation/DocsSection.html',
+  //   redirectTo: '/documentation/reference'
+  // })
 
   // Documentation section sub-router
   .when('/documentation/:sectionPath*?', {
@@ -161,9 +161,9 @@ angular.module('Sails').config(['$routeProvider',function($routeProvider) {
             return checkItem;
         }) ||
 
-        // Or default to the page with label "Home"
+        // Or default to the page with label "--"
         _.find(menu, {
-          displayName: 'Home'
+          displayName: '--'
         });
 
         // Then show the appropriate sub-section
