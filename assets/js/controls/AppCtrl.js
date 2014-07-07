@@ -5,7 +5,8 @@ angular.module('Sails').controller('AppCtrl', [
   'Menu',
   '$location',
   '$anchorScroll',
-  function($scope, $window, $timeout, Menu, $location, $anchorScroll) {
+  '$animate',
+  function($scope, $window, $timeout, Menu, $location, $anchorScroll, $animate) {
 
     MENU = Menu;
 

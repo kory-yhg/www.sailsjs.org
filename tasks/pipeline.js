@@ -31,7 +31,7 @@ var jsFilesToInject = [
   // Angular
   'dependencies/angular.min.js',
   'dependencies/angular-route.min.js',
-  'dependencies/angular-animate.js',
+  'dependencies/angular-animate.min.js',
   'dependencies/*.dir.js',
   'dependencies/directive.*.js',
 
