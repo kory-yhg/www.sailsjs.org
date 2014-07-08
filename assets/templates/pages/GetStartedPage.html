@@ -1,4 +1,4 @@
-<div skrollr class="page get-started" data-0="background-position: 0px 0px; background-color:rgb(193,231,234);" data-4200="background-position: 0px -4200px; background-color:rgb(22,171,193);" data-4600="background-position: 0px -5000px">
+<div skrollr class="page get-started" ng-class="{'animating-in': animatingIn, 'animating-out': animatingOut}" data-0="background-position: 0px 0px; background-color:rgb(193,231,234);" data-4200="background-position: 0px -4200px; background-color:rgb(22,171,193);" data-4600="background-position: 0px -5000px">
 
   <div class="get-started-container">
   <a name="the-top"></a>
@@ -30,7 +30,7 @@
    <!--  <div class="fish-wrapper" data-0="display:none;" data-300="display:block;">
       <div class="fish" data-2200="left:50%;" data-2800="left:0%"></div>
     </div> -->
-      
+
       <div class="get-started-content documentation-style-guide" id="get-started-content">
       <a name="get-started"></a>
       <div ng-include src="'templates/gettingStarted/gettingStarted.html'"></div>

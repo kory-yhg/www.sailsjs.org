@@ -11,7 +11,7 @@
 
   <!--Navigation list-->
   <div class="nav-container">
-    <a href="#/">
+    <a ng-click="intent.goto('/')">
       <img class="logo" src="/images/sails-logo.jpg" alt="Sails" />
     </a>
     <ul class="nav" ng-class="{'menu-open': menuVisible === true}">
@@ -20,16 +20,16 @@
           href="#/">Home</a></li> -->
       <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: getIsCurrentPage('/getStarted')}"
-          href="#/getStarted">Get Started</a></li>
+          ng-click="intent.goto('/getStarted')">Get Started</a></li>
       <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: getIsCurrentPage('/features')}"
-          href="#/features">Features</a></li>
+          ng-click="intent.goto('/features')">Features</a></li>
       <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: getIsCurrentPage('/documentation')}"
           href="#/documentation/reference">Documentation</a></li>
       <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: getIsCurrentPage('/support')}"
-          href="#/support">Support</a></li>
+          ng-click="intent.goto('/support')">Support</a></li>
      <!--  <li class="no-mobile">
         <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/logos')}"

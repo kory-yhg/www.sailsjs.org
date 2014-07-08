@@ -33,6 +33,7 @@
 	Template can be: Anatomy, Guides, Reference, or SupportMatrix
 	-->
 	<div class="documentation-section-content"
+    ng-class="{'animating-in': animatingIn, 'animating-out': animatingOut}"
 		ng-include src="docs.sectionTpl"></div>
 
 	<div class="github-message">
