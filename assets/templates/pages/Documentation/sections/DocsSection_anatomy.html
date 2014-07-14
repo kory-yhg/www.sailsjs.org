@@ -2,6 +2,11 @@
 	<div class="anatomy-container">
 		<div class="navigation">
 			<h2>myApp</h2>
+
+      <!-- If this template has a stabilityIndex docMeta tag, show it here -->
+      <div class="stabilityIndex" ng-if="docs.currentPage.data.stabilityIndex" ng-include src="'./templates/stabilityIndexPartials/stability'+docs.currentPage.data.stabilityIndex+'.html'"></div>
+      <br>
+
 			<ul class="file-list">
 				<!-- Folders get class "expanded" to show their contents -->
 				<!-- Files get class "active" to show which one you're looking at.-->

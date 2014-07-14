@@ -1,6 +1,11 @@
 <div class="reference-page">
   <!-- The documentation content pulled in from GitHub -->
   <div class="left-column">
+
+      <!-- If this template has a stabilityIndex docMeta tag, show it here -->
+      <div class="stabilityIndex" ng-if="docs.currentPage.data.stabilityIndex" ng-include src="'./templates/stabilityIndexPartials/stability'+docs.currentPage.data.stabilityIndex+'.html'"></div>
+      <br>
+  
     <div class="reference-item"
       ng-include src="docs.currentPage.templateSrc" ng-cloak></div>
     <div class="contribution-message">
