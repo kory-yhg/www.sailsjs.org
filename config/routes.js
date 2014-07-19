@@ -10,7 +10,12 @@ module.exports.routes = {
     next();
   },
 
+  // SEO
 	'get /': 'ProxyController.fetch',
+
+  // Used to populate activity bar in UI
   'get /news': 'NewsController.find',
+
+  // Recompile the docs
 	'get /refresh': 'RefreshController.index'
 };
