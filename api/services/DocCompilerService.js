@@ -71,7 +71,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
     saveJsonMenu: 'assets/templates/jsmenus/anatomy.jsmenu'
   }, {
     docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-    dirNameInRepo: 'gettingStarted',
+    dirNameInRepo: 'getting-started',
     parsedTemplatesDirectory: 'assets/templates/gettingStarted/',
     applyToTemplates: {
       beforeConvert: beforeConvert,
@@ -79,7 +79,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
     }
   }, {
     docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-    dirNameInRepo: 'irc',
+    dirNameInRepo: 'support/irc',
     parsedTemplatesDirectory: 'assets/templates/irc/',
     applyToTemplates: {
       beforeConvert: beforeConvert,
