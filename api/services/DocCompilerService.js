@@ -13,10 +13,6 @@ var DocTemplater = require('doc-templater');
 
 module.exports = function compileDocumentationMarkdown(cb) {
 
-  var compiler = DocTemplater({
-    logger: true
-  });
-
   // This function is applied to each template before the markdown is converted to markup
   var beforeConvert = function(writeFileObject, done) {
     return done(writeFileObject);
@@ -40,7 +36,10 @@ module.exports = function compileDocumentationMarkdown(cb) {
   };
 
 
-  compiler.build([{
+  DocTemplater({
+    logger: false
+  })
+  .build([{
     docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
     dirNameInRepo: 'reference',
     parsedTemplatesDirectory: 'assets/templates/reference/',
