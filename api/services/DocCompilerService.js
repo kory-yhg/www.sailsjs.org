@@ -5,7 +5,6 @@
 var DocTemplater = require('doc-templater');
 
 
-
 /**
  * Used for compiling markdown documentation into HTML templates.
  * @param  {Function} cb
@@ -37,7 +36,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
 
 
   DocTemplater({
-    logger: false
+    logger: !!(typeof _ !== 'undefined' && _.contains(['verbose', 'silly'], sails.config.log.level))
   })
   .build([{
     docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
