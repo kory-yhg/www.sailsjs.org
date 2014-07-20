@@ -30,6 +30,9 @@ module.exports = function compileDocumentationMarkdown(cb) {
     // Replace ((bubble))s with HTML
     html = html.replace(/\(\(([^())]*)\)\)/g, '<bubble type="$1" colors="true"></bubble>');
 
+    // Add target=_blank to external links
+    html = html.replace(/(href="https?:\/\/[^"]+")/g, '$1 target="_blank"');
+
     writeFileObject.templateHTML = html;
     return done(writeFileObject);
   };

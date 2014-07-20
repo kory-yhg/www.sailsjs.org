@@ -43,7 +43,7 @@ angular.module('Sails').factory('Menu', function() {
 
       menu[_jsMenuIdentity] = jsMenu;
 
-      console.log('Parsed', _jsMenuIdentity, ':', jsMenu);
+      // console.log('Parsed', _jsMenuIdentity, ':', jsMenu);
 
 
       _(jsMenu).map(function(mItem) {
