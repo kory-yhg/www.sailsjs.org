@@ -53,7 +53,7 @@ try {
 
 // Compile docs and start server
 // (must use `require` because globals are not yet available)
-require('./api/services/DocCompiler')(function(err) {
+require('./api/services/DocCompilerService')(function(err) {
   if (err) {
     sails.log.error('Failed to lift server b/c the following error occurred when compiling docs:');
     sails.log.error(err);
