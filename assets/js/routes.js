@@ -30,8 +30,12 @@ angular.module('Sails').config(['$routeProvider',function($routeProvider) {
   })
 
   //Documentation Sections:
+  // .when('/documentation', {
+  //   templateUrl: 'templates/pages/Documentation/DocsMainPage.html'
+  // })
+
   .when('/documentation', {
-    templateUrl: 'templates/pages/Documentation/DocsMainPage.html'
+    redirectTo: '/documentation/concepts'
   })
 
   //Version Notes Links
