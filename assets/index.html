@@ -20,28 +20,35 @@
     </style>
     <![endif]-->
   </head>
-  <body ng-app="Sails" ng-controller="AppCtrl">
+  <body
+    ng-app="Sails"
+    ng-controller="AppCtrl"
+    open-links-to-external-urls-in-new-tab>
+
     <div class="topbar-wrapper" ng-include="'templates/Topbar.html'"></div>
     <div class="wrap">
       <ng-view></ng-view>
       <div id="push"></div>
     </div>
     <div ng-include="'templates/SharingFooter.html'"></div>
+
+    <!--TEMPLATES-->
+    <script type="text/javascript" src="/jst.js"></script>
+    <!--TEMPLATES END-->
+
+    <!--SCRIPTS-->
+    <script src="/min/production.js"></script>
+    <!--SCRIPTS END-->
+
+    <!-- Tweet button script -->
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+      </script>
+
+      <!-- Follow button script -->
+      <!--
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    -->
   </body>
 
 
-  <!--TEMPLATES-->
-  <script type="text/javascript" src="/jst.js"></script>
-  <!--TEMPLATES END-->
-
-  <!--SCRIPTS-->
-  <script src="/min/production.js"></script>
-  <!--SCRIPTS END-->
-
-  <!-- Tweet button script -->
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-    </script>
-
-    <!-- Follow button script -->
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </html>
