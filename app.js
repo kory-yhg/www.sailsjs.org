@@ -53,12 +53,15 @@ try {
 
 // Compile docs and start server
 // (must use `require` because globals are not yet available)
-require('./api/services/DocCompilerService')(function(err) {
-  if (err) {
-    console.error('The following error occurred when compiling docs:');
-    console.error(err);
-  }
+// require('./api/services/DocCompilerService')(function(err) {
+//   if (err) {
+//     console.error('The following error occurred when compiling docs:');
+//     console.error(err);
+//   }
 
-  sails.lift(rc('sails'));
+sails.lift(rc('sails'), function (err){
+  console.log('LIFT CALLBACK FIRED');
+  console.log('\nerr? ' , err);
 });
+// });
 

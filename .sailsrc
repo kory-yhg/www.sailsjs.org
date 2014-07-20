@@ -1,5 +1,8 @@
 {
   "generators": {
     "modules": {}
+  },
+  "log":{
+  "level":"silly"
   }
 }
