@@ -55,8 +55,8 @@ try {
 // (must use `require` because globals are not yet available)
 require('./api/services/DocCompilerService')(function(err) {
   if (err) {
-    sails.log.error('The following error occurred when compiling docs:');
-    sails.log.error(err);
+    console.error('The following error occurred when compiling docs:');
+    console.error(err);
   }
 
   sails.lift(rc('sails'));

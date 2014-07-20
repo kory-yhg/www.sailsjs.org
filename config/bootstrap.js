@@ -9,7 +9,6 @@
  */
 
 module.exports.bootstrap = function (cb) {
-
   if (process.env.NODE_ENV==='production') {
     Cache.destroy({}).exec(cb);
   }
