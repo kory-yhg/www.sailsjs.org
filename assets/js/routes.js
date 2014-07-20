@@ -2,7 +2,7 @@
  * Configure client-side routes (#/foo, #/bar, etc.)
  */
 
-angular.module('Sails').config(['$routeProvider',function($routeProvider) {
+angular.module('Sails').config(['$routeProvider', function($routeProvider) {
 
   $routeProvider
 
@@ -71,12 +71,10 @@ angular.module('Sails').config(['$routeProvider',function($routeProvider) {
 
   .when('/support', {
     templateUrl: 'templates/pages/support/supportHome.html',
-    // redirectTo: '/support/irc'
   })
-    .when('/irc', {
-      templateUrl: 'templates/pages/irc.html',
-      // redirectTo: '/support/irc'
-    })
+  .when('/support/irc', {
+    templateUrl: 'templates/pages/irc.html',
+  })
 
 
   // .when('/support/:sectionPath*?', {
@@ -170,6 +168,16 @@ angular.module('Sails').config(['$routeProvider',function($routeProvider) {
           displayName: '--'
         });
 
+        // If target could not be found, we should give up and redirect
+        // to the top level of the documentation section.
+        //
+        // TODO: intelligently try stepping backwards one ".../namespace/..." at a time
+        if (!target) {
+          _doRedirect('#/documentation');
+          return;
+        }
+
+
         // Then show the appropriate sub-section
         $scope.docs.subSectionID = target.id;
         $scope.docs.currentPage = target;
@@ -233,5 +241,60 @@ angular.module('Sails').config(['$routeProvider',function($routeProvider) {
 
       }
     ]
+  })
+
+  .otherwise({
+    redirectTo: function (hashParams, hashPath, hashQs) {
+
+      // TODO:
+      // use a more automated/intelligent approach w/ $route.routes
+      // however in order to do that, we'd need to upgrade angular
+      // and I don't want to introduce any more entropy right now
+      // (see http://stackoverflow.com/questions/16012270/angularjs-get-the-list-of-defined-routes-routeprovider#comment38591740_16368629)
+      //
+      // (could potentially even implement a "Did you mean..." view...)
+
+      // Default unmatched routes to the home page, but also explicitly
+      // handle known bad links and route them to a more educated guess
+      //
+      // This approach, as apposed to using ".when()" also supports #! urls
+      // and other "not-quite-right" hash URLs.  Which is why we're doing it.
+      _doRedirect(
+      hashPath.match(/documentation|docs/i) ?
+        '#/documentation' :
+      hashPath.match(/start/i) ?
+        '#/getStarted' :
+      hashPath.match(/reference/i) ?
+        '#/documentation/reference' :
+      hashPath.match(/anatomy/i) ?
+        '#/documentation/anatomy' :
+      hashPath.match(/feature/i) ?
+        '#/features' :
+      hashPath.match(/irc/i) ?
+        '#/support/irc' :
+
+        // otherwise, default to the home page:
+        '#/'
+      );
+    }
   });
+
 }]);
+
+
+
+/**
+ * [doRedirect description]
+ * @param  {[type]} newURLHash [description]
+ * @return {[type]}            [description]
+ *
+ * TODO: replace w/ proper $location redirect once we've updated angular
+ */
+function _doRedirect(newURLHash) {
+  var expectedHash = window.location.hash;
+  setTimeout(function (){
+    // conditionvar
+    if (window.location.hash!==expectedHash)return;
+    window.location.hash = newURLHash;
+  },1);
+}
