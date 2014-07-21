@@ -274,34 +274,50 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
           }
         }
 
+
+        var $header;
         if ($routeParams.q) {
-          var $header;
           $header = findPermalinkedHeader($routeParams.q);
-          if ($header) {
-            scrollToHeader($header);
-          }
-          else {
-            // console.log('couldnt scroll to header "%s" because it doesnt exist yet (or at all)', $routeParams.q);
-            // console.log('will try again after some content loads...');
-            // maybe after ALL content? (http://stackoverflow.com/a/21420965/486547)
-
-            $scope.$on('$includeContentLoaded', function onNgInclude (e) {
-              // console.log('nginclude:',e.targetScope);
-
-              // If the header has already been located, don't do anything
-              if ($header) return;
-
-              $header = findPermalinkedHeader($routeParams.q);
-              if ($header) {
-                scrollToHeader($header);
-              }
-              else {
-                // If it's STILL not found, q param is ignored
-                // console.log('STILL couldnt scroll to header "%s" because it doesnt exist yet (or at all)', $routeParams.q);
-              }
-            });
-          }
         }
+
+        if ($header) {
+          scrollToHeader($header);
+        }
+        else {
+          // console.log('couldnt scroll to header "%s" because it doesnt exist yet (or at all)', $routeParams.q);
+          // console.log('will try again after some content loads...');
+          // maybe after ALL content? (http://stackoverflow.com/a/21420965/486547)
+
+          // `gaveUp` is just a dumb spin-lock that works with `$header` to prevent
+          // some pretty serious "wtf?" scenarios-- this is because this event is being
+          // bound a whole lotta times-- and it's an event binding leak.
+          // This code should be refactored at some point to the temporal scope
+          // of a directive where the event handlers won't snowball.
+          var gaveUp;
+          $scope.$on('$includeContentLoaded', function onNgInclude (e) {
+            // console.log('nginclude:',e.targetScope);
+
+            // If the header has already been located, or we've given up,
+            // don't do anything (remember, this event keeps firing forever for now)
+            if ($header || gaveUp) return;
+
+            if ($routeParams.q) {
+              $header = findPermalinkedHeader($routeParams.q);
+            }
+            if ($header) {
+              scrollToHeader($header);
+            }
+            else {
+              // If it's STILL not found, q param is ignored
+              // scroll to the top
+              gaveUp = true;
+              $('html, body').animate({scrollTop: 0}, 'slow');
+
+              // console.log('STILL couldnt scroll to header "%s" because it doesnt exist yet (or at all)', $routeParams.q);
+            }
+          });
+        }
+
 
 
       }
