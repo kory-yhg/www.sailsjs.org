@@ -26,9 +26,15 @@ function() {
    */
 
   function render (scope, $el, attrs) {
-    var link = attrs.permalink;
+
+    var link;
+    // if hash already contains ?q= at the end, remove it before continuing
+    link = window.location.hash.replace(/\?q=.+$/, '');
+    link += '?q='+attrs.permalink;
+
     var $ = angular.element;
-    $('<strong>'+link+'</strong>').insertAfter($el);
+    var html = '<a href="'+link+'" class="permalink-thing">#</a>';
+    $(html).insertAfter($el);
   }
 
   // exports
