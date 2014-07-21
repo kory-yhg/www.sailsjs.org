@@ -44,7 +44,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
 
       // build the URL slug suffix
       var slug = content
-        .replace(/[\?\!\.\-\_]/g, '') // punctuation => gone
+        .replace(/[\?\!\.\-\_\:\;\'\"]/g, '') // punctuation => gone
         .replace(/\s/g, '-') // spaces => dashes
         .toLowerCase();
 
