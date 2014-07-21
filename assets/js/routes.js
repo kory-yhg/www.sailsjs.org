@@ -252,6 +252,12 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
 
         // Look for matching header
         function findPermalinkedHeader(permalink){
+
+          // Ensure "stringiness" and make the comparison case-insensitive
+          // by lowercasing our search string
+          // (permalink directives in the HTML are always all-lowercase)
+          permalink = (permalink||'').toLowerCase();
+
           var $header = $('[permalink="'+permalink+'"]');
 
           if (!$header || !$header.length)  {
