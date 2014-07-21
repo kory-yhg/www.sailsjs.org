@@ -11,24 +11,23 @@
 		h3 {
 			font-size: 1.6em;
 			color: @turquoise;
-			font-weight: 300;
+			font-weight: @light;
 			padding: 5px 0 15px;
 		}
 		ul.guides {
 			a {
 				color: @medGray;
-				font-weight: 400;
+				font-weight: @normal;
 				font-size: 15px;
 				line-height: 1.8em;
 				&:hover {
 					color: @turquoise;
 					.transition(all 0.25s);
 				}
-
-                &.selected {
-                    color: @turquoise;
-                    font-weight: 600;
-                }
+        &.selected {
+            color: @turquoise;
+            font-weight: @semibold;
+        }
 			}
 		}
 	}

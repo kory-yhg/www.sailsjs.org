@@ -50,6 +50,8 @@ module.exports = function compileDocumentationMarkdown(cb) {
 
       // set the permalink attr
       $(this).attr('permalink', slug);
+
+      $(this).wrap('<div class="permalink-header"></div>');
     });
     html = $.html();
 

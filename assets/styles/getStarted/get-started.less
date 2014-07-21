@@ -10,24 +10,28 @@
     background-position: -400px 50px;
   	font-family: @mainFont;
   	padding: 100px 0 150px;
+    position: relative;
     a.return-top {
       display: none;
       background-color: @turquoise;
-      font-weight: 500;
+      font-weight: @normal;
       color: @white;
       text-align: center;
       width: 20%;
       margin: 0px auto 40px;
-      // margin-bottom:40px;
       padding: 10px;
       border-radius: 10px;
       text-decoration: none;
       opacity: .5;
         &:hover {
           cursor: pointer;
-          font-weight: 600;
+          font-weight: @semibold;
           opacity: 1;
         }
+    }
+
+    .permalink-thing {
+      right: 50px;
     }
 
     // left-side navigation
@@ -42,8 +46,10 @@
         a {
           cursor: pointer;
           color: @turquoise;
+          .transition(all 150ms);
           &:hover {
-            font-weight: 600;
+            font-weight: @semibold;
+            .transition(all 150ms);
           }
         }
       }

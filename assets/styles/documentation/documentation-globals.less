@@ -45,6 +45,9 @@
 
 	a {
 		.docs_a();
+    &.permalink-thing {
+      .docs_permalink();
+    }
 	}
 
 	p {
@@ -57,6 +60,21 @@
 
 	ol {
 		.docs_ol();
+    ol {
+      padding-left: 0;
+    }
+    >li >ol >li{
+      color: @darkTurquoise;
+      font-weight: @semibold;
+      >ol >li {
+        color: @black;
+        font-weight: @normal;
+        background: none;
+        list-style-type: circle;
+        padding-left: 0;
+        margin-left: 25px;
+      }
+    }
 	}
 
 	blockquote {

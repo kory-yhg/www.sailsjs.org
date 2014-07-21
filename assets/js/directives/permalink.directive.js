@@ -6,7 +6,7 @@ angular.module('Sails')
  */
 
 
-function( ) {
+function() {
 
 
   /**
@@ -26,7 +26,15 @@ function( ) {
    */
 
   function render (scope, $el, attrs) {
+
+    var link;
+    // if hash already contains ?q= at the end, remove it before continuing
+    link = window.location.hash.replace(/\?q=.+$/, '');
+    link += '?q='+attrs.permalink;
+
     var $ = angular.element;
+    var html = '<a href="'+link+'" class="permalink-thing">#</a>';
+    $(html).insertAfter($el);
   }
 
   // exports
