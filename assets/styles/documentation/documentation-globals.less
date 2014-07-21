@@ -57,9 +57,20 @@
 
 	ol {
 		.docs_ol();
-    >li >ol {
-      .columnCount(2);
-      .columnGap(15px);
+    ol {
+      padding-left: 0;
+    }
+    >li >ol >li{
+      color: @darkTurquoise;
+      font-weight: @semibold;
+      >ol >li {
+        color: @black;
+        font-weight: @normal;
+        background: none;
+        list-style-type: circle;
+        padding-left: 0;
+        margin-left: 25px;
+      }
     }
 	}
 
