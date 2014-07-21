@@ -280,7 +280,7 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
           }
         }
 
-
+        console.log($routeParams);
         var $header;
         if ($routeParams.q) {
           $header = findPermalinkedHeader($routeParams.q);
@@ -300,6 +300,16 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
           // This code should be refactored at some point to the temporal scope
           // of a directive where the event handlers won't snowball.
           var gaveUp;
+          $(function (){
+            setTimeout(function(){
+              if ($header || gaveUp) return;
+              // If it's STILL not found, q param is ignored
+              // scroll to the top
+              gaveUp = true;
+              $('html, body').animate({scrollTop: 0}, 'slow');
+              // console.log('STILL couldnt scroll to header "%s" because it doesnt exist yet (or at all)', $routeParams.q);
+            }, 500);
+          });
           $scope.$on('$includeContentLoaded', function onNgInclude (e) {
             // console.log('nginclude:',e.targetScope);
 
@@ -313,14 +323,9 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
             if ($header) {
               scrollToHeader($header);
             }
-            else {
-              // If it's STILL not found, q param is ignored
-              // scroll to the top
-              gaveUp = true;
-              $('html, body').animate({scrollTop: 0}, 'slow');
 
-              // console.log('STILL couldnt scroll to header "%s" because it doesnt exist yet (or at all)', $routeParams.q);
-            }
+            // If we couldn't match the permalink, do nothing--
+            // more $includeContentLoaded events will fire, or we'll eventually give up
           });
         }
 
