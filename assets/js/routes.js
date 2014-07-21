@@ -280,7 +280,7 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
           }
         }
 
-        console.log($routeParams);
+        // console.log($routeParams);
         var $header;
         if ($routeParams.q) {
           $header = findPermalinkedHeader($routeParams.q);
