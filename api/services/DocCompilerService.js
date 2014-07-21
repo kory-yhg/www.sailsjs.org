@@ -13,12 +13,12 @@ var DocTemplater = require('doc-templater');
 module.exports = function compileDocumentationMarkdown(cb) {
 
   // This function is applied to each template before the markdown is converted to markup
-  var beforeConvert = function(writeFileObject, done) {
+  function beforeConvert(writeFileObject, done) {
     return done(writeFileObject);
-  };
+  }
 
   // This function is applied to each template after the markdown is converted to markup
-  var afterConvert = function(writeFileObject, done) {
+  function afterConvert (writeFileObject, done) {
 
     var html = writeFileObject.templateHTML;
 
@@ -30,16 +30,41 @@ module.exports = function compileDocumentationMarkdown(cb) {
     // Replace ((bubble))s with HTML
     html = html.replace(/\(\(([^())]*)\)\)/g, '<bubble type="$1" colors="true"></bubble>');
 
+    // Flag <h1>, <h2>, <h3>, <h4>, and <h5> tags
+    // with the `permalinkable` directive
+    //
+    // e.g.
+    // if the page is #/documentation/reference/req
+    // and the slug is "transport-compatibility"
+    // then the final URL will be #/documentation/reference/req?transport-compatibility
+    var cheerio = require('cheerio');
+    var $ = cheerio.load(html);
+    $('h1, h2, h3, h4, h5').each(function (){
+      var content = $(this).text() || '';
+
+      // build the URL slug suffix
+      var slug = content
+        .replace(/[\?\!\.\-\_]/g, '') // punctuation => gone
+        .replace(/\s/g, '-') // spaces => dashes
+        .toLowerCase();
+
+      // set the permalink attr
+      $(this).attr('permalink', slug);
+    });
+    html = $.html();
+
     // Add target=_blank to external links
     html = html.replace(/(href="https?:\/\/[^"]+")/g, '$1 target="_blank"');
 
     writeFileObject.templateHTML = html;
     return done(writeFileObject);
-  };
+  }
 
+  var isLoggerEnabled = !!(typeof _ !== 'undefined' && _.contains(['verbose', 'silly'], sails.config.log.level));
 
+  // Compile the markdown into HTML templates
   DocTemplater({
-    logger: !!(typeof _ !== 'undefined' && _.contains(['verbose', 'silly'], sails.config.log.level))
+    logger: isLoggerEnabled
   })
   .build([{
     docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
