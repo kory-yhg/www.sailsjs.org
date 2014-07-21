@@ -12,12 +12,20 @@
       padding: 50px 0 20px;
     }
 
+
     p.sub-header {
       .featuresSubHeader();
       text-align: center;
       padding: 0 20%;
       opacity: .7;
 
+      a {
+        color: @turquoise;
+        &:hover {
+          color: @darkTurquoise;
+          .transition(all 250ms);
+        }
+      }
       em {
 
       }
@@ -50,8 +58,10 @@
           font-size: 15px;
           a {
             color: @turquoise;
+            .transition(all 150ms);
             &:hover {
               font-weight: 700;
+              .transition(all 150ms);
             }
           }
         }
