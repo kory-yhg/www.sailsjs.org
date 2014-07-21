@@ -6,7 +6,7 @@ angular.module('Sails')
  */
 
 
-function( ) {
+function() {
 
 
   /**
@@ -26,7 +26,9 @@ function( ) {
    */
 
   function render (scope, $el, attrs) {
+    var link = attrs.permalink;
     var $ = angular.element;
+    $('<strong>'+link+'</strong>').insertAfter($el);
   }
 
   // exports
