@@ -10,6 +10,7 @@
     background-position: -400px 50px;
   	font-family: @mainFont;
   	padding: 100px 0 150px;
+    position: relative;
     a.return-top {
       display: none;
       background-color: @turquoise;
@@ -18,7 +19,6 @@
       text-align: center;
       width: 20%;
       margin: 0px auto 40px;
-      // margin-bottom:40px;
       padding: 10px;
       border-radius: 10px;
       text-decoration: none;
@@ -46,8 +46,10 @@
         a {
           cursor: pointer;
           color: @turquoise;
+          .transition(all 150ms);
           &:hover {
             font-weight: @semibold;
+            .transition(all 150ms);
           }
         }
       }
