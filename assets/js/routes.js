@@ -102,6 +102,7 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
     templateUrl: 'templates/pages/Documentation/DocsSection.html',
     controller: ['$scope', '$routeParams', 'Menu',
       function($scope, $routeParams, Menu) {
+
         // Split sectionPath on slashes, lower-case each piece, and eliminate empty pieces
         // to determine the top-level docs section (e.g. "reference")
         // and to determine the "id" of the subpage to display (e.g. "Blueprints")
@@ -155,7 +156,11 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
         }
 
         // Trim trailing slash(es)
-        var currentHashURL = window.location.hash.replace(/\/+$/, '');
+        // var currentHashURL = window.location.hash.replace(/\/+$/, '');
+        var currentHashURL = '#/documentation/'+($routeParams.sectionPath||'').replace(/\/+$/, '');
+        // console.log('da hash:',currentHashURL);
+        // console.log('da improv hash:','#/documentation/'+($routeParams.sectionPath||'').replace(/\/+$/, ''));
+        // var currentHashURL = ($routeParams.sectionPath||'').replace(/\/+$/, '');
 
         // Lookup current page using current URL fragment
         var target = _.find(menu, function(checkItem) {
@@ -173,6 +178,7 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
         //
         // TODO: intelligently try stepping backwards one ".../namespace/..." at a time
         if (!target) {
+          // console.log('Could not find a target page for ::',$routeParams.sectionPath);
           _doRedirect('#/documentation');
           return;
         }
@@ -238,6 +244,65 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
         };
 
         grabParents();
+
+
+        // Handle the `q` "search" param
+        // (used for permalinking to individual sections)
+        var $ = angular.element;
+
+        // Look for matching header
+        function findPermalinkedHeader(permalink){
+          var $header = $('[permalink="'+permalink+'"]');
+
+          if (!$header || !$header.length)  {
+            return null;
+          }
+          else return $header;
+        }
+
+        // If it IS found, scroll to the appropriate point on the page
+        function scrollToHeader($header) {
+          if ($header) {
+            var coordinates = $header.offset();
+            var y = coordinates.top;
+
+            // subtract fixed-pos topbar height so it looks nicer
+            y -= 40;
+            // console.log('scrolling to y='+y);
+
+            $('html, body').animate({scrollTop: y}, 'slow');
+          }
+        }
+
+        if ($routeParams.q) {
+          var $header;
+          $header = findPermalinkedHeader($routeParams.q);
+          if ($header) {
+            scrollToHeader($header);
+          }
+          else {
+            // console.log('couldnt scroll to header "%s" because it doesnt exist yet (or at all)', $routeParams.q);
+            // console.log('will try again after some content loads...');
+            // maybe after ALL content? (http://stackoverflow.com/a/21420965/486547)
+
+            $scope.$on('$includeContentLoaded', function onNgInclude (e) {
+              // console.log('nginclude:',e.targetScope);
+
+              // If the header has already been located, don't do anything
+              if ($header) return;
+
+              $header = findPermalinkedHeader($routeParams.q);
+              if ($header) {
+                scrollToHeader($header);
+              }
+              else {
+                // If it's STILL not found, q param is ignored
+                // console.log('STILL couldnt scroll to header "%s" because it doesnt exist yet (or at all)', $routeParams.q);
+              }
+            });
+          }
+        }
+
 
       }
     ]

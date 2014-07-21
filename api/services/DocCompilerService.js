@@ -36,7 +36,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
     // e.g.
     // if the page is #/documentation/reference/req
     // and the slug is "transport-compatibility"
-    // then the final URL will be #/documentation/reference/req?transport-compatibility
+    // then the final URL will be #/documentation/reference/req?q=transport-compatibility
     var cheerio = require('cheerio');
     var $ = cheerio.load(html);
     $('h1, h2, h3, h4, h5').each(function (){
