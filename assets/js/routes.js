@@ -310,12 +310,6 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
 
               // pretty sure everything loaded at this point
 
-              // Have prism do its thang again
-
-              // NOTE: this still doesn't seem to work in this spot;
-              // just here for reference right now.
-              Prism.highlightAll();
-
               // console.log('STILL couldnt scroll to header "%s" because it doesnt exist yet (or at all)', $routeParams.q);
             }, 500);
           });
