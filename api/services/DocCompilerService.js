@@ -53,15 +53,19 @@ module.exports = function compileDocumentationMarkdown(cb) {
       $(this).attr('permalink', slug);
 
       // this was throwing ".wrap is undefined"
-      if ($(this) && $(this).wrap)
+      if ($(this) && typeof $(this).wrap === 'function') {
         $(this).wrap('<div class="permalink-header"></div>');
+      }
 
     });
     html = $.html();
 
     // Add target=_blank to external links
     html = html.replace(/(href="https?:\/\/[^"]+")/g, '$1 target="_blank"');
+
+    // Add the appropriate `data-language` based on the annotation (github-flavored markdown)
     html = html.replace(/(<code)/g, '$1 data-language="javascript"');
+
   // var regexReplace = codeBlock.match(/(<code[^]+?>)([^]+?<\/code>)/g,'$1$2');
 
     writeFileObject.templateHTML = html;
