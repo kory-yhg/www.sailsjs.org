@@ -13,8 +13,24 @@ var DocTemplater = require('doc-templater');
 
 module.exports = function compileDocumentationMarkdown(cb) {
 
+  // This is an HTML comment because it is easy to over-match and "accidentally"
+  // add it underneath each code block as well (being an HTML comment ensures it
+  // doesn't show up or break anything)
+  // var TMP_LANG_MARKER_EXPR = /<!-- __LANG=\%[^%]*\%__ -->/;
+  var LANG_MARKER_PREFIX = '<!-- __LANG=%';
+  var LANG_MARKER_SUFFIX = '%__ -->';
+
+
   // This function is applied to each template before the markdown is converted to markup
   function beforeConvert(writeFileObject, done) {
+
+    // Based on the github-flavored markdown's language annotation, (e.g. ```js```)
+    // add a temporary marker to code blocks that can be parsed post-md-compilation
+    // by the `afterConvert()` lifecycle hook
+
+    // ...
+    // html = html.replace(/(```)([a-zA-Z])*(\s*\n)/g, '$1\n'+LANG_MARKER_PREFIX+'$2'+LANG_MARKER_SUFFIX+'\n$3');
+
     return done(writeFileObject);
   }
 
@@ -63,8 +79,37 @@ module.exports = function compileDocumentationMarkdown(cb) {
     // Add target=_blank to external links
     html = html.replace(/(href="https?:\/\/[^"]+")/g, '$1 target="_blank"');
 
-    // Add the appropriate `data-language` based on the annotation (github-flavored markdown)
-    html = html.replace(/(<code)/g, '$1 data-language="javascript"');
+    // Add the appropriate `data-language` based on the temporary marker
+    // (TMP_LANG_MARKER_EXPR) that was added in the `beforeConvert()` lifecycle
+    // hook above
+
+    // Interpret `js` as `javascript`
+    html = html.replace(
+      // $1     $2     $3   $4
+      /(<code)([^>]*)(>\s*)(<!-- __LANG=\%js\%__ -->)/g,
+      '$1 data-language="javascript"$2$3'
+    );
+
+    // Interpret `sh` and `bash` as `shell`
+    html = html.replace(
+      // $1     $2     $3   $4
+      /(<code)([^>]*)(>\s*)(<!-- __LANG=\%(bash|sh)\%__ -->)/g,
+      '$1 data-language="javascript"$2$3'
+    );
+
+    // When unspecified, default to `javascript`
+    html = html.replace(
+      // $1     $2     $3   $4
+      /(<code)([^>]*)(>\s*)(<!-- __LANG=\%\%__ -->)/g,
+      '$1 data-language="javascript"$2$3'
+    );
+
+    // Finally, nab the rest
+    html = html.replace(
+      // $1     $2     $3   $4               $5    $6
+      /(<code)([^>]*)(>\s*)(<!-- __LANG=\%)([^%]+)(\%__ -->)/g,
+      '$1 data-language="$5"$2$3'
+    );
 
   // var regexReplace = codeBlock.match(/(<code[^]+?>)([^]+?<\/code>)/g,'$1$2');
 
