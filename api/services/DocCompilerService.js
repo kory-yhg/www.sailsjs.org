@@ -2,6 +2,7 @@
  * Module dependencies
  */
 
+
 var DocTemplater = require('doc-templater');
 
 
@@ -51,12 +52,17 @@ module.exports = function compileDocumentationMarkdown(cb) {
       // set the permalink attr
       $(this).attr('permalink', slug);
 
-      $(this).wrap('<div class="permalink-header"></div>');
+      // this was throwing ".wrap is undefined"
+      if ($(this) && $(this).wrap)
+        $(this).wrap('<div class="permalink-header"></div>');
+
     });
     html = $.html();
 
     // Add target=_blank to external links
     html = html.replace(/(href="https?:\/\/[^"]+")/g, '$1 target="_blank"');
+    html = html.replace(/(<code)/g, '$1 data-language="javascript"');
+  // var regexReplace = codeBlock.match(/(<code[^]+?>)([^]+?<\/code>)/g,'$1$2');
 
     writeFileObject.templateHTML = html;
     return done(writeFileObject);

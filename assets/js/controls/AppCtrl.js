@@ -26,6 +26,9 @@ angular.module('Sails').controller('AppCtrl', [
     */
     $scope.$on('$locationChangeSuccess', function(event) {
       // Init skrollr if wider than mobile layout
+
+      Rainbow.color();
+
       if ($window.innerWidth >= 768) {
         // Move to end of digest, allows ng-include to finish
         $timeout(function() {

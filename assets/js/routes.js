@@ -309,6 +309,7 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
               $('html, body').animate({scrollTop: 0}, 15);
 
               // pretty sure everything loaded at this point
+              Rainbow.color();
 
               // console.log('STILL couldnt scroll to header "%s" because it doesnt exist yet (or at all)', $routeParams.q);
             }, 500);
