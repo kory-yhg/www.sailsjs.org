@@ -13,6 +13,7 @@ var DocTemplater = require('doc-templater');
 
 module.exports = function compileDocumentationMarkdown(cb) {
 
+
   // This is an HTML comment because it is easy to over-match and "accidentally"
   // add it underneath each code block as well (being an HTML comment ensures it
   // doesn't show up or break anything)
@@ -24,12 +25,18 @@ module.exports = function compileDocumentationMarkdown(cb) {
   // This function is applied to each template before the markdown is converted to markup
   function beforeConvert(writeFileObject, done) {
 
+    // Disclaimer: Not actually HTML
+    var mdString = writeFileObject.templateHTML;
+
     // Based on the github-flavored markdown's language annotation, (e.g. ```js```)
     // add a temporary marker to code blocks that can be parsed post-md-compilation
     // by the `afterConvert()` lifecycle hook
-
+    console.log('****** ******* ******\nwriteFileObject\n\n', mdString);
     // ...
-    // html = html.replace(/(```)([a-zA-Z])*(\s*\n)/g, '$1\n'+LANG_MARKER_PREFIX+'$2'+LANG_MARKER_SUFFIX+'\n$3');
+    mdString = mdString.replace(/(```)([a-zA-Z])*(\s*\n)/g, '$1\n'+LANG_MARKER_PREFIX+'$2'+LANG_MARKER_SUFFIX+'\n$3');
+
+    // Disclaimer: Not actually HTML
+    writeFileObject.templateHTML = mdString;
 
     return done(writeFileObject);
   }
