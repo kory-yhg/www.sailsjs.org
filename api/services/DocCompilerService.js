@@ -33,7 +33,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
     // by the `afterConvert()` lifecycle hook
     console.log('****** ******* ******\nwriteFileObject\n\n', mdString);
     // ...
-    mdString = mdString.replace(/(```)([a-zA-Z])*(\s*\n)/g, '$1\n'+LANG_MARKER_PREFIX+'$2'+LANG_MARKER_SUFFIX+'\n$3');
+    mdString = mdString.replace(/(```)([a-zA-Z])*(\s*\n)/g, '$1\n' + LANG_MARKER_PREFIX + '$2' + LANG_MARKER_SUFFIX + '\n$3');
 
     // Disclaimer: Not actually HTML
     writeFileObject.templateHTML = mdString;
@@ -42,7 +42,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
   }
 
   // This function is applied to each template after the markdown is converted to markup
-  function afterConvert (writeFileObject, done) {
+  function afterConvert(writeFileObject, done) {
 
     var html = writeFileObject.templateHTML;
 
@@ -63,7 +63,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
     // then the final URL will be #/documentation/reference/req?q=transport-compatibility
     var cheerio = require('cheerio');
     var $ = cheerio.load(html);
-    $('h1, h2, h3, h4, h5').each(function (){
+    $('h1, h2, h3, h4, h5').each(function() {
       var content = $(this).text() || '';
 
       // build the URL slug suffix
@@ -118,7 +118,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
       '$1 data-language="$5"$2$3'
     );
 
-  // var regexReplace = codeBlock.match(/(<code[^]+?>)([^]+?<\/code>)/g,'$1$2');
+    // var regexReplace = codeBlock.match(/(<code[^]+?>)([^]+?<\/code>)/g,'$1$2');
 
     writeFileObject.templateHTML = html;
     return done(writeFileObject);
@@ -131,50 +131,51 @@ module.exports = function compileDocumentationMarkdown(cb) {
     logger: isLoggerEnabled
   })
   .build([{
-    docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-    dirNameInRepo: 'reference',
-    parsedTemplatesDirectory: 'assets/templates/reference/',
-    applyToTemplates: {
-      beforeConvert: beforeConvert,
-      afterConvert: afterConvert
-    },
-    saveJsonMenu: 'assets/templates/jsmenus/reference.jsmenu'
+    remote: 'git://github.com/balderdashy/sails-docs.git',
+    remoteSubPath: 'reference',
+    htmlDirPath: 'assets/templates/reference/',
+    jsMenuPath: 'assets/templates/jsmenus/reference.jsmenu'
+    // applyToTemplates: {
+    //   beforeConvert: beforeConvert,
+    //   afterConvert: afterConvert
+    // },
+
   }, {
 
-    docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-    dirNameInRepo: 'concepts',
-    parsedTemplatesDirectory: 'assets/templates/concepts/',
-    applyToTemplates: {
-      beforeConvert: beforeConvert,
-      afterConvert: afterConvert
-    },
-    saveJsonMenu: 'assets/templates/jsmenus/concepts.jsmenu'
+    remote: 'git://github.com/balderdashy/sails-docs.git',
+    remoteSubPath: 'concepts',
+    htmlDirPath: 'assets/templates/concepts/',
+    jsMenuPath: 'assets/templates/jsmenus/concepts.jsmenu'
+    // applyToTemplates: {
+    //   beforeConvert: beforeConvert,
+    //   afterConvert: afterConvert
+    // },
 
-  },{
-    docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-    dirNameInRepo: 'anatomy',
-    parsedTemplatesDirectory: 'assets/templates/anatomy/',
-    applyToTemplates: {
-      beforeConvert: beforeConvert,
-      afterConvert: afterConvert
-    },
-    saveJsonMenu: 'assets/templates/jsmenus/anatomy.jsmenu'
   }, {
-    docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-    dirNameInRepo: 'getting-started',
-    parsedTemplatesDirectory: 'assets/templates/gettingStarted/',
-    applyToTemplates: {
-      beforeConvert: beforeConvert,
-      afterConvert: afterConvert
-    }
+    remote: 'git://github.com/balderdashy/sails-docs.git',
+    remoteSubPath: 'anatomy',
+    htmlDirPath: 'assets/templates/anatomy/',
+    jsMenuPath: 'assets/templates/jsmenus/anatomy.jsmenu'
+    // applyToTemplates: {
+    //   beforeConvert: beforeConvert,
+    //   afterConvert: afterConvert
+    // },
   }, {
-    docsGitRepo: 'git://github.com/balderdashy/sails-docs.git',
-    dirNameInRepo: 'support/irc',
-    parsedTemplatesDirectory: 'assets/templates/irc/',
-    applyToTemplates: {
-      beforeConvert: beforeConvert,
-      afterConvert: afterConvert
-    }
+    remote: 'git://github.com/balderdashy/sails-docs.git',
+    remoteSubPath: 'getting-started',
+    htmlDirPath: 'assets/templates/gettingStarted/',
+    // applyToTemplates: {
+    //   beforeConvert: beforeConvert,
+    //   afterConvert: afterConvert
+    // }
+  }, {
+    remote: 'git://github.com/balderdashy/sails-docs.git',
+    remoteSubPath: 'support/irc',
+    htmlDirPath: 'assets/templates/irc/',
+    // applyToTemplates: {
+    //   beforeConve  rt: beforeConvert,
+    //   afterConvert: afterConvert
+    // }
   }], cb);
 
 };
