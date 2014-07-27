@@ -127,6 +127,8 @@ assets/templates/concepts*
 assets/templates/anatomy*
 assets/templates/jsmenus*
 assets/templates/gettingStarted*
+assets/templates/irc*
+assets/templates/irc.jsmenu
 
 ####################################
 # Local copy of sails-docs repo
