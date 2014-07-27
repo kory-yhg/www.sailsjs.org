@@ -23,28 +23,18 @@ module.exports = function compileDocumentationMarkdown(cb) {
 
 
   // This function is applied to each template before the markdown is converted to markup
-  function beforeConvert(writeFileObject, done) {
-
-    // Disclaimer: Not actually HTML
-    var mdString = writeFileObject.templateHTML;
+  function beforeConvert(mdString, done) {
 
     // Based on the github-flavored markdown's language annotation, (e.g. ```js```)
     // add a temporary marker to code blocks that can be parsed post-md-compilation
     // by the `afterConvert()` lifecycle hook
-    console.log('****** ******* ******\nwriteFileObject\n\n', mdString);
-    // ...
     mdString = mdString.replace(/(```)([a-zA-Z])*(\s*\n)/g, '$1\n' + LANG_MARKER_PREFIX + '$2' + LANG_MARKER_SUFFIX + '\n$3');
 
-    // Disclaimer: Not actually HTML
-    writeFileObject.templateHTML = mdString;
-
-    return done(writeFileObject);
+    return done(null, mdString);
   }
 
   // This function is applied to each template after the markdown is converted to markup
-  function afterConvert(writeFileObject, done) {
-
-    var html = writeFileObject.templateHTML;
+  function afterConvert(html, done) {
 
     // Replace github emoji with HTML
     html = html.replace(/\:white_check_mark\:/g, '<div class="replacementIcon yes"></div>');
@@ -118,10 +108,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
       '$1 data-language="$5"$2$3'
     );
 
-    // var regexReplace = codeBlock.match(/(<code[^]+?>)([^]+?<\/code>)/g,'$1$2');
-
-    writeFileObject.templateHTML = html;
-    return done(writeFileObject);
+    return done(null, html);
   }
 
   var isLoggerEnabled = !!(typeof _ !== 'undefined' && _.contains(['verbose', 'silly'], sails.config.log.level));
@@ -134,48 +121,37 @@ module.exports = function compileDocumentationMarkdown(cb) {
     remote: 'git://github.com/balderdashy/sails-docs.git',
     remoteSubPath: 'reference',
     htmlDirPath: 'assets/templates/reference/',
-    jsMenuPath: 'assets/templates/jsmenus/reference.jsmenu'
-    // applyToTemplates: {
-    //   beforeConvert: beforeConvert,
-    //   afterConvert: afterConvert
-    // },
-
+    jsMenuPath: 'assets/templates/jsmenus/reference.jsmenu',
+    beforeConvert: beforeConvert,
+    afterConvert: afterConvert,
   }, {
 
     remote: 'git://github.com/balderdashy/sails-docs.git',
     remoteSubPath: 'concepts',
     htmlDirPath: 'assets/templates/concepts/',
-    jsMenuPath: 'assets/templates/jsmenus/concepts.jsmenu'
-    // applyToTemplates: {
-    //   beforeConvert: beforeConvert,
-    //   afterConvert: afterConvert
-    // },
+    jsMenuPath: 'assets/templates/jsmenus/concepts.jsmenu',
+    beforeConvert: beforeConvert,
+    afterConvert: afterConvert,
 
   }, {
     remote: 'git://github.com/balderdashy/sails-docs.git',
     remoteSubPath: 'anatomy',
     htmlDirPath: 'assets/templates/anatomy/',
-    jsMenuPath: 'assets/templates/jsmenus/anatomy.jsmenu'
-    // applyToTemplates: {
-    //   beforeConvert: beforeConvert,
-    //   afterConvert: afterConvert
-    // },
+    jsMenuPath: 'assets/templates/jsmenus/anatomy.jsmenu',
+    beforeConvert: beforeConvert,
+    afterConvert: afterConvert,
   }, {
     remote: 'git://github.com/balderdashy/sails-docs.git',
     remoteSubPath: 'getting-started',
     htmlDirPath: 'assets/templates/gettingStarted/',
-    // applyToTemplates: {
-    //   beforeConvert: beforeConvert,
-    //   afterConvert: afterConvert
-    // }
+    beforeConvert: beforeConvert,
+    afterConvert: afterConvert
   }, {
     remote: 'git://github.com/balderdashy/sails-docs.git',
     remoteSubPath: 'support/irc',
     htmlDirPath: 'assets/templates/irc/',
-    // applyToTemplates: {
-    //   beforeConve  rt: beforeConvert,
-    //   afterConvert: afterConvert
-    // }
+    beforeConvert: beforeConvert,
+    afterConvert: afterConvert
   }], cb);
 
 };
