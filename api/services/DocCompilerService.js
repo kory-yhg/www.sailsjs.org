@@ -28,7 +28,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
     // Based on the github-flavored markdown's language annotation, (e.g. ```js```)
     // add a temporary marker to code blocks that can be parsed post-md-compilation
     // by the `afterConvert()` lifecycle hook
-    mdString = mdString.replace(/(```)([a-zA-Z])*(\s*\n)/g, '$1\n' + LANG_MARKER_PREFIX + '$2' + LANG_MARKER_SUFFIX + '\n$3');
+    mdString = mdString.replace(/(```)([a-zA-Z]*)(\s*\n)/g, '$1\n' + LANG_MARKER_PREFIX + '$2' + LANG_MARKER_SUFFIX + '$3');
 
     return done(null, mdString);
   }
@@ -44,7 +44,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
     // Replace ((bubble))s with HTML
     html = html.replace(/\(\(([^())]*)\)\)/g, '<bubble type="$1" colors="true"></bubble>');
 
-    // Flag <h1>, <h2>, <h3>, <h4>, and <h5> tags
+    // Flag <h2>, <h3>, <h4>, and <h5> tags
     // with the `permalinkable` directive
     //
     // e.g.
@@ -53,7 +53,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
     // then the final URL will be #/documentation/reference/req?q=transport-compatibility
     var cheerio = require('cheerio');
     var $ = cheerio.load(html);
-    $('h1, h2, h3, h4, h5').each(function() {
+    $('h2, h3, h4, h5').each(function() {
       var content = $(this).text() || '';
 
       // build the URL slug suffix
@@ -79,32 +79,33 @@ module.exports = function compileDocumentationMarkdown(cb) {
     // Add the appropriate `data-language` based on the temporary marker
     // (TMP_LANG_MARKER_EXPR) that was added in the `beforeConvert()` lifecycle
     // hook above
+    // console.log('RAN AFTER HOOK, found: ',html.match(/(<code)([^>]*)(>\s*)(\&lt;!--\s*__LANG=\%[^\%]*\%__\s*--\&gt;)/g));
 
     // Interpret `js` as `javascript`
     html = html.replace(
       // $1     $2     $3   $4
-      /(<code)([^>]*)(>\s*)(<!-- __LANG=\%js\%__ -->)/g,
+      /(<code)([^>]*)(>\s*)(\&lt;!-- __LANG=\%js\%__ --\&gt;)\s*/gm,
       '$1 data-language="javascript"$2$3'
     );
 
     // Interpret `sh` and `bash` as `shell`
     html = html.replace(
       // $1     $2     $3   $4
-      /(<code)([^>]*)(>\s*)(<!-- __LANG=\%(bash|sh)\%__ -->)/g,
+      /(<code)([^>]*)(>\s*)(\&lt;!-- __LANG=\%(bash|sh)\%__ --\&gt;)\s*/gm,
       '$1 data-language="javascript"$2$3'
     );
 
     // When unspecified, default to `javascript`
     html = html.replace(
       // $1     $2     $3   $4
-      /(<code)([^>]*)(>\s*)(<!-- __LANG=\%\%__ -->)/g,
+      /(<code)([^>]*)(>\s*)(\&lt;!-- __LANG=\%\%__ --\&gt;)\s*/gm,
       '$1 data-language="javascript"$2$3'
     );
 
     // Finally, nab the rest
     html = html.replace(
       // $1     $2     $3   $4               $5    $6
-      /(<code)([^>]*)(>\s*)(<!-- __LANG=\%)([^%]+)(\%__ -->)/g,
+      /(<code)([^>]*)(>\s*)(\&lt;!-- __LANG=\%)([^%]+)(\%__ --\&gt;)\s*/gm,
       '$1 data-language="$5"$2$3'
     );
 
