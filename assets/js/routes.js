@@ -113,6 +113,18 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
         var topLevelSectionID = pieces[0];
         $scope.docs.sectionID = topLevelSectionID;
 
+        var $ = angular.element;
+
+
+        // TODO: something less hacky
+        $(function () {
+          setTimeout(function (){
+            console.log('!!');
+            console.log('RAINBOCOLOR');
+            Rainbow.color();
+          },0);
+        });
+
         // Build the menu
         var menu = Menu.all(topLevelSectionID);
 
@@ -248,7 +260,6 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
 
         // Handle the `q` "search" param
         // (used for permalinking to individual sections)
-        var $ = angular.element;
 
         // Look for matching header
         function findPermalinkedHeader(permalink){
@@ -268,13 +279,13 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
 
         // If it IS found, scroll to the appropriate point on the page
         function scrollToHeader($header) {
+
           if ($header) {
             var coordinates = $header.offset();
             var y = coordinates.top;
 
             // subtract fixed-pos topbar height so it looks nicer
             y -= 40;
-            // console.log('scrolling to y='+y);
 
             $('html, body').animate({scrollTop: y}, 'slow');
           }
@@ -309,13 +320,15 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
               $('html, body').animate({scrollTop: 0}, 15);
 
               // pretty sure everything loaded at this point
-              Rainbow.color();
 
               // console.log('STILL couldnt scroll to header "%s" because it doesnt exist yet (or at all)', $routeParams.q);
             }, 500);
           });
+
           $scope.$on('$includeContentLoaded', function onNgInclude (e) {
+
             // console.log('nginclude:',e.targetScope);
+            Rainbow.color();
 
             // If the header has already been located, or we've given up,
             // don't do anything (remember, this event keeps firing forever for now)
@@ -327,6 +340,7 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
             if ($header) {
               scrollToHeader($header);
             }
+
 
             // If we couldn't match the permalink, do nothing--
             // more $includeContentLoaded events will fire, or we'll eventually give up
