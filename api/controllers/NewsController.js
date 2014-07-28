@@ -14,7 +14,7 @@ module.exports = {
   find: function(req, res) {
 
     require('node-machine')
-    .load('machinepack-github/get-repo-commits')
+    .build(require('machinepack-github/get-repo-commits'))
     .configure({
       user: 'balderdashy',
       repo: 'sails',
