@@ -2,7 +2,7 @@
   "name": "www.sailsjs.org",
   "private": true,
   "version": "0.0.0",
-  "description": "The Sails website (also beta.sailsjs.org)",
+  "description": "The public-facing web presence for the Sails framework.",
   "keywords": [],
   "dependencies": {
     "sails": "~0.10.0-rc9",
