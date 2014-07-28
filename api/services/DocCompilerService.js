@@ -118,36 +118,36 @@ module.exports = function compileDocumentationMarkdown(cb) {
   .build([{
     remote: 'git://github.com/balderdashy/sails-docs.git',
     remoteSubPath: 'reference',
-    htmlDirPath: '.tmp/public/templates/reference/',
-    jsMenuPath: '.tmp/public/templates/jsmenus/reference.jsmenu',
+    htmlDirPath: 'assets/templates/reference/',
+    jsMenuPath: 'assets/templates/jsmenus/reference.jsmenu',
     beforeConvert: beforeConvert,
     afterConvert: afterConvert,
   }, {
 
     remote: 'git://github.com/balderdashy/sails-docs.git',
     remoteSubPath: 'concepts',
-    htmlDirPath: '.tmp/public/templates/concepts/',
-    jsMenuPath: '.tmp/public/templates/jsmenus/concepts.jsmenu',
+    htmlDirPath: 'assets/templates/concepts/',
+    jsMenuPath: 'assets/templates/jsmenus/concepts.jsmenu',
     beforeConvert: beforeConvert,
     afterConvert: afterConvert,
 
   }, {
     remote: 'git://github.com/balderdashy/sails-docs.git',
     remoteSubPath: 'anatomy',
-    htmlDirPath: '.tmp/public/templates/anatomy/',
-    jsMenuPath: '.tmp/public/templates/jsmenus/anatomy.jsmenu',
+    htmlDirPath: 'assets/templates/anatomy/',
+    jsMenuPath: 'assets/templates/jsmenus/anatomy.jsmenu',
     beforeConvert: beforeConvert,
     afterConvert: afterConvert,
   }, {
     remote: 'git://github.com/balderdashy/sails-docs.git',
     remoteSubPath: 'getting-started',
-    htmlDirPath: '.tmp/public/templates/gettingStarted/',
+    htmlDirPath: 'assets/templates/gettingStarted/',
     beforeConvert: beforeConvert,
     afterConvert: afterConvert
   }, {
     remote: 'git://github.com/balderdashy/sails-docs.git',
     remoteSubPath: 'support/irc',
-    htmlDirPath: '.tmp/public/templates/irc/',
+    htmlDirPath: 'assets/templates/irc/',
     beforeConvert: beforeConvert,
     afterConvert: afterConvert
   }], cb);
