@@ -1,0 +1,5 @@
+<div ng-show="options.latestCommit && options.latestCommit.html_url"
+  style="color: #444; position: absolute; top: 250px; left: 100px;">
+  <!-- (please style me!!) -->
+  <em>Last updated <a target="_blank" href="{{options.latestCommit.html_url}}">{{options.latestCommit.date}}</a> by <a target="_blank" href="{{options.latestCommit.author.html_url}}">@{{options.latestCommit.author.login}}</a></em>
+</div>

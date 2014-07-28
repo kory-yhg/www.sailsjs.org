@@ -20,7 +20,7 @@ module.exports = {
       Machine.build(require('machinepack-github/get-repo-commits-at-path'))
       .configure({
         user: 'balderdashy',
-        repo: 'sails',
+        repo: 'sails-docs',
         path: req.param('path')
       })
       .cache({ model: Cache })
