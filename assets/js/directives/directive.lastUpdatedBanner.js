@@ -9,8 +9,6 @@ angular.module('Sails').directive('lastUpdatedBanner', ['getRepoCommits', functi
       console.log('PATH:', scope.path);
       scope.loading = true;
       getRepoCommits.fn({
-        user: 'balderdashy',
-        repo: 'sails-docs',
         path: scope.path
       })
       .then(function (_options) {

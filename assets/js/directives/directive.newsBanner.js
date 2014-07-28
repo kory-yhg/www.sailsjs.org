@@ -7,10 +7,7 @@ angular.module('Sails').directive('newsBanner', ['getRepoCommits', function (get
 
 
       scope.loading = true;
-      getRepoCommits.fn({
-        user: 'balderdashy',
-        repo: 'sails'
-      })
+      getRepoCommits.fn({})
       .then(function (_options) {
         scope.options = _options;
         scope.loading = false;
