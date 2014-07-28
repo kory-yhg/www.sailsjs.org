@@ -13,14 +13,28 @@ module.exports = {
    */
   find: function(req, res) {
 
-    require('node-machine')
-    .build(require('machinepack-github/get-repo-commits'))
-    .configure({
-      user: 'balderdashy',
-      repo: 'sails',
-      _cache: { model: Cache }
-    })
-    .exec(res.respond);
+    var Machine = require('node-machine');
+
+
+    if (req.param('path')) {
+      Machine.build(require('machinepack-github/get-repo-commits-at-path'))
+      .configure({
+        user: 'balderdashy',
+        repo: 'sails',
+        path: req.param('path')
+      })
+      .cache({ model: Cache })
+      .exec(res.respond);
+    }
+    else {
+      Machine.build(require('machinepack-github/get-repo-commits'))
+      .configure({
+        user: 'balderdashy',
+        repo: 'sails'
+      })
+      .cache({ model: Cache })
+      .exec(res.respond);
+    }
 
   }
 
