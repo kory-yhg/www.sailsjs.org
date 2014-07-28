@@ -317,7 +317,7 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
               // If it's STILL not found, q param is ignored
               // scroll to the top
               gaveUp = true;
-              $('html, body').animate({scrollTop: 0}, 15);
+              $('html, body').animate({scrollTop: 0}, 75);
 
               // pretty sure everything loaded at this point
 
