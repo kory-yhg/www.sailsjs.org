@@ -2,7 +2,7 @@
   "name": "www.sailsjs.org",
   "private": true,
   "version": "0.0.0",
-  "description": "a Sails application",
+  "description": "The Sails website (also beta.sailsjs.org)",
   "keywords": [],
   "dependencies": {
     "sails": "~0.10.0-rc9",
@@ -31,12 +31,13 @@
   },
   "scripts": {
     "start": "node app.js",
-    "debug": "node debug app.js"
+    "debug": "node debug app.js",
+    "deploy": "modulus deploy -f -p beta.sailsjs.org"
   },
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mike/www.sailsjs.org.git"
+    "url": "https://github.com/balderdashy/www.sailsjs.org.git"
   },
   "author": "mike",
   "license": "",
