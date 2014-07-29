@@ -75,6 +75,9 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
   .when('/support/irc', {
     templateUrl: 'templates/pages/irc.html',
   })
+  .when('/support/about-irc', {
+    templateUrl: 'templates/pages/about-irc.html',
+  })
 
 
   // .when('/support/:sectionPath*?', {

@@ -4,6 +4,12 @@
   padding: 110px 0 0;
   background-color: @bgLtBlue;
 
+  .back {
+    font-family: @headerFont;
+    font-size: 24px;
+    color: @darkTurquoise;
+  }
+
   .irc-container {
     .irc-content {
       .container();
@@ -20,12 +26,13 @@
   }
 
   .squid {
-    width: 300px;
+    width: 200px;
     top: 0;
     opacity: 1;
     position: absolute;
-    right: 50px;
+    right: 0px;
     z-index: 21;
+    opacity: 0.8;
   }
 
   .section-divider {
@@ -36,11 +43,10 @@
     img.bubbles {
       position: absolute;
       height: 300px;
-      opacity: 0.9;
-      bottom: 50px;
+      top: 0px;
     }
     &.left {
-      left: 25px;
+      left: 80px;
     }
     &.right {
       img {
@@ -70,11 +76,20 @@
     .login-container {
       .borderBox();
       .borderRadius(15px, 15px, 15px, 15px);
-      background-color: rgba(65,186,194,0.6);
+      background-color: rgba(65,186,194,0.5);
       border: 2px solid @brightBlue;
       padding: 50px 0 65px;
       width: 400px;
       margin: auto;
+      p {
+        text-align: center;
+        font-size: 12px;
+        padding-top: 10px;
+        a {
+          color: @darkTurquoise;
+          text-decoration: underline;
+        }
+      }
       .input-container {
         .borderBox();
         width: 210px;
@@ -135,7 +150,7 @@
     }
   }
   .sails-footer-wrapper.irc-wrapper {
-    padding-top: 325px;
+    padding-top: 350px;
     .ircFooterGradient();
     .footer-image-container {
       .container();
