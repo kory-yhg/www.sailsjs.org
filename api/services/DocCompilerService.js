@@ -73,8 +73,11 @@ module.exports = function compileDocumentationMarkdown(cb) {
     });
     html = $.html();
 
+    // Turn beta.sailsjs.org hrefs into www-root-relative hrefs
+    html = html.replace(/(href="https?:\/\/)(www\.|beta\.)?sailsjs\.org(\/[^"]*")/g, '$1$3');
+
     // Add target=_blank to external links
-    html = html.replace(/(href="https?:\/\/[^"]+")/g, '$1 target="_blank"');
+    html = html.replace(/(href="https?:\/\/([^"]+)")/g, '$1 target="_blank"');
 
     // Add the appropriate `data-language` based on the temporary marker
     // (TMP_LANG_MARKER_EXPR) that was added in the `beforeConvert()` lifecycle
