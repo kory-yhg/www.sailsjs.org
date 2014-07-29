@@ -30,7 +30,7 @@
 				li {
     			font-size: 15px;
 					font-weight: @normal;
-					padding-left: 12px;
+					padding-left: 16px;
           line-height: 1.8em;
           position: relative;
           .expand-arrow {
@@ -38,8 +38,16 @@
             display: none;
             width: 6px;
             position: absolute;
-            left: 0px;
+            left: 4px;
             top: 11px;
+          }
+          >ul >li >ul {
+            li {
+              color: @headerGray;
+              &.folder {
+                color: @black;
+              }
+            }
           }
 					&.current-section {
             >span {
