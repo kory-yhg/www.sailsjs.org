@@ -42,8 +42,9 @@
             top: 11px;
           }
 					&.current-section {
-            >div >span {
+            >span {
               color: @turquoise;
+              font-weight: @bold;
             }
           }
     			&.folder {
@@ -59,9 +60,14 @@
             &.current-parent-section {
               >span {
                 font-weight: @bold;
-                color: @turquoise;
+                // color: @turquoise;
               }
             }
+            // &.current-grandparent {
+            //   >span {
+            //     font-weight: @bold;
+            //   }
+            // }
             &.expanded {
                >.expand-arrow {
                 .rotate(90deg);
