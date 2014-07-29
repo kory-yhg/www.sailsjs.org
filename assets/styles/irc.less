@@ -1,13 +1,89 @@
 //Styles specific to IRC page:
 .irc-page {
-  padding-bottom: 150px;
-  background-color: rgba(20,172,194, 0.05);
-  .get-started-container .get-started-content {
-    background-color: rgba(255,255,255,0.75);
+  font-family: @mainFont;
+  padding: 110px 0 0;
+  background-color: @bgLtBlue;
+
+  .irc-content {
+    .container();
+  }
+
+  .login {
+    .borderBox();
+    padding: 100px 0;
+    background-color: @white;
+    h4 {
+      text-align: center;
+      color: @turquoise;
+      font-size: 22px;
+      font-family: @mainFont;
+      // font-family: @headerFont;
+      padding-bottom: 15px;
+    }
+    .login-container {
+      .container();
+      .input-container {
+        .borderBox();
+        width: 210px;
+        margin: auto;
+        position: relative;
+        border: 1px solid @turquoise;
+        input {
+          .borderBox();
+          width: 100%;
+          padding: 5px 50px 5px 10px;
+          border: none;
+          height: 30px;
+          font-family: @mainFont;
+          font-size: 13px;
+          color: @black;
+
+          //Placeholder Styles
+          .placeholder() {
+            font-weight: @bold;
+            color: @darkTurquoise;
+            opacity: 0.4;
+          }
+          &::-webkit-input-placeholder {
+              .placeholder();
+          }
+          &:-moz-placeholder {
+              .placeholder();
+          }
+          &::-moz-placeholder {
+              .placeholder();
+          }
+          &:-ms-input-placeholder {
+              .placeholder();
+          }
+        }
+        button {
+          .borderBox();
+          width: 40px;
+          height: 30px;
+          position: absolute;
+          right: 0;
+          top: 0;
+          background-color: @turquoise;
+          border: none;
+          cursor: pointer;
+          img.arrow {
+            width: 18px;
+            margin: 6px auto;
+          }
+          &:hover {
+            background-color: @ltTurquoise;
+            .transition(background 250ms);
+          }
+        }
+      }
+    }
   }
 }
 
 .sails-footer-wrapper.get-started-wrapper.irc-wrapper {
+  padding-top: 200px;
+  .ircFooterGradient();
   .footer-image-container {
     .container();
     position: relative;
@@ -19,5 +95,8 @@
       position: absolute;
       top: -155px;
     }
+  }
+  .sails-footer {
+    background: none;
   }
 }
