@@ -50,12 +50,23 @@
             }
           }
 					&.current-section {
+            span {
+              color: @originalTurquoise;
+              &:hover {
+                color: @black;
+              }
+            }
             >span {
               color: @turquoise;
               font-weight: @bold;
             }
           }
     			&.folder {
+              &.expanded {
+                >span {
+                  font-weight: @bold;
+                }
+              }
               >.expand-arrow {
                 display: block;
               }

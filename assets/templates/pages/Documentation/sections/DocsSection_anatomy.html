@@ -13,6 +13,7 @@
 				<!-- The top-level folder containing the "active" file also gets the class "active" -->
         <li ng-repeat="menuItem in docs.visibleMenu"
           stop-propagation="click"
+          class="top-level"
           ng-class="{
           'current-section': docs.currentPage.id === menuItem.id,
           'current-parent-section': docs.currentPage.parent === menuItem.id,
