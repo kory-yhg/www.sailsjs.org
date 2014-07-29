@@ -119,8 +119,6 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
         // TODO: something less hacky
         $(function () {
           setTimeout(function (){
-            console.log('!!');
-            console.log('RAINBOCOLOR');
             Rainbow.color();
           },0);
         });
