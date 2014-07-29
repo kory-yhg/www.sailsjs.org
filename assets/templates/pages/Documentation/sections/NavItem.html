@@ -9,6 +9,6 @@
     stop-propagation="click"
     ng-include="'templates/pages/Documentation/sections/NavItem.html'"
     ng-click="intent.toggleMenuItem(menuItem.id)"
-    ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'parent-section': menuItem.isParent, 'subsection-current-parent': docs.currentPage.parent === menuItem.id, 'folder': menuItem.isParent === true, 'expanded': menuItem.expanded === true}">
+    ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'folder': menuItem.isParent, 'subsection-current-parent': docs.currentPage.parent === menuItem.id, 'folder': menuItem.isParent === true, 'expanded': menuItem.expanded === true}">
   </li>
 </ul>
