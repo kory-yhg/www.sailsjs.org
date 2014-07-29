@@ -74,7 +74,7 @@ module.exports = function compileDocumentationMarkdown(cb) {
     html = $.html();
 
     // Turn beta.sailsjs.org hrefs into www-root-relative hrefs
-    html = html.replace(/(href="https?:\/\/)(www\.|beta\.)?sailsjs\.org(\/[^"]*")/g, '$1$3');
+    html = html.replace(/(href=")(https?:\/\/)(www\.|beta\.)?sailsjs\.org(\/[^"]*")/g, '$1$4');
 
     // Add target=_blank to external links
     html = html.replace(/(href="https?:\/\/([^"]+)")/g, '$1 target="_blank"');
