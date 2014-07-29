@@ -4,30 +4,84 @@
   padding: 110px 0 0;
   background-color: @bgLtBlue;
 
-  .irc-content {
-    .container();
+  .irc-container {
+    .irc-content {
+      .container();
+      position: relative;
+      >div {
+        padding: 50px 0;
+        position: relative;
+        z-index: 25;
+        a.permalink-thing {
+          right: 0;
+        }
+      }
+    }
+  }
+
+  .squid {
+    width: 300px;
+    top: 0;
+    opacity: 1;
+    position: absolute;
+    right: 50px;
+    z-index: 21;
+  }
+
+  .section-divider {
+    .borderBox();
+    position: relative;
+    z-index: 20;
+    height: 50px;
+    img.bubbles {
+      position: absolute;
+      height: 300px;
+      opacity: 0.9;
+      bottom: 50px;
+    }
+    &.left {
+      left: 25px;
+    }
+    &.right {
+      img {
+        right: 100px;
+      }
+    }
+    &.middle {
+      img {
+        left: 15%;
+      }
+    }
   }
 
   .login {
     .borderBox();
-    padding: 100px 0;
-    background-color: @white;
+    padding: 50px 0 0px;
+    background-color: @bgLtBlue;
     h4 {
       text-align: center;
-      color: @turquoise;
-      font-size: 22px;
-      font-family: @mainFont;
-      // font-family: @headerFont;
+      color: @darkTurquoise;
+      font-weight: @bold;
+      font-size: 24px;
+      // font-family: @mainFont;
+      font-family: @headerFont;
       padding-bottom: 15px;
     }
     .login-container {
-      .container();
+      .borderBox();
+      .borderRadius(15px, 15px, 15px, 15px);
+      background-color: rgba(65,186,194,0.6);
+      border: 2px solid @brightBlue;
+      padding: 50px 0 65px;
+      width: 400px;
+      margin: auto;
       .input-container {
         .borderBox();
         width: 210px;
         margin: auto;
         position: relative;
         border: 1px solid @turquoise;
+        .borderRadius(4px, 4px, 4px, 4px);
         input {
           .borderBox();
           width: 100%;
@@ -37,6 +91,7 @@
           font-family: @mainFont;
           font-size: 13px;
           color: @black;
+          .borderRadius(4px, 0px, 0px, 4px);
 
           //Placeholder Styles
           .placeholder() {
@@ -72,31 +127,56 @@
             margin: 6px auto;
           }
           &:hover {
-            background-color: @ltTurquoise;
+            background-color: @darkTurquoise;
             .transition(background 250ms);
           }
         }
       }
     }
   }
-}
-
-.sails-footer-wrapper.get-started-wrapper.irc-wrapper {
-  padding-top: 200px;
-  .ircFooterGradient();
-  .footer-image-container {
-    .container();
-    position: relative;
-    height: 50px;
-    overflow: visible;
-    z-index: 50;
-    img.sea-floor {
-      width: 100%;
-      position: absolute;
-      top: -155px;
+  .sails-footer-wrapper.irc-wrapper {
+    padding-top: 325px;
+    .ircFooterGradient();
+    .footer-image-container {
+      .container();
+      position: relative;
+      height: 50px;
+      overflow: visible;
+      z-index: 50;
+      img.sea-floor {
+        width: 100%;
+        position: absolute;
+        top: -155px;
+      }
+    }
+    .sails-footer {
+      background: none;
     }
   }
-  .sails-footer {
-    background: none;
+
+  @media screen and (max-width: 850px) {
+    .squid {
+      display: none;
+    }
+    .footer-image-container {
+      height: 0px;
+    }
+  }
+   @media screen and (max-width: 500px) {
+    .login {
+      .login-container {
+        display: none;
+        // width: 275px;
+        // padding: 25px 0 30px;
+        // margin-bottom: 20px;
+      }
+    }
+    .sails-footer-wrapper.irc-wrapper {
+      padding-top: 125px;
+      .footer-image-container img.sea-floor {
+        top: -35px;
+      }
+    }
   }
 }
+
