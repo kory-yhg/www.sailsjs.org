@@ -28,7 +28,7 @@
         position: relative;
         z-index: 10;
 				li {
-    			font-size: 15px;
+    			font-size: 14px;
 					font-weight: @normal;
 					padding-left: 16px;
           line-height: 1.8em;
@@ -51,14 +51,28 @@
           }
 					&.current-section {
             span {
-              color: @originalTurquoise;
+              color: @turquoise;
               &:hover {
                 color: @black;
               }
             }
             >span {
-              color: @turquoise;
+              color: @brightBlue;
               font-weight: @bold;
+              &:hover {
+                color: @brightBlue;
+              }
+            }
+            &.top-level {
+              span {
+                color: @black;
+                &:hover {
+                  color: @turquoise;
+                }
+              }
+              >span {
+                color: @brightBlue;
+              }
             }
           }
     			&.folder {

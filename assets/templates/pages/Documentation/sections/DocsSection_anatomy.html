@@ -20,6 +20,7 @@
           'folder': menuItem.isParent === true,
           'expanded': menuItem.expanded === true}"
           ng-click="intent.toggleMenuItem(menuItem.id)"
+          class="top-level"
           ng-include="'templates/pages/Documentation/sections/NavItem.html'"></li>
       </ul>
     </div>
