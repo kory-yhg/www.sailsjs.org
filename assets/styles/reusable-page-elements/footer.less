@@ -65,12 +65,16 @@
     		}
       }
   		h1 {
-        .sectionHeader(@white);
-        background: url(/images/icon_heart.png) no-repeat left 5px;
-        background-size: 32px;
-  			padding-left: 40px;
-  			width: 255px;
         .borderBox();
+        .sectionHeader(@white);
+        position: relative;
+        padding-left: 38px;
+        img {
+          position: absolute;
+          left: 0px;
+          top: 4px;
+          width: 32px;
+        }
   		}
   		p, span{
         .paragraph(@white);
