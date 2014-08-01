@@ -7,7 +7,7 @@
 <ul ng-show="menuItem.visibleChildren.length">
   <li ng-repeat="menuItem in menuItem.visibleChildren | orderBy:['isChild','isParent']"
     stop-propagation="click"
-    ng-include="'templates/pages/Documentation/sections/NavItem.html'"
+    ng-include="'templates/pages/Documentation/sections/AnatomyNavItem.html'"
     ng-click="intent.toggleMenuItem(menuItem.id)"
     ng-class="{
     'current-section': docs.currentPage.id === menuItem.id,

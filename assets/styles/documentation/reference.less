@@ -16,157 +16,6 @@
       .fadeAnimation();
       padding-bottom: 50px;
     }
-    // Section with links and comments
-    // at the bottom
-    .link-comment-section {
-      border-top: 3px solid @ltestGray;
-      h3 {
-        font-size: 1.4em;
-        font-weight: @light;
-        padding: 12px 0 12px 50px;
-      }
-      a {
-        font-size: 0.8em;
-        text-decoration: underline;
-        font-weight: inherit;
-      }
-      button {
-        .borderBox();
-        height: 36px;
-        background-color: @turquoise;
-        border: none;
-        color: @white;
-        text-transform: uppercase;
-        cursor: pointer;
-        &:active {
-          background-color: @darkTurquoise;
-        }
-        &:hover {
-          color: @taglineBlue;
-          .transition(all 0.25s);
-        }
-        .loading-spinner {
-          display: none;
-          margin: auto;
-        }
-      }
-      .link-section {
-        .borderBox();
-        padding: 25px 0 40px;
-        h3 {
-          background: url('/images/icon_stackoverflow.png') no-repeat left center;
-        }
-        input {
-          .borderBox();
-          width: 80%;
-          height: 36px;
-          border: 1px solid @ltestGray;
-          padding: 5px 10px;
-          font-size: 0.9em;
-          font-weight: @light;
-        }
-        button {
-          width: 18.5%;
-          font-size: 0.9em;
-          float: right;
-        }
-        .link-list {
-          background-color: @seaGreen;
-          padding: 10px;
-          margin-top: 10px;
-          .link {
-            white-space: nowrap;
-            overflow-x: hidden;
-            text-overflow: ellipsis;
-            font-weight: @semibold;
-            padding: 3px;
-          }
-          .loading-spinner {
-            margin: 10px auto;
-            display: none;
-          }
-          .empty-message, .error-message, .server-error-message {
-            font-weight: @light;
-            font-style: italic;
-            display: none;
-          }
-        }
-      }
-      .comment-section {
-        h3 {
-          background: url('/images/icon_comments.png') no-repeat left center;
-        }
-        .sorting-links {
-          font-size: 0.8em;
-          padding-bottom: 10px;
-          color: @ltGray;
-          span {
-            cursor: pointer;
-          }
-          span.active {
-            color: @turquoise;
-            font-weight: @semibold;
-          }
-        }
-        .comment-form {
-          padding-bottom: 40px;
-          textarea {
-            .borderBox();
-            width: 100%;
-            height: 100px;
-            border: 1px solid @ltestGray;
-            padding: 10px;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-          }
-          button {
-            width: 100%;
-            font-size: 1.1em;
-          }
-          span.error {
-            display: none;
-          }
-        }
-        .comment-list {
-          .clearfix();
-          border-top: 3px solid @ltestGray;
-          color: @medGray;
-          .comment {
-            padding: 15px 0px 25px 80px;
-            border-bottom: 2px solid @ltestGray;
-            position: relative;
-            div.avatar {
-              width: 65px;
-              height: 65px;
-              position: absolute;
-              top: 20px;
-              left: 0px;
-            }
-            span {
-              position: absolute;
-              right: 0px;
-              top: 15px;
-              font-size: 0.8em;
-              font-weight: @light;
-            }
-            h4, p {
-              .borderBox();
-            }
-            h4 {
-              font-size: 1.2em;
-              padding-bottom: 10px;
-            }
-            p {
-              font-size: 0.8em;
-            }
-          }
-          .loading-spinner {
-            margin: 25px auto;
-            display: none;
-          }
-        }
-      }
-    }
   }
   //Styles for the navigation sidebar
   .reference-sidebar {
@@ -180,74 +29,52 @@
       font-weight: @light;
       padding: 0px 7px 0px 5px;
     }
-    ul {
-      line-height: 1.8em;
-      .expand-arrow {
-        display: none;
-      }
-      li.current-section {
-        >span {
-          .borderBox();
-          color: @turquoise;
-          font-weight: @bold;
-          // text-decoration: underline;
-        }
-        li.parent-section {
-          >span {
-            color: @headerGray!important;
-          }
-          li >span {
-            color: @turquoise;
-          }
-        }
-      }
-      li.current-parent-section {
-        >span {
-          border-right: 4px solid @turquoise;
-          padding-right: 7px;
-        }
-      }
-      li.parent-section {
-        >span {
-          font-weight: @semibold;
-          color: @black;
-        }
-        &.subsection-current-parent >span {
-          color: @turquoise;
-        }
-       li {
-          color: @turquoise!important;
-        }
-      }
-
+    >ul {
+      //Styles specific to top-level lis
       >li {
         font-weight: @semibold;
         color: @black;
-        font-size: 12px;
+        font-size: 16px;
         span {
           cursor: pointer;
-          padding-right: 11px;
+          display: block;
+          margin-bottom: 5px;
+          // padding-right: 11px;
           &:hover {
            color: @turquoise;
            .transition(all 250ms);
           }
         }
-        &.main-section.current-section {
+      }
+      //Styles for all lis
+      li {
+        &.current-section {
           >span {
-            border-right: 4px solid @turquoise;
-            padding-right: 7px;
+            color: @ltTurquoise;
+            font-weight: @semibold;
           }
         }
-        >ul >li {
-          font-weight: @normal;
-          font-size: 12px;
-          color: @headerGray;
-          &:last-child {
-            padding-bottom: 10px;
+        &.current-parent-section {
+          >span {
+            color: @ltTurquoise;
+            &:hover {
+              color: @black;
+            }
           }
-          // color: @black;
-          li {
-            color: @black;
+        }
+        &.top-level-expanded {
+          >span {
+            color: @ltTurquoise;
+          }
+        }
+        //ULs inside of ULs
+        ul {
+          border-right: 3px solid #ebebeb;
+          padding-right: 20px;
+          >li {
+            font-weight: @normal;
+            color: @headerGray;
+            font-size: 14px;
           }
         }
       }

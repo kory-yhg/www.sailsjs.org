@@ -1,0 +1,22 @@
+<span ng-click="intent.goto(menuItem.href)">
+  {{menuItem.label}}
+</span>
+
+
+<ul ng-show="menuItem.visibleChildren.length">
+  <li class="overview-label"
+    ng-if="menuItem.isParent"
+    ng-class="{'current-section': docs.currentPage.id === menuItem.id}">
+    <span>Overview</span>
+  </li>
+  <li ng-repeat="menuItem in menuItem.visibleChildren | orderBy:['isChild','isParent']"
+    stop-propagation="click"
+    ng-include="'templates/pages/Documentation/sections/DocsNavItem.html'"
+    ng-click="intent.toggleMenuItem(menuItem.id)"
+    ng-class="{
+    'current-section': (docs.currentPage.id === menuItem.id) && !menuItem.isParent,
+    'current-parent-section': docs.currentPage.parent === menuItem.id,
+    'folder': menuItem.isParent === true,
+    'expanded': menuItem.expanded === true}">
+  </li>
+</ul>

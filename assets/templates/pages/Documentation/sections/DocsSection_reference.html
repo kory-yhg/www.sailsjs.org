@@ -20,9 +20,11 @@
     <ul class="main-sections">
       <li ng-repeat="menuItem in docs.visibleMenu"
         class="main-section"
-        ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'current-parent-section': docs.currentPage.parent === menuItem.id}"
+        ng-class="{'current-section': docs.currentPage.id === menuItem.id && !menuItem.isParent,
+        'current-parent-section': (docs.currentPage.parent === menuItem.id) || (docs.currentPage.id === menuItem.id && menuItem.isParent),
+        'top-level-expanded': menuItem.expanded === true}"
         stop-propagation="click"
-        ng-include src="'templates/pages/Documentation/sections/NavItem.html'"></li>
+        ng-include src="'templates/pages/Documentation/sections/DocsNavItem.html'"></li>
     </ul>
   </div>
 </div>
