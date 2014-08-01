@@ -1,10 +1,7 @@
 //Styles specific to IRC page:
 .irc-page {
   font-family: @mainFont;
-  padding: 110px 0 0;
-  background: @bgLtBlue url(/images/bkgd_light.png) no-repeat;
-  background-size: 100%;
-  background-position: -200px 56px;
+  .ircGradient();
 
   .back {
     font-family: @headerFont;
@@ -13,6 +10,10 @@
   }
 
   .irc-container {
+    background: url(/images/bkgd_light.png) no-repeat;
+    background-size: 100%;
+    padding-top: 110px;
+    background-position: -200px 56px;
     .irc-content {
       .container();
       position: relative;

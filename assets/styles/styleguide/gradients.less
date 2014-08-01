@@ -49,6 +49,17 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#41bac2', endColorstr='#0b8fa2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
+.ircGradient() {
+  background: rgb(236,252,255); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(193,231,234,0.8) 0%, @bgLtBlue 30%, @bgLtBlue 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(193,231,234,0.8)), color-stop(30%,@bgLtBlue), color-stop(100%,@bgLtBlue)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(193,231,234,0.8) 0%,@bgLtBlue 30%,@bgLtBlue 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(193,231,234,0.8) 0%,@bgLtBlue 30%,@bgLtBlue 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(193,231,234,0.8) 0%,@bgLtBlue 30%,@bgLtBlue 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(193,231,234,0.8) 0%,@bgLtBlue 30%,@bgLtBlue 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ecfcff', endColorstr='#c1e7ea',GradientType=0 ); /* IE6-9 */
+}
+
 
 .ircFooterGradient() {
   background: rgb(236,252,255); /* Old browsers */
