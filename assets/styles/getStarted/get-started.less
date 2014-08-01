@@ -1,13 +1,14 @@
 .get-started {
-  background: url('/images/bkgd_bubbles01.png') repeat fixed;
+  background: @bgLtBlue url('/images/bkgd_bubbles.png') repeat fixed;
+  // background: @bgLtBlue;
   .fadeAnimation();
 
   .get-started-container {
     .container();
     .clearfix();
-    background: url('/images/bkgd_light.png');
+    background: url('/images/bkgd_light.png') fixed;
     background-repeat: no-repeat;
-    background-position: -400px 50px;
+    background-position: -20px 50px;
   	font-family: @mainFont;
   	padding: 100px 0 150px;
     position: relative;
@@ -68,20 +69,24 @@
       position: absolute;
       z-index: 1;
       &.one {
-        top: 2700px;
-        left: 300px;
+        top: 700px;
+        left: 15px;
       }
       &.two {
-        top: 3300px;
-        right: 100px;
+        top: 2700px;
+        right: -110px;
       }
       &.three {
-        top: 3600px;
-        left: 100px;
+        top: 3100px;
+        left: 75px;
       }
       &.four {
-        top: 600px;
-        left: 300px;
+        top: 3900px;
+        left: -100px;
+      }
+      &.five {
+        top: 4100px;
+        right: -150px;
       }
     }
 
@@ -99,7 +104,7 @@
     // CONTENT CONTAINER
     .get-started-content {
       .borderBox();
-      background-color: rgba(255,255,255,0.4);
+      background-color: rgba(255,255,255,0.3);
       border-radius: 10px;
       width: 70%;
       float: right;

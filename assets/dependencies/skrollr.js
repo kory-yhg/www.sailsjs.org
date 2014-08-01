@@ -11,16 +11,16 @@
 	/*
 	 * Global api.
 	 */
-	var skrollr = {
-		get: function() {
-			return _instance;
-		},
-		//Main entry point.
-		init: function(options) {
-			return _instance || new Skrollr(options);
-		},
-		VERSION: '0.6.22'
-	};
+	// var skrollr = {
+	// 	get: function() {
+	// 		return _instance;
+	// 	},
+	// 	//Main entry point.
+	// 	init: function(options) {
+	// 		return _instance || new Skrollr(options);
+	// 	},
+	// 	VERSION: '0.6.22'
+	// };
 
 	//Minify optimization.
 	var hasProp = Object.prototype.hasOwnProperty;
@@ -28,37 +28,37 @@
 	var getStyle = window.getComputedStyle;
 
 	//They will be filled when skrollr gets initialized.
-	var documentElement;
-	var body;
+	// var documentElement;
+	// var body;
 
-	var EVENT_TOUCHSTART = 'touchstart';
-	var EVENT_TOUCHMOVE = 'touchmove';
-	var EVENT_TOUCHCANCEL = 'touchcancel';
-	var EVENT_TOUCHEND = 'touchend';
+	// var EVENT_TOUCHSTART = 'touchstart';
+	// var EVENT_TOUCHMOVE = 'touchmove';
+	// var EVENT_TOUCHCANCEL = 'touchcancel';
+	// var EVENT_TOUCHEND = 'touchend';
 
-	var SKROLLABLE_CLASS = 'skrollable';
-	var SKROLLABLE_BEFORE_CLASS = SKROLLABLE_CLASS + '-before';
-	var SKROLLABLE_BETWEEN_CLASS = SKROLLABLE_CLASS + '-between';
-	var SKROLLABLE_AFTER_CLASS = SKROLLABLE_CLASS + '-after';
+	// var SKROLLABLE_CLASS = 'skrollable';
+	// var SKROLLABLE_BEFORE_CLASS = SKROLLABLE_CLASS + '-before';
+	// var SKROLLABLE_BETWEEN_CLASS = SKROLLABLE_CLASS + '-between';
+	// var SKROLLABLE_AFTER_CLASS = SKROLLABLE_CLASS + '-after';
 
-	var SKROLLR_CLASS = 'skrollr';
-	var NO_SKROLLR_CLASS = 'no-' + SKROLLR_CLASS;
-	var SKROLLR_DESKTOP_CLASS = SKROLLR_CLASS + '-desktop';
-	var SKROLLR_MOBILE_CLASS = SKROLLR_CLASS + '-mobile';
+	// var SKROLLR_CLASS = 'skrollr';
+	// var NO_SKROLLR_CLASS = 'no-' + SKROLLR_CLASS;
+	// var SKROLLR_DESKTOP_CLASS = SKROLLR_CLASS + '-desktop';
+	// var SKROLLR_MOBILE_CLASS = SKROLLR_CLASS + '-mobile';
 
-	var DEFAULT_EASING = 'linear';
-	var DEFAULT_DURATION = 1000;//ms
-	var DEFAULT_MOBILE_DECELERATION = 0.004;//pixel/ms²
+	// var DEFAULT_EASING = 'linear';
+	// var DEFAULT_DURATION = 1000;//ms
+	// var DEFAULT_MOBILE_DECELERATION = 0.004;//pixel/ms²
 
-	var DEFAULT_SMOOTH_SCROLLING_DURATION = 200;//ms
+	// var DEFAULT_SMOOTH_SCROLLING_DURATION = 200;//ms
 
-	var ANCHOR_START = 'start';
-	var ANCHOR_END = 'end';
-	var ANCHOR_CENTER = 'center';
-	var ANCHOR_BOTTOM = 'bottom';
+	// var ANCHOR_START = 'start';
+	// var ANCHOR_END = 'end';
+	// var ANCHOR_CENTER = 'center';
+	// var ANCHOR_BOTTOM = 'bottom';
 
-	//The property which will be added to the DOM element to hold the ID of the skrollable.
-	var SKROLLABLE_ID_DOM_PROPERTY = '___skrollable_id';
+	// //The property which will be added to the DOM element to hold the ID of the skrollable.
+	// var SKROLLABLE_ID_DOM_PROPERTY = '___skrollable_id';
 
 	var rxTouchIgnoreTags = /^(?:input|textarea|button|select)$/i;
 
