@@ -72,9 +72,9 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
   .when('/support', {
     templateUrl: 'templates/pages/support/supportHome.html',
   })
-  .when('/support/irc', {
-    templateUrl: 'templates/pages/irc.html',
-  })
+  // .when('/support/irc', {
+  //   templateUrl: 'templates/pages/irc.html',
+  // })
   .when('/support/about-irc', {
     templateUrl: 'templates/pages/about-irc.html',
   })
