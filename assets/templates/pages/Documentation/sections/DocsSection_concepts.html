@@ -5,7 +5,7 @@
       <!-- If this template has a stabilityIndex docMeta tag, show it here -->
       <div class="stabilityIndex" ng-if="docs.currentPage.data.stabilityIndex" ng-include src="'./templates/stabilityIndexPartials/stability'+docs.currentPage.data.stabilityIndex+'.html'"></div>
       <br>
-  
+
     <div class="reference-item"
       ng-include src="docs.currentPage.templateSrc" ng-cloak></div>
     <div class="contribution-message">
@@ -22,7 +22,7 @@
         class="main-section"
         ng-class="{'current-section': docs.currentPage.id === menuItem.id, 'current-parent-section': docs.currentPage.parent === menuItem.id}"
         stop-propagation="click"
-        ng-include src="'templates/pages/Documentation/sections/NavItem.html'"></li>
+        ng-include src="'templates/pages/Documentation/sections/DocsNavItem.html'"></li>
     </ul>
   </div>
 </div>
