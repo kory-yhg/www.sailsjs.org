@@ -20,30 +20,6 @@ angular.module('Sails').controller('AppCtrl', [
       return current === '#' + path;
     };
 
-    /**
-     * Skrollr.js handling
-     * Runs on load and on route change success
-    */
-    $scope.$on('$locationChangeSuccess', function(event) {
-      // Init skrollr if wider than mobile layout
-      if ($window.innerWidth >= 768) {
-        // Move to end of digest, allows ng-include to finish
-        $timeout(function() {
-          // If there's already an instance of skroller in the scope, destroy it
-          if ($scope.s) {
-            $scope.s.destroy();
-          }
-          // Init skroller
-          $scope.s = skrollr.init({
-            forceHeight: false
-          });
-
-          // Init skrollr hash menu plugin
-          //skrollr.menu.init($scope.s);
-
-        }, 1000); // In the past, this timeout was causing issues with the nav not loading
-      }
-    });
     $scope.scrollToTopOfPage = function(thenDownBy) {
 
       // Compensate for the fixed topbar

@@ -2,7 +2,9 @@
 .irc-page {
   font-family: @mainFont;
   padding: 110px 0 0;
-  background-color: @bgLtBlue;
+  background: @bgLtBlue url(/images/bkgd_light.png) no-repeat;
+  background-size: 100%;
+  background-position: -200px 56px;
 
   .back {
     font-family: @headerFont;
@@ -42,8 +44,9 @@
     height: 50px;
     img.bubbles {
       position: absolute;
-      height: 300px;
+      height: 450px;
       top: 0px;
+      opacity: 0.8;
     }
     &.left {
       left: 80px;
