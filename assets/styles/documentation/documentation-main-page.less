@@ -1,6 +1,5 @@
 .documentation-main-page {
 	font-family: @mainFont;
-	min-width: 900px;
 	div.page-header {
 		.pageHeader();
     .footerGradient();
@@ -21,7 +20,7 @@
 		ul.link-list {
 			.borderBox();
 			width: 60%;
-			padding: 10px 50px 50px 0;
+			padding: 10px 50px 50px 0px;
 			float: left;
 			a {
 				.clearfix();
@@ -29,15 +28,16 @@
         li {
           .clearfix();
           padding-bottom: 50px;
+          position: relative;
+          padding-left: 90px;
           img.icon {
-            float: left;
-            width: 15%;
+            position: absolute;
+            width: 70px;
+            left: 0;
+            top: 5px;
 					}
 					div.description {
             .borderBox();
-						float: left;
-						padding-left: 25px;
-            width: 85%;
 						h2 {
 							.docs_h1();
 							font-size: 32px;
@@ -111,4 +111,17 @@
 			}
 		}
 	}
+  @media screen and (max-width: 1000px) {
+    div.main-container {
+      ul.link-list {
+        float: none;
+        width: 100%;
+      }
+      div.version-notes-links {
+        float: none;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
 }
