@@ -14,7 +14,7 @@
     ng-include="'templates/pages/Documentation/sections/DocsNavItem.html'"
     ng-click="intent.toggleMenuItem(menuItem.id)"
     ng-class="{
-    'current-section': (docs.currentPage.id === menuItem.id) && !menuItem.isParent,
+    'current-section': docs.currentPage.id === menuItem.id,
     'current-parent-section': docs.currentPage.parent === menuItem.id,
     'folder': menuItem.isParent === true,
     'expanded': menuItem.expanded === true}">
