@@ -4,11 +4,11 @@
 
 
 <ul ng-show="menuItem.visibleChildren.length">
-  <li class="overview-label"
+  <!-- <li class="overview-label"
     ng-if="menuItem.isParent"
     ng-class="{'current-section': docs.currentPage.id === menuItem.id}">
     <span>Overview</span>
-  </li>
+  </li> -->
   <li ng-repeat="menuItem in menuItem.visibleChildren | orderBy:['isChild','isParent']"
     stop-propagation="click"
     ng-include="'templates/pages/Documentation/sections/DocsNavItem.html'"
