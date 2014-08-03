@@ -19,9 +19,9 @@
  */
 
 // Ensure a "sails" can be located:
-var sails;
+var app;
 try {
-  sails = require('sails');
+  app = require('sails');
 } catch (e) {
   console.error('To run an app using `node app.js`, you usually need to have a version of `sails` installed in the same directory as your app.');
   console.error('To do that, run `npm install sails`');
@@ -53,15 +53,21 @@ try {
 
 // Compile docs and start server
 // (must use `require` because globals are not yet available)
-// require('./api/services/DocCompilerService')(function(err) {
-//   if (err) {
-//     console.error('The following error occurred when compiling docs:');
-//     console.error(err);
-//   }
+app.lift(rc('sails'), function (err){
+  if (err) {
+    app.log.error('Encountered error lifting server.');
+    app.log.error(err);
+    return;
+  }
 
-sails.lift(rc('sails'), function (err){
-  console.log('LIFT CALLBACK FIRED');
-  console.log('\nerr? ' , err);
+  app.log.debug('Compiling documentation to HTML...');
+  require('./api/services/DocCompilerService')(function(err) {
+    if (err) {
+      app.log.error('The following error occurred when compiling docs:');
+      app.log.error(err);
+      return;
+    }
+    app.log.debug('Compiled docs successfully!');
+  });
 });
-// });
 
