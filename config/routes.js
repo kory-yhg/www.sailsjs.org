@@ -7,8 +7,10 @@ module.exports.routes = {
   // Redirect 'beta.sailsjs.org' to 'sailsjs.org'
   '/*': function (req, res, next) {
     try {
+      // There doesn't seem to be a good way to preserve the URL fragment
+      // (e.g. #/foo/bar/baz) because it's not sent to the server.
       if (req.subdomains[0] === 'beta') {
-        return res.redirect(req.url.replace(/beta\.sailsjs\.org/, 'sailsjs.org'));
+        return res.redirect('http://sailsjs.org' + req.originalUrl);
       }
     }
     catch(e) { }
