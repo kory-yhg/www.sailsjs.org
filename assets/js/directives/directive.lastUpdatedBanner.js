@@ -6,7 +6,6 @@ angular.module('Sails').directive('lastUpdatedBanner', ['getRepoCommits', functi
       path: '='
     },
     link: function (scope) {
-      console.log('PATH:', scope.path);
       scope.loading = true;
       getRepoCommits.fn({
         path: scope.path
