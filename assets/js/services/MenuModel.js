@@ -50,7 +50,7 @@ angular.module('Sails').factory('Menu', function() {
         mItem.id = mItem.id || mItem.fullPathAndFileName;
 
         // Derive the `templateSrc` from `templatePath` (so ngIncludes will work)
-        mItem.templateSrc = '/templates/' + mItem.fullPathAndFileName;
+        mItem.templateSrc = '/templates/doc-templates/' + mItem.fullPathAndFileName;
 
         // used for "lastUpdated":
         mItem.githubPath = mItem.fullPathAndFileName.replace('.html', '.md');

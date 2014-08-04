@@ -1,7 +1,7 @@
 angular.module('Sails').directive('newsBanner', ['getRepoCommits', function (getRepoCommits) {
   return {
     restrict: 'E',
-    templateUrl: '/templates/NewsBanner.html',
+    templateUrl: '/templates/pages/Reusable/News/NewsBanner.html',
     scope: {},
     link: function (scope) {
 
