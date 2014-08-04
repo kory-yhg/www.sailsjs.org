@@ -1,12 +1,11 @@
 angular.module('Sails').directive('lastUpdatedBanner', ['getRepoCommits', function (getRepoCommits) {
   return {
     restrict: 'E',
-    templateUrl: '/templates/docPageLastUpdated.html',
+    templateUrl: '/templates/pages/Documentation/Reusable/LastUpdated.html',
     scope: {
       path: '='
     },
     link: function (scope) {
-      console.log('PATH:', scope.path);
       scope.loading = true;
       getRepoCommits.fn({
         path: scope.path

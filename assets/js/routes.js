@@ -7,11 +7,11 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
   $routeProvider
 
   .when('/', {
-    templateUrl: 'templates/pages/HomePage.html'
+    templateUrl: 'templates/pages/Home/HomePage.html'
   })
 
   .when('/getStarted', {
-    templateUrl: 'templates/pages/GetStartedPage.html'
+    templateUrl: 'templates/pages/GetStarted/GetStartedPage.html'
   })
   // .when('/getStarted/WhatIsSails', {
   //   templateUrl: 'templates/gettingStarted/WhatIsSails.html'
@@ -21,12 +21,12 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
   // })
 
 
-  .when('/logos', {
-    templateUrl: 'templates/pages/LogosPage.html'
-  })
+  // .when('/logos', {
+  //   templateUrl: 'templates/pages/LogosPage.html'
+  // })
 
   .when('/features', {
-    templateUrl: 'templates/pages/FeaturesPage.html'
+    templateUrl: 'templates/pages/Features/FeaturesPage.html'
   })
 
   //Documentation Sections:
@@ -65,18 +65,18 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
     })
 
   .when('/documentation/anatomy', {
-    templateUrl: 'templates/pages/Documentation/DocsSection.html',
+    templateUrl: 'templates/pages/Documentation/Reusable/DocsSection.html',
     redirectTo: '/documentation/anatomy/myApp'
   })
 
   .when('/support', {
-    templateUrl: 'templates/pages/support/supportHome.html',
+    templateUrl: 'templates/pages/Support/SupportHomePage.html',
   })
   // .when('/support/irc', {
   //   templateUrl: 'templates/pages/irc.html',
   // })
   .when('/support/about-irc', {
-    templateUrl: 'templates/pages/about-irc.html',
+    templateUrl: 'templates/pages/Support/IRC/AboutIRCPage.html',
   })
 
 
@@ -102,7 +102,7 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
 
   // Documentation section sub-router
   .when('/documentation/:sectionPath*?', {
-    templateUrl: 'templates/pages/Documentation/DocsSection.html',
+    templateUrl: 'templates/pages/Documentation/Reusable/DocsSection.html',
     controller: ['$scope', '$routeParams', 'Menu',
       function($scope, $routeParams, Menu) {
 
@@ -155,15 +155,18 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
         };
 
         // Then show the top-level docs section (e.g. anatomy, reference)
-        $scope.docs.sectionTpl = 'templates/pages/Documentation/sections/DocsSection_' + topLevelSectionID + '.html';
+        // $scope.docs.sectionTpl = 'templates/pages/Documentation/sections/DocsSection_' + topLevelSectionID + '.html';
         switch (topLevelSectionID) {
           case 'anatomy':
+            $scope.docs.sectionTpl = 'templates/pages/Documentation/Anatomy/AnatomyPage.html';
             $scope.docs.title = 'Anatomy of a Sails App';
             break;
           case 'reference':
+            $scope.docs.sectionTpl = 'templates/pages/Documentation/Reference/ReferencePage.html';
             $scope.docs.title = 'Reference';
             break;
           case 'concepts':
+            $scope.docs.sectionTpl = 'templates/pages/Documentation/Concepts/ConceptsPage.html';
             $scope.docs.title = 'Concepts';
             break;
         }
