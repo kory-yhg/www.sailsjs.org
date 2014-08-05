@@ -11,9 +11,12 @@
 
   <!--Navigation list-->
   <div class="nav-container">
-    <a ng-click="intent.goto('/')">
-      <img class="logo" src="/images/sails-logo.jpg" alt="Sails" />
-    </a>
+    <div class="branding">
+      <a ng-click="intent.goto('/')">
+        <img class="logo" src="/images/sails-logo.jpg" alt="Sails" />
+      </a>
+      <span class="version">v0.10</span>
+    </div>
     <ul class="nav" ng-class="{'menu-open': menuVisible === true}">
       <!-- <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: getIsCurrentPage('/')}"

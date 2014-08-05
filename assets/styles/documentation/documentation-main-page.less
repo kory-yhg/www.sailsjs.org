@@ -85,7 +85,7 @@
 			>h3 {
 				color: @headerGray;
 				font-weight: @light;
-				font-size: 1.9em;
+				font-size: 18px;
 				padding-bottom: 20px;
 				text-align: center;
 			}
@@ -116,11 +116,33 @@
       ul.link-list {
         float: none;
         width: 100%;
+        padding-right: 0px;
       }
       div.version-notes-links {
         float: none;
         width: 100%;
         max-width: 100%;
+      }
+    }
+  }
+  @media screen and (max-width: 500px) {
+    div.page-header {
+      text-align: center;
+    }
+    div.main-container {
+      ul.link-list {
+        a li {
+          padding-left: 60px;
+          img.icon {
+            width: 45px;
+            top: 10px;
+          }
+          div.description {
+            h2 {
+              font-size: 26px;
+            }
+          }
+        }
       }
     }
   }
