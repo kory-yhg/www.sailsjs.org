@@ -14,6 +14,24 @@ angular.module('Sails').controller('AppCtrl', [
     // Should never be reset (only its properties changed)
     $scope.docs = {};
 
+    // Generate a random sea-creature author of Sails
+    $scope.author = _.sample([
+      'developers',
+      'developers',
+      'developers',
+      'developers',
+      'developers',
+      'developers',
+      'developers',
+      'a giant squid',
+      'clownfish',
+      'starfish',
+      'sea anemones',
+      'merpeople',
+      'mermen',
+      'mermaids'
+    ]);
+
     // Qualifiers
     $scope.getIsCurrentPage = function(path) {
       var current = window.location.hash;

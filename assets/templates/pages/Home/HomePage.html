@@ -5,10 +5,12 @@
     <div class="banner-container">
       <div class="tagline">
         <h2>The web framework of your dreams.</h2>
-        <h3>Built for developers by developers.</h3>
+        <h3 ng-if="!author">Built for developers by developers.</h3>
+        <h3 ng-if="author">Built for developers by {{author}}.</h3>
         <a href="#/getStarted" class="button">Get started</a>
       </div>
-      <img class="squid" src="images/bkgd_squid@2x.png"/>
+      <img class="light" src="/images/bkgd_light.png"/>
+      <img class="squid" src="/images/bkgd_squiddy.png"/>
     </div>
   </div>
   <!-- White bar with github updates & social media -->

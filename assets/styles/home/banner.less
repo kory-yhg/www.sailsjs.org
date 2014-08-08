@@ -1,40 +1,50 @@
 .banner.home {
+
+  @bannerTextWidth: 450px;
+
   .borderBox();
   .footerGradient();
   .clearfix();
   font-family: @mainFont;
-  width: 100%;
-  height: 500px;
+  // width: 100%;
+  // height: 500px;
 
   .banner-container {
     .borderBox();
+    .container();
+    // height: 500px;
     position: relative;
-    width: 100%;
-    max-width: 1450px;
+    // max-width: 1450px;
     margin: auto;
-    padding: 160px 0 110px;
-    .squid {
-      height: 500px;
+    padding: 220px 0 100px;
+    .squid, .light {
       position: absolute;
-      top: 0px;
-      right: 0px;
+    }
+    .squid {
+      z-index: 5;
+      width: 750px;
+      height: auto;
+      bottom: 40px;
+      left: @bannerTextWidth - 70;
+    }
+    .light {
+      z-index: 10;
+      top: 0;
+      left: -10%;
+      width: 90%;
     }
 
-		.tagline {
-      .container();
-			margin-top: 15px;
-			position: relative;
+    .tagline {
+      position: relative;
       z-index: 15;
 
-      @bannerTextWidth: 450px;
 
 			h2 {
 				color: @ltBlue;
-				font: 44px @headerFont;
+				font: 46px @headerFont;
 				margin-bottom: 5px;
 				line-height: 100%;
 				position: relative;
-				z-index: 10;
         width: @bannerTextWidth;
 			}
 
@@ -43,7 +53,6 @@
 				font: 24px @headerFont;
 				font-weight: @light;
 				position: relative;
-				z-index: 10;
         width: @bannerTextWidth;
 			}
 
@@ -51,9 +60,8 @@
         .borderBox();
 				.lgButton(@black, @white);
         display: block;
-        width: 230px;
+        width: 200px;
 				margin-top: 20px;
-				z-index: 20;
 				&:hover {
 					color: @turquoise;
 					.transition (all .25s);
@@ -61,37 +69,23 @@
 			}
 		}
 	}
+  @media screen and (max-width: 1100px) {
 
-	@media screen and (max-width: 1250px) {
-	 .banner-container {
-    .squid {
-      height: 425px;
-      left: 300px;
-      top: 60px;
-    }
-   }
-	}
-  @media screen and (max-width: 1000px) {
-    height: 410px;
-    .banner-container {
-      padding: 125px 0 115px;
-      img.squid {
-        height: 350px;
-        left: 300px;
-        top: 60px;
-      }
-    }
   }
   @media screen and (max-width: 800px) {
     height: auto;
     padding-bottom: 25px;
     .banner-container {
       padding-top: 110px;
-      padding-bottom: 50px;
+      padding-bottom: 70px;
       background: url('/images/bkgd_seaweed.png') no-repeat 80% bottom;
       background-size: 100%;
       img.squid {
         display: none;
+      }
+      img.light {
+        width: 120%;
+        left: -50%;
       }
       .tagline {
         h2, h3 {
@@ -99,7 +93,7 @@
           text-align: center;
         }
         h2 {
-          font-size: 32px;
+          font-size: 29px;
           padding-bottom: 5px;
         }
         h3 {
