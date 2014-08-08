@@ -1,6 +1,6 @@
 html, body {
-text-align: left; 
-font-size: 1em; 
+text-align: left;
+font-size: 1em;
 //overflow-x: hidden;
 }
 html,body,img,form,textarea,input,fieldset,div,p,div,ul,li,ol,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,code,button { margin: 0; padding: 0;}
@@ -15,6 +15,12 @@ fieldset {border: none;}
 *:active,*:focus {
   outline: none;
   -moz-outline-style: none;
+}
+
+//Set default image heights/widths to 'auto' so stuff doesn't get messed up w/ retina.js
+img {
+  width: auto;
+  height: auto;
 }
 
 /* Fix heading font styles and size */
