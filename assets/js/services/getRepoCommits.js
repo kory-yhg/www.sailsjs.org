@@ -9,23 +9,22 @@ angular.module('Sails').factory('getRepoCommits', ['$http', function ($http) {
     },
 
     fn: function (opts) {
-      return {}
-      // return $http.get('/news', { params: opts })
-      // .then(function (res) {
-      //   // tolerate errors- this is unfinished
-      //   if (!res.data.length) return {latestCommit: {}};
-      //   try {
-      //     var mostRecentActivity = res.data[0];
-      //     return {
-      //       latestCommit: angular.extend(mostRecentActivity, {
-      //         date: moment(mostRecentActivity.commit.author.date).fromNow()
-      //       })
-      //     };
-      //   }
-      //   catch (e) {
-      //     return {latestCommit: {}};
-      //   }
-      // });
+      return $http.get('/news', { params: opts })
+      .then(function (res) {
+        // tolerate errors- this is unfinished
+        if (!res.data.length) return {latestCommit: {}};
+        try {
+          var mostRecentActivity = res.data[0];
+          return {
+            latestCommit: angular.extend(mostRecentActivity, {
+              date: moment(mostRecentActivity.commit.author.date).fromNow()
+            })
+          };
+        }
+        catch (e) {
+          return {latestCommit: {}};
+        }
+      });
     }
   };
 
