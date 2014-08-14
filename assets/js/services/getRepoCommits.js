@@ -3,8 +3,6 @@ angular.module('Sails').factory('getRepoCommits', ['$http', function ($http) {
   return {
 
     inputs: {
-      repo: { example: 'sails' },
-      user: { example: 'balderdashy' },
       path: { example: 'README.md' }
     },
 
