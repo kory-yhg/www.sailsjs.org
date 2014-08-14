@@ -9,6 +9,7 @@ angular.module('Sails').factory('getRepoCommits', ['$http', function ($http) {
     },
 
     fn: function (opts) {
+      return {}
       // return $http.get('/news', { params: opts })
       // .then(function (res) {
       //   // tolerate errors- this is unfinished
