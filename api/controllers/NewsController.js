@@ -17,14 +17,15 @@ module.exports = {
 
 
     if (req.param('path')) {
-      Machine.build(require('machinepack-github/get-repo-commits-at-path'))
-      .configure({
-        user: 'balderdashy',
-        repo: 'sails-docs',
-        path: req.param('path')
-      })
-      .cache({ model: Cache })
-      .exec(res.respond);
+      return res.ok();
+      // Machine.build(require('machinepack-github/get-repo-commits-at-path'))
+      // .configure({
+      //   user: 'balderdashy',
+      //   repo: 'sails-docs',
+      //   path: req.param('path')
+      // })
+      // .cache({ model: Cache })
+      // .exec(res.respond);
     }
     else {
       Machine.build(require('machinepack-github/get-repo-commits'))
