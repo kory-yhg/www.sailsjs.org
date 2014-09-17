@@ -18,14 +18,13 @@ function jsmenu_to_sitemap (options, cb){
 
   // Options
   var jsmenu = options.data;
-  var urlPrefix = options.urlPrefix;
 
   // For each jsmenu item:
   // build `url` from `fullPathAndFileName` if necessary
   jsmenu = _.map(jsmenu, function (jsmenuItem) {
     if (!jsmenuItem.url) {
       // TODO: trim leading slash from `jsmenuItem.fullPathAndFileName`
-      jsmenuItem.url = urlPrefix + jsmenuItem.fullPathAndFileName;
+      jsmenuItem.url = (jsmenuItem.urlPrefix||'') + jsmenuItem.fullPathAndFileName;
     }
     return jsmenuItem;
   });
@@ -71,9 +70,12 @@ function sanitizeURL (url){
 
 
 // Temporary:
+//
+// (idea is we'd union together all the various parts, with the appropriate urlPrefixes,
+//  then run this function on that object)
 jsmenu_to_sitemap({
-  urlPrefix: 'http://sailsjs.org/#!documentation/',
   data: [{
+    urlPrefix: 'http://sailsjs.org/#!documentation/',
     "templateTitle": "DisablingGrunt.html",
     "fullPathAndFileName": "concepts/Assets/DisablingGrunt.html",
     "data": {
