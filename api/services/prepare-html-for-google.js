@@ -50,7 +50,7 @@ module.exports = function prepare_html_for_google (options, cb) {
 
     // Then grab the list of generated pages from the various jsmenus...
     async.each([
-      Path.resolve(__dirname, '../../assets/templates/jsmenus/anatomy.jsmenu'),
+      // Path.resolve(__dirname, '../../assets/templates/jsmenus/anatomy.jsmenu'),
       // Path.resolve(__dirname, '../../assets/templates/jsmenus/concepts.jsmenu'),
       // Path.resolve(__dirname, '../../assets/templates/jsmenus/reference.jsmenu'),
     ], function (jsmenuPath, next) {
@@ -78,7 +78,7 @@ module.exports = function prepare_html_for_google (options, cb) {
       console.log('THE FULL LIST OF URLS TO BE FETCHED:', urls);
 
       // Now render the pages
-      JsDOMService.renderPages({
+      PhantomJSService.renderPages({
         urls: urls
       }, function (err, webpages) {
         if (err) return cb(err);

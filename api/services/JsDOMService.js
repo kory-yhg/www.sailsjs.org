@@ -1,3 +1,9 @@
+//
+// DO NOT USE- DOES NOT WORK w/ CURRENTLY-RELEASED JSDOM IMPLEMENTATION.
+// (see phantomjs script(s) in tasks/custom/* instead)
+//
+
+
 // var jsdom = require('jsdom');
 // var xmlhttp  = require("xmlhttprequest");
 var renderer = require('angular-jsdom-renderer');
