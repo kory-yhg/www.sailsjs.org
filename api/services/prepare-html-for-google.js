@@ -8,7 +8,6 @@ var Hat = require('hat');
 var async = require('async');
 var Filesystem = require('machinepack-fs');
 var fsx = require('fs-extra');
-var PhantomJSCloud = require('machinepack-phantomjscloud');
 
 
 /**
@@ -19,7 +18,7 @@ var PhantomJSCloud = require('machinepack-phantomjscloud');
  * sails.services['prepare-html-for-google']({}, console.log)
  * ```
  *
- * You'll need `sails.config.phantomjscloud.apiKey` configured in `config/local.js`.
+ * You'll need `sails.config.staticPages.apiKey` configured in `config/local.js`.
  * Alternatively, pass in the `apiKey` option.
  *
  *
@@ -30,14 +29,14 @@ var PhantomJSCloud = require('machinepack-phantomjscloud');
 module.exports = function prepare_html_for_google (options, cb) {
 
   options = options || {};
-  options.apiKey = options.apiKey || (typeof sails !== 'undefined' && sails.config.phantomjscloud.apiKey);
-  if (!options.apiKey) {
-    return cb(new Error('`apiKey` required'));
-  }
+  // options.apiKey = options.apiKey || (typeof sails !== 'undefined' && sails.config.staticPages.apiKey);
+  // if (!options.apiKey) {
+  //   return cb(new Error('`apiKey` required'));
+  // }
 
   // First, `rm -rf` existing cached HTML pages:
   Filesystem.rmrf({
-    dir: Path.resolve(__dirname,'../../.tmp/phantomjscloud')
+    dir: Path.resolve(__dirname,'../../.tmp/staticPages')
   }, function (err){
     if (err) return cb(err);
 
@@ -46,7 +45,7 @@ module.exports = function prepare_html_for_google (options, cb) {
       'http://sailsjs.org',
       'http://sailsjs.org/#!getStarted',
       'http://sailsjs.org/#!features',
-      'http://sailsjs.org/#!support',
+      'http://sailsjs.org/#/support',
     ];
 
     // Then grab the list of generated pages from the various jsmenus...
@@ -78,11 +77,10 @@ module.exports = function prepare_html_for_google (options, cb) {
 
       console.log('THE FULL LIST OF URLS TO BE FETCHED:', urls);
 
-      // Now render the pages using the hosted phantomjs instance(s)
-      PhantomJSCloud.renderPages({
-        apiKey: options.apiKey,
+      // Now render the pages
+      JsDOMService.renderPages({
         urls: urls
-      }).exec(function(err, webpages){
+      }, function (err, webpages) {
         if (err) return cb(err);
 
         console.log('Fetched pages: ',_.pluck(webpages, 'url'));
@@ -96,23 +94,22 @@ module.exports = function prepare_html_for_google (options, cb) {
 
         // Write each webpage to disk using its unique id as its filename
         async.each(webpages, function (webpage, next){
-          fsx.outputFile(Path.resolve(__dirname,'../../.tmp/phantomjscloud/'+webpage.id), webpage.html, next);
+          fsx.outputFile(Path.resolve(__dirname,'../../.tmp/staticPages/'+webpage.id), webpage.html, next);
         }, function (err){
           if (err) return cb(err);
 
           // Finally, save the id and url of each webpage in a JSON file
-          fsx.outputJSONSync(Path.resolve(__dirname,'../../.tmp/phantomjscloud/webpages.json'), {
+          fsx.outputJSONSync(Path.resolve(__dirname,'../../.tmp/staticPages/webpages.json'), {
             createdAt: new Date(),
             webpages: _.map(webpages, _.partialRight(_.pick, 'id', 'url'))
           });
 
+          cb();
         });
 
       });
 
     });
   });
-
-
 
 };
