@@ -50,7 +50,7 @@ module.exports = function prepare_html_for_google (options, cb) {
 
     // Then grab the list of generated pages from the various jsmenus...
     async.each([
-      // Path.resolve(__dirname, '../../assets/templates/jsmenus/anatomy.jsmenu'),
+      Path.resolve(__dirname, '../../assets/templates/jsmenus/anatomy.jsmenu'),
       // Path.resolve(__dirname, '../../assets/templates/jsmenus/concepts.jsmenu'),
       // Path.resolve(__dirname, '../../assets/templates/jsmenus/reference.jsmenu'),
     ], function (jsmenuPath, next) {
@@ -62,7 +62,7 @@ module.exports = function prepare_html_for_google (options, cb) {
           if (!jsmenuItem.url) {
             // TODO: trim leading slash from `jsmenuItem.fullPathAndFileName`
             // build `url` from `fullPathAndFileName` if necessary
-            jsmenuItem.url = 'http:/sailsjs.org/#!documentation/' + (jsmenuItem.realPath || jsmenuItem.fullPathAndFileName);
+            jsmenuItem.url = 'http://sailsjs.org/#!documentation/' + (jsmenuItem.realPath || jsmenuItem.fullPathAndFileName);
           }
           return jsmenuItem;
         });

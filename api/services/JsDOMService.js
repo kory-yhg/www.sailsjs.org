@@ -8,7 +8,7 @@ module.exports = {
 
     var webpages = [];
 
-    async.each(options.urls, function (url, next) {
+    async.eachLimit(options.urls, 5, function (url, next) {
 
       // render using a timeout only
 
@@ -25,6 +25,14 @@ module.exports = {
             //     console.log(errors);
             //     return;
             // }
+            if (!window){
+              console.error('Could not process %s.', url);
+              if (errors) {
+                console.error('Errors:', require('util').inspect(errors, false, null));
+              }
+              return next();
+            }
+            console.log('Processing %s...', url);
 
             var document = window.document;
             var compiledHtml = document.outerHTML;
