@@ -14,31 +14,31 @@ module.exports = {
 
       renderer.render({
           /* url to retrieve the html from */
-          url: 'http://sailsjs.org',
+          url: url,
 
           /* how long to wait until rendering the content. default 5000 */
           timeoutMs: 5000,
 
           /* complete callback. this = config */
           done: function(errors, window) {
-              // if (errors) {
-              //     console.log(errors);
-              //     return;
-              // }
+            // if (errors) {
+            //     console.log(errors);
+            //     return;
+            // }
 
-              var document = window.document;
-              var compiledHtml = document.outerHTML;
-              // // var angular = window.angular
-              // console.log(compiledHtml);
+            var document = window.document;
+            var compiledHtml = document.outerHTML;
+            // // var angular = window.angular
+            // console.log(compiledHtml);
 
-              webpages.push({
-                url: url,
-                html: compiledHtml
-              });
+            webpages.push({
+              url: url,
+              html: compiledHtml
+            });
 
-              // window will close after this callback
-              next();
+            next();
 
+            // (supposedly: window will close after this function returns)
           }
       });
 
