@@ -384,6 +384,8 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
         '#/documentation/anatomy' :
       hashPath.match(/feature/i) ?
         '#/features' :
+      hashPath.match(/support/i) ?
+        '#/support' :
       hashPath.match(/irc/i) ?
         '#/support/irc' :
 
