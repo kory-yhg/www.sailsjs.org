@@ -17,8 +17,6 @@ module.exports = function outputSitemap (options, cb) {
       return cb(err);
     }
 
-    console.log(_.map(urls, function (url){ return { url: url }; }));
-
     buildSitemapXML({
       webpages: _.map(urls, function (url){ return { url: url }; })
     }, function (err, xml) {
