@@ -14,7 +14,7 @@ var _ = require('lodash');
  * @return {[type]}           [description]
  */
 
-function generate_sitemap (options, cb){
+function buildSitemapXML (options, cb){
 
 
   // Options
@@ -27,8 +27,8 @@ function generate_sitemap (options, cb){
     sitemapXML +=
     '<url>' +
     '<loc>'+sanitizeURL(webpage.url)+'</loc>' +
-    '<priority>'+(webpage.priority||'0.3')+'</priority>' +
-    '<changefreq>daily</changefreq>' +
+    (webpage.priority ? ('<priority>'+(webpage.priority||'0.3')+'</priority>') : '')+
+    (webpage.changefreq ? ('<changefreq>'+(webpage.changefreq||'daily')+'</changefreq>') : '') +
     '</url>';
 
     return sitemapXML;
@@ -56,4 +56,4 @@ function sanitizeURL (url){
 }
 
 
-module.exports = generate_sitemap;
+module.exports = buildSitemapXML;

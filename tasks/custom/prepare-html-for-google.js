@@ -8,7 +8,7 @@ var Hat = require('hat');
 var async = require('async');
 var Filesystem = require('machinepack-fs');
 var fsx = require('fs-extra');
-var generateSitemap = require('./generate-sitemap');
+var buildSitemapXML = require('./build-sitemap-xml');
 var PhantomJS = require('./phantomjs-renderer');
 
 
@@ -105,7 +105,7 @@ module.exports = function prepare_html_for_google (options, cb) {
             if (err) return cb(err);
 
             // Finally generate the sitemap
-            generateSitemap({
+            buildSitemapXML({
               webpages: _.map(webpages, _.partialRight(_.pick, 'url'))
             }, function (err, sitemap) {
               if (err) return cb(err);
