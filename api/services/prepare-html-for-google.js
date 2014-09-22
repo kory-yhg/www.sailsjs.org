@@ -8,6 +8,7 @@ var Hat = require('hat');
 var async = require('async');
 var Filesystem = require('machinepack-fs');
 var fsx = require('fs-extra');
+var generateSitemap = require('./generate-sitemap');
 
 
 /**
@@ -50,7 +51,7 @@ module.exports = function prepare_html_for_google (options, cb) {
 
     // Then grab the list of generated pages from the various jsmenus...
     async.each([
-      Path.resolve(__dirname, '../../assets/templates/jsmenus/anatomy.jsmenu'),
+      // Path.resolve(__dirname, '../../assets/templates/jsmenus/anatomy.jsmenu'),
       // Path.resolve(__dirname, '../../assets/templates/jsmenus/concepts.jsmenu'),
       // Path.resolve(__dirname, '../../assets/templates/jsmenus/reference.jsmenu'),
     ], function (jsmenuPath, next) {
@@ -60,9 +61,13 @@ module.exports = function prepare_html_for_google (options, cb) {
         // Build URLs from the jsmenu
         jsmenu = _.map(jsmenu, function (jsmenuItem) {
           if (!jsmenuItem.url) {
-            // TODO: trim leading slash from `jsmenuItem.fullPathAndFileName`
             // build `url` from `fullPathAndFileName` if necessary
-            jsmenuItem.url = 'http://sailsjs.org/#!documentation/' + (jsmenuItem.realPath || jsmenuItem.fullPathAndFileName);
+            // (trim leading slash from `jsmenuItem.fullPathAndFileName`)
+            jsmenuItem.url = require('url').format({
+              protocol: 'http',
+              host: 'sailsjs.org',
+              hash: '#!documentation/' + (jsmenuItem.realPath || jsmenuItem.fullPathAndFileName).replace(/^\/*/, '')
+            });
           }
           return jsmenuItem;
         });
@@ -98,13 +103,24 @@ module.exports = function prepare_html_for_google (options, cb) {
         }, function (err){
           if (err) return cb(err);
 
-          // Finally, save the id and url of each webpage in a JSON file
-          fsx.outputJSONSync(Path.resolve(__dirname,'../../.tmp/staticPages/webpages.json'), {
+          // Now save the id and url of each webpage in a JSON file
+          fsx.outputJSON(Path.resolve(__dirname,'../../.tmp/staticPages/webpages.json'), {
             createdAt: new Date(),
             webpages: _.map(webpages, _.partialRight(_.pick, 'id', 'url'))
+          }, function (err){
+            if (err) return cb(err);
+
+            // Finally generate the sitemap
+            generateSitemap({
+              webpages: _.map(webpages, _.partialRight(_.pick, 'url'))
+            }, function (err, sitemap) {
+              if (err) return cb(err);
+
+              // And write it to disk
+              fsx.outputFile(Path.resolve(__dirname,'../../.tmp/staticPages/sitemap.xml'), sitemap, cb);
+            });
           });
 
-          cb();
         });
 
       });
