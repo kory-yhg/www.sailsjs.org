@@ -1,0 +1,403 @@
+<!DOCTYPE html><html><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}</style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Sails.js | Realtime MVC Framework for Node.js</title>
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/styles/fonts.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600" rel="stylesheet" type="text/css">
+    <meta name="description" content="Sails.js makes it easy to build custom, enterprise-grade Node.js apps. It is designed to resemble the MVC architecture from frameworks like Ruby on Rails, but with support for the more modern, data-oriented style of web app development. It's especially good for building realtime features like chat.">
+    <meta name="author" content="Mike McNeil, Balderdash, and contributors">
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/min/production.css">
+    <!--STYLES END-->
+
+    <!--[if lt IE 9]>
+      <link rel="stylesheet" href="css/ie8.css">
+    <![endif]-->
+  </head>
+  <body ng-app="Sails" ng-controller="AppCtrl" style="" class="ng-scope" data-twttr-rendered="true">
+
+    <!-- ngInclude: 'templates/pages/Reusable/Header/Topbar.html' --><div class="topbar-wrapper ng-scope" ng-include="'templates/pages/Reusable/Header/Topbar.html'"><div class="topbar ng-scope">
+
+  <!--Mobile menu button-->
+  <div class="menu" ng-click="menuVisible = !menuVisible" ng-class="{'menu-open': menuVisible === true}">
+    <div class="menu-button-stripe"></div>
+    <div class="menu-button-stripe"></div>
+    <div class="menu-button-stripe"></div>
+  </div>
+
+  <!--Navigation list-->
+  <div class="nav-container">
+    <div class="branding">
+      <a ng-click="intent.goto('/')">
+        <img class="logo" src="/images/logo_sails.png" alt="Sails">
+      </a>
+      <span class="version">v0.10</span>
+    </div>
+    <ul class="nav" ng-class="{'menu-open': menuVisible === true}">
+      <!-- <li ng-click="menuVisible = false"><a class="sails-site"
+          ng-class="{current: getIsCurrentPage('/')}"
+          href="#/">Home</a></li> -->
+      <li ng-click="menuVisible = false"><a class="sails-site" ng-class="{current: getIsCurrentPage('/getStarted')}" ng-click="intent.goto('/getStarted')">Get Started</a></li>
+      <li ng-click="menuVisible = false"><a class="sails-site" ng-class="{current: getIsCurrentPage('/features')}" ng-click="intent.goto('/features')">Features</a></li>
+      <li ng-click="menuVisible = false"><a class="sails-site" ng-class="{current: getIsCurrentPage('/documentation')}" href="#/documentation">Documentation</a></li>
+      <li ng-click="menuVisible = false"><a class="sails-site" ng-class="{current: getIsCurrentPage('/support')}" ng-click="intent.goto('/support')">Support</a></li>
+     <!--  <li class="no-mobile">
+        <a class="sails-site"
+          ng-class="{current: getIsCurrentPage('/logos')}"
+          href="#/logos">Logos</a>
+      </li> -->
+<!--       <li><a target="_blank" href="http://michaelmcneil.com">Blog</a></li> -->
+    </ul>
+  </div>
+</div>
+</div>
+    <div class="wrap">
+      <!-- ngView:  --><div ng-view="" class="ng-scope"><div class="page home-page ng-scope" ng-class="{'animating-in': animatingIn, 'animating-out': animatingOut}">
+
+  <!--Top Section with Mr. Squiddy-->
+  <div class="banner home">
+    <div class="banner-container">
+      <div class="tagline">
+        <h2>The web framework of your dreams.</h2>
+        <!-- ngIf: !author -->
+        <!-- ngIf: author --><h3 ng-if="author" class="ng-scope ng-binding">Built for developers by starfish.</h3><!-- end ngIf: author -->
+        <a href="#/getStarted" class="button">Get started</a>
+      </div>
+      <img class="light" src="/images/bkgd_light.png">
+      <img class="squid" src="/images/bkgd_squiddy.png">
+    </div>
+  </div>
+  <!-- White bar with github updates & social media -->
+  <news-banner class="ng-isolate-scope"><div class="update-banner white-banner">
+    <div class="banner-container">
+
+      <p ng-hide="options.error || loading" class="">
+        Latest commit by <a target="_blank" href="https://github.com/loicsaintroch" class="ng-binding">@loicsaintroch</a> <a target="_blank" href="https://github.com/balderdashy/sails/commit/aac456317ac36047b9fb8c08f36088a64e603790" class="ng-binding">5 days ago</a>
+      </p>
+
+      <!-- other news can go here.... -->
+
+      <!-- e.g.: -->
+      <!-- <p ng-hide="options.error">Latest update on Github <a target="_blank" href="{{options.latestCommit.url}}">{{options.latestCommit.date | date: 'short'}}</a></p> -->
+
+      <div class="sharing">
+        <div>
+          <iframe src="http://ghbtns.com/github-btn.html?user=balderdashy&amp;repo=sails&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+        </div>
+
+        <div>
+          <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fsailsjs&amp;width=75&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:86px; height:21px;" allowtransparency="true"></iframe>
+        </div>
+
+        <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1410989646.html#_=1411388144897&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fsailsjs.org%2F%23%2F&amp;size=m&amp;text=%23sailsjs%2C%20the%20realtime%20MVC%20framework%20for%20Node.js%3A&amp;url=http%3A%2F%2Fsailsjs.org" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px; "></iframe>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+        <iframe id="twitter-widget-2" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/follow_button.1410989646.html#_=1411388144909&amp;id=twitter-widget-2&amp;lang=en&amp;screen_name=sailsjs&amp;show_count=false&amp;show_screen_name=true&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 105px; height: 20px; "></iframe>
+      </div> <!-- sharing -->
+    </div>
+</div> <!-- white bar -->
+</news-banner>
+
+  <!--'What is Sails?' section with video-->
+  <div class="sails-about">
+    <div class="about-container">
+      <div class="what-is-sails">
+        <h1>What Is Sails.js?</h1>
+        <p>
+        Sails makes it easy to build custom, enterprise-grade Node.js apps. It is designed to emulate the familiar MVC pattern of frameworks like Ruby on Rails, but with support for the requirements of modern apps: data-driven APIs with a scalable, service-oriented architecture. It's especially good for building chat, realtime dashboards, or multiplayer games; but you can use it for any web application project - top to bottom.
+        </p>
+      </div>
+      <div class="video-link">
+        <h2>Watch the original screencast
+        <a href="http://www.youtube.com/watch?v=GK-tFvpIR7c&amp;feature=player_embedded">here</a>.
+        </h2>
+      </div>
+      <div class="video">
+        <iframe id="homepage-video" src="http://www.youtube.com/embed/GK-tFvpIR7c" frameborder="0" allowfullscreen=""></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!--Features list-->
+  <div class="sails-features">
+    <div class="features-container">
+      <div class="features">
+        <h1>Features</h1>
+        <p>
+        Sails is the most popular MVC framework for Nd1�@ode.js.  It is designed for building practical, production-ready Node.js apps in a matter of weeks - not months.
+        </p>
+      </div>
+      <div class="feature-list">
+        <ul>
+          <li class="javascript">
+            <img class="icon" src="images/icon_js_large.png">
+            <h5>100% JavaScript</h5>
+            <p>
+              Building on top of Sails means your app is written entirely in JavaScript, the language you and your team are already using in the browser.
+              <!-- Like other MVC frameworks, Sails is built with an emphasis on developer happiness and a convention-over-configuration philosophy. But Node.js takes this principle to the next level.Building on top of Sails means your app is written entirely in JavaScript, the language you and your team are already using in the browser.  Since you spend less time context-shifting, you're able to write code in a more consistent style, which makes development more productive and fun. -->
+            </p>
+          </li>
+          <li class="database">
+            <img class="icon" src="images/icon_database@2x.png">
+            <h5>Any database</h5>
+            <p>
+              Sails bundles a powerful ORM, Waterline, which provides a simple data access layer that just works, no matter what database you're using.
+              <!-- In addition to a plethora of community projects, officially supported adapters exist for MySQL, MongoDB, PostgreSQL, Redis, and local disk (for development). -->
+            </p>
+          </li>
+          <li class="associations">
+            <img class="icon" src="images/icon_associations@2x.png">
+            <h5>Powerful associations</h5>
+            <p>
+              Sails offers a new take on the familiar relational model, aimed at making data modeling more practical.
+              <!-- You can do all the same things you might be used to (one-to-many, many-to-many), but you can also assign multiple <em>named</em> associations per-model (for instance, a cake might have two collection of people: <em>"havers"</em> and <em>"eaters"</em>).  Better yet, you can assign different models to different databases, and your associations/joins will <strong>still work</strong>-- even across NoSQL and relational boundries.  Sails has no problem implicitly/automatically joining a MySQL table with a Mongo collection and vice versa. -->
+            </p>
+          </li>
+          <li class="api">
+            <img class="icon" src="images/icon_api@2x.png">
+            <h5>Auto-generate REST APIs</h5>
+            <p>
+              Sails comes with <em>blueprints</em> that help jumpstart your app's backend without writing any code.
+              <!-- Just run <code>sails generate api dentist</code> and you'll get an API that lets you search, paginate, sort, filter, create, destroy, update, and associate dentists.  Since these <em>blueprint actions</em> are built on the same underlying technology as Sails, they also work with Websockets and any supported database out of the box. -->
+            </p>
+          </li>
+          <li class="realtime">
+            <img class="icon" src="images/icon_websocket@2x.png">
+            <h5>Easy WebSocket Support</h5>
+            <p>
+              Sails translates incoming socket messages for you, they're automatically compatible with every route in your Sails app.
+              <!-- In the past, adding realtime/"comet" features meant maintaining two separate code bases. But since the request interpreter in Sails translates incoming socket messages for you, they're automatically compatible with every route in your Sails app, as well as any any existing Express routes/middleware.  Normalization of parameters, the session, and the streaming interface are all taken care of.  In other words, the code you write works with WebSockets <em>and</em> HTTP, without doing any extra work. -->
+            </p>
+          </li>
+          <li class="security">
+            <img class="icon" src="images/icon_security@2x.png">
+            <h5>Reusable security policies</h5>
+            <p>
+              Sails provides basic security and role-based access control by default.
+              <!-- in the form of policies - simple, reusable middleware functions that run before your controllers and actions.  Writing policies encourages <a>encapsulation</a>, which dramatically simplifies your business logic and reduces the total amount of code you need to write.  Policies are interchangeable with Express/Connect middleware, which means you can plug in popular npm modules like <a>Passport</a>.  Finally, like most things in Sails, your policies work for both WebSockets and HTTP automatically. -->
+            </p>
+          </li>
+
+          <li class="frontend">
+            <img class="icon" src="images/icon_frontend@2x.png">
+            <h5>Front-end agnostic</h5>
+            <p>
+              Sails is designed to be compatible with any front-end strategy; whether it's Angular, Backbone, iOS/ObjC, Android/Java, Windows Phone, or something else entirely.
+              <!-- Sails works great for HTML 5 and PhoneGap apps, but just because we can use JavaScript on the server doesn't mean everything in the world is now built on web standards.  Sails is designed to be compatible with any front-end strategy; whether it's Angular, Backbone, iOS/ObjC, Android/Java, Windows Phone, or something else that hasn't been invented yet. Plus it's easy to serve up the same API to be consumed by another web service or community of developers. -->
+            </p>
+          </li>
+
+          <li class="asset">
+            <img class="icon" src="images/icon_asset@2x.png">
+            <h5>Flexible asset pipeline</h5>
+            <p>
+              Sails ships with Grunt- which means your entire front-end asset workflow is completely customizable, and supports all of the great Grunt modules which are already out there.
+              <!-- If you <em>are</em> building an app for the browser, you're in luck.  Sails ships with Grunt- which means your entire front-end asset workflow is completely customizable, and comes with support for all of the great Grunt modules which are already out there. That includes support for LESS, SASS, Stylus, CoffeeScript, JST, Jade, Handlebars, Dust, and many more.  When you're ready to go into production, your assets are minified and gzipped automatically. You can even compile your static assets and push them out to a CDN like CloudFront to make your app load even faster. -->
+            </p>
+          </li>
+
+          <li class="foundation">
+            <img class="icon" src="images/icon_foundation@2x.png">
+            <h5>Rock-solid foundation</h5>
+            <p>
+              Sails is built on <a href="http://node.js">Node.js</a>, uses <a>Express</a> for handling HTTP requests, and wraps <a>socket.io</a> for managing WebSockets.
+              <!--  Sails is built on <a href="http://node.js">Node.js</a>, a popular, lightweight server-side technology that allows developers to write blazing fast, scalable network appliations in JavaScript.  Sails uses <a>Express</a> for handling HTTP requests,  and wraps <a>socket.io</a> for managing WebSockets. So if your app ever needs to get really low-level, you can access the raw Express or socket.io objects. Another nice side-effect is that your existing Express routes work perfectly well in a Sails app, so migrating an existing Node app is a breeze. -->
+            </p>
+          </li>
+        </ul>
+        <div class="features-link-wrapper">
+          <a href="#/features">
+            <span class="long">Learn more about Sails's Features</span>
+            <span class="short">Learn More</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--section with tweets-->
+  <div class="sails-social">
+      <!-- <h1>What do users say about Sails?</h1> -->
+      <div class="sails-reviews">
+        <!-- switch out this template for different tweets-->
+        <ul class="tweets-wrapper ng-scope" ng-controller="TweetCtrl" ng-init="intent.startSlideshow()">
+          <!-- ngRepeat: tweet in tweets --><li ng-repeat="tweet in tweets" ng-class="{active: activeTweet === tweet.twitterHandle}" classd1�@="tweet ng-scope">
+            <h2><a target="_blank" href="https://twitter.com/androolloyd" class="ng-binding">@androolloyd</a></h2>
+            <p class="ng-binding">@sailsjs you'll be happy to know there is a hackathon this weekend and I chose you to power my mad creation. PS, Can you have my babies? &lt;3</p>
+          </li><!-- end ngRepeat: tweet in tweets --><li ng-repeat="tweet in tweets" ng-class="{active: activeTweet === tweet.twitterHandle}" class="tweet ng-scope">
+            <h2><a target="_blank" href="https://twitter.com/cbmeeks" class="ng-binding">@cbmeeks</a></h2>
+            <p class="ng-binding">OMG I've been using #sailsjs and I am in friggin love!!  Where have you been all my life?</p>
+          </li><!-- end ngRepeat: tweet in tweets --><li ng-repeat="tweet in tweets" ng-class="{active: activeTweet === tweet.twitterHandle}" class="tweet ng-scope">
+            <h2><a target="_blank" href="https://twitter.com/dylanized" class="ng-binding">@dylanized</a></h2>
+            <p class="ng-binding">Rails is omakase; @SailsJS is a buffet</p>
+          </li><!-- end ngRepeat: tweet in tweets --><li ng-repeat="tweet in tweets" ng-class="{active: activeTweet === tweet.twitterHandle}" class="tweet ng-scope">
+            <h2><a target="_blank" href="https://twitter.com/FeedJoelPie" class="ng-binding">@FeedJoelPie</a></h2>
+            <p class="ng-binding">Very excited to try @sailsjs. 1st Railsy framework in @nodejs that didn't make me yell "STOP TRYING TO BUILD RAILS IN NODE!" at my computer.</p>
+          </li><!-- end ngRepeat: tweet in tweets --><li ng-repeat="tweet in tweets" ng-class="{active: activeTweet === tweet.twitterHandle}" class="tweet ng-scope">
+            <h2><a target="_blank" href="https://twitter.com/infil00p" class="ng-binding">@infil00p</a></h2>
+            <p class="ng-binding">Looks like I'm going to be using a lot of @sailsjs in the near future.  I don't know why I haven't heard of this earlier.</p>
+          </li><!-- end ngRepeat: tweet in tweets --><li ng-repeat="tweet in tweets" ng-class="{active: activeTweet === tweet.twitterHandle}" class="tweet ng-scope">
+            <h2><a target="_blank" href="https://twitter.com/JohnnyReading" class="ng-binding">@JohnnyReading</a></h2>
+            <p class="ng-binding">Oh wow, #sailsjs. Not using node.js excuses getting thin.</p>
+          </li><!-- end ngRepeat: tweet in tweets --><li ng-repeat="tweet in tweets" ng-class="{active: activeTweet === tweet.twitterHandle}" class="tweet ng-scope">
+            <h2><a target="_blank" href="https://twitter.com/lorefnon" class="ng-binding">@lorefnon</a></h2>
+            <p class="ng-binding">Exploring #sailsjs.  - awesome realtime framework for node.js. Hassle free quckstart, Great docs, nice ORM, Rails inspired.</p>
+          </li><!-- end ngRepeat: tweet in tweets --><li ng-repeat="tweet in tweets" ng-class="{active: activeTweet === tweet.twitterHandle}" class="tweet ng-scope active">
+            <h2><a target="_blank" href="https://twitter.com/rauchg" class="ng-binding">@rauchg</a></h2>
+            <p class="ng-binding">Wow http://balderdashy.github.com/sails/</p>
+          </li><!-- end ngRepeat: tweet in tweets -->
+        </ul>
+
+        <h3>There's a party going on, and you're invited.</h3>
+        <div class="follow-buttons">
+          <a target="_blank" href="https://github.com/balderdashy/sails">
+            <div class="github follow-button">
+              <span>
+                <img src="images/icon_octocat.png">
+                Star the repo
+              </span>
+            </div>
+          </a>
+          <a target="_blank" href="https://twitter.com/sailsjs">
+            <div class="twitter follow-button">
+              <span>
+                <img src="images/icon_twitter.png">
+                Follow on twitter
+              </span>
+            </div>
+          </a>
+      </div>
+    </div>
+  </div>
+
+  <!--Philosophy/Performance/Community section-->
+  <!--
+  <div class="three-column">
+      <div class="column left-column">
+        <h1>Philosophy</h1>
+        <p>
+        Like other MVC frameworks, Sails.js is built with an emphasis on developer happiness and a convention-over-configuration philosophy. But we took it a step further:
+        </p>
+        <p>
+        Just like with Node.js, using Sails means your app is written entirely in JavaScript, the language you and your team are already using on the frontend. This makes development much speedier than it was in the past!
+        </p>
+      </div>
+      <div class="column middle-column">
+        <h1>Performance</h1>
+        <p>
+        Since Sails.js is written in Node.js, your servers reap the performance benefits of an event-driven, asynchronous architecture.
+        </p>
+      </div>
+      <div class="column right-column">
+        <h1>Community</h1>
+        <p>
+        Sails.js is built on the rock-solid foundation of Express (for routing), EJS (for templating)
+        and Socket.io (for cross-platform WebSockets with graceful degradation), so you don't have
+        to worry about reinventing the wheel.
+        </p>
+        <p>
+        We also have an enthusiastic community of contributors, and the framework has had over one
+        thousand downloads every month on NPM since July 2012.
+        </p>
+      </div>
+  </div>
+  -->
+
+  <!--'What's Next?' section with links to get started page and docs-->
+  <div class="sails-next-steps">
+    <div class="container">
+      <h1>What's Next?</h1>
+      <p>
+      Generate a <a href="#/getStarted">new Sails project</a>, read the
+      <a id="doc" href="#/documentation">documentation</a>, or join the active community on <a href="https://github.com/balderdashy/sails">Github</a>, <a href="http://stackoverflow.com/questions/tagged/sails.js">StackOverflow</a>, <a href="https://groups.google.com/forum/?fromgroups#!forum/sailsjs">Google Groups</a>, and <a href="http://webchat.freenode.net/">#sailsjs</a>.
+      </p>
+      <div class="calls-to-action">
+        <a href="#/getStarted" class="button">Get started</a>
+        <a class="doc" href="#/documentation">Documentation</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<div class="sails-footer-wrapper ng-scope">
+  <div skrollr="" style="position:relative;" data-0-bottom="top:0px;" data--500-bottom="top:-60px">
+    <!-- ngInclude:  --><div ng-include="" src="'templates/pages/Reusable/Footer/Footer.html'" class="ng-scope"><div class="sails-footer ng-scope" ng-class="{'animating-in': animatingIn, 'animating-out': animatingOut}">
+  <div class="navigation-footer">
+    <div class="bottom-waves">
+      <img class="waves-left" src="images/image_wavesBottomLeft@2x.png">
+      <img class="waves-right" src="images/image_wavesBottomRight@2x.png">
+    </div>
+    <div class="built">
+      <h1><img src="/images/icon_heart.png">Built with Love</h1>
+      <p>
+      The Sails framework was developed by <a target="blank" href="https://twitter.com/mikermcneil">Mike McNeil</a> with the support of <a target="blank" href="http://balderdash.co">Balderdash</a>.  We build realtime web apps as a service, and after much frustration with the lack of existing solutions, we created Sails to assist us on Node.js projects. Naturally we open-sourced it. We hope it makes your life a little bit easier!
+      </p>
+      <p class="license-info">© 2012-2014 Mike McNeil. All Rights Reserved.
+        <br>
+        Sails is free and open-source under the MIT License.
+        <br>
+        The trademarks used herein are the property of their respective owners.
+      </p>
+    </div>
+    <ul class="footer-nav">
+    <li><a class="balloon" href="#/">Home</a></li>
+    <li><a class="balloon" href="#/getStarted">Get started</a></li>
+    <li><a class="balloon" href="#/documentation">Documentation</a></li>
+    <li><a class="balloon" href="#/features">Features</a></li>
+    <li><a class="balloon" target="_blank" href="http://michaelmcneil.com">Blog</a></li>
+    <li><a target="_blank" href="http://sails.mit-license.org/"><span>License</span></a></li>
+    </ul>
+    <span class="license-info-mobile">© 2012-2014 Mike McNeil. All Rights Reserved. <br> <a target="_blank" href="http://sails.mit-license.org/"><span>License</span></a></spand1�>
+  </div>
+</div>
+
+</div>
+  </div>
+</div>
+</div>
+      <div id="push"></div>
+    </div>
+    <!-- ngInclude: 'templates/pages/Reusable/Footer/SharingFooter.html' --><div ng-include="'templates/pages/Reusable/Footer/SharingFooter.html'" class="ng-scope"><div class="bottom ng-scope">
+  <div class="sharing-footer clearfix">
+    <div class="star">
+      <iframe src="http://ghbtns.com/github-btn.html?user=balderdashy&amp;repo=sails&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+      </div>
+
+      <div>
+      <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fsailsjs&amp;width=75&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:86px; height:21px;" allowtransparency="true"></iframe>
+      </div>
+
+      <iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1410989646.html#_=1411388144908&amp;count=horizontal&amp;id=twitter-widget-1&amp;lang=en&amp;original_referer=http%3A%2F%2Fsailsjs.org%2F%23%2F&amp;size=m&amp;text=%23sailsjs%2C%20the%20realtime%20MVC%20framework%20for%20Node.js%3A&amp;url=http%3A%2F%2Fsailsjs.org" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px; "></iframe>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+      <iframe id="twitter-widget-3" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/follow_button.1410989646.html#_=1411388144910&amp;id=twitter-widget-3&amp;lang=en&amp;screen_name=sailsjs&amp;show_count=false&amp;show_screen_name=true&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 105px; height: 20px; "></iframe>
+
+      <a class="small-button" href="#/getStarted">Get started</a>
+  </div>
+</div>
+</div>
+
+    <!--TEMPLATES-->
+    <script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script><script type="text/javascript" src="/jst.js"></script>
+    <!--TEMPLATES END-->
+
+
+    <!--SCRIPTS-->
+    <script src="/min/production.js"></script>
+    <!--SCRIPTS END-->
+
+    <!-- Tweet button script -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    </script>
+
+    <!-- Follow button script -->
+    <!--
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    -->
+  
+
+
+
+</body></html>

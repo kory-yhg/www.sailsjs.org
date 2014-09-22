@@ -7,7 +7,7 @@ var ShellPack = require('shell-pack');
 var Path = require('path');
 var Util = require('util');
 var ConcatStream = require('concat-stream');
-
+var async = require('async');
 
 
 var WHICH_PHANTOM_JS = '/usr/local/bin/phantomjs';

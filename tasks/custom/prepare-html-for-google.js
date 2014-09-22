@@ -9,19 +9,17 @@ var async = require('async');
 var Filesystem = require('machinepack-fs');
 var fsx = require('fs-extra');
 var generateSitemap = require('./generate-sitemap');
+var PhantomJS = require('./phantomjs-renderer');
+
 
 
 /**
  *
- * To run, just do `sails console`, then:
+ * To run, just do `node` to open the REPL, then:
  *
  * ```
- * sails.services['prepare-html-for-google']({}, console.log)
+ * require('./tasks/custom/prepare-html-for-google']({}, console.log)
  * ```
- *
- * You'll need `sails.config.staticPages.apiKey` configured in `config/local.js`.
- * Alternatively, pass in the `apiKey` option.
- *
  *
  * @param  {[type]}   options [description]
  * @param  {Function} cb      [description]
@@ -30,14 +28,10 @@ var generateSitemap = require('./generate-sitemap');
 module.exports = function prepare_html_for_google (options, cb) {
 
   options = options || {};
-  // options.apiKey = options.apiKey || (typeof sails !== 'undefined' && sails.config.staticPages.apiKey);
-  // if (!options.apiKey) {
-  //   return cb(new Error('`apiKey` required'));
-  // }
 
   // First, `rm -rf` existing cached HTML pages:
   Filesystem.rmrf({
-    dir: Path.resolve(__dirname,'../../.tmp/staticPages')
+    dir: Path.resolve(__dirname,'../../static-pages')
   }, function (err){
     if (err) return cb(err);
 
@@ -83,7 +77,7 @@ module.exports = function prepare_html_for_google (options, cb) {
       console.log('THE FULL LIST OF URLS TO BE FETCHED:', urls);
 
       // Now render the pages
-      PhantomJSService.renderPages({
+      PhantomJS.renderPages({
         urls: urls
       }, function (err, webpages) {
         if (err) return cb(err);
@@ -99,12 +93,12 @@ module.exports = function prepare_html_for_google (options, cb) {
 
         // Write each webpage to disk using its unique id as its filename
         async.each(webpages, function (webpage, next){
-          fsx.outputFile(Path.resolve(__dirname,'../../.tmp/staticPages/'+webpage.id), webpage.html, next);
+          fsx.outputFile(Path.resolve(__dirname,'../../static-pages/'+webpage.id), webpage.html, next);
         }, function (err){
           if (err) return cb(err);
 
           // Now save the id and url of each webpage in a JSON file
-          fsx.outputJSON(Path.resolve(__dirname,'../../.tmp/staticPages/webpages.json'), {
+          fsx.outputJSON(Path.resolve(__dirname,'../../static-pages/webpages.json'), {
             createdAt: new Date(),
             webpages: _.map(webpages, _.partialRight(_.pick, 'id', 'url'))
           }, function (err){
@@ -117,7 +111,7 @@ module.exports = function prepare_html_for_google (options, cb) {
               if (err) return cb(err);
 
               // And write it to disk
-              fsx.outputFile(Path.resolve(__dirname,'../../.tmp/staticPages/sitemap.xml'), sitemap, cb);
+              fsx.outputFile(Path.resolve(__dirname,'../../static-pages/sitemap.xml'), sitemap, cb);
             });
           });
 
