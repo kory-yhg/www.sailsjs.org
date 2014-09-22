@@ -360,6 +360,19 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
   .otherwise({
     redirectTo: function (hashParams, hashPath, hashQs) {
 
+      console.log('couldnt match :: '+hashPath);
+      if (hashPath && hashPath.match(/^\/\!/)) {
+        window.location.hash = hashPath.replace(/^\/\!/, '#/');
+      }
+      if (hashPath && hashPath.match(/^#\!/)) {
+        window.location.hash = hashPath.replace(/^#\!/, '#');
+      }
+      if (hashPath && hashPath.match(/^#\/\!/)) {
+        window.location.hash = hashPath.replace(/^#\/\!/, '#/');
+      }
+      return;
+
+
       // TODO:
       // use a more automated/intelligent approach w/ $route.routes
       // however in order to do that, we'd need to upgrade angular
@@ -373,31 +386,31 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
       //
       // This approach, as apposed to using ".when()" also supports #! urls
       // and other "not-quite-right" hash URLs.  Which is why we're doing it.
-      _doRedirect(
-      hashPath.match(/documentation\/concepts(.*)/) ?
-        '#/documentation'+(hashPath.match(/documentation\/concepts(.*)/)[1]||'') :
-      hashPath.match(/documentation\/reference(.*)/) ?
-        '#/documentation'+(hashPath.match(/documentation\/reference(.*)/)[1]||'') :
-      hashPath.match(/documentation\/anatomy(.*)/) ?
-        '#/documentation'+(hashPath.match(/documentation\/anatomy(.*)/)[1]||'') :
-      hashPath.match(/documentation|docs/i) ?
-        '#/documentation' :
-      hashPath.match(/start/i) ?
-        '#/getStarted' :
-      hashPath.match(/reference/i) ?
-        '#/documentation/reference' :
-      hashPath.match(/anatomy/i) ?
-        '#/documentation/anatomy' :
-      hashPath.match(/feature/i) ?
-        '#/features' :
-      hashPath.match(/support/i) ?
-        '#/support' :
-      hashPath.match(/irc/i) ?
-        '#/support/irc' :
+      // _doRedirect(
+      // hashPath.match(/documentation\/concepts(.*)/) ?
+      //   '#/documentation'+(hashPath.match(/documentation\/concepts(.*)/)[1]||'') :
+      // hashPath.match(/documentation\/reference(.*)/) ?
+      //   '#/documentation'+(hashPath.match(/documentation\/reference(.*)/)[1]||'') :
+      // hashPath.match(/documentation\/anatomy(.*)/) ?
+      //   '#/documentation'+(hashPath.match(/documentation\/anatomy(.*)/)[1]||'') :
+      // hashPath.match(/documentation|docs/i) ?
+      //   '#/documentation' :
+      // hashPath.match(/start/i) ?
+      //   '#/getStarted' :
+      // hashPath.match(/reference/i) ?
+      //   '#/documentation/reference' :
+      // hashPath.match(/anatomy/i) ?
+      //   '#/documentation/anatomy' :
+      // hashPath.match(/feature/i) ?
+      //   '#/features' :
+      // hashPath.match(/support/i) ?
+      //   '#/support' :
+      // hashPath.match(/irc/i) ?
+      //   '#/support/irc' :
 
-        // otherwise, default to the home page:
-        '#/'
-      );
+      //   // otherwise, default to the home page:
+      //   '#/'
+      // );
     }
   });
 

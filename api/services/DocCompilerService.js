@@ -73,8 +73,11 @@ module.exports = function compileDocumentationMarkdown(cb) {
     });
     html = $.html();
 
-    // Turn beta.sailsjs.org hrefs into www-root-relative hrefs
+    // Turn [beta|www].sailsjs.org hrefs into root-relative hrefs
     html = html.replace(/(href=")(https?:\/\/)(www\.|beta\.)?sailsjs\.org(\/[^"]*")/g, '$1$4');
+
+    // Make sure all `#/` (angular-style) client-side URLs are transformed to `#!` (google/seo-style)
+    html = html.replace(/(href=")\/?#(\/[^"]*)"/g, '$1#!$2"');
 
     // Add target=_blank to external links
     html = html.replace(/(href="https?:\/\/([^"]+)")/g, '$1 target="_blank"');
