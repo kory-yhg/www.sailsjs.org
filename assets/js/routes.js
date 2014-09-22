@@ -374,6 +374,12 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
       // This approach, as apposed to using ".when()" also supports #! urls
       // and other "not-quite-right" hash URLs.  Which is why we're doing it.
       _doRedirect(
+      hashPath.match(/documentation\/concepts(.*)/) ?
+        '#/documentation'+(hashPath.match(/documentation\/concepts(.*)/)[1]||'') :
+      hashPath.match(/documentation\/reference(.*)/) ?
+        '#/documentation'+(hashPath.match(/documentation\/reference(.*)/)[1]||'') :
+      hashPath.match(/documentation\/anatomy(.*)/) ?
+        '#/documentation'+(hashPath.match(/documentation\/anatomy(.*)/)[1]||'') :
       hashPath.match(/documentation|docs/i) ?
         '#/documentation' :
       hashPath.match(/start/i) ?
@@ -411,6 +417,7 @@ function _doRedirect(newURLHash) {
   setTimeout(function (){
     // conditionvar
     if (window.location.hash!==expectedHash)return;
+
     window.location.hash = newURLHash;
   },1);
 }
