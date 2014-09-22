@@ -361,13 +361,13 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
     redirectTo: function (hashParams, hashPath, hashQs) {
 
       console.log('couldnt match :: '+hashPath);
-      if (hashPath && hashPath.match(/^\/\!/)) {
-        window.location.hash = hashPath.replace(/^\/\!/, '#/');
+      if (hashPath && hashPath.match(/^\/\!\/?/)) {
+        window.location.hash = hashPath.replace(/^\/\!\/?/, '#/');
       }
-      if (hashPath && hashPath.match(/^#\!/)) {
+      else if (hashPath && hashPath.match(/^#\!/)) {
         window.location.hash = hashPath.replace(/^#\!/, '#');
       }
-      if (hashPath && hashPath.match(/^#\/\!/)) {
+      else if (hashPath && hashPath.match(/^#\/\!/)) {
         window.location.hash = hashPath.replace(/^#\/\!/, '#/');
       }
       return;
