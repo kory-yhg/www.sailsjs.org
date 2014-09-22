@@ -8,7 +8,6 @@
   var dependencies = [
     'ngRoute',
     'directive.stopPropagation',
-    'directive.clickOutside',
     'duScroll',
     'ngAnimate'
   ];
