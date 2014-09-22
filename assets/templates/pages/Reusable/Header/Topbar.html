@@ -12,7 +12,7 @@
   <!--Navigation list-->
   <div class="nav-container">
     <div class="branding">
-      <a href="#!" ng-click="intent.goto('/')">
+      <a href="#!">
         <img class="logo" src="/images/logo_sails.png" alt="Sails" />
       </a>
       <span class="version">v0.10</span>
@@ -24,12 +24,12 @@
       <li ng-click="menuVisible = false">
         <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/getStarted')}"
-          ng-click="intent.goto('/getStarted')">Get Started</a>
+          href="#!/getStarted">Get Started</a>
       </li>
       <li ng-click="menuVisible = false">
         <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/features')}"
-          ng-click="intent.goto('/features')">Features</a>
+          href="#!/features">Features</a>
       </li>
       <li ng-click="menuVisible = false">
         <a class="sails-site"
@@ -39,7 +39,7 @@
       <li ng-click="menuVisible = false">
         <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/support')}"
-          ng-click="intent.goto('/support')">Support</a>
+          href="#!/support">Support</a>
       </li>
      <!--  <li class="no-mobile">
         <a class="sails-site"
