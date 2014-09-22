@@ -28,7 +28,8 @@ function buildSitemapXML (options, cb){
     '<url>' +
     '<loc>'+sanitizeURL(webpage.url)+'</loc>' +
     (webpage.priority ? ('<priority>'+(webpage.priority||'0.3')+'</priority>') : '')+
-    (webpage.changefreq ? ('<changefreq>'+(webpage.changefreq||'daily')+'</changefreq>') : '') +
+    '<lastmod>'+ (webpage.lastmod ? webpage.lastmod : JSON.parse(JSON.stringify({foo:new Date()})).foo) +'</lastmod>' +
+    '<changefreq>'+ (webpage.changefreq ? webpage.changefreq : 'monthly') +'</changefreq>' +
     '</url>';
 
     return sitemapXML;

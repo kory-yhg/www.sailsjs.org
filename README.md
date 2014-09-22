@@ -27,6 +27,9 @@ The public-facing web presence for the Sails framework.  Mostly static assets, e
 
 Please use the `master` branch.
 
+## Sitemap
+
+See `tasks/custom/output-sitemap.js`
 
 ### License
 

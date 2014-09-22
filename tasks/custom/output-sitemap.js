@@ -27,3 +27,17 @@ module.exports = function outputSitemap (options, cb) {
     });
   });
 };
+
+
+
+// To use:
+//
+// first do:
+// `node`
+//
+// Then do:
+// ```
+// require('./tasks/custom/output-sitemap')({},console.log)
+// ```
+//
+// This will create assets/sitemap.xml
