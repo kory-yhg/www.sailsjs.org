@@ -20,23 +20,31 @@
     <ul class="nav" ng-class="{'menu-open': menuVisible === true}" click-outside is-open="menuVisible">
       <!-- <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: getIsCurrentPage('/')}"
-          href="#/">Home</a></li> -->
-      <li ng-click="menuVisible = false"><a class="sails-site"
+          href="#!/">Home</a></li> -->
+      <li ng-click="menuVisible = false">
+        <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/getStarted')}"
-          ng-click="intent.goto('/getStarted')">Get Started</a></li>
-      <li ng-click="menuVisible = false"><a class="sails-site"
+          ng-click="intent.goto('/getStarted')">Get Started</a>
+      </li>
+      <li ng-click="menuVisible = false">
+        <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/features')}"
-          ng-click="intent.goto('/features')">Features</a></li>
-      <li ng-click="menuVisible = false"><a class="sails-site"
+          ng-click="intent.goto('/features')">Features</a>
+      </li>
+      <li ng-click="menuVisible = false">
+        <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/documentation')}"
-          href="#/documentation">Documentation</a></li>
-      <li ng-click="menuVisible = false"><a class="sails-site"
+          href="#!/documentation">Documentation</a>
+      </li>
+      <li ng-click="menuVisible = false">
+        <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/support')}"
-          ng-click="intent.goto('/support')">Support</a></li>
+          ng-click="intent.goto('/support')">Support</a>
+      </li>
      <!--  <li class="no-mobile">
         <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/logos')}"
-          href="#/logos">Logos</a>
+          href="#!/logos">Logos</a>
       </li> -->
 <!--       <li><a target="_blank" href="http://michaelmcneil.com">Blog</a></li> -->
     </ul>
