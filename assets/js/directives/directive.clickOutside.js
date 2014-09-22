@@ -6,7 +6,7 @@
  */
 angular.module('Sails')
 
-.directive('directive.clickOutside', ['$document', '$timeout', function ($document, $timeout) {
+.directive('clickOutside', ['$document', '$timeout', function ($document, $timeout) {
 
   return {
     restrict: 'A',
