@@ -76,7 +76,7 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
   //   templateUrl: 'templates/pages/irc.html',
   // })
   .when('/support/about-irc', {
-    templateUrl: 'templates/pages/Support/IRC/AboutIRCPage.html',
+    templateUrl: 'templates/pages/support/IRC/AboutIRCPage.html',
   })
 
 
