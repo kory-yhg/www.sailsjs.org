@@ -72,6 +72,10 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
   .when('/support', {
     templateUrl: 'templates/pages/support/SupportHomePage.html',
   })
+  .when('/documentation/search/', {
+    templateUrl: 'templates/pages/Documentation/Search/SearchPage.html'
+  })
+
   // .when('/support/irc', {
   //   templateUrl: 'templates/pages/irc.html',
   // })

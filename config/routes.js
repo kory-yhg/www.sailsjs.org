@@ -27,5 +27,7 @@ module.exports.routes = {
   'get /news': 'NewsController.find',
 
   // Recompile the docs
-	'get /refresh': 'RefreshController.index'
+	'get /refresh': 'RefreshController.index',
+
+  'post /search': 'SearchController.index'
 };
