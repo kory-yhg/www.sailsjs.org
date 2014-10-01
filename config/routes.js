@@ -29,5 +29,8 @@ module.exports.routes = {
   // Recompile the docs
 	'get /refresh': 'RefreshController.index',
 
-  'post /search': 'SearchController.index'
+  'post /search': 'SearchController.index',
+
+  // Search docpages
+  'get /docpage': 'DocpageController.find'
 };
