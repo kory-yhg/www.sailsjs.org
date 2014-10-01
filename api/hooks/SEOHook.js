@@ -25,7 +25,7 @@ module.exports = function (sails) {
 
           // For search engines
           /////////////////////////////////////////////////////////
-          var url = util.format('http://sailsjs.brombone.com/%23!%s', fragment);
+          var url = util.format('http://sailsjs.brombone.com/%2523!%s', fragment);
           var r = request(url);
           r.on('error', function (err) {
             return res.serverError(err);
