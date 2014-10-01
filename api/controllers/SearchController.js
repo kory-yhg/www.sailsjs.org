@@ -18,9 +18,9 @@ module.exports = {
 		var splitQueryBySpace = query.split(' ');
 
 		_.each(splitQueryBySpace,function(oneWord){
-			  results.concepts.push({pageTitle:oneWord,pageURL:'http://www.sailsjs.org/docs/'+oneWord/});
-			  results.reference.push({pageTitle:oneWord,pageURL:'http://www.sailsjs.org/docs/'+oneWord/});
-			  results.anatomy.push({pageTitle:oneWord,pageURL:'http://www.sailsjs.org/docs/'+oneWord/});
+			  results.concepts.push({pageTitle:oneWord,pageURL:'http://www.sailsjs.org/docs/'+oneWord});
+			  results.reference.push({pageTitle:oneWord,pageURL:'http://www.sailsjs.org/docs/'+oneWord});
+			  results.anatomy.push({pageTitle:oneWord,pageURL:'http://www.sailsjs.org/docs/'+oneWord});
 		});
 
 		return res.json(results);
