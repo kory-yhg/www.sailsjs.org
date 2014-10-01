@@ -29,9 +29,10 @@ module.exports = function prepare_html_for_google (options, cb) {
   // Start off with the hard-coded pages:
   var urls = [
     'http://sailsjs.org',
+    'http://sailsjs.org/#!documentation',
     'http://sailsjs.org/#!getStarted',
     'http://sailsjs.org/#!features',
-    'http://sailsjs.org/#/support',
+    'http://sailsjs.org/#!support',
   ];
 
   // Then grab the list of generated pages from the various jsmenus...
