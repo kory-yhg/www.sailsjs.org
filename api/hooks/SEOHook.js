@@ -17,7 +17,7 @@ module.exports = function (sails) {
         'get /': function (req, res, next) {
 
           // For humans
-          if (!req.param('_escaped_fragment_')){
+          if (typeof req.param('_escaped_fragment_') !== 'string'){
             return next();
           }
 
