@@ -1,4 +1,12 @@
 /**
+ * Module dependencies
+ */
+
+var Github = require('machinepack-github');
+
+
+
+/**
  * NewsController
  *
  * @description :: Server-side logic for managing news
@@ -13,29 +21,16 @@ module.exports = {
    */
   find: function(req, res) {
 
-    var Machine = require('node-machine');
-
-
     if (req.param('path')) {
       return res.ok();
-      // Machine.build(require('machinepack-github/get-repo-commits-at-path'))
-      // .configure({
-      //   user: 'balderdashy',
-      //   repo: 'sails-docs',
-      //   path: req.param('path')
-      // })
-      // .cache({ model: Cache })
-      // .exec(res.respond);
     }
-    else {
-      Machine.build(require('machinepack-github/get-repo-commits'))
-      .configure({
-        user: 'balderdashy',
-        repo: 'sails'
-      })
-      .cache({ model: Cache })
-      .exec(res.respond);
-    }
+
+    Github.getRepoCommits({
+      user: 'balderdashy',
+      repo: 'sails'
+    })
+    .cache({ model: Cache })
+    .exec(res.respond);
 
   }
 
