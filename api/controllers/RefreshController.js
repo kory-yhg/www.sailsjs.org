@@ -7,11 +7,9 @@ module.exports = {
 
   index: function(req, res) {
 
-    require('node-machine')
-    .build({
-      fn: function($i, $x) {
-        DocCompilerService($x);
-      }
+    require('machine')
+    .build(function(inputs, exits) {
+      DocCompilerService(exits);
     })
     .configure({})
     // Throttle how often the docs can be refreshed
