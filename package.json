@@ -28,7 +28,6 @@
     "machine": "^1.0.3",
     "machinepack-fs": "^0.1.4",
     "machinepack-github": "~1.0.0",
-    "machinepack-markdown": "^0.3.0",
     "rc": "~0.3.3",
     "request": "~2.34.0",
     "sails": "~0.10.5",
