@@ -31,8 +31,8 @@
     "machinepack-markdown": "^0.3.0",
     "rc": "~0.3.3",
     "request": "~2.34.0",
-    "sails": "~0.10.0-rc9",
-    "sails-disk": "~0.10.2"
+    "sails": "~0.10.5",
+    "sails-disk": "^0.10.5"
   },
   "scripts": {
     "start": "node app.js",
