@@ -14,10 +14,10 @@ module.exports = {
     .configure({})
     // Throttle how often the docs can be refreshed
     // (i.e. no more than once per minute)
-    .cache({
-      model: Cache,
-      ttl: 60000
-    })
+    // .cache({
+    //   model: Cache,
+    //   ttl: 60000
+    // })
     .exec(res.respond);
   }
 };
