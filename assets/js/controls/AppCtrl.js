@@ -60,6 +60,10 @@ angular.module('Sails').controller('AppCtrl', [
       $scope.scrollToTopOfPage($('body').scrollTop());
     };
 
+    $scope.fixUrl = function(href) {
+      return href.replace(/^#([^!])/,'#!$1');
+    }
+
     $scope.intent = angular.extend($scope.intent || {}, {
 
 
