@@ -5,9 +5,12 @@
 //
 // redirect it to the conventional angular hash URL
 //   (e.g. #/documentation/reference)
-if (window.location.hash && window.location.hash.match(/^#\!/)) {
-  window.location.hash = window.location.hash.replace(/^#\!/, '#');
+console.log("REDIRECTING", window.location.hash);
+
+// Redirect non hashbang URLs to hashbang URLs
+if (window.location.hash && window.location.hash.match(/^#([^!])\//)) {
+  window.location.hash = window.location.hash.replace(/^#([^!])\//, '#!/');
 }
 if (window.location.hash && window.location.hash.match(/^#\/\!/)) {
-  window.location.hash = window.location.hash.replace(/^#\/\!/, '#/');
+  window.location.hash = window.location.hash.replace(/^#\/\!/, '#!');
 }
