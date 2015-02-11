@@ -30,7 +30,7 @@
     "machinepack-github": "~1.0.0",
     "rc": "~0.3.3",
     "request": "~2.34.0",
-    "sails": "^0.11.0-rc8",
+    "sails": "^0.11.0",
     "sails-disk": "^0.10.5"
   },
   "scripts": {
