@@ -2,8 +2,11 @@
  * Configure client-side routes (#/foo, #/bar, etc.)
  */
 
-angular.module('Sails').config(['$routeProvider', function($routeProvider) {
-
+angular.module('Sails').config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  // Don't use pushstate
+  $locationProvider.html5Mode(false);
+  // Expect ! prefix on URLs
+  $locationProvider.hashPrefix('!');
   $routeProvider
 
   .when('/', {
@@ -364,15 +367,6 @@ angular.module('Sails').config(['$routeProvider', function($routeProvider) {
     redirectTo: function (hashParams, hashPath, hashQs) {
 
       console.log('couldnt match :: '+hashPath);
-      if (hashPath && hashPath.match(/^\/\!\/?/)) {
-        window.location.hash = hashPath.replace(/^\/\!\/?/, '#/');
-      }
-      else if (hashPath && hashPath.match(/^#\!/)) {
-        window.location.hash = hashPath.replace(/^#\!/, '#');
-      }
-      else if (hashPath && hashPath.match(/^#\/\!/)) {
-        window.location.hash = hashPath.replace(/^#\/\!/, '#/');
-      }
       return;
 
 
