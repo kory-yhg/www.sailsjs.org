@@ -204,7 +204,7 @@ angular.module('Sails').config(['$routeProvider', '$locationProvider', function(
         // TODO: intelligently try stepping backwards one ".../namespace/..." at a time
         if (!target) {
           // console.log('Could not find a target page for ::',$routeParams.sectionPath);
-          _doRedirect('#/documentation');
+          _doRedirect('#!/documentation');
           return;
         }
 
