@@ -66,6 +66,9 @@ angular.module('Sails').config(['$routeProvider', '$locationProvider', function(
     .when('/documentation/changelog/0.9.16', {
       templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.9.8.html'
     })
+    .when('/documentation/changelog/0.10', {
+      templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.10.x.html'
+    })
     .when('/documentation/changelog/0.11', {
       templateUrl: 'templates/pages/Documentation/VersionNotes/Changelog_0.11.x.html'
     })
