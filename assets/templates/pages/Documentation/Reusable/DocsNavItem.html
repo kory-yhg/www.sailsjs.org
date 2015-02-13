@@ -1,5 +1,5 @@
 <span>
-  <a href="{{fixUrl(menuItem.href)}}">{{menuItem.label}}</a>
+  <a href="{{ menuItem.href }}">{{menuItem.label}}</a>
 </span>
 
 
@@ -11,7 +11,7 @@
   </li> -->
   <li ng-repeat="menuItem in menuItem.visibleChildren | orderBy:['isChild','isParent']"
     stop-propagation="click"
-    ng-include="'templates/pages/Documentation/Reusable/DocsNavItem.html'"
+    ng-include="'/templates/pages/Documentation/Reusable/DocsNavItem.html'"
     ng-click="intent.toggleMenuItem(menuItem.id)"
     ng-class="{
     'current-section': docs.currentPage.id === menuItem.id,

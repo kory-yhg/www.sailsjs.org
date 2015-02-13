@@ -62,7 +62,7 @@ angular.module('Sails').factory('Menu', function() {
         mItem.label = mItem.label || (mItem.data && mItem.data.displayName);
 
         // Set the "href" (where to go when this thing is clicked)
-        mItem.href = '#/documentation/' + mItem.fullPathAndFileName;
+        mItem.href = '/documentation/' + mItem.fullPathAndFileName;
 
         // If this menu item has children, snip off the last part of its href
         if (mItem.children) {
