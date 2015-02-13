@@ -27,55 +27,55 @@ move this to the appropriate part of the docs (shouldn&apos;t show up in referen
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=blueprints">Blueprints</a></td>
+<td><a href="/documentation/concepts/Upgrading?q=blueprints">Blueprints</a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=policies">Policies</a></td>
+<td><a href="/documentation/concepts/Upgrading?q=policies">Policies</a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=associations">Associations</a></td>
+<td><a href="/documentation/concepts/Upgrading?q=associations">Associations</a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=pubsub">Pubsub</a></td>
+<td><a href="/documentation/concepts/Upgrading?q=pubsub">Pubsub</a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=done%28%29-vs-exec%28%29"><code>.done()</code> vs. <code>.exec()</code></a></td>
+<td><a href="/documentation/concepts/Upgrading?q=done%28%29-vs-exec%28%29"><code>.done()</code> vs. <code>.exec()</code></a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=generators">Generators</a></td>
+<td><a href="/documentation/concepts/Upgrading?q=generators">Generators</a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=commandline-tool">Command-Line Tool</a></td>
+<td><a href="/documentation/concepts/Upgrading?q=commandline-tool">Command-Line Tool</a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=custom-server-responses">Custom Server Responses</a></td>
+<td><a href="/documentation/concepts/Upgrading?q=custom-server-responses">Custom Server Responses</a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=legacy-data-stored-in-the-temporary-sailsdisk-database">Legacy Data in <code>sails-disk</code></a></td>
+<td><a href="/documentation/concepts/Upgrading?q=legacy-data-stored-in-the-temporary-sailsdisk-database">Legacy Data in <code>sails-disk</code></a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=validations-upgrade-to-validator-3x">Validations</a></td>
+<td><a href="/documentation/concepts/Upgrading?q=validations-upgrade-to-validator-3x">Validations</a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=adapter%2Fdatabase-configuration">Adapter/Connections Configuration</a></td>
+<td><a href="/documentation/concepts/Upgrading?q=adapter%2Fdatabase-configuration">Adapter/Connections Configuration</a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=controller-configuration">Blueprints/Controllers Configuration</a></td>
+<td><a href="/documentation/concepts/Upgrading?q=controller-configuration">Blueprints/Controllers Configuration</a></td>
 </tr>
 <tr>
 <td></td>
-<td><a href="#!/documentation/concepts/Upgrading?q=layout-paths">Layout Paths</a></td>
+<td><a href="/documentation/concepts/Upgrading?q=layout-paths">Layout Paths</a></td>
 </tr>
 </tbody>
 </table>
@@ -94,7 +94,7 @@ The Connect multipart middleware <a href="http://www.senchalabs.org/connect/mult
 <p>For Skipper to work, you <em>must include all text parameters BEFORE file parameters</em> in file upload requests to the server.  Once Skipper sees the first file field, it stops waiting for text parameters (this is to avoid unnecessary/unsafe buffering of file data).</p>
 </blockquote>
 <h4 id="configuring-a-different-body-parser" permalink="configuring-a-different-body-parser">Configuring a different body parser</h4>
-<p>As with most things in Sails, you can use any Connect/Express/Sails-compatible bodyparser you like. To switch back to <strong>connect-multipart</strong>, or any other body parser (like <strong>formidable</strong> or <strong>busboy</strong>), change your app&apos;s <a href="#!/documentation/reference/sails.config/sails.config.http.html"><code>http</code> configuration</a>.</p>
+<p>As with most things in Sails, you can use any Connect/Express/Sails-compatible bodyparser you like. To switch back to <strong>connect-multipart</strong>, or any other body parser (like <strong>formidable</strong> or <strong>busboy</strong>), change your app&apos;s <a href="/documentation/reference/sails.config/sails.config.http.html"><code>http</code> configuration</a>.</p>
 <h3 id="blueprints" permalink="blueprints">Blueprints</h3>
 <p><a name="blueprints"></a>
 A new blueprint action (<code>findOne</code>) has been added.  For instance, if you have a <code>FooController</code> and <code>Foo</code> model, then send a request to <code>/foo/5</code>, the <code>findOne</code> action in your <code>FooController</code> will run.  If you don&apos;t have a <code>findOne</code> action, the <code>findOne</code> blueprint action will be used in its stead.  Requests sent to <code>/foo</code> will still run the <code>find</code> controller/blueprint action.</p>
@@ -123,7 +123,7 @@ Policies work exactly as they did in v0.9- however there is a new consideration 
 <h4 id="summary" permalink="summary">Summary</h4>
 <ul>
 <li><code>message</code> socket (i.e. &quot;comment&quot;) event on client is now <code>modelIdentity</code> (where &quot;modelIdentity&quot; is different depending on the model that the <code>publish*()</code> method was called from.</li>
-<li>Clients are no longer subscribed to model-creation events by the blueprint routes.  To listen for creation events, use <a href="#!/documentation/reference/Models/Model-Methods/watch.html"><code>Model.watch()</code></a>.</li>
+<li>Clients are no longer subscribed to model-creation events by the blueprint routes.  To listen for creation events, use <a href="/documentation/reference/Models/Model-Methods/watch.html"><code>Model.watch()</code></a>.</li>
 <li>The events that were formerly <code>create</code>, <code>update</code>, and <code>destroy</code> are now <code>created</code>, <code>updated</code>, and <code>destroyed</code>.</li>
 </ul>
 <h4 id="details" permalink="details">Details</h4>
@@ -149,7 +149,7 @@ socket.on(&apos;product&apos;, function (cometEvent) {
 </code></pre><!-- __LANG=%%__ -->
 <p>This helps to structure your front end code.</p>
 <p>The way you subscribe clients to models has also changed.  Previously, you specified whether you were subscribing to the model class (class room) or one or more model instances based on the parameters that you passed to <code>Model.subscribe</code>.  It was effectively one method to do two very different things.</p>
-<p>Now, you use <code>Model.subscribe()</code> to subscribe only to model instances (records).  You can also specify event &quot;contexts&quot;, or types, that you&apos;d like to hear about.  For example, if you only wanted to get messages about updates to an instance, you would call <code>User.subscribe(req, myUser, &apos;update&apos;)</code>.  If no context is given in a call to <code>.subscribe()</code>, then all contexts specified by the model class&apos;s <a href="./#!documentation/reference/ModelProperties">autosubscribe property</a> will be used.</p>
+<p>Now, you use <code>Model.subscribe()</code> to subscribe only to model instances (records).  You can also specify event &quot;contexts&quot;, or types, that you&apos;d like to hear about.  For example, if you only wanted to get messages about updates to an instance, you would call <code>User.subscribe(req, myUser, &apos;update&apos;)</code>.  If no context is given in a call to <code>.subscribe()</code>, then all contexts specified by the model class&apos;s <a href="/documentation/reference/ModelProperties">autosubscribe property</a> will be used.</p>
 <p>To subscribe to model creation events, you can now use <code>Model.watch()</code>.  Upon subscription, your clients will receive messages every time a new record is created on that model using the blueprint routes, and will automatically be subscribed to the new instance as well.</p>
 <p>Remember, when working with blueprints, clients are no longer auto subscribed to the class room.  This must be done manually.</p>
 <p>Finally, if you want to see all pubsub messages from all models, you can access the <code>firehose</code>, a development-only tool that broadcasts messages about <em>everything</em> that happens to your models.  You can subscribe to the firehose using <code>sails.sockets.subscribeToFirehose(socket)</code>, or on the front end by making a socket request to <code>/firehose</code>.  The firehose will broadcast a <code>firehose</code> event whenever a model is created, updated, destroyed, added to, removed from or messaged.  This effectively replaces the <code>message</code> event used in previous Sails versions.</p>
@@ -165,7 +165,7 @@ socket.on(&apos;product&apos;, function (cometEvent) {
 <p>But as of Sails/Waterline v0.10, the original meaning of <code>.done()</code> has been officially deprecated to allow for a more robust promise implementation going forward, and pluggable promise library support (e.g. choose <code>Q</code> or <code>Bluebird</code> etc.).</p>
 <h3 id="associations" permalink="associations">Associations</h3>
 <p><a name="associations"></a>
-Sails v0.10 introduces associations between data models.  Since the work we&apos;ve done on associations is largely additive, your existing models should still just work.  That said, this is a powerful new feature that allows you to write less code and makes your app more maintainable, so we suggest taking advantage of it!  To learn about how to use associations in Sails, <a href="./#!documentation/reference/ModelAssociations">check out the docs</a>.</p>
+Sails v0.10 introduces associations between data models.  Since the work we&apos;ve done on associations is largely additive, your existing models should still just work.  That said, this is a powerful new feature that allows you to write less code and makes your app more maintainable, so we suggest taking advantage of it!  To learn about how to use associations in Sails, <a href="/documentation/reference/ModelAssociations">check out the docs</a>.</p>
 <p>Associations (or &quot;relations&quot;) are really just special attributes.  Instead of <code>string</code> or <code>integer</code> values, you can specify an instance of a model or a collection of model instances.  You can think about this kind of like an object (<code>{...}</code>) or an array (<code>[{...}, {...}]</code>) you might store as JSON in a NoSQL database.  The difference is, in Sails, this works with any of the supported databases, and even allows you to <code>populate</code> (i.e. join) across different databases and types of databases.</p>
 <h3 id="generators" permalink="generators">Generators</h3>
 <p><a name="generators"></a></p>
@@ -174,7 +174,7 @@ Sails v0.10 introduces associations between data models.  Since the work we&apos
 <h3 id="command-line-tool" permalink="commandline-tool">Command-Line Tool</h3>
 <p><a name="command-line-tool"></a>
 The big change here is how you create a new api.  In the past you called <code>sails generate new_api</code>.  This would generate a new controller and model called <code>new_api</code> in the appropriate places.  This is now done using <code>sails generate api new_api</code></p>
-<p>You can still generate models and controllers seperately using the same <a href="./#!documentation/reference/CommandLine/">CLI Commands</a></p>
+<p>You can still generate models and controllers seperately using the same <a href="/documentation/reference/CommandLine/">CLI Commands</a></p>
 <p>Also, <code>--linker</code> switch is no longer available. In previous version, if <code>--linker</code> switch was provided, it created a <code>myApp/assets/linker</code> folder, with <code>js</code>, <code>styles</code> and <code>templates</code> folders inside. In this new version, the <code>myApp/assets/linker</code> folder is not created. Compiling CoffeeScript and Less is the default behavior now, right from the <code>myApp/assets/js</code> and <code>myApp/assets/scripts</code> folders.</p>
 <h3 id="custom-server-responses" permalink="custom-server-responses">Custom Server Responses</h3>
 <p><a name="custom-server-responses"></a>

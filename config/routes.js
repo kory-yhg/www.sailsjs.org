@@ -10,8 +10,9 @@ module.exports.routes = {
   // Redirect 'beta.sailsjs.org' to 'sailsjs.org'
   '/*': function (req, res, next) {
 
+    // analogous to what .htaccess does with mod_rewrite
+    // if file exists, serve it, if not redirect to fancy url
     var file = path.resolve() + '/assets' + req.url;
-    console.log(file);
     if (req.headers.accept.indexOf('html') > -1) {
         fs.exists(file, function(exists){
             if (!exists) {

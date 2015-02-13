@@ -4,7 +4,7 @@
 			<h2>myApp</h2>
 
       <!-- If this template has a stabilityIndex docMeta tag, show it here -->
-      <div class="stabilityIndex" ng-if="docs.currentPage.data.stabilityIndex" ng-include src="'./templates/stabilityIndexPartials/stability'+docs.currentPage.data.stabilityIndex+'.html'"></div>
+      <div class="stabilityIndex" ng-if="docs.currentPage.data.stabilityIndex" ng-include src="'/templates/stabilityIndexPartials/stability'+docs.currentPage.data.stabilityIndex+'.html'"></div>
       <br>
 
 			<ul class="file-list">
@@ -21,7 +21,7 @@
           'expanded': menuItem.expanded === true}"
           ng-click="intent.toggleMenuItem(menuItem.id)"
           class="top-level"
-          ng-include="'templates/pages/Documentation/Anatomy/AnatomyNavItem.html'"></li>
+          ng-include="'/templates/pages/Documentation/Anatomy/AnatomyNavItem.html'"></li>
       </ul>
     </div>
 
