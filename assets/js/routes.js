@@ -25,10 +25,6 @@ angular.module('Sails').config(function ($routeProvider, $locationProvider) {
         .when('/documentation', {
             redirectTo: '/documentation/concepts'
         })
-        .when('/documentation/:sectionPath*?', {
-            templateUrl: '/templates/pages/Documentation/Reusable/DocsSection.html',
-            controller: 'DocumentationController'
-        })
         .when('/documentation/changelog/pre-0.8.77', {
             templateUrl: '/templates/pages/Documentation/VersionNotes/Changelog_before0.8.77.html'
         })
@@ -62,6 +58,10 @@ angular.module('Sails').config(function ($routeProvider, $locationProvider) {
         .when('/documentation/anatomy', {
             templateUrl: '/templates/pages/Documentation/Reusable/DocsSection.html',
             redirectTo: '/documentation/anatomy/myApp'
+        })
+        .when('/documentation/:sectionPath*?', {
+            templateUrl: '/templates/pages/Documentation/Reusable/DocsSection.html',
+            controller: 'DocumentationController'
         })
         .when('/support', {
             templateUrl: '/templates/pages/support/SupportHomePage.html',
