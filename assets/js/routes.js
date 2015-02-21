@@ -1,4 +1,4 @@
-angular.module('Sails').config(function ($routeProvider, $locationProvider) {
+angular.module('Sails').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('!');
@@ -69,9 +69,9 @@ angular.module('Sails').config(function ($routeProvider, $locationProvider) {
             }
         });
 
-});
+}]);
 
-angular.module('Sails').controller('DocumentationController', function($scope, $routeParams, Menu, $location){
+angular.module('Sails').controller('DocumentationController', ['$scope', '$routeParams', 'Menu', '$location', function($scope, $routeParams, Menu, $location){
 
     // Split sectionPath on slashes, lower-case each piece, and eliminate empty pieces
     // to determine the top-level docs section (e.g. "reference")
@@ -308,4 +308,4 @@ angular.module('Sails').controller('DocumentationController', function($scope, $
             // more $includeContentLoaded events will fire, or we'll eventually give up
         });
     }
-});
+}]);
