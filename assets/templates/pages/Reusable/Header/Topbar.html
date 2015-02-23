@@ -12,7 +12,7 @@
   <!--Navigation list-->
   <div class="nav-container">
     <div class="branding">
-      <a href="/">
+      <a href="#!">
         <img class="logo" src="/images/logo_sails.png" alt="Sails" />
       </a>
       <span class="version">v0.11</span>
@@ -20,31 +20,31 @@
     <ul class="nav" ng-class="{'menu-open': menuVisible === true}" click-outside is-open="menuVisible">
       <!-- <li ng-click="menuVisible = false"><a class="sails-site"
           ng-class="{current: getIsCurrentPage('/')}"
-          href="/">Home</a></li> -->
+          href="#!/">Home</a></li> -->
       <li ng-click="menuVisible = false">
         <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/getStarted')}"
-          href="/getStarted">Get Started</a>
+          href="#!/getStarted">Get Started</a>
       </li>
       <li ng-click="menuVisible = false">
         <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/features')}"
-          href="/features">Features</a>
+          href="#!/features">Features</a>
       </li>
       <li ng-click="menuVisible = false">
         <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/documentation')}"
-          href="/documentation">Documentation</a>
+          href="#!/documentation">Documentation</a>
       </li>
       <li ng-click="menuVisible = false">
         <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/support')}"
-          href="/support">Support</a>
+          href="#!/support">Support</a>
       </li>
      <!--  <li class="no-mobile">
         <a class="sails-site"
           ng-class="{current: getIsCurrentPage('/logos')}"
-          href="/logos">Logos</a>
+          href="#!/logos">Logos</a>
       </li> -->
 <!--       <li><a target="_blank" href="http://michaelmcneil.com">Blog</a></li> -->
     </ul>

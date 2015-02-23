@@ -14,10 +14,6 @@ angular.module('Sails').controller('AppCtrl', [
     // Should never be reset (only its properties changed)
     $scope.docs = {};
 
-    $scope.navigate = function(url) {
-        $location.path(url);
-    };
-
     // Generate a random sea-creature author of Sails
     $scope.author = _.sample([
       'developers',

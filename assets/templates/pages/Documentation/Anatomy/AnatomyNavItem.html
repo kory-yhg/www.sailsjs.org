@@ -1,13 +1,13 @@
-<img class="expand-arrow" src="/images/img_collapsedArrow@2x.png"/>
+<img class="expand-arrow" src="images/img_collapsedArrow@2x.png"/>
 <span>
-  <a ng-click="navigate(menuItem.href)">{{menuItem.label}}</a>
+  <a href="{{fixUrl(menuItem.href)}}">{{menuItem.label}}</a>
 </span>
 
 
 <ul ng-show="menuItem.visibleChildren.length">
   <li ng-repeat="menuItem in menuItem.visibleChildren | orderBy:['isChild','isParent']"
     stop-propagation="click"
-    ng-include="'/templates/pages/Documentation/Anatomy/AnatomyNavItem.html'"
+    ng-include="'templates/pages/Documentation/Anatomy/AnatomyNavItem.html'"
     ng-click="intent.toggleMenuItem(menuItem.id)"
     ng-class="{
     'current-section': docs.currentPage.id === menuItem.id,
