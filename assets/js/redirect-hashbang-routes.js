@@ -5,7 +5,7 @@
 //
 // redirect it to the conventional angular hash URL
 //   (e.g. #/documentation/reference)
-console.log("REDIRECTING", window.location.hash);
+// console.log("REDIRECTING", window.location.hash);
 
 // Redirect non hashbang URLs to hashbang URLs
 if (window.location.hash && window.location.hash.match(/^#([^!])\//)) {
