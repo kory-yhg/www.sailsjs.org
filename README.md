@@ -2,7 +2,7 @@
 
 The public-facing web presence for the Sails framework.  Mostly static assets, except for the parser script.
 
-![Screenshot of the www.sailsjs.org website](http://i.imgur.com/S5aQdDx.png)
+![Screenshot of the www.sailsjs.org website](http://i.imgur.com/wANZmJU.png)
 
 ## Goals
 
