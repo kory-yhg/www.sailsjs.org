@@ -20,9 +20,6 @@ angular.module('Sails').controller('AppCtrl', [
       'developers',
       'developers',
       'developers',
-      'developers',
-      'developers',
-      'developers',
       'a giant squid',
       'clownfish',
       'starfish',
@@ -34,8 +31,16 @@ angular.module('Sails').controller('AppCtrl', [
 
     // Qualifiers
     $scope.getIsCurrentPage = function(path) {
-      var current = window.location.hash;
-      return current === '#' + path;
+      var current = $window.location.hash;
+      return current === '#!' + path;
+    };
+
+    $scope.getIsDocumentationPage = function() {
+      var currentPath = $window.location.hash;
+      if(currentPath.indexOf('documentation') > 0) {
+        return true;
+      }
+      else return false;
     };
 
     $scope.scrollToTopOfPage = function(thenDownBy) {
