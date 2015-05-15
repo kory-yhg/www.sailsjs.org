@@ -15,7 +15,7 @@
       float: left;
 			// background-color: @bgLtGray;
 			height: 100%;
-			padding: 15px 25px 25px 0;
+			padding: 25px 25px 25px 0;
       position: relative;
       h2 {
         text-align: left;
@@ -149,6 +149,58 @@
     			}
 				}
 			}
+      .book-banner-wrapper {
+        .borderBox();
+        padding: 50px 40px 50px 0px;
+        .book-banner {
+          .borderBox();
+          width: 100%;
+          min-width: 155px;
+          max-width: 160px;
+          border: 1px solid @bookBannerBorder;
+          background-color: @bookBannerBg;
+          padding: 20px 10px 25px;
+          text-align: center;
+          .meap-cover {
+            width: 100px;
+            margin: 0 auto 10px;
+          }
+          h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: @originalTurquoise;
+            margin-bottom: 5px;
+          }
+          p {
+            font-size: 14px;
+            color: @black;
+            margin-bottom: 15px;
+            line-height: 20px;
+            span {
+              font-weight: 700;
+              color: @originalTurquoise;
+            }
+          }
+          .book-link {
+            .borderBox();
+            .borderRadius(5px, 5px, 5px, 5px);
+            .transition(all 250ms);
+            width: 100%;
+            max-width: 120px;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            background-color: @originalTurquoise;
+            color: @white;
+            padding: 7px 0px;
+            font-size: 14px;
+            font-weight: 700;
+            &:hover {
+              background-color: @ltTurquoise;
+            }
+          }
+        }
+      }
 		}
 		.anatomy-content {
       .borderBox();

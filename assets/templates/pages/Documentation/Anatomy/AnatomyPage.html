@@ -1,28 +1,38 @@
 <div class="anatomy-page">
 	<div class="anatomy-container">
 		<div class="navigation">
-			<h2>myApp</h2>
+      <div class="nav-wrapper">
+  			<h2>myApp</h2>
 
-      <!-- If this template has a stabilityIndex docMeta tag, show it here -->
-      <div class="stabilityIndex" ng-if="docs.currentPage.data.stabilityIndex" ng-include src="'./templates/stabilityIndexPartials/stability'+docs.currentPage.data.stabilityIndex+'.html'"></div>
-      <br>
+        <!-- If this template has a stabilityIndex docMeta tag, show it here -->
+        <div class="stabilityIndex" ng-if="docs.currentPage.data.stabilityIndex" ng-include src="'./templates/stabilityIndexPartials/stability'+docs.currentPage.data.stabilityIndex+'.html'"></div>
+        <br ng-if="docs.currentPage.data.stabilityIndex">
 
-			<ul class="file-list">
-				<!-- Folders get class "expanded" to show their contents -->
-				<!-- Files get class "active" to show which one you're looking at.-->
-				<!-- The top-level folder containing the "active" file also gets the class "active" -->
-        <li ng-repeat="menuItem in docs.visibleMenu"
-          stop-propagation="click"
-          class="top-level"
-          ng-class="{
-          'current-section': docs.currentPage.id === menuItem.id,
-          'current-parent-section': docs.currentPage.parent === menuItem.id,
-          'folder': menuItem.isParent === true,
-          'expanded': menuItem.expanded === true}"
-          ng-click="intent.toggleMenuItem(menuItem.id)"
-          class="top-level"
-          ng-include="'templates/pages/Documentation/Anatomy/AnatomyNavItem.html'"></li>
-      </ul>
+  			<ul class="file-list">
+  				<!-- Folders get class "expanded" to show their contents -->
+  				<!-- Files get class "active" to show which one you're looking at.-->
+  				<!-- The top-level folder containing the "active" file also gets the class "active" -->
+          <li ng-repeat="menuItem in docs.visibleMenu"
+            stop-propagation="click"
+            class="top-level"
+            ng-class="{
+            'current-section': docs.currentPage.id === menuItem.id,
+            'current-parent-section': docs.currentPage.parent === menuItem.id,
+            'folder': menuItem.isParent === true,
+            'expanded': menuItem.expanded === true}"
+            ng-click="intent.toggleMenuItem(menuItem.id)"
+            class="top-level"
+            ng-include="'templates/pages/Documentation/Anatomy/AnatomyNavItem.html'"></li>
+        </ul>
+        <div class="book-banner-wrapper">
+          <div class="book-banner">
+            <img class="meap-cover" src="/images/bookCover.png"/>
+            <h3>We wrote a book!</h3>
+            <p>Get early access to half the book<br/> with promotion code: <span>dotd50815</span></p>
+            <a class="book-link" target="_blank" href="http://www.manning.com/mcneil/">Get the Book</a>
+          </div>
+        </div>
+      </div>
     </div>
 
 		<!-- Region with the information about the selected file -->
