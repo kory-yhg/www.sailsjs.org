@@ -50,24 +50,12 @@ try {
   }
 }
 
+var config = rc('sails');
+if (process.env.NODE_ENV === 'production' || process.env.nogrunt) {
+  config.hooks = config.hooks || {};
+  config.hooks.grunt = false;
+}
 
-// Compile docs and start server
-// (must use `require` because globals are not yet available)
-app.lift(rc('sails'), function (err){
-  if (err) {
-    app.log.error('Encountered error lifting server.');
-    app.log.error(err);
-    return;
-  }
-
-  app.log.debug('Compiling documentation to HTML...');
-  require('./api/services/DocCompilerService')(function(err) {
-    if (err) {
-      app.log.error('The following error occurred when compiling docs:');
-      app.log.error(err);
-      return;
-    }
-    app.log.debug('Compiled docs successfully!');
-  });
-});
+// Start server
+app.lift(config);
 
