@@ -79,6 +79,59 @@
         }
       }
     }
+    .book-banner-wrapper {
+      padding: 75px 0 0;
+      .book-banner {
+        .borderBox();
+        margin: 0 auto;
+        width: 650px;
+        height: 175px;
+        padding: 25px 225px 25px 180px;
+        position: relative;
+        background-color: @bookBannerBg;
+        border: 1px solid @bookBannerBorder;
+        img.meap-cover {
+          position: absolute;
+          left: 50px;
+          top: 18px;
+          height: 125px;
+        }
+        h3 {
+          padding-top: 18px;
+          font-family: @headerFont;
+          color: @originalTurquoise;
+          font-size: 28px;
+        }
+        p {
+          font-size: 15px;
+          line-height: 21px;
+          color: @black;
+          span {
+            font-weight: 700;
+            color: @originalTurquoise;
+          }
+        }
+        .book-link {
+          .borderBox();
+          .borderRadius(5px, 5px, 5px, 5px);
+          .transition(all 250ms);
+          width: 150px;
+          display: block;
+          position: absolute;
+          text-align: center;
+          right: 50px;
+          top: 64px;
+          background-color: @originalTurquoise;
+          color: @white;
+          padding: 10px 0px;
+          font-size: 15px;
+          font-weight: 700;
+          &:hover {
+            background-color: @ltTurquoise;
+          }
+        }
+      }
+    }
 	}
 
 	@media screen and (max-width: 1000px) {
