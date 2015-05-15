@@ -56,7 +56,7 @@
   	}
   	.built {
   		float: left;
-  		width: 50%;
+  		width: 60%;
       padding-top: 75px;
   		a {
   			color: @white;
@@ -80,12 +80,36 @@
   		}
   		p, span{
         .paragraph(@white);
-        font-size: 15px;
+        font-size: 14px;
   			&.license-info {
-          font-size: 13px;
-          padding-top: 20px;
+          font-size: 11px;
+          padding-top: 15px;
         }
   		}
+      .logos {
+        .clearfix();
+        padding-top: 15px;
+        img {
+          .borderBox();
+          .transition(opacity 150ms);
+          float: left;
+          position: relative;
+          opacity: 0.9;
+          &.treeline-logo {
+            width: 150px;
+            padding-right: 12px;
+            left: -10px;
+          }
+          &.balderdash-logo {
+            width: 165px;
+            padding-right: 12px;
+            top: 2px;
+          }
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
   	}
   	.footer-nav {
   		float: right;
@@ -146,6 +170,25 @@
         }
         p.license-info {
           display: none;
+        }
+        .logos {
+          width: 252px;
+          margin: 0 auto;
+          img {
+            .borderBox();
+            float: left;
+            position: relative;
+            &.treeline-logo {
+              width: 122px;
+              padding-right: 10px;
+              left: 0px;
+            }
+            &.balderdash-logo {
+              width: 130px;
+              padding-right: 10px;
+              top: 2px;
+            }
+        }
         }
       }
       ul.footer-nav {
