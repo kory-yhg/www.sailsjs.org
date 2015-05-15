@@ -31,7 +31,15 @@ module.exports = function(grunt) {
 				src: ['**/*'],
 				dest: 'www'
 			}]
-		}
+		},
+    dist: {
+      files: [{
+        expand: true,
+        cwd: '.tmp/public/hash',
+        src: ['**/*'],
+        dest: '.tmp/public/dist'
+      }]
+    },
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-copy');

@@ -51,9 +51,9 @@ module.exports = function(grunt) {
 				appRoot: '.tmp/public'
 			},
 			files: {
-				'.tmp/public/**/*.html': ['.tmp/public/min/production.js'],
-				'views/**/*.html': ['.tmp/public/min/production.js'],
-				'views/**/*.ejs': ['.tmp/public/min/production.js']
+        '.tmp/public/**/*.html': ['.tmp/public/dist/*.js'],
+        'views/**/*.html': ['.tmp/public/dist/*.js'],
+        'views/**/*.ejs': ['.tmp/public/dist/*.js']
 			}
 		},
 
@@ -111,10 +111,10 @@ module.exports = function(grunt) {
 				appRoot: '.tmp/public'
 			},
 			files: {
-				'.tmp/public/index.html': ['.tmp/public/min/production.css'],
-				'views/**/*.html': ['.tmp/public/min/production.css'],
-				'views/**/*.ejs': ['.tmp/public/min/production.css']
-			}
+        '.tmp/public/index.html': ['.tmp/public/dist/*.css'],
+        'views/**/*.html': ['.tmp/public/dist/*.css'],
+        'views/**/*.ejs': ['.tmp/public/dist/*.css']
+      }
 		},
 
 		prodStylesRelative: {
