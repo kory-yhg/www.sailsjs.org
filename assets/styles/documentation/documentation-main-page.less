@@ -15,6 +15,7 @@
 		}
 	}
 	div.main-container {
+    .borderBox();
 		.container();
 		.clearfix();
 		padding: 50px 0 50px;
@@ -22,33 +23,37 @@
 		ul.link-list {
 			.borderBox();
 			width: 60%;
-			padding: 10px 50px 50px 0px;
+			padding: 10px 20px 50px 0px;
 			float: left;
 			a {
 				.clearfix();
 				cursor: pointer;
         li {
           .clearfix();
-          padding-bottom: 50px;
+          padding-bottom: 45px;
           position: relative;
-          padding-left: 90px;
+          padding-left: 85px;
           img.icon {
             position: absolute;
-            width: 70px;
+            width: 60px;
             left: 0;
-            top: 5px;
+            top: 2px;
 					}
 					div.description {
             .borderBox();
 						h2 {
 							.docs_h1();
-							font-size: 32px;
-							padding: 7px 0 0;
+							font-size: 30px;
+							padding: 0px 0px 0px 0px;
 						}
 						p {
 							color: @dkerGray;
 							font-weight: @normal;
 							font-size: 14px;
+              >span {
+                font-weight: 700;
+                color: @originalTurquoise;
+              }
 						}
 					}
 				}
@@ -81,9 +86,9 @@
 			background-color: @bgLtGray;
 			padding: 30px 50px;
 			border: 1px solid @ltestGray;
-            width: 35%;
-            min-width: 325px;
-            max-width: 350px;
+      width: 35%;
+      min-width: 325px;
+      max-width: 350px;
 			>h3 {
 				color: @headerGray;
 				font-weight: @light;
@@ -114,6 +119,10 @@
 		}
 	}
   @media screen and (max-width: 1000px) {
+    div.page-header {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
     div.main-container {
       ul.link-list {
         float: none;
