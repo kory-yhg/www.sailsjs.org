@@ -1,0 +1,215 @@
+.anatomy-page {
+  .clearfix();
+  font-family: @mainFont;
+
+  //The content of the anatomy section
+  .anatomy-container {
+    .container();
+    .borderBox();
+    .clearfix();
+    z-index: 2;
+    position: relative;
+    div.navigation {
+      .borderBox();
+      width: 25%;
+      float: left;
+      // background-color: @bgLtGray;
+      height: 100%;
+      padding: 25px 25px 25px 0;
+      position: relative;
+      h2 {
+        text-align: left;
+        padding: 5px 0px 15px;
+        color: @turquoise;
+        font-size: 1.6em;
+        font-weight: @light;
+      }
+      a {
+        color: inherit;
+      }
+      ul.file-list {
+        position: relative;
+        z-index: 10;
+        li {
+          font-size: 14px;
+          font-weight: @normal;
+          padding-left: 16px;
+          line-height: 1.8em;
+          position: relative;
+          .expand-arrow {
+            .transition(all 250ms);
+            display: none;
+            width: 6px;
+            position: absolute;
+            left: 4px;
+            top: 11px;
+          }
+          >ul >li >ul {
+            li {
+              color: @headerGray;
+              &.folder {
+                color: @black;
+              }
+            }
+          }
+          &.current-section {
+            span {
+              color: @turquoise;
+              &:hover {
+                color: @black;
+              }
+            }
+            >span {
+              color: @brightBlue;
+              font-weight: @bold;
+              &:hover {
+                color: @brightBlue;
+              }
+            }
+            &.top-level {
+              span {
+                color: @black;
+                &:hover {
+                  color: @turquoise;
+                }
+              }
+              >span {
+                color: @brightBlue;
+              }
+            }
+          }
+          &.folder {
+              &.expanded {
+                >span {
+                  font-weight: @bold;
+                }
+              }
+              >.expand-arrow {
+                display: block;
+              }
+              span {
+                cursor: pointer;
+                &:hover {
+                  color: @turquoise;
+                }
+              }
+            &.current-parent-section {
+              >span {
+                font-weight: @bold;
+                // color: @turquoise;
+              }
+            }
+            // &.current-grandparent {
+            //   >span {
+            //     font-weight: @bold;
+            //   }
+            // }
+            &.expanded {
+               >.expand-arrow {
+                .rotate(90deg);
+              }
+            }
+            // ul {
+            //  display: none;
+            //  padding: 5px 0px;
+            //  &:last-child {
+            //    padding-bottom: 0px;
+            //  }
+            // }
+            // &.expanded {
+          //    background: url('/images/img_expandedArrow@2x.png') no-repeat left 8px;
+          //    background-size: 6px;
+            //  > ul {
+            //    display: block;
+            //  }
+            // }
+          }
+          &.file {
+            cursor: pointer;
+            &:hover {
+              color: @turquoise;
+            }
+          }
+          &.active {
+            &.file {
+              color: @turquoise;
+            }
+            &.folder {
+            span {
+              color: @turquoise;
+                font-weight: @semibold;
+            }
+            .folder {
+              span {
+                color: @black;
+                font-weight: @normal;
+              }
+            }
+            }
+          }
+        }
+      }
+      .book-banner-wrapper {
+        .borderBox();
+        padding: 50px 40px 50px 0px;
+        .book-banner {
+          .borderBox();
+          width: 100%;
+          min-width: 155px;
+          max-width: 160px;
+          border: 1px solid @bookBannerBorder;
+          background-color: @bookBannerBg;
+          padding: 20px 10px 25px;
+          text-align: center;
+          .meap-cover {
+            width: 100px;
+            margin: 0 auto 10px;
+          }
+          h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: @originalTurquoise;
+            margin-bottom: 5px;
+          }
+          p {
+            font-size: 14px;
+            color: @black;
+            margin-bottom: 15px;
+            line-height: 20px;
+            span {
+              font-weight: 700;
+              color: @originalTurquoise;
+            }
+          }
+          .book-link {
+            .borderBox();
+            .borderRadius(5px, 5px, 5px, 5px);
+            .transition(all 250ms);
+            width: 100%;
+            max-width: 120px;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            background-color: @originalTurquoise;
+            color: @white;
+            padding: 7px 0px;
+            font-size: 14px;
+            font-weight: 700;
+            &:hover {
+              background-color: @ltTurquoise;
+            }
+          }
+        }
+      }
+    }
+    .anatomy-content {
+      .borderBox();
+      padding-top: 50px;
+      width: 75%;
+      float: left;
+      .anatomy-section {
+        .fadeAnimation();
+      }
+    }
+  }
+}

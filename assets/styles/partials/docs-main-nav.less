@@ -1,0 +1,122 @@
+//Header for the documentation sections
+.docs-main-nav {
+  font-family: @mainFont;
+  width: 100%;
+  min-width: 900px;
+  // background-color: @turquoise;
+  .footerGradient();
+  z-index: 95;
+  .clearfix();
+  .nav-container {
+    .container();
+    .clearfix();
+    padding: 110px 0 45px;
+    h1 {
+      color: @white;
+      font-weight: @light;
+      font-size: 2.2em;
+      width: 40%;
+      float: left;
+    }
+    ul.docs-header-nav {
+      .clearfix();
+      float: right;
+
+      a {
+        display: inline-block;
+        float: left;
+      }
+
+      li {
+        color: @white;
+        font-weight: @normal;
+        padding: 10px 20px;
+        &:hover {
+          color: @taglineBlue;
+          .transition(all 300ms);
+        }
+        &.current {
+          background-color: @darkTurquoise;
+          font-weight: @semibold;
+          &:hover {
+            color: @white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .documentation-section-header {
+    .header-container {
+      h1 {
+        width: auto;
+        text-align: center;
+        float: none;
+      }
+      ul.docs-header-nav {
+        float: none;
+        margin-top: 10px;
+        a {
+          width: 25%;
+          text-align: center
+        }
+      }
+    }
+  }
+  //class to make the header skinny when we're scrolling
+  &.juice-fast {
+    .documentation-section-header {
+      .header-container {
+        padding: 85px 0 20px;
+      }
+    }
+  }
+}
+
+
+
+div.docs-github-message {
+  .container();
+  .clearfix();
+  display: none;
+  padding: 125px 0 50px;
+  img {
+    width: 60%;
+    margin: auto;
+  }
+  a {
+    display: block;
+    width: 70%;
+    margin: auto;
+    padding: 15px;
+    font-size: 1.3em;
+    background-color: @ltestGray;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  min-width: 0px;
+  .documentation-section-header, .documentation-section-content {
+    display: none;
+  }
+  div.documentation-header div.documentation-header-container {
+    text-align: center;
+    h1 {
+      font-size: 2.3em;
+    }
+  }
+  .main-container {
+    display: none;
+  }
+  div.docs-github-message {
+    display: block;
+  }
+}
+

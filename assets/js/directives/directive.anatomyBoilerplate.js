@@ -12,7 +12,7 @@
  * </div>
  * ```
  */
-angular.module('Sails')
+angular.module('SailsWebsite')
 
 .directive('wwwSjsAnatomyBoilerplate', [function () {
 

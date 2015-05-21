@@ -1,4 +1,4 @@
-angular.module('Sails')
+angular.module('SailsWebsite')
 .directive('openLinksToExternalUrlsInNewTab', [
 
 /**

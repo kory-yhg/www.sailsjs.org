@@ -1,0 +1,153 @@
+.reference-page {
+  .container();
+  max-width: 1300px;
+  min-width: 1000px;
+  .clearfix();
+  .borderBox();
+  position: relative;
+  padding: 50px 0px 100px 0px;
+  font-family: @mainFont;
+
+  .right-column {
+    .borderBox();
+    width: 80%;
+    float: right;
+    position: relative;
+    padding-left: 50px;
+
+    .reference-item {
+      .fadeAnimation();
+      padding-bottom: 50px;
+    }
+  }
+  //Styles for the navigation sidebar
+  .reference-sidebar {
+    .borderBox();
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    width: 20%;
+    float: left;
+    text-align: left;
+    border-right: 1px solid rgba(20,172,194, 0.6);
+    h4 {
+      font-size: 1.6em;
+      color: @turquoise;
+      font-weight: @light;
+      padding-bottom: 7px;
+    }
+    a {
+      color: inherit;
+    }
+    >ul {
+      //Styles specific to top-level lis
+      >li {
+        font-weight: @semibold;
+        color: @black;
+        font-size: 16px;
+        span {
+          cursor: pointer;
+          display: block;
+          margin-bottom: 5px;
+          // padding-right: 11px;
+          &:hover {
+           color: @turquoise;
+           .transition(all 250ms);
+          }
+        }
+      }
+      //Styles for all lis
+      li {
+        &.current-section {
+          >span {
+            color: @ltTurquoise;
+            font-weight: @normal;
+          }
+        }
+        &.current-parent-section {
+          >span {
+            color: @ltTurquoise;
+            &:hover {
+              color: @black;
+            }
+          }
+        }
+        &.top-level-expanded {
+          >span {
+            color: @ltTurquoise;
+          }
+        }
+        //ULs inside of ULs
+        ul {
+          // border-right: 3px solid #ebebeb;
+          // padding-right: 20px;
+          border-left: 3px solid #ebebeb;
+          padding-left: 20px;
+          >li {
+            font-weight: @normal;
+            color: @headerGray;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .book-banner-wrapper {
+      .borderBox();
+      padding: 50px 50px 50px 0px;
+      .book-banner {
+        .borderBox();
+        width: 100%;
+        min-width: 155px;
+        max-width: 160px;
+        border: 1px solid @bookBannerBorder;
+        background-color: @bookBannerBg;
+        padding: 20px 10px 25px;
+        text-align: center;
+        .meap-cover {
+          width: 100px;
+          margin: 0 auto 10px;
+        }
+        h3 {
+          font-size: 15px;
+          font-weight: 700;
+          color: @originalTurquoise;
+          margin-bottom: 5px;
+        }
+        p {
+          font-size: 14px;
+          color: @black;
+          margin-bottom: 15px;
+          line-height: 20px;
+          span {
+            font-weight: 700;
+            color: @originalTurquoise;
+          }
+        }
+        .book-link {
+          .borderBox();
+          .borderRadius(5px, 5px, 5px, 5px);
+          .transition(all 250ms);
+          width: 100%;
+          max-width: 120px;
+          display: block;
+          text-align: center;
+          margin: 0 auto;
+          background-color: @originalTurquoise;
+          color: @white;
+          padding: 7px 0px;
+          font-size: 14px;
+          font-weight: 700;
+          &:hover {
+            background-color: @ltTurquoise;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1050px) {
+    .reference-sidebar {
+      padding-left: 15px;
+    }
+  }
+}

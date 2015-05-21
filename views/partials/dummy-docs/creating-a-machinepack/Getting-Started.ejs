@@ -1,0 +1,182 @@
+<h1 id="what-are-machinepacks-">What are machinepacks?</h1>
+<p>Machinepacks are bundles of related machines.  They might be unified by the API they talk to (e.g. <a href="http://node-machine.org/machinepack-stripe" target="_blank">Stripe</a>) or their purpose (e.g. <a href="http://node-machine.org/machinepack-passwords" target="_blank">Passwords</a>).  It&apos;s really up to you!  The important thing to remember is that machinepacks are just a versioned, organizational unit you can publish and install.</p>
+<p>For example, as of February 2015, <a href="http://node-machine.org/machinepack-github" target="_blank">machinepack-github</a> contains 11 machines; it supports everything from fetching basic metadata about a particular GitHub user, to listing repo activity, to creating a new repo altogether.  The machinepack can be installed and required from your Node.js code like any other <code>npm</code> module:</p>
+<pre><code data-language="javascript">var Github = require(&apos;machinepack-github&apos;);
+
+// Fetch metadata about a repository on GitHub.
+Github.getRepo({
+  repo: &apos;sails&apos;,
+  owner: &apos;balderdashy&apos;,
+}).exec({
+  // An unexpected error occurred.
+  error: function (){
+  },
+  // OK.
+  success: function (result){
+    console.log(&apos;Got:\n&apos;, result);
+  },
+});
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="installing-the-command-line-tools" permalink="installing-the-commandline-tools">Installing the command-line tools</h3>
+<p>In the process of using machines for the past year or so, the core team behind this project and specification created a couple of tools to make machines easier to work with.  The two we&apos;ll be using in this walkthrough are <code>machinepack</code> and <code>generator-machinepack</code>.  Both are completely optional, but also readily available on NPM.</p>
+<h5 id="yeoman-generator" permalink="yeoman-generator">Yeoman generator</h5>
+<blockquote>
+<p>The Yeoman generator (<code>generator-machinepack</code>) requires <a href="http://yeoman.io/" target="_blank">Yeoman</a>.  If you don&apos;t already have Yeoman globally installed, you&apos;ll want to do that before proceeding:</p>
+<pre><code data-language="javascript">$ npm install -g yo
+</code></pre><!-- __LANG=%%__ -->
+</blockquote>
+<p>There is a Yeoman generator for machinepacks for your convenience.  You will likely only use this tool every now and then, but it&apos;s worth it to get you off the ground running.  To install:</p>
+<pre><code data-language="javascript">$ npm install -g generator-machinepack
+</code></pre><!-- __LANG=%%__ -->
+<h5 id="the-machinepack-cli-tool" permalink="the-machinepack-cli-tool">The <code>machinepack</code> CLI tool</h5>
+<p>The <code>machinepack</code> tool was designed to solve a few key annoyances of building machines.  It provides the capability of testing machines from the command-line with an interactive prompt, a readily-accesible manpage for checking a pack&apos;s metadata and machines, as well as shortcuts for simple operations like adding or removing machines to a pack.  If you&apos;re like me, and working with machines on a regular basis, you&apos;ll find it indispensible.</p>
+<p>To install the <code>machinepack</code> command-line interface from NPM:</p>
+<pre><code data-language="javascript">$ npm install -g machinepack
+</code></pre><!-- __LANG=%%__ -->
+<blockquote>
+<p><strong>Note:</strong> If you run into install issues, try <code>$ sudo</code>.</p>
+</blockquote>
+<h3 id="generating-your-first-machinepack-" permalink="generating-your-first-machinepack">Generating your first <code>machinepack</code>.</h3>
+<p>I ran across an interesting <a href="https://klout.com/s/developers/v2" target="_blank">API</a> from <a href="https://klout.com/" target="_blank">Klout</a>. Klout uses social media analytics to rank people based upon their social influence via a Klout Score.  So we&apos;ll create a couple of machines that will return a person&apos;s <em>Klout ID</em> and based upon that <em>id</em>, their <em>Klout Score</em>. </p>
+<p>To begin, we&apos;ll generate a <em>bare bones</em> <code>machinepack</code> by <strong><em>typing</em></strong>:</p>
+<pre><code data-language="javascript">$ yo machinepack
+</code></pre><!-- __LANG=%%__ -->
+<p>You&apos;ll be prompted for a friendly <code>name</code>.   By entering <em>Klout</em>, the <code>machinepack</code> <em>name</em> will become <code>machinepack-klout</code>.</p>
+<pre><code data-language="javascript">_-----_
+    |       |    .--------------------------.
+    |--(o)--|    |      Welcome to the      |
+   `---------&#xB4;   |  Machinepack generator!  |
+    ( _&#xB4;U`_ )    &apos;--------------------------&apos;
+    /___A___\    
+     |  ~  |     
+   __&apos;.___.&apos;__   
+ &#xB4;   `  |&#xB0; &#xB4; Y ` 
+
+? What would you like to use as the &quot;friendly name&quot; for your machinepack?
+(e.g. &quot;Passwords&quot; or &quot;Twitter&quot;)
+ Klout
+</code></pre><!-- __LANG=%%__ -->
+<p>Next, you&apos;ll be asked to provide a <code>machinepack</code> <code>description</code>.  We&apos;ll enter, <em>Communicate with the Klout API to get Ids, Klout Scores, etc.</em></p>
+<pre><code data-language="javascript">? Describe this machinepack in 80 characters or less.
+(e.g. &quot;Communicate with the Github API to get repos, commits, etc.&quot;)
+ (Work with klout.) Communicate with the Klout API to get Ids, Klout Scores, etc.
+</code></pre><!-- __LANG=%%__ -->
+<p>The generator gives you the option to create an <em>example</em> <code>machine</code>.  Let&apos;s go ahead and type <code>y</code> for yes and generate the <em>example</em> <code>machine</code>.</p>
+<pre><code data-language="javascript">? Want me to create an example machine (`say-hello.js`) to help you get started? (y/N) y
+</code></pre><!-- __LANG=%%__ -->
+<p>Finally, you&apos;ll be prompted whether to put this <em>example</em> <code>machine</code> in a <em>new</em> folder within the <code>machinepack</code> or at the <strong>root</strong> of the <code>machinepack</code>.  Let&apos;s use the default, and have the generator create a folder for us by <strong><em>pressing</em></strong> <code>enter</code>.</p>
+<pre><code data-language="javascript">? Where should this new machinepack be generated? 
+&#x276F; In a new folder (/Users/jgalt/Development/machinepack-klout) 
+  Within the current directory (/Users/jgalt/Development/)
+</code></pre><!-- __LANG=%%__ -->
+<p>All of the necessary structure will be created including installing any <em>dependencies</em>.</p>
+<h3 id="exploring-your-first-machinepack-" permalink="exploring-your-first-machinepack">Exploring your first <code>machinepack</code>.</h3>
+<p>Change into the new <code>machinepack-klout</code> folder by <strong><em>typing</em></strong>:</p>
+<p><code>$ cd machinepack-klout</code></p>
+<p>We can take a look at the example <code>machine</code> by <strong><em>typing</em></strong>:</p>
+<p><code>$ machinepack ls</code></p>
+<p>You should see the following in your terminal window:</p>
+<pre><code data-language="javascript">There is only 1 machine in this machinepack.
+=============================================
+ &#x2022; say-hello
+</code></pre><!-- __LANG=%%__ -->
+<h4 id="so-what-does-say-hello-do-" permalink="so-what-does-sayhello-do">So what does <code>say-hello</code> do?</h4>
+<p>We could create a node script that requires the machine programatically and then calls <code>.exec()</code> on it, but that sort of sucks.  Alternatively, we could use the node REPL, but.... still sort of sucks.</p>
+<p>Instead, we&apos;ll take advantage of the most powerful feature of the <code>machinepack</code> command-line tool- the ability to execute a machine interactively. To run a machine from the command-line:</p>
+<pre><code data-language="javascript">$ machinepack exec say-hello
+</code></pre><!-- __LANG=%%__ -->
+<p>If the machine has any required inputs, you&apos;ll be prompted to enter a value for each of them.  In this case, you&apos;ll be asked to enter a &quot;name&quot;:</p>
+<pre><code data-language="javascript">? Please enter the name of the person that will be sent the hello message.
+name:  John
+Hello John, your secret code is 0.8229460262227803
+________________________________________________________________&#x2DB;
+
+   Klout.sayHello()
+
+   &#xBB; name &quot;John&quot;
+
+________________________________________________________________&#xB8; 
+  | 
+  &#x2022; 
+  The machine triggered its success exit and returned a value:
+   { numLettersInName: 4, secretCode: &apos;0.8229460262227803&apos; }
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="adding-a-new-machine" permalink="adding-a-new-machine">Adding a new machine</h3>
+<p>Adding a machine to an exisitng pack is simple.  From the root directory of your machinepack, run:</p>
+<pre><code data-language="javascript">$ machinepack add
+</code></pre><!-- __LANG=%%__ -->
+<p>You&apos;ll be prompted for a &quot;friendly name&quot;: </p>
+<pre><code data-language="javascript">? What would you like to use as the &quot;friendly name&quot; for your new machine?
+(e.g. &quot;Get auth token&quot; or &quot;Delete account&quot;)
+ Get Klout id
+</code></pre><!-- __LANG=%%__ -->
+<p><em>(Don&apos;t worry if you mess up, you can always change this later)</em></p>
+<p>The string you enter will be used as the <code>friendlyName</code> for the new machine, and the machine&apos;s <code>identity</code> will also be inferred from it automatically. For example, if you enter &quot;<em>Get Klout id</em>&quot;, you&apos;ll end up with a file in your machines folder named &quot;<em>get-klout-id</em>&quot;.  In userland, you&apos;ll be able to call this machine as the <code>.getKloutId()</code> method on the machinepack.  This method name is determined by converting the dash-delimited <code>identity</code> into camel-case.</p>
+<p>Next, you&apos;ll be asked for a <code>description</code>.  Make sure you type something less than 80 characters long, and in the imperative mood (e.g. &quot;Delete all...&quot; not &quot;Deletes all...&quot;).  This is important for consistency and proper grammar and punctuation in the generated documentation.</p>
+<pre><code data-language="javascript">? Describe this machine in 80 characters or less.
+(e.g. &quot;List all Twitter followers for a particular account.&quot;)
+ Get the Klout id for a user given her Twitter screen name.
+</code></pre><!-- __LANG=%%__ -->
+<p>We&apos;re not going to provide an optional extended description, so we&apos;ll press <strong><em>enter</em></strong> to skip the prompt.  When we&apos;re all done, you should see the following message:</p>
+<pre><code data-language="javascript">New machine (`get-klout-id`) successfully added to machinepack.
+</code></pre><!-- __LANG=%%__ -->
+<p>Not too shabby, right?  But before we celebrate, let&apos;s make sure it worked. When you run <code>machinepack ls</code> you should see:</p>
+<pre><code data-language="javascript">There are 2 machines in this machinepack:
+=============================================
+ &#x2022; get-klout-id
+ &#x2022; say-hello
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="inspecting-your-pack-with-mp-info-" permalink="inspecting-your-pack-with-mp-info">Inspecting your pack with <code>mp info</code></h3>
+<p>Before we move on, I&apos;d like to add one more useful strategy to your bag of tricks.  From the root of your machinepack, give this a go:</p>
+<pre><code data-language="javascript">$ machinepack info
+</code></pre><!-- __LANG=%%__ -->
+<p>The following information should be displayed:</p>
+<pre><code data-language="javascript">Klout -- Communicate with the Klout API to get Ids, Klout Scores, etc.
+
+
+INSTALLATION
+     npm install machinepack-klout@^0.1.0 --save
+
+
+USAGE
+     var Klout = require(&apos;machinepack-klout&apos;);
+
+
+AVAILABLE METHODS
+     Klout.sayHello()   (say-hello)
+     Klout.getKloutId()   (get-klout-id)
+</code></pre><!-- __LANG=%%__ -->
+<p>The <code>mp info</code> utliity is a great way to get a quick reminder of what&apos;s in the pack you&apos;re looking at.  It&apos;s particularly helpful when pulling down a pack you haven&apos;t worked with in a few weeks/months/years/etc.</p>
+<h3 id="implementing-our-first-machine" permalink="implementing-our-first-machine">Implementing our first machine</h3>
+<p>You can follow along with a walkthrough where we implement a complete machine (<code>.getKloutId()</code>) <a href="http://node-machine.org/implementing/Your-First-Machine" target="_blank">here</a>.  By the end of that guide, you should have a solid mental model for how and why machines work the way they do, as well as a working machine you can immediately start using as a copy+paste example.  When you feel confident you&apos;ve got a handle on how machines work and you&apos;re ready to learn how to publish a machinepack, continue on to the next section.</p>
+<h3 id="publishing-a-machinepack" permalink="publishing-a-machinepack">Publishing a machinepack</h3>
+<p>First, remove the sample <code>say-hello</code> machine.  You could manually delete <code>machines/say-hello.js</code>, then remove the machine from the list in your package.json file.  But that&apos;s kind of annoying.  Luckily our old friend the command-line tool includes a helper script just for occasions like these:</p>
+<pre><code data-language="javascript">$ mp rm say-hello
+</code></pre><!-- __LANG=%%__ -->
+<p>While we&apos;re at it, let&apos;s give our code one last pass to see if there&apos;s anything else we don&apos;t want to publish to the whole world.  Looks like the yeoman generator created an extraneous file, helpfully titled &quot;DELETE_THIS_FILE.md&quot;.  Let&apos;s delete that:</p>
+<pre><code data-language="javascript">$ rm DELETE_THIS_FILE.md
+</code></pre><!-- __LANG=%%__ -->
+<p>Next, we&apos;ll update the <code>package.json</code> file with the URL of the GitHub repo where our code is hosted:</p>
+<pre><code data-language="javascript">&quot;repository&quot;: {
+    &quot;type&quot;: &quot;git&quot;,
+    &quot;url&quot;: &quot;https://github.com/irlnathan/machinepack-klout.git&quot;
+  },
+</code></pre><!-- __LANG=%%__ -->
+<p>This is a good idea with any node module, but for us it&apos;s especially important since it will allow node-machine.org to display a &quot;View Source&quot; button on the manpage for your machinepack, and for each of its machines.</p>
+<p>Finally, now that we&apos;re all ready to go, we&apos;ll create a git tag and a commit message for the very first version of our machinepack, v1.0.0.  Once again, there is a helpful tool that does this for us; only this time, it&apos;s npm itself:</p>
+<pre><code data-language="javascript">$ npm version major
+</code></pre><!-- __LANG=%%__ -->
+<blockquote>
+<p>Confused about what&apos;s going on here?  You can learn more about semantic versioning, or &quot;semver&quot; on <a href="http://semver.org/" target="_blank">semver.org</a>.</p>
+</blockquote>
+<p>Ok now push that up:</p>
+<pre><code data-language="javascript">$ git push &amp;&amp; git push --tags
+</code></pre><!-- __LANG=%%__ -->
+<p>And publish v1.0.0 of your machinepack to npm:</p>
+<pre><code data-language="javascript">$ npm publish
+</code></pre><!-- __LANG=%%__ -->
+<p>Of course since <code>machinepack-klout</code> already exists, you won&apos;t be <em>actually</em> be able to publish it to NPM.  But you get the idea.</p>
+<blockquote>
+<p>By the way, if you haven&apos;t published a module to NPM before, don&apos;t worry-- it&apos;s super easy.  Just <a href="https://www.npmjs.org/" target="_blank">sign up on NPM&apos;s website</a>, then log in from the command-line using <code>npm login</code>.  After that, if you try running <code>npm publish</code> again, you should have better results.</p>
+</blockquote>
+<p>Congratulations on creating your first machinepack! There are hundreds of machines already published and available on NPM, but there is still plenty of work to do.  If you can imagine it implemented in a Node module, you can build it as a machine.  Go forth and code... and good luck.</p>

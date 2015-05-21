@@ -1,0 +1,219 @@
+<h1 id="understanding-inputs">Understanding Inputs</h1>
+<p>This is a quick reference sheet for seeing how validation and coercion work for inputs.</p>
+<blockquote>
+<p>These tables will eventually be automatically generated.</p>
+</blockquote>
+<h2 id="principles" permalink="principles">Principles</h2>
+<p>Validation and coercion tend to be <em><strong>forgiving</strong> and <strong>protective</strong> of the user</em> but <em>harsh to the implementor</em>.</p>
+<p>For instance, a user can pass in <code>&quot;2&quot;</code> (a string) to an input expecting a number example and the value will be cast to the number <code>2</code>.</p>
+<h4 id="using-required-" permalink="using-required">Using <code>required</code></h4>
+<table>
+<thead>
+<tr>
+<th>input required?</th>
+<th>actual value provided</th>
+<th>yields outcome...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>true</code></td>
+<td><code>undefined</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td><code>false</code> or <code>undefined</code></td>
+<td><code>undefined</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td>either way</td>
+<td><code>null</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td>either way</td>
+<td><code>Infinity</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td>either way</td>
+<td><code>-Infinity</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td>either way</td>
+<td><code>NaN</code></td>
+<td>throws Error</td>
+</tr>
+</tbody>
+</table>
+<h4 id="specifying-a-type-schema-as-an-example-" permalink="specifying-a-type-schema-as-an-example">Specifying a type schema as an <code>example</code></h4>
+<p>Whenever possible, use an <code>example</code> to define the type of your input.  This is the most specific and unambiguous way to ensure your machine will be used properly.</p>
+<table>
+<thead>
+<tr>
+<th>input <code>example</code></th>
+<th>actual value provided</th>
+<th>yields outcome...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&quot;hello!&quot;</code></td>
+<td><code>&quot;hi&quot;</code></td>
+<td><code>&quot;hi&quot;</code></td>
+</tr>
+<tr>
+<td><code>&quot;hello!&quot;</code></td>
+<td><code>&quot;&quot;</code></td>
+<td><code>&quot;&quot;</code></td>
+</tr>
+<tr>
+<td><code>&quot;hello!&quot;</code></td>
+<td><code>7</code></td>
+<td><code>&quot;7&quot;</code></td>
+</tr>
+<tr>
+<td><code>&quot;hello!&quot;</code></td>
+<td><code>true</code></td>
+<td><code>&quot;true&quot;</code></td>
+</tr>
+<tr>
+<td><code>7</code> or <code>-7.7</code> etc.</td>
+<td><code>3.5</code></td>
+<td><code>3.5</code></td>
+</tr>
+<tr>
+<td><code>7</code> or <code>-7.7</code> etc.</td>
+<td><code>-3</code></td>
+<td><code>-3</code></td>
+</tr>
+<tr>
+<td><code>7</code> or <code>-7.7</code> etc.</td>
+<td><code>&quot;-3&quot;</code></td>
+<td><code>-3</code></td>
+</tr>
+<tr>
+<td><code>7</code> or <code>-7.7</code> etc.</td>
+<td><code>&quot;10.5&quot;</code></td>
+<td><code>10.5</code></td>
+</tr>
+<tr>
+<td><code>true</code> or <code>false</code></td>
+<td><code>true</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>true</code> or <code>false</code></td>
+<td><code>false</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>true</code> or <code>false</code></td>
+<td><code>&quot;true&quot;</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>true</code> or <code>false</code></td>
+<td><code>&quot;false&quot;</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="let-your-hair-down-with-some-typeclass-" permalink="let-your-hair-down-with-some-typeclass">Let your hair down with some <code>typeclass</code></h4>
+<p>Sometimes, an <code>example</code> is too narrow.  For instance, <code>parse-json</code> from <a href="http://node-machine.org/machinepack-util/parse-json" target="_blank">machinepack-util</a> uses <code>typeclass: &apos;*&apos;</code> on its <code>schema</code> input to allow any value.</p>
+<table>
+<thead>
+<tr>
+<th>input <code>typeclass</code></th>
+<th>actual value provided</th>
+<th>yields outcome...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&quot;*&quot;</code></td>
+<td><code>&quot;hi&quot;</code></td>
+<td><code>&quot;hi&quot;</code></td>
+</tr>
+<tr>
+<td><code>&quot;*&quot;</code></td>
+<td><code>&quot;&quot;</code></td>
+<td><code>&quot;&quot;</code></td>
+</tr>
+<tr>
+<td><code>&quot;*&quot;</code></td>
+<td><code>7</code></td>
+<td><code>7</code></td>
+</tr>
+<tr>
+<td><code>&quot;*&quot;</code></td>
+<td><code>true</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>&quot;dictionary&quot;</code></td>
+<td><code>&quot;hi&quot;</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td><code>&quot;dictionary&quot;</code></td>
+<td><code>&quot;&quot;</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td><code>&quot;dictionary&quot;</code></td>
+<td><code>7</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td><code>&quot;dictionary&quot;</code></td>
+<td><code>true</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td><code>&quot;dictionary&quot;</code></td>
+<td><code>{foo:&apos;bar&apos;,baz:13}</code></td>
+<td><code>{foo: &apos;bar&apos;, baz: 13}</code></td>
+</tr>
+<tr>
+<td><code>&quot;array&quot;</code></td>
+<td><code>&quot;hi&quot;</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td><code>&quot;array&quot;</code></td>
+<td><code>&quot;&quot;</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td><code>&quot;array&quot;</code></td>
+<td><code>7</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td><code>&quot;array&quot;</code></td>
+<td><code>true</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td><code>&quot;array&quot;</code></td>
+<td><code>{foo:&apos;bar&apos;,baz:13}</code></td>
+<td>throws Error</td>
+</tr>
+<tr>
+<td><code>&quot;array&quot;</code></td>
+<td><code>[{foo:&apos;bar&apos;,baz:13}]</code></td>
+<td><code>[{foo:&apos;bar&apos;,baz:13}]</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>TODO: more docs on objects and arrays</p>
+</blockquote>
+<h4 id="special-cases" permalink="special-cases">Special cases</h4>
+<ul>
+<li>If a custom <code>validate()</code> function was provided for an input, all built-in validation and/or coercion is skipped.</li>
+<li>The configured <code>inputs</code> object accessible to <code>getExample()</code> and <code>validate()</code> are not guaranteed to have been coerced.  You should make sure your custom <code>getExample()</code> and <code>validate()</code> functions take this into account (e.g. if a user passes the value <code>&quot;3&quot;</code> into some input (x) with a numeric example, the <code>validate</code> function for some other input (y) might receive <code>inputs.x</code> as either <code>&quot;3&quot;</code> or <code>3</code>)</li>
+</ul>

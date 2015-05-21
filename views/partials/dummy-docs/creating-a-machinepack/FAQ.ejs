@@ -1,0 +1,79 @@
+<h1 id="faq-_-for-implementors-_">FAQ <em>(for implementors)</em></h1>
+<p>Writing machines?  Building a new machinepack?  Contributing to an existing pack?  Want to use this stuff internally for closed-source code? Here are the answers to some frequently asked questions from implementors like you.</p>
+<h3 id="can-i-build-machines-without-open-sourcing-them-" permalink="can-i-build-machines-without-opensourcing-them">Can I build machines without open-sourcing them?</h3>
+<p>Yep!</p>
+<h3 id="how-do-i-use-my-one-off-custom-closed-source-machines-that-aren-t-part-of-a-pack-" permalink="how-do-i-use-my-oneoff/custom/closedsource-machines-that-arent-part-of-a-pack">How do I use my one-off/custom/closed-source machines that aren&apos;t part of a pack?</h3>
+<p>You&apos;ll want to use the <code>.build()</code> function in the machine runner:</p>
+<pre><code data-language="javascript">// First use the Node.js machine runner to build the machine from its definition:
+var myMachine = require(&apos;machine&apos;).build(yourMachineDefinitionObject);
+
+// Then just use it like any other machine:
+myMachine({ someInput: &apos;foo&apos; }).execSync();
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="how-do-i-use-a-custom-closed-source-machinepack-that-isn-t-on-npm-" permalink="how-do-i-use-a-custom/closedsource-machinepack-that-isnt-on-npm">How do I use a custom/closed-source machinepack that isn&apos;t on NPM?</h3>
+<p>Just require it from wherever it&apos;s located, e.g.:</p>
+<pre><code data-language="javascript">var pack = require(&apos;../../path/to/that/sexy/sexy/pack/folder&apos;);
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="why-should-i-build-my-api-or-web-app-with-machines-" permalink="why-should-i-build-my-api-or-web-app-with-machines">Why should I build my API or web app with machines?</h3>
+<p>Machines make your app more stable and maintainable by encouraging thin controllers, encapsulation, and reusability.  It protects your app from errors by providing strongly typed inputs and return values, and by catching errors that would normally crash your app.  Not to mention that it nurtures an outcome-oriented approach, allowing function users <em>and</em> implementors to think exit conditions, not error codes.  Finally, you can generate detailed documentation pages for any logic you choose to implement as machines.</p>
+<p>You don&apos;t have to implement your entire app as machines from the beginning-- in fact, you can start whenever you like, and use as few or as many machines as makes sense.  We&apos;ve found that machines are a lot like any other new programming paradigm in that it&apos;s best to start casually (<em>when you have a hammer, everything looks like a nail</em> and all that).  So maybe think about it like this: next time you&apos;re thinking &quot;hey I need to pull this out into a function...&quot;, try writing a machine instead.</p>
+<h3 id="can-i-use-other-machines-from-_inside_-the-fn-of-a-machine-i-m-building-" permalink="can-i-use-other-machines-from-inside-the-fn-of-a-machine-im-building">Can I use other machines from <em>inside</em> the <code>fn</code> of a machine I&apos;m building?</h3>
+<p>Indeed, just npm install desired machinepack like you would anywhere else:</p>
+<pre><code data-language="javascript">npm install machinepack-other --save
+</code></pre><!-- __LANG=%%__ -->
+<p>And then use it normally:</p>
+<pre><code data-language="javascript">var Other = require(&apos;machinepack-other&apos;);
+Other.doStuff({someInput: &apos;stuff&apos;}).exec({
+  error: function (err){
+
+  },
+  success: function (){
+
+  }
+});
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="what-about-another-machine-from-the-same-pack-or-a-machine-that-needs-to-call-itself-recursively-" permalink="what-about-another-machine-from-the-same-pack--or-a-machine-that-needs-to-call-itself-recursively">What about another machine from the same pack?  Or a machine that needs to call itself recursively?</h3>
+<p>If you want to use another machine in the <em>same pack</em>, or you want a machine to call itself recursively, you should <code>require(&apos;machine&apos;)</code> and use it to build a new instance of the machine from its &quot;dehydrated&quot; definition object.  Don&apos;t worry, that sounds terrible and complicated, but it&apos;s really pretty dern simple.</p>
+<p>Take for example the <code>sanitize</code> machine in <code>machinepack-urls</code>.  It uses another machine from the same pack (<code>validate</code>) to ensure that the sanitized URL is valid before returning it.  Something like this:</p>
+<pre><code data-language="javascript">// The raw machine definition we&apos;re looking for is in the machines directory of this machinepack.
+// But since the current code file is in the machines folder too, we can get the raw definition for
+// the `validate` machine simply requiring it using a relative path based on its &quot;identity&quot;.
+var validateUrl = require(&apos;machine&apos;).build(require(&apos;./validate&apos;));
+
+// Then we can use the hydrated machine just like we would if we had gotten it out of a machinepack:
+validateUrl({string: &apos;stuff&apos;}).exec({
+  error: function (err){ /* ... */},
+  invalid: function (){ /* ... */ },
+  success: function (){ /* ... */},
+});
+</code></pre><!-- __LANG=%%__ -->
+<blockquote>
+<p>To view this example in context, take a look at the <a href="https://github.com/mikermcneil/machinepack-urls/blob/5153f138280b2385cc35e1bee54c50c8e155fb70/machines/sanitize.js#L29" target="_blank">relevant lines in the source code for machinepack-url/sanitize</a></p>
+</blockquote>
+<h3 id="can-i-build-custom-machines-with-insert_platform_here-" permalink="can-i-build-custom-machines-with-&lt;insertplatformhere&gt;">Can I build custom machines with... <code>&lt;INSERT_PLATFORM_HERE&gt;</code></h3>
+<p>You can build and use machines anywhere you like!  And you can use the related NPM modules (like <code>machine</code>) from any environment that supports Node.js.  For instance, you might want to implement a one-off machine in your app to take advantage of caching or type-checking this module provides.  We&apos;ve found that the larger your project, the more important it is to have strong conventions for using, implementing, and sharing code.  The machine spec is designed for any situation where you are writing code you intend to reuse.</p>
+<p>Whether you&apos;re using Sails, another framework like Connect/Express/Hapi/Kraken, or just building something with raw Node.js, you can install and require machinepacks just like any other node modules.  The big difference between a machinepack and any other node module is that there is a generated web page on node-machine.org that thoroughly documents each piece of functionality.</p>
+<h3 id="can-i-build-custom-machines-in-my-sails-app-that-use-my-models-and-config-and-such-" permalink="can-i-build-custom-machines-in-my-sails-app-that-use-my-models-and-config-and-such">Can I build custom machines in my Sails app that use my models and config and such?</h3>
+<p>If you&apos;re working on a large Sails app, check out <a href="https://github.com/node-machine/sails-hook-machines" target="_blank"><code>sails-hook-machines</code></a>, a hook which allows you to use custom closed-source machines in your Sails app by dropping files into the <code>api/machines/</code> folder.</p>
+<p>These machines will have access to any globals you might want to expose (e.g. conventionally you&apos;ll have access to the <code>sails</code> object as well as all of your models), which means you can use them as a more structured alternative to custom model methods and services.  If you have globals disabled, you can use the machine <code>environment</code> to provide context (ask in the Google Group if you have questions on that)</p>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>If your machine relies on globals or an <code>env</code>, it will not necessarily be reusable in other applications, or to other developers.  If you&apos;re writing a machine that you plan to reuse outside of a particular app, don&apos;t rely on <code>env</code> or globals... and please consider contributing it to a new or existing open-source machinepack :)</p>
+</blockquote>
+<h3 id="can-i-run-my-own-version-of-node-machine-org-" permalink="can-i-run-my-own-version-of-nodemachineorg">Can I run my own version of node-machine.org?</h3>
+<p>Indeed!  The public machine registry (i.e. node-machine.org) is an MIT licensed Node.js app.  That means you can host your own version of the registry anywhere that supports Node.js.</p>
+<p>Here are some use-cases for standing up your own registry:</p>
+<ul>
+<li>quick way to set up documentation pages for the methods in your open-source module</li>
+<li>create public-facing documentation pages for a developer tool-- e.g. the Node.js SDK for your company&apos;s API.  You can also deploy the registry behind your existing user account system to allow access based on roles/permissions.</li>
+<li>a solution for automatic documentation of private/closed-source modules internally within your organization. A popular option is installing the registry as a quick way to view documentation when you&apos;re behind your organization&apos;s firewall/VPN/moat/hedgemaze/etc.  This works particularly well for organizations who are also running a private NPM registry.</li>
+</ul>
+<p>Hit up @mikermcneil on Twitter or in the Google Group if you have questions or need help getting set up.</p>
+<h3 id="can-i-build-machines-using-coffeescript-" permalink="can-i-build-machines-using-coffeescript">Can I build machines using CoffeeScript?</h3>
+<p>Yes, but since machines are reusable and likely to be shared with other developers, I&apos;d say should consider using JavaScript instead. But that&apos;s just my 2&#xA2; :)</p>
+<h3 id="can-i-use-machines-in-the-browser-" permalink="can-i-use-machines-in-the-browser">Can I use machines in the browser?</h3>
+<p>Sort of.  We need to make it easier with some tooling on top of browserify and a Gulp/Grunt task.</p>
+<p>If you&apos;re not using <code>require()</code> or other Node.js-specific globals (e.g. <code>process</code> or <code>module</code>), your machines should work in the browser already (use browserify).  If you <em>are</em> using those things, depending on what they do, your machines <em>might</em> work in the browser thanks to Browserify.  Whether or not browser usage is <em>appropriate</em> is an entirely different issue-- for instance, you shouldn&apos;t use an ElasticSearch machine the browser if your ElasticSearch instance requires authentication, because then that would mean you&apos;re exposing your credentials to browser-side JavaScript, which means anyone with half a brain could grab them using Chrome inspector and wreak havoc in your database.</p>
+<h3 id="can-i-build-machines-in-other-languages-for-other-platforms-" permalink="can-i-build-machines-in-other-languages-/-for-other-platforms">Can I build machines in other languages / for other platforms?</h3>
+<p>The machine specification currently only supports JavaScript, but the topic of expanding to other languages is under active discussion.  We need to make some backwards-compatible changes to the spec to allow for separating machine metadata into separate JSON files.  This would allow machines to be written in C, C++, Lisp, C#, Java, PHP, Python, Ruby, or any other Turing-complete language.</p>
+<p>If you have ideas on how to do this, or just want to keep up with the conversation, join the Google Group and say hello.</p>

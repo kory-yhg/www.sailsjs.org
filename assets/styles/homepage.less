@@ -1,0 +1,541 @@
+.home-page {
+  .banner.home {
+
+    @bannerTextWidth: 450px;
+
+    .borderBox();
+    .footerGradient();
+    .clearfix();
+    font-family: @mainFont;
+    overflow-x: hidden;
+
+    .banner-container {
+      .borderBox();
+      .container();
+      position: relative;
+      margin: auto;
+      padding: 220px 0 100px;
+      .squid, .light {
+        position: absolute;
+      }
+      .squid {
+        z-index: 5;
+        width: 750px;
+        height: auto;
+        bottom: 40px;
+        left: @bannerTextWidth - 70;
+      }
+      .light {
+        z-index: 10;
+        top: 0;
+        left: -10%;
+        width: 90%;
+      }
+
+      .tagline {
+        position: relative;
+        z-index: 15;
+
+
+        h2 {
+          color: @ltBlue;
+          font: 46px @headerFont;
+          margin-bottom: 5px;
+          line-height: 100%;
+          position: relative;
+          width: @bannerTextWidth;
+        }
+
+        h3 {
+          color: @taglineBlue;
+          font: 24px @headerFont;
+          font-weight: @light;
+          position: relative;
+          width: @bannerTextWidth;
+        }
+
+        .button {
+          .borderBox();
+          .lgButton(@black, @white);
+          display: block;
+          width: 200px;
+          margin-top: 20px;
+          &:hover {
+            color: @turquoise;
+            .transition (all .25s);
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 1100px) {
+      .banner-container {
+        padding: 180px 0px 100px;
+        .squid {
+          width: 600px;
+          bottom: 55px;
+          left: 320px;
+        }
+      }
+    }
+    @media screen and (max-width: 800px) {
+      height: auto;
+      padding-bottom: 25px;
+      .banner-container {
+        padding-top: 110px;
+        padding-bottom: 70px;
+        background: url('/images/bkgd_seaweed.png') no-repeat 80% bottom;
+        background-size: 100%;
+        img.squid {
+          display: none;
+        }
+        img.light {
+          width: 120%;
+          left: -50%;
+        }
+        .tagline {
+          h2, h3 {
+            width: 100%;
+            text-align: center;
+          }
+          h2 {
+            font-size: 29px;
+            padding-bottom: 5px;
+          }
+          h3 {
+            font-size: 20px;
+            padding-bottom: 25px;
+          }
+          .button {
+            margin: 0 auto 35px;
+          }
+        }
+      }
+    }
+  }
+
+
+  .sails-about {
+    font-family: @mainFont;
+    background-color: @seaGreen;
+    position: relative;
+    z-index: 10;
+
+    .about-container {
+      .container();
+      .clearfix();
+      position: relative;
+      padding: 100px 525px 100px 0;
+    }
+
+    .what-is-sails {
+      h1 {
+        .sectionHeader(@turquoise);
+        margin-bottom: 8px;
+      }
+
+      p {
+        .paragraph(@black);
+      }
+    }
+
+    .video {
+      width: 450px;
+      position: absolute;
+      top: 75px;
+      right: 0px;
+      iframe {
+        width: 450px;
+        height: 282px;
+      }
+    }
+    .video-link {
+      .sectionSubHeader(@black);
+      display: none;
+      padding: 25px 0 0;
+      text-align: center;
+      a {
+        color: @turquoise;
+      }
+    }
+
+    @media screen and (max-width: 1000px) {
+      .about-container {
+        padding-right: 0;
+      }
+      .what-is-sails {
+        text-align: center;
+        max-width: 700px;
+        margin: auto;
+      }
+      .video {
+        padding-top: 50px;
+        position: static;
+        margin: 0 auto;
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      .about-container {
+        padding: 50px 0;
+      }
+      .video {
+        display: none;
+      }
+      .video-link {
+        display: block;
+      }
+    }
+  }
+
+  .sails-features {
+    padding: 100px 0;
+    font-family: @mainFont;
+
+    .features-container {
+      .container();
+      .clearfix();
+
+      .features {
+        .borderBox();
+        padding-bottom: 100px;
+        h1 {
+          .sectionHeader(@turquoise);
+          text-align: center;
+        }
+        p {
+          .sectionSubHeader(@black);
+          text-align: center;
+          margin: auto;
+        }
+      }
+
+      a {
+        color: @turquoise;
+        cursor: pointer;
+        &:hover {
+          color: @black;
+          .transition(all 250ms);
+        }
+      }
+    }
+
+    .feature-list {
+      .borderBox();
+      ul {
+        li {
+          .borderBox();
+          .clearfix();
+          width: 30%;
+          position: relative;
+          margin: 0;
+          float: left;
+          padding: 0 0 20px 65px;
+          img.icon {
+            .borderBox();
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 50px;
+          }
+
+          h5 {
+            .featureHeader(@turquoise);
+          }
+          p {
+            .smallParagraph(@black);
+            height: 200px;
+          }
+          &.database, &.realtime, &.asset {
+            margin: 0 5%;
+          }
+        }
+      }
+      .features-link-wrapper {
+        padding: 50px 0 0;
+        clear: both;
+        a {
+          .medButton(@darkTurquoise, @white);
+          width: 350px;
+          display: block;
+          margin: auto;
+          span.short {
+            display: none;
+          }
+          &:hover {
+            background-color: @turquoise;
+            .transition(all 250ms);
+          }
+        }
+      }
+      .book-banner-wrapper {
+        padding: 75px 0 0;
+        .book-banner {
+          .borderBox();
+          margin: 0 auto;
+          width: 650px;
+          height: 175px;
+          padding: 25px 225px 25px 180px;
+          position: relative;
+          background-color: @bookBannerBg;
+          border: 1px solid @bookBannerBorder;
+          img.meap-cover {
+            position: absolute;
+            left: 50px;
+            top: 18px;
+            height: 125px;
+          }
+          h3 {
+            padding-top: 18px;
+            font-family: @headerFont;
+            color: @originalTurquoise;
+            font-size: 28px;
+          }
+          p {
+            font-size: 15px;
+            line-height: 21px;
+            color: @black;
+            span {
+              font-weight: 700;
+              color: @originalTurquoise;
+            }
+          }
+          .book-link {
+            .borderBox();
+            .borderRadius(5px, 5px, 5px, 5px);
+            .transition(all 250ms);
+            width: 150px;
+            display: block;
+            position: absolute;
+            text-align: center;
+            right: 50px;
+            top: 64px;
+            background-color: @originalTurquoise;
+            color: @white;
+            padding: 10px 0px;
+            font-size: 15px;
+            font-weight: 700;
+            &:hover {
+              background-color: @ltTurquoise;
+            }
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 1000px) {
+      .feature-list {
+        ul {
+          li {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            float: none;
+            padding-bottom: 50px;
+            p {
+              height: auto;
+            }
+            &.database, &.realtime, &.asset {
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 700px) {
+      .feature-list .book-banner-wrapper {
+        .book-banner {
+          width: 100%;
+          height: auto;
+          max-width: 400px;
+          padding: 25px;
+          text-align: center;
+          br {
+            display: none;
+          }
+          .meap-cover {
+            display: none;
+          }
+          h3 {
+            padding-top: 0px;
+            font-size: 24px;
+          }
+          p {
+            max-width: 260px;
+            margin:  0 auto 15px;
+          }
+          .book-link {
+            position: static;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 500px) {
+      padding: 50px 0;
+      .feature-list  {
+        ul li {
+          padding-left: 0px;
+          padding-bottom: 25px;
+          img.icon {
+            display: none;
+          }
+        }
+        .features-link-wrapper {
+          padding: 25px 0 0;
+          a {
+            width: auto;
+            span.long {
+              display: none;
+            }
+            span.short {
+              display: inline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .sails-social {
+    font-family: @mainFont;
+    background-color: @turquoise;
+    color: @white;
+    padding: 75px 20px;
+    overflow: auto;
+    z-index: 0;
+    a {
+      color: @taglineBlue;
+      &:hover {
+        color: @white;
+        .transition(all 0.25s);
+      }
+    }
+    .sails-reviews {
+      .tweets-wrapper {
+        position: relative;
+        height: 135px;
+        .tweet {
+          text-align: center;
+          width: 60%;
+          margin: auto;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          .opacity(0);
+          .transition(0.5s);
+          .transform(rotateY(90deg) scale(0.25));
+          h2 {
+            font-size: 18px;
+            a {
+              color: @white;
+            }
+          }
+          p {
+            font-size: 20px;
+            line-height: 1.5em;
+
+            font-style: italic;
+          }
+          //Styles for the current tweet in slideshow
+          &.active {
+            top: 0;
+            .opacity(1);
+            .transition(0.75s);
+            .transform(rotateY(0) scale(1));
+          }
+        }
+      }
+      h3 {
+        color: @white;
+        padding-top: 30px;
+        font-size: 1em;
+        padding-bottom: 25px;
+        text-align: center;
+      }
+      .follow-buttons {
+        margin: 0 auto;
+        width: 480px;
+        font-size: 1.1em;
+        text-align: center;
+        clear: both;
+        .follow-button {
+          .borderBox();
+          width: 230px;
+          padding: 6px 0 10px;
+          display: block;
+          float: left;
+          font-size: 20px;
+          font-weight: @light;
+          text-align: center;
+          position: relative;
+          span {
+            display: inline-block;
+            padding-left: 38px;
+            padding-top: 5px;
+            position: relative;
+            color: @white;
+            img {
+              position: absolute;
+              left: 0px;
+            }
+          }
+          &.github {
+            background-color: @darkTurquoise;
+            margin-right: 5px;
+            img {
+              width: 27px;
+              top: 5px;
+            }
+          }
+          &.twitter {
+            background-color: @brightBlue;
+            margin-left: 5px;
+            img {
+              width: 32px;
+              top: 3px;
+            }
+          }
+          &:hover {
+            background-color: @black;
+            .transition(all 0.3s);
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+      .sails-reviews {
+        .tweets-wrapper {
+          height: 180px;
+          .tweet {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 490px) {
+      .sails-reviews {
+        .tweets-wrapper {
+          height: 220px;
+        }
+        .follow-buttons {
+          width: 100%;
+          .follow-button {
+            float: none;
+            &.github {
+              margin: 0 auto 15px;
+            }
+            &.twitter {
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

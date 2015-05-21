@@ -1,93 +1,87 @@
 /**
- * Configure advanced options for the Express server inside of Sails.
+ * HTTP Server Settings
+ * (sails.config.http)
+ *
+ * Configuration for the underlying HTTP server in Sails.
+ * Only applies to HTTP requests (not WebSockets)
  *
  * For more information on configuration, check out:
- * http://sailsjs.org/#documentation
+ * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.http.html
  */
+
 module.exports.http = {
 
-	// Completely override Express middleware loading.
-	// If you only want to override the bodyParser, cookieParser
-	// or methodOverride middleware, see the appropriate keys below.
-	// If you only want to override one or more of the default middleware,
-	// but keep the order the same, use the `middleware` key.
-	// See the `http` hook in the Sails core for the default loading order.
-	//
-	// loadMiddleware: function( app, defaultMiddleware, sails ) { ... }
+  /****************************************************************************
+  *                                                                           *
+  * Express middleware to use for every Sails request. To add custom          *
+  * middleware to the mix, add a function to the middleware config object and *
+  * add its key to the "order" array. The $custom key is reserved for         *
+  * backwards-compatibility with Sails v0.9.x apps that use the               *
+  * `customMiddleware` config option.                                         *
+  *                                                                           *
+  ****************************************************************************/
+
+  // middleware: {
+
+  /***************************************************************************
+  *                                                                          *
+  * The order in which middleware should be run for HTTP request. (the Sails *
+  * router is invoked by the "router" middleware below.)                     *
+  *                                                                          *
+  ***************************************************************************/
+
+    // order: [
+    //   'startRequestTimer',
+    //   'cookieParser',
+    //   'session',
+    //   'myRequestLogger',
+    //   'bodyParser',
+    //   'handleBodyParserError',
+    //   'compress',
+    //   'methodOverride',
+    //   'poweredBy',
+    //   '$custom',
+    //   'router',
+    //   'www',
+    //   'favicon',
+    //   '404',
+    //   '500'
+    // ],
+
+  /****************************************************************************
+  *                                                                           *
+  * Example custom middleware; logs each request to the console.              *
+  *                                                                           *
+  ****************************************************************************/
+
+    // myRequestLogger: function (req, res, next) {
+    //     console.log("Requested :: ", req.method, req.url);
+    //     return next();
+    // }
 
 
+  /***************************************************************************
+  *                                                                          *
+  * The body parser that will handle incoming multipart HTTP requests. By    *
+  * default as of v0.10, Sails uses                                          *
+  * [skipper](http://github.com/balderdashy/skipper). See                    *
+  * http://www.senchalabs.org/connect/multipart.html for other options.      *
+  *                                                                          *
+  ***************************************************************************/
 
+    // bodyParser: require('skipper')
 
-	// Override one or more of the default middleware (besides bodyParser, cookieParser)
-	//
-	// middleware: {
-	//    session: false, // turn off session completely for HTTP requests
-	//    404: function ( req, res, next ) { ... your custom 404 middleware ... }
-	// }
+  // },
 
+  /***************************************************************************
+  *                                                                          *
+  * The number of seconds to cache flat files on disk being served by        *
+  * Express static middleware (by default, these files are in `.tmp/public`) *
+  *                                                                          *
+  * The HTTP static cache is only active in a 'production' environment,      *
+  * since that's the only time Express will cache flat-files.                *
+  *                                                                          *
+  ***************************************************************************/
 
-
-
-	// The middleware function used for parsing the HTTP request body.
-	// (this most commonly comes up in the context of file uploads)
-	//
-	// Defaults to a slightly modified version of `express.bodyParser`, i.e.:
-	// If the Connect `bodyParser` doesn't understand the HTTP body request
-	// data, Sails runs it again with an artificial header, forcing it to try
-	// and parse the request body as JSON.  (this allows JSON to be used as your
-	// request data without the need to specify a 'Content-type: application/json'
-	// header)
-	//
-	// If you want to change any of that, you can override the bodyParser with
-	// your own custom middleware:
-	// bodyParser: function customBodyParser (options) { ... return function(req, res, next) {...}; }
-	//
-	// Or you can always revert back to the vanilla parser built-in to Connect/Express:
-	// bodyParser: require('express').bodyParser,
-	//
-	// Or to disable the body parser completely:
-	// bodyParser: false,
-	// (useful for streaming file uploads-- to disk or S3 or wherever you like)
-	//
-	// WARNING
-	// ======================================================================
-	// Multipart bodyParser (i.e. express.multipart() ) will be removed
-	// in Connect 3 / Express 4.
-	// [Why?](https://github.com/senchalabs/connect/wiki/Connect-3.0)
-	//
-	// The multipart component of this parser will be replaced
-	// in a subsequent version of Sails (after v0.10, probably v0.11) with:
-	// [file-parser](https://github.com/balderdashy/file-parser)
-	// (or something comparable)
-	//
-	// If you understand the risks of using the multipart bodyParser,
-	// and would like to disable the warning log messages, uncomment:
-	// silenceMultipartWarning: true,
-	// ======================================================================
-
-
-
-	// Cookie parser middleware to use
-	//			(or false to disable)
-	//
-	// Defaults to `express.cookieParser`
-	//
-	// Example override:
-	// cookieParser: (function customMethodOverride (req, res, next) {})(),
-
-
-
-	// HTTP method override middleware
-	//			(or false to disable)
-	//
-	// This option allows artificial query params to be passed to trick
-	// Sails into thinking a different HTTP verb was used.
-	// Useful when supporting an API for user-agents which don't allow
-	// PUT or DELETE requests
-	//
-	// Defaults to `express.methodOverride`
-	//
-	// Example override:
-	// methodOverride: (function customMethodOverride (req, res, next) {})()
+  // cache: 31557600000
 };
-

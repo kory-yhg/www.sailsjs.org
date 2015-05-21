@@ -1,31 +1,33 @@
-/**
- * sails.config.routes
- * @type {Object}
- */
 module.exports.routes = {
-
-  // Redirect 'beta.sailsjs.org' to 'sailsjs.org'
-  '/*': function (req, res, next) {
-    try {
-      // There doesn't seem to be a good way to preserve the URL fragment
-      // (e.g. #/foo/bar/baz) because it's not sent to the server.
-      if (req.subdomains[0] === 'beta') {
-        return res.redirect('http://sailsjs.org' + req.originalUrl);
-      }
-    }
-    catch(e) { }
-    next();
+  "get /documentation/anatomy": {
+    "target": "DocumentationController.anatomy"
   },
-
-  // Serve .jsmenu files with a "Content-Type: text/json" header
-  'get /*.jsmenu': function (req, res, next) {
-    res.type('json');
-    next();
+  "get /documentation/reference": {
+    "target": "DocumentationController.reference"
   },
-
-  // Used to populate activity bar in UI
-  'get /news': 'NewsController.find',
-
-  // Recompile the docs
-	'get /refresh': 'RefreshController.index'
+  "get /documentation": {
+    "target": "DocumentationController.find"
+  },
+  "get /documentation/concepts": {
+    "target": "DocumentationController.concepts"
+  },
+  "get /": {
+    "target": "Home$Controller.find"
+  },
+  "get /features": {
+    "target": "FeaturesController.find"
+  },
+  "get /support/about-irc": {
+    "target": "SupportController.aboutirc"
+  },
+  "get /support": {
+    "target": "SupportController.find"
+  },
+  "get /get-started": {
+    "target": "Get-startedController.find"
+  },
+  "get /documentation/pretend/:page": {
+    "target": "DocumentationController.pretend_$page",
+    "skipAssets": true
+  }
 };

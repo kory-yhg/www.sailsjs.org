@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "machinepack-datetime": "1.1.1"
+  },
+  "machinepack": {
+    "machines": []
+  }
+}

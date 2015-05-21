@@ -4,7 +4,7 @@
  * Handles hiding of shown content when a click occures outside the shown content.
  * Useful for custom dropdown menus.
  */
-angular.module('Sails')
+angular.module('SailsWebsite')
 
 .directive('clickOutside', ['$document', '$timeout', function ($document, $timeout) {
 

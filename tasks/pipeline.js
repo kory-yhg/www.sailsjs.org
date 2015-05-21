@@ -22,24 +22,16 @@ var cssFilesToInject = [
 // Client-side javascript files to inject in order
 // (uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInject = [
+  '/dependencies/*.js',
 
+  // Load sails.io before everything else
+  'js/dependencies/sails.io.js',
 
-  // Other stuff
-  'dependencies/jquery.js',
-  'dependencies/lodash.js',
+  // Dependencies like jQuery, or Angular are brought in here
+  'js/dependencies/**/*.js',
 
-  // Angular
-  'dependencies/angular.min.js',
-  'dependencies/angular-route.min.js',
-  'dependencies/angular-animate.min.js',
-  'dependencies/*.dir.js',
-  'dependencies/directive.*.js',
-
-  // Other dependencies
-  'dependencies/**/*.js',
-
-  // Our single page app
-  'js/SinglePage.js',
+  // All of the rest of your client-side js files
+  // will be injected here in no particular order.
   'js/**/*.js'
 ];
 
@@ -54,13 +46,8 @@ var jsFilesToInject = [
 // templates get spit out to the same file.  Be sure and check out `tasks/README.md`
 // for information on customizing and installing new tasks.
 var templateFilesToInject = [
-  // 'templates/**/*.html',
-  'templates/**/*.jsmenu'
+  'templates/**/*.html'
 ];
-
-
-
-
 
 
 

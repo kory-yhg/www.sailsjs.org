@@ -12,7 +12,7 @@
  * MIT License
  * © 2014 Rachael Shaw & contributors
  */
-angular.module('Sails')
+angular.module('SailsWebsite')
 
 .directive('bubble', [function () {
 
