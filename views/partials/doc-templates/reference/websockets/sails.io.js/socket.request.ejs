@@ -1,0 +1,27 @@
+<h1 id="io-socket-request-">io.socket.request()</h1>
+<p>Sends a virtual request to a Sails server using Socket.io.</p>
+<p>This function is very similar to <code>io.socket.get()</code>, <code>io.socket.post()</code>, etc. except that it provides lower-level access to the request headers, parameters, method, and URL of the request.</p>
+<blockquote>
+<p>This function is provided by the <code>sails.io.js</code> JavaScript client, and is accessible in the <strong>browser</strong>.</p>
+</blockquote>
+<h3 id="usage" permalink="usage">Usage</h3>
+<pre><code data-language="javascript">io.socket.request(options, function (data, jwr)){
+  // ...
+  // jwr.headers
+  // jwr.statusCode
+  // jwr.body === data
+  // ...
+});
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="example" permalink="example">Example</h3>
+<pre><code data-language="javascript">io.socket.request({
+  method: &apos;get&apos;,
+  url: &apos;/user/3/friends&apos;,
+  params: {},
+  headers: {}
+})
+</code></pre><!-- __LANG=%%__ -->
+<p><docmeta name="uniqueID" value="socketrequest682488"></docmeta></p>
+<docmeta name="displayName" value="io.socket.request()">
+
+</docmeta>

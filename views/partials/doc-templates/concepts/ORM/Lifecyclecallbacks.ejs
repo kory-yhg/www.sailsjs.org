@@ -1,0 +1,62 @@
+<h1 id="lifecycle-callbacks">Lifecycle callbacks</h1>
+<h3 id="overview" permalink="overview">Overview</h3>
+<p>Sails exposes a handful of lifecycle callbacks on models that are called automatically before or after certain actions.  For example, we sometimes use lifecycle callbacks for automatically encrypting a password before creating or updating an Account model.  Another example use case is automatically regenerating a URL slug when a Project&apos;s <code>name</code> attribute is updated.</p>
+<h5 id="callbacks-on-create-" permalink="callbacks-on-create">Callbacks on <code>create</code></h5>
+<ul>
+<li>beforeValidate: fn(values, cb)</li>
+<li>afterValidate: fn(values, cb)</li>
+<li>beforeCreate: fn(values, cb)</li>
+<li>afterCreate: fn(newlyInsertedRecord, cb)</li>
+</ul>
+<h5 id="callbacks-on-update-" permalink="callbacks-on-update">Callbacks on <code>update</code></h5>
+<ul>
+<li>beforeValidate: fn(valuesToUpdate, cb)</li>
+<li>afterValidate: fn(valuesToUpdate, cb)</li>
+<li>beforeUpdate: fn(valuesToUpdate, cb)</li>
+<li>afterUpdate: fn(updatedRecord, cb)</li>
+</ul>
+<h5 id="callbacks-on-destroy-" permalink="callbacks-on-destroy">Callbacks on <code>destroy</code></h5>
+<ul>
+<li>beforeDestroy: fn(criteria, cb)</li>
+<li>afterDestroy: fn(destroyedRecords, cb)</li>
+</ul>
+<h3 id="example" permalink="example">Example</h3>
+<p>If you want to encrypt a password before saving in the database, you might use the <code>beforeCreate</code> lifecycle callback.</p>
+<pre><code data-language="javascript">var bcrypt = require(&apos;bcrypt&apos;);
+
+module.exports = {
+
+  attributes: {
+
+    username: {
+      type: &apos;string&apos;,
+      required: true
+    },
+
+    password: {
+      type: &apos;string&apos;,
+      minLength: 6,
+      required: true,
+      columnName: &apos;encrypted_password&apos;
+    }
+
+  },
+
+
+  // Lifecycle Callbacks
+  beforeCreate: function (values, cb) {
+
+    // Encrypt password
+    bcrypt.hash(values.password, 10, function(err, hash) {
+      if(err) return cb(err);
+      values.password = hash;
+      //calling cb() with an argument returns an error. Useful for canceling the entire operation if some criteria fails.
+      cb();
+    });
+  }
+};
+</code></pre><!-- __LANG=%%__ -->
+<p><docmeta name="uniqueID" value="Lifecyclecallbacks631538"></docmeta></p>
+<docmeta name="displayName" value="Lifecycle callbacks">
+
+</docmeta>

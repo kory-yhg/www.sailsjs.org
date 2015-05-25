@@ -1,0 +1,273 @@
+<h1 id="myapp-tasks-config-sails-linker-js">myApp/tasks/config/sails-linker.js</h1>
+<p><docmeta name="uniqueID" value="sailslinkerjs717161"></docmeta></p>
+<docmeta name="displayName" value="sails-linker.js">
+
+<pre><code data-language="javascript">/**
+ * Autoinsert script tags (or other filebased tags) in an html file.
+ *
+ * ---------------------------------------------------------------
+ *
+ * Automatically inject &lt;script&gt; tags for javascript files and &lt;link&gt; tags
+ * for css files.  Also automatically links an output file containing precompiled
+ * templates using a &lt;script&gt; tag.
+ *
+ * For usage docs see:
+ *         https://github.com/Zolmeister/grunt-sails-linker
+ *
+ */
+module.exports = function(grunt) {
+
+    grunt.config.set(&apos;sails-linker&apos;, {
+        devJs: {
+            options: {
+                startTag: &apos;&lt;!--SCRIPTS--&gt;&apos;,
+                endTag: &apos;&lt;!--SCRIPTS END--&gt;&apos;,
+                fileTmpl: &apos;&lt;script src=&quot;%s&quot;&gt;&lt;/script&gt;&apos;,
+                appRoot: &apos;.tmp/public&apos;
+            },
+            files: {
+                &apos;.tmp/public/**/*.html&apos;: require(&apos;../pipeline&apos;).jsFilesToInject,
+                &apos;views/**/*.html&apos;: require(&apos;../pipeline&apos;).jsFilesToInject,
+                &apos;views/**/*.ejs&apos;: require(&apos;../pipeline&apos;).jsFilesToInject
+            }
+        },
+
+        devJsRelative: {
+            options: {
+                startTag: &apos;&lt;!--SCRIPTS--&gt;&apos;,
+                endTag: &apos;&lt;!--SCRIPTS END--&gt;&apos;,
+                fileTmpl: &apos;&lt;script src=&quot;%s&quot;&gt;&lt;/script&gt;&apos;,
+                appRoot: &apos;.tmp/public&apos;,
+                relative: true
+            },
+            files: {
+                &apos;.tmp/public/**/*.html&apos;: require(&apos;../pipeline&apos;).jsFilesToInject,
+                &apos;views/**/*.html&apos;: require(&apos;../pipeline&apos;).jsFilesToInject,
+                &apos;views/**/*.ejs&apos;: require(&apos;../pipeline&apos;).jsFilesToInject
+            }
+        },
+
+        prodJs: {
+            options: {
+                startTag: &apos;&lt;!--SCRIPTS--&gt;&apos;,
+                endTag: &apos;&lt;!--SCRIPTS END--&gt;&apos;,
+                fileTmpl: &apos;&lt;script src=&quot;%s&quot;&gt;&lt;/script&gt;&apos;,
+                appRoot: &apos;.tmp/public&apos;
+            },
+            files: {
+                &apos;.tmp/public/**/*.html&apos;: [&apos;.tmp/public/min/production.min.js&apos;],
+                &apos;views/**/*.html&apos;: [&apos;.tmp/public/min/production.min.js&apos;],
+                &apos;views/**/*.ejs&apos;: [&apos;.tmp/public/min/production.min.js&apos;]
+            }
+        },
+
+        prodJsRelative: {
+            options: {
+                startTag: &apos;&lt;!--SCRIPTS--&gt;&apos;,
+                endTag: &apos;&lt;!--SCRIPTS END--&gt;&apos;,
+                fileTmpl: &apos;&lt;script src=&quot;%s&quot;&gt;&lt;/script&gt;&apos;,
+                appRoot: &apos;.tmp/public&apos;,
+                relative: true
+            },
+            files: {
+                &apos;.tmp/public/**/*.html&apos;: [&apos;.tmp/public/min/production.min.js&apos;],
+                &apos;views/**/*.html&apos;: [&apos;.tmp/public/min/production.min.js&apos;],
+                &apos;views/**/*.ejs&apos;: [&apos;.tmp/public/min/production.min.js&apos;]
+            }
+        },
+
+        devStyles: {
+            options: {
+                startTag: &apos;&lt;!--STYLES--&gt;&apos;,
+                endTag: &apos;&lt;!--STYLES END--&gt;&apos;,
+                fileTmpl: &apos;&lt;link rel=&quot;stylesheet&quot; href=&quot;%s&quot;&gt;&apos;,
+                appRoot: &apos;.tmp/public&apos;
+            },
+
+            files: {
+                &apos;.tmp/public/**/*.html&apos;: require(&apos;../pipeline&apos;).cssFilesToInject,
+                &apos;views/**/*.html&apos;: require(&apos;../pipeline&apos;).cssFilesToInject,
+                &apos;views/**/*.ejs&apos;: require(&apos;../pipeline&apos;).cssFilesToInject
+            }
+        },
+
+        devStylesRelative: {
+            options: {
+                startTag: &apos;&lt;!--STYLES--&gt;&apos;,
+                endTag: &apos;&lt;!--STYLES END--&gt;&apos;,
+                fileTmpl: &apos;&lt;link rel=&quot;stylesheet&quot; href=&quot;%s&quot;&gt;&apos;,
+                appRoot: &apos;.tmp/public&apos;,
+                relative: true
+            },
+
+            files: {
+                &apos;.tmp/public/**/*.html&apos;: require(&apos;../pipeline&apos;).cssFilesToInject,
+                &apos;views/**/*.html&apos;: require(&apos;../pipeline&apos;).cssFilesToInject,
+                &apos;views/**/*.ejs&apos;: require(&apos;../pipeline&apos;).cssFilesToInject
+            }
+        },
+
+        prodStyles: {
+            options: {
+                startTag: &apos;&lt;!--STYLES--&gt;&apos;,
+                endTag: &apos;&lt;!--STYLES END--&gt;&apos;,
+                fileTmpl: &apos;&lt;link rel=&quot;stylesheet&quot; href=&quot;%s&quot;&gt;&apos;,
+                appRoot: &apos;.tmp/public&apos;
+            },
+            files: {
+                &apos;.tmp/public/index.html&apos;: [&apos;.tmp/public/min/production.min.css&apos;],
+                &apos;views/**/*.html&apos;: [&apos;.tmp/public/min/production.min.css&apos;],
+                &apos;views/**/*.ejs&apos;: [&apos;.tmp/public/min/production.min.css&apos;]
+            }
+        },
+
+        prodStylesRelative: {
+            options: {
+                startTag: &apos;&lt;!--STYLES--&gt;&apos;,
+                endTag: &apos;&lt;!--STYLES END--&gt;&apos;,
+                fileTmpl: &apos;&lt;link rel=&quot;stylesheet&quot; href=&quot;%s&quot;&gt;&apos;,
+                appRoot: &apos;.tmp/public&apos;,
+                relative: true
+            },
+            files: {
+                &apos;.tmp/public/index.html&apos;: [&apos;.tmp/public/min/production.min.css&apos;],
+                &apos;views/**/*.html&apos;: [&apos;.tmp/public/min/production.min.css&apos;],
+                &apos;views/**/*.ejs&apos;: [&apos;.tmp/public/min/production.min.css&apos;]
+            }
+        },
+
+        // Bring in JST template object
+        devTpl: {
+            options: {
+                startTag: &apos;&lt;!--TEMPLATES--&gt;&apos;,
+                endTag: &apos;&lt;!--TEMPLATES END--&gt;&apos;,
+                fileTmpl: &apos;&lt;script type=&quot;text/javascript&quot; src=&quot;%s&quot;&gt;&lt;/script&gt;&apos;,
+                appRoot: &apos;.tmp/public&apos;
+            },
+            files: {
+                &apos;.tmp/public/index.html&apos;: [&apos;.tmp/public/jst.js&apos;],
+                &apos;views/**/*.html&apos;: [&apos;.tmp/public/jst.js&apos;],
+                &apos;views/**/*.ejs&apos;: [&apos;.tmp/public/jst.js&apos;]
+            }
+        },
+
+        devJsJade: {
+            options: {
+                startTag: &apos;// SCRIPTS&apos;,
+                endTag: &apos;// SCRIPTS END&apos;,
+                fileTmpl: &apos;script(src=&quot;%s&quot;)&apos;,
+                appRoot: &apos;.tmp/public&apos;
+            },
+            files: {
+                &apos;views/**/*.jade&apos;: require(&apos;../pipeline&apos;).jsFilesToInject
+            }
+        },
+
+        devJsRelativeJade: {
+            options: {
+                startTag: &apos;// SCRIPTS&apos;,
+                endTag: &apos;// SCRIPTS END&apos;,
+                fileTmpl: &apos;script(src=&quot;%s&quot;)&apos;,
+                appRoot: &apos;.tmp/public&apos;,
+                relative: true
+            },
+            files: {
+                &apos;views/**/*.jade&apos;: require(&apos;../pipeline&apos;).jsFilesToInject
+            }
+        },
+
+        prodJsJade: {
+            options: {
+                startTag: &apos;// SCRIPTS&apos;,
+                endTag: &apos;// SCRIPTS END&apos;,
+                fileTmpl: &apos;script(src=&quot;%s&quot;)&apos;,
+                appRoot: &apos;.tmp/public&apos;
+            },
+            files: {
+                &apos;views/**/*.jade&apos;: [&apos;.tmp/public/min/production.min.js&apos;]
+            }
+        },
+
+        prodJsRelativeJade: {
+            options: {
+                startTag: &apos;// SCRIPTS&apos;,
+                endTag: &apos;// SCRIPTS END&apos;,
+                fileTmpl: &apos;script(src=&quot;%s&quot;)&apos;,
+                appRoot: &apos;.tmp/public&apos;,
+                relative: true
+            },
+            files: {
+                &apos;views/**/*.jade&apos;: [&apos;.tmp/public/min/production.min.js&apos;]
+            }
+        },
+
+        devStylesJade: {
+            options: {
+                startTag: &apos;// STYLES&apos;,
+                endTag: &apos;// STYLES END&apos;,
+                fileTmpl: &apos;link(rel=&quot;stylesheet&quot;, href=&quot;%s&quot;)&apos;,
+                appRoot: &apos;.tmp/public&apos;
+            },
+
+            files: {
+                &apos;views/**/*.jade&apos;: require(&apos;../pipeline&apos;).cssFilesToInject
+            }
+        },
+
+        devStylesRelativeJade: {
+            options: {
+                startTag: &apos;// STYLES&apos;,
+                endTag: &apos;// STYLES END&apos;,
+                fileTmpl: &apos;link(rel=&quot;stylesheet&quot;, href=&quot;%s&quot;)&apos;,
+                appRoot: &apos;.tmp/public&apos;,
+                relative: true
+            },
+
+            files: {
+                &apos;views/**/*.jade&apos;: require(&apos;../pipeline&apos;).cssFilesToInject
+            }
+        },
+
+        prodStylesJade: {
+            options: {
+                startTag: &apos;// STYLES&apos;,
+                endTag: &apos;// STYLES END&apos;,
+                fileTmpl: &apos;link(rel=&quot;stylesheet&quot;, href=&quot;%s&quot;)&apos;,
+                appRoot: &apos;.tmp/public&apos;
+            },
+            files: {
+                &apos;views/**/*.jade&apos;: [&apos;.tmp/public/min/production.min.css&apos;]
+            }
+        },
+
+        prodStylesRelativeJade: {
+            options: {
+                startTag: &apos;// STYLES&apos;,
+                endTag: &apos;// STYLES END&apos;,
+                fileTmpl: &apos;link(rel=&quot;stylesheet&quot;, href=&quot;%s&quot;)&apos;,
+                appRoot: &apos;.tmp/public&apos;,
+                relative: true
+            },
+            files: {
+                &apos;views/**/*.jade&apos;: [&apos;.tmp/public/min/production.min.css&apos;]
+            }
+        },
+
+        // Bring in JST template object
+        devTplJade: {
+            options: {
+                startTag: &apos;// TEMPLATES&apos;,
+                endTag: &apos;// TEMPLATES END&apos;,
+                fileTmpl: &apos;script(type=&quot;text/javascript&quot;, src=&quot;%s&quot;)&apos;,
+                appRoot: &apos;.tmp/public&apos;
+            },
+            files: {
+                &apos;views/**/*.jade&apos;: [&apos;.tmp/public/jst.js&apos;]
+            }
+        }
+    });
+
+    grunt.loadNpmTasks(&apos;grunt-sails-linker&apos;);
+};
+</code></pre><!-- __LANG=%%__ -->
+</docmeta>

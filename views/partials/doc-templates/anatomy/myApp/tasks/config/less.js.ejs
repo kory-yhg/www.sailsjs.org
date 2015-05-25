@@ -1,0 +1,34 @@
+<h1 id="myapp-tasks-config-less-js">myApp/tasks/config/less.js</h1>
+<p><docmeta name="uniqueID" value="lessjs876526"></docmeta></p>
+<docmeta name="displayName" value="less.js">
+
+<pre><code data-language="javascript">/**
+ * Compiles LESS files into CSS.
+ *
+ * ---------------------------------------------------------------
+ *
+ * Only the `assets/styles/importer.less` is compiled.
+ * This allows you to control the ordering yourself, i.e. import your
+ * dependencies, mixins, variables, resets, etc. before other stylesheets)
+ *
+ * For usage docs see:
+ *         https://github.com/gruntjs/grunt-contrib-less
+ */
+module.exports = function(grunt) {
+
+    grunt.config.set(&apos;less&apos;, {
+        dev: {
+            files: [{
+                expand: true,
+                cwd: &apos;assets/styles/&apos;,
+                src: [&apos;importer.less&apos;],
+                dest: &apos;.tmp/public/styles/&apos;,
+                ext: &apos;.css&apos;
+            }]
+        }
+    });
+
+    grunt.loadNpmTasks(&apos;grunt-contrib-less&apos;);
+};
+</code></pre><!-- __LANG=%%__ -->
+</docmeta>

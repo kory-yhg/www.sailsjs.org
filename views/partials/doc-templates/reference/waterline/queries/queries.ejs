@@ -1,0 +1,34 @@
+<h1 id="working-with-queries">Working with Queries</h1>
+<p>Chainable deferred objects returned from Waterline model methods like <code>.find()</code> and <code>.create()</code>.</p>
+<pre><code data-language="javascript">var query = Stuff.find();
+</code></pre><!-- __LANG=%%__ -->
+<p>You have likely already interacted with query objects in your Sails app. Most of the time, you probably won&apos;t think about them as objects <em>per se</em>, rather just another part of the syntax for communicating with the database.</p>
+<p>The primary purpose of Waterline query instances is to provide a convenient, chainable syntax for working with your models.  Methods like <code>.populate()</code>, <code>.where()</code>, and <code>.sort()</code> allow you to refine database calls <em>before</em> they&apos;re sent down the wire.  When you&apos;re ready to fire the query off to the database, you can just call <a href="#!/documentation/reference/waterline/queries/exec.html"><code>.exec()</code></a>.</p>
+<h3 id="promises" permalink="promises">Promises</h3>
+<p>In addition to the <code>.exec()</code> method, Waterline queries implement a partial integration with the <a href="https://github.com/petkaantonov/bluebird" target="_blank">Bluebird</a> promise library, exposing <code>.then()</code> and <code>.catch()</code> methods.</p>
+<pre><code data-language="javascript">Stuff.find()
+.then(function (allTheStuff) {...})
+.catch(function (err) {...});
+</code></pre><!-- __LANG=%%__ -->
+<p>If you are a fan of promises, and have a reasonable amount of experience with them, you should have no problem working with this interface.  However if you are not very familiar with promises, or don&apos;t care one way or another, you will probably have an easier time working with <code>.exec()</code>, which uses standard Node.js callback conventions.</p>
+<pre><code data-language="javascript">Stuff.find()
+.exec(function (err, allTheStuff) {...})
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="query-execution" permalink="query-execution">Query Execution</h3>
+<p>When you <strong>execute</strong> a query, a lot happens:</p>
+<pre><code data-language="javascript">Zookeeper.find().exec(function (err, zookeepers){
+  // would you look at all those zookeepers?
+});
+</code></pre><!-- __LANG=%%__ -->
+<p>First, it is &quot;shaken out&quot; by Waterline core into a normalized <a href="#!/documentation/concepts/ORM/Querylanguage.html?q=query-language-basics">criteria object</a>.  Then it passes through the relevant Waterline adapter(s) for translation to the raw query syntax of your database(s) (e.g. Redis or Mongo commands, various SQL dialects, etc.)  Finally, each involved adapter uses its native Node.js database driver to send the query out over the network to the corresponding physical database.</p>
+<p>When the adapter receives a response, it is marshalled to the Waterline interface spec and passed back up to Waterine core, where it is integrated with any other raw adapter responses into a coherent result set.  At that point, it undergoes one last normalization before being passed back to your callback for consumption by your app.</p>
+<h3 id="notes" permalink="notes">Notes</h3>
+<blockquote>
+<ul>
+<li>Waterline model methods will <strong>NOT</strong> return a query instance if an optional callback is directly passed as the final argument.  Instead, that callback will be triggered when the query is complete.</li>
+</ul>
+</blockquote>
+<p><docmeta name="uniqueID" value="query820682"></docmeta></p>
+<docmeta name="displayName" value="Queries">
+
+</docmeta>

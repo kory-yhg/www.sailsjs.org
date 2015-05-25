@@ -1,0 +1,26 @@
+<h1 id="myapp-tasks-config-clean-js">myApp/tasks/config/clean.js</h1>
+<p><docmeta name="uniqueID" value="cleanjs253199"></docmeta></p>
+<docmeta name="displayName" value="clean.js">
+
+<pre><code data-language="javascript">/**
+ * Clean files and folders.
+ *
+ * ---------------------------------------------------------------
+ *
+ * This grunt task is configured to clean out the contents in the .tmp/public of your
+ * sails project.
+ *
+ * For usage docs see:
+ *         https://github.com/gruntjs/grunt-contrib-clean
+ */
+module.exports = function(grunt) {
+
+    grunt.config.set(&apos;clean&apos;, {
+        dev: [&apos;.tmp/public/**&apos;],
+        build: [&apos;www&apos;]
+    });
+
+    grunt.loadNpmTasks(&apos;grunt-contrib-clean&apos;);
+};
+</code></pre><!-- __LANG=%%__ -->
+</docmeta>

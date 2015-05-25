@@ -1,0 +1,33 @@
+<h1 id="myapp-tasks-config-concat-js">myApp/tasks/config/concat.js</h1>
+<p><docmeta name="uniqueID" value="concatjs243574"></docmeta></p>
+<docmeta name="displayName" value="concat.js">
+
+<pre><code data-language="javascript">/**
+ * Concatenate files.
+ *
+ * ---------------------------------------------------------------
+ *
+ * Concatenates files javascript and css from a defined array. Creates concatenated files in
+ * .tmp/public/contact directory
+ * [concat](https://github.com/gruntjs/grunt-contrib-concat)
+ *
+ * For usage docs see:
+ *         https://github.com/gruntjs/grunt-contrib-concat
+ */
+module.exports = function(grunt) {
+
+    grunt.config.set(&apos;concat&apos;, {
+        js: {
+            src: require(&apos;../pipeline&apos;).jsFilesToInject,
+            dest: &apos;.tmp/public/concat/production.js&apos;
+        },
+        css: {
+            src: require(&apos;../pipeline&apos;).cssFilesToInject,
+            dest: &apos;.tmp/public/concat/production.css&apos;
+        }
+    });
+
+    grunt.loadNpmTasks(&apos;grunt-contrib-concat&apos;);
+};
+</code></pre><!-- __LANG=%%__ -->
+</docmeta>

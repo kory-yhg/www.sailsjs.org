@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "cheerio": "0.18.0",
+    "doc-templater": "0.2.6",
+    "lodash": "*",
+    "machinepack-fs": "*"
+  },
+  "machinepack": {
+    "machines": ["Compilemarkdowndocs", "Fniddocpagetoshow", "MarshaldocPageMetadata"],
+    "machineVersions": {
+      "Compilemarkdowndocs": "0.0.13",
+      "Fniddocpagetoshow": "0.0.17",
+      "MarshaldocPageMetadata": "0.0.27"
+    }
+  }
+}

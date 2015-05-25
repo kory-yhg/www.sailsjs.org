@@ -1,0 +1,11 @@
+<li>
+  <a href="/documentation/pretend/<%= navItem.slug %>"><%= navItem.displayName %> (<% _.each(navItem.children, function (childPath){ %><%= childPath %> ,<% })%>)</a>
+  <ul>
+    <% _.each(navItem.children, function (childPath){ %>
+    <li>
+      child here (<%= childPath %>)
+      <!-- TODO recursive step -->
+    </li>
+    <% }); %>
+  </ul>
+</li>

@@ -1,0 +1,56 @@
+<h1 id="sails-config-log">sails.config.log</h1>
+<p>Configuration for the instance of the <a href="http://beta.sailsjs.org/#/documentation/reference/Logs" target="_blank">Sails logger</a> (<code>sails.log</code>) used in your Sails app. The options are conventionally specified in the <a href="#!/documentation/anatomy/myApp/config/log.js.html">config/log.js</a> configuration file.</p>
+<h3 id="properties" permalink="properties">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th style="text-align:center">Type</th>
+<th>Default</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>level</code></td>
+<td style="text-align:center"><bubble type="string" colors="true"></bubble></td>
+<td><code>&apos;info&apos;</code></td>
+<td>Set the level of detail to be shown in your app&apos;s log</td>
+</tr>
+</tbody>
+</table>
+<!--
+### Notes
+
+> +. ...
+
+-->
+<!--
+### What is this?
+The logger file configures the log level for your app, as well as the transport.
+
+### Description
+
+The logger file configures the log level for your app, as well as the transport.
+
+*(Underneath the covers, Sails uses Winston for logging, which allows for some pretty neat custom transports/adapters for log messages)*
+
+#### There are 5 different levels to the log:
+
++ **'error'** : Display calls to `.error()`
++ **'warn'**    : Display calls from `.error()` to `.warn()`
++ **'debug'** : Display calls from `.error()`, `.warn()` to `.debug()`
++ **'info'**  : Display calls from `.error()`, `.warn()`, `.debug()` to `.info()`
++ **'verbose'**: Display calls from `.error()`, `.warn()`, `.debug()`, `.info()` to `.verbose()`
+
+
+By default, the level is set to `info`.
+
+
+
+
+-->
+<p><docmeta name="uniqueID" value="sailsconfiglog812909"></docmeta></p>
+<docmeta name="displayName" value="sails.config.log">
+
+</docmeta>

@@ -1,0 +1,360 @@
+<h1 id="validations">Validations</h1>
+<p>Sails bundles support for automatic validations of your models&apos; attributes. Any time a record is updated, or a new record is created, the data for each attribute will be checked against all of your predefined validation rules. This provides a convenient failsafe to ensure that invalid entries don&apos;t make their way into your app&apos;s database(s).</p>
+<h3 id="validation-rules" permalink="validation-rules">Validation Rules</h3>
+<p>Validations are handled by <a href="https://github.com/balderdashy/anchor" target="_blank">Anchor</a>, a thin layer on top of <a href="https://github.com/chriso/validator.js" target="_blank">Validator</a>, one of the most robust validation libraries for Node.js.  Sails supports most of the validations available in Validator, as well as a few extras that require database integration, like <code>unique</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Name of validator</th>
+<th>What does it check?</th>
+<th>Notes on usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>after</td>
+<td>check if <code>string</code> date in this record is after the specified <code>Date</code></td>
+<td>must be valid javascript <code>Date</code></td>
+</tr>
+<tr>
+<td>alpha</td>
+<td>check if <code>string</code> in this record contains only letters (a-zA-Z)</td>
+<td></td>
+</tr>
+<tr>
+<td>alphadashed</td>
+<td></td>
+<td>does this <code>string</code> contain only letters and/or dashes?</td>
+</tr>
+<tr>
+<td>alphanumeric</td>
+<td>check if <code>string</code> in this record contains only letters and numbers.</td>
+<td></td>
+</tr>
+<tr>
+<td>alphanumericdashed</td>
+<td>does this <code>string</code> contain only numbers and/or letters and/or dashes?</td>
+<td></td>
+</tr>
+<tr>
+<td>array</td>
+<td>is this a valid javascript <code>array</code> object?</td>
+<td>strings formatted as arrays won&apos;t pass</td>
+</tr>
+<tr>
+<td>before</td>
+<td>check if <code>string</code> in this record is a date that&apos;s before the specified date</td>
+<td></td>
+</tr>
+<tr>
+<td>binary</td>
+<td>is this binary data?</td>
+<td>If it&apos;s a string, it will always pass</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>is this a valid javascript <code>boolean</code> ?</td>
+<td><code>string</code>s will fail</td>
+</tr>
+<tr>
+<td>contains</td>
+<td>check if <code>string</code> in this record contains the seed</td>
+<td></td>
+</tr>
+<tr>
+<td>creditcard</td>
+<td>check if <code>string</code> in this record is a credit card</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td>check if <code>string</code> in this record is a date</td>
+<td>takes both strings and javascript</td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>check if <code>string</code> in this record looks like a javascript <code>datetime</code></td>
+<td></td>
+</tr>
+<tr>
+<td>decimal</td>
+<td></td>
+<td>contains a decimal or is less than 1?</td>
+</tr>
+<tr>
+<td>email</td>
+<td>check if <code>string</code> in this record looks like an email address</td>
+<td></td>
+</tr>
+<tr>
+<td>empty</td>
+<td>Arrays, strings, or arguments objects with a length of 0 and objects with no own enumerable properties are considered &quot;empty&quot;</td>
+<td>lo-dash _.isEmpty()</td>
+</tr>
+<tr>
+<td>equals</td>
+<td>check if <code>string</code> in this record is equal to the specified value</td>
+<td><code>===</code> ! They must match in both value and type</td>
+</tr>
+<tr>
+<td>falsey</td>
+<td>Would a Javascript engine register a value of <code>false</code> on this?</td>
+<td></td>
+</tr>
+<tr>
+<td>finite</td>
+<td>Checks if given value is, or can be coerced to, a finite number</td>
+<td>This is not the same as native isFinite which will return true for booleans and empty strings</td>
+</tr>
+<tr>
+<td>float</td>
+<td>check if <code>string</code> in this record is of the number type float</td>
+<td></td>
+</tr>
+<tr>
+<td>hexadecimal</td>
+<td>check if <code>string</code> in this record is a hexadecimal number</td>
+<td></td>
+</tr>
+<tr>
+<td>hexColor</td>
+<td>check if <code>string</code> in this record is a hexadecimal color</td>
+<td></td>
+</tr>
+<tr>
+<td>in</td>
+<td>check if <code>string</code> in this record is in the specified array of allowed <code>string</code> values</td>
+<td></td>
+</tr>
+<tr>
+<td>int</td>
+<td>check if <code>string</code> in this record is an integer</td>
+<td></td>
+</tr>
+<tr>
+<td>integer</td>
+<td>same as above</td>
+<td>Im not sure why there are two of these.</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>check if <code>string</code> in this record is a valid IP (v4 or v6)</td>
+<td></td>
+</tr>
+<tr>
+<td>ipv4</td>
+<td>check if <code>string</code> in this record is a valid IP v4</td>
+<td></td>
+</tr>
+<tr>
+<td>ipv6</td>
+<td>check if <code>string</code> in this record is aa valid IP v6</td>
+<td></td>
+</tr>
+<tr>
+<td>is</td>
+<td></td>
+<td>something to do with REGEX</td>
+</tr>
+<tr>
+<td>json</td>
+<td>does a try&amp;catch to check for valid JSON.</td>
+<td></td>
+</tr>
+<tr>
+<td>len</td>
+<td>is <code>integer</code> &gt; param1 &amp;&amp; &lt; param2</td>
+<td>Where are params defined?</td>
+</tr>
+<tr>
+<td>lowercase</td>
+<td>is this string in all lowercase?</td>
+<td></td>
+</tr>
+<tr>
+<td>max</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>maxLength</td>
+<td>is <code>integer</code> &gt; 0 &amp;&amp; &lt; param2</td>
+<td></td>
+</tr>
+<tr>
+<td>min</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>minLength</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>not</td>
+<td></td>
+<td>Something about regexes</td>
+</tr>
+<tr>
+<td>notContains</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>notEmpty</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>notIn</td>
+<td>does the value of this model attribute exist inside of the defined validator value (of the same type)</td>
+<td>Takes strings and arrays</td>
+</tr>
+<tr>
+<td>notNull</td>
+<td>does this not have a value of <code>null</code> ?</td>
+<td></td>
+</tr>
+<tr>
+<td>notRegex</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>null</td>
+<td>check if <code>string</code> in this record is null</td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td>is this a number?</td>
+<td>NaN is considered a number</td>
+</tr>
+<tr>
+<td>numeric</td>
+<td>checks if <code>string</code> in this record contains only numbers</td>
+<td></td>
+</tr>
+<tr>
+<td>object</td>
+<td>checks if this attribute is the language type of Object</td>
+<td>Passes for arrays, functions, objects, regexes, new Number(0), and new String(&apos;&apos;) !</td>
+</tr>
+<tr>
+<td>regex</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protected</td>
+<td>Should this attribute be removed when <code>toJSON</code> is called on a model instance?</td>
+<td></td>
+</tr>
+<tr>
+<td>required</td>
+<td>Must this model attribute contain valid data before a new record can be created?</td>
+<td></td>
+</tr>
+<tr>
+<td>string</td>
+<td>is this a <code>string</code> ?</td>
+<td></td>
+</tr>
+<tr>
+<td>text</td>
+<td>okay, well is <i>this</i> a <code>string</code> ?</td>
+<td></td>
+</tr>
+<tr>
+<td>truthy</td>
+<td>Would a Javascript engine register a value of <code>false</code> on this?</td>
+<td></td>
+</tr>
+<tr>
+<td>undefined</td>
+<td>Would a javascript engine register this thing as have the value &apos;undefined&apos; ?</td>
+<td></td>
+</tr>
+<tr>
+<td>unique</td>
+<td>Checks to see if a new record model attribute is unique.</td>
+<td></td>
+</tr>
+<tr>
+<td>uppercase</td>
+<td>checks if <code>string</code> in this record is uppercase</td>
+<td></td>
+</tr>
+<tr>
+<td>url</td>
+<td>checks if <code>string</code> in this record is a URL</td>
+<td></td>
+</tr>
+<tr>
+<td>urlish</td>
+<td>Does the <code>string</code> in this record contain something that looks like a route, ending with a file extension?</td>
+<td>/^\s([^\/]+.)+.+\s*$/g</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>checks if <code>string</code> in this record is a UUID (v3, v4, or v5)</td>
+<td></td>
+</tr>
+<tr>
+<td>uuidv3</td>
+<td>checks if <code>string</code> in this record is a UUID (v3)</td>
+<td></td>
+</tr>
+<tr>
+<td>uuidv4</td>
+<td>checks if <code>string</code> in this record is a UUID (v4)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="custom-validation-rules" permalink="custom-validation-rules">Custom Validation Rules</h3>
+<p>You can define your own types and their validation with the types object. It&apos;s possible to access and compare values to other attributes (with &quot;this&quot;). This allows you to move validation business logic into your models and out of your controller logic.</p>
+<blockquote>
+<p>Note that your own type always have to be a variant of the basic data-types (&quot;string&quot;, &quot;int&quot;, &quot;json&quot;, ...)</p>
+</blockquote>
+<h4 id="example-model" permalink="example-model">Example Model</h4>
+<pre><code data-language="javascript">// api/models/foo
+module.exports = {
+
+  types: {
+    is_point: function(geoLocation){
+      return geoLocation.x &amp;&amp; geoLocation.y
+    },
+    password: function(password) {
+      return password === this.passwordConfirmation;
+    }
+  },
+  attributes: {
+    firstName: {
+      type: &apos;string&apos;,
+      required: true,
+      minLength: 5,
+      maxLength: 15
+    },
+    location: {
+      //note, that the base type (json) still has to be defined
+      type: &apos;json&apos;,
+      is_point: true
+    },
+    password: {
+      type: &apos;string&apos;,
+      password: true
+    },
+    passwordConfirmation: {
+      type: &apos;string&apos;
+    }
+
+  }
+}
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="custom-validation-messages" permalink="custom-validation-messages">Custom Validation Messages</h3>
+<p>Out of the box, Sails.js does not support custom validation messages. However, for Sails v0.11.0+ a <a href="http://sailsjs.org/#!/documentation/concepts/extending-sails/Hooks" target="_blank">Hook</a> is available: <a href="https://github.com/lykmapipo/sails-hook-validation" target="_blank">sails-hook-validator</a>. Details regarding its usage can be found in the <a href="https://github.com/lykmapipo/sails-hook-validation" target="_blank">sails-hook-validator</a> repository.</p>
+<p><docmeta name="uniqueID" value="Validations576587"></docmeta></p>
+<docmeta name="displayName" value="Validations">
+
+</docmeta>

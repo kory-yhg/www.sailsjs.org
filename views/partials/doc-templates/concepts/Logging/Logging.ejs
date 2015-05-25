@@ -1,0 +1,61 @@
+<h1 id="logging">Logging</h1>
+<h3 id="overview" permalink="overview">Overview</h3>
+<p>Sails comes with a simple, built-in logger called <a href="https://github.com/balderdashy/captains-log" target="_blank"><code>captains-log</code></a>.  Its usage is purposely very similar to Node&apos;s <a href="http://nodejs.org/api/stdio.html" target="_blank"><code>console.log</code></a>, but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.</p>
+<h3 id="configuration" permalink="configuration">Configuration</h3>
+<p>The Sails logger&apos;s configuration is located in <a href="http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.log.html" target="_blank"><code>sails.config.log</code></a>, for which a conventional configuration file (<a href="http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/log.js.html" target="_blank"><code>config/log.js</code></a>) is bundled in new Sails projects out of the box.</p>
+<p>When configured at a given log level, Sails will output log messages that are output at a level at or above the currently configured level. This log level is normalized and also applied to the generated output from socket.io, Waterline, and other dependencies. The hierarchy of log levels and their relative priorities is summarized by the chart below:</p>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>level</th>
+<th>Log fns visible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>silent</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>1</td>
+<td>error</td>
+<td><code>.error()</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>warn</td>
+<td><code>.warn()</code>, <code>.error()</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>debug</td>
+<td><code>.debug()</code>, <code>.warn()</code>, <code>.error()</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>info</td>
+<td><code>.info()</code>, <code>.debug()</code>, <code>.warn()</code>, <code>.error()</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>verbose</td>
+<td><code>.verbose()</code>, <code>.info()</code>, <code>.debug()</code>, <code>.warn()</code>, <code>.error()</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>silly</td>
+<td><code>.silly()</code>, <code>.verbose()</code>, <code>.info()</code>, <code>.debug()</code>, <code>.warn()</code>, <code>.error()</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="notes" permalink="notes">Notes</h4>
+<ul>
+<li>The default log level is &quot;info&quot;.  When your app&apos;s log level is set to &quot;info&quot;, Sails logs limited information about the server/app&apos;s status.</li>
+<li>When the log level is set to &quot;silly&quot;, Sails outputs internal information on which routes are being bound and other detailed framework lifecycle information, diagnostics, and implementation details.</li>
+<li>When the log level is set to &quot;verbose&quot;, Sails logs Grunt output, as well as much more detailed information on the routes, models, hooks, etc. that were loaded.</li>
+</ul>
+<p><docmeta name="uniqueID" value="Logging277763"></docmeta></p>
+<docmeta name="displayName" value="Logging">
+</docmeta>

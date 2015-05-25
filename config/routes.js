@@ -1,4 +1,7 @@
 module.exports.routes = {
+  "get /get-started": {
+    "target": "Get-startedController.find"
+  },
   "get /documentation/anatomy": {
     "target": "DocumentationController.anatomy"
   },
@@ -8,8 +11,8 @@ module.exports.routes = {
   "get /documentation": {
     "target": "DocumentationController.find"
   },
-  "get /documentation/concepts": {
-    "target": "DocumentationController.concepts"
+  "get /refresh": {
+    "target": "RefreshController.find"
   },
   "get /": {
     "target": "Home$Controller.find"
@@ -23,11 +26,11 @@ module.exports.routes = {
   "get /support": {
     "target": "SupportController.find"
   },
-  "get /get-started": {
-    "target": "Get-startedController.find"
+  "get /documentation/concepts": {
+    "target": "DocumentationController.concepts"
   },
-  "get /documentation/pretend/:page": {
-    "target": "DocumentationController.pretend_$page",
+  "get /documentation/pretend/:section": {
+    "target": "DocumentationController.pretend_$section",
     "skipAssets": true
   }
 };

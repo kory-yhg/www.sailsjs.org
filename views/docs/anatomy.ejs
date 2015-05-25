@@ -10,11 +10,10 @@
         <div class="stabilityIndex" ng-if="docs.currentPage.data.stabilityIndex" ng-include src="'./templates/stabilityIndexPartials/stability'+docs.currentPage.data.stabilityIndex+'.html'"></div>
         <br ng-if="docs.currentPage.data.stabilityIndex">
 
-        <ul class="file-list">
-          <!-- Folders get class "expanded" to show their contents -->
-          <!-- Files get class "active" to show which one you're looking at.-->
-          <!-- The top-level folder containing the "active" file also gets the class "active" -->
-            <li>TODO</li>
+        <ul class="main-sections">
+          <% _.each(templateList, function(navItem) { %>
+            <%- partial('../partials/nav-item', {navItem: navItem}) %>
+          <% }) %>
         </ul>
         <div class="book-banner-wrapper">
           <div class="book-banner">
@@ -30,7 +29,7 @@
     <!-- Region with the information about the selected file -->
     <div class="anatomy-content">
       <div class="anatomy-section">
-        <h1>TODO</h1>
+        <%- partial('../partials/doc-templates/'+currentTemplate.path) %>
       </div>
 
       <div class="contribution-message">

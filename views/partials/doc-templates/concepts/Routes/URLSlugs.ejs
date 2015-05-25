@@ -1,0 +1,13 @@
+<h1 id="url-slugs">URL Slugs</h1>
+<p>A common use case for explicit routes is the design of slugs or <a href="http://en.wikipedia.org/wiki/Clean_URL#Slug" target="_blank">vanity URLs</a>.  For example, consider the URL of a repository on Github, <a href="http://www.github.com/balderdashy/sailsjs" target="_blank"><code>http://www.github.com/balderdashy/sailsjs</code></a>.  In Sails, we might define this route at the <strong>bottom of our <code>config/routes.js</code> file</strong> like so:</p>
+<pre><code data-language="javascript">&apos;get /:account/:repo&apos;: {
+controller: &apos;RepoController&apos;,
+action: &apos;show&apos;,
+skipAssets: true
+}
+</code></pre><!-- __LANG=%%__ -->
+<p>In your <code>RepoController</code>&apos;s <code>show</code> action, we&apos;d use <code>req.param(&apos;account&apos;)</code> and <code>req.param(&apos;repo&apos;)</code> to look up the data for the appropriate repository, then pass it in to the appropriate <a href="http://beta.sailsjs.org/#/documentation/concepts/Views" target="_blank">view</a> as <a href="http://beta.sailsjs.org/#/documentation/concepts/Views/Locals.html" target="_blank">locals</a>.  The <a href="http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options" target="_blank"><code>skipAssets</code> option</a> ensures that the vanity route doesn&apos;t accidentally match any of our <a href="http://beta.sailsjs.org/#/documentation/concepts/Assets" target="_blank">assets</a> (e.g. <code>/images/logo.png</code>), so they are still accessible.</p>
+<p><docmeta name="uniqueID" value="URLSlugs805236"></docmeta></p>
+<docmeta name="displayName" value="URL Slugs">
+
+</docmeta>

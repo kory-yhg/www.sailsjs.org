@@ -1,0 +1,61 @@
+<h1 id="sails-sockets-blast-">sails.sockets.blast()</h1>
+<p>Broadcast a message to all sockets connected to the server.</p>
+<pre><code data-language="javascript">sails.sockets.blast(data);
+</code></pre><!-- __LANG=%%__ -->
+<p><em>Or:</em></p>
+<ul>
+<li><code>sails.sockets.blast(eventName, data);</code></li>
+<li><code>sails.sockets.blast(data, socketToOmit);</code></li>
+<li><code>sails.sockets.blast(eventName, data, socketToOmit);</code></li>
+</ul>
+<h3 id="usage" permalink="usage">Usage</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Argument</th>
+<th>Type</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>eventName</td>
+<td><bubble type="string" colors="true"></bubble></td>
+<td>Optional. Defaults to <code>&apos;message&apos;</code>.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>data</td>
+<td><bubble type="*" colors="true"></bubble></td>
+<td>The data to send in the message.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>socketToOmit</td>
+<td><bubble type="Socket" colors="true"></bubble></td>
+<td>Optional. If provided, that request socket will <strong>not</strong> receive the message blasted out to everyone else.  Useful when the broadcast-worthy event is triggered by a requesting user who doesn&apos;t need to hear about it again.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example" permalink="example">Example</h3>
+<p>In a controller action...</p>
+<pre><code data-language="javascript">sails.sockets.blast(&apos;user_logged_in&apos;, {
+  msg: &apos;User #&apos; + req.session.userId + &apos; just logged in.&apos;,
+  user: {
+    id: req.session.userId,
+    username: req.session.username
+  }
+}, req.socket);
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="notes" permalink="notes">Notes</h3>
+<blockquote>
+<ul>
+<li>The phrase &quot;request socket&quot; here refers to an application-layer WebSocket/Socket.io connection.  <code>req.socket</code> also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure <code>req.isSocket == true</code> before using <code>req.socket</code> with this method.</li>
+</ul>
+</blockquote>
+<p><docmeta name="uniqueID" value="sailssocketsblast345475"></docmeta></p>
+<docmeta name="displayName" value="sails.sockets.blast()">
+
+</docmeta>

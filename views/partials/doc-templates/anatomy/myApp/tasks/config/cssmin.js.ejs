@@ -1,0 +1,27 @@
+<h1 id="myapp-tasks-config-cssmin-js">myApp/tasks/config/cssmin.js</h1>
+<p><docmeta name="uniqueID" value="cssminjs49702"></docmeta></p>
+<docmeta name="displayName" value="cssmin.js">
+
+<pre><code data-language="javascript">/**
+ * Compress CSS files.
+ *
+ * ---------------------------------------------------------------
+ *
+ * Minifies css files and places them into .tmp/public/min directory.
+ *
+ * For usage docs see:
+ *         https://github.com/gruntjs/grunt-contrib-cssmin
+ */
+module.exports = function(grunt) {
+
+    grunt.config.set(&apos;cssmin&apos;, {
+        dist: {
+            src: [&apos;.tmp/public/concat/production.css&apos;],
+            dest: &apos;.tmp/public/min/production.min.css&apos;
+        }
+    });
+
+    grunt.loadNpmTasks(&apos;grunt-contrib-cssmin&apos;);
+};
+</code></pre><!-- __LANG=%%__ -->
+</docmeta>

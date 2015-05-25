@@ -8,11 +8,7 @@
       <h4>Concepts</h4>
       <ul class="main-sections">
         <% _.each(templateList, function(navItem) { %>
-
-          <li>
-            <a href="/documentation/pretend/<%= navItem.slug %>"><%= navItem.displayName %></a>
-          </li>
-
+          <%- partial('../partials/nav-item', {navItem: navItem}) %>
         <% }) %>
       </ul>
       <div class="book-banner-wrapper">
@@ -28,7 +24,7 @@
     <!-- Main content -->
     <div class="right-column">
       <div class="reference-item">
-      <%- partial('../partials/dummy-docs/'+currentTemplate.fullPathAndFileName) %>
+      <%- partial('../partials/doc-templates/'+currentTemplate.path) %>
       </div>
 
       <div class="contribution-message">
