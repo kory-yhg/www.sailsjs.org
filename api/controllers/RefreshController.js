@@ -8,7 +8,7 @@ module.exports = {
             },
             fn: function(inputs, exits) {
                 // Compile reference docs
-                sails.machines['_project_3549_0.0.12'].Compilemarkdowndocs({
+                sails.machines['_project_3549_0.0.15'].Compilemarkdowndocs({
                     "path": "reference"
                 }).setEnvironment({
                     sails: sails
@@ -22,7 +22,7 @@ module.exports = {
                     },
                     "success": function(compileReferenceDocs) {
                         // Compile anatomy docs
-                        sails.machines['_project_3549_0.0.12'].Compilemarkdowndocs({
+                        sails.machines['_project_3549_0.0.15'].Compilemarkdowndocs({
                             "path": "anatomy"
                         }).setEnvironment({
                             sails: sails
@@ -36,7 +36,7 @@ module.exports = {
                             },
                             "success": function(compileAnatomyDocs) {
                                 // Compile concepts docs
-                                sails.machines['_project_3549_0.0.12'].Compilemarkdowndocs({
+                                sails.machines['_project_3549_0.0.15'].Compilemarkdowndocs({
                                     "path": "concepts"
                                 }).setEnvironment({
                                     sails: sails
@@ -50,7 +50,7 @@ module.exports = {
                                     },
                                     "success": function(compileConceptsDocs) {
                                         // Compile getting started docs
-                                        sails.machines['_project_3549_0.0.12'].Compilemarkdowndocs({
+                                        sails.machines['_project_3549_0.0.15'].Compilemarkdowndocs({
                                             "path": "getting-started"
                                         }).setEnvironment({
                                             sails: sails
@@ -64,7 +64,7 @@ module.exports = {
                                             },
                                             "success": function(compileGettingStartedDocs) {
                                                 // Compile irc docs
-                                                sails.machines['_project_3549_0.0.12'].Compilemarkdowndocs({
+                                                sails.machines['_project_3549_0.0.15'].Compilemarkdowndocs({
                                                     "path": "support/irc"
                                                 }).setEnvironment({
                                                     sails: sails

@@ -1,4 +1,4 @@
-<span><a href="/documentation/<%= navItem.slug %>"><%= navItem.displayName %></a></span>
+<span><a href="/documentation/<%= data.section %>?page=<%= navItem.slug %>"><%= navItem.displayName %></a></span>
 
 <% if(navItem.children && navItem.children.length) { %>
 <ul>

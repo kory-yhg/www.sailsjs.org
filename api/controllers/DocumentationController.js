@@ -12,8 +12,7 @@ module.exports = {
                     "required": true
                 },
                 "page": {
-                    "example": "abc123",
-                    "required": true
+                    "example": "abc123"
                 }
             },
             exits: {
@@ -68,95 +67,167 @@ module.exports = {
                             },
                             "success": function(readJSONFile) {
                                 // Marshal menu metadata
-                                sails.machines['_project_3549_0.0.12'].MarshaldocPageMetadata({
+                                sails.machines['_project_3549_0.0.15'].MarshaldocPageMetadata({
                                     "docPageMetadatas": readJSONFile
                                 }).exec({
                                     "error": function(marshalMenuMetadata) {
-                                        return exits.respond({
-                                            action: "respond_with_status",
-                                            status: "501"
+                                        return exits.error({
+                                            data: marshalMenuMetadata,
+                                            status: 500
                                         });
 
                                     },
                                     "success": function(marshalMenuMetadata) {
-                                        // Find doc template to show
-                                        sails.machines['_project_3549_0.0.12'].Fniddocpagetoshow({
-                                            "docPageMetadatas": marshalMenuMetadata,
-                                            "slug": inputs.page
-                                        }).setEnvironment({
-                                            req: req,
-                                            res: res,
-                                            sails: sails
+                                        // If defined
+                                        sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifDefined({
+                                            "value": inputs.page
                                         }).exec({
-                                            "error": function(findDocTemplateToShow) {
+                                            "error": function(ifDefined) {
                                                 return exits.error({
-                                                    data: findDocTemplateToShow,
+                                                    data: ifDefined,
                                                     status: 500
                                                 });
 
                                             },
-                                            "success": function(findDocTemplateToShow) {
-                                                // Construct dictionary
-                                                sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
-                                                    "dictionary": {
-                                                        templateList: marshalMenuMetadata,
-                                                        currentTemplate: findDocTemplateToShow
-                                                    }
+                                            "otherwise": function(ifDefined) {
+                                                // If section === 'anatomy'
+                                                sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
+                                                    "a": inputs.section,
+                                                    "b": "anatomy"
                                                 }).exec({
-                                                    "error": function(constructDictionary) {
+                                                    "error": function(ifSectionAnatomy2) {
                                                         return exits.error({
-                                                            data: constructDictionary,
+                                                            data: ifSectionAnatomy2,
                                                             status: 500
                                                         });
 
                                                     },
-                                                    "success": function(constructDictionary) {
-                                                        // If equal (===)
+                                                    "otherwise": function(ifSectionAnatomy2) {
+                                                        // If section === 'reference'
                                                         sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
                                                             "a": inputs.section,
-                                                            "b": "anatomy"
+                                                            "b": "reference"
                                                         }).exec({
-                                                            "error": function(ifEqual) {
-                                                                return exits.error({
-                                                                    data: ifEqual,
-                                                                    status: "505"
+                                                            "error": function(ifSectionReference) {
+                                                                return exits.respond({
+                                                                    action: "respond_with_status",
+                                                                    status: "501"
                                                                 });
 
                                                             },
-                                                            "otherwise": function(ifEqual) {
+                                                            "otherwise": function(ifSectionReference) {
                                                                 return exits.respond({
-                                                                    data: {
-                                                                        sectionTitle: inputs.section,
-                                                                        data: constructDictionary
-                                                                    },
-                                                                    action: "display_view",
-                                                                    status: 500,
-                                                                    view: "docs/reference-or-concepts"
+                                                                    data: "/documentation/concepts?page=concepts/0home/0home.ejs",
+                                                                    action: "redirect",
+                                                                    status: 500
                                                                 });
 
                                                             },
-                                                            "success": function(ifEqual) {
+                                                            "success": function(ifSectionReference) {
                                                                 return exits.respond({
-                                                                    data: {
-                                                                        sectionTitle: "Anatomy of a Sails App",
-                                                                        data: constructDictionary
-                                                                    },
-                                                                    action: "display_view",
-                                                                    status: 200,
-                                                                    view: "docs/anatomy"
+                                                                    data: "/documentation/reference?page=reference/0home/0home.ejs",
+                                                                    action: "redirect",
+                                                                    status: 200
                                                                 });
 
                                                             }
                                                         });
 
+                                                    },
+                                                    "success": function(ifSectionAnatomy2) {
+                                                        return exits.respond({
+                                                            data: "/documentation/anatomy?page=anatomy/myapp/myapp.ejs",
+                                                            action: "redirect",
+                                                            status: 200
+                                                        });
+
                                                     }
                                                 });
 
                                             },
-                                            "notFound": function(findDocTemplateToShow) {
-                                                return exits.error({
-                                                    data: findDocTemplateToShow,
-                                                    status: 500
+                                            "success": function(ifDefined) {
+                                                // Find doc template to show
+                                                sails.machines['_project_3549_0.0.15'].Fniddocpagetoshow({
+                                                    "docPageMetadatas": marshalMenuMetadata,
+                                                    "slug": ifDefined
+                                                }).setEnvironment({
+                                                    req: req,
+                                                    res: res,
+                                                    sails: sails
+                                                }).exec({
+                                                    "error": function(findDocTemplateToShow) {
+                                                        return exits.error({
+                                                            data: findDocTemplateToShow,
+                                                            status: 500
+                                                        });
+
+                                                    },
+                                                    "success": function(findDocTemplateToShow) {
+                                                        // Construct dictionary
+                                                        sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
+                                                            "dictionary": {
+                                                                templateList: marshalMenuMetadata,
+                                                                currentTemplate: findDocTemplateToShow,
+                                                                section: inputs.section
+                                                            }
+                                                        }).exec({
+                                                            "error": function(constructDictionary) {
+                                                                return exits.error({
+                                                                    data: constructDictionary,
+                                                                    status: 500
+                                                                });
+
+                                                            },
+                                                            "success": function(constructDictionary) {
+                                                                // If section === 'anatomy'
+                                                                sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
+                                                                    "a": inputs.section,
+                                                                    "b": "anatomy"
+                                                                }).exec({
+                                                                    "error": function(ifSectionAnatomy) {
+                                                                        return exits.error({
+                                                                            data: ifSectionAnatomy,
+                                                                            status: "505"
+                                                                        });
+
+                                                                    },
+                                                                    "otherwise": function(ifSectionAnatomy) {
+                                                                        return exits.respond({
+                                                                            data: {
+                                                                                sectionTitle: inputs.section,
+                                                                                data: constructDictionary
+                                                                            },
+                                                                            action: "display_view",
+                                                                            status: 500,
+                                                                            view: "docs/reference-or-concepts"
+                                                                        });
+
+                                                                    },
+                                                                    "success": function(ifSectionAnatomy) {
+                                                                        return exits.respond({
+                                                                            data: {
+                                                                                sectionTitle: "Anatomy of a Sails App",
+                                                                                data: constructDictionary
+                                                                            },
+                                                                            action: "display_view",
+                                                                            status: 200,
+                                                                            view: "docs/anatomy"
+                                                                        });
+
+                                                                    }
+                                                                });
+
+                                                            }
+                                                        });
+
+                                                    },
+                                                    "notFound": function(findDocTemplateToShow) {
+                                                        return exits.error({
+                                                            data: findDocTemplateToShow,
+                                                            status: 500
+                                                        });
+
+                                                    }
                                                 });
 
                                             }

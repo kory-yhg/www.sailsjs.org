@@ -18,7 +18,7 @@ angular.module('SailsWebsite')
 
   // actual directive.
   return {
-    templateUrl: 'templates/directives/bubble.html',
+    template: '<span class="{{type}}" ng-class="{colors: colors === true}">{{type}}</span>',
     restrict: 'E',
     require: 'ngModel',
     scope: {
