@@ -11,9 +11,15 @@
         <br ng-if="docs.currentPage.data.stabilityIndex">
 
         <ul class="main-sections">
-          <% _.each(templateList, function(navItem) { %>
+          <% _.each(data.templateList, function(navItem) {
+            if(!navItem.isChild) { %>
+
+          <li>
             <%- partial('../partials/nav-item', {navItem: navItem}) %>
-          <% }) %>
+          </li>
+
+          <% }
+          }) %>
         </ul>
         <div class="book-banner-wrapper">
           <div class="book-banner">
@@ -29,7 +35,7 @@
     <!-- Region with the information about the selected file -->
     <div class="anatomy-content">
       <div class="anatomy-section">
-        <%- partial('../partials/doc-templates/'+currentTemplate.path) %>
+        <%- partial('../partials/doc-templates/'+data.currentTemplate.path) %>
       </div>
 
       <div class="contribution-message">

@@ -1,11 +1,15 @@
-<li>
-  <a href="/documentation/pretend/<%= navItem.slug %>"><%= navItem.displayName %> (<% _.each(navItem.children, function (childPath){ %><%= childPath %> ,<% })%>)</a>
-  <ul>
-    <% _.each(navItem.children, function (childPath){ %>
-    <li>
-      child here (<%= childPath %>)
-      <!-- TODO recursive step -->
-    </li>
-    <% }); %>
-  </ul>
-</li>
+<span><a href="/documentation/<%= navItem.slug %>"><%= navItem.displayName %></a></span>
+
+<% if(navItem.children && navItem.children.length) { %>
+<ul>
+  <% _.each(navItem.children, function (childPath){
+    var childData = _.find(data.templateList, {path: childPath});
+  %>
+
+  <li>
+  <%- partial('../partials/nav-item', {navItem: childData}) %>
+  </li>
+
+  <% }); %>
+</ul>
+<% } %>

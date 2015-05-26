@@ -7,9 +7,15 @@
     <div class="reference-sidebar">
       <h4><%= sectionTitle %></h4>
       <ul class="main-sections">
-        <% _.each(data.templateList, function(navItem) { %>
-          <%- partial('../partials/nav-item', {navItem: navItem}) %>
-        <% }) %>
+        <% _.each(data.templateList, function(navItem) {
+
+          if(!navItem.isChild) { %>
+          <li>
+            <%- partial('../partials/nav-item', {navItem: navItem}) %>
+          </li>
+          <% }
+
+          }) %>
       </ul>
       <div class="book-banner-wrapper">
         <div class="book-banner">

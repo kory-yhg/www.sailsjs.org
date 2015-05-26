@@ -1,6 +1,6 @@
 var Machine = require("machine");
 module.exports = {
-    pretend_$section: function(req, res) {
+    $section: function(req, res) {
         Machine.build({
             inputs: {
                 "section": {
@@ -39,7 +39,10 @@ module.exports = {
                                 templateTitle: "Foo-Bar.ejs",
                                 fullPathAndFileName: "creating-a-machinepack/Getting-Started.ejs",
                                 data: {},
-                                children: ["some/pat"]
+                                children: ["some/pat"],
+                                isChild: true,
+                                isParent: true,
+                                parent: "creating-a-machinepack"
                             }]
                         }).exec({
                             "error": function(readJSONFile) {
@@ -65,7 +68,7 @@ module.exports = {
                             },
                             "success": function(readJSONFile) {
                                 // Marshal menu metadata
-                                sails.machines['_project_3549_0.0.9'].MarshaldocPageMetadata({
+                                sails.machines['_project_3549_0.0.12'].MarshaldocPageMetadata({
                                     "docPageMetadatas": readJSONFile
                                 }).exec({
                                     "error": function(marshalMenuMetadata) {
@@ -77,7 +80,7 @@ module.exports = {
                                     },
                                     "success": function(marshalMenuMetadata) {
                                         // Find doc template to show
-                                        sails.machines['_project_3549_0.0.9'].Fniddocpagetoshow({
+                                        sails.machines['_project_3549_0.0.12'].Fniddocpagetoshow({
                                             "docPageMetadatas": marshalMenuMetadata,
                                             "slug": inputs.page
                                         }).setEnvironment({
@@ -173,44 +176,6 @@ module.exports = {
             error: res.negotiate
         }).exec();
     },
-    anatomy: function(req, res) {
-        Machine.build({
-            inputs: {},
-            exits: {
-                respond: {}
-            },
-            fn: function(inputs, exits) {
-                return exits.respond({
-                    action: "redirect",
-                    data: "docs/anatomy/myapp/myapp"
-                });
-            }
-        }).configure(req.params.all(), {
-            respond: res.response,
-            error: res.negotiate
-        }).exec();
-    },
-    reference: function(req, res) {
-        Machine.build({
-            inputs: {},
-            exits: {
-                respond: {}
-            },
-            fn: function(inputs, exits) {
-                return exits.respond({
-                    action: "display_view",
-                    status: 200,
-                    view: "docs/reference",
-                    data: {
-                        sectionTitle: "Reference"
-                    }
-                });
-            }
-        }).configure(req.params.all(), {
-            respond: res.response,
-            error: res.negotiate
-        }).exec();
-    },
     find: function(req, res) {
         Machine.build({
             inputs: {},
@@ -222,27 +187,6 @@ module.exports = {
                     action: "redirect",
                     status: 200,
                     data: "/documentation/concepts"
-                });
-            }
-        }).configure(req.params.all(), {
-            respond: res.response,
-            error: res.negotiate
-        }).exec();
-    },
-    concepts: function(req, res) {
-        Machine.build({
-            inputs: {},
-            exits: {
-                respond: {}
-            },
-            fn: function(inputs, exits) {
-                return exits.respond({
-                    action: "display_view",
-                    status: 200,
-                    view: "docs/concepts",
-                    data: {
-                        sectionTitle: "Concepts"
-                    }
                 });
             }
         }).configure(req.params.all(), {

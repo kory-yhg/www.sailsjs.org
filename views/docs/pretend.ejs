@@ -7,7 +7,7 @@
     <div class="reference-sidebar">
       <h4>Concepts</h4>
       <ul class="main-sections">
-        <% _.each(templateList, function(navItem) { %>
+        <% _.each(data.templateList, function(navItem) { %>
           <%- partial('../partials/nav-item', {navItem: navItem}) %>
         <% }) %>
       </ul>
@@ -24,7 +24,7 @@
     <!-- Main content -->
     <div class="right-column">
       <div class="reference-item">
-      <%- partial('../partials/doc-templates/'+currentTemplate.path) %>
+      <%- partial('../partials/doc-templates/'+data.currentTemplate.path) %>
       </div>
 
       <div class="contribution-message">

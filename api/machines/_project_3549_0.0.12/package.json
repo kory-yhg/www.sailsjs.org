@@ -10,7 +10,7 @@
     "machineVersions": {
       "Compilemarkdowndocs": "0.0.13",
       "Fniddocpagetoshow": "0.0.17",
-      "MarshaldocPageMetadata": "0.0.30"
+      "MarshaldocPageMetadata": "0.0.40"
     }
   }
 }

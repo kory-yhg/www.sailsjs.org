@@ -4,11 +4,7 @@ module.exports = {
       "id": "f09f3994-de73-4499-a1e3-b55cc3467d5b",
       "friendlyName": "Doc Page Metadatas",
       "description": "",
-      "example": [{
-        "templateTitle": "Foo-Bar.ejs",
-        "fullPathAndFileName": "creating-a-machinepack/Getting-Started.ejs",
-        "data": {}
-      }],
+      "typeclass": "array",
       "required": true,
       "addedManually": true
     }
@@ -28,7 +24,10 @@ module.exports = {
         "children": [
           "some/unique/path/like/this.ejs"
         ],
-        "id": "getting-started"
+        "id": "getting-started",
+        "parent": "creating-a-machinepack",
+        "isChild": true,
+        "isParent": false
       }]
     }
   },

@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "machinepack-arrays": "3.0.2"
+    "machinepack-arrays": "3.0.5"
   },
   "machinepack": {
     "machines": []
