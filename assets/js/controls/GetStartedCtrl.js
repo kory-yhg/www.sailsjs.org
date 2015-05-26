@@ -3,6 +3,13 @@ angular.module('SailsWebsite').controller('GetStartedCtrl', [
   function($scope) {
 
 
+    var getLeft = function(target) {
+      var left = $(target).offset().left.toString()+'px';
+      return left;
+    };
+
+    $scope.getOffsetLeft = _.throttle(getLeft, 500);
+
     $scope.intent = angular.extend($scope.intent || {}, {
 
       // For scrolling to any element
@@ -17,5 +24,8 @@ angular.module('SailsWebsite').controller('GetStartedCtrl', [
       }
 
     });
+
+    // Scroll to the to when the page loads
+    $scope.intent.scrollToElement('#the-top', 500);
   }
 ]);

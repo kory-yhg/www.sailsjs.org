@@ -22,6 +22,10 @@ angular.module('SailsWebsite').controller('HomepageCtrl', [
 
       curTweet++;
     }, 5000);
+
+    // $('html, body').animate({
+    //   scrollTop: 0
+    // }, 500);
 }
 ]);
 

@@ -34,7 +34,7 @@ function() {
 
     var $ = angular.element;
     var html = '<a href="'+link+'" class="permalink-thing">#</a>';
-    $(html).insertAfter($el);
+    $el.after(html);
   }
 
   // exports

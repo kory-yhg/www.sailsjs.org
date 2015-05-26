@@ -11,7 +11,7 @@
     background-repeat: no-repeat;
     background-position: -20px 50px;
     font-family: @mainFont;
-    padding: 100px 0 150px;
+    padding: 150px 0 150px 250px;
     position: relative;
     a.return-top {
       .borderBox();
@@ -40,9 +40,11 @@
     // left-side navigation
     .navigation {
       .borderBox();
-      margin-top: 150px;
-      float: left;
-      width: 20%;
+      padding-top: 75px;
+      width: 225px;
+      position: absolute;
+      left: 0;
+      top: 75px;
       opacity: 1;
       li {
         line-height: 2;
@@ -65,6 +67,11 @@
         margin-top: 50px;
         margin-bottom: 22px;
         .pageHeader(@turquoise);
+      }
+      &.sticky {
+        position: fixed;
+        top: 0px;
+        z-index: 95;
       }
     } // left-side navigation
 
@@ -111,9 +118,6 @@
       .borderBox();
       background-color: rgba(255,255,255,0.3);
       border-radius: 10px;
-      width: 70%;
-      float: right;
-      margin-top: 50px;
       padding: 20px 50px;
       position: relative;
     }

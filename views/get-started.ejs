@@ -1,13 +1,19 @@
-<div class="page get-started" ng-controller="GetStartedCtrl">
-
-  <div class="get-started-container" scrollng>
+<div class="page get-started" ng-controller="GetStartedCtrl" scrollng>
   <a id="the-top"></a>
+
+  <div class="get-started-container">
     <!-- Left-side navigation -->
-    <div class="navigation">
+    <div class="navigation" ng-class="{'sticky': scrollTop>75}" ng-style="{left: scrollTop > 75 ? getOffsetLeft('.get-started-container') : 0}">
       <ul>
         <li><h4>Getting Started:</h4></li>
-        <li><a ng-click="intent.scrollToElement('#what-is-sails', 500)">What is Sails?</a></li>
-        <li><a ng-click="intent.scrollToElement('#new-to-node', 500)">New To Node?</a></li>
+
+        <% _.each(sections, function(section) {
+          if(section.displayName === 'What Is Sails') {
+            section.displayName = 'What is Sails?';
+          }
+        %>
+        <li><a ng-click="intent.scrollToElement('#<%= section.id %>', 500)"><%= section.displayName %></a></li>
+        <% }) %>
         <li><h4>More:</h4></li>
         <li><a href="/documentation">Getting help</a></li>
         <li><a href="/support">More resources</a></li>
@@ -35,16 +41,12 @@
     </div> -->
 
     <div class="get-started-content documentation-style-guide" id="get-started-content">
-      <a id="get-started"></a>
-      <!-- <div ng-include src="'/templates/gettingStarted/gettingStarted.html'"></div> -->
-      <a class="return-top" ng-click="intent.scrollToElement('#the-top', 500)">back to top</a>
-      <a id="what-is-sails"></a>
-      <!-- <div ng-include src="'/templates/gettingStarted/WhatIsSails.html'"></div> -->
-      <a class="return-top" ng-click="intent.scrollToElement('#the-top', 500)">back to top</a>
-      <a id="new-to-node"></a>
-      <!-- <div ng-include src="'/templates/gettingStarted/NewToNode.html'"></div> -->
-      <a class="return-top" ng-click="intent.scrollToElement('#the-top', 500)">back to top</a>
-
+      <% _.each(sections, function(section) { %>
+      <a id="<%= section.id %>"></a>
+      <div>
+        <%- partial('partials/doc-templates/'+section.path) %>
+      </div>
+      <% }) %>
     </div>
   </div>
 </div> <!-- end of getting started page -->

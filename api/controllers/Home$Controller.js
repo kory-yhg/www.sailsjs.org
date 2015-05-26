@@ -25,9 +25,13 @@ module.exports = {
                             "owner": "balderdashy"
                         }).exec({
                             "error": function(listRepoCommits) {
-                                return exits.error({
-                                    data: listRepoCommits,
-                                    status: 500
+                                return exits.respond({
+                                    data: {
+                                        nauticalAuthor: pickSailsAuthorAkaSeaCreature
+                                    },
+                                    action: "display_view",
+                                    status: 500,
+                                    view: "homepage"
                                 });
 
                             },

@@ -23,11 +23,12 @@ module.exports = {
       "description": "Normal outcome.",
       "example": [{
         "path": "creating-a-machinepack/Getting-Started.ejs",
-        "slug": "foo-bar",
+        "slug": "creating-a-machinepack/getting-started",
         "displayName": "Foo Bar",
         "children": [
           "some/unique/path/like/this.ejs"
-        ]
+        ],
+        "id": "getting-started"
       }]
     }
   },
@@ -43,7 +44,7 @@ module.exports = {
 
       // Strip off the file extension from the filename of each doc page
       // to infer the 'slug' , and lower-case it.
-      //docPage.slug = path.basename(docPage.path, '.ejs').toLowerCase();
+      docPage.id = path.basename(docPage.path, '.ejs').toLowerCase();
 
       // Actually just make the slug a unique string id for the doc page.
       docPage.slug = docPage.path.toLowerCase();

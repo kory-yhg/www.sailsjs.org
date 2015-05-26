@@ -2,12 +2,12 @@ angular.module('SailsWebsite').controller('FeaturesCtrl', [
   '$scope',
   function($scope) {
 
-    $scope.getOffsetLeft = function(target) {
+    var getLeft = function(target) {
       var left = $(target).offset().left.toString()+'px';
-      console.log(left);
       return left;
     };
 
+    $scope.getOffsetLeft = _.throttle(getLeft, 500);
     $scope.intent = angular.extend($scope.intent || {}, {
 
       // For scrolling to any element
@@ -22,5 +22,8 @@ angular.module('SailsWebsite').controller('FeaturesCtrl', [
       }
 
     });
+
+    // Scroll to the to when the page loads
+    $scope.intent.scrollToElement('#the-top', 500);
   }
 ]);

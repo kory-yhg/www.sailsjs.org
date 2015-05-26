@@ -7,51 +7,85 @@ module.exports = {
                 respond: {}
             },
             fn: function(inputs, exits) {
-                // Compile markdown docs
-                sails.machines['_project_3549_0.0.6'].Compilemarkdowndocs({
+                // Compile reference docs
+                sails.machines['_project_3549_0.0.9'].Compilemarkdowndocs({
                     "path": "reference"
                 }).setEnvironment({
                     sails: sails
                 }).exec({
-                    "error": function(compileMarkdownDocs) {
+                    "error": function(compileReferenceDocs) {
                         return exits.error({
-                            data: compileMarkdownDocs,
+                            data: compileReferenceDocs,
                             status: 500
                         });
 
                     },
-                    "success": function(compileMarkdownDocs) {
-                        // Compile markdown docs
-                        sails.machines['_project_3549_0.0.6'].Compilemarkdowndocs({
+                    "success": function(compileReferenceDocs) {
+                        // Compile anatomy docs
+                        sails.machines['_project_3549_0.0.9'].Compilemarkdowndocs({
                             "path": "anatomy"
                         }).setEnvironment({
                             sails: sails
                         }).exec({
-                            "error": function(compileMarkdownDocs2) {
+                            "error": function(compileAnatomyDocs) {
                                 return exits.error({
-                                    data: compileMarkdownDocs2,
+                                    data: compileAnatomyDocs,
                                     status: 500
                                 });
 
                             },
-                            "success": function(compileMarkdownDocs2) {
-                                // Compile markdown docs
-                                sails.machines['_project_3549_0.0.6'].Compilemarkdowndocs({
+                            "success": function(compileAnatomyDocs) {
+                                // Compile concepts docs
+                                sails.machines['_project_3549_0.0.9'].Compilemarkdowndocs({
                                     "path": "concepts"
                                 }).setEnvironment({
                                     sails: sails
                                 }).exec({
-                                    "error": function(compileMarkdownDocs3) {
+                                    "error": function(compileConceptsDocs) {
                                         return exits.error({
-                                            data: compileMarkdownDocs3,
+                                            data: compileConceptsDocs,
                                             status: 500
                                         });
 
                                     },
-                                    "success": function(compileMarkdownDocs3) {
-                                        return exits.respond({
-                                            action: "respond_with_status",
-                                            status: 200
+                                    "success": function(compileConceptsDocs) {
+                                        // Compile getting started docs
+                                        sails.machines['_project_3549_0.0.9'].Compilemarkdowndocs({
+                                            "path": "getting-started"
+                                        }).setEnvironment({
+                                            sails: sails
+                                        }).exec({
+                                            "error": function(compileGettingStartedDocs) {
+                                                return exits.error({
+                                                    data: compileGettingStartedDocs,
+                                                    status: 500
+                                                });
+
+                                            },
+                                            "success": function(compileGettingStartedDocs) {
+                                                // Compile irc docs
+                                                sails.machines['_project_3549_0.0.9'].Compilemarkdowndocs({
+                                                    "path": "support/irc"
+                                                }).setEnvironment({
+                                                    sails: sails
+                                                }).exec({
+                                                    "error": function(compileIrcDocs) {
+                                                        return exits.error({
+                                                            data: compileIrcDocs,
+                                                            status: 500
+                                                        });
+
+                                                    },
+                                                    "success": function(compileIrcDocs) {
+                                                        return exits.respond({
+                                                            action: "respond_with_status",
+                                                            status: 200
+                                                        });
+
+                                                    }
+                                                });
+
+                                            }
                                         });
 
                                     }

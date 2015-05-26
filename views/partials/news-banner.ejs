@@ -1,7 +1,7 @@
 <div class="update-banner white-banner">
     <div class="banner-container">
 
-      <p ng-hide="options.error || loading">
+      <p>
         Latest commit by
         <% if(latestCommit.author.profileUrl) { %>
           <a target="_blank" href="<%= latestCommit.author.profileUrl %>">@<%=latestCommit.author.username %></a>

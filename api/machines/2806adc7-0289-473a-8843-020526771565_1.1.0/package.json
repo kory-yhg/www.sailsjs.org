@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "machinepack-paths": "1.1.0"
+    "machinepack-paths": "1.1.1"
   },
   "machinepack": {
     "machines": []

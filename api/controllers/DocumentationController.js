@@ -33,7 +33,7 @@ module.exports = {
                     },
                     "success": function(resolvePath) {
                         // Read JSON file
-                        sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_4.0.0'].readJson({
+                        sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].readJson({
                             "source": resolvePath,
                             "schema": [{
                                 templateTitle: "Foo-Bar.ejs",
@@ -65,7 +65,7 @@ module.exports = {
                             },
                             "success": function(readJSONFile) {
                                 // Marshal menu metadata
-                                sails.machines['_project_3549_0.0.6'].MarshaldocPageMetadata({
+                                sails.machines['_project_3549_0.0.9'].MarshaldocPageMetadata({
                                     "docPageMetadatas": readJSONFile
                                 }).exec({
                                     "error": function(marshalMenuMetadata) {
@@ -77,7 +77,7 @@ module.exports = {
                                     },
                                     "success": function(marshalMenuMetadata) {
                                         // Find doc template to show
-                                        sails.machines['_project_3549_0.0.6'].Fniddocpagetoshow({
+                                        sails.machines['_project_3549_0.0.9'].Fniddocpagetoshow({
                                             "docPageMetadatas": marshalMenuMetadata,
                                             "slug": inputs.page
                                         }).setEnvironment({

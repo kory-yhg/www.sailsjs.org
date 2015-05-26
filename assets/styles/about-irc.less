@@ -10,12 +10,48 @@
   }
 
   .irc-container {
+    .borderBox();
+    .container();
     background: url(/images/bkgd_light.png) no-repeat;
     background-size: 100%;
-    padding-top: 130px;
+    padding-top: 180px;
     background-position: -200px 56px;
+    position: relative;
+    padding-left: 225px;
+
+    // left-side navigation
+    .navigation {
+      .borderBox();
+      padding-top: 75px;
+      width: 225px;
+      position: absolute;
+      top: 105px;
+      left: 0;
+      li {
+        line-height: 28px;
+        a {
+          cursor: pointer;
+          color: @turquoise;
+          .transition(all 150ms);
+          &:hover {
+            font-weight: @semibold;
+            .transition(all 150ms);
+          }
+        }
+        h4 {
+          font-weight: @semibold;
+          padding-top: 25px;
+        }
+      }
+      &.sticky {
+        position: fixed;
+        top: 0px;
+        z-index: 95;
+      }
+    } // left-side navigation
+
+
     .irc-content {
-      .container();
       position: relative;
       >div {
         padding: 50px 0;

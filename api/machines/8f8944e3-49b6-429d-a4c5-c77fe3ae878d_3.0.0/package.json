@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "machinepack-fs": "4.0.0"
+    "machinepack-fs": "4.1.0"
   },
   "machinepack": {
     "machines": []

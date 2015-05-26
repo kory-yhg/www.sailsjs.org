@@ -1,52 +1,42 @@
-<div class="page irc-page about-irc-page">
+<div class="page irc-page about-irc-page" ng-controller="GetStartedCtrl" scrollng>
 
+  <a id="the-top"></a>
   <div class="irc-container">
-    <a name="the-top"></a>
     <!-- Left-side navigation -->
-    <!-- <div class="navigation">
+    <div class="navigation" ng-class="{'sticky': scrollTop>105}" ng-style="{left: scrollTop > 105 ? getOffsetLeft('.irc-container') : 0}">
       <ul>
-        <li><a data-ng-click="scrollTo('irc')">Sails on IRC</a></li>
-        <li><a data-ng-click="scrollTo('grab-client')">Grab a Client</a></li>
-        <li><a data-ng-click="scrollTo('config')">Configuration</a></li>
-        <li><a data-ng-click="scrollTo('sails-troll')"></a>Sails Troll</li>
+        <li><h4>About IRC</h4></li>
+        <% _.each(sections, function(section) {%>
+        <li><a ng-click="intent.scrollToElement('#<%= section.id %>', 500)"><%= section.displayName %></a></li>
+        <% }) %>
       </ul>
-    </div> -->
+    </div>
 
     <div class="documentation-style-guide irc-content">
       <img class="squid about-squid" src="/images/squidford_swimming.png"/>
-      <a name="irc"></a>
-      <!-- <div class="about-irc-section" ng-include src="'templates/irc/irc.html'"></div> -->
-      <div class="section-divider left">
+      <% _.each(sections, function(section) {
+
+      // Randomize the bubble positions on the page
+      var bubbleClass = _.sample(['left', 'right', 'middle']);
+      %>
+
+      <a id="<%= section.id %>"></a>
+      <div class="about-irc-section">
+        <%- partial('partials/doc-templates/support/'+section.path) %>
+      </div>
+      <div class="section-divider <%= bubbleClass %>">
         <img class="bubbles" src="/images/bkgd_bubbles01.png"/>
       </div>
-      <!-- <a class="return-top" data-ng-click="scrollTo('the-top')">back to top</a> -->
-      <a name="grab-client"></a>
-      <!-- <div class="about-irc-section" ng-include src="'templates/irc/grabClient.html'"></div> -->
-      <div class="section-divider right">
-        <img class="bubbles" src="/images/bkgd_bubbles01.png"/>
-      </div>
-      <!-- <a class="return-top" data-ng-click="scrollTo('the-top')">back to top</a> -->
-      <a name="config"></a>
-      <!-- <div class="about-irc-section" ng-include src="'templates/irc/configuringClient.html'"></div> -->
-      <div class="section-divider middle">
-        <img class="bubbles" src="/images/bkgd_bubbles01.png"/>
-      </div>
-      <!-- <a class="return-top" data-ng-click="scrollTo('the-top')">back to top</a> -->
-      <!-- <a name="sails-troll"></a> -->
-      <!--  <div ng-include src="'templates/irc/sailsTroll.html'"></div>
-      <a class="return-top" data-ng-click="scrollTo('the-top')">back to top</a> -->
-      <!-- <p class="back">
-        <a href="#!/support/irc">Back to IRC Page</a>
-      </p> -->
+      <% }) %>
     </div>
 
-    <div class="sails-footer-wrapper get-started-wrapper irc-wrapper" id="footer-target">
-      <div skrollr style="position:relative;" data-bottom-top="top:0px;" data-center-top="top:-60px">
-        <div class="footer-image-container">
-          <img class="sea-floor" id="target" src="/images/bkgd_seaScene.png"/>
-        </div>
-        <div ng-include src="'templates/pages/Reusable/Footer/Footer.html'"></div>
+  </div>
+  <div class="sails-footer-wrapper get-started-wrapper irc-wrapper" id="footer-target">
+    <div class="footer-container">
+      <div class="footer-image-container">
+        <img class="sea-floor" id="target" src="/images/bkgd_seaScene.png"/>
       </div>
+      <%- partial('partials/footer') %>
     </div>
   </div>
 </div>

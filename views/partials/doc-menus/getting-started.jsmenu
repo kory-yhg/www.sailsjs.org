@@ -1,0 +1,36 @@
+[
+  {
+    "templateTitle": "NewToNode.ejs",
+    "fullPathAndFileName": "getting-started/NewToNode.ejs",
+    "data": {
+      "uniqueID": "NewToNode748472",
+      "displayName": "New To Node"
+    },
+    "parent": "getting-started/getting-started.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "WhatIsSails.ejs",
+    "fullPathAndFileName": "getting-started/WhatIsSails.ejs",
+    "data": {
+      "uniqueID": "WhatIsSails126387",
+      "displayName": "What Is Sails"
+    },
+    "parent": "getting-started/getting-started.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "getting-started.ejs",
+    "fullPathAndFileName": "getting-started/getting-started.ejs",
+    "realPath": "getting-started/",
+    "data": {
+      "uniqueID": "GettingStarted99009",
+      "displayName": "Getting Started"
+    },
+    "children": [
+      "getting-started/WhatIsSails.ejs",
+      "getting-started/NewToNode.ejs"
+    ],
+    "isParent": true
+  }
+]
