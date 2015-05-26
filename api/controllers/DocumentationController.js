@@ -192,14 +192,29 @@ module.exports = {
 
                                                                     },
                                                                     "otherwise": function(ifSectionAnatomy) {
-                                                                        return exits.respond({
-                                                                            data: {
-                                                                                sectionTitle: inputs.section,
-                                                                                data: constructDictionary
+                                                                        // Capitalize a string
+                                                                        sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.0.0'].capitalize({
+                                                                            "string": inputs.section
+                                                                        }).exec({
+                                                                            "error": function(capitalizeAString) {
+                                                                                return exits.error({
+                                                                                    data: capitalizeAString,
+                                                                                    status: "505"
+                                                                                });
+
                                                                             },
-                                                                            action: "display_view",
-                                                                            status: 500,
-                                                                            view: "docs/reference-or-concepts"
+                                                                            "success": function(capitalizeAString) {
+                                                                                return exits.respond({
+                                                                                    data: {
+                                                                                        sectionTitle: capitalizeAString,
+                                                                                        data: constructDictionary
+                                                                                    },
+                                                                                    action: "display_view",
+                                                                                    status: 200,
+                                                                                    view: "docs/reference-or-concepts"
+                                                                                });
+
+                                                                            }
                                                                         });
 
                                                                     },
