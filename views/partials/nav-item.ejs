@@ -3,7 +3,7 @@
 //  • `navItems`      (an array of nav item dictionaries)
 //  • `navItem        (a nav item dictionary)
 %>
-<span><a href="/documentation/<%= data.section %>?page=<%= navItem.slug %>"><%= navItem.displayName %></a></span>
+<span><a href="/documentation/<%= data.section %>?page=<%= navItem.slug %>"><%= navItem.displayName %> <i class="current-arrow"><img src="/images/arrow_blue.png"/></i></a></span>
 
 <% if(_.isArray(navItem.children) && navItem.children.length > 0) { %>
 <ul>
@@ -13,7 +13,7 @@
     var childNavItem = _.find(navItems, {slug: childSlug});
   %>
 
-  <li ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.slug %>')}">
+  <li ng-class="{'current': getIsCurrent('<%= childNavItem.slug %>'), 'expanded': getIsExpanded('<%= childNavItem.slug %>')}">
   <% /* Take the recursive step, rendering this partial again. */ %>
   <%- partial('../partials/nav-item', {navItem: childNavItem, navItems: navItems}) %>
   </li>

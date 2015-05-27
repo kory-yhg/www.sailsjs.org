@@ -10,7 +10,7 @@
 
   .right-column {
     .borderBox();
-    width: 80%;
+    width: 78%;
     float: right;
     position: relative;
     padding-left: 50px;
@@ -26,7 +26,7 @@
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    width: 20%;
+    width: 22%;
     float: left;
     text-align: left;
     border-right: 1px solid rgba(20,172,194, 0.6);
@@ -45,19 +45,36 @@
         font-weight: @semibold;
         color: @black;
         font-size: 16px;
+      }
+      //Styles for all lis
+      li {
         span {
+          .borderBox();
           cursor: pointer;
           display: block;
           margin-bottom: 5px;
-          // padding-right: 11px;
+          position: relative;
+          padding-right: 15px;
+          >a {
+            .borderBox();
+            padding-right: 5px;
+            .current-arrow {
+              .borderBox();
+              display: none;
+              height: 13px;
+              position: absolute;
+              right: 10px;
+              top: 4px;
+              >img {
+                height: 100%;
+              }
+            }
+          }
           &:hover {
            color: @turquoise;
            .transition(all 250ms);
           }
         }
-      }
-      //Styles for all lis
-      li {
         //ULs inside of ULs
         ul {
           display: none;
@@ -69,17 +86,12 @@
             font-size: 14px;
           }
         }
-        &.current-section {
+        &.current {
           >span {
             color: @ltTurquoise;
             font-weight: @normal;
-          }
-        }
-        &.current-parent-section {
-          >span {
-            color: @ltTurquoise;
-            &:hover {
-              color: @black;
+            .current-arrow {
+              display: block;
             }
           }
         }
@@ -89,6 +101,12 @@
           }
         }
         &.expanded {
+          >span {
+            color: @ltTurquoise;
+            &:hover {
+              color: @black;
+            }
+          }
           >ul {
             display: block;
           }

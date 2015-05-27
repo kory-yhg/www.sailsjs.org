@@ -13,6 +13,7 @@ angular.module('SailsWebsite').controller('ReferenceCtrl', [
 
     $scope.expandedMenuItems = [];
 
+    // TODO: update this when we aren't using '?page='
     // Find out what page we're on:
     var currentSlug = $window.location.search.split('?page=')[1];
     currentSlug = currentSlug.replace(/%20/g, ' ');
@@ -51,13 +52,7 @@ angular.module('SailsWebsite').controller('ReferenceCtrl', [
     function expandParent(slug) {
       // Find the menu item that has the current 'slug' as a child.
       var currentParent = _.find($scope.menuData, function(menuItem) {
-        // // First lowercase the children, since the slug is lowercase
-        // var lowerCaseChildren = [];
-        // _.each(menuItem.children, function(child){
-        //   lowerCaseChildren.push(child.toLowerCase());
-        // });
-        // // If the slug is in the array, this must be the parent.
-        // return _.contains(lowerCaseChildren, slug);
+        // // If the slug is in the `children` array, this must be the parent.
         return _.contains(menuItem.children, slug);
       });
       // Add the parent's id to the array of expanded things.
@@ -71,14 +66,13 @@ angular.module('SailsWebsite').controller('ReferenceCtrl', [
 
 
 
-
-
     /*************
      * Qualifiers
      *************/
 
     $scope.getIsCurrent = function(slug) {
-      if($window.location.pathname.indexOf('?page='+slug) > -1) {
+      // TODO: update this when we aren't using '?page='
+      if($window.location.search.indexOf('?page='+slug) > -1) {
         return true;
       } else {
         return false;
@@ -88,10 +82,13 @@ angular.module('SailsWebsite').controller('ReferenceCtrl', [
 
     $scope.getIsExpanded = function(id) {
       if(_.contains($scope.expandedMenuItems, id)) {
-        return true;
-      } else {
-        return false;
+        var menuItem = _.find($scope.menuData, {id: id});
+        if(menuItem.children.length > 0) {
+          return true;
+        }
+        else return false;
       }
+      else return false;
     };
 
 
