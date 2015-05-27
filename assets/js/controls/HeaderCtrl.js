@@ -8,13 +8,20 @@ angular.module('SailsWebsite').controller('HeaderCtrl', [
     // Qualifiers
     $scope.getIsCurrentPage = function(path) {
       var current = $window.location.pathname;
-      console.log(current);
       return current === '/' + path;
     };
 
     $scope.getIsDocumentationPage = function() {
       var currentPath = $window.location.pathname;
       if(currentPath.indexOf('documentation') > 0) {
+        return true;
+      }
+      else return false;
+    };
+
+    $scope.getIsSupportPage = function() {
+      var currentPath = $window.location.pathname;
+      if(currentPath.indexOf('support') > 0) {
         return true;
       }
       else return false;

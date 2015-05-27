@@ -1,13 +1,21 @@
+<%
+// This partial has access to:
+//  • `navItems`      (an array of nav item dictionaries)
+//  • `navItem        (a nav item dictionary)
+%>
 <span><a href="/documentation/<%= data.section %>?page=<%= navItem.slug %>"><%= navItem.displayName %></a></span>
 
-<% if(navItem.children && navItem.children.length) { %>
+<% if(_.isArray(navItem.children) && navItem.children.length > 0) { %>
 <ul>
-  <% _.each(navItem.children, function (childPath){
-    var childData = _.find(data.templateList, {path: childPath});
+  <% _.each(navItem.children, function (childSlug){
+    // Here we assume that childSlug always references another menu item in `navItems` that actually exists.
+    // (this is a _fine_ assumption)
+    var childNavItem = _.find(navItems, {slug: childSlug});
   %>
 
-  <li ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.id %>')}">
-  <%- partial('../partials/nav-item', {navItem: childData}) %>
+  <li ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.slug %>')}">
+  <% /* Take the recursive step, rendering this partial again. */ %>
+  <%- partial('../partials/nav-item', {navItem: childNavItem, navItems: navItems}) %>
   </li>
 
   <% }); %>

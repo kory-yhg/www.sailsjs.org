@@ -15,7 +15,7 @@
             if(!navItem.isChild) { %>
 
           <li>
-            <%- partial('../partials/nav-item', {navItem: navItem}) %>
+            <%- partial('../partials/nav-item', {navItem: navItem, navItems: data.templateList }) %>
           </li>
 
           <% }

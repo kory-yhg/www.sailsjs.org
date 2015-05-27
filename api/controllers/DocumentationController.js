@@ -240,8 +240,9 @@ module.exports = {
 
                                                     },
                                                     "notFound": function(findDocTemplateToShow) {
-                                                        return exits.error({
-                                                            data: findDocTemplateToShow,
+                                                        return exits.respond({
+                                                            data: "/documentation/" + inputs.section,
+                                                            action: "redirect",
                                                             status: 500
                                                         });
 

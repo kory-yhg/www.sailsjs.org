@@ -17,7 +17,7 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
 
         if(!navItem.isChild) { %>
         <li ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.id %>')}">
-          <%- partial('../partials/nav-item', {navItem: navItem}) %>
+          <%- partial('../partials/nav-item', {navItem: navItem, navItems: data.templateList}) %>
         </li>
         <% }
 

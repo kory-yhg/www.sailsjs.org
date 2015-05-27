@@ -54,7 +54,7 @@
   </head>
 
   <body ng-app="SailsWebsite">
-    <div class="header">
+    <div class="header" ng-controller="HeaderCtrl">
 
       <!--Mobile menu button-->
       <div class="menu"
@@ -74,12 +74,12 @@
         <ul class="nav" ng-class="{'menu-open': menuVisible === true}" click-outside is-open="menuVisible">
           <li ng-click="menuVisible = false">
             <a class="sails-site"
-              ng-class="{current: getIsCurrentPage('/getStarted')}"
+              ng-class="{current: getIsCurrentPage('get-started')}"
               href="/get-started">Get Started</a>
           </li>
           <li ng-click="menuVisible = false">
             <a class="sails-site"
-              ng-class="{current: getIsCurrentPage('/features')}"
+              ng-class="{current: getIsCurrentPage('features')}"
               href="/features">Features</a>
           </li>
           <li ng-click="menuVisible = false">
@@ -89,7 +89,7 @@
           </li>
           <li ng-click="menuVisible = false">
             <a class="sails-site"
-              ng-class="{current: getIsCurrentPage('/support')}"
+              ng-class="{current: getIsSupportPage()}"
               href="/support">Support</a>
           </li>
         </ul>
