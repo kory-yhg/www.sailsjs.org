@@ -1,4 +1,4 @@
-angular.module('SailsWebsite').controller('ReferenceCtrl', [
+angular.module('SailsWebsite').controller('DocsCtrl', [
   '$scope',
   '$window',
   '$timeout',

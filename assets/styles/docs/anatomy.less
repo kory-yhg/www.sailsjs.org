@@ -9,6 +9,8 @@
     .clearfix();
     z-index: 2;
     position: relative;
+
+    // Nav styles
     div.navigation {
       .borderBox();
       width: 25%;
@@ -27,23 +29,35 @@
       a {
         color: inherit;
       }
-      ul.file-list {
+
+      // Menu styles
+      .nav-wrapper >ul {
         position: relative;
         z-index: 10;
+        // Base menu item styles
         li {
           font-size: 14px;
           font-weight: @normal;
           padding-left: 16px;
           line-height: 1.8em;
           position: relative;
+          span {
+            color: @black;
+            >a {
+              font-weight: inherit;
+            }
+            &:hover {
+              color: @turquoise;
+            }
+          }
           .expand-arrow {
             .transition(all 250ms);
-            display: none;
             width: 6px;
             position: absolute;
             left: 4px;
             top: 11px;
           }
+          // Styles for nav items past the first 2 levels
           >ul >li >ul {
             li {
               color: @headerGray;
@@ -52,8 +66,9 @@
               }
             }
           }
+          // 'Current' nav item
           &.current {
-            span {
+            >span {
               color: @turquoise;
               &:hover {
                 color: @black;
@@ -66,63 +81,30 @@
                 color: @brightBlue;
               }
             }
-            &.top-level {
-              span {
-                color: @black;
-                &:hover {
-                  color: @turquoise;
-                }
-              }
-              >span {
-                color: @brightBlue;
+          }
+          // 'Folder' nav item styles
+          &.folder {
+            ul {
+              display: none;
+            }
+            span {
+              cursor: pointer;
+              &:hover {
+                color: @turquoise;
               }
             }
-          }
-          &.folder {
-              &.expanded {
-                >span {
-                  font-weight: @bold;
-                }
-              }
-              >.expand-arrow {
+            &.expanded {
+              >ul {
                 display: block;
               }
-              span {
-                cursor: pointer;
-                &:hover {
-                  color: @turquoise;
-                }
-              }
-            &.current-parent-section {
               >span {
                 font-weight: @bold;
                 // color: @turquoise;
+                .expand-arrow {
+                  .rotate(90deg);
+                }
               }
             }
-            // &.current-grandparent {
-            //   >span {
-            //     font-weight: @bold;
-            //   }
-            // }
-            &.expanded {
-               >.expand-arrow {
-                .rotate(90deg);
-              }
-            }
-            // ul {
-            //  display: none;
-            //  padding: 5px 0px;
-            //  &:last-child {
-            //    padding-bottom: 0px;
-            //  }
-            // }
-            // &.expanded {
-          //    background: url('/images/img_expandedArrow@2x.png') no-repeat left 8px;
-          //    background-size: 6px;
-            //  > ul {
-            //    display: block;
-            //  }
-            // }
           }
           &.file {
             cursor: pointer;
@@ -130,25 +112,10 @@
               color: @turquoise;
             }
           }
-          &.active {
-            &.file {
-              color: @turquoise;
-            }
-            &.folder {
-            span {
-              color: @turquoise;
-                font-weight: @semibold;
-            }
-            .folder {
-              span {
-                color: @black;
-                font-weight: @normal;
-              }
-            }
-            }
-          }
         }
-      }
+      } // Menu Styles
+
+      // Book link
       .book-banner-wrapper {
         .borderBox();
         padding: 50px 40px 50px 0px;
@@ -200,8 +167,10 @@
             }
           }
         }
-      }
-    }
+      } // Book link
+    } // Menu styles
+
+    // Documentation content styles
     .anatomy-content {
       .borderBox();
       padding-top: 50px;
@@ -210,6 +179,6 @@
       .anatomy-section {
         .fadeAnimation();
       }
-    }
+    } // documentation content
   }
 }

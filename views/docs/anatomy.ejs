@@ -1,6 +1,12 @@
- <%- partial('../partials/docs-main-nav.ejs') %>
+<% /* Expose menu data to make it accessible to client-side javascript */ %>
+<script>
+window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
+</script>
 
-<div class="anatomy-page">
+
+<%- partial('../partials/docs-main-nav.ejs') %>
+
+<div class="anatomy-page" ng-controller="DocsCtrl">
   <div class="anatomy-container">
     <div class="navigation">
       <div class="nav-wrapper">
@@ -14,7 +20,7 @@
           <% _.each(data.templateList, function(navItem) {
             if(!navItem.isChild) { %>
 
-          <li>
+          <li ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.id %>'), 'folder': <%= navItem.isParent %>}">
             <%- partial('../partials/nav-item', {navItem: navItem, navItems: data.templateList }) %>
           </li>
 
@@ -25,7 +31,7 @@
           <div class="book-banner">
             <img class="meap-cover" src="/images/bookCover.png"/>
             <h3>We wrote a book!</h3>
-            <p>Get early access to half the book<br/> with promotion code: <span>mcneildoc</span></p>
+            <p>Get early access to the book<br/> with promotion code: <span>mcneildoc</span></p>
             <a class="book-link" target="_blank" href="http://www.manning.com/mcneil/">Get the Book</a>
           </div>
         </div>
