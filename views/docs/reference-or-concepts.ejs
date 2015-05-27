@@ -1,42 +1,47 @@
+<% /* Expose menu data to make it accessible to client-side javascript */ %>
+<script>
+window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
+</script>
 
-  <%- partial('../partials/docs-main-nav.ejs') %>
 
-  <div class="reference-page concepts">
+
+<%- partial('../partials/docs-main-nav.ejs') %>
+
+<div class="reference-page" ng-controller="ReferenceCtrl">
 
     <!-- Navigation -->
-    <div class="reference-sidebar">
-      <h4><%= sectionTitle %></h4>
-      <ul class="main-sections">
-        <% _.each(data.templateList, function(navItem) {
+  <div class="reference-sidebar">
+    <h4><%= sectionTitle %></h4>
+    <ul class="main-sections">
+      <% _.each(data.templateList, function(navItem) {
 
-          if(!navItem.isChild) { %>
-          <li>
-            <%- partial('../partials/nav-item', {navItem: navItem}) %>
-          </li>
-          <% }
+        if(!navItem.isChild) { %>
+        <li ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.id %>')}">
+          <%- partial('../partials/nav-item', {navItem: navItem}) %>
+        </li>
+        <% }
 
-          }) %>
-      </ul>
-      <div class="book-banner-wrapper">
-        <div class="book-banner">
-          <img class="meap-cover" src="/images/bookCover.png"/>
-          <h3>We wrote a book!</h3>
-          <p>Get early access to half the book<br/> with promotion code: <span>mcneildoc</span></p>
-          <a class="book-link" target="_blank" href="http://www.manning.com/mcneil/">Get the Book</a>
-        </div>
+        }) %>
+    </ul>
+    <div class="book-banner-wrapper">
+      <div class="book-banner">
+        <img class="meap-cover" src="/images/bookCover.png"/>
+        <h3>We wrote a book!</h3>
+        <p>Get early access to half the book<br/> with promotion code: <span>mcneildoc</span></p>
+        <a class="book-link" target="_blank" href="http://www.manning.com/mcneil/">Get the Book</a>
       </div>
     </div>
+  </div>
 
-    <!-- Main content -->
-    <div class="right-column">
-      <div class="reference-item">
-        <%- partial('../partials/doc-templates/'+ data.currentTemplate.path) %>
-      </div>
+  <!-- Main content -->
+  <div class="right-column">
+    <div class="reference-item">
+      <%- partial('../partials/doc-templates/'+ data.currentTemplate.path) %>
+    </div>
 
-      <div class="contribution-message">
-          <h2>Is something missing?</h2>
-          <p>If you notice something we've missed or could be improved on, please follow <a href="{{docs.currentPage.fileOnGithub}}" target="_blank">this link</a> and submit a pull request to the sails-docs repo.  Once we merge it, the changes will be immediately reflected on the website.</p>
-      </div>
+    <div class="contribution-message">
+        <h2>Is something missing?</h2>
+        <p>If you notice something we've missed or could be improved on, please follow <a href="{{docs.currentPage.fileOnGithub}}" target="_blank">this link</a> and submit a pull request to the sails-docs repo.  Once we merge it, the changes will be immediately reflected on the website.</p>
     </div>
   </div>
 </div>

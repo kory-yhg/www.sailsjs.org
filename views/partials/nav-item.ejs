@@ -6,7 +6,7 @@
     var childData = _.find(data.templateList, {path: childPath});
   %>
 
-  <li>
+  <li ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.id %>')}">
   <%- partial('../partials/nav-item', {navItem: childData}) %>
   </li>
 

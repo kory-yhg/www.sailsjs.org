@@ -43,10 +43,11 @@ module.exports = {
 
       // Strip off the file extension from the filename of each doc page
       // to infer the 'slug' , and lower-case it.
-      docPage.id = path.basename(docPage.path, '.ejs').toLowerCase();
+      docPage.id = docPage.data.uniqueID.toLowerCase();
 
       // Actually just make the slug a unique string id for the doc page.
       docPage.slug = docPage.path.toLowerCase();
+
 
       // Determine the display name-- either use the data bundled as <docmeta> tags, or
       // take the slug and make a reasonable guess based on some formatting conventions.

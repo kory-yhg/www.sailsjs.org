@@ -58,6 +58,17 @@
       }
       //Styles for all lis
       li {
+        //ULs inside of ULs
+        ul {
+          display: none;
+          border-left: 3px solid #ebebeb;
+          padding-left: 20px;
+          >li {
+            font-weight: @normal;
+            color: @headerGray;
+            font-size: 14px;
+          }
+        }
         &.current-section {
           >span {
             color: @ltTurquoise;
@@ -77,16 +88,9 @@
             color: @ltTurquoise;
           }
         }
-        //ULs inside of ULs
-        ul {
-          // border-right: 3px solid #ebebeb;
-          // padding-right: 20px;
-          border-left: 3px solid #ebebeb;
-          padding-left: 20px;
-          >li {
-            font-weight: @normal;
-            color: @headerGray;
-            font-size: 14px;
+        &.expanded {
+          >ul {
+            display: block;
           }
         }
       }
