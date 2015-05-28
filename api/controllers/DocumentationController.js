@@ -70,7 +70,7 @@ module.exports = {
                             },
                             "success": function(readJSONFile) {
                                 // Marshal menu metadata
-                                sails.machines['_project_3549_0.0.15'].MarshaldocPageMetadata({
+                                sails.machines['_project_3549_0.0.17'].MarshaldocPageMetadata({
                                     "docPageMetadatas": readJSONFile
                                 }).exec({
                                     "error": function(marshalMenuMetadata) {
@@ -150,7 +150,7 @@ module.exports = {
                                             },
                                             "success": function(ifDefined) {
                                                 // Find doc template to show
-                                                sails.machines['_project_3549_0.0.15'].Fniddocpagetoshow({
+                                                sails.machines['_project_3549_0.0.17'].Fniddocpagetoshow({
                                                     "docPageMetadatas": marshalMenuMetadata,
                                                     "slug": ifDefined
                                                 }).setEnvironment({
