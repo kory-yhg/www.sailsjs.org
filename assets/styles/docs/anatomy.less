@@ -44,18 +44,25 @@
           span {
             color: @black;
             >a {
+              .transition(all 250ms);
               font-weight: inherit;
-            }
-            &:hover {
-              color: @turquoise;
+              &:hover {
+                color: @turquoise;
+              }
             }
           }
           .expand-arrow {
+            .borderBox();
             .transition(all 250ms);
-            width: 6px;
+            padding: 5px;
+            width: 18px;
             position: absolute;
-            left: 4px;
-            top: 11px;
+            left: -3px;
+            top: 5px;
+            opacity: 0.7;
+            &:hover {
+              opacity: 1;
+            }
           }
           // Styles for nav items past the first 2 levels
           >ul >li >ul {
@@ -69,17 +76,14 @@
           // 'Current' nav item
           &.current {
             >span {
-              color: @turquoise;
-              &:hover {
-                color: @black;
-              }
-            }
-            >span {
               color: @brightBlue;
               font-weight: @bold;
-              &:hover {
+              a:hover {
                 color: @brightBlue;
               }
+            }
+            &.expanded {
+              font-weight: @bold;
             }
           }
           // 'Folder' nav item styles
@@ -89,7 +93,7 @@
             }
             span {
               cursor: pointer;
-              &:hover {
+              a:hover {
                 color: @turquoise;
               }
             }
@@ -98,17 +102,20 @@
                 display: block;
               }
               >span {
-                font-weight: @bold;
-                // color: @turquoise;
                 .expand-arrow {
                   .rotate(90deg);
                 }
               }
             }
+            &.current-parent {
+              >span {
+                font-weight: @bold;
+              }
+            }
           }
           &.file {
             cursor: pointer;
-            &:hover {
+            a:hover {
               color: @turquoise;
             }
           }

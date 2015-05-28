@@ -9,16 +9,25 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     * Initially...
     ***************/
 
+    // Set the exposed menu data on the $scope
     $scope.menuData = window.MENU_DATA;
 
+    // Make empty arrays of 'expanded' and 'parent' menu items --
+    // (We'll add stuff here later in order to show the
+    // 'expanded' and 'current parent' styles in the UI.)
     $scope.expandedMenuItems = [];
+    $scope.parentMenuItems = [];
 
     // TODO: update this when we aren't using '?page='
-    // Find out what page we're on:
+    // Find the slug for the page we're on:
     var currentSlug = $window.location.search.split('?page=')[1];
+    // Some slugs have spaces, which are changed to '%20' in the URL --
+    // replace any occurences of '%20' with a space,
+    // so it matches the slug in the menu data.
     currentSlug = currentSlug.replace(/%20/g, ' ');
+    // Use the slug to find the data for the page we're currently on
     var currentPage = _.find($scope.menuData, {slug: currentSlug});
-    // Then mark it as 'expanded'
+    // Then mark that menu item as 'expanded' by adding it to `$scope.expandedMenuItems`
     $scope.expandedMenuItems.push(currentPage.id);
     // If it's a child, also expand the parent.
     if(currentPage.isChild) {
@@ -57,6 +66,10 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
       });
       // Add the parent's id to the array of expanded things.
       $scope.expandedMenuItems.push(currentParent.id);
+      // And to the array of 'parentMenuItems' to set 'current-parent' styles in the UI.
+      // (Because this won't get run if someone is just expanding things;
+      // it only happens after navigating to a menu item.)
+      $scope.parentMenuItems.push(currentParent.id);
       // If this parent also has a parent, call the function again.
       if(currentParent.isChild) {
         expandParent(currentParent.id);
@@ -80,6 +93,14 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     };
 
 
+    $scope.getIsParent = function(slug) {
+      if(_.contains($scope.parentMenuItems, slug)) {
+        return true;
+      }
+      else return false;
+    };
+
+
     $scope.getIsExpanded = function(id) {
       if(_.contains($scope.expandedMenuItems, id)) {
         var menuItem = _.find($scope.menuData, {id: id});
@@ -97,6 +118,19 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     **********************************/
     $scope.intent = angular.extend($scope.intent || {}, {
 
+      toggleExpanded: function(slug) {
+        // If the slug is in the list of expanded items, remove it
+        // so that it will no longer have the 'expanded' styles in the UI
+        if(_.contains($scope.expandedMenuItems, slug)) {
+          _.remove($scope.expandedMenuItems, function(item) {
+            return item === slug;
+          });
+        }
+        // Otherwise, add it to the list so it will 'expand' in the UI.
+        else {
+          $scope.expandedMenuItems.push(slug);
+        }
+      }
 
     });
 

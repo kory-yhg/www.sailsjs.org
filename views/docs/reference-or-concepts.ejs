@@ -20,8 +20,8 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
         // linking to it in the h4 above instead)
         if(!navItem.isChild && navItem.displayName !== '--') { %>
 
-        <li ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.id %>')}">
-          <%- partial('../partials/nav-item', {navItem: navItem, navItems: data.templateList}) %>
+        <li ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'current-parent': getIsParent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.id %>')}">
+          <%- partial('../partials/nav-item', {navItem: navItem, navItems: data.templateList, section: data.section}) %>
         </li>
         <% }
 

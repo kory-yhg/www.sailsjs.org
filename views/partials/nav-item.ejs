@@ -4,19 +4,20 @@
 //  • `navItem        (a nav item dictionary)
 %>
 <span>
+  <% // Only have the 'folder' arrow in the template if this is the anatomy page
+     // and if the `navItem` has `children`.
+    if(section === 'anatomy' && (navItem.children && navItem.children.length)) { %>
+
+  <img ng-click="intent.toggleExpanded('<%= navItem.slug %>')" class="expand-arrow" src="/images/img_collapsedArrow.png"/>
+
+  <% } %>
   <a href="/documentation/<%= data.section %>?page=<%= navItem.slug %>">
-    <% // Only have the 'folder' arrow in the template if this is the anatomy page
-       // and if the `navItem` has `children`.
-      if(data.section === 'anatomy' && navItem.children && navItem.children.length) { %>
 
-    <img class="expand-arrow" src="/images/img_collapsedArrow.png"/>
-
-    <% } %>
 
     <%= navItem.displayName %>
 
     <% // Only have the 'current' arrow in the template if this isn't the anatomy page
-      if(data.section !== 'anatomy') { %>
+      if(section !== 'anatomy') { %>
 
     <i class="current-arrow"><img src="/images/arrow_blue.png"/></i>
 
@@ -32,7 +33,7 @@
     var childNavItem = _.find(navItems, {slug: childSlug});
   %>
 
-  <li ng-class="{'current': getIsCurrent('<%= childNavItem.slug %>'), 'expanded': getIsExpanded('<%= childNavItem.slug %>'), 'folder': <%= childNavItem.isParent %>}">
+  <li ng-class="{'current': getIsCurrent('<%= childNavItem.slug %>'), 'current-parent': getIsParent('<%= childNavItem.slug %>'), 'expanded': getIsExpanded('<%= childNavItem.slug %>'), 'folder': <%= childNavItem.isParent %>}">
   <% /* Take the recursive step, rendering this partial again. */ %>
   <%- partial('../partials/nav-item', {navItem: childNavItem, navItems: navItems}) %>
   </li>
