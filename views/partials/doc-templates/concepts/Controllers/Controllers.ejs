@@ -23,26 +23,6 @@
 };
 </code></pre><!-- __LANG=%%__ -->
 <p>This controller defines two actions: the &#x201C;hi&#x201D; responds to a request with a string message, while the &#x201C;bye&#x201D; action responds by redirecting to another web site.  The <code>req</code> and <code>res</code> objects will be familiar to anyone who has used <a href="https://github.com/expressjs" target="_blank">Express.js</a> to write a web application.  This is by design, as Sails uses Express under the hood to handle routing.  Take special note, however, of the lack of a <code>next</code> argument for the actions.  Unlike Express  middleware methods, Sails controller actions should always be the last stop in the request chain--that is, they should always result in either a response or an error.  While it is possible to use <code>next</code> in an action method, you are strongly encouraged to use <a href="http://sailsjs.org/#!/documentation/concepts/Policies" target="_blank">policies</a> instead wherever possible.</p>
-<h3 id="routing" permalink="routing">Routing</h3>
-<p>By default, Sails will create a <a href="http://sailsjs.org/#!/documentation/reference/blueprint-api" target="_blank">blueprint action route</a> for each action in a controller, so that a <code>GET</code> request to <code>/:controllerIdentity/:nameOfAction</code> will trigger the action.  If the example controller in the previous section was saved as <code>api/controllers/SayController.js</code>, then the <code>/say/hi</code> and <code>/say/bye</code> routes would be made available by default whenever the app was lifted.  If the controller was saved under the subfolder <code>/we</code>, then the routes would be <code>/we/say/hi</code> and <code>/we/say/bye</code>.  See the <a href="http://sailsjs.org/#!/documentation/reference/blueprint-api" target="_blank">blueprints documentation</a> for more information about Sails&#x2019; automatic route binding.</p>
-<p>Besides the default routing, Sails allows you to manually bind routes to controller actions using the <a href="http://sailsjs.org/#!/documentation/concepts/Routess" target="_blank"><code>config/routes.js</code></a> file.  Some examples of when you might want to use explicit routes are:</p>
-<ul>
-<li>When you want to use separate actions to handle the same route path, based on the <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html" target="_blank">HTTP method</a> (aka verb).  The aforementioned <strong>action blueprint</strong> routes bind <em>all</em> request methods for a path to a given action, including <code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>, etc.</li>
-<li>When you want an action to be available at a custom URL (e.g. <code>PUT /login</code>, <code>POST /signup</code>, or a &quot;vanity URL&quot; like <code>GET /:username</code>)</li>
-<li>When you want to set up additional options for how the route should be handled (e.g. special CORS configuration)</li>
-</ul>
-<p>To manually bind a route to a controller action in the <code>config/routes.js</code> file, you can use the HTTP verb and path (i.e. the <strong>route address</strong>) as the key, and the controller name + <code>.</code> + action name as the value (i.e. the <strong>route target</strong>).</p>
-<p>For example, the following manual route will cause your app to trigger the <code>makeIt()</code> action in <code>api/controllers/SandwichController.js</code> whenever it receives a POST request to <code>/make/a/sandwich</code>:</p>
-<pre><code data-language="javascript">&apos;POST /make/a/sandwich&apos;: &apos;SandwichController.makeIt&apos;
-</code></pre><!-- __LANG=%%__ -->
-<blockquote>
-<p><strong>Note:</strong></p>
-<p>For controller files saved in subfolders, the subfolder is part of the controller identity:</p>
-<pre><code data-language="javascript">&apos;/do/homework&apos;: &apos;stuff/things/HomeworkController.do&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>This will cause the <code>do()</code> action in <code>api/controllers/stuff/things/HomeworkController.js</code> to be triggered whenever <code>/do/homework</code> is requested.</p>
-</blockquote>
-<p>A full discussion of manual routing is out of the scope of this doc--please see the <a href="http://sailsjs.org/#!/documentation/concepts/Routes" target="_blank">routes documentation</a> for a full overview of the available options.</p>
 <h3 id="-thin-controllers" permalink="thin-controllers">&quot;Thin&quot; Controllers</h3>
 <p>Most MVC frameworks recommend writing &quot;thin&quot; controllers, and while Sails is no exception (it is a good idea to keep your Sails controllers as simple as possible) it is also helpful to understand &quot;why?&quot;</p>
 <p>Controller code is inherently dependent on some sort of trigger or event.  In a backend framework like Sails, this event is almost always an incoming request.  So if you write a bunch of code in one of your controller actions, it is not uncommon for that code&apos;s scope to be dependent on the &quot;request context&quot; (the <code>req</code> and <code>res</code> objects).  Which is fine...until you want to use that code from a slightly different action, or from the command line.</p>
@@ -52,60 +32,6 @@
 <li>Write a service as a function to encapsulate some code that performs a particular application-specific task</li>
 <li>If you find some code which is useful across multiple different applications (and you have time to do this), you should extract it into a node module.  Then you can share it across your organization, use it in future projects, or better yet, <a href="">publish it on npm</a> under a permissive open-source license for other developers to use and help maintain.</li>
 </ul>
-<h3 id="generating-controllers" permalink="generating-controllers">Generating controllers</h3>
-<p>You can use the <a href="http://sailsjs.org/#!/documentation/reference/cli" target="_blank">Sails command line tool</a> to quickly generate a controller, by typing:</p>
-<pre><code data-language="javascript">$ sails generate controller &lt;controller name&gt; [action names separated by spaces...]
-</code></pre><!-- __LANG=%%__ -->
-<p>For example, if you run the following command:</p>
-<pre><code data-language="javascript">$ sails generate controller comment create destroy tag like
-info: Generated a new controller `comment` at api/controllers/CommentController.js!
-</code></pre><!-- __LANG=%%__ -->
-<p>Sails will generate <code>api/controllers/CommentController.js</code>:</p>
-<pre><code data-language="javascript">/**
- * CommentController.js
- *
- * @description :: Server-side logic for managing comments.
- */
-
-module.exports = {
-
-  /**
-   * CommentController.create()
-   */
-  create: function (req, res) {
-    return res.json({
-      todo: &apos;Not implemented yet!&apos;
-    });
-  },
-
-  /**
-   * CommentController.destroy()
-   */
-  destroy: function (req, res) {
-    return res.json({
-      todo: &apos;Not implemented yet!&apos;
-    });
-  },
-
-  /**
-   * CommentController.tag()
-   */
-  tag: function (req, res) {
-    return res.json({
-      todo: &apos;Not implemented yet!&apos;
-    });
-  },
-
-  /**
-   * CommentController.like()
-   */
-  like: function (req, res) {
-    return res.json({
-      todo: &apos;Not implemented yet!&apos;
-    });
-  }
-};
-</code></pre><!-- __LANG=%%__ -->
 <p><docmeta name="uniqueID" value="Controllers464694"></docmeta></p>
 <docmeta name="displayName" value="Controllers">
 

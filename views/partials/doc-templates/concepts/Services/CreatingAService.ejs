@@ -1,0 +1,30 @@
+<h1 id="creating-a-service-">Creating a Service?</h1>
+<p>Simply save a Javascript file containing a function or object into your <strong>api/services</strong> folder.  The filename will be used as the globally-accessible variable name for the service.  For example, an email service might look something like this:</p>
+<pre><code data-language="javascript">// EmailService.js - in api/services
+module.exports = {
+
+    sendInviteEmail: function(options) {
+
+        var opts = {&quot;type&quot;:&quot;messages&quot;,&quot;call&quot;:&quot;send&quot;,&quot;message&quot;:
+            {
+                &quot;subject&quot;: &quot;YourIn!&quot;,
+                &quot;from_email&quot;: &quot;info@balderdash.co&quot;,
+                &quot;from_name&quot;: &quot;AmazingStartupApp&quot;,
+                &quot;to&quot;:[
+                    {&quot;email&quot;: options.email, &quot;name&quot;: options.name}
+                ],
+                &quot;text&quot;: &quot;Dear &quot;+options.name+&quot;,\nYou&apos;re in the Beta! Click &lt;insert link&gt; to verify your account&quot;
+            }
+        };
+
+        myEmailSendingLibrary.send(opts);
+
+    }
+};
+</code></pre><!-- __LANG=%%__ -->
+<p>You can then use <code>EmailService</code> anywhere in your app:</p>
+<pre><code data-language="javascript">// Somewhere in a controller
+  EmailService.sendInviteEmail({email: &apos;test@test.com&apos;, name: &apos;test&apos;});
+</code></pre><!-- __LANG=%%__ -->
+<docmeta name="displayName" value="Creating a Service">
+</docmeta>

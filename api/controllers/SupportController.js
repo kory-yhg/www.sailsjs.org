@@ -1,6 +1,6 @@
 var Machine = require("machine");
 module.exports = {
-    aboutirc: function(req, res) {
+    'aboutirc': function(req, res) {
         Machine.build({
             inputs: {},
             exits: {
@@ -85,7 +85,7 @@ module.exports = {
             error: res.negotiate
         }).exec();
     },
-    find: function(req, res) {
+    'find': function(req, res) {
         Machine.build({
             inputs: {},
             exits: {

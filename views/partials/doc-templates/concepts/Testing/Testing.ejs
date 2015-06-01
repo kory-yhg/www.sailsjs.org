@@ -96,13 +96,5 @@ describe(&apos;UsersController&apos;, function() {
  // More config
 </code></pre><!-- __LANG=%%__ -->
 <p>The <code>*</code> is a wildcard used to match any file inside the <code>unit</code> folder that ends in <code>.test.js</code> so if it suits you, you can perfectly modify it to search for <code>*.spec.js</code> instead. In the same way you can use wildcards for your folders by using two <code>*</code> instead of one.</p>
-<h2 id="code-coverage" permalink="code-coverage">Code coverage</h2>
-<p>Another popular method for testing your code is <a href="http://en.wikipedia.org/wiki/Code_coverage" target="_blank">Code Coverage</a>.</p>
-<p>You can use <a href="http://mochajs.org/" target="_blank">mocha</a> and <a href="https://github.com/gotwarlost/istanbul" target="_blank">istanbul</a> to check your code and prepare various coverage reports (HTML, Cobertura) which can be used in continuous integration services such as <a href="http://jenkins-ci.org" target="_blank">Jenkins</a>.</p>
-<p>To test your code and prepare a simple HTML report run the following commands:</p>
-<pre><code data-language="javascript">istanbul cover -x &quot;**/config/**&quot; _mocha -- --timeout 5000
-istanbul report html
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="Testing765149"></docmeta></p>
 <docmeta name="displayName" value="Testing">
 </docmeta>

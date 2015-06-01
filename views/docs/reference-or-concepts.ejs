@@ -16,9 +16,9 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
       <% _.each(data.templateList, function(navItem) {
 
         // Only show top-level nav items initially
-        // (And hide the table of contents item ('--') since we're
-        // linking to it in the h4 above instead)
-        if(!navItem.isChild && navItem.displayName !== '--') { %>
+        // (Except for the ones that don't have children, because those are
+        // the wierd ones that aren't really part of the docs.
+        if(!navItem.isChild &&  navItem.children && navItem.children.length) { %>
 
         <li ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'current-parent': getIsParent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.id %>')}">
           <%- partial('../partials/nav-item', {navItem: navItem, navItems: data.templateList, section: data.section}) %>

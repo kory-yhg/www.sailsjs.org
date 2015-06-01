@@ -49,6 +49,42 @@
     "isChild": true
   },
   {
+    "templateTitle": "GeneratingControllers.ejs",
+    "fullPathAndFileName": "concepts/Controllers/GeneratingControllers.ejs",
+    "data": {
+      "displayName": "Generating Controllers"
+    },
+    "parent": "concepts/Controllers/Controllers.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "RoutingToControllers.ejs",
+    "fullPathAndFileName": "concepts/Controllers/RoutingToControllers.ejs",
+    "data": {
+      "displayName": "Routing to Controllers"
+    },
+    "parent": "concepts/Controllers/Controllers.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "AddingCustomResponse.ejs",
+    "fullPathAndFileName": "concepts/Custom Responses/AddingCustomResponse.ejs",
+    "data": {
+      "displayName": "Adding a Custom Response"
+    },
+    "parent": "concepts/Custom Responses/Custom Responses.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "DefaultResponses.ejs",
+    "fullPathAndFileName": "concepts/Custom Responses/DefaultResponses.ejs",
+    "data": {
+      "displayName": "Default Responses"
+    },
+    "parent": "concepts/Custom Responses/Custom Responses.ejs",
+    "isChild": true
+  },
+  {
     "templateTitle": "FAQ.ejs",
     "fullPathAndFileName": "concepts/Deployment/FAQ.ejs",
     "data": {
@@ -97,6 +133,33 @@
     "isChild": true
   },
   {
+    "templateTitle": "DisablingGlobals.ejs",
+    "fullPathAndFileName": "concepts/Globals/DisablingGlobals.ejs",
+    "data": {
+      "displayName": "Disabling Globals"
+    },
+    "parent": "concepts/Globals/Globals.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "Locales.ejs",
+    "fullPathAndFileName": "concepts/Internationalization/Locales.ejs",
+    "data": {
+      "displayName": "Locales"
+    },
+    "parent": "concepts/Internationalization/Internationalization.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "TranslatingDynamicContent.ejs",
+    "fullPathAndFileName": "concepts/Internationalization/TranslatingDynamicContent.ejs",
+    "data": {
+      "displayName": "Translating Dynamic Content"
+    },
+    "parent": "concepts/Internationalization/Internationalization.ejs",
+    "isChild": true
+  },
+  {
     "templateTitle": "sails.log.ejs",
     "fullPathAndFileName": "concepts/Logging/sails.log.ejs",
     "data": {
@@ -104,6 +167,15 @@
       "displayName": "sails.log()"
     },
     "parent": "concepts/Logging/Logging.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "ConventionalDefaults.ejs",
+    "fullPathAndFileName": "concepts/Middleware/ConventionalDefaults.ejs",
+    "data": {
+      "displayName": "Conventional Defaults"
+    },
+    "parent": "concepts/Middleware/Middleware.ejs",
     "isChild": true
   },
   {
@@ -119,11 +191,11 @@
     "children": [
       "concepts/ORM/Associations/Dominance.ejs",
       "concepts/ORM/Associations/ManytoMany.ejs",
-      "concepts/ORM/Associations/OneWayAssociation.ejs",
-      "concepts/ORM/Associations/ThroughAssociations.ejs",
-      "concepts/ORM/Associations/joinTables.ejs",
+      "concepts/ORM/Associations/OnetoMany.ejs",
       "concepts/ORM/Associations/OnetoOne.ejs",
-      "concepts/ORM/Associations/OnetoMany.ejs"
+      "concepts/ORM/Associations/OneWayAssociation.ejs",
+      "concepts/ORM/Associations/joinTables.ejs",
+      "concepts/ORM/Associations/ThroughAssociations.ejs"
     ],
     "isParent": true
   },
@@ -257,6 +329,16 @@
     "isChild": true
   },
   {
+    "templateTitle": "SailsAndPassport.ejs",
+    "fullPathAndFileName": "concepts/Policies/SailsAndPassport.ejs",
+    "data": {
+      "uniqueID": "Policies766425",
+      "displayName": "Sails + Passport"
+    },
+    "parent": "concepts/Policies/Policies.ejs",
+    "isChild": true
+  },
+  {
     "templateTitle": "RouteTargetSyntax.ejs",
     "fullPathAndFileName": "concepts/Routes/RouteTargetSyntax.ejs",
     "data": {
@@ -368,6 +450,33 @@
     "isChild": true
   },
   {
+    "templateTitle": "CodeCoverage.ejs",
+    "fullPathAndFileName": "concepts/Testing/CodeCoverage.ejs",
+    "data": {
+      "displayName": "Code Coverage"
+    },
+    "parent": "concepts/Testing/Testing.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "To0.10.ejs",
+    "fullPathAndFileName": "concepts/Upgrading/To0.10.ejs",
+    "data": {
+      "displayName": "To v.0.10"
+    },
+    "parent": "concepts/Upgrading/Upgrading.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "To0.11.ejs",
+    "fullPathAndFileName": "concepts/Upgrading/To0.11.ejs",
+    "data": {
+      "displayName": "To v0.11"
+    },
+    "parent": "concepts/Upgrading/Upgrading.ejs",
+    "isChild": true
+  },
+  {
     "templateTitle": "Layouts.ejs",
     "fullPathAndFileName": "concepts/Views/Layouts.ejs",
     "data": {
@@ -456,8 +565,8 @@
     "parent": "concepts/extending-sails/extending-sails.ejs",
     "isChild": true,
     "children": [
-      "concepts/extending-sails/Generators/generatorList.ejs",
-      "concepts/extending-sails/Generators/customGenerators.ejs"
+      "concepts/extending-sails/Generators/customGenerators.ejs",
+      "concepts/extending-sails/Generators/generatorList.ejs"
     ],
     "isParent": true
   },
@@ -493,8 +602,8 @@
     "parent": "concepts/extending-sails/extending-sails.ejs",
     "isChild": true,
     "children": [
-      "concepts/extending-sails/Hooks/userhooks.ejs",
       "concepts/extending-sails/Hooks/usinghooks.ejs",
+      "concepts/extending-sails/Hooks/userhooks.ejs",
       "concepts/extending-sails/Hooks/installablehooks.ejs",
       "concepts/extending-sails/Hooks/hookspec/hookspec.ejs"
     ],
@@ -536,8 +645,8 @@
     "children": [
       "concepts/extending-sails/Hooks/hookspec/configure.ejs",
       "concepts/extending-sails/Hooks/hookspec/defaults.ejs",
-      "concepts/extending-sails/Hooks/hookspec/routes.ejs",
-      "concepts/extending-sails/Hooks/hookspec/initialize.ejs"
+      "concepts/extending-sails/Hooks/hookspec/initialize.ejs",
+      "concepts/extending-sails/Hooks/hookspec/routes.ejs"
     ],
     "isParent": true
   },
@@ -631,8 +740,8 @@
       "displayName": "Configuration"
     },
     "children": [
-      "concepts/Configuration/localjsfile.ejs",
-      "concepts/Configuration/usingsailsrcfiles.ejs"
+      "concepts/Configuration/usingsailsrcfiles.ejs",
+      "concepts/Configuration/localjsfile.ejs"
     ],
     "isParent": true
   },
@@ -644,7 +753,10 @@
       "uniqueID": "Controllers464694",
       "displayName": "Controllers"
     },
-    "children": [],
+    "children": [
+      "concepts/Controllers/RoutingToControllers.ejs",
+      "concepts/Controllers/GeneratingControllers.ejs"
+    ],
     "isParent": true
   },
   {
@@ -652,10 +764,12 @@
     "fullPathAndFileName": "concepts/Custom Responses/Custom Responses.ejs",
     "realPath": "concepts/Custom Responses/",
     "data": {
-      "uniqueID": "CustomResponses867259",
       "displayName": "Custom Responses"
     },
-    "children": [],
+    "children": [
+      "concepts/Custom Responses/AddingCustomResponse.ejs",
+      "concepts/Custom Responses/DefaultResponses.ejs"
+    ],
     "isParent": true
   },
   {
@@ -667,9 +781,9 @@
       "displayName": "Deployment"
     },
     "children": [
+      "concepts/Deployment/Scaling.ejs",
       "concepts/Deployment/FAQ.ejs",
-      "concepts/Deployment/Hosting.ejs",
-      "concepts/Deployment/Scaling.ejs"
+      "concepts/Deployment/Hosting.ejs"
     ],
     "isParent": true
   },
@@ -681,8 +795,8 @@
       "displayName": "File Uploads"
     },
     "children": [
-      "concepts/File Uploads/uploading-to-amazon-s3.ejs",
-      "concepts/File Uploads/uploading-to-mongo-gridfs.ejs"
+      "concepts/File Uploads/uploading-to-mongo-gridfs.ejs",
+      "concepts/File Uploads/uploading-to-amazon-s3.ejs"
     ],
     "isParent": true
   },
@@ -694,7 +808,9 @@
       "uniqueID": "Globals668238",
       "displayName": "Globals"
     },
-    "children": [],
+    "children": [
+      "concepts/Globals/DisablingGlobals.ejs"
+    ],
     "isParent": true
   },
   {
@@ -702,10 +818,12 @@
     "fullPathAndFileName": "concepts/Internationalization/Internationalization.ejs",
     "realPath": "concepts/Internationalization/",
     "data": {
-      "uniqueID": "internationalization245343",
       "displayName": "Internationalization"
     },
-    "children": [],
+    "children": [
+      "concepts/Internationalization/Locales.ejs",
+      "concepts/Internationalization/TranslatingDynamicContent.ejs"
+    ],
     "isParent": true
   },
   {
@@ -729,7 +847,9 @@
       "uniqueID": "middleware198259",
       "displayName": "Middleware"
     },
-    "children": [],
+    "children": [
+      "concepts/Middleware/ConventionalDefaults.ejs"
+    ],
     "isParent": true
   },
   {
@@ -742,11 +862,11 @@
     },
     "children": [
       "concepts/ORM/Attributes.ejs",
-      "concepts/ORM/Lifecyclecallbacks.ejs",
-      "concepts/ORM/Validations.ejs",
-      "concepts/ORM/Querylanguage.ejs",
       "concepts/ORM/model-settings.ejs",
+      "concepts/ORM/Lifecyclecallbacks.ejs",
       "concepts/ORM/Models.ejs",
+      "concepts/ORM/Querylanguage.ejs",
+      "concepts/ORM/Validations.ejs",
       "concepts/ORM/Associations/Associations.ejs"
     ],
     "isParent": true
@@ -759,7 +879,9 @@
       "uniqueID": "Policies766425",
       "displayName": "Policies"
     },
-    "children": [],
+    "children": [
+      "concepts/Policies/SailsAndPassport.ejs"
+    ],
     "isParent": true
   },
   {
@@ -786,14 +908,14 @@
     },
     "children": [
       "concepts/Security/CORS.ejs",
-      "concepts/Security/SocketHijacking.ejs",
       "concepts/Security/CSRF.ejs",
       "concepts/Security/Clickjacking.ejs",
       "concepts/Security/ContentSecurityPolicy.ejs",
       "concepts/Security/P3P.ejs",
       "concepts/Security/DDOS.ejs",
-      "concepts/Security/StrictTransportSecurity.ejs",
-      "concepts/Security/XSS.ejs"
+      "concepts/Security/SocketHijacking.ejs",
+      "concepts/Security/XSS.ejs",
+      "concepts/Security/StrictTransportSecurity.ejs"
     ],
     "isParent": true
   },
@@ -802,7 +924,6 @@
     "fullPathAndFileName": "concepts/Services/Services.ejs",
     "realPath": "concepts/Services/",
     "data": {
-      "uniqueID": "Services157331",
       "displayName": "Services"
     },
     "children": [],
@@ -813,10 +934,11 @@
     "fullPathAndFileName": "concepts/Testing/Testing.ejs",
     "realPath": "concepts/Testing/",
     "data": {
-      "uniqueID": "Testing765149",
       "displayName": "Testing"
     },
-    "children": [],
+    "children": [
+      "concepts/Testing/CodeCoverage.ejs"
+    ],
     "isParent": true
   },
   {
@@ -827,7 +949,10 @@
       "uniqueID": "Upgrading509472",
       "displayName": "Upgrading"
     },
-    "children": [],
+    "children": [
+      "concepts/Upgrading/To0.10.ejs",
+      "concepts/Upgrading/To0.11.ejs"
+    ],
     "isParent": true
   },
   {
@@ -855,8 +980,8 @@
       "displayName": "Extending Sails"
     },
     "children": [
-      "concepts/extending-sails/Generators/Generators.ejs",
       "concepts/extending-sails/Adapters/Adapters.ejs",
+      "concepts/extending-sails/Generators/Generators.ejs",
       "concepts/extending-sails/Hooks/Hooks.ejs"
     ],
     "isParent": true

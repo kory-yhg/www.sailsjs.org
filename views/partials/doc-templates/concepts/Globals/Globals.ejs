@@ -8,30 +8,6 @@
 <p>Your app&apos;s <a href="http://beta.sailsjs.org/#/documentation/reference/Models" target="_blank">models</a> and <a href="http://beta.sailsjs.org/#/documentation/reference/Services" target="_blank">services</a> are exposed as global variables using their <code>globalId</code>.  For instance, the model defined in the file <code>api/models/Foo.js</code> will be globally accessible as <code>Foo</code>, and the service defined in <code>api/services/Baz.js</code> will be available as <code>Baz</code>.</p>
 <h3 id="async-async-and-lodash-_-" permalink="async-(async)-and-lodash-()">Async (<code>async</code>) and Lodash (<code>_</code>)</h3>
 <p>Sails also exposes an instance of <a href="http://lodash.com" target="_blank">lodash</a> as <code>_</code>, and an instance of <a href="https://github.com/caolan/async" target="_blank">async</a> as <code>async</code>.  These commonly-used utilities are provided by default so that you don&apos;t have to <code>npm install</code> them in every new project.  Like any of the other globals in sails, they can be disabled.</p>
-<h3 id="disabling-globals" permalink="disabling-globals">Disabling Globals</h3>
-<p>Sails determines which globals to expose by looking at <a href="http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.globals.html" target="_blank"><code>sails.config.globals</code></a>, which is conventionallly configured in <a href="http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/globals.js.html" target="_blank"><code>config/globals.js</code></a>.</p>
-<p>To disable all global variables, just set the setting to <code>false</code>:</p>
-<pre><code data-language="javascript">// config/globals.js
-module.exports.globals = false;
-</code></pre><!-- __LANG=%%__ -->
-<p>To disable <em>some</em> global variables, specify an object instead, e.g.:</p>
-<pre><code data-language="javascript">// config/globals.js
-module.exports.globals = {
-  _: false,
-  async: false,
-  models: false,
-  services: false
-};
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
-<blockquote>
-<ul>
-<li>Bear in mind that none of the globals, including <code>sails</code>, are accessible until <em>after</em> sails has loaded.  In other words, you won&apos;t be able to use <code>sails.models.user</code> or <code>User</code> outside of a function (since <code>sails</code> will not have finished loading yet.)</li>
-</ul>
-</blockquote>
-<!-- not true anymore:
-Most of this section of the docs focuses on the methods and properties of `sails`, the singleton object representing your app.  
--->
 <p><docmeta name="uniqueID" value="Globals668238"></docmeta></p>
 <docmeta name="displayName" value="Globals">
 

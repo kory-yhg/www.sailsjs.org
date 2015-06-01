@@ -1,6 +1,6 @@
 var Machine = require("machine");
 module.exports = {
-    $section: function(req, res) {
+    '$section': function(req, res) {
         Machine.build({
             inputs: {
                 "section": {
@@ -112,9 +112,9 @@ module.exports = {
                                                             "b": "reference"
                                                         }).exec({
                                                             "error": function(ifSectionReference) {
-                                                                return exits.respond({
-                                                                    action: "respond_with_status",
-                                                                    status: "501"
+                                                                return exits.error({
+                                                                    data: ifSectionReference,
+                                                                    status: 500
                                                                 });
 
                                                             },
@@ -266,7 +266,7 @@ module.exports = {
             error: res.negotiate
         }).exec();
     },
-    find: function(req, res) {
+    'find': function(req, res) {
         Machine.build({
             inputs: {},
             exits: {

@@ -1,6 +1,6 @@
 var Machine = require("machine");
 module.exports = {
-    find: function(req, res) {
+    'find': function(req, res) {
         Machine.build({
             inputs: {},
             exits: {
@@ -9,7 +9,7 @@ module.exports = {
             fn: function(inputs, exits) {
                 // Pick "sails author" (aka sea creature)
                 sails.machines['c646f5e7-9c6f-49a5-91f6-7e1eabfd1186_3.0.2'].sample({
-                    "array": ["developer", "developers", "developers", "a giant squid", "clownfish", "starfish", "sea anemones", "merpeople", "mermen", "mermaids", "seahorses", "cuttlefish"]
+                    "array": ["developers", "developers", "developers", "a giant squid", "clownfish", "starfish", "sea anemones", "merpeople", "mermen", "mermaids", "seahorses", "cuttlefish"]
                 }).exec({
                     "error": function(pickSailsAuthorAkaSeaCreature) {
                         return exits.error({

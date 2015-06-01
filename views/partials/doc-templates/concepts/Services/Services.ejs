@@ -1,35 +1,5 @@
 <h1 id="services">Services</h1>
-<h2 id="overview" permalink="overview">Overview</h2>
 <p>Services can be thought of as libraries which contain functions that you might want to use in many places of your application.  For example, you might have an EmailService which wraps some default email message boilerplate code that you would want to use in many parts of your application. The main benefit of using services in Sails is that they are <em>globalized</em>--you don&apos;t have to use <code>require()</code> to access them.</p>
-<h2 id="how-do-i-create-a-service-" permalink="how-do-i-create-a-service">How do I create a service?</h2>
-<p>Simply save a Javascript file containing a function or object into your <strong>api/services</strong> folder.  The filename will be used as the globally-accessible variable name for the service.  For example, an email service might look something like this:</p>
-<pre><code data-language="javascript">// EmailService.js - in api/services
-module.exports = {
-
-    sendInviteEmail: function(options) {
-
-        var opts = {&quot;type&quot;:&quot;messages&quot;,&quot;call&quot;:&quot;send&quot;,&quot;message&quot;:
-            {
-                &quot;subject&quot;: &quot;YourIn!&quot;,
-                &quot;from_email&quot;: &quot;info@balderdash.co&quot;,
-                &quot;from_name&quot;: &quot;AmazingStartupApp&quot;,
-                &quot;to&quot;:[
-                    {&quot;email&quot;: options.email, &quot;name&quot;: options.name}
-                ],
-                &quot;text&quot;: &quot;Dear &quot;+options.name+&quot;,\nYou&apos;re in the Beta! Click &lt;insert link&gt; to verify your account&quot;
-            }
-        };
-
-        myEmailSendingLibrary.send(opts);
-
-    }
-};
-</code></pre><!-- __LANG=%%__ -->
-<p>You can then use <code>EmailService</code> anywhere in your app:</p>
-<pre><code data-language="javascript">// Somewhere in a controller
-  EmailService.sendInviteEmail({email: &apos;test@test.com&apos;, name: &apos;test&apos;});
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="Services157331"></docmeta></p>
 <docmeta name="displayName" value="Services">
 
 </docmeta>
