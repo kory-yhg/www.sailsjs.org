@@ -70,10 +70,11 @@ module.exports = {
       // Rename `fullPathAndFileName`
       docPage.path = docPage.fullPathAndFileName;
 
-      // TODO: remove id and use slug instead.  For now it is set up as an alias for slug.
-
-      // Actually just make the slug a unique string id for the doc page.
-      docPage.id = docPage.slug = docPage.path.toLowerCase().replace(/[^a-z0-9]/g, '-');
+      // Create the 'slug' (the path lowercased)
+      docPage.slug = docPage.path.toLowerCase()
+        // then create an id for places where slug makes things tricky,
+        // that's just the slug with dashes instead of slashes.
+      docPage.id = docPage.slug.replace(/[^a-z0-9]/g, '-');
 
       // Determine the display name-- either use the data bundled as <docmeta> tags, or
       // take the slug and make a reasonable guess based on some formatting conventions.
@@ -81,7 +82,7 @@ module.exports = {
 
       // Normalize each child in the array using the same logic we used to generate our slug
       docPage.children = _.map(docPage.children, function slugifyEachChild(child) {
-        return child.toLowerCase().replace(/[^a-z0-9]/g, '-');
+        return child.toLowerCase();
       });
 
       if (docPage.children.length) {

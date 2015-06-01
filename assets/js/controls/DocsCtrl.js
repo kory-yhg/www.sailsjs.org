@@ -28,7 +28,7 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     // Use the slug to find the data for the page we're currently on
     var currentPage = _.find($scope.menuData, {slug: currentSlug});
     // Then mark that menu item as 'expanded' by adding it to `$scope.expandedMenuItems`
-    $scope.expandedMenuItems.push(currentPage.id);
+    $scope.expandedMenuItems.push(currentPage.slug);
     // If it's a child, also expand the parent.
     if(currentPage.isChild) {
       expandParent(currentSlug);
@@ -85,7 +85,7 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
 
     $scope.getIsCurrent = function(slug) {
       // TODO: update this when we aren't using '?page='
-      if($window.location.search.indexOf('?page='+slug) > -1) {
+      if($window.location.search.replace(/%20/g, ' ').indexOf('?page='+slug) > -1) {
         return true;
       } else {
         return false;
@@ -101,9 +101,9 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     };
 
 
-    $scope.getIsExpanded = function(id) {
-      if(_.contains($scope.expandedMenuItems, id)) {
-        var menuItem = _.find($scope.menuData, {id: id});
+    $scope.getIsExpanded = function(slug) {
+      if(_.contains($scope.expandedMenuItems, slug)) {
+        var menuItem = _.find($scope.menuData, {slug: slug});
         if(menuItem.children.length > 0) {
           return true;
         }

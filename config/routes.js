@@ -1,12 +1,12 @@
 module.exports.routes = {
-  "get /": {
-    "target": "Home$Controller.find"
-  },
   "get /get-started": {
     "target": "Get-startedController.find"
   },
   "get /features": {
     "target": "FeaturesController.find"
+  },
+  "get /": {
+    "target": "Home$Controller.find"
   },
   "get /support/about-irc": {
     "target": "SupportController.aboutirc"

@@ -36,8 +36,9 @@ module.exports = {
   "defaultExit": "success",
   "fn": function(inputs, exits, env) { // Ensure requested view is one of the allowed nav items.
     var docPageToShow = _.find(inputs.docPageMetadatas, {
-      slug: inputs.slug.toLowerCase().replace(/[^a-z0-9]/g, '-')
+      slug: inputs.slug.toLowerCase().replace(/%20/g, ' ')
     });
+
 
     if (!docPageToShow) {
       return exits.notFound();

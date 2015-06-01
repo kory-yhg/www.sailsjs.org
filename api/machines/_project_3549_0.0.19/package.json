@@ -6,11 +6,12 @@
     "machinepack-fs": "*"
   },
   "machinepack": {
-    "machines": ["Compilemarkdowndocs", "Fniddocpagetoshow", "MarshaldocPageMetadata"],
+    "machines": ["Compilemarkdowndocs", "Fniddocpagetoshow", "Findparent", "MarshaldocPageMetadata"],
     "machineVersions": {
       "Compilemarkdowndocs": "0.0.13",
-      "Fniddocpagetoshow": "0.0.18",
-      "MarshaldocPageMetadata": "0.0.84"
+      "Fniddocpagetoshow": "0.0.21",
+      "Findparent": "0.0.20",
+      "MarshaldocPageMetadata": "0.0.87"
     }
   }
 }
