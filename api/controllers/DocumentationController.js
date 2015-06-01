@@ -149,119 +149,138 @@ module.exports = {
 
                                             },
                                             "success": function(ifDefined) {
-                                                // List expanded menu items
-                                                sails.machines['_project_3549_0.0.19'].Findparent({
-                                                    "menuData": marshalMenuMetadata,
+                                                // Remove permalink from slug
+                                                sails.machines['_project_3549_0.0.19'].Removepermalinkfromslug({
                                                     "slug": ifDefined
                                                 }).setEnvironment({
                                                     req: req,
                                                     res: res,
                                                     sails: sails
                                                 }).exec({
-                                                    "error": function(listExpandedMenuItems) {
+                                                    "error": function(removePermalinkFromSlug) {
                                                         return exits.error({
-                                                            data: listExpandedMenuItems,
+                                                            data: removePermalinkFromSlug,
                                                             status: 500
                                                         });
 
                                                     },
-                                                    "success": function(listExpandedMenuItems) {
-                                                        // Find doc template to show
-                                                        sails.machines['_project_3549_0.0.19'].Fniddocpagetoshow({
-                                                            "docPageMetadatas": marshalMenuMetadata,
-                                                            "slug": ifDefined
+                                                    "success": function(removePermalinkFromSlug) {
+                                                        // List expanded menu items
+                                                        sails.machines['_project_3549_0.0.19'].Findparent({
+                                                            "menuData": marshalMenuMetadata,
+                                                            "slug": removePermalinkFromSlug
                                                         }).setEnvironment({
                                                             req: req,
                                                             res: res,
                                                             sails: sails
                                                         }).exec({
-                                                            "error": function(findDocTemplateToShow) {
+                                                            "error": function(listExpandedMenuItems) {
                                                                 return exits.error({
-                                                                    data: findDocTemplateToShow,
+                                                                    data: listExpandedMenuItems,
                                                                     status: 500
                                                                 });
 
                                                             },
-                                                            "success": function(findDocTemplateToShow) {
-                                                                // Construct dictionary
-                                                                sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
-                                                                    "dictionary": {
-                                                                        templateList: marshalMenuMetadata,
-                                                                        currentTemplate: findDocTemplateToShow,
-                                                                        section: inputs.section,
-                                                                        expandedItems: listExpandedMenuItems
-                                                                    }
+                                                            "success": function(listExpandedMenuItems) {
+                                                                // Find doc template to show
+                                                                sails.machines['_project_3549_0.0.19'].Fniddocpagetoshow({
+                                                                    "docPageMetadatas": marshalMenuMetadata,
+                                                                    "slug": removePermalinkFromSlug
+                                                                }).setEnvironment({
+                                                                    req: req,
+                                                                    res: res,
+                                                                    sails: sails
                                                                 }).exec({
-                                                                    "error": function(constructDictionary) {
+                                                                    "error": function(findDocTemplateToShow) {
                                                                         return exits.error({
-                                                                            data: constructDictionary,
+                                                                            data: findDocTemplateToShow,
                                                                             status: 500
                                                                         });
 
                                                                     },
-                                                                    "success": function(constructDictionary) {
-                                                                        // If section === 'anatomy'
-                                                                        sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
-                                                                            "a": inputs.section,
-                                                                            "b": "anatomy"
+                                                                    "success": function(findDocTemplateToShow) {
+                                                                        // Construct dictionary
+                                                                        sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
+                                                                            "dictionary": {
+                                                                                templateList: marshalMenuMetadata,
+                                                                                currentTemplate: findDocTemplateToShow,
+                                                                                section: inputs.section,
+                                                                                expandedItems: listExpandedMenuItems
+                                                                            }
                                                                         }).exec({
-                                                                            "error": function(ifSectionAnatomy) {
+                                                                            "error": function(constructDictionary) {
                                                                                 return exits.error({
-                                                                                    data: ifSectionAnatomy,
-                                                                                    status: "505"
+                                                                                    data: constructDictionary,
+                                                                                    status: 500
                                                                                 });
 
                                                                             },
-                                                                            "otherwise": function(ifSectionAnatomy) {
-                                                                                // Capitalize a string
-                                                                                sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.0.0'].capitalize({
-                                                                                    "string": inputs.section
+                                                                            "success": function(constructDictionary) {
+                                                                                // If section === 'anatomy'
+                                                                                sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
+                                                                                    "a": inputs.section,
+                                                                                    "b": "anatomy"
                                                                                 }).exec({
-                                                                                    "error": function(capitalizeAString) {
+                                                                                    "error": function(ifSectionAnatomy) {
                                                                                         return exits.error({
-                                                                                            data: capitalizeAString,
+                                                                                            data: ifSectionAnatomy,
                                                                                             status: "505"
                                                                                         });
 
                                                                                     },
-                                                                                    "success": function(capitalizeAString) {
+                                                                                    "otherwise": function(ifSectionAnatomy) {
+                                                                                        // Capitalize a string
+                                                                                        sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.0.0'].capitalize({
+                                                                                            "string": inputs.section
+                                                                                        }).exec({
+                                                                                            "error": function(capitalizeAString) {
+                                                                                                return exits.error({
+                                                                                                    data: capitalizeAString,
+                                                                                                    status: "505"
+                                                                                                });
+
+                                                                                            },
+                                                                                            "success": function(capitalizeAString) {
+                                                                                                return exits.respond({
+                                                                                                    data: {
+                                                                                                        sectionTitle: capitalizeAString,
+                                                                                                        data: constructDictionary
+                                                                                                    },
+                                                                                                    action: "display_view",
+                                                                                                    status: 200,
+                                                                                                    view: "docs/reference-or-concepts"
+                                                                                                });
+
+                                                                                            }
+                                                                                        });
+
+                                                                                    },
+                                                                                    "success": function(ifSectionAnatomy) {
                                                                                         return exits.respond({
                                                                                             data: {
-                                                                                                sectionTitle: capitalizeAString,
+                                                                                                sectionTitle: "Anatomy of a Sails App",
                                                                                                 data: constructDictionary
                                                                                             },
                                                                                             action: "display_view",
                                                                                             status: 200,
-                                                                                            view: "docs/reference-or-concepts"
+                                                                                            view: "docs/anatomy"
                                                                                         });
 
                                                                                     }
                                                                                 });
 
-                                                                            },
-                                                                            "success": function(ifSectionAnatomy) {
-                                                                                return exits.respond({
-                                                                                    data: {
-                                                                                        sectionTitle: "Anatomy of a Sails App",
-                                                                                        data: constructDictionary
-                                                                                    },
-                                                                                    action: "display_view",
-                                                                                    status: 200,
-                                                                                    view: "docs/anatomy"
-                                                                                });
-
                                                                             }
                                                                         });
 
-                                                                    }
-                                                                });
+                                                                    },
+                                                                    "notFound": function(findDocTemplateToShow) {
+                                                                        return exits.respond({
+                                                                            data: "/documentation/" + inputs.section,
+                                                                            action: "redirect",
+                                                                            status: 500
+                                                                        });
 
-                                                            },
-                                                            "notFound": function(findDocTemplateToShow) {
-                                                                return exits.respond({
-                                                                    data: "/documentation/" + inputs.section,
-                                                                    action: "redirect",
-                                                                    status: 500
+                                                                    }
                                                                 });
 
                                                             }

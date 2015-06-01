@@ -18,13 +18,20 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     $scope.expandedMenuItems = [];
     $scope.parentMenuItems = [];
 
+    var permalink = $window.location.search.split('?q=')[1];
+    if(permalink) {
+      $('html, body').animate({
+        scrollTop: $('#'+permalink).offset().top - 50
+      }, 500);
+    }
     // TODO: update this when we aren't using '?page='
     // Find the slug for the page we're on:
     var currentSlug = $window.location.search.split('?page=')[1];
     // Some slugs have spaces, which are changed to '%20' in the URL --
     // replace any occurences of '%20' with a space,
     // so it matches the slug in the menu data.
-    currentSlug = currentSlug.replace(/%20/g, ' ');
+    // Also, get rid of the '?q=' from the permalinks.
+    currentSlug = currentSlug.replace(/%20/g, ' ').replace(/\?q=.+$/, '');
     // Use the slug to find the data for the page we're currently on
     var currentPage = _.find($scope.menuData, {slug: currentSlug});
     // Then mark that menu item as 'expanded' by adding it to `$scope.expandedMenuItems`

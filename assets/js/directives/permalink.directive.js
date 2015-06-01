@@ -29,11 +29,11 @@ function() {
 
     var link;
     // if hash already contains ?q= at the end, remove it before continuing
-    link = window.location.hash.replace(/\?q=.+$/, '');
+    link = window.location.search.replace(/\?q=.+$/, '');
     link += '?q='+attrs.permalink;
 
     var $ = angular.element;
-    var html = '<a href="'+link+'" class="permalink-thing">#</a>';
+    var html = '<a href="'+ link +'" class="permalink-thing" id="'+ attrs.permalink +'">#</a>';
     $el.after(html);
   }
 
