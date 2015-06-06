@@ -1,283 +1,300 @@
 var Machine = require("machine");
 module.exports = {
-    '$section': function(req, res) {
+    '*': function(req, res) {
         Machine.build({
             inputs: {
-                "section": {
+                "*": {
                     "example": "abc123",
                     "required": true
-                },
-                "section": {
-                    "example": "/usr/local/lib/node_modules",
-                    "required": true
-                },
-                "page": {
-                    "example": "abc123"
                 }
             },
             exits: {
                 respond: {}
             },
             fn: function(inputs, exits) {
-                // Resolve path
-                sails.machines['2806adc7-0289-473a-8843-020526771565_1.1.0'].resolve({
-                    "paths": ["views/partials/doc-menus/" + inputs.section + ".jsmenu"]
+                // Split using regexp
+                sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.0.0'].split({
+                    "string": inputs['*'],
+                    "regexp": "/"
                 }).exec({
-                    "error": function(resolvePath) {
+                    "error": function(splitUsingRegexp) {
                         return exits.error({
-                            data: resolvePath,
-                            status: 500
+                            data: splitUsingRegexp,
+                            status: "505"
                         });
 
                     },
-                    "success": function(resolvePath) {
-                        // Read JSON file
-                        sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].readJson({
-                            "source": resolvePath,
-                            "schema": [{
-                                templateTitle: "Foo-Bar.ejs",
-                                fullPathAndFileName: "creating-a-machinepack/Getting-Started.ejs",
-                                data: {
-                                    uniqueID: "idk1234",
-                                    displayName: "Foo Bar"
-                                },
-                                children: ["some/pat"],
-                                isChild: true,
-                                isParent: true,
-                                parent: "creating-a-machinepack"
-                            }]
+                    "invalidRegexp": function(splitUsingRegexp) {
+                        return exits.error({
+                            data: splitUsingRegexp,
+                            status: "504"
+                        });
+
+                    },
+                    "success": function(splitUsingRegexp) {
+                        // Get [n]th item
+                        sails.machines['c646f5e7-9c6f-49a5-91f6-7e1eabfd1186_3.0.2'].nth({
+                            "array": splitUsingRegexp,
+                            "index": 0
                         }).exec({
-                            "error": function(readJSONFile) {
+                            "error": function(getNThItem) {
                                 return exits.error({
-                                    data: readJSONFile,
+                                    data: getNThItem,
+                                    status: "503"
+                                });
+
+                            },
+                            "notFound": function(getNThItem) {
+                                return exits.error({
+                                    data: getNThItem,
                                     status: 500
                                 });
 
                             },
-                            "doesNotExist": function(readJSONFile) {
-                                return exits.error({
-                                    data: readJSONFile,
-                                    status: 500
-                                });
-
-                            },
-                            "couldNotParse": function(readJSONFile) {
-                                return exits.error({
-                                    data: readJSONFile,
-                                    status: 500
-                                });
-
-                            },
-                            "success": function(readJSONFile) {
-                                // Marshal menu metadata
-                                sails.machines['_project_3549_0.0.19'].MarshaldocPageMetadata({
-                                    "docPageMetadatas": readJSONFile
+                            "success": function(getNThItem) {
+                                // Resolve path
+                                sails.machines['2806adc7-0289-473a-8843-020526771565_1.1.0'].resolve({
+                                    "paths": ["views/partials/doc-menus/" + getNThItem + ".jsmenu"]
                                 }).exec({
-                                    "error": function(marshalMenuMetadata) {
+                                    "error": function(resolvePath) {
                                         return exits.error({
-                                            data: marshalMenuMetadata,
-                                            status: 500
+                                            data: resolvePath,
+                                            status: "502"
                                         });
 
                                     },
-                                    "success": function(marshalMenuMetadata) {
-                                        // If defined
-                                        sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifDefined({
-                                            "value": inputs.page
+                                    "success": function(resolvePath) {
+                                        // Read JSON file
+                                        sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].readJson({
+                                            "source": resolvePath,
+                                            "schema": [{
+                                                templateTitle: "Foo-Bar.ejs",
+                                                fullPathAndFileName: "creating-a-machinepack/Getting-Started.ejs",
+                                                data: {
+                                                    uniqueID: "idk1234",
+                                                    displayName: "Foo Bar"
+                                                },
+                                                children: ["some/pat"],
+                                                isChild: true,
+                                                isParent: true,
+                                                parent: "creating-a-machinepack"
+                                            }]
                                         }).exec({
-                                            "error": function(ifDefined) {
+                                            "error": function(readJSONFile) {
                                                 return exits.error({
-                                                    data: ifDefined,
+                                                    data: readJSONFile,
+                                                    status: "501"
+                                                });
+
+                                            },
+                                            "doesNotExist": function(readJSONFile) {
+                                                return exits.respond({
+                                                    data: "/documentation/concepts",
+                                                    action: "redirect",
                                                     status: 500
                                                 });
 
                                             },
-                                            "otherwise": function(ifDefined) {
-                                                // If section === 'anatomy'
-                                                sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
-                                                    "a": inputs.section,
-                                                    "b": "anatomy"
-                                                }).exec({
-                                                    "error": function(ifSectionAnatomy2) {
-                                                        return exits.error({
-                                                            data: ifSectionAnatomy2,
-                                                            status: 500
-                                                        });
-
-                                                    },
-                                                    "otherwise": function(ifSectionAnatomy2) {
-                                                        // If section === 'reference'
-                                                        sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
-                                                            "a": inputs.section,
-                                                            "b": "reference"
-                                                        }).exec({
-                                                            "error": function(ifSectionReference) {
-                                                                return exits.error({
-                                                                    data: ifSectionReference,
-                                                                    status: 500
-                                                                });
-
-                                                            },
-                                                            "otherwise": function(ifSectionReference) {
-                                                                return exits.respond({
-                                                                    data: "/documentation/concepts?page=concepts/0home/0home.ejs",
-                                                                    action: "redirect",
-                                                                    status: 500
-                                                                });
-
-                                                            },
-                                                            "success": function(ifSectionReference) {
-                                                                return exits.respond({
-                                                                    data: "/documentation/reference?page=reference/0home/0home.ejs",
-                                                                    action: "redirect",
-                                                                    status: 200
-                                                                });
-
-                                                            }
-                                                        });
-
-                                                    },
-                                                    "success": function(ifSectionAnatomy2) {
-                                                        return exits.respond({
-                                                            data: "http://localhost:1337/documentation/anatomy?page=anatomy/myapp/myapp.ejs",
-                                                            action: "redirect",
-                                                            status: 200
-                                                        });
-
-                                                    }
+                                            "couldNotParse": function(readJSONFile) {
+                                                return exits.error({
+                                                    data: readJSONFile,
+                                                    status: 500
                                                 });
 
                                             },
-                                            "success": function(ifDefined) {
-                                                // Remove permalink from slug
-                                                sails.machines['_project_3549_0.0.19'].Removepermalinkfromslug({
-                                                    "slug": ifDefined
-                                                }).setEnvironment({
-                                                    req: req,
-                                                    res: res,
-                                                    sails: sails
+                                            "success": function(readJSONFile) {
+                                                // Marshal menu metadata
+                                                sails.machines['_project_3549_0.0.21'].MarshaldocPageMetadata({
+                                                    "docPageMetadatas": readJSONFile
                                                 }).exec({
-                                                    "error": function(removePermalinkFromSlug) {
+                                                    "error": function(marshalMenuMetadata) {
                                                         return exits.error({
-                                                            data: removePermalinkFromSlug,
-                                                            status: 500
+                                                            data: marshalMenuMetadata,
+                                                            status: "499"
                                                         });
 
                                                     },
-                                                    "success": function(removePermalinkFromSlug) {
-                                                        // List expanded menu items
-                                                        sails.machines['_project_3549_0.0.19'].Findparent({
-                                                            "menuData": marshalMenuMetadata,
-                                                            "slug": removePermalinkFromSlug
+                                                    "success": function(marshalMenuMetadata) {
+                                                        // Remove permalink from slug
+                                                        sails.machines['_project_3549_0.0.21'].Removepermalinkfromslug({
+                                                            "slug": inputs['*']
                                                         }).setEnvironment({
                                                             req: req,
                                                             res: res,
                                                             sails: sails
                                                         }).exec({
-                                                            "error": function(listExpandedMenuItems) {
+                                                            "error": function(removePermalinkFromSlug) {
                                                                 return exits.error({
-                                                                    data: listExpandedMenuItems,
+                                                                    data: removePermalinkFromSlug,
                                                                     status: 500
                                                                 });
 
                                                             },
-                                                            "success": function(listExpandedMenuItems) {
-                                                                // Find doc template to show
-                                                                sails.machines['_project_3549_0.0.19'].Fniddocpagetoshow({
-                                                                    "docPageMetadatas": marshalMenuMetadata,
+                                                            "success": function(removePermalinkFromSlug) {
+                                                                // List expanded menu items
+                                                                sails.machines['_project_3549_0.0.21'].Findparent({
+                                                                    "menuData": marshalMenuMetadata,
                                                                     "slug": removePermalinkFromSlug
                                                                 }).setEnvironment({
                                                                     req: req,
                                                                     res: res,
                                                                     sails: sails
                                                                 }).exec({
-                                                                    "error": function(findDocTemplateToShow) {
+                                                                    "error": function(listExpandedMenuItems) {
                                                                         return exits.error({
-                                                                            data: findDocTemplateToShow,
+                                                                            data: listExpandedMenuItems,
                                                                             status: 500
                                                                         });
 
                                                                     },
-                                                                    "success": function(findDocTemplateToShow) {
-                                                                        // Construct dictionary
-                                                                        sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
-                                                                            "dictionary": {
-                                                                                templateList: marshalMenuMetadata,
-                                                                                currentTemplate: findDocTemplateToShow,
-                                                                                section: inputs.section,
-                                                                                expandedItems: listExpandedMenuItems
-                                                                            }
+                                                                    "success": function(listExpandedMenuItems) {
+                                                                        // Find doc template to show
+                                                                        sails.machines['_project_3549_0.0.21'].Fniddocpagetoshow({
+                                                                            "docPageMetadatas": marshalMenuMetadata,
+                                                                            "slug": removePermalinkFromSlug
+                                                                        }).setEnvironment({
+                                                                            req: req,
+                                                                            res: res,
+                                                                            sails: sails
                                                                         }).exec({
-                                                                            "error": function(constructDictionary) {
+                                                                            "error": function(findDocTemplateToShow) {
                                                                                 return exits.error({
-                                                                                    data: constructDictionary,
+                                                                                    data: findDocTemplateToShow,
                                                                                     status: 500
                                                                                 });
 
                                                                             },
-                                                                            "success": function(constructDictionary) {
-                                                                                // If section === 'anatomy'
-                                                                                sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
-                                                                                    "a": inputs.section,
-                                                                                    "b": "anatomy"
+                                                                            "success": function(findDocTemplateToShow) {
+                                                                                // Construct dictionary
+                                                                                sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
+                                                                                    "dictionary": {
+                                                                                        templateList: marshalMenuMetadata,
+                                                                                        currentTemplate: findDocTemplateToShow,
+                                                                                        section: getNThItem,
+                                                                                        expandedItems: listExpandedMenuItems
+                                                                                    }
                                                                                 }).exec({
-                                                                                    "error": function(ifSectionAnatomy) {
+                                                                                    "error": function(constructDictionary) {
                                                                                         return exits.error({
-                                                                                            data: ifSectionAnatomy,
-                                                                                            status: "505"
+                                                                                            data: constructDictionary,
+                                                                                            status: 500
                                                                                         });
 
                                                                                     },
-                                                                                    "otherwise": function(ifSectionAnatomy) {
-                                                                                        // Capitalize a string
-                                                                                        sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.0.0'].capitalize({
-                                                                                            "string": inputs.section
+                                                                                    "success": function(constructDictionary) {
+                                                                                        // If equal (===)
+                                                                                        sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
+                                                                                            "a": getNThItem,
+                                                                                            "b": "anatomy"
                                                                                         }).exec({
-                                                                                            "error": function(capitalizeAString) {
+                                                                                            "error": function(ifEqual) {
                                                                                                 return exits.error({
-                                                                                                    data: capitalizeAString,
-                                                                                                    status: "505"
+                                                                                                    data: ifEqual,
+                                                                                                    status: 500
                                                                                                 });
 
                                                                                             },
-                                                                                            "success": function(capitalizeAString) {
+                                                                                            "otherwise": function(ifEqual) {
+                                                                                                // Capitalize a string
+                                                                                                sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.0.0'].capitalize({
+                                                                                                    "string": getNThItem
+                                                                                                }).exec({
+                                                                                                    "error": function(capitalizeAString) {
+                                                                                                        return exits.error({
+                                                                                                            data: capitalizeAString,
+                                                                                                            status: 500
+                                                                                                        });
+
+                                                                                                    },
+                                                                                                    "success": function(capitalizeAString) {
+                                                                                                        return exits.respond({
+                                                                                                            data: {
+                                                                                                                sectionTitle: capitalizeAString,
+                                                                                                                data: constructDictionary
+                                                                                                            },
+                                                                                                            action: "display_view",
+                                                                                                            status: 200,
+                                                                                                            view: "docs/reference-or-concepts"
+                                                                                                        });
+
+                                                                                                    }
+                                                                                                });
+
+                                                                                            },
+                                                                                            "success": function(ifEqual) {
                                                                                                 return exits.respond({
                                                                                                     data: {
-                                                                                                        sectionTitle: capitalizeAString,
+                                                                                                        sectionTitle: "Anatomy of a Sails App",
                                                                                                         data: constructDictionary
                                                                                                     },
                                                                                                     action: "display_view",
                                                                                                     status: 200,
-                                                                                                    view: "docs/reference-or-concepts"
+                                                                                                    view: "docs/anatomy"
+                                                                                                });
+
+                                                                                            }
+                                                                                        });
+
+                                                                                    }
+                                                                                });
+
+                                                                            },
+                                                                            "notFound": function(findDocTemplateToShow) {
+                                                                                // If equal (===) to anatomy
+                                                                                sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
+                                                                                    "a": getNThItem,
+                                                                                    "b": "anatomy"
+                                                                                }).exec({
+                                                                                    "error": function(ifEqualToAnatomy) {
+                                                                                        return exits.error({
+                                                                                            data: ifEqualToAnatomy,
+                                                                                            status: 500
+                                                                                        });
+
+                                                                                    },
+                                                                                    "otherwise": function(ifEqualToAnatomy) {
+                                                                                        // If equal (===) to reference
+                                                                                        sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
+                                                                                            "a": getNThItem,
+                                                                                            "b": "reference"
+                                                                                        }).exec({
+                                                                                            "error": function(ifEqualToReference) {
+                                                                                                return exits.error({
+                                                                                                    data: ifEqualToReference,
+                                                                                                    status: 500
+                                                                                                });
+
+                                                                                            },
+                                                                                            "otherwise": function(ifEqualToReference) {
+                                                                                                return exits.respond({
+                                                                                                    data: "/documentation/concepts/0home/0home",
+                                                                                                    action: "redirect",
+                                                                                                    status: 500
+                                                                                                });
+
+                                                                                            },
+                                                                                            "success": function(ifEqualToReference) {
+                                                                                                return exits.respond({
+                                                                                                    data: "/documentation/reference/0home/0home",
+                                                                                                    action: "redirect",
+                                                                                                    status: 200
                                                                                                 });
 
                                                                                             }
                                                                                         });
 
                                                                                     },
-                                                                                    "success": function(ifSectionAnatomy) {
+                                                                                    "success": function(ifEqualToAnatomy) {
                                                                                         return exits.respond({
-                                                                                            data: {
-                                                                                                sectionTitle: "Anatomy of a Sails App",
-                                                                                                data: constructDictionary
-                                                                                            },
-                                                                                            action: "display_view",
-                                                                                            status: 200,
-                                                                                            view: "docs/anatomy"
+                                                                                            data: "/documentation/anatomy/myapp/myapp",
+                                                                                            action: "redirect",
+                                                                                            status: 200
                                                                                         });
 
                                                                                     }
                                                                                 });
 
                                                                             }
-                                                                        });
-
-                                                                    },
-                                                                    "notFound": function(findDocTemplateToShow) {
-                                                                        return exits.respond({
-                                                                            data: "/documentation/" + inputs.section,
-                                                                            action: "redirect",
-                                                                            status: 500
                                                                         });
 
                                                                     }
@@ -301,7 +318,9 @@ module.exports = {
                     }
                 });
             }
-        }).configure(req.params.all(), {
+        }).configure(sails.util.extend(req.params.all(), {
+            '*': req.param('0')
+        }), {
             respond: res.response,
             error: res.negotiate
         }).exec();

@@ -27,7 +27,10 @@ module.exports = {
         "id": "creating-a-machinepack/getting-started",
         "parent": "creating-a-machinepack",
         "isChild": true,
-        "isParent": false
+        "isParent": false,
+        "displayNameSlug": "foo-bar",
+        "parentDisplayName": "idk",
+        "version": "0.3.6"
       }]
     }
   },
@@ -57,7 +60,7 @@ module.exports = {
         // Now put it back the way it was.
         var sortedChildren = [];
         _.each(childrenData, function(child) {
-          sortedChildren.push(child.fullPathAndFileName)
+          sortedChildren.push(child.fullPathAndFileName.replace(/\.ejs/g, ''));
         });
         docPage.children = sortedChildren;
       }
@@ -71,14 +74,23 @@ module.exports = {
       docPage.path = docPage.fullPathAndFileName;
 
       // Create the 'slug' (the path lowercased)
-      docPage.slug = docPage.path.toLowerCase()
-        // then create an id for places where slug makes things tricky,
-        // that's just the slug with dashes instead of slashes.
+      docPage.slug = docPage.path.toLowerCase().replace(/\.ejs/g, '');
+      // then create an id for places where slug makes things tricky,
+      // that's just the slug with dashes instead of slashes.
       docPage.id = docPage.slug.replace(/[^a-z0-9]/g, '-');
 
       // Determine the display name-- either use the data bundled as <docmeta> tags, or
       // take the slug and make a reasonable guess based on some formatting conventions.
       docPage.displayName = docPage.data.displayName || _.startCase(docPage.slug); //slug.replace(/-/g, ' ');
+
+      docPage.version = docPage.data.version || '';
+
+      docPage.displayNameSlug = docPage.displayName.replace(/ /g, '-').replace(/\./g, 'point').toLowerCase();
+
+      var pathSections = docPage.path.split('/');
+      var parentPathIndex = pathSections.length - 2;
+      docPage.parentDisplayName = pathSections[parentPathIndex];
+
 
       // Normalize each child in the array using the same logic we used to generate our slug
       docPage.children = _.map(docPage.children, function slugifyEachChild(child) {

@@ -32,7 +32,7 @@
 <p>To override blueprints in Sails v0.10, you create an api/blueprints folder and add your blueprint files (e.g. find.js, create.js, etc.) within. You can take a look at the code for the default actions in the Sails blueprints hook for a head start.</p>
 <p><strong>Note:</strong> Currently all files must be lowercase! (The default actions contains findOne.js, but in /api/blueprints it needs to be findone.js)</p>
 <p>Adding custom blueprints is also supported, but they currently do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your /config/routes.js file with (for example):</p>
-<pre><code>GET /myRoute&apos;: {blueprint: &apos;foo&apos;}
+<pre><code>GET /myRoute: {blueprint: &apos;foo&apos;}
 </code></pre><h3 id="disabling-blueprints-on-a-per-controller-basis" permalink="disabling-blueprints-on-a-percontroller-basis">Disabling blueprints on a per-controller basis</h3>
 <p>You may also override any of the settings from <code>config/blueprints.js</code> on a per-controller basis by defining a &apos;_config&apos; key in your controller defintion, and assigning it a configuration object with overrides for the settings in this file.</p>
 <pre><code data-language="javascript">module.exports = {

@@ -1,0 +1,85 @@
+<h1 id="0-10-0-rc9-changelog">0.10.0-rc9 Changelog</h1>
+<ul>
+<li><p>Associations</p>
+<ul>
+<li>Adapter-level support for optimized joins (SQL databases and Mongo)</li>
+<li>Built-in support for in-memory joins.  Allows for cross-database and even cross-adapter joins! (e.g. a User in Mongo has many Messages in a MySQL database called <code>legacy_messages</code>, and also a Role in a MySQL database called <code>myapp</code>.  These can be automatically joined together using the same ORM syntax as normal.)</li>
+</ul>
+</li>
+<li><p>Better Error Handling in Waterline</p>
+</li>
+<li><p>Revamped Sails CLI</p>
+<ul>
+<li>Generators w/ support for coffeescript</li>
+<li>Support for dry runs (<code>--dry</code>) for <code>sails generate</code> and <code>sails new</code></li>
+<li>Experimental support for custom generators</li>
+</ul>
+</li>
+<li><p>API Blueprints</p>
+<ul>
+<li>Blueprints are injected into project, allowing the built-in API to be customized.</li>
+<li>Dramatic simplification of how blueprints are injected-- by implicitly including them in the routes file.</li>
+<li>Backwards compatibility for blueprints on &lt;=v0.9 apps can be achieved by plugging in a simple config to re-enable the traditional support and configurations.</li>
+<li>Blueprint routes automatically take associations into account, e.g.:<ul>
+<li><code>GET /user/2/dogs</code> -- get dogs belonging to user #2</li>
+<li><code>GET /user/2/dad</code> -- get dad belonging to user #2</li>
+<li><code>PUT /user/2/dogs</code> -- add a dog to user #2</li>
+<li><code>DELETE /user/2/dogs/2</code> -- remove dog #5 from user #2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>PubSub</p>
+<ul>
+<li>Simplified dramatically- removed concept of class rooms (most of the time, this isn&apos;t exactly what you want anyways)</li>
+<li>Blueprints still work the same way by introspecting your app&apos;s schema and taking advantage of information about assocations to create logical publish/subscribe dependencies, relying on the global channel in cases where a shared instance doesn&apos;t exist.</li>
+<li>Reduced to a handful of simple methods:<ul>
+<li><code>SomeModel.publish()</code> -- publish to model instance</li>
+<li><code>SomeModel.subscribe()</code> -- subscribe socket to model instance</li>
+<li><code>SomeModel.unsubscribe()</code> -- unsubscribe socket from model instance</li>
+<li><code>sails.publish()</code> -- publish to global channel</li>
+<li><code>sails.subscribe()</code> -- subscribe socket to global channel</li>
+<li><code>sails.unsubscribe()</code> -- unsubscribe socket to global channel</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Error Negotiation Shortcuts</p>
+<ul>
+<li>Automatically content-negotiate a response-- configurable in <code>500.js</code>, <code>404.js</code>, <code>400.js</code>, <code>403.js</code></li>
+<li><code>res.serverError( msgOrObj )</code></li>
+<li><code>res.notFound()</code></li>
+<li><code>res.forbidden( msgOrObj )</code></li>
+<li><code>res.badRequest( msgOrObj )</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="deprecated">Deprecated</h1>
+<h3 id="overview" permalink="overview">Overview</h3>
+<p>The following features are considered deprecated and should at some point be removed from the codebase</p>
+<h1 id="dynamic-finder-methods">Dynamic Finder Methods</h1>
+<ul>
+<li>.findOneBy<code>&lt;attribute&gt;</code>In()</li>
+<li>.findOneBy<code>&lt;attribute&gt;</code>Like()</li>
+<li>.findBy<code>&lt;attribute&gt;</code>In()</li>
+<li>.findBy<code>&lt;attribute&gt;</code>Like() </li>
+<li>.countBy<code>&lt;attribute&gt;</code>In()</li>
+<li>.countBy<code>&lt;attribute&gt;</code>Like()</li>
+<li>.<code>&lt;attribute&gt;</code>Contains()</li>
+</ul>
+<h1 id="crud-class-methods">CRUD Class Methods</h1>
+<ul>
+<li>.findAll()</li>
+<li>.findOneLike()</li>
+<li>.findLike()</li>
+<li>.contains()</li>
+<li>.join()</li>
+<li>.select()</li>
+<li>.findOrCreateEach()</li>
+<li>.join()</li>
+<li>.startsWith()</li>
+<li>.endsWith()</li>
+</ul>
+<p><docmeta name="displayName" value="0.10.0-rc9 Changelog"></docmeta></p>
+<docmeta name="version" value="0.10.0">
+</docmeta>

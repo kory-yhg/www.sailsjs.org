@@ -26,12 +26,13 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     }
     // TODO: update this when we aren't using '?page='
     // Find the slug for the page we're on:
-    var currentSlug = $window.location.search.split('?page=')[1];
+    var currentSlug = $window.location.pathname.replace(/\/documentation\//, '');
     // Some slugs have spaces, which are changed to '%20' in the URL --
     // replace any occurences of '%20' with a space,
     // so it matches the slug in the menu data.
     // Also, get rid of the '?q=' from the permalinks.
     currentSlug = currentSlug.replace(/%20/g, ' ').replace(/\?q=.+$/, '');
+    console.log(currentSlug);
     // Use the slug to find the data for the page we're currently on
     var currentPage = _.find($scope.menuData, {slug: currentSlug});
     // Then mark that menu item as 'expanded' by adding it to `$scope.expandedMenuItems`
@@ -72,14 +73,14 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
         return _.contains(menuItem.children, slug);
       });
       // Add the parent's id to the array of expanded things.
-      $scope.expandedMenuItems.push(currentParent.id);
+      $scope.expandedMenuItems.push(currentParent.slug);
       // And to the array of 'parentMenuItems' to set 'current-parent' styles in the UI.
       // (Because this won't get run if someone is just expanding things;
       // it only happens after navigating to a menu item.)
-      $scope.parentMenuItems.push(currentParent.id);
+      $scope.parentMenuItems.push(currentParent.slug);
       // If this parent also has a parent, call the function again.
       if(currentParent.isChild) {
-        expandParent(currentParent.id);
+        expandParent(currentParent.slug);
       }
     }
 
@@ -92,7 +93,7 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
 
     $scope.getIsCurrent = function(slug) {
       // TODO: update this when we aren't using '?page='
-      if($window.location.search.replace(/%20/g, ' ').indexOf('?page='+slug) > -1) {
+      if($window.location.pathname.replace(/\/documentation\//, '') === slug) {
         return true;
       } else {
         return false;

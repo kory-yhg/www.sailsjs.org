@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "cheerio": "0.18.0",
+    "doc-templater": "0.2.6",
+    "lodash": "*",
+    "machinepack-fs": "*",
+    "semver": "4.3.6"
+  },
+  "machinepack": {
+    "machines": ["Compilemarkdowndocs", "Fniddocpagetoshow", "Formatversionnotetitles", "Findparent", "MarshaldocPageMetadata", "Removepermalinkfromslug", "Reversesortbysemver"],
+    "machineVersions": {
+      "Compilemarkdowndocs": "0.0.13",
+      "Fniddocpagetoshow": "0.0.21",
+      "Formatversionnotetitles": "0.0.3",
+      "Findparent": "0.0.21",
+      "MarshaldocPageMetadata": "0.0.107",
+      "Removepermalinkfromslug": "0.0.4",
+      "Reversesortbysemver": "0.0.23"
+    }
+  }
+}

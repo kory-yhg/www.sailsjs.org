@@ -8,7 +8,7 @@ module.exports = {
             },
             fn: function(inputs, exits) {
                 // Compile reference docs
-                sails.machines['_project_3549_0.0.19'].Compilemarkdowndocs({
+                sails.machines['_project_3549_0.0.21'].Compilemarkdowndocs({
                     "path": "reference"
                 }).setEnvironment({
                     sails: sails
@@ -22,7 +22,7 @@ module.exports = {
                     },
                     "success": function(compileReferenceDocs) {
                         // Compile anatomy docs
-                        sails.machines['_project_3549_0.0.19'].Compilemarkdowndocs({
+                        sails.machines['_project_3549_0.0.21'].Compilemarkdowndocs({
                             "path": "anatomy"
                         }).setEnvironment({
                             sails: sails
@@ -36,7 +36,7 @@ module.exports = {
                             },
                             "success": function(compileAnatomyDocs) {
                                 // Compile concepts docs
-                                sails.machines['_project_3549_0.0.19'].Compilemarkdowndocs({
+                                sails.machines['_project_3549_0.0.21'].Compilemarkdowndocs({
                                     "path": "concepts"
                                 }).setEnvironment({
                                     sails: sails
@@ -50,7 +50,7 @@ module.exports = {
                                     },
                                     "success": function(compileConceptsDocs) {
                                         // Compile getting started docs
-                                        sails.machines['_project_3549_0.0.19'].Compilemarkdowndocs({
+                                        sails.machines['_project_3549_0.0.21'].Compilemarkdowndocs({
                                             "path": "getting-started"
                                         }).setEnvironment({
                                             sails: sails
@@ -64,7 +64,7 @@ module.exports = {
                                             },
                                             "success": function(compileGettingStartedDocs) {
                                                 // Compile irc docs
-                                                sails.machines['_project_3549_0.0.19'].Compilemarkdowndocs({
+                                                sails.machines['_project_3549_0.0.21'].Compilemarkdowndocs({
                                                     "path": "support/irc"
                                                 }).setEnvironment({
                                                     sails: sails
@@ -77,9 +77,26 @@ module.exports = {
 
                                                     },
                                                     "success": function(compileIrcDocs) {
-                                                        return exits.respond({
-                                                            action: "respond_with_status",
-                                                            status: 200
+                                                        // Compile version notes
+                                                        sails.machines['_project_3549_0.0.21'].Compilemarkdowndocs({
+                                                            "path": "version-notes"
+                                                        }).setEnvironment({
+                                                            sails: sails
+                                                        }).exec({
+                                                            "error": function(compileVersionNotes) {
+                                                                return exits.error({
+                                                                    data: compileVersionNotes,
+                                                                    status: 500
+                                                                });
+
+                                                            },
+                                                            "success": function(compileVersionNotes) {
+                                                                return exits.respond({
+                                                                    action: "respond_with_status",
+                                                                    status: 200
+                                                                });
+
+                                                            }
                                                         });
 
                                                     }

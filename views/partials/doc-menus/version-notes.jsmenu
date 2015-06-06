@@ -1,0 +1,171 @@
+[
+  {
+    "templateTitle": "Changelog0.10.0-rc9.ejs",
+    "fullPathAndFileName": "version-notes/0.10.x/Changelog0.10.0-rc9.ejs",
+    "data": {
+      "displayName": "0.10.0-rc9 Changelog",
+      "version": "0.10.0"
+    },
+    "parent": "version-notes/0.10.x/0.10.x.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "Changelog0.10x.ejs",
+    "fullPathAndFileName": "version-notes/0.10.x/Changelog0.10x.ejs",
+    "data": {
+      "displayName": "0.10.0 Migration Guide",
+      "version": "0.10.0"
+    },
+    "parent": "version-notes/0.10.x/0.10.x.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "MigrationGuide0.11.ejs",
+    "fullPathAndFileName": "version-notes/0.11.x/MigrationGuide0.11.ejs",
+    "data": {
+      "displayName": "0.10 to 0.11 Migration Guide",
+      "version": "0.11.0"
+    },
+    "parent": "version-notes/0.11.x/0.11.x.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "Changelog0.8.7x.ejs",
+    "fullPathAndFileName": "version-notes/0.8.x/Changelog0.8.7x.ejs",
+    "data": {
+      "displayName": "0.8.7x Changelog",
+      "version": "0.8.7"
+    },
+    "parent": "version-notes/0.8.x/0.8.x.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "Changelog0.8.8x.ejs",
+    "fullPathAndFileName": "version-notes/0.8.x/Changelog0.8.8x.ejs",
+    "data": {
+      "displayName": "0.8.8x Changelog",
+      "version": "0.8.8"
+    },
+    "parent": "version-notes/0.8.x/0.8.x.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "Changelog0.8.9.ejs",
+    "fullPathAndFileName": "version-notes/0.8.x/Changelog0.8.9.ejs",
+    "data": {
+      "displayName": "0.8.9 Changelog",
+      "version": "0.8.9"
+    },
+    "parent": "version-notes/0.8.x/0.8.x.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "ChangelogPre-0.8.77.ejs",
+    "fullPathAndFileName": "version-notes/0.8.x/ChangelogPre-0.8.77.ejs",
+    "data": {
+      "displayName": "Pre-0.8.77 Changelog",
+      "version": "0.8.0"
+    },
+    "parent": "version-notes/0.8.x/0.8.x.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "Changelog0.9.0.ejs",
+    "fullPathAndFileName": "version-notes/0.9.x/Changelog0.9.0.ejs",
+    "data": {
+      "displayName": "0.9.0 Changelog",
+      "version": "0.9.0"
+    },
+    "parent": "version-notes/0.9.x/0.9.x.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "Changelog0.9.16.ejs",
+    "fullPathAndFileName": "version-notes/0.9.x/Changelog0.9.16.ejs",
+    "data": {
+      "displayName": "0.9.16 Changelog",
+      "version": "0.9.16"
+    },
+    "parent": "version-notes/0.9.x/0.9.x.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "Changelog0.9.4.ejs",
+    "fullPathAndFileName": "version-notes/0.9.x/Changelog0.9.4.ejs",
+    "data": {
+      "displayName": "0.9.4 Changelog",
+      "version": "0.9.4"
+    },
+    "parent": "version-notes/0.9.x/0.9.x.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "Changelog0.9.7.ejs",
+    "fullPathAndFileName": "version-notes/0.9.x/Changelog0.9.7.ejs",
+    "data": {
+      "displayName": "0.9.7 Changelog",
+      "version": "0.9.7"
+    },
+    "parent": "version-notes/0.9.x/0.9.x.ejs",
+    "isChild": true
+  },
+  {
+    "templateTitle": "0.10.x.ejs",
+    "fullPathAndFileName": "version-notes/0.10.x/0.10.x.ejs",
+    "realPath": "version-notes/0.10.x/",
+    "data": {
+      "displayName": "0.10.x",
+      "version": "0.10.0"
+    },
+    "children": [
+      "version-notes/0.10.x/Changelog0.10.0-rc9.ejs",
+      "version-notes/0.10.x/Changelog0.10x.ejs"
+    ],
+    "isParent": true
+  },
+  {
+    "templateTitle": "0.11.x.ejs",
+    "fullPathAndFileName": "version-notes/0.11.x/0.11.x.ejs",
+    "realPath": "version-notes/0.11.x/",
+    "data": {
+      "displayName": "0.11.x",
+      "version": "0.11.0"
+    },
+    "children": [
+      "version-notes/0.11.x/MigrationGuide0.11.ejs"
+    ],
+    "isParent": true
+  },
+  {
+    "templateTitle": "0.8.x.ejs",
+    "fullPathAndFileName": "version-notes/0.8.x/0.8.x.ejs",
+    "realPath": "version-notes/0.8.x/",
+    "data": {
+      "displayName": "0.8.x",
+      "version": "0.8.0"
+    },
+    "children": [
+      "version-notes/0.8.x/Changelog0.8.9.ejs",
+      "version-notes/0.8.x/Changelog0.8.7x.ejs",
+      "version-notes/0.8.x/Changelog0.8.8x.ejs",
+      "version-notes/0.8.x/ChangelogPre-0.8.77.ejs"
+    ],
+    "isParent": true
+  },
+  {
+    "templateTitle": "0.9.x.ejs",
+    "fullPathAndFileName": "version-notes/0.9.x/0.9.x.ejs",
+    "realPath": "version-notes/0.9.x/",
+    "data": {
+      "displayName": "0.9.x",
+      "version": "0.9.0"
+    },
+    "children": [
+      "version-notes/0.9.x/Changelog0.9.16.ejs",
+      "version-notes/0.9.x/Changelog0.9.4.ejs",
+      "version-notes/0.9.x/Changelog0.9.7.ejs",
+      "version-notes/0.9.x/Changelog0.9.0.ejs"
+    ],
+    "isParent": true
+  }
+]

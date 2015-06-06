@@ -1,0 +1,81 @@
+<h1 id="changelog-0-8-8x">Changelog 0.8.8x</h1>
+<h3 id="0-8-80" permalink="0880">0.8.80</h3>
+<ul>
+<li>Refactored app layout to make it a bit more straightforward. To check out the the new folder structure, make a new project with <code>sails new foo</code></li>
+<li>Added robot.txt in new app generation</li>
+<li>Bound all methods in adapter to have the right context.</li>
+</ul>
+<h3 id="0-8-82" permalink="0882">0.8.82</h3>
+<p><em>Sunday, February 24, 2013</em></p>
+<ul>
+<li>Bootstrap function fires warning if callback not triggered after a few seconds (thanks <a href="https://github.com/virpool" target="_blank">@virpool</a>)</li>
+<li>Bug fixes w/ pubsub/model convenience methods.</li>
+</ul>
+<h3 id="0-8-83" permalink="0883">0.8.83</h3>
+<p><em>Saturday, March 2, 2013</em></p>
+<ul>
+<li>Support for streaming large datasets from models <code>(e.g. User.stream().pipe(res);)</code></li>
+<li>Bug fix for chains of multiple policies (thanks <a href="https://github.com/themouette" target="_blank">@themouette</a>)</li>
+<li>Jade template support (thanks <a href="https://github.com/valinorsgatekeeper" target="_blank">@valinorsgatekeeper</a></li>
+<li>AssetRack integration for more robust css/js/template/LESS management, replaces Rigging (thanks <a href="https://github.com/techpines" target="_blank">@techpines</a>)</li>
+<li>Fixed some docs /refactored (thanks @slantzjr)</li>
+<li>Bundled excruciatingly simple &quot;authenticated&quot; policy in new projects</li>
+<li>Made &quot;redirect&quot; work in API scaffolds</li>
+<li>Renamed waterline-<em> adapter modules as sails-</em>. Added backwards compat.</li>
+<li>Added .gitkeep in all directories when generating new projects to make sure they get committed</li>
+<li>Bootstrap and log config now available in project template</li>
+<li>View config now available in new projects as &apos;config/views.js&apos;</li>
+<li>Better error checking in the <code>sails</code> CLI</li>
+<li>Docs</li>
+<li>Added app.js file back in, but this time hidden as &apos;.app.js&apos;. It can be run however you like, or you can use npm debug to debug it. To run daemonized, you can use <code>forever start .app.js</code></li>
+<li>Added notion of <code>sails.explicitHost</code> to track whether a host was explicitly specified. If it was not, Express takes the approach of accepting <code>all connections via INADDR_ANY</code> (see <a href="http://expressjs.com/2x/guide.html#app.listen(" target="_blank">http://expressjs.com/2x/guide.html#app.listen()</a>)) Now, if you specify <code>sails.config.host</code>, <code>sails.explicitHost</code> gets set, and Express will start the server deliberately using the host you specify. In certain PaaS deployments, this is required. For instance, this was causing problems in an Openshift deployment environment (big thanks to @hypereive for figuring that out).</li>
+</ul>
+<h3 id="0-8-84" permalink="0884">0.8.84</h3>
+<p><em>Saturday, March 2, 2013</em></p>
+<ul>
+<li>Bug fixes: (explicit hosts, and included an additional file in new app generation)</li>
+</ul>
+<h3 id="0-8-85" permalink="0885">0.8.85</h3>
+<p><em>Sunday, March 3, 2013</em></p>
+<ul>
+<li>Check for and warn if port is currently being used on lift, with support for explicit hosts <a href="https://github.com/balderdashy/sails/issues/197" target="_blank">https://github.com/balderdashy/sails/issues/197</a>)</li>
+<li>Model.stream() support over socket.io <a href="https://github.com/balderdashy/sails/issues/196" target="_blank">https://github.com/balderdashy/sails/issues/196</a>)</li>
+</ul>
+<h3 id="0-8-86" permalink="0886">0.8.86</h3>
+<p><em>Monday, March 4, 2013</em></p>
+<ul>
+<li>Patch to allow for easier SSL configuration.</li>
+</ul>
+<h3 id="0-8-87" permalink="0887">0.8.87</h3>
+<p><em>Monday, March 4, 2013</em></p>
+<ul>
+<li>Patch fixes updates sails-dirty version which fixes sorting by date</li>
+</ul>
+<h3 id="0-8-88" permalink="0888">0.8.88</h3>
+<ul>
+<li>Adds coffeescript support on the front-end in dev and production environments via <a href="https://github.com/techpines/asset-rack" target="_blank">asset-rack</a> <a href="thanks https://github.com/techpines">@techpines</a>!)</li>
+</ul>
+<h3 id="0-8-892" permalink="08892">0.8.892</h3>
+<ul>
+<li>Front-end CoffeeScript support in AssetRack (thanks <a href="https://github.com/techpines" target="_blank">@techpines</a>!)</li>
+<li>Chained policy support</li>
+<li>New styles for default home page (thanks <a href="https://github.com/egdelwonk" target="_blank">@egdelwonk</a>!)</li>
+<li>Windows compat. fix (thanks <a href="https://github.com/feroc1ty" target="_blank">@feroc1ty</a>!)</li>
+<li>Support for string IDs (thanks <a href="https://github.com/tedkulp" target="_blank">@tedkulp</a>!)</li>
+<li>Attribute scaffolding for model generation (thanks <a href="https://github.com/Tidwell" target="_blank">@Tidwell</a>)</li>
+<li>Support for big int string conversion in ID normalization (thanks <a href="https://github.com/d4mn" target="_blank">@d4mn</a>!)</li>
+</ul>
+<h3 id="0-8-895" permalink="08895">0.8.895</h3>
+<ul>
+<li>Policies: Fixed the &quot;*&quot; route for controllers.</li>
+<li>Policies: The &quot;*&quot; policy can now be set to false</li>
+<li>Collections: Type restrictions are cleaner</li>
+<li>Adapters: Default was changed to memory due to an issue with node-dirty</li>
+<li>Log: sails.config.log.level is passed to socket.io</li>
+<li>Assets: Bug fixed: not calling next when compiling LESS with syntax (thanks vicapow)</li>
+<li>Assets: Typescript supported on front-end (thanks Diullei)</li>
+<li>Assets: Meaningful LESS errors were added (thanks vicapow)</li>
+</ul>
+<p><docmeta name="displayName" value="0.8.8x Changelog"></docmeta></p>
+<docmeta name="version" value="0.8.8">
+</docmeta>

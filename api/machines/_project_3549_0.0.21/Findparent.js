@@ -45,7 +45,7 @@ module.exports = {
     var currentPage = _.find(inputs.menuData, {
       slug: inputs.slug
     });
-    if (currentPage.isChild) {
+    if (currentPage && currentPage.isChild) {
       expandParent(inputs.slug);
     }
 
