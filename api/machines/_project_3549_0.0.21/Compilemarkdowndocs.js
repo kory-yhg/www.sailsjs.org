@@ -89,11 +89,26 @@ module.exports = {
       });
       html = $.html();
 
-      // Make sure all `#/` (angular-style) client-side URLs are transformed to `#!` (google/seo-style)
-      html = html.replace(/(href=")\/?#(\/[^"]*)"/g, '$1#!$2"');
+      // Convert URL fragment links (i.e. for client-side routes) into
+      // web-root-relative URLs (i.e. they'll have a leading slash).
+      // (this is because there are lots of links left over from when sailsjs.org
+      // used client-side routes for navigation around the documentation pages.)
+      html = html.replace(/(href=")\.?\/?#\/?([^"]*)"/g, '$1/$2"');
 
-      // Add target=_blank to external links
+      // e.g.
+      //   href="/#/asdjgasdg"     =>  href="/asdjgasdg"
+      //   href="#/asdjgasdg"      =>  href="/asdjgasdg"
+      //   href="/#/"              =>  href="/"
+      //   href="#/asdjgasdg"      =>  href="/asdjgasdg"
+
+      // Get rid of the '.html' at the end of ANY internal web-root-relative URL that
+      // point at the documentation pages. Any links form the docs that start with 
+      // '/documentation' and ends in '.html' will have the file extension stripped off.
+      html = html.replace(/(href="\/documentation)([^"]*)\.html"/g, '$1$2"');
+
+      // Add target=_blank to external links (e.g. http://google.com or https://chase.com)
       html = html.replace(/(href="https?:\/\/([^"]+)")/g, '$1 target="_blank"');
+
 
       // Add the appropriate `data-language` based on the temporary marker
       // (TMP_LANG_MARKER_EXPR) that was added in the `beforeConvert()` lifecycle

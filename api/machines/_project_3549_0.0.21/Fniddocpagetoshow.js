@@ -35,8 +35,12 @@ module.exports = {
   },
   "defaultExit": "success",
   "fn": function(inputs, exits, env) { // Ensure requested view is one of the allowed nav items.
-    var docPageToShow = _.find(inputs.docPageMetadatas, {
-      slug: inputs.slug.toLowerCase().replace(/%20/g, ' ')
+    var docPageToShow = _.find(inputs.docPageMetadatas, function(docPage) {
+      // Do a case-insensitive match and equate whitespace, %20 (URL-encoded spacebar), and dashes
+      if (docPage.slug.toLowerCase().replace(/(%20|\s|-)/g, '-') === inputs.slug.toLowerCase().replace(/(%20|\s|-)/g, '-')) {
+        return true;
+      }
+      return false;
     });
 
 

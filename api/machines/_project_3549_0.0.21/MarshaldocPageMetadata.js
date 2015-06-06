@@ -60,7 +60,7 @@ module.exports = {
         // Now put it back the way it was.
         var sortedChildren = [];
         _.each(childrenData, function(child) {
-          sortedChildren.push(child.fullPathAndFileName.replace(/\.ejs/g, ''));
+          sortedChildren.push(child.fullPathAndFileName.replace(/\.ejs$/i, ''));
         });
         docPage.children = sortedChildren;
       }
@@ -74,7 +74,7 @@ module.exports = {
       docPage.path = docPage.fullPathAndFileName;
 
       // Create the 'slug' (the path lowercased)
-      docPage.slug = docPage.path.toLowerCase().replace(/\.ejs/g, '');
+      docPage.slug = docPage.path.replace(/\.ejs$/i, '');
       // then create an id for places where slug makes things tricky,
       // that's just the slug with dashes instead of slashes.
       docPage.id = docPage.slug.replace(/[^a-z0-9]/g, '-');

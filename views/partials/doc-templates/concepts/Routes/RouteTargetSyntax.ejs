@@ -51,10 +51,10 @@
 </code></pre><!-- __LANG=%%__ -->
 <p>Each one maps <code>GET /foo/go</code> to the <code>myGoAction</code> action of the controller in <strong>api/controllers/FooController.js</strong>.  If no such controller or action exists, Sails will output an error message and ignore the route.  Otherwise, whenever a <strong>GET</strong> request to <strong>/foo/go</strong> is made, the code in that action will be run.</p>
 <p>The controller and action names in this syntax are case-insensitive.</p>
-<p>Note that the <a href="#!/documentation/reference/blueprint-api">blueprints API</a> adds several actions to your controllers by default (like &quot;find&quot;, &quot;create&quot;, &quot;update&quot; and &quot;delete&quot;), all of which are available for routing:</p>
+<p>Note that the <a href="/documentation/reference/blueprint-api">blueprints API</a> adds several actions to your controllers by default (like &quot;find&quot;, &quot;create&quot;, &quot;update&quot; and &quot;delete&quot;), all of which are available for routing:</p>
 <pre><code data-language="javascript">&apos;GET /foo/go&apos;: &apos;UserController.find&apos;
 </code></pre><!-- __LANG=%%__ -->
-<p>Assuming that your have a <strong>api/controllers/UserController.js</strong> file and a <strong>api/models/User.js</strong> file, browsing to <strong>/foo/go</strong> in a browser will, using the above config, run the default &quot;find* blueprint action which displays a list of all <code>User</code> models.  If you have a <a href="#!/documentation/concepts/Controllers?q=actions">custom action</a> named <code>find</code> in UserController, that action will be run instead.</p>
+<p>Assuming that your have a <strong>api/controllers/UserController.js</strong> file and a <strong>api/models/User.js</strong> file, browsing to <strong>/foo/go</strong> in a browser will, using the above config, run the default &quot;find* blueprint action which displays a list of all <code>User</code> models.  If you have a <a href="/documentation/concepts/Controllers?q=actions">custom action</a> named <code>find</code> in UserController, that action will be run instead.</p>
 <h4 id="view-target-syntax" permalink="view-target-syntax">View target syntax</h4>
 <p>Another common target is one that binds a route to a <a href="http://beta.sailsjs.org/#/documentation/concepts/Views" target="_blank">view</a>.  The syntax for this is simple: it&apos;s the path to the view file relative to the <strong>views</strong> folder, without the file extension:</p>
 <pre><code data-language="javascript">&apos;GET /home&apos;: {view: &apos;home/index&apos;}
@@ -111,7 +111,7 @@ See the StackOverflow <a href="http://stackoverflow.com/questions/21303217/sails
 <td><code>skipAssets</code></td>
 <td style="text-align:center">all</td>
 <td><bubble type="boolean" colors="true"></bubble></td>
-<td>Set to <code>true</code> if you <em>don&apos;t</em> want the route to match URLs with dots in them (e.g. <strong>myImage.jpg</strong>).  This will keep your routes with <a href="http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=wildcards-and-dynamic-parameters" target="_blank">wildcard notation</a> from matching URLs of static assets.  Useful when creating <a href="#!/documentation/concepts/Routes/URLSlugs.html">URL slugs</a>.</td>
+<td>Set to <code>true</code> if you <em>don&apos;t</em> want the route to match URLs with dots in them (e.g. <strong>myImage.jpg</strong>).  This will keep your routes with <a href="http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=wildcards-and-dynamic-parameters" target="_blank">wildcard notation</a> from matching URLs of static assets.  Useful when creating <a href="/documentation/concepts/Routes/URLSlugs">URL slugs</a>.</td>
 </tr>
 <tr>
 <td><code>skipRegex</code></td>

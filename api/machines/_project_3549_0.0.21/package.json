@@ -9,11 +9,11 @@
   "machinepack": {
     "machines": ["Compilemarkdowndocs", "Fniddocpagetoshow", "Formatversionnotetitles", "Findparent", "MarshaldocPageMetadata", "Removepermalinkfromslug", "Reversesortbysemver"],
     "machineVersions": {
-      "Compilemarkdowndocs": "0.0.13",
-      "Fniddocpagetoshow": "0.0.21",
+      "Compilemarkdowndocs": "0.0.27",
+      "Fniddocpagetoshow": "0.0.25",
       "Formatversionnotetitles": "0.0.3",
       "Findparent": "0.0.21",
-      "MarshaldocPageMetadata": "0.0.107",
+      "MarshaldocPageMetadata": "0.0.108",
       "Removepermalinkfromslug": "0.0.4",
       "Reversesortbysemver": "0.0.23"
     }

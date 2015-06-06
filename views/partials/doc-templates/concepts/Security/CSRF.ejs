@@ -1,7 +1,7 @@
 <h1 id="csrf">CSRF</h1>
 <p>Cross-site request forgery (<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF" target="_blank">CSRF</a>) is a type of attack which forces an end user to execute unwanted actions on a web application backend with which he/she is currently authenticated.  In other words, without protection, cookies stored in a browser like Google Chrome can be used to send requests to Chase.com from a user&apos;s computer whether that user is currently visiting Chase.com or Horrible-Hacker-Site.com.</p>
 <h3 id="enabling-csrf-protection" permalink="enabling-csrf-protection">Enabling CSRF Protection</h3>
-<p>Sails bundles optional CSRF protection out of the box. To enable the built-in enforcement, just make the following adjustment to <a href="#!/documentation/reference/Configuration/CSRF.html">sails.config.csrf</a> (conventionally located in your project&apos;s <a href="http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/csrf.js.html" target="_blank"><code>config/csrf.js</code></a> file):</p>
+<p>Sails bundles optional CSRF protection out of the box. To enable the built-in enforcement, just make the following adjustment to <a href="/documentation/reference/Configuration/CSRF">sails.config.csrf</a> (conventionally located in your project&apos;s <a href="http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/csrf.js.html" target="_blank"><code>config/csrf.js</code></a> file):</p>
 <pre><code data-language="javascript">csrf: true
 </code></pre><!-- __LANG=%%__ -->
 <p>Note that if you have existing code that communicates with your Sails backend via POST, PUT, or DELETE requests, you&apos;ll need to acquire a CSRF token and include it as a parameter or header in those requests.  More on that in a sec.</p>
