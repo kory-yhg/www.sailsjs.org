@@ -36,82 +36,95 @@ module.exports = {
   },
   "defaultExit": "success",
   "fn": function(inputs, exits, env) {
-    try {
+    var path = require('path');
+    var _ = require('lodash');
 
-      var path = require('path');
-      var _ = require('lodash');
+    // Before formatting the metadata, sort each doc page's `children` array,
+    // First by whether it has children (i.e. can be expanded), then alphabetically.
+    inputs.docPageMetadatas = _.map(inputs.docPageMetadatas, function sortDocPageChildren(docPage) {
+      if (docPage.children && docPage.children.length > 0) {
 
-      // Before formatting the metadata, sort each doc page's `children` array,
-      // First by whether it has children (i.e. can be expanded), then alphabetically.
-      inputs.docPageMetadatas = _.map(inputs.docPageMetadatas, function sortDocPageChildren(docPage) {
-        if (docPage.children && docPage.children.length > 0) {
+        // Create an array with data about the docPage's children
+        var childrenData = [];
 
-          // Create an array with data about the docPage's children
-          var childrenData = [];
-
-          _.each(docPage.children, function makeListOfChildrenWithData(child) {
-            var childData = _.find(inputs.docPageMetadatas, {
-              fullPathAndFileName: child
-            });
-            childrenData.push(childData);
+        _.each(docPage.children, function makeListOfChildrenWithData(child) {
+          var childData = _.find(inputs.docPageMetadatas, {
+            fullPathAndFileName: child
           });
-
-          // Now sort it by 'isParent' and 'displayName'.
-          childrenData = _.sortByOrder(childrenData, ['isParent', 'displayName'], [false, true]);
-
-          // Now put it back the way it was.
-          var sortedChildren = [];
-          _.each(childrenData, function(child) {
-            sortedChildren.push(child.fullPathAndFileName.replace(/\.ejs$/i, ''));
-          });
-          docPage.children = sortedChildren;
-        }
-        return docPage;
-      });
-
-
-      // Marshal menu metadata
-      inputs.docPageMetadatas = _.map(inputs.docPageMetadatas, function normalizeEachDocPage(docPage) {
-
-        // Rename `fullPathAndFileName`
-        docPage.path = docPage.fullPathAndFileName;
-        console.log(docPage.path);
-        // Create the 'slug' (the path lowercased)
-        docPage.slug = docPage.path.replace(/\.ejs$/i, '').toLowerCase();
-        // then create an id for places where slug makes things tricky,
-        // that's just the slug with dashes instead of slashes.
-        docPage.id = docPage.slug.toLowerCase().replace(/[^a-z0-9]/g, '-');
-
-        // Determine the display name-- either use the data bundled as <docmeta> tags, or
-        // take the slug and make a reasonable guess based on some formatting conventions.
-        docPage.displayName = docPage.data.displayName || _.startCase(docPage.slug); //slug.replace(/-/g, ' ');
-
-        docPage.version = docPage.data.version || '';
-
-        docPage.displayNameSlug = docPage.displayName.replace(/ /g, '-').replace(/\./g, 'point').toLowerCase();
-
-        var pathSections = docPage.path.split('/');
-        var parentPathIndex = pathSections.length - 2;
-        docPage.parentDisplayName = pathSections[parentPathIndex];
-
-
-        // Normalize each child in the array using the same logic we used to generate our slug
-        docPage.children = _.map(docPage.children, function slugifyEachChild(child) {
-          return child.toLowerCase();
+          childrenData.push(childData);
         });
 
-        if (docPage.children.length) {
-          docPage.isParent = true;
-        }
+        // Now sort it by 'isParent' and 'displayName'.
+        childrenData = _.sortByOrder(childrenData, ['isParent', 'displayName'], [false, true]);
 
-        return docPage;
+        // Now put it back the way it was.
+        var sortedChildren = [];
+        _.each(childrenData, function(child) {
+          sortedChildren.push(child.fullPathAndFileName.replace(/\.ejs$/i, ''));
+        });
+        docPage.children = sortedChildren;
+      }
+      return docPage;
+    });
+
+
+    // Marshal menu metadata
+    inputs.docPageMetadatas = _.map(inputs.docPageMetadatas, function normalizeEachDocPage(docPage) {
+
+      // Rename `fullPathAndFileName`
+      docPage.path = docPage.fullPathAndFileName;
+      // Create the 'slug' (the path lowercased)
+      docPage.slug = docPage.path.replace(/\.ejs$/i, '').toLowerCase();
+      // then create an id for places where slug makes things tricky,
+      // that's just the slug with dashes instead of slashes.
+      docPage.id = docPage.slug.toLowerCase().replace(/[^a-z0-9]/g, '-');
+
+      // Determine the display name-- either use the data bundled as <docmeta> tags, or
+      // take the slug and make a reasonable guess based on some formatting conventions.
+      docPage.displayName = docPage.data.displayName || _.startCase(docPage.slug); //slug.replace(/-/g, ' ');
+
+      docPage.version = docPage.data.version || '';
+
+      docPage.displayNameSlug = docPage.displayName.replace(/ /g, '-').replace(/\./g, 'point').toLowerCase();
+
+      var pathSections = docPage.path.split('/');
+      var parentPathIndex = pathSections.length - 2;
+      docPage.parentDisplayName = pathSections[parentPathIndex];
+
+
+      // Normalize each child in the array using the same logic we used to generate our slug
+      docPage.children = _.map(docPage.children, function slugifyEachChild(child) {
+        return child.toLowerCase();
       });
 
-      // Now sort the metadatas, first by 'isParent', then by 'displayName'.
-      inputs.docPageMetadatas = _.sortByOrder(inputs.docPageMetadatas, ['isParent', 'displayName'], [false, true]);
-    } catch (e) {
-      console.error('An error occurred in marhsal menu metadata:', e.stack);
-    }
+      if (docPage.children.length) {
+        docPage.isParent = true;
+        // Create an array of all the words in the slug, and get its lengtg (so we can remove the last word if it's the same as the one before it.)
+        var slugSections = docPage.slug.split('/');
+        var last = slugSections.length - 1;
+
+        // If the 2nd to last word of the slug is the same as the last, remove the last one
+        // (So we don't endup with things like 'myApp/myApp')
+        if (slugSections[last] === slugSections[last - 1]) {
+          slugSections.pop(slugSections[last]);
+          // Add '/' back to all but the last slug section, to prep for rebuilding the slug.
+          slugSections = _.map(slugSections, function(slugSection) {
+            // Add a '/' to the end of it.
+            return slugSection = slugSection + '/';
+          });
+          // Join the split string back together, and get rid of the ','s and set it as the new slug.
+          docPage.slug = slugSections.join().replace(/,/g, '');
+          // Then get rid of the trailing slash.
+          docPage.slug = _.trim(docPage.slug, '/');
+        }
+      }
+
+      return docPage;
+    });
+
+    // Now sort the metadatas, first by 'isParent', then by 'displayName'.
+    inputs.docPageMetadatas = _.sortByOrder(inputs.docPageMetadatas, ['isParent', 'displayName'], [false, true]);
+
 
 
     return exits.success(inputs.docPageMetadatas);
