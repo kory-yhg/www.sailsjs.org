@@ -18,7 +18,6 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
 
         <ul class="main-sections">
           <% _.each(data.templateList, function(navItem) {
-
             if(_.contains(data.expandedItems, navItem.slug)) {
               navItem.isInitiallyExpanded = true;
             }
@@ -26,15 +25,15 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
             // Only show top-level nav item initially
             // (Except for the ones that don't have children, because those are
             // the wierd ones that aren't really part of the docs.
-            if(!navItem.isChild &&  navItem.children && navItem.children.length) { %>
-
+            if(!navItem.isChild && (_.isArray(navItem.children) && navItem.children.length > 0)) {
+          %>
           <li class="<%= navItem.isInitiallyExpanded && !navItem.isParent ? 'expanded' : navItem.isInitiallyExpanded && navItem.isParent ? 'expanded current-parent' : '' %>" ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.slug %>'), 'folder': <%= navItem.isParent %>}">
             <%- partial('../partials/nav-item', {navItem: navItem, navItems: data.templateList, section: data.section, expandedItems: data.expandedItems}) %>
           </li>
-
           <% }
           }) %>
         </ul>
+
         <div class="book-banner-wrapper">
           <div class="book-banner">
             <img class="meap-cover" src="/images/bookCover.png"/>
