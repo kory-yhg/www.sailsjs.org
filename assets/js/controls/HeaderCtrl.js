@@ -5,6 +5,16 @@ angular.module('SailsWebsite').controller('HeaderCtrl', [
   '$location',
   function($scope, $window, $timeout, $location) {
 
+    // Check for the old '/#/' and '/#!/' links and redirect to the right place.
+    if($window.location.hash) {
+      var redirectTo = $window.location.hash.replace(/#/g, '').replace(/!/g, '');
+      if(redirectTo[0] === '/') {
+        redirectTo = redirectTo.replace(/\//, '');
+      }
+      $window.location.hash = '';
+      $window.location.pathname = redirectTo;
+    }
+
     // Qualifiers
     $scope.getIsCurrentPage = function(path) {
       var current = $window.location.pathname;

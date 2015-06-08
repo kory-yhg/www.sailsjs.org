@@ -32,10 +32,11 @@
     _.each(navItem.children, function (childSlug){
     // Here we assume that childSlug always references another menu item in `navItems` that actually exists.
     // (this is a _fine_ assumption)
-    var childNavItem = _.find(navItems, {slug: childSlug});
+    var childNavItem = _.find(navItems, function(navItem) {
+      return navItem.slug.toLowerCase() === childSlug.toLowerCase();
+    });
 
     if(childNavItem) {
-
       if(_.contains(expandedItems, childNavItem.slug)) {
         childNavItem.isInitiallyExpanded = true;
       }

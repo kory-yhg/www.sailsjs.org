@@ -104,7 +104,7 @@ module.exports = {
                                             },
                                             "success": function(readJSONFile) {
                                                 // Marshal menu metadata
-                                                sails.machines['_project_3549_0.0.21'].MarshaldocPageMetadata({
+                                                sails.machines['_project_3549_0.0.22'].MarshaldocPageMetadata({
                                                     "docPageMetadatas": readJSONFile
                                                 }).exec({
                                                     "error": function(marshalMenuMetadata) {
@@ -116,7 +116,7 @@ module.exports = {
                                                     },
                                                     "success": function(marshalMenuMetadata) {
                                                         // Remove permalink from slug
-                                                        sails.machines['_project_3549_0.0.21'].Removepermalinkfromslug({
+                                                        sails.machines['_project_3549_0.0.22'].Removepermalinkfromslug({
                                                             "slug": inputs['*']
                                                         }).setEnvironment({
                                                             req: req,
@@ -132,7 +132,7 @@ module.exports = {
                                                             },
                                                             "success": function(removePermalinkFromSlug) {
                                                                 // List expanded menu items
-                                                                sails.machines['_project_3549_0.0.21'].Findparent({
+                                                                sails.machines['_project_3549_0.0.22'].Findparent({
                                                                     "menuData": marshalMenuMetadata,
                                                                     "slug": removePermalinkFromSlug
                                                                 }).setEnvironment({
@@ -149,7 +149,7 @@ module.exports = {
                                                                     },
                                                                     "success": function(listExpandedMenuItems) {
                                                                         // Find doc template to show
-                                                                        sails.machines['_project_3549_0.0.21'].Fniddocpagetoshow({
+                                                                        sails.machines['_project_3549_0.0.22'].Fniddocpagetoshow({
                                                                             "docPageMetadatas": marshalMenuMetadata,
                                                                             "slug": removePermalinkFromSlug
                                                                         }).setEnvironment({
@@ -292,6 +292,14 @@ module.exports = {
                                                                                         });
 
                                                                                     }
+                                                                                });
+
+                                                                            },
+                                                                            "redirect": function(findDocTemplateToShow) {
+                                                                                return exits.respond({
+                                                                                    data: "/documentation/" + findDocTemplateToShow,
+                                                                                    action: "redirect",
+                                                                                    status: 500
                                                                                 });
 
                                                                             }
