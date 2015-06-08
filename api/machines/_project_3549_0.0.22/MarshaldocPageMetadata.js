@@ -60,7 +60,7 @@ module.exports = {
         // Now put it back the way it was.
         var sortedChildren = [];
         _.each(childrenData, function(child) {
-          sortedChildren.push(child.fullPathAndFileName.replace(/\.ejs$/i, ''));
+          sortedChildren.push(child.fullPathAndFileName);
         });
         docPage.children = sortedChildren;
       }
@@ -69,19 +69,71 @@ module.exports = {
 
 
     // Marshal menu metadata
-    inputs.docPageMetadatas = _.map(inputs.docPageMetadatas, function normalizeEachDocPage(docPage) {
+    var docPageMetadatas = _.map(inputs.docPageMetadatas, function normalizeEachDocPage(docPage) {
 
       // Rename `fullPathAndFileName`
       docPage.path = docPage.fullPathAndFileName;
-      // Create the 'slug' (the path lowercased)
-      docPage.slug = docPage.path.replace(/\.ejs$/i, '').toLowerCase();
+
+
+      // Determine the display name-- either use the data bundled as <docmeta> tags, or
+      // take the slug and make a reasonable guess based on some formatting conventions.
+      docPage.displayName = docPage.data.displayName || _.startCase(docPage.path); //slug.replace(/-/g, ' ');
+
+
+      // Create the 'slug'
+
+      // Create an empty array, in order to build up the slug.
+      var slugParts = [];
+      // Add the kebab-cased display name of the selected page
+      slugParts.push(_.kebabCase(docPage.displayName));
+
+
+      // Build up the array of parents for the slug.
+      if (docPage.parent) {
+        getSlugParts(docPage.parent);
+      }
+
+      // Now convert the array into a string, remove the commas, and set it as the slug.
+      docPage.slug = slugParts.join().replace(/,/g, '');
+      // Get the name of the docs section this is from (e.g. 'concepts') by grabbing it from the beginning of the path
+      docPage.topSection = docPage.path.split('/')[0] + '/';
+      // Remove any excess slashes
+      if (docPage.slug[0] === '/') {
+        docPage.slug = docPage.slug2.replace(/\//, '');
+      }
+      // Add the overall doc section to the beginning of the slug
+      docPage.slug = docPage.topSection + docPage.slug;
+
+
+
+      // The recursive function for collecting the 'parents' of this docPage.
+      function getSlugParts(parentPath) {
+        // Find the parent data so we can grab `displayName`
+        var slugParent = _.find(inputs.docPageMetadatas, {
+          fullPathAndFileName: parentPath
+        });
+
+        if (slugParent) {
+          var parentDisplayName = slugParent.data.displayName || _.startCase(slugParent.path);
+          // Convert the parent's display name to kebabcase and add a slash to the end
+          parentDisplayName = _.kebabCase(parentDisplayName) + '/';
+          // now add it to the beginning of the `slugParts` array
+          slugParts.unshift(parentDisplayName);
+          // If the parent has a parent, take the recursive step.
+          if (slugParent.parent) {
+            getSlugParts(slugParent.parent);
+          }
+        }
+      }
+
+
+
+
+
       // then create an id for places where slug makes things tricky,
       // that's just the slug with dashes instead of slashes.
       docPage.id = docPage.slug.toLowerCase().replace(/[^a-z0-9]/g, '-');
 
-      // Determine the display name-- either use the data bundled as <docmeta> tags, or
-      // take the slug and make a reasonable guess based on some formatting conventions.
-      docPage.displayName = docPage.data.displayName || _.startCase(docPage.slug); //slug.replace(/-/g, ' ');
 
       docPage.version = docPage.data.version || '';
 
@@ -99,28 +151,12 @@ module.exports = {
 
       if (docPage.children.length) {
         docPage.isParent = true;
-        // Create an array of all the words in the slug, and get its lengtg (so we can remove the last word if it's the same as the one before it.)
-        var slugSections = docPage.slug.split('/');
-        var last = slugSections.length - 1;
-
-        // If the 2nd to last word of the slug is the same as the last, remove the last one
-        // (So we don't endup with things like 'myApp/myApp')
-        if (slugSections[last] === slugSections[last - 1]) {
-          slugSections.pop(slugSections[last]);
-          // Add '/' back to all but the last slug section, to prep for rebuilding the slug.
-          slugSections = _.map(slugSections, function(slugSection) {
-            // Add a '/' to the end of it.
-            return slugSection = slugSection + '/';
-          });
-          // Join the split string back together, and get rid of the ','s and set it as the new slug.
-          docPage.slug = slugSections.join().replace(/,/g, '');
-          // Then get rid of the trailing slash.
-          docPage.slug = _.trim(docPage.slug, '/');
-        }
       }
 
       return docPage;
     });
+
+    inputs.docPageMetadatas = docPageMetadatas;
 
     // Now sort the metadatas, first by 'isParent', then by 'displayName'.
     inputs.docPageMetadatas = _.sortByOrder(inputs.docPageMetadatas, ['isParent', 'displayName'], [false, true]);

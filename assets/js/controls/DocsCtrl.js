@@ -31,15 +31,14 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     // replace any occurences of '%20' with a space,
     // so it matches the slug in the menu data.
     // Also, get rid of the '?q=' from the permalinks.
-    currentSlug = currentSlug.replace(/%20/g, ' ').replace(/\?q=.+$/, '');
-    console.log(currentSlug);
+    currentSlug = currentSlug.replace(/\?q=.+$/, '');
     // Use the slug to find the data for the page we're currently on
     var currentPage = _.find($scope.menuData, {slug: currentSlug});
     // Then mark that menu item as 'expanded' by adding it to `$scope.expandedMenuItems`
     $scope.expandedMenuItems.push(currentPage.slug);
     // If it's a child, also expand the parent.
     if(currentPage.isChild) {
-      expandParent(currentSlug);
+      expandParent(currentPage.parent);
     }
 
 
@@ -63,24 +62,21 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
      *
      * TODO: fix throwy thing
      *
-     * @param  {[type]} slug [description]
+     * @param  {[type]} path [description]
      * @return {[type]}      [description]
      */
-    function expandParent(slug) {
-      // Find the menu item that has the current 'slug' as a child.
-      var currentParent = _.find($scope.menuData, function(menuItem) {
-        // // If the slug is in the `children` array, this must be the parent.
-        return _.contains(menuItem.children, slug);
-      });
+    function expandParent(parentPath) {
+      // Find the menu item that has the current 'path' as a child.
+      var currentParent = _.find($scope.menuData, {path: parentPath});
       // Add the parent's id to the array of expanded things.
-      $scope.expandedMenuItems.push(currentParent.slug);
+      $scope.expandedMenuItems.push(currentParent.path);
       // And to the array of 'parentMenuItems' to set 'current-parent' styles in the UI.
       // (Because this won't get run if someone is just expanding things;
       // it only happens after navigating to a menu item.)
-      $scope.parentMenuItems.push(currentParent.slug);
+      $scope.parentMenuItems.push(currentParent.path);
       // If this parent also has a parent, call the function again.
       if(currentParent.isChild) {
-        expandParent(currentParent.slug);
+        expandParent(currentParent.parent);
       }
     }
 
@@ -101,17 +97,17 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     };
 
 
-    $scope.getIsParent = function(slug) {
-      if(_.contains($scope.parentMenuItems, slug)) {
+    $scope.getIsParent = function(path) {
+      if(_.contains($scope.parentMenuItems, path)) {
         return true;
       }
       else return false;
     };
 
 
-    $scope.getIsExpanded = function(slug) {
-      if(_.contains($scope.expandedMenuItems, slug)) {
-        var menuItem = _.find($scope.menuData, {slug: slug});
+    $scope.getIsExpanded = function(path) {
+      if(_.contains($scope.expandedMenuItems, path)) {
+        var menuItem = _.find($scope.menuData, {path: path});
         if(menuItem.children.length > 0) {
           return true;
         }

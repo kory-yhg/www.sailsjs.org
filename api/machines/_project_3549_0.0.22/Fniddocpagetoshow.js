@@ -25,7 +25,21 @@ module.exports = {
       "id": "success",
       "friendlyName": "then",
       "description": "Normal outcome.",
-      "example": {}
+      "example": {
+        "path": "concepts/some-doc-page.ejs",
+        "slug": "concepts/some-doc-page",
+        "displayName": "Some Doc Page",
+        "children": [
+          "concepts/some-doc-page/child-section.ejs"
+        ],
+        "id": "concepts-some-doc-page",
+        "parent": "concepts/0home.ejs",
+        "isChild": true,
+        "isParent": true,
+        "displayNameSlug": "some-doc-page",
+        "parentDisplayName": "--",
+        "version": "0.4.6"
+      }
     },
     "notFound": {
       "friendlyName": "not found",
@@ -39,29 +53,23 @@ module.exports = {
     }
   },
   "defaultExit": "success",
-  "fn": function(inputs, exits, env) {
-    var formattedSlugInput = inputs.slug.replace(/(%20|\s|-)/g, ' ');
+  "fn": function(inputs, exits, env) { // Strip .html off of slug, if it's there. (For old links)
+    var htmlStrippedSlugInput = inputs.slug.replace(/\.html/g, '');
 
-    // Strip .html off of slug, if it's there. (For old links)
-    var htmlStrippedSlugInput = formattedSlugInput.replace(/\.html/g, '');
-
-    if (htmlStrippedSlugInput !== formattedSlugInput) {
+    if (htmlStrippedSlugInput !== inputs.slug) {
       return (exits.redirect(htmlStrippedSlugInput));
     }
 
     // Ensure requested view is one of the allowed nav items.
     var docPageToShow = _.find(inputs.docPageMetadatas, function(docPage) {
-
-      var formattedDocPage = docPage.slug.replace(/(%20|\s|-)/g, ' ')
-
       // Do a case-insensitive match and equate whitespace, %20 (URL-encoded spacebar), and dashes
-      if (formattedSlugInput.toLowerCase() === formattedDocPage.toLowerCase()) {
+      if (inputs.slug.toLowerCase() === docPage.slug.toLowerCase()) {
         return true;
       }
       return false;
     });
 
-    if (docPageToShow && docPageToShow.slug !== formattedSlugInput) {
+    if (docPageToShow && docPageToShow.slug !== inputs.slug) {
       return exits.redirect(docPageToShow.slug);
     }
 

@@ -8,10 +8,11 @@ module.exports = {
       "required": true,
       "addedManually": true
     },
-    "slug": {
-      "friendlyName": "slug",
-      "description": "The current doc page 'slug'",
-      "example": "idk/something",
+    "path": {
+      "id": "b9837262-b6cd-4cd1-b315-9223ad74b185",
+      "friendlyName": "path",
+      "description": "The current doc page's file path",
+      "example": "idk/something.ejs",
       "required": true,
       "addedManually": true
     }
@@ -35,36 +36,29 @@ module.exports = {
 
     var expandedMenuItems = [];
 
-    // Some slugs have spaces, which are changed to '%20' in the URL --
-    // replace any occurences of '%20' with a space,
-    // so it matches the slug in the menu data.
-    inputs.slug = inputs.slug.replace(/%20/g, ' ');
-
-    expandedMenuItems.push(inputs.slug);
+    expandedMenuItems.push(inputs.path);
 
     var currentPage = _.find(inputs.menuData, {
-      slug: inputs.slug
+      path: inputs.path
     });
     if (currentPage && currentPage.isChild) {
-      expandParent(inputs.slug);
+      expandParent(currentPage.parent);
     }
 
-    function expandParent(slug) {
-      // Find the menu item that has the current 'slug' as a child.
-      var currentParent = _.find(inputs.menuData, function(menuItem) {
-        // If the slug is in the `children` array, this must be the parent.
-        return _.contains(menuItem.children, slug);
+    function expandParent(parentPath) {
+      // Find the parent by its path
+      var currentParent = _.find(inputs.menuData, {
+        path: parentPath
       });
 
-      // Add the parent's id to the array of expanded things.
-      expandedMenuItems.push(currentParent.slug);
+      // Add the parent's path to the array of expanded things.
+      expandedMenuItems.push(currentParent.path);
 
       // If this parent also has a parent, call the function again.
-      if (currentParent.isChild) {
-        expandParent(currentParent.slug);
+      if (currentParent && currentParent.isChild) {
+        expandParent(currentParent.parent);
       }
     }
-
 
 
     return exits.success(expandedMenuItems);

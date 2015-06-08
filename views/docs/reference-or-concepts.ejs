@@ -15,7 +15,7 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
     <ul class="main-sections">
       <% _.each(data.templateList, function(navItem) {
 
-        if(_.contains(data.expandedItems, navItem.slug)) {
+        if(_.contains(data.expandedItems, navItem.path)) {
           navItem.isInitiallyExpanded = true;
         }
         else navItem.isInitiallyExpanded = false;

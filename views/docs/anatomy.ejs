@@ -18,7 +18,7 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
 
         <ul class="main-sections">
           <% _.each(data.templateList, function(navItem) {
-            if(_.contains(data.expandedItems, navItem.slug)) {
+            if(_.contains(data.expandedItems, navItem.path)) {
               navItem.isInitiallyExpanded = true;
             }
             else navItem.isInitiallyExpanded = false;
@@ -27,7 +27,7 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
             // the wierd ones that aren't really part of the docs.
             if(!navItem.isChild && (_.isArray(navItem.children) && navItem.children.length > 0)) {
           %>
-          <li class="<%= navItem.isInitiallyExpanded && !navItem.isParent ? 'expanded' : navItem.isInitiallyExpanded && navItem.isParent ? 'expanded current-parent' : '' %>" ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.slug %>'), 'folder': <%= navItem.isParent %>}">
+          <li class="<%= navItem.isInitiallyExpanded && !navItem.isParent ? 'expanded' : navItem.isInitiallyExpanded && navItem.isParent ? 'expanded current-parent' : '' %>" ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'expanded': getIsExpanded('<%= navItem.path %>'), 'folder': <%= navItem.isParent %>}">
             <%- partial('../partials/nav-item', {navItem: navItem, navItems: data.templateList, section: data.section, expandedItems: data.expandedItems}) %>
           </li>
           <% }

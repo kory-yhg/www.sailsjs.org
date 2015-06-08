@@ -10,10 +10,10 @@
     "machines": ["Compilemarkdowndocs", "Fniddocpagetoshow", "Formatversionnotetitles", "Findparent", "MarshaldocPageMetadata", "Removepermalinkfromslug", "Reversesortbysemver"],
     "machineVersions": {
       "Compilemarkdowndocs": "0.0.27",
-      "Fniddocpagetoshow": "0.0.34",
+      "Fniddocpagetoshow": "0.0.41",
       "Formatversionnotetitles": "0.0.3",
-      "Findparent": "0.0.21",
-      "MarshaldocPageMetadata": "0.0.133",
+      "Findparent": "0.0.34",
+      "MarshaldocPageMetadata": "0.0.183",
       "Removepermalinkfromslug": "0.0.4",
       "Reversesortbysemver": "0.0.23"
     }
