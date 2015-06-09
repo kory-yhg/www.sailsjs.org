@@ -73,10 +73,11 @@ with the code <span>mcneildoc</span>.</p>
           <ul>
             <%
             var populatedChildren = _.where(menuItems, function (potentialChild) {
-              if (_.contains(menuItem.children, potentialChild.slug)) {
+              if (_.contains(menuItem.children, potentialChild.path.toLowerCase())) {
                 return true;
               }
             });
+            console.log(populatedChildren);
             _.each(populatedChildren, function(child) { %>
               <li>
                 <strong>
