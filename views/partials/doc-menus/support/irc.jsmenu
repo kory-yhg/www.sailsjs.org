@@ -23,7 +23,6 @@
     "templateTitle": "sailsTroll.ejs",
     "fullPathAndFileName": "irc/sailsTroll.ejs",
     "data": {
-      "uniqueID": "sailsTroll115373",
       "displayName": "Sails Troll"
     },
     "parent": "irc/irc.ejs",
@@ -38,9 +37,9 @@
       "displayName": "#sailsjs on IRC"
     },
     "children": [
+      "irc/sailsTroll.ejs",
       "irc/configuringClient.ejs",
-      "irc/grabClient.ejs",
-      "irc/sailsTroll.ejs"
+      "irc/grabClient.ejs"
     ],
     "isParent": true
   }
