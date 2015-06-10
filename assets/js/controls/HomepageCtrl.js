@@ -3,6 +3,9 @@ angular.module('SailsWebsite').controller('HomepageCtrl', [
   '$interval',
   function($scope, $interval) {
 
+    SCOPE = $scope;
+    $scope.latestCommit = window.LATESTCOMMIT_DATA;
+
     //Set initial tweet in Slideshow
     $scope.activeTweet = '@rauchg';
 

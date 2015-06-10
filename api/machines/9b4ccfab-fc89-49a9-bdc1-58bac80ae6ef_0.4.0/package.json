@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "machinepack-nodestore": "0.4.0"
+  },
+  "machinepack": {
+    "machines": []
+  }
+}

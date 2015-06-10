@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "machinepack-json": "1.1.3"
+  },
+  "machinepack": {
+    "machines": []
+  }
+}

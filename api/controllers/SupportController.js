@@ -51,7 +51,7 @@ module.exports = {
                             },
                             "success": function(readJSONFile) {
                                 // Marshal menu metadata
-                                sails.machines['_project_3549_0.0.22'].MarshaldocPageMetadata({
+                                sails.machines['_project_3549_0.0.24'].MarshaldocPageMetadata({
                                     "docPageMetadatas": readJSONFile
                                 }).exec({
                                     "error": function(marshalMenuMetadata) {
@@ -140,7 +140,7 @@ module.exports = {
                             },
                             "success": function(loadTheDynamicJsmenuFile) {
                                 // Marshal menu metadata
-                                sails.machines['_project_3549_0.0.22'].MarshaldocPageMetadata({
+                                sails.machines['_project_3549_0.0.24'].MarshaldocPageMetadata({
                                     "docPageMetadatas": loadTheDynamicJsmenuFile
                                 }).exec({
                                     "error": function(marshalMenuMetadata) {
@@ -152,7 +152,7 @@ module.exports = {
                                     },
                                     "success": function(marshalMenuMetadata) {
                                         // Reverse sort menu items by semver
-                                        sails.machines['_project_3549_0.0.22'].Reversesortbysemver({
+                                        sails.machines['_project_3549_0.0.24'].Reversesortbysemver({
                                             "array": marshalMenuMetadata
                                         }).exec({
                                             "error": function(reverseSortMenuItemsBySemver) {

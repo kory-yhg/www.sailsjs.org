@@ -104,7 +104,7 @@ module.exports = {
                                             },
                                             "success": function(readJSONFile) {
                                                 // Marshal menu metadata
-                                                sails.machines['_project_3549_0.0.22'].MarshaldocPageMetadata({
+                                                sails.machines['_project_3549_0.0.24'].MarshaldocPageMetadata({
                                                     "docPageMetadatas": readJSONFile
                                                 }).exec({
                                                     "error": function(marshalMenuMetadata) {
@@ -116,7 +116,7 @@ module.exports = {
                                                     },
                                                     "success": function(marshalMenuMetadata) {
                                                         // Find doc template to show
-                                                        sails.machines['_project_3549_0.0.22'].Fniddocpagetoshow({
+                                                        sails.machines['_project_3549_0.0.24'].Fniddocpagetoshow({
                                                             "docPageMetadatas": marshalMenuMetadata,
                                                             "slug": inputs['*']
                                                         }).setEnvironment({
@@ -133,7 +133,7 @@ module.exports = {
                                                             },
                                                             "success": function(findDocTemplateToShow) {
                                                                 // List expanded menu items
-                                                                sails.machines['_project_3549_0.0.22'].Findparent({
+                                                                sails.machines['_project_3549_0.0.24'].Findparent({
                                                                     "menuData": marshalMenuMetadata,
                                                                     "path": (findDocTemplateToShow && findDocTemplateToShow.path)
                                                                 }).setEnvironment({

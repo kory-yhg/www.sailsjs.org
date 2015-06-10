@@ -7,8 +7,9 @@
     "semver": "4.3.6"
   },
   "machinepack": {
-    "machines": ["Compilemarkdowndocs", "Fniddocpagetoshow", "Formatversionnotetitles", "Findparent", "MarshaldocPageMetadata", "Removepermalinkfromslug", "Reversesortbysemver"],
+    "machines": ["CacheGithubCommitResults", "Compilemarkdowndocs", "Fniddocpagetoshow", "Formatversionnotetitles", "Findparent", "MarshaldocPageMetadata", "Removepermalinkfromslug", "Reversesortbysemver"],
     "machineVersions": {
+      "CacheGithubCommitResults": "0.0.0",
       "Compilemarkdowndocs": "0.0.27",
       "Fniddocpagetoshow": "0.0.41",
       "Formatversionnotetitles": "0.0.3",

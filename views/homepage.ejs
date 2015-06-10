@@ -1,3 +1,8 @@
+<% /* Expose latestCommit data to make it accessible to client-side javascript */ %>
+<script>
+window.LATESTCOMMIT_DATA = <%- JSON.stringify(latestCommit) %>;
+</script>
+
 <div class="page home-page" ng-controller="HomepageCtrl" scrollng>
   <!--Top Section with Mr. Squiddy-->
   <div class="banner home">
