@@ -89,17 +89,17 @@ module.exports = {
                                                                 updatedAt: now3
                                                             }
                                                         }).exec({
-                                                            "error": function(constructDictionary) {
+                                                            "error": function(constructDictionary7) {
                                                                 return exits.error({
-                                                                    data: constructDictionary,
+                                                                    data: constructDictionary7,
                                                                     status: 500
                                                                 });
 
                                                             },
-                                                            "success": function(constructDictionary) {
+                                                            "success": function(constructDictionary7) {
                                                                 // Stringify as JSON
                                                                 sails.machines['28cce2cd-1991-493d-8a0d-1532d85db9a8_1.0.0'].stringify({
-                                                                    "value": constructDictionary
+                                                                    "value": constructDictionary7
                                                                 }).exec({
                                                                     "error": function(stringifyAsJSON) {
                                                                         return exits.error({
@@ -132,13 +132,13 @@ module.exports = {
                                                                                 // Parse JSON date/time
                                                                                 sails.machines['fdb941c0-10c4-4a56-bb13-f491beafa7a9_1.2.0'].parse({
                                                                                     "datetime": ({
-                                                                                        author: (constructDictionary && constructDictionary.author),
-                                                                                        commitUrl: (constructDictionary && constructDictionary.commitUrl),
-                                                                                        timestamp: (constructDictionary && constructDictionary.timestamp)
+                                                                                        author: (constructDictionary7 && constructDictionary7.author),
+                                                                                        commitUrl: (constructDictionary7 && constructDictionary7.commitUrl),
+                                                                                        timestamp: (constructDictionary7 && constructDictionary7.timestamp)
                                                                                     } && {
-                                                                                        author: (constructDictionary && constructDictionary.author),
-                                                                                        commitUrl: (constructDictionary && constructDictionary.commitUrl),
-                                                                                        timestamp: (constructDictionary && constructDictionary.timestamp)
+                                                                                        author: (constructDictionary7 && constructDictionary7.author),
+                                                                                        commitUrl: (constructDictionary7 && constructDictionary7.commitUrl),
+                                                                                        timestamp: (constructDictionary7 && constructDictionary7.timestamp)
                                                                                     }.timestamp)
                                                                                 }).exec({
                                                                                     "error": function(parseJSONDateTime3) {
@@ -186,31 +186,31 @@ module.exports = {
                                                                                                 sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
                                                                                                     "dictionary": {
                                                                                                         author: ({
-                                                                                                            author: (constructDictionary && constructDictionary.author),
-                                                                                                            commitUrl: (constructDictionary && constructDictionary.commitUrl),
-                                                                                                            timestamp: (constructDictionary && constructDictionary.timestamp)
+                                                                                                            author: (constructDictionary7 && constructDictionary7.author),
+                                                                                                            commitUrl: (constructDictionary7 && constructDictionary7.commitUrl),
+                                                                                                            timestamp: (constructDictionary7 && constructDictionary7.timestamp)
                                                                                                         } && {
-                                                                                                            author: (constructDictionary && constructDictionary.author),
-                                                                                                            commitUrl: (constructDictionary && constructDictionary.commitUrl),
-                                                                                                            timestamp: (constructDictionary && constructDictionary.timestamp)
+                                                                                                            author: (constructDictionary7 && constructDictionary7.author),
+                                                                                                            commitUrl: (constructDictionary7 && constructDictionary7.commitUrl),
+                                                                                                            timestamp: (constructDictionary7 && constructDictionary7.timestamp)
                                                                                                         }.author),
                                                                                                         commitUrl: ({
-                                                                                                            author: (constructDictionary && constructDictionary.author),
-                                                                                                            commitUrl: (constructDictionary && constructDictionary.commitUrl),
-                                                                                                            timestamp: (constructDictionary && constructDictionary.timestamp)
+                                                                                                            author: (constructDictionary7 && constructDictionary7.author),
+                                                                                                            commitUrl: (constructDictionary7 && constructDictionary7.commitUrl),
+                                                                                                            timestamp: (constructDictionary7 && constructDictionary7.timestamp)
                                                                                                         } && {
-                                                                                                            author: (constructDictionary && constructDictionary.author),
-                                                                                                            commitUrl: (constructDictionary && constructDictionary.commitUrl),
-                                                                                                            timestamp: (constructDictionary && constructDictionary.timestamp)
+                                                                                                            author: (constructDictionary7 && constructDictionary7.author),
+                                                                                                            commitUrl: (constructDictionary7 && constructDictionary7.commitUrl),
+                                                                                                            timestamp: (constructDictionary7 && constructDictionary7.timestamp)
                                                                                                         }.commitUrl),
                                                                                                         timestamp: ({
-                                                                                                            author: (constructDictionary && constructDictionary.author),
-                                                                                                            commitUrl: (constructDictionary && constructDictionary.commitUrl),
-                                                                                                            timestamp: (constructDictionary && constructDictionary.timestamp)
+                                                                                                            author: (constructDictionary7 && constructDictionary7.author),
+                                                                                                            commitUrl: (constructDictionary7 && constructDictionary7.commitUrl),
+                                                                                                            timestamp: (constructDictionary7 && constructDictionary7.timestamp)
                                                                                                         } && {
-                                                                                                            author: (constructDictionary && constructDictionary.author),
-                                                                                                            commitUrl: (constructDictionary && constructDictionary.commitUrl),
-                                                                                                            timestamp: (constructDictionary && constructDictionary.timestamp)
+                                                                                                            author: (constructDictionary7 && constructDictionary7.author),
+                                                                                                            commitUrl: (constructDictionary7 && constructDictionary7.commitUrl),
+                                                                                                            timestamp: (constructDictionary7 && constructDictionary7.timestamp)
                                                                                                         }.timestamp),
                                                                                                         timeAgo: timeFrom3
                                                                                                     }
@@ -223,10 +223,31 @@ module.exports = {
 
                                                                                                     },
                                                                                                     "success": function(constructDictionary5) {
-                                                                                                        return exits.respond({
-                                                                                                            data: constructDictionary5,
-                                                                                                            action: "respond_with_result_and_status",
-                                                                                                            status: 200
+                                                                                                        // Construct dictionary
+                                                                                                        sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
+                                                                                                            "dictionary": {
+                                                                                                                nauticalAuthor: pickSailsAuthorAkaSeaCreature,
+                                                                                                                latestCommit: constructDictionary5
+                                                                                                            }
+                                                                                                        }).exec({
+                                                                                                            "error": function(constructDictionary6) {
+                                                                                                                return exits.error({
+                                                                                                                    data: constructDictionary6,
+                                                                                                                    status: 500
+                                                                                                                });
+
+                                                                                                            },
+                                                                                                            "success": function(constructDictionary6) {
+                                                                                                                return exits.respond({
+                                                                                                                    data: {
+                                                                                                                        data: constructDictionary6
+                                                                                                                    },
+                                                                                                                    action: "display_view",
+                                                                                                                    status: 200,
+                                                                                                                    view: "homepage"
+                                                                                                                });
+
+                                                                                                            }
                                                                                                         });
 
                                                                                                     }
@@ -314,7 +335,7 @@ module.exports = {
                                                         // If greater than (>)
                                                         sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifGreaterThan({
                                                             "a": subtract,
-                                                            "b": 3600000,
+                                                            "b": 10800000,
                                                             "isInclusive": true
                                                         }).exec({
                                                             "error": function(ifGreaterThan) {
@@ -411,18 +432,39 @@ module.exports = {
                                                                                         timeAgo: timeFrom2
                                                                                     }
                                                                                 }).exec({
-                                                                                    "error": function(constructDictionary4) {
+                                                                                    "error": function(constructDictionary3) {
                                                                                         return exits.error({
-                                                                                            data: constructDictionary4,
+                                                                                            data: constructDictionary3,
                                                                                             status: 500
                                                                                         });
 
                                                                                     },
-                                                                                    "success": function(constructDictionary4) {
-                                                                                        return exits.respond({
-                                                                                            data: constructDictionary4,
-                                                                                            action: "respond_with_result_and_status",
-                                                                                            status: 200
+                                                                                    "success": function(constructDictionary3) {
+                                                                                        // Construct dictionary
+                                                                                        sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
+                                                                                            "dictionary": {
+                                                                                                nauticalAuthor: pickSailsAuthorAkaSeaCreature,
+                                                                                                latestCommit: constructDictionary3
+                                                                                            }
+                                                                                        }).exec({
+                                                                                            "error": function(constructDictionary4) {
+                                                                                                return exits.error({
+                                                                                                    data: constructDictionary4,
+                                                                                                    status: 500
+                                                                                                });
+
+                                                                                            },
+                                                                                            "success": function(constructDictionary4) {
+                                                                                                return exits.respond({
+                                                                                                    data: {
+                                                                                                        data: constructDictionary4
+                                                                                                    },
+                                                                                                    action: "display_view",
+                                                                                                    status: 200,
+                                                                                                    view: "homepage"
+                                                                                                });
+
+                                                                                            }
                                                                                         });
 
                                                                                     }
@@ -493,17 +535,17 @@ module.exports = {
                                                                                                 updatedAt: now2
                                                                                             }
                                                                                         }).exec({
-                                                                                            "error": function(constructDictionary2) {
+                                                                                            "error": function(constructDictionary8) {
                                                                                                 return exits.error({
-                                                                                                    data: constructDictionary2,
+                                                                                                    data: constructDictionary8,
                                                                                                     status: 500
                                                                                                 });
 
                                                                                             },
-                                                                                            "success": function(constructDictionary2) {
+                                                                                            "success": function(constructDictionary8) {
                                                                                                 // Stringify as JSON
                                                                                                 sails.machines['28cce2cd-1991-493d-8a0d-1532d85db9a8_1.0.0'].stringify({
-                                                                                                    "value": constructDictionary2
+                                                                                                    "value": constructDictionary8
                                                                                                 }).exec({
                                                                                                     "error": function(stringifyAsJSON2) {
                                                                                                         return exits.error({
@@ -536,13 +578,13 @@ module.exports = {
                                                                                                                 // Parse JSON date/time
                                                                                                                 sails.machines['fdb941c0-10c4-4a56-bb13-f491beafa7a9_1.2.0'].parse({
                                                                                                                     "datetime": ({
-                                                                                                                        author: (constructDictionary2 && constructDictionary2.author),
-                                                                                                                        commitUrl: (constructDictionary2 && constructDictionary2.commitUrl),
-                                                                                                                        timestamp: (constructDictionary2 && constructDictionary2.timestamp)
+                                                                                                                        author: (constructDictionary8 && constructDictionary8.author),
+                                                                                                                        commitUrl: (constructDictionary8 && constructDictionary8.commitUrl),
+                                                                                                                        timestamp: (constructDictionary8 && constructDictionary8.timestamp)
                                                                                                                     } && {
-                                                                                                                        author: (constructDictionary2 && constructDictionary2.author),
-                                                                                                                        commitUrl: (constructDictionary2 && constructDictionary2.commitUrl),
-                                                                                                                        timestamp: (constructDictionary2 && constructDictionary2.timestamp)
+                                                                                                                        author: (constructDictionary8 && constructDictionary8.author),
+                                                                                                                        commitUrl: (constructDictionary8 && constructDictionary8.commitUrl),
+                                                                                                                        timestamp: (constructDictionary8 && constructDictionary8.timestamp)
                                                                                                                     }.timestamp)
                                                                                                                 }).exec({
                                                                                                                     "error": function(parseJSONDateTime) {
@@ -590,47 +632,68 @@ module.exports = {
                                                                                                                                 sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
                                                                                                                                     "dictionary": {
                                                                                                                                         author: ({
-                                                                                                                                            author: (constructDictionary2 && constructDictionary2.author),
-                                                                                                                                            commitUrl: (constructDictionary2 && constructDictionary2.commitUrl),
-                                                                                                                                            timestamp: (constructDictionary2 && constructDictionary2.timestamp)
+                                                                                                                                            author: (constructDictionary8 && constructDictionary8.author),
+                                                                                                                                            commitUrl: (constructDictionary8 && constructDictionary8.commitUrl),
+                                                                                                                                            timestamp: (constructDictionary8 && constructDictionary8.timestamp)
                                                                                                                                         } && {
-                                                                                                                                            author: (constructDictionary2 && constructDictionary2.author),
-                                                                                                                                            commitUrl: (constructDictionary2 && constructDictionary2.commitUrl),
-                                                                                                                                            timestamp: (constructDictionary2 && constructDictionary2.timestamp)
+                                                                                                                                            author: (constructDictionary8 && constructDictionary8.author),
+                                                                                                                                            commitUrl: (constructDictionary8 && constructDictionary8.commitUrl),
+                                                                                                                                            timestamp: (constructDictionary8 && constructDictionary8.timestamp)
                                                                                                                                         }.author),
                                                                                                                                         commitUrl: ({
-                                                                                                                                            author: (constructDictionary2 && constructDictionary2.author),
-                                                                                                                                            commitUrl: (constructDictionary2 && constructDictionary2.commitUrl),
-                                                                                                                                            timestamp: (constructDictionary2 && constructDictionary2.timestamp)
+                                                                                                                                            author: (constructDictionary8 && constructDictionary8.author),
+                                                                                                                                            commitUrl: (constructDictionary8 && constructDictionary8.commitUrl),
+                                                                                                                                            timestamp: (constructDictionary8 && constructDictionary8.timestamp)
                                                                                                                                         } && {
-                                                                                                                                            author: (constructDictionary2 && constructDictionary2.author),
-                                                                                                                                            commitUrl: (constructDictionary2 && constructDictionary2.commitUrl),
-                                                                                                                                            timestamp: (constructDictionary2 && constructDictionary2.timestamp)
+                                                                                                                                            author: (constructDictionary8 && constructDictionary8.author),
+                                                                                                                                            commitUrl: (constructDictionary8 && constructDictionary8.commitUrl),
+                                                                                                                                            timestamp: (constructDictionary8 && constructDictionary8.timestamp)
                                                                                                                                         }.commitUrl),
                                                                                                                                         timestamp: ({
-                                                                                                                                            author: (constructDictionary2 && constructDictionary2.author),
-                                                                                                                                            commitUrl: (constructDictionary2 && constructDictionary2.commitUrl),
-                                                                                                                                            timestamp: (constructDictionary2 && constructDictionary2.timestamp)
+                                                                                                                                            author: (constructDictionary8 && constructDictionary8.author),
+                                                                                                                                            commitUrl: (constructDictionary8 && constructDictionary8.commitUrl),
+                                                                                                                                            timestamp: (constructDictionary8 && constructDictionary8.timestamp)
                                                                                                                                         } && {
-                                                                                                                                            author: (constructDictionary2 && constructDictionary2.author),
-                                                                                                                                            commitUrl: (constructDictionary2 && constructDictionary2.commitUrl),
-                                                                                                                                            timestamp: (constructDictionary2 && constructDictionary2.timestamp)
+                                                                                                                                            author: (constructDictionary8 && constructDictionary8.author),
+                                                                                                                                            commitUrl: (constructDictionary8 && constructDictionary8.commitUrl),
+                                                                                                                                            timestamp: (constructDictionary8 && constructDictionary8.timestamp)
                                                                                                                                         }.timestamp),
                                                                                                                                         timeAgo: timeFrom
                                                                                                                                     }
                                                                                                                                 }).exec({
-                                                                                                                                    "error": function(constructDictionary3) {
+                                                                                                                                    "error": function(constructDictionary) {
                                                                                                                                         return exits.error({
-                                                                                                                                            data: constructDictionary3,
+                                                                                                                                            data: constructDictionary,
                                                                                                                                             status: 500
                                                                                                                                         });
 
                                                                                                                                     },
-                                                                                                                                    "success": function(constructDictionary3) {
-                                                                                                                                        return exits.respond({
-                                                                                                                                            data: constructDictionary3,
-                                                                                                                                            action: "respond_with_result_and_status",
-                                                                                                                                            status: 200
+                                                                                                                                    "success": function(constructDictionary) {
+                                                                                                                                        // Construct dictionary
+                                                                                                                                        sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
+                                                                                                                                            "dictionary": {
+                                                                                                                                                nauticalAuthor: pickSailsAuthorAkaSeaCreature,
+                                                                                                                                                latestCommit: constructDictionary
+                                                                                                                                            }
+                                                                                                                                        }).exec({
+                                                                                                                                            "error": function(constructDictionary2) {
+                                                                                                                                                return exits.error({
+                                                                                                                                                    data: constructDictionary2,
+                                                                                                                                                    status: 500
+                                                                                                                                                });
+
+                                                                                                                                            },
+                                                                                                                                            "success": function(constructDictionary2) {
+                                                                                                                                                return exits.respond({
+                                                                                                                                                    data: {
+                                                                                                                                                        data: constructDictionary2
+                                                                                                                                                    },
+                                                                                                                                                    action: "display_view",
+                                                                                                                                                    status: 200,
+                                                                                                                                                    view: "homepage"
+                                                                                                                                                });
+
+                                                                                                                                            }
                                                                                                                                         });
 
                                                                                                                                     }

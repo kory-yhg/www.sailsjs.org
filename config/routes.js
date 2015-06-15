@@ -1,9 +1,9 @@
 module.exports.routes = {
-  "get /features": {
-    "target": "FeaturesController.find"
-  },
   "get /": {
     "target": "Home$Controller.find"
+  },
+  "get /features": {
+    "target": "FeaturesController.find"
   },
   "get /get-started": {
     "target": "Get-startedController.find"
