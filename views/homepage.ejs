@@ -1,6 +1,6 @@
 <% /* Expose latestCommit data to make it accessible to client-side javascript */ %>
 <script>
-window.LATESTCOMMIT_DATA = <%- JSON.stringify(latestCommit) %>;
+window.LATESTCOMMIT_DATA = <%- JSON.stringify(data.latestCommit) %>;
 </script>
 
 <div class="page home-page" ng-controller="HomepageCtrl" scrollng>
@@ -9,7 +9,7 @@ window.LATESTCOMMIT_DATA = <%- JSON.stringify(latestCommit) %>;
     <div class="banner-container">
       <div class="tagline">
         <h2>The web framework of your dreams.</h2>
-        <h3>Built for developers by <%= nauticalAuthor || 'developers'%>.</h3>
+        <h3>Built for developers by <%= data.nauticalAuthor || 'developers'%>.</h3>
         <a href="/get-started" class="button">Get started</a>
       </div>
       <img class="light" src="/images/bkgd_light.png"/>

@@ -3,12 +3,12 @@
 
       <p>
         Latest commit by
-        <% if(latestCommit.author.profileUrl) { %>
-          <a target="_blank" href="<%= latestCommit.author.profileUrl %>">@<%=latestCommit.author.username %></a>
+        <% if(data.latestCommit.author.profileUrl) { %>
+          <a target="_blank" href="<%= data.latestCommit.author.profileUrl %>">@<%=data.latestCommit.author.username %></a>
         <% } else { %>
-          <%= latestCommit.author.name %>
+          <%= data.latestCommit.author.name %>
         <% }%>
-        <a target="_blank" href="<%= latestCommit.commitUrl %>"><%= latestCommit.timeAgo %></a>
+        <a target="_blank" href="<%= data.latestCommit.commitUrl %>"><%= data.latestCommit.timeAgo %></a>
       </p>
 
       <!-- other news can go here.... -->
