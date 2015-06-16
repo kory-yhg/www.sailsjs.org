@@ -227,7 +227,8 @@ module.exports = {
                                                                                                     "success": function(constructDictionary6) {
                                                                                                         return exits.respond({
                                                                                                             data: {
-                                                                                                                data: constructDictionary6
+                                                                                                                data: constructDictionary6,
+                                                                                                                title: "Features | Sails.js"
                                                                                                             },
                                                                                                             action: "display_view",
                                                                                                             status: 200,
@@ -443,7 +444,8 @@ module.exports = {
                                                                                     "success": function(constructDictionary4) {
                                                                                         return exits.respond({
                                                                                             data: {
-                                                                                                data: constructDictionary4
+                                                                                                data: constructDictionary4,
+                                                                                                title: "Features | Sails.js"
                                                                                             },
                                                                                             action: "display_view",
                                                                                             status: 200,
@@ -671,7 +673,8 @@ module.exports = {
                                                                                                                                     "success": function(constructDictionary2) {
                                                                                                                                         return exits.respond({
                                                                                                                                             data: {
-                                                                                                                                                data: constructDictionary2
+                                                                                                                                                data: constructDictionary2,
+                                                                                                                                                title: "Features | Sails.js"
                                                                                                                                             },
                                                                                                                                             action: "display_view",
                                                                                                                                             status: 200,

@@ -64,7 +64,8 @@ module.exports = {
                                     "success": function(marshalMenuMetadata) {
                                         return exits.respond({
                                             data: {
-                                                sections: marshalMenuMetadata
+                                                sections: marshalMenuMetadata,
+                                                title: "Get Started  | Sails.js"
                                             },
                                             action: "display_view",
                                             status: 200,

@@ -64,7 +64,8 @@ module.exports = {
                                     "success": function(marshalMenuMetadata) {
                                         return exits.respond({
                                             data: {
-                                                sections: marshalMenuMetadata
+                                                sections: marshalMenuMetadata,
+                                                title: "About IRC | Sails.js Support"
                                             },
                                             action: "display_view",
                                             status: 200,
@@ -165,7 +166,8 @@ module.exports = {
                                             "success": function(reverseSortMenuItemsBySemver) {
                                                 return exits.respond({
                                                     data: {
-                                                        menuItems: reverseSortMenuItemsBySemver
+                                                        menuItems: reverseSortMenuItemsBySemver,
+                                                        title: "Support | Sails.js"
                                                     },
                                                     action: "display_view",
                                                     status: 200,

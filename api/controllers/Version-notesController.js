@@ -94,32 +94,17 @@ module.exports = {
 
                                             },
                                             "notFound": function(findDictionaryBy) {
-                                                // Log a message
-                                                sails.machines['0ccd2b47-a58e-4f8c-a3fd-d5a4ec77bfd5_5.0.1'].log({
-                                                    "value": "Didn't find it!!!"
-                                                }).exec({
-                                                    "error": function(logAMessage) {
-                                                        return exits.respond({
-                                                            data: null,
-                                                            action: "respond_with_value_and_status",
-                                                            status: 500
-                                                        });
-
-                                                    },
-                                                    "success": function(logAMessage) {
-                                                        return exits.respond({
-                                                            action: "respond_with_status",
-                                                            status: 200
-                                                        });
-
-                                                    }
+                                                return exits.respond({
+                                                    action: "respond_with_status",
+                                                    status: 200
                                                 });
 
                                             },
                                             "success": function(findDictionaryBy) {
                                                 return exits.respond({
                                                     data: {
-                                                        currentPage: findDictionaryBy
+                                                        currentPage: findDictionaryBy,
+                                                        title: (findDictionaryBy && findDictionaryBy.displayName) + " | Sails.js Version Notes"
                                                     },
                                                     action: "display_view",
                                                     status: 200,

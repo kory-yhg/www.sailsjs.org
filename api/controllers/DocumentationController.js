@@ -194,7 +194,8 @@ module.exports = {
                                                                                                 return exits.respond({
                                                                                                     data: {
                                                                                                         sectionTitle: capitalizeAString,
-                                                                                                        data: constructDictionary
+                                                                                                        data: constructDictionary,
+                                                                                                        title: capitalizeAString + " | Sails.js Documentation"
                                                                                                     },
                                                                                                     action: "display_view",
                                                                                                     status: 200,
@@ -209,7 +210,8 @@ module.exports = {
                                                                                         return exits.respond({
                                                                                             data: {
                                                                                                 sectionTitle: "Anatomy of a Sails App",
-                                                                                                data: constructDictionary
+                                                                                                data: constructDictionary,
+                                                                                                title: "Anatomy of a Sails.js App  | Sails.js Documentation"
                                                                                             },
                                                                                             action: "display_view",
                                                                                             status: 200,

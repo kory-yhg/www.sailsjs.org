@@ -1,6 +1,6 @@
 module.exports = {
   machines: {
-    installDependencies: false,
+    installDependencies: true,
     _hookTimeout: 120000
   },
   treeline: {}
