@@ -18,7 +18,7 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     $scope.expandedMenuItems = [];
     $scope.parentMenuItems = [];
 
-    var permalink = $window.location.search.split('?q=')[1];
+    var permalink = $window.location.hash.split('#?')[1];
     if(permalink) {
       $('html, body').animate({
         scrollTop: $('#'+permalink).offset().top - 50

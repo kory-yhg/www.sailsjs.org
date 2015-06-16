@@ -189,13 +189,13 @@
     "parent": "concepts/ORM/ORM.ejs",
     "isChild": true,
     "children": [
-      "concepts/ORM/Associations/Dominance.ejs",
       "concepts/ORM/Associations/ManytoMany.ejs",
       "concepts/ORM/Associations/OneWayAssociation.ejs",
+      "concepts/ORM/Associations/Dominance.ejs",
       "concepts/ORM/Associations/OnetoMany.ejs",
       "concepts/ORM/Associations/ThroughAssociations.ejs",
-      "concepts/ORM/Associations/OnetoOne.ejs",
-      "concepts/ORM/Associations/joinTables.ejs"
+      "concepts/ORM/Associations/joinTables.ejs",
+      "concepts/ORM/Associations/OnetoOne.ejs"
     ],
     "isParent": true
   },
@@ -565,8 +565,8 @@
     "parent": "concepts/extending-sails/extending-sails.ejs",
     "isChild": true,
     "children": [
-      "concepts/extending-sails/Generators/generatorList.ejs",
-      "concepts/extending-sails/Generators/customGenerators.ejs"
+      "concepts/extending-sails/Generators/customGenerators.ejs",
+      "concepts/extending-sails/Generators/generatorList.ejs"
     ],
     "isParent": true
   },
@@ -710,8 +710,7 @@
     "fullPathAndFileName": "concepts/0home/0home.ejs",
     "realPath": "concepts/0home/",
     "data": {
-      "uniqueID": "home198259",
-      "displayName": "--"
+      "displayName": "Concepts: Table of Contents"
     },
     "children": [],
     "isParent": true
@@ -725,9 +724,9 @@
       "displayName": "Assets"
     },
     "children": [
-      "concepts/Assets/DefaultTasks.ejs",
       "concepts/Assets/DisablingGrunt.ejs",
-      "concepts/Assets/TaskAutomation.ejs"
+      "concepts/Assets/TaskAutomation.ejs",
+      "concepts/Assets/DefaultTasks.ejs"
     ],
     "isParent": true
   },
@@ -740,8 +739,8 @@
       "displayName": "Configuration"
     },
     "children": [
-      "concepts/Configuration/localjsfile.ejs",
-      "concepts/Configuration/usingsailsrcfiles.ejs"
+      "concepts/Configuration/usingsailsrcfiles.ejs",
+      "concepts/Configuration/localjsfile.ejs"
     ],
     "isParent": true
   },
@@ -754,8 +753,8 @@
       "displayName": "Controllers"
     },
     "children": [
-      "concepts/Controllers/RoutingToControllers.ejs",
-      "concepts/Controllers/GeneratingControllers.ejs"
+      "concepts/Controllers/GeneratingControllers.ejs",
+      "concepts/Controllers/RoutingToControllers.ejs"
     ],
     "isParent": true
   },
@@ -795,8 +794,8 @@
       "displayName": "File Uploads"
     },
     "children": [
-      "concepts/File Uploads/uploading-to-mongo-gridfs.ejs",
-      "concepts/File Uploads/uploading-to-amazon-s3.ejs"
+      "concepts/File Uploads/uploading-to-amazon-s3.ejs",
+      "concepts/File Uploads/uploading-to-mongo-gridfs.ejs"
     ],
     "isParent": true
   },
@@ -863,9 +862,9 @@
     "children": [
       "concepts/ORM/Attributes.ejs",
       "concepts/ORM/Querylanguage.ejs",
-      "concepts/ORM/Models.ejs",
       "concepts/ORM/Lifecyclecallbacks.ejs",
       "concepts/ORM/Validations.ejs",
+      "concepts/ORM/Models.ejs",
       "concepts/ORM/model-settings.ejs",
       "concepts/ORM/Associations/Associations.ejs"
     ],
@@ -908,11 +907,11 @@
     },
     "children": [
       "concepts/Security/CORS.ejs",
-      "concepts/Security/CSRF.ejs",
       "concepts/Security/Clickjacking.ejs",
+      "concepts/Security/CSRF.ejs",
       "concepts/Security/ContentSecurityPolicy.ejs",
-      "concepts/Security/DDOS.ejs",
       "concepts/Security/P3P.ejs",
+      "concepts/Security/DDOS.ejs",
       "concepts/Security/SocketHijacking.ejs",
       "concepts/Security/StrictTransportSecurity.ejs",
       "concepts/Security/XSS.ejs"

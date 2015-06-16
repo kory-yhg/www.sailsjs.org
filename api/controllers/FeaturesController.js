@@ -228,7 +228,8 @@ module.exports = {
                                                                                                         return exits.respond({
                                                                                                             data: {
                                                                                                                 data: constructDictionary6,
-                                                                                                                title: "Features | Sails.js"
+                                                                                                                title: "Features | Sails.js",
+                                                                                                                description: "Sails is a lightweight framework that sits on top of Express. Its ensemble of small modules work together to provide simplicity, maintainability, and structural conventions to Node.js apps."
                                                                                                             },
                                                                                                             action: "display_view",
                                                                                                             status: 200,
@@ -445,7 +446,8 @@ module.exports = {
                                                                                         return exits.respond({
                                                                                             data: {
                                                                                                 data: constructDictionary4,
-                                                                                                title: "Features | Sails.js"
+                                                                                                title: "Features | Sails.js",
+                                                                                                description: "Sails is a lightweight framework that sits on top of Express. Its ensemble of small modules work together to provide simplicity, maintainability, and structural conventions to Node.js apps."
                                                                                             },
                                                                                             action: "display_view",
                                                                                             status: 200,
@@ -674,7 +676,8 @@ module.exports = {
                                                                                                                                         return exits.respond({
                                                                                                                                             data: {
                                                                                                                                                 data: constructDictionary2,
-                                                                                                                                                title: "Features | Sails.js"
+                                                                                                                                                title: "Features | Sails.js",
+                                                                                                                                                description: "Sails is a lightweight framework that sits on top of Express. Its ensemble of small modules work together to provide simplicity, maintainability, and structural conventions to Node.js apps."
                                                                                                                                             },
                                                                                                                                             action: "display_view",
                                                                                                                                             status: 200,

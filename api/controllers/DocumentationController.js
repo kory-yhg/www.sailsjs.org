@@ -195,7 +195,7 @@ module.exports = {
                                                                                                     data: {
                                                                                                         sectionTitle: capitalizeAString,
                                                                                                         data: constructDictionary,
-                                                                                                        title: capitalizeAString + " | Sails.js Documentation"
+                                                                                                        title: (constructDictionary && constructDictionary.currentTemplate.displayName) + " | Sails.js Documentation"
                                                                                                     },
                                                                                                     action: "display_view",
                                                                                                     status: 200,
@@ -211,7 +211,8 @@ module.exports = {
                                                                                             data: {
                                                                                                 sectionTitle: "Anatomy of a Sails App",
                                                                                                 data: constructDictionary,
-                                                                                                title: "Anatomy of a Sails.js App  | Sails.js Documentation"
+                                                                                                title: "Anatomy of a Sails.js App  | Sails.js Documentation",
+                                                                                                description: "An interactive tutorial of a Sails.js app's structure. Explore the files and folders that are generated when you create a new Sails app, and learn the purpose and usage of each one."
                                                                                             },
                                                                                             action: "display_view",
                                                                                             status: 200,

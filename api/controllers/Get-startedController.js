@@ -65,7 +65,8 @@ module.exports = {
                                         return exits.respond({
                                             data: {
                                                 sections: marshalMenuMetadata,
-                                                title: "Get Started  | Sails.js"
+                                                title: "Get Started  | Sails.js",
+                                                description: "Learn about installing Sails.js and Node.js, and get acquainted with some of Sails's major concepts, such as convention over configuration, loose coupling, and what Sails is and is not."
                                             },
                                             action: "display_view",
                                             status: 200,

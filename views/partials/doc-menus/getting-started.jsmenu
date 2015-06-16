@@ -3,8 +3,7 @@
     "templateTitle": "NewToNode.ejs",
     "fullPathAndFileName": "getting-started/NewToNode.ejs",
     "data": {
-      "uniqueID": "NewToNode748472",
-      "displayName": "New To Node"
+      "displayName": "New To Node?"
     },
     "parent": "getting-started/getting-started.ejs",
     "isChild": true
@@ -24,8 +23,7 @@
     "fullPathAndFileName": "getting-started/getting-started.ejs",
     "realPath": "getting-started/",
     "data": {
-      "uniqueID": "GettingStarted99009",
-      "displayName": "Getting Started"
+      "displayName": "Installation"
     },
     "children": [
       "getting-started/NewToNode.ejs",

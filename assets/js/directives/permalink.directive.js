@@ -27,13 +27,11 @@ function() {
 
   function render (scope, $el, attrs) {
 
-    var link;
-    // if hash already contains ?q= at the end, remove it before continuing
-    link = window.location.search.replace(/\?q=.+$/, '');
-    link += '?q='+attrs.permalink;
+    var linkName = _.kebabCase(attrs.permalink);
+    var link = '#?'+ linkName;
 
     var $ = angular.element;
-    var html = '<a href="'+ link +'" class="permalink-thing" id="'+ attrs.permalink +'">#</a>';
+    var html = '<a href="'+ link +'" name="'+linkName+'" class="permalink-thing" id="'+ linkName +'">#</a>';
     $el.after(html);
   }
 

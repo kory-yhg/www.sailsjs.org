@@ -6,7 +6,7 @@ angular.module('SailsWebsite').controller('HeaderCtrl', [
   function($scope, $window, $timeout, $location) {
 
     // Check for the old '/#/' and '/#!/' links and redirect to the right place.
-    if($window.location.hash) {
+    if($window.location.hash && window.location.hash.indexOf('#?') < 0) {
       var redirectTo = $window.location.hash.replace(/#/g, '').replace(/!/g, '');
       if(redirectTo[0] === '/') {
         redirectTo = redirectTo.replace(/\//, '');

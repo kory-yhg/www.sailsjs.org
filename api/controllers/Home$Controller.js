@@ -240,7 +240,8 @@ module.exports = {
                                                                                                             "success": function(constructDictionary6) {
                                                                                                                 return exits.respond({
                                                                                                                     data: {
-                                                                                                                        data: constructDictionary6
+                                                                                                                        data: constructDictionary6,
+                                                                                                                        description: "Sails.js makes it easy to build custom, enterprise-grade Node.js apps. It is designed to resemble the MVC architecture from frameworks like Ruby on Rails, but with support for the more modern, data-oriented style of web app development. It's especially good for building realtime features like chat."
                                                                                                                     },
                                                                                                                     action: "display_view",
                                                                                                                     status: 200,
@@ -457,7 +458,8 @@ module.exports = {
                                                                                             "success": function(constructDictionary4) {
                                                                                                 return exits.respond({
                                                                                                     data: {
-                                                                                                        data: constructDictionary4
+                                                                                                        data: constructDictionary4,
+                                                                                                        description: "Sails.js makes it easy to build custom, enterprise-grade Node.js apps. It is designed to resemble the MVC architecture from frameworks like Ruby on Rails, but with support for the more modern, data-oriented style of web app development. It's especially good for building realtime features like chat."
                                                                                                     },
                                                                                                     action: "display_view",
                                                                                                     status: 200,
@@ -686,7 +688,8 @@ module.exports = {
                                                                                                                                             "success": function(constructDictionary2) {
                                                                                                                                                 return exits.respond({
                                                                                                                                                     data: {
-                                                                                                                                                        data: constructDictionary2
+                                                                                                                                                        data: constructDictionary2,
+                                                                                                                                                        description: "Sails.js makes it easy to build custom, enterprise-grade Node.js apps. It is designed to resemble the MVC architecture from frameworks like Ruby on Rails, but with support for the more modern, data-oriented style of web app development. It's especially good for building realtime features like chat."
                                                                                                                                                     },
                                                                                                                                                     action: "display_view",
                                                                                                                                                     status: 200,

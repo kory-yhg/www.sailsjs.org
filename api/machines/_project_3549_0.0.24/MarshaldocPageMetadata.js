@@ -85,7 +85,10 @@ module.exports = {
       // Create an empty array, in order to build up the slug.
       var slugParts = [];
       // Add the kebab-cased display name of the selected page
-      slugParts.push(_.kebabCase(docPage.displayName));
+      // (But only if it's not the top-level, aka table of contents)
+      if (docPage.displayName.toLowerCase().indexOf('Table of Contents'.toLowerCase()) < 0) {
+        slugParts.push(_.kebabCase(docPage.displayName));
+      }
 
 
       // Build up the array of parents for the slug.
