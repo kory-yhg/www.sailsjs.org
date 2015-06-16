@@ -127,7 +127,7 @@
   }
   @media screen and (max-width: 800px) {
     .banner {
-      h1.mobile {
+      h1 {
         font-size: 32px;
       }
       p.sub-header {
@@ -142,23 +142,10 @@
     }
     .features-container {
       .clearfix();
-      padding-left: 0;
-      .features {
-        position: static;
-        width: 100%;
-        h1 {
-          // text-align: center;
-          display: none;
-        }
-        ul {
-          display: none;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 800px) {
-    .features-container {
       padding: 50px 0px 50px 0px;
+      .features-nav, .features-nav.sticky {
+        display: none;
+      }
       .feature-list {
         padding-top: 25px;
         ul li {
