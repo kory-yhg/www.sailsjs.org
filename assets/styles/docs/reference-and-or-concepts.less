@@ -169,6 +169,61 @@
     }
   }
 
+  .reference-item .table-of-contents {
+    .borderBox();
+    background-color: @bgLtGray;
+    padding: 30px 50px;
+    border: 1px solid @ltestGray;
+    >h3 {
+      color: @headerGray;
+      font-weight: @light;
+      font-size: 22px;
+      padding-bottom: 20px;
+      padding-top: 0px
+    }
+    >ol {
+      // Some general list item and list styles
+      li, li li {
+        background: transparent;
+        padding-left: 0px;
+        margin-left: 0;
+      }
+      ol {
+        padding-left: 50px;
+      }
+      // Top-level <li> styles
+      >li {
+        list-style-type: upper-roman;
+        >span {
+          font-weight: @bold;
+        }
+        // Lists inside of lists
+        >ol {
+          >li {
+            list-style-type: upper-alpha;
+            // Lists inside of lists inside of lists
+            >ol {
+              >li {
+                list-style-type: decimal;
+                // Lists inside of lists inside of lists inside of lists
+                >ol {
+                  >li {
+                    list-style-type: lower-alpha;
+                    // (I don't think it even gets this deep --
+                    // after this we just won't worry about the list-style-type)
+                    >li {
+                      list-style-type: disc;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   @media screen and (max-width: 1050px) {
     .reference-sidebar {
       padding-left: 15px;

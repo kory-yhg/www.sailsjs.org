@@ -45,7 +45,27 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
   <!-- Main content -->
   <div class="right-column">
     <div class="reference-item">
+      <% if(data.currentTemplate.path.indexOf('0home') < 0) { %>
       <%- partial('../partials/doc-templates/'+ data.currentTemplate.path) %>
+      <% } else {
+        // If this is the '0home' page, build a table of contents
+        // (basically the nav menu but all expanded and easy-to-read)
+        %>
+        <h1>Sails.js Official <%= sectionTitle %> Documentation</h1>
+        <div class="table-of-contents">
+          <h3>Table of Contents</h3>
+          <ol>
+            <% _.each(data.templateList, function(navItem) {
+            // Only show top-level nav items initially
+            // (Except for the ones that don't have children, because those are
+            // the wierd ones that aren't really part of the docs.
+            if(!navItem.isChild &&  navItem.children && navItem.children.length) { %>
+            <li><%- partial('../partials/table-of-contents-item', {navItem: navItem, navItems: data.templateList}) %></li>
+            <% }
+            }) %>
+          </ol>
+        </div>
+      <% } %>
     </div>
 
     <div class="contribution-message">

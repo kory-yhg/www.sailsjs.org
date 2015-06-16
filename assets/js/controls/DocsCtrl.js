@@ -30,8 +30,8 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     // Some slugs have spaces, which are changed to '%20' in the URL --
     // replace any occurences of '%20' with a space,
     // so it matches the slug in the menu data.
-    // Also, get rid of the '?q=' from the permalinks.
-    currentSlug = currentSlug.replace(/\?q=.+$/, '');
+    // Also, get rid of the '#?' from the permalinks.
+    currentSlug = currentSlug.replace(/#\?.+$/, '');
     // Use the slug to find the data for the page we're currently on
     var currentPage = _.find($scope.menuData, {slug: currentSlug});
     // Then mark that menu item as 'expanded' by adding it to `$scope.expandedMenuItems`
