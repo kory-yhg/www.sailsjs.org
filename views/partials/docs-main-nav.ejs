@@ -1,17 +1,19 @@
 <div class="docs-main-nav" ng-controller="HeaderCtrl">
   <div class="nav-container">
-    <h1 class="header-title"><%= sectionTitle %></h1>
-    <ul class="docs-header-nav">
-      <a href="/documentation/anatomy">
-        <li ng-class="{current: getIsCurrentDocSection('anatomy')}">Anatomy</li>
-      </a>
-      <a href="/documentation/reference/">
-        <li ng-class="{current: getIsCurrentDocSection('reference')}">Reference</li>
-      </a>
-      <a href="/documentation/concepts/">
-        <li ng-class="{current: getIsCurrentDocSection('concepts')}">Concepts</li>
-      </a>
-    </ul>
+    <div class="nav-content">
+      <h1 class="header-title"><%= sectionTitle %></h1>
+      <ul class="docs-header-nav">
+        <a href="/documentation/anatomy">
+          <li ng-class="{current: getIsCurrentDocSection('anatomy')}">Anatomy</li>
+        </a>
+        <a href="/documentation/reference/">
+          <li ng-class="{current: getIsCurrentDocSection('reference')}">Reference</li>
+        </a>
+        <a href="/documentation/concepts/">
+          <li ng-class="{current: getIsCurrentDocSection('concepts')}">Concepts</li>
+        </a>
+      </ul>
+    </div>
   </div>
 </div>
 <div class="docs-github-message">

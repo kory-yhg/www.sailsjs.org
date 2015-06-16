@@ -11,35 +11,38 @@
     .container();
     .clearfix();
     padding: 110px 0 45px;
-    h1 {
-      color: @white;
-      font-weight: @light;
-      font-size: 2.2em;
-      width: 40%;
-      float: left;
-    }
-    ul.docs-header-nav {
-      .clearfix();
-      float: right;
-
-      a {
-        display: inline-block;
-        float: left;
-      }
-
-      li {
+    .nav-content {
+      position: relative;
+      h1 {
         color: @white;
-        font-weight: @normal;
-        padding: 10px 20px;
-        &:hover {
-          color: @taglineBlue;
-          .transition(all 300ms);
+        font-weight: @light;
+        font-size: 36px;
+        padding-right: 350px;
+      }
+      ul.docs-header-nav {
+        .clearfix();
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        a {
+          display: inline-block;
+          float: left;
         }
-        &.current {
-          background-color: @darkTurquoise;
-          font-weight: @semibold;
+
+        li {
+          color: @white;
+          font-weight: @normal;
+          padding: 10px 20px;
           &:hover {
-            color: @white;
+            color: @taglineBlue;
+            .transition(all 300ms);
+          }
+          &.current {
+            background-color: @darkTurquoise;
+            font-weight: @semibold;
+            &:hover {
+              color: @white;
+            }
           }
         }
       }

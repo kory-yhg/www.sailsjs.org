@@ -333,44 +333,43 @@
 }
 
 //MOBILE STYLES:
-.documentation-section {
-  div.github-message {
+div.docs-github-message {
+  font-family: @mainFont;
+  display: none;
+  .container();
+  .clearfix();
+  padding: 125px 0 50px;
+  a {
+    display: block;
+    width: 70%;
+    margin: auto;
+    padding: 15px;
+    font-size: 18px;
+    background-color: @ltestGray;
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: @headerFont;
+    color: @darkTurquoise;
+  }
+  p {
+    text-align: center;
+    font-family: @mainFont;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .docs-main-nav {
     display: none;
-    .container();
-    .clearfix();
-    padding: 30px 0 50px;
-    a {
-      display: block;
-      width: 70%;
-      margin: auto;
-      padding: 15px;
-      font-size: 1.3em;
-      background-color: @ltestGray;
+    position: relative;
+    .nav-container h1 {
+      font-size: 26px;
       text-align: center;
-      margin-bottom: 25px;
-      font-family: @headerFont;
-      color: @darkTurquoise;
-    }
-    p {
-      text-align: center;
-      font-family: @mainFont;
     }
   }
-
-  @media screen and (max-width: 500px) {
-    min-width: 0px;
-    div.documentation-header div.documentation-header-container {
-      text-align: center;
-
-      h1 {
-        font-size: 2.3em;
-      }
-    }
-    .main-container {
-      display: none;
-    }
-    div.github-message {
-      display: block;
-    }
+  .main-container {
+    display: none;
+  }
+  div.docs-github-message {
+    display: block;
   }
 }
