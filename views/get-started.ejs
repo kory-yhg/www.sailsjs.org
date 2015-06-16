@@ -12,7 +12,7 @@
             section.displayName = 'What is Sails?';
           }
         %>
-        <li><a ng-click="intent.scrollToElement('#<%= section.id %>', 500)"><%= section.displayName %></a></li>
+        <li><a href="#?<%= section.id %>" ng-click="intent.scrollToElement('#<%= section.id %>', 500)"><%= section.displayName %></a></li>
         <% }) %>
         <li><h4>More:</h4></li>
         <li><a href="/documentation">Getting help</a></li>
@@ -42,8 +42,8 @@
 
     <div class="get-started-content documentation-style-guide" id="get-started-content">
       <% _.each(sections, function(section) { %>
-      <a id="<%= section.id %>"></a>
       <div>
+        <a href="#?<%= section.id %>" name="#?<%= section.id %>" id="<%= section.id %>"></a>
         <%- partial('partials/doc-templates/'+section.path) %>
       </div>
       <% }) %>

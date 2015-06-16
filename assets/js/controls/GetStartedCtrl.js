@@ -22,7 +22,7 @@ angular.module('SailsWebsite').controller('GetStartedCtrl', [
         }
 
         $('html, body').animate({
-          scrollTop: $(target).offset().top - 50
+          scrollTop: $(target).offset().top - 100
         }, time);
       }
 
