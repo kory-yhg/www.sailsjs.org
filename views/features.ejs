@@ -26,15 +26,15 @@
       <div>
         <h1>Features</h1>
         <ul>
-          <li><a ng-click="intent.scrollToElement('#javascript')">100% Javascript</a></li>
-          <li><a ng-click="intent.scrollToElement('#database')" du-smooth-scroll du-scrollspy offset="60">Any database</a></li>
-          <li><a ng-click="intent.scrollToElement('#associations')">Powerful associations</a></li>
-          <li><a ng-click="intent.scrollToElement('#rest')">Auto-generate REST APIs</a></li>
-          <li><a ng-click="intent.scrollToElement('#websocket')-support">Easy WebSocket support</a></li>
-          <li><a ng-click="intent.scrollToElement('#security')">Reusable security policies</a></li>
-          <li><a ng-click="intent.scrollToElement('#front-end')">Front-end agnostic</a></li>
-          <li><a ng-click="intent.scrollToElement('#asset-pipeline')">Flexible asset pipeline</a></li>
-          <li><a ng-click="intent.scrollToElement('#solid-foundation')">Rock solid foundation</a></li>
+          <li><a href="#?javascript" ng-click="intent.scrollToElement('#javascript')">100% Javascript</a></li>
+          <li><a href="#?database" ng-click="intent.scrollToElement('#database')" du-smooth-scroll du-scrollspy offset="60">Any database</a></li>
+          <li><a href="#?associations" ng-click="intent.scrollToElement('#associations')">Powerful associations</a></li>
+          <li><a href="#?rest" ng-click="intent.scrollToElement('#rest')">Auto-generate REST APIs</a></li>
+          <li><a href="#?websocket" ng-click="intent.scrollToElement('#websocket')-support">Easy WebSocket support</a></li>
+          <li><a href="#?security" ng-click="intent.scrollToElement('#security')">Reusable security policies</a></li>
+          <li><a href="#?front-end" ng-click="intent.scrollToElement('#front-end')">Front-end agnostic</a></li>
+          <li><a href="#?asset-pipeline" ng-click="intent.scrollToElement('#asset-pipeline')">Flexible asset pipeline</a></li>
+          <li><a href="#?solid-foundation" ng-click="intent.scrollToElement('#solid-foundation')">Rock solid foundation</a></li>
         </ul>
       </div>
     </div> <!-- left side navigation -->
@@ -44,16 +44,17 @@
     <div class="feature-list" id="feature-content" style="position: relative;">
       <div>
         <ul>
-          <li id="javascript">
+          <li>
+            <a name="#?javascript" id="javascript"></a>
             <div class="icon-container">
               <img class="icon javascript" src="images/icon_js_large.png"/>
             </div>
             <h5>100% JavaScript.</h5>
-            <p>
-              Like other MVC frameworks, Sails is built with an emphasis on developer happiness and a convention-over-configuration philosophy. But Node.js takes this principle to the next level.  Building on top of Sails means your app is written entirely in JavaScript, the language you and your team are already using in the browser.  Since you spend less time context-shifting, you're able to write code in a more consistent style, which makes development more productive and fun.
+            <p>Like other MVC frameworks, Sails is built with an emphasis on developer happiness and a convention-over-configuration philosophy. But Node.js takes this principle to the next level.  Building on top of Sails means your app is written entirely in JavaScript, the language you and your team are already using in the browser.  Since you spend less time context-shifting, you're able to write code in a more consistent style, which makes development more productive and fun.
             </p>
           </li>
-          <li id="database">
+          <li>
+            <a name="#?database" id="database"></a>
             <div class="icon-container">
               <img class="icon database" src="images/icon_database_large.png"/>
             </div>
@@ -62,28 +63,32 @@
             layer that just works, no matter what database you're using.
             In addition to a plethora of community projects, officially supported adapters exist for MySQL, MongoDB, PostgreSQL, Redis, and local disk.
           </li>
-          <li id="associations">
+          <li>
+            <a name="#?associations" id="associations"></a>
             <div class="icon-container">
               <img class="icon optional-support" src="images/icon_associations_large.png"/>
             </div>
             <h5>Powerful associations.</h5>
             <p>Sails offers a new take on the familiar relational model, aimed at making data modeling more practical. You can do all the same things you might be used to (one-to-many, many-to-many), but you can also assign multiple <em>named</em> associations per-model (for instance, a cake might have two collections of people: <em>"havers"</em> and <em>"eaters"</em>).  Better yet, you can assign different models to different databases, and your associations/joins will <strong>still work</strong>-- even across NoSQL and relational boundries.  Sails has no problem implicitly/automatically joining a MySQL table with a Mongo collection and vice versa.</p>
           </li>
-          <li id="rest">
+          <li>
             <div class="icon-container">
+              <a name="#?rest" id="rest"></a>
               <img class="icon api" src="images/icon_api_large.png"/>
             </div>
             <h5>Auto-generate REST APIs.</h5>
             <p>Sails comes with <em>blueprints</em> that help jumpstart your app's backend without writing any code.  Just run <code>sails generate api dentist</code> and you'll get an API that lets you search, paginate, sort, filter, create, destroy, update, and associate dentists.  Since these <em>blueprint actions</em> are built on the same underlying technology as Sails, they also work with Websockets and any supported database out of the box.</p>
           </li>
-          <li id="websocket-support">
+          <li>
+            <a name="#?websocket" id="websocket"></a>
             <div class="icon-container">
               <img class="icon realtime" src="images/icon_websocket_large.png"/>
             </div>
             <h5>Support WebSockets with no additional code.</h5>
             <p>In the past, adding realtime/"comet" features meant maintaining two separate code bases. But since the request interpreter in Sails translates incoming socket messages for you, they're automatically compatible with every route in your Sails app, as well as any any existing Express routes/middleware.  Normalization of parameters, the session, and the streaming interface are all taken care of.  In other words, the code you write works with WebSockets <em>and</em> HTTP, without doing any extra work.</p>
           </li>
-          <li id="security">
+          <li>
+            <a name="#?security" id="security"></a>
             <div class="icon-container">
               <img class="icon security" src="images/icon_security_large.png"/>
             </div>
@@ -91,7 +96,8 @@
             <p>Sails provides basic security and role-based access control by default in the form of policies - simple, reusable middleware functions that run before your controllers and actions.  Writing policies encourages <a>encapsulation</a>, which dramatically simplifies your business logic and reduces the total amount of code you need to write.  Policies are interchangeable with Express/Connect middleware, which means you can plug in popular npm modules like <a>Passport</a>.  Finally, like most things in Sails, your policies work for both WebSockets and HTTP automatically.</p>
           </li>
 
-          <li id="front-end">
+          <li>
+            <a name="#?front-end" id="front-end"></a>
             <div class="icon-container">
               <img class="icon database" src="images/icon_frontend_large.png"/>
             </div>
@@ -100,7 +106,8 @@
             </p>
           </li>
 
-          <li id="asset-pipeline">
+          <li>
+            <a name="#?asset-pipeline" id="asset-pipeline"></a>
             <div class="icon-container">
               <img class="icon minification" src="images/icon_asset_large.png"/>
             </div>
@@ -111,7 +118,8 @@
               <br/>Prefer Gulp? Check out the <a target="_blank" href="https://github.com/PaulAvery/sails-generate-gulp-bower">community generator</a> by <a target="_blank" href="https://github.com/PaulAvery">@PaulAvery</a>.
             </p>
           </li>
-          <li id="solid-foundation">
+          <li>
+            <a name="#?solid-foundation" id="solid-foundation"></a>
             <div class="icon-container">
               <img class="icon policies" src="images/icon_foundation_large.png"/>
             </div>

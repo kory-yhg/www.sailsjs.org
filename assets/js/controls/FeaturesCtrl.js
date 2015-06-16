@@ -1,6 +1,6 @@
 angular.module('SailsWebsite').controller('FeaturesCtrl', [
-  '$scope',
-  function($scope) {
+  '$scope', '$window',
+  function($scope, $window) {
 
     var getLeft = function(target) {
       var left = $(target).offset().left.toString()+'px';
@@ -17,13 +17,21 @@ angular.module('SailsWebsite').controller('FeaturesCtrl', [
         }
 
         $('html, body').animate({
-          scrollTop: $(target).offset().top - 50
+          scrollTop: $(target).offset().top - 100
         }, time);
       }
 
     });
 
-    // Scroll to the to when the page loads
-    $scope.intent.scrollToElement('#the-top', 500);
+    var permalink = $window.location.hash.split('#?')[1];
+    // If there is a permalink to a section in the route, scroll to that section
+    if(permalink) {
+      var permalinkElement = '#'+permalink;
+      $scope.intent.scrollToElement(permalinkElement);
+    }
+    // Otherwise, scroll to the to when the page loads
+    else {
+      $scope.intent.scrollToElement('#the-top', 500);
+    }
   }
 ]);

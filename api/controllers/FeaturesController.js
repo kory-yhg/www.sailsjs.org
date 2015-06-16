@@ -46,9 +46,24 @@ module.exports = {
 
                                     },
                                     "notFound": function(getNThItem2) {
-                                        return exits.error({
-                                            data: getNThItem2,
-                                            status: 500
+                                        // Log a message
+                                        sails.machines['0ccd2b47-a58e-4f8c-a3fd-d5a4ec77bfd5_5.0.1'].log({
+                                            "value": "Wasn't anything in storage"
+                                        }).exec({
+                                            "error": function(logAMessage) {
+                                                return exits.error({
+                                                    data: logAMessage,
+                                                    status: 500
+                                                });
+
+                                            },
+                                            "success": function(logAMessage) {
+                                                return exits.error({
+                                                    data: logAMessage,
+                                                    status: 500
+                                                });
+
+                                            }
                                         });
 
                                     },
