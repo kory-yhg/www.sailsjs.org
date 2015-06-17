@@ -9,7 +9,38 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
 
 <div class="main-container reference-page" ng-controller="DocsCtrl" scrollng>
 
-    <!-- Navigation -->
+  <!-- Main content -->
+  <div class="right-column">
+    <div class="reference-item">
+      <% if(data.currentTemplate.path.indexOf('0home') < 0) { %>
+      <%- partial('../partials/doc-templates/'+ data.currentTemplate.path) %>
+      <% } else {
+        // If this is the '0home' page, build a table of contents
+        // (basically the nav menu but all expanded and easy-to-read)
+        %>
+        <h1>Sails.js Official <%= sectionTitle %> Documentation</h1>
+        <div class="table-of-contents">
+          <h3>Table of Contents</h3>
+          <ol>
+            <% _.each(data.templateList, function(navItem) {
+            // Only show top-level nav items initially
+            // (Except for the ones that don't have children, because those are
+            // the wierd ones that aren't really part of the docs.
+            if(!navItem.isChild &&  navItem.children && navItem.children.length) { %>
+            <li><%- partial('../partials/table-of-contents-item', {navItem: navItem, navItems: data.templateList}) %></li>
+            <% }
+            }) %>
+          </ol>
+        </div>
+      <% } %>
+    </div>
+    <div class="contribution-message">
+        <h2>Is something missing?</h2>
+        <p>If you notice something we've missed or could be improved on, please follow <a href="https://github.com/balderdashy/sails-docs/blob/master/<%= data.currentTemplate.slug %>.md" target="_blank">this link</a> and submit a pull request to the sails-docs repo.  Once we merge it, the changes will be immediately reflected on the website.</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
   <div class="reference-sidebar">
     <h4><a href="/documentation/<%=sectionTitle %>"><%= sectionTitle %></a></h4>
     <ul class="main-sections">
@@ -39,38 +70,6 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
         <p>Get early access to the book<br/> with promotion code: <span>mcneildoc</span></p>
         <a class="book-link" target="_blank" href="http://www.manning.com/mcneil/">Get the Book</a>
       </div>
-    </div>
-  </div>
-
-  <!-- Main content -->
-  <div class="right-column">
-    <div class="reference-item">
-      <% if(data.currentTemplate.path.indexOf('0home') < 0) { %>
-      <%- partial('../partials/doc-templates/'+ data.currentTemplate.path) %>
-      <% } else {
-        // If this is the '0home' page, build a table of contents
-        // (basically the nav menu but all expanded and easy-to-read)
-        %>
-        <h1>Sails.js Official <%= sectionTitle %> Documentation</h1>
-        <div class="table-of-contents">
-          <h3>Table of Contents</h3>
-          <ol>
-            <% _.each(data.templateList, function(navItem) {
-            // Only show top-level nav items initially
-            // (Except for the ones that don't have children, because those are
-            // the wierd ones that aren't really part of the docs.
-            if(!navItem.isChild &&  navItem.children && navItem.children.length) { %>
-            <li><%- partial('../partials/table-of-contents-item', {navItem: navItem, navItems: data.templateList}) %></li>
-            <% }
-            }) %>
-          </ol>
-        </div>
-      <% } %>
-    </div>
-
-    <div class="contribution-message">
-        <h2>Is something missing?</h2>
-        <p>If you notice something we've missed or could be improved on, please follow <a href="https://github.com/balderdashy/sails-docs/blob/master/<%= data.currentTemplate.slug %>.md" target="_blank">this link</a> and submit a pull request to the sails-docs repo.  Once we merge it, the changes will be immediately reflected on the website.</p>
     </div>
   </div>
 </div>
