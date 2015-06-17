@@ -2,23 +2,23 @@ module.exports.routes = {
   "get /": {
     "target": "Home$Controller.find"
   },
-  "get /support": {
-    "target": "SupportController.find"
-  },
   "get /support/about-irc": {
     "target": "SupportController.aboutirc"
-  },
-  "get /get-started": {
-    "target": "Get-startedController.find"
   },
   "get /features": {
     "target": "FeaturesController.find"
   },
-  "get /documentation/*": {
-    "target": "DocumentationController.*"
+  "get /get-started": {
+    "target": "Get-startedController.find"
+  },
+  "get /support": {
+    "target": "SupportController.find"
   },
   "get /refresh": {
     "target": "RefreshController.find"
+  },
+  "get /documentation/*": {
+    "target": "DocumentationController.*"
   },
   "get /documentation": {
     "target": "DocumentationController.find"
