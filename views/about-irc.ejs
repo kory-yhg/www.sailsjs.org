@@ -7,7 +7,7 @@
       <ul>
         <li><h4>About IRC</h4></li>
         <% _.each(sections, function(section) {%>
-        <li><a ng-click="intent.scrollToElement('#<%= section.id %>', 500)"><%= section.displayName %></a></li>
+        <li><a href="#?<%= section.id %>" ng-click="intent.scrollToElement('#<%= section.id %>', 500)"><%= section.displayName %></a></li>
         <% }) %>
       </ul>
     </div>
@@ -20,7 +20,7 @@
       var bubbleClass = _.sample(['left', 'right', 'middle']);
       %>
 
-      <a id="<%= section.id %>"></a>
+      <a href="#?<%= section.id %>" name="#?<%= section.id %>" id="<%= section.id %>"></a>
       <div class="about-irc-section">
         <%- partial('partials/doc-templates/support/'+section.path) %>
       </div>
