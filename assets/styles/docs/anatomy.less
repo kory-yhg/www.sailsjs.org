@@ -5,6 +5,7 @@
   //The content of the anatomy section
   .anatomy-container {
     .container();
+    min-width: 1000px;
     .borderBox();
     .clearfix();
     z-index: 2;
@@ -181,11 +182,21 @@
     .anatomy-content {
       .borderBox();
       padding-top: 50px;
+      padding-bottom: 75px;
       width: 75%;
       float: right;
+      position: relative;
       .anatomy-section {
         .fadeAnimation();
       }
     } // documentation content
+
+    @media screen and (max-width: 1000px) {
+      padding-right: 15px;
+      // Nav styles
+      div.navigation {
+        padding-left: 15px;
+      }
+    }
   }
 }

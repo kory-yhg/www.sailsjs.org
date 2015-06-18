@@ -2,13 +2,14 @@
 .docs-main-nav {
   font-family: @mainFont;
   width: 100%;
-  min-width: 900px;
   // background-color: @turquoise;
   .footerGradient();
+  min-width: 1000px;
   z-index: 95;
   .clearfix();
   .nav-container {
     .container();
+    min-width: 1000px;
     .clearfix();
     padding: 110px 0 45px;
     .nav-content {
@@ -51,28 +52,32 @@
   }
 }
 
-@media screen and (max-width: 970px) {
-  .documentation-section-header {
-    .header-container {
-      .header-title {
-        width: auto;
-        text-align: center;
-        float: none;
-      }
-      ul.docs-header-nav {
-        float: none;
-        margin-top: 10px;
-        a {
-          width: 25%;
-          text-align: center
-        }
-      }
+@media screen and (max-width: 1000px) {
+  .docs-main-nav {
+    .nav-container {
+      min-width: 300px;
+      width: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
+      // .header-title {
+      //   width: auto;
+      //   text-align: center;
+      //   float: none;
+      // }
+      // ul.docs-header-nav {
+      //   float: none;
+      //   margin-top: 10px;
+      //   a {
+      //     width: 25%;
+      //     text-align: center
+      //   }
+      // }
     }
   }
   //class to make the header skinny when we're scrolling
   &.juice-fast {
-    .documentation-section-header {
-      .header-container {
+    .docs-main-nav {
+      .nav-container {
         padding: 85px 0 20px;
       }
     }
