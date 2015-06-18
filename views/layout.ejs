@@ -85,7 +85,7 @@
       <%- body %>
       <div id="push"></div>
     </div>
-    <div class="bottom">
+    <div class="bottom" ng-controller="HeaderCtrl" ng-class="{'docs-footer': getIsDocumentationPage()}">
       <div class="sharing-footer clearfix">
         <div class="star">
           <iframe src="http://ghbtns.com/github-btn.html?user=balderdashy&amp;repo=sails&amp;type=watch&amp;count=true"

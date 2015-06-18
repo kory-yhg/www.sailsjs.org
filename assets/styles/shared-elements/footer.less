@@ -275,6 +275,10 @@
     }
 	}
 
+  &.docs-footer {
+    min-width: 1000px;
+  }
+
 	@media screen and (max-width: 768px) {
 		.sharing {
 			width: 95%;
@@ -289,7 +293,7 @@
 			display: none;
 		}
 	}
-  @media screen and (max-width: 470px) {
+  @media screen and (max-width: 500px) {
     height: 100px;
     .sharing-footer {
       width: 250px;
@@ -300,6 +304,9 @@
           margin-right: 10px;
         }
       }
+    }
+    &.docs-footer {
+      min-width: 0px;
     }
   }
 }
