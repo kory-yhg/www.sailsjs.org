@@ -1,4 +1,7 @@
 module.exports.routes = {
+  "get /resources": {
+    "target": "ResourcesController.find"
+  },
   "get /documentation/*": {
     "target": "DocumentationController.*"
   },
