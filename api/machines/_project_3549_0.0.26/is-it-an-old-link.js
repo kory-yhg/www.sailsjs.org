@@ -45,7 +45,6 @@ module.exports = {
 
     // Strip .html off of slug, if it's there. (For old links)
     var htmlStrippedSlugInput = inputs.slug.replace(/\.html/g, '');
-    // htmlStrippedSlugInput = inputs.slug.replace(/%3f.+$/, '');
 
     var subSection;
     if (inputs.q) {
