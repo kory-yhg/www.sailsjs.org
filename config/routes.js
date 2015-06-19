@@ -1,4 +1,7 @@
 module.exports.routes = {
+  "get /documentation/*": {
+    "target": "DocumentationController.*"
+  },
   "get /": {
     "target": "Home$Controller.find"
   },
@@ -16,9 +19,6 @@ module.exports.routes = {
   },
   "get /refresh": {
     "target": "RefreshController.find"
-  },
-  "get /documentation/*": {
-    "target": "DocumentationController.*"
   },
   "get /documentation": {
     "target": "DocumentationController.find"

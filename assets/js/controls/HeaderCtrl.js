@@ -11,8 +11,12 @@ angular.module('SailsWebsite').controller('HeaderCtrl', [
       if(redirectTo[0] === '/') {
         redirectTo = redirectTo.replace(/\//, '');
       }
-      $window.location.hash = '';
-      $window.location.pathname = redirectTo;
+      var q;
+      if($window.location.hash.indexOf('?q=') > -1) {
+        q = '?q='+$window.location.hash.split('?q=')[1];
+        redirectTo = redirectTo + q;
+      }
+      $window.location.href = redirectTo;
     }
 
     // Qualifiers
