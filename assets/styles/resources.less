@@ -1,6 +1,7 @@
 .logo-page {
   .clearfix();
   font-family: @mainFont;
+  // background-color: lighten(@ltestGray, 5%);
   .borderBox();
   // padding-bottom: 50px;
   div.page-header {
@@ -22,29 +23,36 @@
     border-top: none;
     border-left: none;
     border-right: none;
+    // border-bottom: 2px solid darken(@ltestGray, 2%);
     border-bottom: 2px solid @ltestGray;
   }
   div.logos-section {
     .container();
     .clearfix();
-    padding: 100px 0;
+    padding: 125px 0;
     h2 {
       color: @turquoise;
       font-size: 26px;
-      padding-bottom: 20px;
+      padding-bottom: 25px;
       font-weight: 300;
     }
     p {
-      color: @dkerGray;
+      color: @medGray;
       padding-bottom: 15px;
     }
     a {
       color: inherit;
-      text-decoration: underline;
+      .transition(all 250ms);
+      &:hover {
+        p {
+          color: @turquoise;
+        }
+      }
     }
     div.preview-image-row {
       .clearfix();
-      padding-top: 20px;
+      padding-top: 50px;
+
       div {
         .borderBox();
         width: 50%;
@@ -55,10 +63,10 @@
           }
         }
         &.logo-left {
-          padding-right: 15px;
+          padding-right: 50px;
         }
         &.logo-right {
-          padding-left: 15px;
+          padding-left: 50px;
         }
         img {
           width: 100%;
@@ -79,7 +87,7 @@
         &.logo-light {
           img {
             background-color: @white;
-            border: 1px solid @ltestGray;
+            border: 1px solid darken(@ltestGray, 2%);
           }
         }
         &.logo-dark {
@@ -93,6 +101,7 @@
     .styleguide-row {
       img {
         width: 100%;
+        border: 1px solid @ltestGray;
       }
       p {
         padding-top: 15px;
