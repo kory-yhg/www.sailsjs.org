@@ -109,8 +109,33 @@
       }
     }
   }
-  //Mobile Styles:
+  //Tablet/small screen styles:
   @media screen and (max-width: 768px) {
-
+    hr {
+      width: 90%;
+    }
+    div.logos-section {
+      div.preview-image-row div {
+        width: 100%;
+        float: none;
+        &.logo-left {
+          padding-right: 0px;
+        }
+        &.logo-right {
+          padding-top: 50px;
+          padding-left: 0px;
+        }
+      }
+    }
+  }
+  //Mobile Styles:
+  @media screen and (max-width: 500px) {
+    div.logos-section.png-section {
+      div.preview-image-row div {
+        img {
+          padding: 50px 60px;
+        }
+      }
+    }
   }
 }
