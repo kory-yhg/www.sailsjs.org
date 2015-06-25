@@ -1,0 +1,71 @@
+<h1 id="-findone-criteria-callback-">.findOne( <code>criteria</code> , [<code>callback</code>] )</h1>
+<h3 id="purpose" permalink="purpose">Purpose</h3>
+<p>This finds and returns a single record that meets the criteria.</p>
+<h3 id="overview" permalink="overview">Overview</h3>
+<h4 id="parameters" permalink="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Find Criteria</td>
+<td><code>{}</code>, <code>string</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Callback</td>
+<td><code>function</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h4 id="callback-parameters" permalink="callback-parameters">Callback Parameters</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Possible Data Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Error</td>
+<td><code>Error</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Found Record</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-usage" permalink="example-usage">Example Usage</h3>
+<pre><code data-language="javascript">User.findOne({name:&apos;Jessie&apos;}).exec(function findOneCB(err, found){
+  console.log(&apos;We found &apos;+found.name);
+});
+
+// We found Jessie
+// Don&apos;t forget to handle your errors
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="notes" permalink="notes">Notes</h3>
+<blockquote>
+<p>Any string arguments passed must be the ID of the record.
+If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.</p>
+<p>If no matching record is found, the value of <code>found</code> will be <code>undefined</code>.  Not finding a record does <em>not</em> constitute an error for <code>findOne</code>.</p>
+</blockquote>
+<p><docmeta name="uniqueID" value="findOne423345"></docmeta></p>
+<p><docmeta name="methodType" value="mcm"></docmeta></p>
+<p><docmeta name="importance" value="10"></docmeta></p>
+<docmeta name="displayName" value=".findOne()">
+
+</docmeta>

@@ -43,7 +43,7 @@ module.exports = {
                             "error": function(getNThItem) {
                                 return exits.error({
                                     data: getNThItem,
-                                    status: "503"
+                                    status: 500
                                 });
 
                             },

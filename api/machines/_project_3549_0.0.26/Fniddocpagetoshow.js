@@ -58,7 +58,7 @@ module.exports = {
     });
 
     // If the capitalization is different, redirect to the lowercased path instead of just showing the page
-    if (docPageToShow && docPageToShow.slug !== inputs.slug) {
+    if (!_.isUndefined(docPageToShow) && (docPageToShow.slug !== inputs.slug)) {
       return exits.redirect(docPageToShow.slug);
     }
 

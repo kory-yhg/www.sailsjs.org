@@ -1,0 +1,66 @@
+<h1 id="add-to-collection">Add to Collection</h1>
+<p>Adds an association between two records.</p>
+<pre><code data-language="javascript">POST /:model/:record/:association/:record_to_add?
+</code></pre><!-- __LANG=%%__ -->
+<p>This action pushes a reference to some other record (the &quot;foreign&quot; record) onto a collection attribute of this record (the &quot;primary&quot; record).</p>
+<ul>
+<li>If <code>:record_to_add</code> of an existing record is supplied, it will be associated with the primary record.</li>
+<li>If no <code>:record_to_add</code> is supplied, and the body of the <strong>POST</strong> contains values for a new record, that record will be created and associated with the primary record.</li>
+<li>If the collection within the primary record already contains a reference to the foreign record, this action will be ignored.</li>
+<li>If the association is 2-way (i.e. reflexive, with &quot;via&quot; on both sides) the association on the foreign record will also be updated.</li>
+</ul>
+<h3 id="example" permalink="example">Example</h3>
+<p>Add purchase 47 to the list of purchases that Dolly (employee #7) has been involved in.</p>
+<p><strong>Using <a href="http://jquery.com/" target="_blank">jQuery</a>:</strong></p>
+<pre><code data-language="javascript">$.post(&apos;/employee/7/involvedInPurchases/47&apos;, function (purchases) {
+  console.log(purchases);
+});
+</code></pre><!-- __LANG=%%__ -->
+<p><strong>Using <a href="https://angularjs.org/" target="_blank">Angular</a>:</strong></p>
+<pre><code data-language="javascript">$http.post(&apos;/employee/7/involvedInPurchases/47&apos;)
+.then(function (purchases) {
+  console.log(purchases);
+});
+</code></pre><!-- __LANG=%%__ -->
+<p><strong>Using <a href="http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js" target="_blank">sails.io.js</a>:</strong></p>
+<pre><code data-language="javascript">io.socket.post(&apos;/employee/7/involvedInPurchases/47&apos;, function (purchases) {
+  console.log(purchases);
+});
+</code></pre><!-- __LANG=%%__ -->
+<p><strong>Using <a href="http://en.wikipedia.org/wiki/CURL" target="_blank">cURL</a>:</strong></p>
+<pre><code data-language="javascript">curl http://localhost:1337/employee/7/involvedInPurchases/47 -X &quot;POST&quot;
+</code></pre><!-- __LANG=%%__ -->
+<p>Should return &quot;Dolly&quot;, the primary record:</p>
+<pre><code data-language="json">{
+  &quot;involvedInPurchases&quot;: [
+    {
+      &quot;amount&quot;: 10000,
+      &quot;createdAt&quot;: &quot;2014-08-03T01:50:33.898Z&quot;,
+      &quot;updatedAt&quot;: &quot;2014-08-03T01:51:08.227Z&quot;,
+      &quot;id&quot;: 47,
+      &quot;cashier&quot;: 7
+    }
+  ],
+  &quot;name&quot;: &quot;Dolly&quot;,
+  &quot;createdAt&quot;: &quot;2014-08-03T01:16:35.440Z&quot;,
+  &quot;updatedAt&quot;: &quot;2014-08-03T01:51:41.567Z&quot;,
+  &quot;id&quot;: 7
+}
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="notes" permalink="notes">Notes</h3>
+<blockquote>
+<ul>
+<li>This action is for dealing with <em>plural</em> (&quot;collection&quot;) associations.  If you want to set or unset a <em>singular</em> (&quot;model&quot;) association, just use <a href="http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html" target="_blank">update</a>.</li>
+<li><p>The example above assumes &quot;rest&quot; blueprints are enabled, and that your project contains at least an &apos;Employee&apos; model with association: <code>involvedInPurchases: {collection: &apos;Purchase&apos;, via: &apos;cashier&apos;}</code> as well as a <code>Purchase</code> model with association: <code>cashier: {model: &apos;Employee&apos;}</code>.  You&apos;ll also need at least an empty <code>PurchaseController</code> and <code>EmployeeController</code>.  You can quickly achieve this by running:</p>
+<pre><code data-language="shell">$ sails new foo
+$ cd foo
+$ sails generate api purchase
+$ sails generate api employee
+</code></pre><!-- __LANG=%%__ -->
+</li>
+</ul>
+<p>...then editing <code>api/models/Purchase.js</code> and <code>api/models/Employee.js</code>.</p>
+</blockquote>
+<p><docmeta name="uniqueID" value="Add262514"></docmeta></p>
+<docmeta name="displayName" value="add to">
+</docmeta>

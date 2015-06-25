@@ -1,0 +1,204 @@
+<h1 id="request-req-">Request (<code>req</code>)</h1>
+<p>Sails is built on <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md" target="_blank">Express</a>, and uses <a href="http://nodejs.org/api/http.html" target="_blank">Node&apos;s HTTP server</a> conventions.  Because of this, you can access all of the Node and Express methods and properties on the <code>req</code> object whereever it is accessible (i.e. in your controllers, policies, and custom responses.)</p>
+<p>A nice side effect of this compatibility is that, in many cases, you can paste existing Node.js code into a Sails app and it will work.  And since Sails implements a transport-agnostic request interpreter, the code in your Sails app is WebSocket-compatible as well.</p>
+<p>Sails adds a few methods and properties of its own to the <code>req</code> object, like <a href="http://beta.sailsjs.org/#/documentation/reference/req/req.wantsJSON.html" target="_blank"><code>req.wantsJSON</code></a> and <a href="http://beta.sailsjs.org/#/documentation/reference/req/req.allParams.html" target="_blank"><code>req.params.all()</code></a>.  These features are syntactic sugar on top of the underlying implementation, and also support both HTTP and WebSockets.</p>
+<h3 id="protocol-support" permalink="protocol-support">Protocol Support</h3>
+<p>The chart below describes support for the methods and properties on the Sails <a href="/documentation/reference/req">Request</a> object (<code>req</code>) across multiple transports:</p>
+<!-- TODO: add SPDY -->
+<table>
+<thead>
+<tr>
+<th></th>
+<th>HTTP</th>
+<th>WebSockets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>req.file()</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.param()</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.route</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.cookies</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.signedCookies</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.get()</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.accepts()</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.accepted</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.is()</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.ip</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.ips</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.path</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.host</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.fresh</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.stale</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.xhr</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.protocol</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.secure</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.session</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.subdomains</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.method</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.originalUrl</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.acceptedLanguages</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.acceptedCharsets</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.acceptsCharset()</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.acceptsLanguage()</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon no"></div></td>
+</tr>
+<tr>
+<td>req.isSocket</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.params.all()</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.socket.id</td>
+<td><div class="replacementIcon never"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.socket.join</td>
+<td><div class="replacementIcon never"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.socket.leave</td>
+<td><div class="replacementIcon never"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.socket.broadcast</td>
+<td><div class="replacementIcon never"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.transport</td>
+<td><div class="replacementIcon no"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.url</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+<tr>
+<td>req.wantsJSON</td>
+<td><div class="replacementIcon yes"></div></td>
+<td><div class="replacementIcon yes"></div></td>
+</tr>
+</tbody>
+</table>
+<h3 id="legend" permalink="legend">Legend</h3>
+<ul>
+<li><div class="replacementIcon yes"></div> - fully supported</li>
+<li><div class="replacementIcon no"></div> - feature not yet implemented</li>
+<li><div class="replacementIcon never"></div> - unsupported due to protocol restrictions</li>
+</ul>
+<p><docmeta name="uniqueID" value="req35837"></docmeta></p>
+<p><docmeta name="displayName" value="Request (`req`)"></docmeta></p>
+<docmeta name="stabilityIndex" value="3">
+
+</docmeta>

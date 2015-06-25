@@ -1,0 +1,112 @@
+<h1 id="-publishdestroy-id-request-options-">.publishDestroy( <code>{id}</code>, [<code>request</code>], [<code>options</code>] )</h1>
+<h3 id="purpose" permalink="purpose">Purpose</h3>
+<p>Publish the destruction of a model</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ID of Destroyed Record</td>
+<td><code>int</code>, <code>string</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Request</td>
+<td><code>request object</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Additional options</td>
+<td><code>object</code></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><code>publishDestroy()</code> emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the <code>.subscribe</code> model method.</p>
+<p>The socket message is an object with the following properties:</p>
+<ul>
+<li><strong>id</strong> - the <code>id</code> attribute of the model instance</li>
+<li><strong>verb</strong>  - <code>&quot;destroyed&quot;</code> (a string)</li>
+<li><strong>previous</strong> - an object--if present, contains the attributes and values of the object that was destroyed.</li>
+</ul>
+<h4 id="-request-" permalink="request"><code>request</code></h4>
+<p>If this argument is included then the socket attached to that request will <em>not</em> receive the notification.</p>
+<h4 id="-options-previous-" permalink="optionsprevious"><code>options.previous</code></h4>
+<p>If this is set, it is expected to be a representation of the model before it was destroyed.  This may be used to send out additional notifications to associated records.</p>
+<h3 id="example-usage" permalink="example-usage">Example Usage</h3>
+<p>UsersController.js</p>
+<pre><code data-language="javascript">module.exports = {
+
+  testSocket: function(req,res){
+
+        var nameSent = req.param(&apos;name&apos;);
+
+        if (nameSent &amp;&amp; req.isSocket){
+
+          User.findOne({name:nameSent}).exec(function findIt(err,foundHim){
+            User.destroy({id:foundHim.id}).exec(function destroy(err){
+              User.publishDestroy(foundHim.id);
+            });
+          });
+
+        } else if (req.isSocket){
+
+        User.find({}).exec(function(e,listOfUsers){
+          User.subscribe(req.socket,listOfUsers);
+        console.log(&apos;User with socket id &apos;+req.socket.id+&apos; is now subscribed to all of the model instances in \&apos;users\&apos;.&apos;);
+        });
+
+        } else {
+
+          res.view();
+
+        }
+
+  }
+}
+
+    // Don&apos;t forget to handle your errors
+</code></pre><!-- __LANG=%%__ -->
+<p>views/users/testSocket.ejs</p>
+<pre><code data-language="html">&lt;script type=&quot;text/javascript&quot;&gt;
+window.onload = function subscribeAndListen(){
+    // When the document loads, send a request to users.testSocket
+    // The controller code will subscribe you to all of the &apos;users&apos; model instances (records)
+    socket.get(&apos;/users/testSocket/&apos;);
+
+    // Listen for the event called &apos;message&apos; emited by the publishDestroy() method.
+    socket.on(&apos;message&apos;,function(obj){
+      if (obj.verb == &apos;destroyed&apos;) {
+        console.log(&apos;User &apos;+obj.previous.name+&apos; has been destroyed .&apos;);
+      }
+    });
+};
+
+function destroy(){
+
+    // Send the name to the testSocket action on the &apos;Users&apos; contoller
+    socket.get(&apos;/users/testSocket/&apos;,{name:&apos;Walter&apos;});
+}
+
+&lt;/script&gt;
+&lt;div class=&quot;addButton&quot; onClick=&quot;destroy()&quot;&gt;Click Me to destroy user &apos;Walter&apos; ! &lt;/div&gt;
+</code></pre><!-- __LANG=%%__ -->
+<h3 id="notes" permalink="notes">Notes</h3>
+<blockquote>
+<p>Any string arguments passed must be the ID of the record.</p>
+</blockquote>
+<p><docmeta name="uniqueID" value="publishDestroy732227"></docmeta></p>
+<p><docmeta name="methodType" value="pubsub"></docmeta></p>
+<p><docmeta name="importance" value="undefined"></docmeta></p>
+<docmeta name="displayName" value=".publishDestroy()">
+
+</docmeta>

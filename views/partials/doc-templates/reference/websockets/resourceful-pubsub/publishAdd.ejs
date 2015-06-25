@@ -1,0 +1,63 @@
+<h1 id="-publishadd-id-attribute-idadded-request-options-">.publishAdd( <code>{id}</code>,<code>attribute</code>, <code>idAdded</code>, [<code>request</code>], [<code>options</code>] )</h1>
+<h3 id="purpose" permalink="purpose">Purpose</h3>
+<p>Publishes a notification when an associated record is added to a model&apos;s collection.  For example, if a <code>User</code> model has an association with the <code>Pet</code> model so that a user can have one or more pets available in its <code>pets</code> attribute, then any time a new pet is associated with a user <code>publishAdd</code> may be called.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Description</th>
+<th>Accepted Data Types</th>
+<th>Required ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ID of Updated Record</td>
+<td><code>int</code>, <code>string</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Attribute of associated collection</td>
+<td><code>string</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ID of associated record that was added</td>
+<td><code>int</code>, <code>string</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Request</td>
+<td><code>request object</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Additional Options</td>
+<td><code>object</code></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><code>publishAdd()</code> emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the <code>.subscribe</code> model method.</p>
+<p>The socket message is an object with the following properties:</p>
+<ul>
+<li><strong>id</strong> - the <code>id</code> attribute of the model instance</li>
+<li><strong>verb</strong>  - <code>&quot;addedTo&quot;</code> (a string)</li>
+<li><strong>attribute</strong> - the name of the model attribute that was added to</li>
+<li><strong>addedId</strong> - the ID of the record that was added</li>
+</ul>
+<h4 id="-request-" permalink="request"><code>request</code></h4>
+<p>If this argument is included then the socket attached to that request will <em>not</em> receive the notification.</p>
+<h4 id="-options-noreverse-" permalink="optionsnoreverse"><code>options.noReverse</code></h4>
+<p>See the documentation for <code>publishUpdate</code> for information about <code>options.noReverse</code>.  In general, you should not have to set this argument unless you are writing your own implementation of <code>publishAdd</code> for a model.</p>
+<p><docmeta name="uniqueID" value="publishAdd129964"></docmeta></p>
+<p><docmeta name="methodType" value="pubsub"></docmeta></p>
+<p><docmeta name="importance" value="undefined"></docmeta></p>
+<docmeta name="displayName" value=".publishAdd()">
+
+</docmeta>
