@@ -68,9 +68,12 @@
 
 .docs_inlinecode() {
   .docs_code();
-  background-color: @ltestGray;
+  background: @ltestGray;
   padding: 2px 3px;
   margin: 0px 3px;
+  &:first-child {
+    margin-left: 0px;
+  }
 }
 
 .docs_a() {
@@ -153,6 +156,9 @@
         &:last-child {
           padding-bottom: 0;
         }
+        pre >code {
+          background: transparent;
+        }
       }
     }
   }
@@ -194,8 +200,11 @@
   }
   p {
     code {
-      background-color: rgba(255,255,255,0.6);
+      background: rgba(11,143,162, 0.35);
     }
+  }
+  pre >code {
+    background: transparent;
   }
   :last-child {
     padding-bottom: 0px;
