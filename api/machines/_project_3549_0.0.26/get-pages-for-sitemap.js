@@ -33,16 +33,16 @@ module.exports = {
       lastModified: '2014-01-01T06:00:00.000Z'
     }, {
       url: 'http://sailsjs.org/get-started',
-      lastModified: '2014-01-01T06:00:00.000Z'
+      lastModified: '2014-06-25T06:00:00.000Z'
     }, {
       url: 'http://sailsjs.org/features',
-      lastModified: '2014-01-01T06:00:00.000Z'
+      lastModified: '2014-06-25T06:00:00.000Z'
     }, {
       url: 'http://sailsjs.org/support',
-      lastModified: '2014-01-01T06:00:00.000Z'
+      lastModified: '2014-06-25T06:00:00.000Z'
     }, {
       url: 'http://sailsjs.org/support/about-irc',
-      lastModified: '2014-01-01T06:00:00.000Z'
+      lastModified: '2014-06-25T06:00:00.000Z'
     }, ];
 
     // Then grab the list of generated pages from the various jsmenus...
@@ -53,7 +53,7 @@ module.exports = {
       } else url = 'http://sailsjs.org/documentation/' + docPage.slug;
       sitemapEntries.push({
         url: url,
-        lastModified: docPage.lastModified || '2015-01-01T06:00:00.000Z'
+        lastModified: docPage.lastModified || '2015-06-25T06:00:00.000Z'
       });
     });
 

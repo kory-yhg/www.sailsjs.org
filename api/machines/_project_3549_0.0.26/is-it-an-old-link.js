@@ -59,7 +59,6 @@ module.exports = {
     var selectedDocPage = _.find(inputs.docPageMetadatas, function(docPage) {
       if (docPage.path.toLowerCase() === htmlStrippedSlugInput.toLowerCase() + '.ejs') {
         if (docPage.path.toLowerCase() === docPage.slug + '.ejs') {
-          console.log('slug same as path anyway.');
           return false;
         }
         return true;

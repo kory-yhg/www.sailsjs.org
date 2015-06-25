@@ -190,12 +190,12 @@
     "isChild": true,
     "children": [
       "concepts/ORM/Associations/Dominance.ejs",
-      "concepts/ORM/Associations/OneWayAssociation.ejs",
-      "concepts/ORM/Associations/ManytoMany.ejs",
-      "concepts/ORM/Associations/OnetoMany.ejs",
-      "concepts/ORM/Associations/joinTables.ejs",
       "concepts/ORM/Associations/OnetoOne.ejs",
-      "concepts/ORM/Associations/ThroughAssociations.ejs"
+      "concepts/ORM/Associations/OneWayAssociation.ejs",
+      "concepts/ORM/Associations/OnetoMany.ejs",
+      "concepts/ORM/Associations/ManytoMany.ejs",
+      "concepts/ORM/Associations/ThroughAssociations.ejs",
+      "concepts/ORM/Associations/joinTables.ejs"
     ],
     "isParent": true
   },
@@ -602,8 +602,8 @@
     "parent": "concepts/extending-sails/extending-sails.ejs",
     "isChild": true,
     "children": [
-      "concepts/extending-sails/Hooks/installablehooks.ejs",
       "concepts/extending-sails/Hooks/usinghooks.ejs",
+      "concepts/extending-sails/Hooks/installablehooks.ejs",
       "concepts/extending-sails/Hooks/userhooks.ejs",
       "concepts/extending-sails/Hooks/hookspec/hookspec.ejs"
     ],
@@ -645,8 +645,8 @@
     "children": [
       "concepts/extending-sails/Hooks/hookspec/configure.ejs",
       "concepts/extending-sails/Hooks/hookspec/defaults.ejs",
-      "concepts/extending-sails/Hooks/hookspec/routes.ejs",
-      "concepts/extending-sails/Hooks/hookspec/initialize.ejs"
+      "concepts/extending-sails/Hooks/hookspec/initialize.ejs",
+      "concepts/extending-sails/Hooks/hookspec/routes.ejs"
     ],
     "isParent": true
   },
@@ -724,9 +724,9 @@
       "displayName": "Assets"
     },
     "children": [
-      "concepts/Assets/DisablingGrunt.ejs",
       "concepts/Assets/TaskAutomation.ejs",
-      "concepts/Assets/DefaultTasks.ejs"
+      "concepts/Assets/DefaultTasks.ejs",
+      "concepts/Assets/DisablingGrunt.ejs"
     ],
     "isParent": true
   },
@@ -739,8 +739,8 @@
       "displayName": "Configuration"
     },
     "children": [
-      "concepts/Configuration/usingsailsrcfiles.ejs",
-      "concepts/Configuration/localjsfile.ejs"
+      "concepts/Configuration/localjsfile.ejs",
+      "concepts/Configuration/usingsailsrcfiles.ejs"
     ],
     "isParent": true
   },
@@ -794,8 +794,8 @@
       "displayName": "File Uploads"
     },
     "children": [
-      "concepts/File Uploads/uploading-to-amazon-s3.ejs",
-      "concepts/File Uploads/uploading-to-mongo-gridfs.ejs"
+      "concepts/File Uploads/uploading-to-mongo-gridfs.ejs",
+      "concepts/File Uploads/uploading-to-amazon-s3.ejs"
     ],
     "isParent": true
   },
@@ -860,11 +860,11 @@
       "displayName": "Models and ORM"
     },
     "children": [
-      "concepts/ORM/Attributes.ejs",
       "concepts/ORM/Lifecyclecallbacks.ejs",
       "concepts/ORM/Models.ejs",
-      "concepts/ORM/Querylanguage.ejs",
+      "concepts/ORM/Attributes.ejs",
       "concepts/ORM/Validations.ejs",
+      "concepts/ORM/Querylanguage.ejs",
       "concepts/ORM/model-settings.ejs",
       "concepts/ORM/Associations/Associations.ejs"
     ],
@@ -907,14 +907,14 @@
     },
     "children": [
       "concepts/Security/CORS.ejs",
-      "concepts/Security/ContentSecurityPolicy.ejs",
       "concepts/Security/CSRF.ejs",
       "concepts/Security/Clickjacking.ejs",
       "concepts/Security/DDOS.ejs",
-      "concepts/Security/P3P.ejs",
-      "concepts/Security/XSS.ejs",
       "concepts/Security/SocketHijacking.ejs",
-      "concepts/Security/StrictTransportSecurity.ejs"
+      "concepts/Security/P3P.ejs",
+      "concepts/Security/ContentSecurityPolicy.ejs",
+      "concepts/Security/StrictTransportSecurity.ejs",
+      "concepts/Security/XSS.ejs"
     ],
     "isParent": true
   },
@@ -964,8 +964,8 @@
     },
     "children": [
       "concepts/Views/Layouts.ejs",
-      "concepts/Views/Locals.ejs",
       "concepts/Views/Partials.ejs",
+      "concepts/Views/Locals.ejs",
       "concepts/Views/ViewEngines.ejs"
     ],
     "isParent": true
