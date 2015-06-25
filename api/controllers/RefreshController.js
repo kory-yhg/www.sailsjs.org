@@ -374,25 +374,21 @@ module.exports = {
 
                                                                                                                                                                                     },
                                                                                                                                                                                     "success": function(combineTheCombinedArrays) {
-                                                                                                                                                                                        // Get pages for sitemap
+                                                                                                                                                                                        // Collate list of sitemap URLs
                                                                                                                                                                                         sails.machines['_project_3549_0.0.26'].getPagesForSitemap({
                                                                                                                                                                                             "docPageMetadatas": combineTheCombinedArrays
-                                                                                                                                                                                        }).setEnvironment({
-                                                                                                                                                                                            req: req,
-                                                                                                                                                                                            res: res,
-                                                                                                                                                                                            sails: sails
                                                                                                                                                                                         }).exec({
-                                                                                                                                                                                            "error": function(getPagesForSitemap) {
+                                                                                                                                                                                            "error": function(collateListOfSitemapURLs) {
                                                                                                                                                                                                 return exits.error({
-                                                                                                                                                                                                    data: getPagesForSitemap,
+                                                                                                                                                                                                    data: collateListOfSitemapURLs,
                                                                                                                                                                                                     status: 500
                                                                                                                                                                                                 });
 
                                                                                                                                                                                             },
-                                                                                                                                                                                            "success": function(getPagesForSitemap) {
+                                                                                                                                                                                            "success": function(collateListOfSitemapURLs) {
                                                                                                                                                                                                 // Build sitemap XML
                                                                                                                                                                                                 sails.machines['_project_3549_0.0.26'].buildSitemapXml({
-                                                                                                                                                                                                    "webpages": getPagesForSitemap
+                                                                                                                                                                                                    "webpages": collateListOfSitemapURLs
                                                                                                                                                                                                 }).setEnvironment({
                                                                                                                                                                                                     req: req,
                                                                                                                                                                                                     res: res,

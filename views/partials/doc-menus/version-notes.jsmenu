@@ -118,8 +118,8 @@
       "version": "0.10.0"
     },
     "children": [
-      "version-notes/0.10.x/Changelog0.10x.ejs",
-      "version-notes/0.10.x/Changelog0.10.0-rc9.ejs"
+      "version-notes/0.10.x/Changelog0.10.0-rc9.ejs",
+      "version-notes/0.10.x/Changelog0.10x.ejs"
     ],
     "isParent": true
   },
@@ -161,10 +161,10 @@
       "version": "0.9.0"
     },
     "children": [
-      "version-notes/0.9.x/Changelog0.9.16.ejs",
-      "version-notes/0.9.x/Changelog0.9.4.ejs",
       "version-notes/0.9.x/Changelog0.9.0.ejs",
-      "version-notes/0.9.x/Changelog0.9.7.ejs"
+      "version-notes/0.9.x/Changelog0.9.4.ejs",
+      "version-notes/0.9.x/Changelog0.9.7.ejs",
+      "version-notes/0.9.x/Changelog0.9.16.ejs"
     ],
     "isParent": true
   }

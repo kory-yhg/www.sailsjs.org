@@ -1,11 +1,13 @@
 module.exports = {
   "inputs": {
     "webpages": {
+      "id": "8d44a8bf-839b-4157-b937-047fbdc0eeda",
       "friendlyName": "webpages",
       "description": "",
-      "example": [
-        "http://sailsjs.org"
-      ],
+      "example": [{
+        "url": "http://sailsjs.org",
+        "lastModified": "2015-06-25T18:33:06.765Z"
+      }],
       "required": true,
       "addedManually": true
     }
@@ -32,10 +34,8 @@ module.exports = {
 
       sitemapXML +=
         '<url>' +
-        '<loc>' + sanitizeURL(webpage) + '</loc>' +
-        '<lastmod>' + JSON.parse(JSON.stringify({
-          foo: new Date()
-        })).foo + '</lastmod>' +
+        '<loc>' + sanitizeURL(webpage.url) + '</loc>' +
+        '<lastmod>' + webpage.lastModified + '</lastmod>' +
         '<changefreq>monthly</changefreq>' +
         '</url>';
 
@@ -55,6 +55,7 @@ module.exports = {
      * @api private
      */
     function sanitizeURL(url) {
+      //   return _.escape((url||''));
       return (url || '').replace(/\&/g, '&amp;');
     }
 

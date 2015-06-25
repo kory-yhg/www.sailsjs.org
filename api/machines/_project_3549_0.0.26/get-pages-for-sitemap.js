@@ -17,9 +17,10 @@ module.exports = {
       "id": "success",
       "friendlyName": "then",
       "description": "Normal outcome.",
-      "example": [
-        "http://sailsjs.org"
-      ]
+      "example": [{
+        "url": "http://sailsjs.org",
+        "lastModified": "2015-01-01T06:00:00.000Z"
+      }]
     }
   },
   "defaultExit": "success",
@@ -27,14 +28,22 @@ module.exports = {
     var _ = require('lodash');
 
     // Start off with the hard-coded pages:
-    var urls = [
-      'http://sailsjs.org',
-      // 'http://sailsjs.org/documentation',
-      'http://sailsjs.org/get-started',
-      'http://sailsjs.org/features',
-      'http://sailsjs.org/support',
-      'http://sailsjs.org/support/about-irc',
-    ];
+    var sitemapEntries = [{
+      url: 'http://sailsjs.org',
+      lastModified: '2014-01-01T06:00:00.000Z'
+    }, {
+      url: 'http://sailsjs.org/get-started',
+      lastModified: '2014-01-01T06:00:00.000Z'
+    }, {
+      url: 'http://sailsjs.org/features',
+      lastModified: '2014-01-01T06:00:00.000Z'
+    }, {
+      url: 'http://sailsjs.org/support',
+      lastModified: '2014-01-01T06:00:00.000Z'
+    }, {
+      url: 'http://sailsjs.org/support/about-irc',
+      lastModified: '2014-01-01T06:00:00.000Z'
+    }, ];
 
     // Then grab the list of generated pages from the various jsmenus...
     _.each(inputs.docPageMetadatas, function(docPage) {
@@ -42,10 +51,13 @@ module.exports = {
       if (docPage.path.indexOf('version-notes') >= 0) {
         url = 'http://sailsjs.org/version-notes/' + docPage.displayNameSlug;
       } else url = 'http://sailsjs.org/documentation/' + docPage.slug;
-      urls.push(url);
+      sitemapEntries.push({
+        url: url,
+        lastModified: docPage.lastModified || '2015-01-01T06:00:00.000Z'
+      });
     });
 
-    return exits.success(urls);
+    return exits.success(sitemapEntries);
 
   },
   "identity": "get-pages-for-sitemap"
