@@ -18,7 +18,7 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
         // If this is the '0home' page, build a table of contents
         // (basically the nav menu but all expanded and easy-to-read)
         %>
-        <h1>Sails.js Official <%= sectionTitle %> Documentation</h1>
+        <h1>Sails.js Documentation: <%= sectionTitle === 'Concepts' ? 'Core Concepts' : 'API Reference' %></h1>
         <div class="table-of-contents">
           <h3>Table of Contents</h3>
           <ol>
