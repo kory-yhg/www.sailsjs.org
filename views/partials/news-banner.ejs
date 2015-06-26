@@ -1,15 +1,26 @@
 <div class="update-banner white-banner">
     <div class="banner-container">
 
+      <% if(!_.isUndefined(data.latestCommit)) { %>
+
       <p>
         Latest commit by
         <% if(data.latestCommit.author.profileUrl) { %>
-          <a target="_blank" href="<%= data.latestCommit.author.profileUrl %>">@<%=data.latestCommit.author.username %></a>
+          <a class="committer" target="_blank" href="<%= data.latestCommit.author.profileUrl %>">@<%=data.latestCommit.author.username %></a>
         <% } else { %>
-          <%= data.latestCommit.author.name %>
+          <span class="committer"><%= data.latestCommit.author.name %></span>
         <% }%>
-        <a target="_blank" href="<%= data.latestCommit.commitUrl %>"><%= data.latestCommit.timeAgo %></a>
+        <a class="commit" target="_blank" href="<%= data.latestCommit.commitUrl %>"><%= data.latestCommit.timeAgo %></a>
       </p>
+
+      <% }
+      // If for some reason fetching the commits doesn't work,
+      // just link to the GitHub repo.
+      else { %>
+      <p class="fallback">
+        Check out the latest developments in the repo: <a target="_blank" href="https://github.com/balderdashy/sails">GitHub repo</a>
+      </p>
+      <% } %>
 
       <!-- other news can go here.... -->
 

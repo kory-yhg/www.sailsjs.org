@@ -6,7 +6,8 @@
 
 (function () {
   var dependencies = [
-    'directive.stopPropagation'
+    'directive.stopPropagation',
+    'ngTouch'
   ];
 
   angular.module('SailsWebsite', dependencies);

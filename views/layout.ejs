@@ -52,13 +52,13 @@
     <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=600838656713699&amp;ev=PixelInitialized" /></noscript>
   </head>
 
-  <body ng-app="SailsWebsite">
+  <body ng-app="SailsWebsite" ng-controller="LayoutCtrl" ng-swipe-left="intent.showMenu()" ng-swipe-right="intent.hideMenu()">
     <div class="header" ng-controller="HeaderCtrl">
 
       <!--Mobile menu button-->
       <div class="menu"
-        ng-click="menuVisible = !menuVisible"
-        ng-class="{'menu-open': menuVisible === true}">
+        ng-click="intent.showMenu()"
+        ng-class="{'menu-open': menu.visible}">
        <img class="menu-icon" src="/images/icon_menu.png"/>
       </div>
 
@@ -70,23 +70,28 @@
           </a>
           <span class="version">v0.11</span>
         </div>
-        <ul class="nav" ng-class="{'menu-open': menuVisible === true}" click-outside is-open="menuVisible">
-          <li ng-click="menuVisible = false">
+        <ul class="nav" ng-class="{'menu-open': menu.visible}" click-outside is-open="menu.visible">
+          <li class="mobile-only" ng-click="intent.hideMenu()">
+            <a class="sails-site"
+              ng-class="{current: getIsCurrentPage('')}"
+              href="/">Home</a>
+          </li>
+          <li ng-click="intent.hideMenu()">
             <a class="sails-site"
               ng-class="{current: getIsCurrentPage('get-started')}"
               href="/get-started">Get Started</a>
           </li>
-          <li ng-click="menuVisible = false">
+          <li ng-click="intent.hideMenu()">
             <a class="sails-site"
               ng-class="{current: getIsCurrentPage('features')}"
               href="/features">Features</a>
           </li>
-          <li ng-click="menuVisible = false">
+          <li ng-click="intent.hideMenu()">
             <a class="sails-site"
               ng-class="{current: getIsDocumentationPage()}"
               href="/documentation">Documentation</a>
           </li>
-          <li ng-click="menuVisible = false">
+          <li ng-click="intent.hideMenu()">
             <a class="sails-site"
               ng-class="{current: getIsSupportPage()}"
               href="/support">Support</a>
@@ -121,10 +126,11 @@
 
 
     <!--SCRIPTS-->
-    <script src="/dependencies/JSON2.js"></script>
-    <script src="/dependencies/angular.js"></script>
-    <script src="/dependencies/directive.stopPropagation.js"></script>
     <script src="/dependencies/jquery.js"></script>
+    <script src="/dependencies/angular.js"></script>
+    <script src="/dependencies/JSON2.js"></script>
+    <script src="/dependencies/angular-touch.js"></script>
+    <script src="/dependencies/directive.stopPropagation.js"></script>
     <script src="/dependencies/lodash.js"></script>
     <script src="/dependencies/moment.min.js"></script>
     <script src="/dependencies/rainbow.js"></script>
@@ -136,6 +142,7 @@
     <script src="/js/controls/GetStartedCtrl.js"></script>
     <script src="/js/controls/HeaderCtrl.js"></script>
     <script src="/js/controls/HomepageCtrl.js"></script>
+    <script src="/js/controls/LayoutCtrl.js"></script>
     <script src="/js/directives/directive.anatomyBoilerplate.js"></script>
     <script src="/js/directives/directive.bubble.js"></script>
     <script src="/js/directives/directive.clickOutside.js"></script>

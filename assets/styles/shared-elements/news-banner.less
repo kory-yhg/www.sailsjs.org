@@ -14,7 +14,18 @@
       font-family: @mainFont;
       a {
         color: @brightBlue;
-        padding-left: 20px;
+      }
+      .committer {
+        padding-left: 10px;
+      }
+      .commit {
+        padding-left: 5px;
+        color: @medGray;
+      }
+      &.fallback {
+        a {
+          padding-left: 0px;
+        }
       }
     }
     .sharing {
