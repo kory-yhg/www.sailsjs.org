@@ -96,7 +96,7 @@
 
 
   @media screen and (max-width: 768px) {
-    @mobileNavWidth: 190px;
+    @mobileNavWidth: 175px;
 
 
     .menu {
@@ -141,13 +141,13 @@
     .nav {
       .transition(500ms);
       .boxShadow(-3px 0px 0px 0px rgba(0,0,0,0.2));
-      width: 190px;
+      width: @mobileNavWidth;
       position: fixed;
       margin-right: 0px;
       // background-color: @dkestGray;
       background-color: rgba(33,44,46, 0.95);
       padding: 0px;
-      right: -193px;
+      right: -@mobileNavWidth - 3;
       top: 0px;
       height: 100%;
       li {
@@ -181,7 +181,7 @@
         }
       }
       &.menu-open {
-        .translateX(-193px);
+        .translateX(-@mobileNavWidth - 3);
       }
     }
 
