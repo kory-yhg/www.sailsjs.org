@@ -5,6 +5,9 @@ angular.module('SailsWebsite').controller('HeaderCtrl', [
   '$location',
   function($scope, $window, $timeout, $location) {
 
+    $scope.menu = {};
+    $scope.menu.visible = false;
+
     // Check for the old '/#/' and '/#!/' links and redirect to the right place.
     if($window.location.hash && window.location.hash.indexOf('#?') < 0) {
       var redirectTo = $window.location.hash.replace(/#/g, '').replace(/!/g, '');
@@ -48,6 +51,27 @@ angular.module('SailsWebsite').controller('HeaderCtrl', [
       }
       else return false;
     };
+
+
+    $scope.intent = angular.extend($scope.intent || {}, {
+
+      showMenu: function() {
+        $scope.menu.visible = true;
+      },
+
+      hideMenu: function() {
+        $scope.menu.visible = false;
+      },
+
+      goTo: function(path) {
+        $scope.intent.hideMenu();
+        // Give it time for the nice menu animation before navigating.
+        $timeout(function() {
+          $window.location.href = path;
+        }, 300);
+      }
+    });
+
 
   }
 ]);

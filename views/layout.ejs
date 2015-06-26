@@ -52,7 +52,7 @@
     <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=600838656713699&amp;ev=PixelInitialized" /></noscript>
   </head>
 
-  <body ng-app="SailsWebsite" ng-controller="LayoutCtrl">
+  <body ng-app="SailsWebsite">
     <div class="header" ng-controller="HeaderCtrl">
 
       <!--Mobile menu button-->
@@ -77,31 +77,31 @@
         ng-swipe-right="intent.hideMenu()">
           <li class="mobile-only">
             <a class="sails-site"
-              ng-click="intent.hideMenu()"
+              ng-click="intent.goTo('/')"
               ng-class="{current: getIsCurrentPage('')}"
               href="/">Home</a>
           </li>
           <li>
             <a class="sails-site"
-              ng-click="intent.hideMenu()"
+              ng-click="intent.goTo('/get-started')"
               ng-class="{current: getIsCurrentPage('get-started')}"
               href="/get-started">Get Started</a>
           </li>
           <li>
             <a class="sails-site"
-              ng-click="intent.hideMenu()"
+              ng-click="intent.goTo('/features')"
               ng-class="{current: getIsCurrentPage('features')}"
               href="/features">Features</a>
           </li>
           <li>
             <a class="sails-site"
-              ng-click="intent.hideMenu()"
+              ng-click="intent.goTo('/documentation')"
               ng-class="{current: getIsDocumentationPage()}"
               href="/documentation">Documentation</a>
           </li>
           <li>
             <a class="sails-site"
-              ng-click="intent.hideMenu()"
+              ng-click="intent.goTo('/support')"
               ng-class="{current: getIsSupportPage()}"
               href="/support">Support</a>
           </li>
@@ -151,10 +151,8 @@
     <script src="/js/controls/GetStartedCtrl.js"></script>
     <script src="/js/controls/HeaderCtrl.js"></script>
     <script src="/js/controls/HomepageCtrl.js"></script>
-    <script src="/js/controls/LayoutCtrl.js"></script>
     <script src="/js/directives/directive.anatomyBoilerplate.js"></script>
     <script src="/js/directives/directive.bubble.js"></script>
-    <script src="/js/directives/directive.clickOutside.js"></script>
     <script src="/js/directives/directive.scrollng.js"></script>
     <script src="/js/directives/open-links-to-external-urls-in-new-tab.directive.js"></script>
     <script src="/js/directives/permalink.directive.js"></script>
