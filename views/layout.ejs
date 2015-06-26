@@ -70,9 +70,11 @@
           </a>
           <span class="version">v0.11</span>
         </div>
+        <div class="nav-overlay" ng-class="{'menu-open': menu.visible}">
+          <div class="veil" ng-click="intent.hideMenu()"></div>
+        </div>
         <ul class="nav" ng-class="{'menu-open': menu.visible}"
-        ng-swipe-right="intent.hideMenu()"
-        click-outside is-open="menu.visible">
+        ng-swipe-right="intent.hideMenu()">
           <li class="mobile-only">
             <a class="sails-site"
               ng-click="intent.hideMenu()"
