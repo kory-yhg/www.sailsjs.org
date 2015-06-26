@@ -52,7 +52,7 @@
     <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=600838656713699&amp;ev=PixelInitialized" /></noscript>
   </head>
 
-  <body ng-app="SailsWebsite" ng-controller="LayoutCtrl" ng-swipe-left="intent.showMenu()" ng-swipe-right="intent.hideMenu()">
+  <body ng-app="SailsWebsite" ng-controller="LayoutCtrl">
     <div class="header" ng-controller="HeaderCtrl">
 
       <!--Mobile menu button-->
@@ -70,7 +70,9 @@
           </a>
           <span class="version">v0.11</span>
         </div>
-        <ul class="nav" ng-class="{'menu-open': menu.visible}" click-outside is-open="menu.visible">
+        <ul class="nav" ng-class="{'menu-open': menu.visible}"
+        ng-swipe-right="intent.hideMenu()"
+        click-outside is-open="menu.visible">
           <li class="mobile-only">
             <a class="sails-site"
               ng-click="intent.hideMenu()"
