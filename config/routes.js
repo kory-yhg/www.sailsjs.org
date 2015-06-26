@@ -2,6 +2,12 @@ module.exports.routes = {
   "get /features": {
     "target": "FeaturesController.find"
   },
+  "get /support/about-irc": {
+    "target": "SupportController.aboutirc"
+  },
+  "get /get-started": {
+    "target": "Get-startedController.find"
+  },
   "get /": {
     "target": "Home$Controller.find"
   },
@@ -10,12 +16,6 @@ module.exports.routes = {
   },
   "get /resources": {
     "target": "ResourcesController.find"
-  },
-  "get /support/about-irc": {
-    "target": "SupportController.aboutirc"
-  },
-  "get /get-started": {
-    "target": "Get-startedController.find"
   },
   "get /support": {
     "target": "SupportController.find"

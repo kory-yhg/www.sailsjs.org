@@ -51,7 +51,7 @@ module.exports = {
                             },
                             "success": function(readJSONFile) {
                                 // Marshal menu metadata
-                                sails.machines['_project_3549_0.0.26'].MarshaldocPageMetadata({
+                                sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
                                     "docPageMetadatas": readJSONFile
                                 }).exec({
                                     "error": function(marshalMenuMetadata) {

@@ -119,7 +119,7 @@ module.exports = {
                                                     },
                                                     "success": function(readJSONFile) {
                                                         // Marshal menu metadata
-                                                        sails.machines['_project_3549_0.0.26'].MarshaldocPageMetadata({
+                                                        sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
                                                             "docPageMetadatas": readJSONFile
                                                         }).exec({
                                                             "error": function(marshalMenuMetadata) {
@@ -131,7 +131,7 @@ module.exports = {
                                                             },
                                                             "success": function(marshalMenuMetadata) {
                                                                 // Is it an old link?
-                                                                sails.machines['_project_3549_0.0.26'].isItAnOldLink({
+                                                                sails.machines['_project_3549_0.0.27'].isItAnOldLink({
                                                                     "docPageMetadatas": marshalMenuMetadata,
                                                                     "slug": inputs['*'],
                                                                     "q": inputs.q
@@ -149,7 +149,7 @@ module.exports = {
                                                                     },
                                                                     "success": function(isItAnOldLink) {
                                                                         // Find doc template to show
-                                                                        sails.machines['_project_3549_0.0.26'].Fniddocpagetoshow({
+                                                                        sails.machines['_project_3549_0.0.27'].Fniddocpagetoshow({
                                                                             "docPageMetadatas": marshalMenuMetadata,
                                                                             "slug": inputs['*']
                                                                         }).setEnvironment({
@@ -166,7 +166,7 @@ module.exports = {
                                                                             },
                                                                             "success": function(findDocTemplateToShow) {
                                                                                 // List expanded menu items
-                                                                                sails.machines['_project_3549_0.0.26'].Findparent({
+                                                                                sails.machines['_project_3549_0.0.27'].Findparent({
                                                                                     "menuData": marshalMenuMetadata,
                                                                                     "path": (findDocTemplateToShow && findDocTemplateToShow.path)
                                                                                 }).setEnvironment({

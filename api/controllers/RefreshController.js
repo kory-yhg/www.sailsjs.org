@@ -8,7 +8,7 @@ module.exports = {
             },
             fn: function(inputs, exits) {
                 // Compile reference docs
-                sails.machines['_project_3549_0.0.26'].Compilemarkdowndocs({
+                sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
                     "path": "reference"
                 }).setEnvironment({
                     sails: sails
@@ -22,7 +22,7 @@ module.exports = {
                     },
                     "success": function(compileReferenceDocs) {
                         // Compile anatomy docs
-                        sails.machines['_project_3549_0.0.26'].Compilemarkdowndocs({
+                        sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
                             "path": "anatomy"
                         }).setEnvironment({
                             sails: sails
@@ -36,7 +36,7 @@ module.exports = {
                             },
                             "success": function(compileAnatomyDocs) {
                                 // Compile concepts docs
-                                sails.machines['_project_3549_0.0.26'].Compilemarkdowndocs({
+                                sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
                                     "path": "concepts"
                                 }).setEnvironment({
                                     sails: sails
@@ -50,7 +50,7 @@ module.exports = {
                                     },
                                     "success": function(compileConceptsDocs) {
                                         // Compile getting started docs
-                                        sails.machines['_project_3549_0.0.26'].Compilemarkdowndocs({
+                                        sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
                                             "path": "getting-started"
                                         }).setEnvironment({
                                             sails: sails
@@ -64,7 +64,7 @@ module.exports = {
                                             },
                                             "success": function(compileGettingStartedDocs) {
                                                 // Compile irc docs
-                                                sails.machines['_project_3549_0.0.26'].Compilemarkdowndocs({
+                                                sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
                                                     "path": "support/irc"
                                                 }).setEnvironment({
                                                     sails: sails
@@ -78,7 +78,7 @@ module.exports = {
                                                     },
                                                     "success": function(compileIrcDocs) {
                                                         // Compile version notes
-                                                        sails.machines['_project_3549_0.0.26'].Compilemarkdowndocs({
+                                                        sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
                                                             "path": "version-notes"
                                                         }).setEnvironment({
                                                             sails: sails
@@ -141,7 +141,7 @@ module.exports = {
                                                                             },
                                                                             "success": function(readJSONFile) {
                                                                                 // Marshal menu metadata
-                                                                                sails.machines['_project_3549_0.0.26'].MarshaldocPageMetadata({
+                                                                                sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
                                                                                     "docPageMetadatas": readJSONFile
                                                                                 }).exec({
                                                                                     "error": function(marshalMenuMetadata) {
@@ -202,7 +202,7 @@ module.exports = {
                                                                                                     },
                                                                                                     "success": function(readJSONFile2) {
                                                                                                         // Marshal menu metadata
-                                                                                                        sails.machines['_project_3549_0.0.26'].MarshaldocPageMetadata({
+                                                                                                        sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
                                                                                                             "docPageMetadatas": readJSONFile2
                                                                                                         }).exec({
                                                                                                             "error": function(marshalMenuMetadata2) {
@@ -276,7 +276,7 @@ module.exports = {
                                                                                                                                     },
                                                                                                                                     "success": function(readJSONFile3) {
                                                                                                                                         // Marshal menu metadata
-                                                                                                                                        sails.machines['_project_3549_0.0.26'].MarshaldocPageMetadata({
+                                                                                                                                        sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
                                                                                                                                             "docPageMetadatas": readJSONFile3
                                                                                                                                         }).exec({
                                                                                                                                             "error": function(marshalMenuMetadata3) {
@@ -337,7 +337,7 @@ module.exports = {
                                                                                                                                                             },
                                                                                                                                                             "success": function(readJSONFile4) {
                                                                                                                                                                 // Marshal menu metadata
-                                                                                                                                                                sails.machines['_project_3549_0.0.26'].MarshaldocPageMetadata({
+                                                                                                                                                                sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
                                                                                                                                                                     "docPageMetadatas": readJSONFile4
                                                                                                                                                                 }).exec({
                                                                                                                                                                     "error": function(marshalMenuMetadata4) {
@@ -375,7 +375,7 @@ module.exports = {
                                                                                                                                                                                     },
                                                                                                                                                                                     "success": function(combineTheCombinedArrays) {
                                                                                                                                                                                         // Collate list of sitemap URLs
-                                                                                                                                                                                        sails.machines['_project_3549_0.0.26'].getPagesForSitemap({
+                                                                                                                                                                                        sails.machines['_project_3549_0.0.27'].getPagesForSitemap({
                                                                                                                                                                                             "docPageMetadatas": combineTheCombinedArrays
                                                                                                                                                                                         }).exec({
                                                                                                                                                                                             "error": function(collateListOfSitemapURLs) {
@@ -387,7 +387,7 @@ module.exports = {
                                                                                                                                                                                             },
                                                                                                                                                                                             "success": function(collateListOfSitemapURLs) {
                                                                                                                                                                                                 // Build sitemap XML
-                                                                                                                                                                                                sails.machines['_project_3549_0.0.26'].buildSitemapXml({
+                                                                                                                                                                                                sails.machines['_project_3549_0.0.27'].buildSitemapXml({
                                                                                                                                                                                                     "webpages": collateListOfSitemapURLs
                                                                                                                                                                                                 }).setEnvironment({
                                                                                                                                                                                                     req: req,
