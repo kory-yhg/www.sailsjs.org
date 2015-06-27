@@ -14,9 +14,7 @@
     <% } %>
     <meta name="author" content="Mike McNeil and contributors" />
 
-    <!-- GOOGLE ANALYTICS -->
-    <!-- (uncomment when new version of this site goes live) -->
-    <!--
+    <% /* GOOGLE ANALYTICS */ %>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -26,14 +24,13 @@
       ga('create', 'UA-64534106-1', 'auto');
       ga('send', 'pageview');
     </script>
-    -->
 
 
     <!--STYLES-->
-    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/min/production.min.css">
     <!--STYLES END-->
 
-    <!-- setup for FB automation -->
+    <!-- setup for FB like buttons -->
     <script>(function() {
       var _fbq = window._fbq || (window._fbq = []);
       if (!_fbq.loaded) {
@@ -125,7 +122,6 @@
           </div>
 
           <a href="https://twitter.com/share" class="twitter-share-button" data-text="#sailsjs, the realtime MVC framework for Node.js:" data-url="http://sailsjs.org" data-lang="en"></a>
-          <!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
 
           <a href="https://twitter.com/sailsjs" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @sailsjs</a>
 
@@ -135,27 +131,7 @@
 
 
     <!--SCRIPTS-->
-    <script src="/dependencies/jquery.js"></script>
-    <script src="/dependencies/angular.js"></script>
-    <script src="/dependencies/JSON2.js"></script>
-    <script src="/dependencies/angular-touch.js"></script>
-    <script src="/dependencies/directive.stopPropagation.js"></script>
-    <script src="/dependencies/lodash.js"></script>
-    <script src="/dependencies/moment.min.js"></script>
-    <script src="/dependencies/rainbow.js"></script>
-    <script src="/dependencies/retina.min.js"></script>
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/App.js"></script>
-    <script src="/js/controls/DocsCtrl.js"></script>
-    <script src="/js/controls/FeaturesCtrl.js"></script>
-    <script src="/js/controls/GetStartedCtrl.js"></script>
-    <script src="/js/controls/HeaderCtrl.js"></script>
-    <script src="/js/controls/HomepageCtrl.js"></script>
-    <script src="/js/directives/directive.anatomyBoilerplate.js"></script>
-    <script src="/js/directives/directive.bubble.js"></script>
-    <script src="/js/directives/directive.scrollng.js"></script>
-    <script src="/js/directives/open-links-to-external-urls-in-new-tab.directive.js"></script>
-    <script src="/js/directives/permalink.directive.js"></script>
+    <script src="/min/production.min.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
