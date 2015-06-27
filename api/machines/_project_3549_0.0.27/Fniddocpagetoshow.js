@@ -45,23 +45,36 @@ module.exports = {
       "friendlyName": "not found",
       "description": "",
       "example": "abc123"
+    },
+    "caseDoesntMatch": {
+      "id": "0aa0e91b-6dfb-4e6c-9a9c-3ab97e345416",
+      "friendlyName": "case doesn't match",
+      "description": "This exit is traversed if this machine detects a doc template which is the same except for letter case.  Returns the slug (w/ the proper case).",
+      "example": "concepts/some-doc-page"
     }
   },
   "defaultExit": "success",
-  "fn": function(inputs, exits, env) { // Ensure requested view is one of the allowed nav items.
-    var docPageToShow = _.find(inputs.docPageMetadatas, function(docPage) {
-      // Do a case-insensitive match and equate whitespace, %20 (URL-encoded spacebar), and dashes
-      if (inputs.slug.toLowerCase() === docPage.slug.toLowerCase()) {
-        return true;
+  "fn": function(inputs, exits, env) {
+    try {
+
+      // Ensure requested view is one of the allowed nav items.
+      var docPageToShow = _.find(inputs.docPageMetadatas, function(docPage) {
+        // Do a case-insensitive match and equate whitespace, %20 (URL-encoded spacebar), and dashes
+        if (inputs.slug.toLowerCase() === docPage.slug.toLowerCase()) {
+          return true;
+        }
+        return false;
+      });
+
+      // If the capitalization is different, redirect to the lowercased path instead of just showing the page
+      if (!_.isUndefined(docPageToShow) && (docPageToShow.slug !== inputs.slug)) {
+        return exits.caseDoesntMatch(docPageToShow.slug);
       }
-      return false;
-    });
-
-    // If the capitalization is different, redirect to the lowercased path instead of just showing the page
-    if (!_.isUndefined(docPageToShow) && (docPageToShow.slug !== inputs.slug)) {
-      return exits.redirect(docPageToShow.slug);
+    } catch (e) {
+      // Rather than traversing the error exit, exit as "notFound".
+      console.error('Unexpected error in "Find doc template to show":', e);
+      return exits.notFound();
     }
-
 
     if (!docPageToShow) {
       return exits.notFound();

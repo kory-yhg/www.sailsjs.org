@@ -158,8 +158,9 @@ module.exports = {
                                                                             sails: sails
                                                                         }).exec({
                                                                             "error": function(findDocTemplateToShow) {
-                                                                                return exits.error({
-                                                                                    data: findDocTemplateToShow,
+                                                                                return exits.respond({
+                                                                                    data: "Unexpected error locating documentation page.  Please file an issue at github.com/balderdashy/sails-docs.  Thanks!",
+                                                                                    action: "respond_with_value_and_status",
                                                                                     status: 500
                                                                                 });
 
@@ -315,6 +316,14 @@ module.exports = {
                                                                                         });
 
                                                                                     }
+                                                                                });
+
+                                                                            },
+                                                                            "caseDoesntMatch": function(findDocTemplateToShow) {
+                                                                                return exits.respond({
+                                                                                    data: "/documentation/" + findDocTemplateToShow,
+                                                                                    action: "redirect",
+                                                                                    status: 500
                                                                                 });
 
                                                                             }
