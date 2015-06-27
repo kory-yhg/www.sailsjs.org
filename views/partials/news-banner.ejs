@@ -1,7 +1,7 @@
 <div class="update-banner white-banner">
     <div class="banner-container">
 
-      <% if(!_.isUndefined(data.latestCommit)) { %>
+      <% if(typeof data !== 'undefined' && !_.isUndefined(data.latestCommit)) { %>
 
       <p>
         Latest commit by
@@ -18,7 +18,7 @@
       // just link to the GitHub repo.
       else { %>
       <p class="fallback">
-        Check out the latest developments in the repo: <a target="_blank" href="https://github.com/balderdashy/sails">GitHub repo</a>
+        Check out the latest developments in the <a target="_blank" href="https://github.com/balderdashy/sails">GitHub repo</a>.
       </p>
       <% } %>
 
