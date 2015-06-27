@@ -7,166 +7,154 @@ module.exports = {
                 respond: {}
             },
             fn: function(inputs, exits) {
-                // Compile reference docs
-                sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
-                    "path": "reference"
+                // Get request header
+                sails.machines['642f6a3d-70db-4cbb-ab9b-d93cec84142a_0.2.1'].getRequestHeader({
+                    "header": "X-Hub-Signature"
                 }).setEnvironment({
-                    sails: sails
+                    req: req
                 }).exec({
-                    "error": function(compileReferenceDocs) {
+                    "error": function(getRequestHeader) {
                         return exits.error({
-                            data: compileReferenceDocs,
+                            data: getRequestHeader,
                             status: 500
                         });
 
                     },
-                    "success": function(compileReferenceDocs) {
-                        // Compile anatomy docs
-                        sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
-                            "path": "anatomy"
+                    "success": function(getRequestHeader) {
+                        // Get environment variable
+                        sails.machines['_project_3549_0.0.27'].getEnvironmentVariable({
+                            "varName": "GITHUB_HOOK_SECRET"
                         }).setEnvironment({
-                            sails: sails
+                            req: req
                         }).exec({
-                            "error": function(compileAnatomyDocs) {
+                            "error": function(getEnvironmentVariable) {
                                 return exits.error({
-                                    data: compileAnatomyDocs,
+                                    data: getEnvironmentVariable,
                                     status: 500
                                 });
 
                             },
-                            "success": function(compileAnatomyDocs) {
-                                // Compile concepts docs
-                                sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
-                                    "path": "concepts"
-                                }).setEnvironment({
-                                    sails: sails
+                            "success": function(getEnvironmentVariable) {
+                                // If equal (===)
+                                sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
+                                    "a": getEnvironmentVariable,
+                                    "b": getRequestHeader
                                 }).exec({
-                                    "error": function(compileConceptsDocs) {
+                                    "error": function(ifEqual) {
                                         return exits.error({
-                                            data: compileConceptsDocs,
+                                            data: ifEqual,
                                             status: 500
                                         });
 
                                     },
-                                    "success": function(compileConceptsDocs) {
-                                        // Compile getting started docs
+                                    "otherwise": function(ifEqual) {
+                                        return exits.respond({
+                                            data: "You seem to be up to no good!",
+                                            action: "respond_with_value_and_status",
+                                            status: "401"
+                                        });
+
+                                    },
+                                    "success": function(ifEqual) {
+                                        // Compile reference docs
                                         sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
-                                            "path": "getting-started"
+                                            "path": "reference"
                                         }).setEnvironment({
                                             sails: sails
                                         }).exec({
-                                            "error": function(compileGettingStartedDocs) {
+                                            "error": function(compileReferenceDocs) {
                                                 return exits.error({
-                                                    data: compileGettingStartedDocs,
+                                                    data: compileReferenceDocs,
                                                     status: 500
                                                 });
 
                                             },
-                                            "success": function(compileGettingStartedDocs) {
-                                                // Compile irc docs
+                                            "success": function(compileReferenceDocs) {
+                                                // Compile anatomy docs
                                                 sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
-                                                    "path": "support/irc"
+                                                    "path": "anatomy"
                                                 }).setEnvironment({
                                                     sails: sails
                                                 }).exec({
-                                                    "error": function(compileIrcDocs) {
+                                                    "error": function(compileAnatomyDocs) {
                                                         return exits.error({
-                                                            data: compileIrcDocs,
+                                                            data: compileAnatomyDocs,
                                                             status: 500
                                                         });
 
                                                     },
-                                                    "success": function(compileIrcDocs) {
-                                                        // Compile version notes
+                                                    "success": function(compileAnatomyDocs) {
+                                                        // Compile concepts docs
                                                         sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
-                                                            "path": "version-notes"
+                                                            "path": "concepts"
                                                         }).setEnvironment({
                                                             sails: sails
                                                         }).exec({
-                                                            "error": function(compileVersionNotes) {
+                                                            "error": function(compileConceptsDocs) {
                                                                 return exits.error({
-                                                                    data: compileVersionNotes,
+                                                                    data: compileConceptsDocs,
                                                                     status: 500
                                                                 });
 
                                                             },
-                                                            "success": function(compileVersionNotes) {
-                                                                // Resolve path
-                                                                sails.machines['2806adc7-0289-473a-8843-020526771565_1.1.0'].resolve({
-                                                                    "paths": ["views/partials/doc-menus/" + "anatomy" + ".jsmenu"]
+                                                            "success": function(compileConceptsDocs) {
+                                                                // Compile getting started docs
+                                                                sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
+                                                                    "path": "getting-started"
+                                                                }).setEnvironment({
+                                                                    sails: sails
                                                                 }).exec({
-                                                                    "error": function(resolvePath2) {
+                                                                    "error": function(compileGettingStartedDocs) {
                                                                         return exits.error({
-                                                                            data: resolvePath2,
+                                                                            data: compileGettingStartedDocs,
                                                                             status: 500
                                                                         });
 
                                                                     },
-                                                                    "success": function(resolvePath2) {
-                                                                        // Read JSON file
-                                                                        sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].readJson({
-                                                                            "source": resolvePath2,
-                                                                            "schema": [{
-                                                                                templateTitle: "Foo-Bar.ejs",
-                                                                                fullPathAndFileName: "idk/foo-bar.ejs",
-                                                                                data: {
-                                                                                    displayName: "Foo Bar"
-                                                                                },
-                                                                                children: ["idk/foo-bar/something.ejs"],
-                                                                                isChild: true,
-                                                                                isParent: true,
-                                                                                parent: "idk.ejs"
-                                                                            }]
+                                                                    "success": function(compileGettingStartedDocs) {
+                                                                        // Compile irc docs
+                                                                        sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
+                                                                            "path": "support/irc"
+                                                                        }).setEnvironment({
+                                                                            sails: sails
                                                                         }).exec({
-                                                                            "error": function(readJSONFile) {
+                                                                            "error": function(compileIrcDocs) {
                                                                                 return exits.error({
-                                                                                    data: readJSONFile,
+                                                                                    data: compileIrcDocs,
                                                                                     status: 500
                                                                                 });
 
                                                                             },
-                                                                            "doesNotExist": function(readJSONFile) {
-                                                                                return exits.error({
-                                                                                    data: readJSONFile,
-                                                                                    status: 500
-                                                                                });
-
-                                                                            },
-                                                                            "couldNotParse": function(readJSONFile) {
-                                                                                return exits.error({
-                                                                                    data: readJSONFile,
-                                                                                    status: 500
-                                                                                });
-
-                                                                            },
-                                                                            "success": function(readJSONFile) {
-                                                                                // Marshal menu metadata
-                                                                                sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
-                                                                                    "docPageMetadatas": readJSONFile
+                                                                            "success": function(compileIrcDocs) {
+                                                                                // Compile version notes
+                                                                                sails.machines['_project_3549_0.0.27'].Compilemarkdowndocs({
+                                                                                    "path": "version-notes"
+                                                                                }).setEnvironment({
+                                                                                    sails: sails
                                                                                 }).exec({
-                                                                                    "error": function(marshalMenuMetadata) {
+                                                                                    "error": function(compileVersionNotes) {
                                                                                         return exits.error({
-                                                                                            data: marshalMenuMetadata,
+                                                                                            data: compileVersionNotes,
                                                                                             status: 500
                                                                                         });
 
                                                                                     },
-                                                                                    "success": function(marshalMenuMetadata) {
+                                                                                    "success": function(compileVersionNotes) {
                                                                                         // Resolve path
                                                                                         sails.machines['2806adc7-0289-473a-8843-020526771565_1.1.0'].resolve({
-                                                                                            "paths": ["views/partials/doc-menus/" + "concepts" + ".jsmenu"]
+                                                                                            "paths": ["views/partials/doc-menus/" + "anatomy" + ".jsmenu"]
                                                                                         }).exec({
-                                                                                            "error": function(resolvePath3) {
+                                                                                            "error": function(resolvePath2) {
                                                                                                 return exits.error({
-                                                                                                    data: resolvePath3,
+                                                                                                    data: resolvePath2,
                                                                                                     status: 500
                                                                                                 });
 
                                                                                             },
-                                                                                            "success": function(resolvePath3) {
+                                                                                            "success": function(resolvePath2) {
                                                                                                 // Read JSON file
                                                                                                 sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].readJson({
-                                                                                                    "source": resolvePath3,
+                                                                                                    "source": resolvePath2,
                                                                                                     "schema": [{
                                                                                                         templateTitle: "Foo-Bar.ejs",
                                                                                                         fullPathAndFileName: "idk/foo-bar.ejs",
@@ -179,129 +167,129 @@ module.exports = {
                                                                                                         parent: "idk.ejs"
                                                                                                     }]
                                                                                                 }).exec({
-                                                                                                    "error": function(readJSONFile2) {
+                                                                                                    "error": function(readJSONFile) {
                                                                                                         return exits.error({
-                                                                                                            data: readJSONFile2,
+                                                                                                            data: readJSONFile,
                                                                                                             status: 500
                                                                                                         });
 
                                                                                                     },
-                                                                                                    "doesNotExist": function(readJSONFile2) {
+                                                                                                    "doesNotExist": function(readJSONFile) {
                                                                                                         return exits.error({
-                                                                                                            data: readJSONFile2,
+                                                                                                            data: readJSONFile,
                                                                                                             status: 500
                                                                                                         });
 
                                                                                                     },
-                                                                                                    "couldNotParse": function(readJSONFile2) {
+                                                                                                    "couldNotParse": function(readJSONFile) {
                                                                                                         return exits.error({
-                                                                                                            data: readJSONFile2,
+                                                                                                            data: readJSONFile,
                                                                                                             status: 500
                                                                                                         });
 
                                                                                                     },
-                                                                                                    "success": function(readJSONFile2) {
+                                                                                                    "success": function(readJSONFile) {
                                                                                                         // Marshal menu metadata
                                                                                                         sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
-                                                                                                            "docPageMetadatas": readJSONFile2
+                                                                                                            "docPageMetadatas": readJSONFile
                                                                                                         }).exec({
-                                                                                                            "error": function(marshalMenuMetadata2) {
+                                                                                                            "error": function(marshalMenuMetadata) {
                                                                                                                 return exits.error({
-                                                                                                                    data: marshalMenuMetadata2,
+                                                                                                                    data: marshalMenuMetadata,
                                                                                                                     status: 500
                                                                                                                 });
 
                                                                                                             },
-                                                                                                            "success": function(marshalMenuMetadata2) {
-                                                                                                                // Combine anatomy and concepts arrays
-                                                                                                                sails.machines['c646f5e7-9c6f-49a5-91f6-7e1eabfd1186_3.0.2'].concat({
-                                                                                                                    "firstArray": marshalMenuMetadata,
-                                                                                                                    "secondArray": marshalMenuMetadata2
+                                                                                                            "success": function(marshalMenuMetadata) {
+                                                                                                                // Resolve path
+                                                                                                                sails.machines['2806adc7-0289-473a-8843-020526771565_1.1.0'].resolve({
+                                                                                                                    "paths": ["views/partials/doc-menus/" + "concepts" + ".jsmenu"]
                                                                                                                 }).exec({
-                                                                                                                    "error": function(combineAnatomyAndConceptsArrays) {
+                                                                                                                    "error": function(resolvePath3) {
                                                                                                                         return exits.error({
-                                                                                                                            data: combineAnatomyAndConceptsArrays,
+                                                                                                                            data: resolvePath3,
                                                                                                                             status: 500
                                                                                                                         });
 
                                                                                                                     },
-                                                                                                                    "success": function(combineAnatomyAndConceptsArrays) {
-                                                                                                                        // Resolve path
-                                                                                                                        sails.machines['2806adc7-0289-473a-8843-020526771565_1.1.0'].resolve({
-                                                                                                                            "paths": ["views/partials/doc-menus/" + "reference" + ".jsmenu"]
+                                                                                                                    "success": function(resolvePath3) {
+                                                                                                                        // Read JSON file
+                                                                                                                        sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].readJson({
+                                                                                                                            "source": resolvePath3,
+                                                                                                                            "schema": [{
+                                                                                                                                templateTitle: "Foo-Bar.ejs",
+                                                                                                                                fullPathAndFileName: "idk/foo-bar.ejs",
+                                                                                                                                data: {
+                                                                                                                                    displayName: "Foo Bar"
+                                                                                                                                },
+                                                                                                                                children: ["idk/foo-bar/something.ejs"],
+                                                                                                                                isChild: true,
+                                                                                                                                isParent: true,
+                                                                                                                                parent: "idk.ejs"
+                                                                                                                            }]
                                                                                                                         }).exec({
-                                                                                                                            "error": function(resolvePath4) {
+                                                                                                                            "error": function(readJSONFile2) {
                                                                                                                                 return exits.error({
-                                                                                                                                    data: resolvePath4,
+                                                                                                                                    data: readJSONFile2,
                                                                                                                                     status: 500
                                                                                                                                 });
 
                                                                                                                             },
-                                                                                                                            "success": function(resolvePath4) {
-                                                                                                                                // Read JSON file
-                                                                                                                                sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].readJson({
-                                                                                                                                    "source": resolvePath4,
-                                                                                                                                    "schema": [{
-                                                                                                                                        templateTitle: "Foo-Bar.ejs",
-                                                                                                                                        fullPathAndFileName: "idk/foo-bar.ejs",
-                                                                                                                                        data: {
-                                                                                                                                            displayName: "Foo Bar"
-                                                                                                                                        },
-                                                                                                                                        children: ["idk/foo-bar/something.ejs"],
-                                                                                                                                        isChild: true,
-                                                                                                                                        isParent: true,
-                                                                                                                                        parent: "idk.ejs"
-                                                                                                                                    }]
+                                                                                                                            "doesNotExist": function(readJSONFile2) {
+                                                                                                                                return exits.error({
+                                                                                                                                    data: readJSONFile2,
+                                                                                                                                    status: 500
+                                                                                                                                });
+
+                                                                                                                            },
+                                                                                                                            "couldNotParse": function(readJSONFile2) {
+                                                                                                                                return exits.error({
+                                                                                                                                    data: readJSONFile2,
+                                                                                                                                    status: 500
+                                                                                                                                });
+
+                                                                                                                            },
+                                                                                                                            "success": function(readJSONFile2) {
+                                                                                                                                // Marshal menu metadata
+                                                                                                                                sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
+                                                                                                                                    "docPageMetadatas": readJSONFile2
                                                                                                                                 }).exec({
-                                                                                                                                    "error": function(readJSONFile3) {
+                                                                                                                                    "error": function(marshalMenuMetadata2) {
                                                                                                                                         return exits.error({
-                                                                                                                                            data: readJSONFile3,
+                                                                                                                                            data: marshalMenuMetadata2,
                                                                                                                                             status: 500
                                                                                                                                         });
 
                                                                                                                                     },
-                                                                                                                                    "doesNotExist": function(readJSONFile3) {
-                                                                                                                                        return exits.error({
-                                                                                                                                            data: readJSONFile3,
-                                                                                                                                            status: 500
-                                                                                                                                        });
-
-                                                                                                                                    },
-                                                                                                                                    "couldNotParse": function(readJSONFile3) {
-                                                                                                                                        return exits.error({
-                                                                                                                                            data: readJSONFile3,
-                                                                                                                                            status: 500
-                                                                                                                                        });
-
-                                                                                                                                    },
-                                                                                                                                    "success": function(readJSONFile3) {
-                                                                                                                                        // Marshal menu metadata
-                                                                                                                                        sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
-                                                                                                                                            "docPageMetadatas": readJSONFile3
+                                                                                                                                    "success": function(marshalMenuMetadata2) {
+                                                                                                                                        // Combine anatomy and concepts arrays
+                                                                                                                                        sails.machines['c646f5e7-9c6f-49a5-91f6-7e1eabfd1186_3.0.2'].concat({
+                                                                                                                                            "firstArray": marshalMenuMetadata,
+                                                                                                                                            "secondArray": marshalMenuMetadata2
                                                                                                                                         }).exec({
-                                                                                                                                            "error": function(marshalMenuMetadata3) {
+                                                                                                                                            "error": function(combineAnatomyAndConceptsArrays) {
                                                                                                                                                 return exits.error({
-                                                                                                                                                    data: marshalMenuMetadata3,
+                                                                                                                                                    data: combineAnatomyAndConceptsArrays,
                                                                                                                                                     status: 500
                                                                                                                                                 });
 
                                                                                                                                             },
-                                                                                                                                            "success": function(marshalMenuMetadata3) {
+                                                                                                                                            "success": function(combineAnatomyAndConceptsArrays) {
                                                                                                                                                 // Resolve path
                                                                                                                                                 sails.machines['2806adc7-0289-473a-8843-020526771565_1.1.0'].resolve({
-                                                                                                                                                    "paths": ["views/partials/doc-menus/" + "version-notes" + ".jsmenu"]
+                                                                                                                                                    "paths": ["views/partials/doc-menus/" + "reference" + ".jsmenu"]
                                                                                                                                                 }).exec({
-                                                                                                                                                    "error": function(resolvePath5) {
+                                                                                                                                                    "error": function(resolvePath4) {
                                                                                                                                                         return exits.error({
-                                                                                                                                                            data: resolvePath5,
+                                                                                                                                                            data: resolvePath4,
                                                                                                                                                             status: 500
                                                                                                                                                         });
 
                                                                                                                                                     },
-                                                                                                                                                    "success": function(resolvePath5) {
+                                                                                                                                                    "success": function(resolvePath4) {
                                                                                                                                                         // Read JSON file
                                                                                                                                                         sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].readJson({
-                                                                                                                                                            "source": resolvePath5,
+                                                                                                                                                            "source": resolvePath4,
                                                                                                                                                             "schema": [{
                                                                                                                                                                 templateTitle: "Foo-Bar.ejs",
                                                                                                                                                                 fullPathAndFileName: "idk/foo-bar.ejs",
@@ -314,130 +302,200 @@ module.exports = {
                                                                                                                                                                 parent: "idk.ejs"
                                                                                                                                                             }]
                                                                                                                                                         }).exec({
-                                                                                                                                                            "error": function(readJSONFile4) {
+                                                                                                                                                            "error": function(readJSONFile3) {
                                                                                                                                                                 return exits.error({
-                                                                                                                                                                    data: readJSONFile4,
+                                                                                                                                                                    data: readJSONFile3,
                                                                                                                                                                     status: 500
                                                                                                                                                                 });
 
                                                                                                                                                             },
-                                                                                                                                                            "doesNotExist": function(readJSONFile4) {
+                                                                                                                                                            "doesNotExist": function(readJSONFile3) {
                                                                                                                                                                 return exits.error({
-                                                                                                                                                                    data: readJSONFile4,
+                                                                                                                                                                    data: readJSONFile3,
                                                                                                                                                                     status: 500
                                                                                                                                                                 });
 
                                                                                                                                                             },
-                                                                                                                                                            "couldNotParse": function(readJSONFile4) {
+                                                                                                                                                            "couldNotParse": function(readJSONFile3) {
                                                                                                                                                                 return exits.error({
-                                                                                                                                                                    data: readJSONFile4,
+                                                                                                                                                                    data: readJSONFile3,
                                                                                                                                                                     status: 500
                                                                                                                                                                 });
 
                                                                                                                                                             },
-                                                                                                                                                            "success": function(readJSONFile4) {
+                                                                                                                                                            "success": function(readJSONFile3) {
                                                                                                                                                                 // Marshal menu metadata
                                                                                                                                                                 sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
-                                                                                                                                                                    "docPageMetadatas": readJSONFile4
+                                                                                                                                                                    "docPageMetadatas": readJSONFile3
                                                                                                                                                                 }).exec({
-                                                                                                                                                                    "error": function(marshalMenuMetadata4) {
+                                                                                                                                                                    "error": function(marshalMenuMetadata3) {
                                                                                                                                                                         return exits.error({
-                                                                                                                                                                            data: marshalMenuMetadata4,
+                                                                                                                                                                            data: marshalMenuMetadata3,
                                                                                                                                                                             status: 500
                                                                                                                                                                         });
 
                                                                                                                                                                     },
-                                                                                                                                                                    "success": function(marshalMenuMetadata4) {
-                                                                                                                                                                        // Combine reference and version notes arrays
-                                                                                                                                                                        sails.machines['c646f5e7-9c6f-49a5-91f6-7e1eabfd1186_3.0.2'].concat({
-                                                                                                                                                                            "firstArray": marshalMenuMetadata3,
-                                                                                                                                                                            "secondArray": marshalMenuMetadata4
+                                                                                                                                                                    "success": function(marshalMenuMetadata3) {
+                                                                                                                                                                        // Resolve path
+                                                                                                                                                                        sails.machines['2806adc7-0289-473a-8843-020526771565_1.1.0'].resolve({
+                                                                                                                                                                            "paths": ["views/partials/doc-menus/" + "version-notes" + ".jsmenu"]
                                                                                                                                                                         }).exec({
-                                                                                                                                                                            "error": function(combineReferenceAndVersionNotesArrays) {
+                                                                                                                                                                            "error": function(resolvePath5) {
                                                                                                                                                                                 return exits.error({
-                                                                                                                                                                                    data: combineReferenceAndVersionNotesArrays,
+                                                                                                                                                                                    data: resolvePath5,
                                                                                                                                                                                     status: 500
                                                                                                                                                                                 });
 
                                                                                                                                                                             },
-                                                                                                                                                                            "success": function(combineReferenceAndVersionNotesArrays) {
-                                                                                                                                                                                // Combine the combined arrays
-                                                                                                                                                                                sails.machines['c646f5e7-9c6f-49a5-91f6-7e1eabfd1186_3.0.2'].concat({
-                                                                                                                                                                                    "firstArray": combineReferenceAndVersionNotesArrays,
-                                                                                                                                                                                    "secondArray": combineAnatomyAndConceptsArrays
+                                                                                                                                                                            "success": function(resolvePath5) {
+                                                                                                                                                                                // Read JSON file
+                                                                                                                                                                                sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].readJson({
+                                                                                                                                                                                    "source": resolvePath5,
+                                                                                                                                                                                    "schema": [{
+                                                                                                                                                                                        templateTitle: "Foo-Bar.ejs",
+                                                                                                                                                                                        fullPathAndFileName: "idk/foo-bar.ejs",
+                                                                                                                                                                                        data: {
+                                                                                                                                                                                            displayName: "Foo Bar"
+                                                                                                                                                                                        },
+                                                                                                                                                                                        children: ["idk/foo-bar/something.ejs"],
+                                                                                                                                                                                        isChild: true,
+                                                                                                                                                                                        isParent: true,
+                                                                                                                                                                                        parent: "idk.ejs"
+                                                                                                                                                                                    }]
                                                                                                                                                                                 }).exec({
-                                                                                                                                                                                    "error": function(combineTheCombinedArrays) {
+                                                                                                                                                                                    "error": function(readJSONFile4) {
                                                                                                                                                                                         return exits.error({
-                                                                                                                                                                                            data: combineTheCombinedArrays,
+                                                                                                                                                                                            data: readJSONFile4,
                                                                                                                                                                                             status: 500
                                                                                                                                                                                         });
 
                                                                                                                                                                                     },
-                                                                                                                                                                                    "success": function(combineTheCombinedArrays) {
-                                                                                                                                                                                        // Collate list of sitemap URLs
-                                                                                                                                                                                        sails.machines['_project_3549_0.0.27'].getPagesForSitemap({
-                                                                                                                                                                                            "docPageMetadatas": combineTheCombinedArrays
+                                                                                                                                                                                    "doesNotExist": function(readJSONFile4) {
+                                                                                                                                                                                        return exits.error({
+                                                                                                                                                                                            data: readJSONFile4,
+                                                                                                                                                                                            status: 500
+                                                                                                                                                                                        });
+
+                                                                                                                                                                                    },
+                                                                                                                                                                                    "couldNotParse": function(readJSONFile4) {
+                                                                                                                                                                                        return exits.error({
+                                                                                                                                                                                            data: readJSONFile4,
+                                                                                                                                                                                            status: 500
+                                                                                                                                                                                        });
+
+                                                                                                                                                                                    },
+                                                                                                                                                                                    "success": function(readJSONFile4) {
+                                                                                                                                                                                        // Marshal menu metadata
+                                                                                                                                                                                        sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
+                                                                                                                                                                                            "docPageMetadatas": readJSONFile4
                                                                                                                                                                                         }).exec({
-                                                                                                                                                                                            "error": function(collateListOfSitemapURLs) {
+                                                                                                                                                                                            "error": function(marshalMenuMetadata4) {
                                                                                                                                                                                                 return exits.error({
-                                                                                                                                                                                                    data: collateListOfSitemapURLs,
+                                                                                                                                                                                                    data: marshalMenuMetadata4,
                                                                                                                                                                                                     status: 500
                                                                                                                                                                                                 });
 
                                                                                                                                                                                             },
-                                                                                                                                                                                            "success": function(collateListOfSitemapURLs) {
-                                                                                                                                                                                                // Build sitemap XML
-                                                                                                                                                                                                sails.machines['_project_3549_0.0.27'].buildSitemapXml({
-                                                                                                                                                                                                    "webpages": collateListOfSitemapURLs
-                                                                                                                                                                                                }).setEnvironment({
-                                                                                                                                                                                                    req: req,
-                                                                                                                                                                                                    res: res,
-                                                                                                                                                                                                    sails: sails
+                                                                                                                                                                                            "success": function(marshalMenuMetadata4) {
+                                                                                                                                                                                                // Combine reference and version notes arrays
+                                                                                                                                                                                                sails.machines['c646f5e7-9c6f-49a5-91f6-7e1eabfd1186_3.0.2'].concat({
+                                                                                                                                                                                                    "firstArray": marshalMenuMetadata3,
+                                                                                                                                                                                                    "secondArray": marshalMenuMetadata4
                                                                                                                                                                                                 }).exec({
-                                                                                                                                                                                                    "error": function(buildSitemapXML) {
+                                                                                                                                                                                                    "error": function(combineReferenceAndVersionNotesArrays) {
                                                                                                                                                                                                         return exits.error({
-                                                                                                                                                                                                            data: buildSitemapXML,
+                                                                                                                                                                                                            data: combineReferenceAndVersionNotesArrays,
                                                                                                                                                                                                             status: 500
                                                                                                                                                                                                         });
 
                                                                                                                                                                                                     },
-                                                                                                                                                                                                    "success": function(buildSitemapXML) {
-                                                                                                                                                                                                        // Resolve path
-                                                                                                                                                                                                        sails.machines['2806adc7-0289-473a-8843-020526771565_1.1.0'].resolve({
-                                                                                                                                                                                                            "paths": ["assets/sitemap.xml"]
+                                                                                                                                                                                                    "success": function(combineReferenceAndVersionNotesArrays) {
+                                                                                                                                                                                                        // Combine the combined arrays
+                                                                                                                                                                                                        sails.machines['c646f5e7-9c6f-49a5-91f6-7e1eabfd1186_3.0.2'].concat({
+                                                                                                                                                                                                            "firstArray": combineReferenceAndVersionNotesArrays,
+                                                                                                                                                                                                            "secondArray": combineAnatomyAndConceptsArrays
                                                                                                                                                                                                         }).exec({
-                                                                                                                                                                                                            "error": function(resolvePath) {
+                                                                                                                                                                                                            "error": function(combineTheCombinedArrays) {
                                                                                                                                                                                                                 return exits.error({
-                                                                                                                                                                                                                    data: resolvePath,
+                                                                                                                                                                                                                    data: combineTheCombinedArrays,
                                                                                                                                                                                                                     status: 500
                                                                                                                                                                                                                 });
 
                                                                                                                                                                                                             },
-                                                                                                                                                                                                            "success": function(resolvePath) {
-                                                                                                                                                                                                                // Write file
-                                                                                                                                                                                                                sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].write({
-                                                                                                                                                                                                                    "destination": resolvePath,
-                                                                                                                                                                                                                    "string": buildSitemapXML,
-                                                                                                                                                                                                                    "force": true
+                                                                                                                                                                                                            "success": function(combineTheCombinedArrays) {
+                                                                                                                                                                                                                // Collate list of sitemap URLs
+                                                                                                                                                                                                                sails.machines['_project_3549_0.0.27'].getPagesForSitemap({
+                                                                                                                                                                                                                    "docPageMetadatas": combineTheCombinedArrays
                                                                                                                                                                                                                 }).exec({
-                                                                                                                                                                                                                    "error": function(writeFile) {
+                                                                                                                                                                                                                    "error": function(collateListOfSitemapURLs) {
                                                                                                                                                                                                                         return exits.error({
-                                                                                                                                                                                                                            data: writeFile,
+                                                                                                                                                                                                                            data: collateListOfSitemapURLs,
                                                                                                                                                                                                                             status: 500
                                                                                                                                                                                                                         });
 
                                                                                                                                                                                                                     },
-                                                                                                                                                                                                                    "alreadyExists": function(writeFile) {
-                                                                                                                                                                                                                        return exits.error({
-                                                                                                                                                                                                                            data: writeFile,
-                                                                                                                                                                                                                            status: 500
-                                                                                                                                                                                                                        });
+                                                                                                                                                                                                                    "success": function(collateListOfSitemapURLs) {
+                                                                                                                                                                                                                        // Build sitemap XML
+                                                                                                                                                                                                                        sails.machines['_project_3549_0.0.27'].buildSitemapXml({
+                                                                                                                                                                                                                            "webpages": collateListOfSitemapURLs
+                                                                                                                                                                                                                        }).setEnvironment({
+                                                                                                                                                                                                                            req: req,
+                                                                                                                                                                                                                            res: res,
+                                                                                                                                                                                                                            sails: sails
+                                                                                                                                                                                                                        }).exec({
+                                                                                                                                                                                                                            "error": function(buildSitemapXML) {
+                                                                                                                                                                                                                                return exits.error({
+                                                                                                                                                                                                                                    data: buildSitemapXML,
+                                                                                                                                                                                                                                    status: 500
+                                                                                                                                                                                                                                });
 
-                                                                                                                                                                                                                    },
-                                                                                                                                                                                                                    "success": function(writeFile) {
-                                                                                                                                                                                                                        return exits.respond({
-                                                                                                                                                                                                                            action: "respond_with_status",
-                                                                                                                                                                                                                            status: 200
+                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                            "success": function(buildSitemapXML) {
+                                                                                                                                                                                                                                // Resolve path
+                                                                                                                                                                                                                                sails.machines['2806adc7-0289-473a-8843-020526771565_1.1.0'].resolve({
+                                                                                                                                                                                                                                    "paths": ["assets/sitemap.xml"]
+                                                                                                                                                                                                                                }).exec({
+                                                                                                                                                                                                                                    "error": function(resolvePath) {
+                                                                                                                                                                                                                                        return exits.error({
+                                                                                                                                                                                                                                            data: resolvePath,
+                                                                                                                                                                                                                                            status: 500
+                                                                                                                                                                                                                                        });
+
+                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                    "success": function(resolvePath) {
+                                                                                                                                                                                                                                        // Write file
+                                                                                                                                                                                                                                        sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].write({
+                                                                                                                                                                                                                                            "destination": resolvePath,
+                                                                                                                                                                                                                                            "string": buildSitemapXML,
+                                                                                                                                                                                                                                            "force": true
+                                                                                                                                                                                                                                        }).exec({
+                                                                                                                                                                                                                                            "error": function(writeFile) {
+                                                                                                                                                                                                                                                return exits.error({
+                                                                                                                                                                                                                                                    data: writeFile,
+                                                                                                                                                                                                                                                    status: 500
+                                                                                                                                                                                                                                                });
+
+                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                                            "alreadyExists": function(writeFile) {
+                                                                                                                                                                                                                                                return exits.error({
+                                                                                                                                                                                                                                                    data: writeFile,
+                                                                                                                                                                                                                                                    status: 500
+                                                                                                                                                                                                                                                });
+
+                                                                                                                                                                                                                                            },
+                                                                                                                                                                                                                                            "success": function(writeFile) {
+                                                                                                                                                                                                                                                return exits.respond({
+                                                                                                                                                                                                                                                    action: "respond_with_status",
+                                                                                                                                                                                                                                                    status: 200
+                                                                                                                                                                                                                                                });
+
+                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                        });
+
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                });
+
+                                                                                                                                                                                                                            }
                                                                                                                                                                                                                         });
 
                                                                                                                                                                                                                     }

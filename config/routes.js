@@ -1,4 +1,7 @@
 module.exports.routes = {
+  "get /refresh": {
+    "target": "RefreshController.find"
+  },
   "get /features": {
     "target": "FeaturesController.find"
   },
@@ -19,9 +22,6 @@ module.exports.routes = {
   },
   "get /support": {
     "target": "SupportController.find"
-  },
-  "get /refresh": {
-    "target": "RefreshController.find"
   },
   "get /documentation": {
     "target": "DocumentationController.find"
