@@ -9,7 +9,7 @@ module.exports = {
             fn: function(inputs, exits) {
                 // Pick random item
                 sails.machines['c646f5e7-9c6f-49a5-91f6-7e1eabfd1186_3.0.2'].sample({
-                    "array": ["a giant squid"]
+                    "array": ["a giant squid", "clownfish", "starfish", "sea anemones", "merpeople", "mermen", "mermaids", "seahorses", "cuttlefish", "developers", "developers", "developers"]
                 }).exec({
                     "error": function(pickRandomItem) {
                         return exits.error({
