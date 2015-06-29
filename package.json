@@ -11,6 +11,7 @@
     "grunt-contrib-less": "1.0.0",
     "grunt-contrib-uglify": "particlebanana/grunt-contrib-uglify",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-hash": "~0.5.0",
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "~0.2.3",
     "include-all": "~0.1.3",
