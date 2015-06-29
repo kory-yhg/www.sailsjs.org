@@ -44,18 +44,18 @@ module.exports = function(grunt) {
 		},
 
 		prodJs: {
-			options: {
-				startTag: '<!--SCRIPTS-->',
-				endTag: '<!--SCRIPTS END-->',
-				fileTmpl: '<script src="%s"></script>',
-				appRoot: '.tmp/public'
-			},
-			files: {
-				'.tmp/public/**/*.html': ['.tmp/public/min/production.min.js'],
-				'views/**/*.html': ['.tmp/public/min/production.min.js'],
-				'views/**/*.ejs': ['.tmp/public/min/production.min.js']
-			}
-		},
+      options: {
+        startTag: '<!--SCRIPTS-->',
+        endTag: '<!--SCRIPTS END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': ['.tmp/public/dist/*.js'],
+        'views/**/*.html': ['.tmp/public/dist/*.js'],
+        'views/**/*.ejs': ['.tmp/public/dist/*.js']
+      }
+    },
 
 		prodJsRelative: {
 			options: {
@@ -69,21 +69,6 @@ module.exports = function(grunt) {
 				'.tmp/public/**/*.html': ['.tmp/public/min/production.min.js'],
 				'views/**/*.html': ['.tmp/public/min/production.min.js'],
 				'views/**/*.ejs': ['.tmp/public/min/production.min.js']
-			}
-		},
-
-		devStyles: {
-			options: {
-				startTag: '<!--STYLES-->',
-				endTag: '<!--STYLES END-->',
-				fileTmpl: '<link rel="stylesheet" href="%s">',
-				appRoot: '.tmp/public'
-			},
-
-			files: {
-				'.tmp/public/**/*.html': require('../pipeline').cssFilesToInject,
-				'views/**/*.html': require('../pipeline').cssFilesToInject,
-				'views/**/*.ejs': require('../pipeline').cssFilesToInject
 			}
 		},
 
@@ -103,19 +88,18 @@ module.exports = function(grunt) {
 			}
 		},
 
-		prodStyles: {
-			options: {
-				startTag: '<!--STYLES-->',
-				endTag: '<!--STYLES END-->',
-				fileTmpl: '<link rel="stylesheet" href="%s">',
-				appRoot: '.tmp/public'
-			},
-			files: {
-				'.tmp/public/index.html': ['.tmp/public/min/production.min.css'],
-				'views/**/*.html': ['.tmp/public/min/production.min.css'],
-				'views/**/*.ejs': ['.tmp/public/min/production.min.css']
-			}
-		},
+    prodStyles: {
+      options: {
+        startTag: '<!--STYLES-->',
+        endTag: '<!--STYLES END-->',
+        fileTmpl: '<link rel="stylesheet" href="%s">',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        'views/**/*.html': ['.tmp/public/dist/*.css'],
+        'views/**/*.ejs': ['.tmp/public/dist/*.css']
+      }
+    },
 
 		prodStylesRelative: {
 			options: {

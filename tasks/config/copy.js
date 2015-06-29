@@ -24,6 +24,14 @@ module.exports = function(grunt) {
 				dest: '.tmp/public'
 			}]
 		},
+    dist: {
+      files: [{
+        expand: true,
+        cwd: '.tmp/public/hash',
+        src: ['**/*'],
+        dest: '.tmp/public/dist'
+      }]
+    },
 		build: {
 			files: [{
 				expand: true,
