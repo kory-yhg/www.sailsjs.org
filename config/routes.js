@@ -1,4 +1,7 @@
 module.exports.routes = {
+  "get /old-features": {
+    "target": "Old-featuresController.find"
+  },
   "get /features": {
     "target": "FeaturesController.find"
   },
@@ -11,11 +14,8 @@ module.exports.routes = {
   "get /support/about-irc": {
     "target": "SupportController.aboutirc"
   },
-  "get /get-started": {
-    "target": "Get-startedController.find"
-  },
-  "get /old-features": {
-    "target": "Old-featuresController.find"
+  "get /old-homepage": {
+    "target": "Old-homepageController.find"
   },
   "get /documentation/*": {
     "target": "DocumentationController.*"
@@ -29,8 +29,8 @@ module.exports.routes = {
   "get /documentation": {
     "target": "DocumentationController.find"
   },
-  "get /old-homepage": {
-    "target": "Old-homepageController.find"
+  "get /get-started": {
+    "target": "Get-startedController.find"
   },
   "get /version-notes/:versionnote": {
     "target": "Version-notesController.$versionnote",
