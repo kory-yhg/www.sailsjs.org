@@ -68,9 +68,9 @@
 
 .docs_inlinecode() {
   .docs_code();
-  background: @ltestGray;
-  padding: 2px 3px;
-  margin: 0px 3px;
+  background: rgba(11,143,162, 0.15);
+  padding: 2px 4px;
+  margin: 0px 2px;
   &:first-child {
     margin-left: 0px;
   }
@@ -187,21 +187,19 @@
 
 .docs_code() {
   font-family: @codeFont;
-  font-weight: @light;
-  font-size: 15px;
+  font-size: 13px;
+  font-style: normal;
 }
 
 .docs_blockquote() {
-  background: @seaGreen;
+  .borderBox();
+  // background: @seaGreen;
+  background: @ltestGray;
+  border: 1px solid @borderLtGray;
   padding: 10px 15px;
   margin: 0px 0 20px;
   h1, h2, h3, h4, h5 {
     padding-top: 0px;
-  }
-  p {
-    code {
-      background: rgba(11,143,162, 0.35);
-    }
   }
   pre >code {
     background: transparent;

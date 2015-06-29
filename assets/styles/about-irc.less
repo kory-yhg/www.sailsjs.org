@@ -1,5 +1,6 @@
 //Styles specific to IRC page:
 .irc-page {
+  overflow-x: hidden;
   font-family: @mainFont;
   .ircGradient();
 
@@ -115,100 +116,100 @@
     }
   }
 
-  .login {
-    .borderBox();
-    padding: 50px 0 0px;
-    h4 {
-      text-align: center;
-      color: @darkTurquoise;
-      font-weight: @bold;
-      font-size: 24px;
-      // font-family: @mainFont;
-      font-family: @headerFont;
-      padding-bottom: 15px;
-    }
-    .login-container {
-      .borderBox();
-      .borderRadius(15px, 15px, 15px, 15px);
-      background-color: rgba(65,186,194,0.5);
-      border: 2px solid @brightBlue;
-      padding: 50px 0 65px;
-      width: 400px;
-      margin: auto;
-      position: relative;
-      z-index: 25;
-      -webkit-box-shadow: 0px 0px 100px 0px rgba(255, 255, 255, 0.5);
-      -moz-box-shadow:    0px 0px 100px 0px rgba(255, 255, 255, 0.5);
-      box-shadow:         0px 0px 100px 0px rgba(255, 255, 255, 0.5);
-      p {
-        text-align: center;
-        font-size: 12px;
-        padding-top: 10px;
-        a {
-          color: @darkTurquoise;
-          text-decoration: underline;
-        }
-      }
-      .input-container {
-        .borderBox();
-        width: 210px;
-        margin: auto;
-        position: relative;
-        border: 1px solid @turquoise;
-        background-color: @white;
-        .borderRadius(4px, 4px, 4px, 4px);
-        input {
-          .borderBox();
-          width: 100%;
-          padding: 5px 50px 5px 10px;
-          border: none;
-          height: 30px;
-          font-family: @mainFont;
-          font-size: 13px;
-          color: @black;
-          .borderRadius(4px, 0px, 0px, 4px);
+  // .login {
+  //   .borderBox();
+  //   padding: 50px 0 0px;
+  //   h4 {
+  //     text-align: center;
+  //     color: @darkTurquoise;
+  //     font-weight: @bold;
+  //     font-size: 24px;
+  //     // font-family: @mainFont;
+  //     font-family: @headerFont;
+  //     padding-bottom: 15px;
+  //   }
+  //   .login-container {
+  //     .borderBox();
+  //     .borderRadius(15px, 15px, 15px, 15px);
+  //     background-color: rgba(65,186,194,0.5);
+  //     border: 2px solid @brightBlue;
+  //     padding: 50px 0 65px;
+  //     width: 400px;
+  //     margin: auto;
+  //     position: relative;
+  //     z-index: 25;
+  //     -webkit-box-shadow: 0px 0px 100px 0px rgba(255, 255, 255, 0.5);
+  //     -moz-box-shadow:    0px 0px 100px 0px rgba(255, 255, 255, 0.5);
+  //     box-shadow:         0px 0px 100px 0px rgba(255, 255, 255, 0.5);
+  //     p {
+  //       text-align: center;
+  //       font-size: 12px;
+  //       padding-top: 10px;
+  //       a {
+  //         color: @darkTurquoise;
+  //         text-decoration: underline;
+  //       }
+  //     }
+  //     .input-container {
+  //       .borderBox();
+  //       width: 210px;
+  //       margin: auto;
+  //       position: relative;
+  //       border: 1px solid @turquoise;
+  //       background-color: @white;
+  //       .borderRadius(4px, 4px, 4px, 4px);
+  //       input {
+  //         .borderBox();
+  //         width: 100%;
+  //         padding: 5px 50px 5px 10px;
+  //         border: none;
+  //         height: 30px;
+  //         font-family: @mainFont;
+  //         font-size: 13px;
+  //         color: @black;
+  //         .borderRadius(4px, 0px, 0px, 4px);
 
-          //Placeholder Styles
-          .placeholder() {
-            font-weight: @bold;
-            color: @darkTurquoise;
-            opacity: 0.4;
-          }
-          &::-webkit-input-placeholder {
-            .placeholder();
-          }
-          &:-moz-placeholder {
-            .placeholder();
-          }
-          &::-moz-placeholder {
-            .placeholder();
-          }
-          &:-ms-input-placeholder {
-            .placeholder();
-          }
-        }
-        button {
-          .borderBox();
-          width: 40px;
-          height: 30px;
-          position: absolute;
-          right: 0;
-          top: 0;
-          background-color: @turquoise;
-          border: none;
-          cursor: pointer;
-          img.arrow {
-            width: 18px;
-            margin: 6px auto;
-          }
-          &:hover {
-            background-color: @darkTurquoise;
-            .transition(background 250ms);
-          }
-        }
-      }
-    }
-  }
+  //         //Placeholder Styles
+  //         .placeholder() {
+  //           font-weight: @bold;
+  //           color: @darkTurquoise;
+  //           opacity: 0.4;
+  //         }
+  //         &::-webkit-input-placeholder {
+  //           .placeholder();
+  //         }
+  //         &:-moz-placeholder {
+  //           .placeholder();
+  //         }
+  //         &::-moz-placeholder {
+  //           .placeholder();
+  //         }
+  //         &:-ms-input-placeholder {
+  //           .placeholder();
+  //         }
+  //       }
+  //       button {
+  //         .borderBox();
+  //         width: 40px;
+  //         height: 30px;
+  //         position: absolute;
+  //         right: 0;
+  //         top: 0;
+  //         background-color: @turquoise;
+  //         border: none;
+  //         cursor: pointer;
+  //         img.arrow {
+  //           width: 18px;
+  //           margin: 6px auto;
+  //         }
+  //         &:hover {
+  //           background-color: @darkTurquoise;
+  //           .transition(background 250ms);
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
   .sails-footer-wrapper.irc-wrapper {
     padding-top: 350px;
     .ircFooterGradient();
@@ -230,6 +231,18 @@
   }
 
   @media screen and (max-width: 850px) {
+    .irc-container {
+      padding-top: 0px;
+      .navigation, .navigation.sticky {
+        position: static;
+        text-align: center;
+        padding-top: 0px;
+        margin-top: 65px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+      }
+    }
     .squid {
       display: none;
     }
@@ -238,13 +251,17 @@
     }
   }
    @media screen and (max-width: 500px) {
-    overflow-x: hidden;
-    .login {
-      .login-container {
-        display: none;
-        // width: 275px;
-        // padding: 25px 0 30px;
-        // margin-bottom: 20px;
+    .borderBox();
+    width: 100%;
+
+    .irc-content {
+      .borderBox();
+      width: 100%;
+      h1 {
+        text-align: left;
+      }
+      pre {
+        overflow-x: auto;
       }
     }
     .sails-footer-wrapper.irc-wrapper {
