@@ -4,9 +4,5 @@
   },
   "log":{
     "level":"info"
-  },
-  "hooks": {
-    "sockets": false,
-    "pubsub": false
   }
 }
