@@ -1,6 +1,9 @@
 module.exports.routes = {
-  "get /old-features": {
-    "target": "Old-featuresController.find"
+  "get /getstarted": {
+    "target": "GetstartedController.find"
+  },
+  "get /old-homepage": {
+    "target": "Old-homepageController.find"
   },
   "get /features": {
     "target": "FeaturesController.find"
@@ -11,11 +14,11 @@ module.exports.routes = {
   "get /refresh": {
     "target": "RefreshController.find"
   },
-  "get /support/about-irc": {
-    "target": "SupportController.aboutirc"
+  "get /old-features": {
+    "target": "Old-featuresController.find"
   },
-  "get /old-homepage": {
-    "target": "Old-homepageController.find"
+  "get /get-started": {
+    "target": "Get-startedController.find"
   },
   "get /documentation/*": {
     "target": "DocumentationController.*"
@@ -29,8 +32,8 @@ module.exports.routes = {
   "get /documentation": {
     "target": "DocumentationController.find"
   },
-  "get /get-started": {
-    "target": "Get-startedController.find"
+  "get /support/about-irc": {
+    "target": "SupportController.aboutirc"
   },
   "get /version-notes/:versionnote": {
     "target": "Version-notesController.$versionnote",
