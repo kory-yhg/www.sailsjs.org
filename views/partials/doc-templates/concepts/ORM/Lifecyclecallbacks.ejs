@@ -1,6 +1,7 @@
 <h1 id="lifecycle-callbacks">Lifecycle callbacks</h1>
 <h3 id="overview" permalink="overview">Overview</h3>
-<p>Sails exposes a handful of lifecycle callbacks on models that are called automatically before or after certain actions.  For example, we sometimes use lifecycle callbacks for automatically encrypting a password before creating or updating an Account model.  Another example use case is automatically regenerating a URL slug when a Project&apos;s <code>name</code> attribute is updated.</p>
+<p>Lifecycle callbacks are functions that are automagically called before or after certain <em>model</em> actions. For example, we sometimes use lifecycle callbacks to automatically encrypting a password before creating or updating an <code>Account</code> model.</p>
+<p>Sails exposes a handful of lifecycle callbacks by default.</p>
 <h5 id="callbacks-on-create-" permalink="callbacks-on-create">Callbacks on <code>create</code></h5>
 <ul>
 <li>beforeValidate: fn(values, cb)</li>

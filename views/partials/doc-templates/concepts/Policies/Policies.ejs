@@ -3,7 +3,7 @@
 <p>Policies in Sails are versatile tools for authorization and access control-- they let you allow or deny access to your controllers down to a fine level of granularity.  For example, if you were building Dropbox, before letting a user upload a file to a folder, you might check that she <code>isAuthenticated</code>, then ensure that she <code>canWrite</code> (has write permissions on the folder.)  Finally, you&apos;d want to check that the folder she&apos;s uploading into <code>hasEnoughSpace</code>.</p>
 <p>Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAuth 2.0, or your own custom authorization/authentication scheme.</p>
 <blockquote>
-<p>NOTE: policies apply <strong>only</strong> to controller actions, not to views.  If you define a route in your <a href="http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.routes.html" target="_blank">routes.js config file</a> that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action.</p>
+<p>NOTE: policies apply <strong>only</strong> to controller actions, not to views.  If you define a route in your <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html" target="_blank">routes.js config file</a> that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action.</p>
 </blockquote>
 <h3 id="writing-your-first-policy" permalink="writing-your-first-policy">Writing Your First Policy</h3>
 <p>Policies are files defined in the <code>api/policies</code> folder in your Sails app.  Each policy file should contain a single function.</p>
@@ -49,7 +49,7 @@ module.exports = function canWrite (req, res, next) {
 <h5 id="to-apply-a-policy-to-an-entire-controller-" permalink="to-apply-a-policy-to-an-entire-controller">To apply a policy to an entire controller:</h5>
 <pre><code data-language="javascript">{
   ProfileController: {
-    // Apply &apos;isLogged&apos; in by default to all actions that are NOT specified below
+    // Apply &apos;isLoggedIn&apos; by default to all actions that are NOT specified below
     &apos;*&apos;: &apos;isLoggedIn&apos;,
     // If an action is explicitly listed, its policy list will override the default list.
     // So, we have to list &apos;isLoggedIn&apos; again for the &apos;edit&apos; action if we want it to be applied.
@@ -91,7 +91,7 @@ module.exports = function canWrite (req, res, next) {
     // (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
     &apos;*&apos;: false,
 
-    // For the action `nurture`, apply the &apos;isRabbitMother&apos; policy 
+    // For the action `nurture`, apply the &apos;isRabbitMother&apos; policy
     // (this overrides `false` above)
     nurture : &apos;isRabbitMother&apos;,
 
@@ -107,15 +107,15 @@ module.exports = function canWrite (req, res, next) {
   // `req.session` contains a set of data specific to the user making this request.
   // It&apos;s kind of like our app&apos;s &quot;memory&quot; of the current user.
 
-  // If our user has a history of animal cruelty, not only will we 
-  // prevent her from going even one step further (`return`), 
+  // If our user has a history of animal cruelty, not only will we
+  // prevent her from going even one step further (`return`),
   // we&apos;ll go ahead and redirect her to PETA (`res.redirect`).
   if ( req.session.user.hasHistoryOfAnimalCruelty ) {
     return res.redirect(&apos;http://PETA.org&apos;);
   }
 
   // If the user has been seen frowning at puppies, we have to assume that
-  // they might end up being mean to them, so we&apos;ll 
+  // they might end up being mean to them, so we&apos;ll
   if ( req.session.user.frownsAtPuppies ) {
     return res.redirect(&apos;http://www.dailypuppy.com/&apos;);
   }
@@ -134,5 +134,4 @@ module.exports = function canWrite (req, res, next) {
 </ul>
 <p><docmeta name="uniqueID" value="Policies766425"></docmeta></p>
 <docmeta name="displayName" value="Policies">
-
 </docmeta>

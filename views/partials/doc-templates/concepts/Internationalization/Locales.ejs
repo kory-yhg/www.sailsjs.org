@@ -5,20 +5,20 @@
 <p>Here is an example locale file (<code>config/locales/es.json</code>):</p>
 <pre><code data-language="json">{
     &quot;Hello!&quot;: &quot;Hola!&quot;,
-    &quot;Hello %s, how are you today?&quot;: &quot;&#xBF;Hola %s, como estas?&quot;,
+    &quot;Hello %s, how are you today?&quot;: &quot;&#xBF;Hola %s, como estas?&quot;
 }
 </code></pre><!-- __LANG=%%__ -->
 <p>Note that the keys in your stringfiles (e.g. &quot;Hello %s, how are you today?&quot;) are <strong>case sensitive</strong> and require exact matches.  There are a few different schools of thought on the best approach here, and it really depends on who/how often you&apos;ll be editing the stringfiles vs. HTML in the future.  Especially if you&apos;ll be editing the translations by hand, simpler, all-lowercase key names may be preferable for maintainability.</p>
 <p>For example, here&apos;s another pass at <code>config/locales/es.json</code>:</p>
 <pre><code data-language="json">{
     &quot;hello&quot;: &quot;Hola!&quot;,
-    &quot;hello-how-are-you-today&quot;: &quot;Hola %s, &#xBF;c&#xF3;mo est&#xE1;s?&quot;,
+    &quot;hello-how-are-you-today&quot;: &quot;Hola %s, &#xBF;c&#xF3;mo est&#xE1;s?&quot;
 }
 </code></pre><!-- __LANG=%%__ -->
 <p>And here&apos;s <code>config/locales/en.json</code>:</p>
 <pre><code data-language="json">{
     &quot;hello&quot;: &quot;Hello!&quot;,
-    &quot;hello-how-are-you-today&quot;: &quot;Hello, how are you today?&quot;,
+    &quot;hello-how-are-you-today&quot;: &quot;Hello, how are you today?&quot;
 }
 </code></pre><!-- __LANG=%%__ -->
 <p>You can also nest locale strings. But a better approach would be to use <code>.</code> to represent nested strings. For example, here&apos;s the list of labels for the index page of a user controller:</p>
@@ -35,7 +35,7 @@ req.setLocale(&apos;de&apos;);
 // (this will use the strings located in `config/locales/de.json` for translation)
 </code></pre><!-- __LANG=%%__ -->
 <p>By default, node-i18n will detect the desired language of a request by examining its language headers.  Language headers are set in your users&apos; browser settings, and while they&apos;re correct most of the time, you may need the flexibility to override this detected locale and provide your own.</p>
-<p>For instance, if your app allows users to pick their preferred language, you might create a <a href="http://beta.sailsjs.org/#/documentation/concepts/Policies" target="_blank">policy</a> which checks for a custom language in the user&apos;s session, and if one exists, sets the appropriate locale for use in subsequent policies, controller actions, and views:</p>
+<p>For instance, if your app allows users to pick their preferred language, you might create a <a href="http://sailsjs.org/documentation/concepts/Policies" target="_blank">policy</a> which checks for a custom language in the user&apos;s session, and if one exists, sets the appropriate locale for use in subsequent policies, controller actions, and views:</p>
 <pre><code data-language="javascript">// api/policies/localize.js
 module.exports = function(req, res, next) {
   req.setLocale(req.session.languagePreference);
@@ -69,5 +69,4 @@ module.exports = function(req, res, next) {
 <!-- __LANG=%%__ -->
 --&gt;</p>
 <docmeta name="displayName" value="Locales">
-
 </docmeta>

@@ -81,12 +81,12 @@ match any of the criteria objects inside the array.</p>
 <pre><code data-language="javascript">Model.find({ name: { &apos;!&apos;: &apos;foo&apos; }})
 </code></pre><!-- __LANG=%%__ -->
 <h4 id="-like-" permalink="like">&apos;like&apos;</h4>
-<p>Searches for records using pattern matching with the <code>%</code> sign.</p>
+<p>Searches for records using pattern matching with the <code>%</code> sign. (Case insensitive.)</p>
 <pre><code data-language="javascript">Model.find({ food: { &apos;like&apos;: &apos;%beans&apos; }})
 </code></pre><!-- __LANG=%%__ -->
 <h4 id="-contains-" permalink="contains">&apos;contains&apos;</h4>
 <p>A shorthand for pattern matching both sides of a string. Will return records where the value
-contains the string anywhere inside of it.</p>
+contains the string anywhere inside of it. (Case insensitive.)</p>
 <pre><code data-language="javascript">Model.find({ class: { &apos;contains&apos;: &apos;history&apos; }})
 
 // The same as
@@ -95,7 +95,7 @@ Model.find({ class: { &apos;like&apos;: &apos;%history%&apos; }})
 </code></pre><!-- __LANG=%%__ -->
 <h4 id="-startswith-" permalink="startswith">&apos;startsWith&apos;</h4>
 <p>A shorthand for pattern matching the right side of a string. Will return records where the value
-starts with the supplied string value.</p>
+starts with the supplied string value. (Case insensitive.)</p>
 <pre><code data-language="javascript">Model.find({ class: { &apos;startsWith&apos;: &apos;american&apos; }})
 
 // The same as
@@ -104,7 +104,7 @@ Model.find({ class: { &apos;like&apos;: &apos;american%&apos; }})
 </code></pre><!-- __LANG=%%__ -->
 <h4 id="-endswith-" permalink="endswith">&apos;endsWith&apos;</h4>
 <p>A shorthand for pattern matching the left side of a string. Will return records where the value
-ends with the supplied string value.</p>
+ends with the supplied string value. (Case insensitive.)</p>
 <pre><code data-language="javascript">Model.find({ class: { &apos;endsWith&apos;: &apos;can&apos; }})
 
 // The same as
@@ -143,7 +143,7 @@ available are:</p>
 <p><strong>Waterline</strong></p>
 <p>You can find out more about the Waterline API below:</p>
 <ul>
-<li><a href="http://sailsjs.org/#/documentation/reference/waterline/queries" target="_blank">Sails.js Documentation</a></li>
+<li><a href="http://sailsjs.org/documentation/reference/waterline/queries" target="_blank">Sails.js Documentation</a></li>
 <li><a href="https://github.com/balderdashy/waterline/blob/master/README.md" target="_blank">Waterline README</a></li>
 <li><a href="https://github.com/balderdashy/waterline-docs" target="_blank">Waterline Documentation</a></li>
 <li><a href="https://github.com/balderdashy/waterline" target="_blank">Waterline Github Repository</a></li>
@@ -170,7 +170,7 @@ Model.find({ where: { name: &apos;foo&apos; }, sort: { name:  1, age: 0 });
 <blockquote>
 <p><strong>Case-sensitivity</strong></p>
 <p>All queries inside of Waterline are <strong>case-insensitive</strong>. This allows for easier querying but makes indexing strings tough. This is something to be aware of if you are indexing and searching on string fields.</p>
-<p>Currently, the best way to execute <strong>case-sensitive</strong> queries is using the <a href="http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html" target="_blank"><code>.native()</code></a> or <a href="http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html" target="_blank"><code>.query()</code></a> method.</p>
+<p>Currently, the best way to execute <strong>case-sensitive</strong> queries is using the <a href="http://sailsjs.org/documentation/reference/waterline/models/native.html" target="_blank"><code>.native()</code></a> or <a href="http://sailsjs.org/documentation/reference/waterline/models/query.html" target="_blank"><code>.query()</code></a> method.</p>
 </blockquote>
 <docmeta name="displayName" value="Query Language">
 </docmeta>

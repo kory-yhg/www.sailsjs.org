@@ -15,7 +15,7 @@
   console.log(purchase);
 });
 </code></pre><!-- __LANG=%%__ -->
-<p><strong>Using <a href="http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js" target="_blank">sails.io.js</a>:</strong></p>
+<p><strong>Using <a href="http://sailsjs.org/documentation/reference/websockets/sails.io.js" target="_blank">sails.io.js</a>:</strong></p>
 <pre><code data-language="javascript">io.socket.get(&apos;/purchase/47/cashier&apos;, function (purchase) {
   console.log(purchase);
 });
@@ -23,7 +23,7 @@
 <p><strong>Using <a href="http://en.wikipedia.org/wiki/CURL" target="_blank">cURL</a>:</strong></p>
 <pre><code data-language="javascript">curl http://localhost:1337/purchase/47/cashier
 </code></pre><!-- __LANG=%%__ -->
-<p>Should return</p>
+<p>Should return:</p>
 <pre><code data-language="json">{
   &quot;amount&quot;: 99.99,
   &quot;id&quot;: 47,

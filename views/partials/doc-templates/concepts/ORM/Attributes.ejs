@@ -1,14 +1,12 @@
 <h1 id="attributes">Attributes</h1>
 <h3 id="overview" permalink="overview">Overview</h3>
 <p>Model attributes are basic pieces of information about a model. A model called <code>Person</code> might have attributes called <code>firstName</code>, <code>lastName</code>, <code>phoneNumber</code>, <code>age</code>, <code>birthDate</code> and <code>emailAddress</code>.
-&lt;!-- </p>
-<blockquote>
-<p>TODO: address sql vs. no sql and stuff like:
-&quot;&quot;&quot;
-In most cases, this data is <em>homogenous</em>, meaning each record has the same attributes,
-&quot;&quot;&quot;
---&gt;</p>
-</blockquote>
+<!---
+TODO: address sql vs. no sql and stuff like:
+"""
+In most cases, this data is _homogenous_, meaning each record has the same attributes,
+"""
+--></p>
 <h3 id="attribute-options" permalink="attribute-options">Attribute Options</h3>
 <p>These options can be used to enforce various constraints and add special enhancements to our model attributes.</p>
 <h6 id="type">type</h6>
@@ -24,8 +22,16 @@ In most cases, this data is <em>homogenous</em>, meaning each record has the sam
 <li>binary</li>
 <li>array</li>
 <li>json</li>
-<li>email</li>
 </ul>
+<h6 id="email">email</h6>
+<p>Checks the incoming value for a valid email address.</p>
+<pre><code data-language="javascript">attributes: {
+  email: {
+    type: &apos;string&apos;,
+    email: true
+  }
+}
+</code></pre><!-- __LANG=%%__ -->
 <h6 id="defaultsto">defaultsTo</h6>
 <p>When a record is created, if no value was supplied, the record will be created with the specified <code>defaultsTo</code> value.</p>
 <pre><code data-language="javascript">attributes: {
@@ -73,7 +79,7 @@ attributes: {
 
 -->
 <h6 id="primarykey">primaryKey</h6>
-<p>Use this attribute as the the primary key for the record. Only one attribute per model can be the <code>primaryKey</code>.  Note: This should never be used unless <a href="http://beta.sailsjs.org/#/documentation/concepts/ORM/model-settings.html?q=autopk" target="_blank">autoPK</a> is set to false.</p>
+<p>Use this attribute as the the primary key for the record. Only one attribute per model can be the <code>primaryKey</code>.  Note: This should never be used unless <a href="http://sailsjs.org/documentation/concepts/ORM/model-settings.html?q=autopk" target="_blank">autoPK</a> is set to false.</p>
 <pre><code data-language="javascript">attributes: {
   uuid: {
     type: &apos;string&apos;,
@@ -210,9 +216,8 @@ module.exports = {
 };
 </code></pre><!-- __LANG=%%__ -->
 <blockquote>
-<p>You might have noticed that we also used the <a href="http://beta.sailsjs.org/#/documentation/concepts/ORM/model-settings.html?q=tablename" target="_blank"><code>tableName</code></a> property in this example.  This allows us to control the name of the table that will be used to house our data.</p>
+<p>You might have noticed that we also used the <a href="http://sailsjs.org/documentation/concepts/ORM/model-settings.html?q=tablename" target="_blank"><code>tableName</code></a> property in this example.  This allows us to control the name of the table that will be used to house our data.</p>
 </blockquote>
 <p><docmeta name="uniqueID" value="Attributes951609"></docmeta></p>
 <docmeta name="displayName" value="Attributes">
-
 </docmeta>

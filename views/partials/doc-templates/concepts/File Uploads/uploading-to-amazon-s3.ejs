@@ -1,4 +1,8 @@
 <h1 id="uploading-to-amazon-s3">Uploading to Amazon S3</h1>
+<blockquote>
+<p>Please note that your Amazon S3 bucket must be created in the &apos;US Standard&apos; region. 
+If you fail to do so, you will get a &apos;TypeError(&apos;Uncaught, unspecified &quot;error&quot; event.&apos;).</p>
+</blockquote>
 <p>With Sails, you can stream file uploads to Amazon S3 with very little additional configuration.</p>
 <p>First install the <a href="https://github.com/balderdashy/skipper-s3" target="_blank">S3 Skipper adapter</a>:</p>
 <pre><code data-language="javascript">$ npm install skipper-s3 --save

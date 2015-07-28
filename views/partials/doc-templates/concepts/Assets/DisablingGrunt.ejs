@@ -1,5 +1,5 @@
 <h1 id="disabling-grunt">Disabling Grunt</h1>
-<p>To disable Grunt integration in Sails, simply delete your Gruntfile (and/or <a href="/documentation/anatomy/myApp/tasks"><code>tasks/</code></a> folder). You can also disable the Grunt hook. Just set the <code>grunt</code> property to <code>false</code> in <code>.sailsrc</code> hooks like this:</p>
+<p>To disable Grunt integration in Sails, simply delete your Gruntfile (and/or <a href="http://sailsjs.org/documentation/anatomy/myApp/tasks" target="_blank"><code>tasks/</code></a> folder). You can also disable the Grunt hook. Just set the <code>grunt</code> property to <code>false</code> in <code>.sailsrc</code> hooks like this:</p>
 <pre><code data-language="json">{
     &quot;hooks&quot;: {
         &quot;grunt&quot;: false
@@ -11,5 +11,4 @@
 <p>If you still want to use Grunt for other purposes, but don&apos;t want any of the default web front-end stuff, just delete your project&apos;s assets folder and remove the front-end oriented tasks from the <code>grunt/register/</code> and <code>grunt/config/</code> folders.  You can also run <code>sails new myCoolApi --no-frontend</code> to omit the assets folder and front-end-oriented Grunt tasks for future projects.  You can also replace your <code>sails-generate-frontend</code> module with alternative community generators, or <a href="https://github.com/balderdashy/sails-generate-generator" target="_blank">create your own</a>.  This allows <code>sails new</code> to create the boilerplate for native iOS apps, Android apps, Cordova apps, SteroidsJS apps, etc.</p>
 <p><docmeta name="uniqueID" value="DisablingGrunt970874"></docmeta></p>
 <docmeta name="displayName" value="Disabling Grunt">
-
 </docmeta>

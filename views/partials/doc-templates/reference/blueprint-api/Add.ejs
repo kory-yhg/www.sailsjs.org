@@ -22,7 +22,7 @@
   console.log(purchases);
 });
 </code></pre><!-- __LANG=%%__ -->
-<p><strong>Using <a href="http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js" target="_blank">sails.io.js</a>:</strong></p>
+<p><strong>Using <a href="http://sailsjs.org/documentation/reference/websockets/sails.io.js" target="_blank">sails.io.js</a>:</strong></p>
 <pre><code data-language="javascript">io.socket.post(&apos;/employee/7/involvedInPurchases/47&apos;, function (purchases) {
   console.log(purchases);
 });
@@ -50,7 +50,7 @@
 <h3 id="notes" permalink="notes">Notes</h3>
 <blockquote>
 <ul>
-<li>This action is for dealing with <em>plural</em> (&quot;collection&quot;) associations.  If you want to set or unset a <em>singular</em> (&quot;model&quot;) association, just use <a href="http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html" target="_blank">update</a>.</li>
+<li>This action is for dealing with <em>plural</em> (&quot;collection&quot;) associations.  If you want to set or unset a <em>singular</em> (&quot;model&quot;) association, just use <a href="http://sailsjs.org/documentation/reference/blueprint-api/Update.html" target="_blank">update</a>.</li>
 <li><p>The example above assumes &quot;rest&quot; blueprints are enabled, and that your project contains at least an &apos;Employee&apos; model with association: <code>involvedInPurchases: {collection: &apos;Purchase&apos;, via: &apos;cashier&apos;}</code> as well as a <code>Purchase</code> model with association: <code>cashier: {model: &apos;Employee&apos;}</code>.  You&apos;ll also need at least an empty <code>PurchaseController</code> and <code>EmployeeController</code>.  You can quickly achieve this by running:</p>
 <pre><code data-language="shell">$ sails new foo
 $ cd foo

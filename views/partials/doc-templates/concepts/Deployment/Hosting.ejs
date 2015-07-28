@@ -22,6 +22,19 @@ Open up <code>config/local.js</code> in your app folder. In here, you&apos;ll ne
 <pre><code data-language="javascript">port: process.env.OPENSHIFT_NODEJS_PORT,
     host: process.env.OPENSHIFT_NODEJS_IP,
 </code></pre><!-- __LANG=%%__ -->
+<p>You will also need to install <code>grunt-cli</code> with <code>npm i --save grunt-cli</code>.</p>
+<p>After doing that, create the file <code>.openshift/action_hooks/pre_start_nodejs</code> with the following contents. (<a href="https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6" target="_blank">source</a>)</p>
+<pre><code data-language="javascript">#!/bin/bash
+export NODE_ENV=production
+
+if [ -f &quot;${OPENSHIFT_REPO_DIR}&quot;/Gruntfile.js ]; then
+    (cd &quot;${OPENSHIFT_REPO_DIR}&quot;; node_modules/grunt-cli/bin/grunt prod)
+fi
+</code></pre><!-- __LANG=%%__ -->
+<p>Then create the file <code>/supervisor_opts</code> with the following contents. This tells OpenShift&apos;s supervisor to ignore Sails&apos; <code>.tmp</code> directory for the hot reload functionality. (<a href="https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6#comment-1318102" target="_blank">source</a>)</p>
+<pre><code data-language="javascript">-i .tmp
+</code></pre><!-- __LANG=%%__ -->
+<p>You can now <code>git add . &amp;&amp; git commit -a -m &quot;your message&quot; &amp;&amp; git push</code> to deploy to OpenShift.</p>
 <h5 id="using-digitalocean-" permalink="using-digitalocean">Using DigitalOcean?</h5>
 <ul>
 <li><a href="https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps" target="_blank">https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps</a></li>
@@ -35,7 +48,7 @@ Open up <code>config/local.js</code> in your app folder. In here, you&apos;ll ne
 <li><a href="http://vort3x.me/sailsjs-heroku/" target="_blank">Sails.js on Heroku</a></li>
 <li><a href="https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY" target="_blank">https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY</a></li>
 <li><a href="https://github.com/chadn/heroku-sails" target="_blank">https://github.com/chadn/heroku-sails</a></li>
-<li><a href="http://dennisrongo.com/deploying-sails-js-to-heroku/#.UxQKPfSwI9w" target="_blank">http://dennisrongo.com/deploying-sails-js-to-heroku/#.UxQKPfSwI9w</a></li>
+<li><a href="http://dennisrongo.com/deploying-sails-js-to-heroku" target="_blank">http://dennisrongo.com/deploying-sails-js-to-heroku</a></li>
 <li><a href="http://stackoverflow.com/a/20184907/486547" target="_blank">http://stackoverflow.com/a/20184907/486547</a></li>
 </ul>
 <h5 id="deploying-to-aws-" permalink="deploying-to-aws">Deploying to AWS?</h5>
@@ -47,7 +60,7 @@ Open up <code>config/local.js</code> in your app folder. In here, you&apos;ll ne
 </ul>
 <h5 id="using-pm2-" permalink="using-pm2">Using PM2?</h5>
 <ul>
-<li><a href="http://devo.ps/blog/2013/06/26/goodbye-node-forever-hello-pm2.html" target="_blank">http://devo.ps/blog/2013/06/26/goodbye-node-forever-hello-pm2.html</a></li>
+<li><a href="http://devo.ps/blog/goodbye-node-forever-hello-pm2/" target="_blank">http://devo.ps/blog/goodbye-node-forever-hello-pm2/</a></li>
 </ul>
 <h5 id="deploying-to-cloudcontrol-" permalink="deploying-to-cloudcontrol">Deploying to CloudControl?</h5>
 <ul>
