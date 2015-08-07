@@ -189,12 +189,12 @@
     "parent": "concepts/ORM/ORM.ejs",
     "isChild": true,
     "children": [
-      "concepts/ORM/Associations/OnetoOne.ejs",
-      "concepts/ORM/Associations/ThroughAssociations.ejs",
+      "concepts/ORM/Associations/Dominance.ejs",
       "concepts/ORM/Associations/OneWayAssociation.ejs",
       "concepts/ORM/Associations/OnetoMany.ejs",
+      "concepts/ORM/Associations/OnetoOne.ejs",
       "concepts/ORM/Associations/ManytoMany.ejs",
-      "concepts/ORM/Associations/Dominance.ejs"
+      "concepts/ORM/Associations/ThroughAssociations.ejs"
     ],
     "isParent": true
   },
@@ -439,6 +439,15 @@
     "isChild": true
   },
   {
+    "templateTitle": "CreatingAService.ejs",
+    "fullPathAndFileName": "concepts/Services/CreatingAService.ejs",
+    "data": {
+      "displayName": "Creating a Service"
+    },
+    "parent": "concepts/Services/Services.ejs",
+    "isChild": true
+  },
+  {
     "templateTitle": "CodeCoverage.ejs",
     "fullPathAndFileName": "concepts/Testing/CodeCoverage.ejs",
     "data": {
@@ -591,9 +600,9 @@
     "parent": "concepts/extending-sails/extending-sails.ejs",
     "isChild": true,
     "children": [
-      "concepts/extending-sails/Hooks/usinghooks.ejs",
-      "concepts/extending-sails/Hooks/userhooks.ejs",
       "concepts/extending-sails/Hooks/installablehooks.ejs",
+      "concepts/extending-sails/Hooks/userhooks.ejs",
+      "concepts/extending-sails/Hooks/usinghooks.ejs",
       "concepts/extending-sails/Hooks/hookspec/hookspec.ejs"
     ],
     "isParent": true
@@ -632,10 +641,10 @@
     "parent": "concepts/extending-sails/Hooks/Hooks.ejs",
     "isChild": true,
     "children": [
-      "concepts/extending-sails/Hooks/hookspec/configure.ejs",
       "concepts/extending-sails/Hooks/hookspec/defaults.ejs",
-      "concepts/extending-sails/Hooks/hookspec/initialize.ejs",
-      "concepts/extending-sails/Hooks/hookspec/routes.ejs"
+      "concepts/extending-sails/Hooks/hookspec/configure.ejs",
+      "concepts/extending-sails/Hooks/hookspec/routes.ejs",
+      "concepts/extending-sails/Hooks/hookspec/initialize.ejs"
     ],
     "isParent": true
   },
@@ -742,8 +751,8 @@
       "displayName": "Controllers"
     },
     "children": [
-      "concepts/Controllers/RoutingToControllers.ejs",
-      "concepts/Controllers/GeneratingControllers.ejs"
+      "concepts/Controllers/GeneratingControllers.ejs",
+      "concepts/Controllers/RoutingToControllers.ejs"
     ],
     "isParent": true
   },
@@ -755,8 +764,8 @@
       "displayName": "Custom Responses"
     },
     "children": [
-      "concepts/Custom Responses/DefaultResponses.ejs",
-      "concepts/Custom Responses/AddingCustomResponse.ejs"
+      "concepts/Custom Responses/AddingCustomResponse.ejs",
+      "concepts/Custom Responses/DefaultResponses.ejs"
     ],
     "isParent": true
   },
@@ -849,10 +858,10 @@
       "displayName": "Models and ORM"
     },
     "children": [
-      "concepts/ORM/Attributes.ejs",
-      "concepts/ORM/Models.ejs",
       "concepts/ORM/Lifecyclecallbacks.ejs",
+      "concepts/ORM/Attributes.ejs",
       "concepts/ORM/Querylanguage.ejs",
+      "concepts/ORM/Models.ejs",
       "concepts/ORM/Validations.ejs",
       "concepts/ORM/model-settings.ejs",
       "concepts/ORM/Associations/Associations.ejs"
@@ -896,13 +905,13 @@
     },
     "children": [
       "concepts/Security/CORS.ejs",
-      "concepts/Security/CSRF.ejs",
-      "concepts/Security/Clickjacking.ejs",
       "concepts/Security/DDOS.ejs",
+      "concepts/Security/Clickjacking.ejs",
       "concepts/Security/ContentSecurityPolicy.ejs",
+      "concepts/Security/StrictTransportSecurity.ejs",
+      "concepts/Security/CSRF.ejs",
       "concepts/Security/SocketHijacking.ejs",
       "concepts/Security/XSS.ejs",
-      "concepts/Security/StrictTransportSecurity.ejs",
       "concepts/Security/P3P.ejs"
     ],
     "isParent": true
@@ -914,7 +923,9 @@
     "data": {
       "displayName": "Services"
     },
-    "children": [],
+    "children": [
+      "concepts/Services/CreatingAService.ejs"
+    ],
     "isParent": true
   },
   {

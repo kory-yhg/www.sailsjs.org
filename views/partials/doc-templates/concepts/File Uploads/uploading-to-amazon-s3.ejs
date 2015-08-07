@@ -17,7 +17,7 @@ If you fail to do so, you will get a &apos;TypeError(&apos;Uncaught, unspecified
     }, function (err, filesUploaded) {
       if (err) return res.negotiate(err);
       return res.ok({
-        files: uploadedFiles,
+        files: filesUploaded,
         textParams: req.params.all()
       });
     });
