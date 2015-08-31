@@ -41,8 +41,13 @@
 <td style="text-align:left">The sort order. By default, returned records are sorted by primary key value in ascending order. <br> <br> e.g. <code>?sort=lastName%20ASC</code></td>
 </tr>
 <tr>
+<td> populate</td>
+<td><bubble type="string" colors="true"></bubble></td>
+<td style="text-align:left">If specified, overide the default automatic population process. Accepts a comma separated list of attributes names for which to populate record values. See <a href="http://sailsjs.org/documentation/reference/waterline-orm/populated-values" target="_blank">here</a> for more information on how the population process fills out attributes in the returned list of records according to the model&apos;s defined associations.</td>
+</tr>
+<tr>
 <td> callback</td>
-<td><bubble type="number" colors="true"></bubble></td>
+<td><bubble type="string" colors="true"></bubble></td>
 <td style="text-align:left">If specified, a JSONP response will be sent (instead of JSON).  This is the name of a client-side javascript function to call, to which results will be passed as the first (and only) argument <br> <br> e.g. ?callback=my_JSONP_data_receiver_fn</td>
 </tr>
 </tbody>

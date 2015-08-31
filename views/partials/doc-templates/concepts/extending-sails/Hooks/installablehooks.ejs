@@ -2,7 +2,7 @@
 <p>Installable hooks are custom Sails hooks that reside in an application&#x2019;s <code>node_modules</code> folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to <a href="http://npmjs.org" target="_blank">NPM</a> to share it with the Sails community.  If you wish to create a hook for use in  <em>just one</em> Sails app, see <a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/userhooks.html" target="_blank">creating a user hook</a> instead.</p>
 <p>To create a new installable hook:</p>
 <ol>
-<li>Choose a name for your new hook.  It must not conflict with any of the <a href="https://github.com/balderdashy/sails/blob/master/lib/app/configuration/defaultHooks.js" target="_blank">core hook names</a>.</li>
+<li>Choose a name for your new hook.  It must not conflict with any of the <a href="https://github.com/balderdashy/sails/blob/master/lib/app/configuration/default-hooks.js" target="_blank">core hook names</a>.</li>
 <li>Create a new folder on your system with the name <code>sails-hook-&lt;your hook name&gt;</code>.  The <code>sails-hook-</code> prefix is optional but recommended for consistency; it is stripped off by Sails when the hook is loaded.</li>
 <li>Create a <code>package.json</code> file in the folder.  If you have <code>npm</code> installed on your system, you can do this easily by running <code>npm init</code> and following the prompts.  Otherwise, you can create the file manually, and ensure that it contains at a minimum the following:<pre><code data-language="javascript">{
  &quot;name&quot;: &quot;sails-hook-your-hook-name&quot;,

@@ -3,8 +3,11 @@
 <p>For apps that rely heavily on real-time client-server communication--for example, peer-to-peer chat and social networking apps--sending and listening for socket events can quickly become overwhelming.  Sails helps smooth away some of this complexity by introducing the concept of Resourceful PubSub (<a href="http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern" target="_blank">Publish / Subscribe</a>).  Every model (AKA <em>resource</em>) in your app is automatically equipped with class methods for subscribing sockets to notifications about instance creations, updates and deletions.  If you&#x2019;re using the <a href="http://sailsjs.org/documentation/reference/blueprint-api" target="_blank">Blueprint API</a>, socket messages are automatically broadcast to subscribed sockets when a model event occurs.  If not, you can use the methods described in this section to manually communicate model events to clients.</p>
 <h3 id="listening-for-events-on-the-client" permalink="listening-for-events-on-the-client">Listening for events on the client</h3>
 <p>While you are free to use any Javascript library to listen for socket events on the client, Sails does provide its own <a href="http://sailsjs.org/documentation/reference/websockets/sails.io.js" target="_blank">Socket Client</a> as a convenient way to communicate with the server.  Using the Sails socket client makes listening for resourceful pubsub events as easy as:</p>
-<pre><code data-language="javascript">io.socket.on(&quot;&lt;model name&gt;&quot;, listenerFunction)
+<pre><code data-language="javascript">io.socket.on(&quot;&lt;model identity&gt;&quot;, listenerFunction)
 </code></pre><!-- __LANG=%%__ -->
+<blockquote>
+<p>The <em>model identity</em> is typically the lowercased version of the model name, unless it has been manually configured in the model file.</p>
+</blockquote>
 <h3 id="example" permalink="example">Example</h3>
 <p>Let&#x2019;s say you have a model named <code>User</code> in your app, with a single &#x201C;name&#x201D; attribute.  First, we&#x2019;ll add a listener for &#x201C;user&#x201D; events:</p>
 <pre><code data-language="javascript">io.socket.on(&quot;user&quot;, function(event){console.log(event);})
