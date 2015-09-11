@@ -116,6 +116,14 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
       else return false;
     };
 
+     $scope.getIsCurrentDocSection = function(path) {
+      var currentPath = $window.location.pathname;
+      if(currentPath.indexOf(path) > 0) {
+        return true;
+      }
+      else return false;
+    };
+
 
     /*********************************
     * Events triggered by user intent
@@ -123,6 +131,7 @@ angular.module('SailsWebsite').controller('DocsCtrl', [
     $scope.intent = angular.extend($scope.intent || {}, {
 
       toggleExpanded: function(slug) {
+        console.log('running!');
         // If the slug is in the list of expanded items, remove it
         // so that it will no longer have the 'expanded' styles in the UI
         if(_.contains($scope.expandedMenuItems, slug)) {

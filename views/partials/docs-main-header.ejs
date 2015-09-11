@@ -1,4 +1,4 @@
-<div class="docs-main-header" ng-controller="HeaderCtrl">
+<div class="docs-main-header" ng-controller="DocsCtrl">
   <div class="nav-container">
     <div class="nav-content">
       <span class="header-title"><%= sectionTitle %></span>
@@ -16,6 +16,7 @@
     </div>
   </div>
   <div class="mobile-sub-nav-wrapper">
+    <div class="mobile-sub-nav-veil"></div>
     <div class="mobile-sub-nav">
       <ul>
       <% _.each( templateList, function(navItem) {
@@ -29,8 +30,8 @@
           // the wierd ones that aren't really part of the docs.
           if(!navItem.isChild &&  navItem.children && navItem.children.length) { %>
 
-          <li class="mobile-nav-item <%= navItem.isInitiallyExpanded && !navItem.isParent ? 'expanded' : navItem.isInitiallyExpanded && navItem.isParent ? 'expanded current-parent' : '' %>" ng-class="{'current': getIsCurrent('<%= navItem.slug %>')}">
-            <%- partial('../partials/nav-item', {navItem: navItem, navItems: data.templateList, section: data.section, expandedItems: data.expandedItems}) %>
+          <li class="mobile-nav-item <%= navItem.isInitiallyExpanded && !navItem.isParent ? 'expanded' : navItem.isInitiallyExpanded && navItem.isParent ? 'expanded current-parent' : '' %>" ng-class="{'current': getIsCurrent('<%= navItem.slug %>'), 'folder': <%= navItem.isParent %>, 'expanded': getIsExpanded('<%= navItem.path %>')}">
+            <%- partial('../partials/mobile-nav-item', {navItem: navItem, navItems: data.templateList, section: data.section, expandedItems: data.expandedItems}) %>
           </li>
        <% }
       }) %>

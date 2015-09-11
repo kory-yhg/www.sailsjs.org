@@ -44,13 +44,6 @@ angular.module('SailsWebsite').controller('HeaderCtrl', [
       else return false;
     };
 
-    $scope.getIsCurrentDocSection = function(path) {
-      var currentPath = $window.location.pathname;
-      if(currentPath.indexOf(path) > 0) {
-        return true;
-      }
-      else return false;
-    };
 
 
     $scope.intent = angular.extend($scope.intent || {}, {

@@ -8,7 +8,7 @@
     <%= navItem.displayName %>
   </a>
   <% if(_.isArray(navItem.children) && navItem.children.length > 0) { %>
-  <div class="expand-button"><img class="down-arrow" src="/images/angle_down.png"/></div>
+  <div class="expand-button" ng-click="intent.toggleExpanded('<%= navItem.path %>')"><img class="down-arrow" src="/images/angle_down.png"/></div>
   <% } %>
 </span>
 

@@ -55,30 +55,90 @@
   .mobile-sub-nav-wrapper {
     .borderBox();
     display: none;
-    overflow-x: hidden;
+    z-index: 1000;
+    padding-left: 260px;
+    overflow: hidden;
+    .mobile-sub-nav-veil {
+      .borderBox();
+      background: rgba(0,0,0,0.4);
+      width: 100%;
+      height: 100%;
+    }
     .mobile-sub-nav {
+      .borderBox();
+      position: absolute;
+      left: 0px;
+      top: 0px;
       width: 260px;
-      background: rgba(0,0,0,0.9);
+      height: 100%;
+      overflow-y: auto;
+      background: rgba(25,25,25,0.95);
+      border-right: 1px solid #000;
       .mobile-nav-item {
         .borderBox();
-        height: 25px;
-        padding-right: 25px;
-        border-bottom: 1px solid #000;
-        position: relative;
-        line-height: 25px;
-        vertical-align: middle;
-        color: @white;
-        .expand-button {
+        >span {
           .borderBox();
-          width: 24px;
-          height: 24px;
-          background-color: @turquoise;
-          position: absolute;
-          right: 0px;
-          >img {
+          display: inline-block;
+          width: 100%;
+          height: 30px;
+          position: relative;
+          padding-left: 10px;
+          padding-right: 29px;
+
+          color: @white;
+          font-size: 12px;
+          line-height: 29px;
+          vertical-align: middle;
+
+          border-bottom: 1px solid #000;
+          .expand-button {
+            .borderBox();
+            display: none;
+            width: 29px;
+            height: 29px;
+            background-color: rgba(255,255,255, 0.1);
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            cursor: pointer;
+            >img {
+              .borderBox();
+              width: 29px;
+              height: auto;
+              padding: 12px 8px;
+            }
+          }
+          a {
+            color: @white;
             width: 100%;
-            height: 100%;
-            padding: 10px;
+            display: block;
+          }
+        }
+        ul {
+          .mobile-nav-item {
+            background-color: rgba(255,255,255,0.2);
+            display: none;
+          }
+        }
+
+        &.folder {
+          .expand-button {
+            display: block;
+          }
+        }
+        &.expanded {
+          >span {
+            .expand-button {
+              background-color: @darkTurquoise;
+              >img {
+                .rotate(180deg);
+              }
+            }
+          }
+          >ul {
+            >.mobile-nav-item {
+              display: block;
+            }
           }
         }
       }
@@ -145,13 +205,15 @@ div.docs-github-message {
 }
 
 @media screen and (max-width: 800px) {
-  .mobile-sub-nav-wrapper {
-    display: block;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    height: 100%;
-    width: 100%;
+  .docs-main-header {
+    .mobile-sub-nav-wrapper {
+      display: block;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 
