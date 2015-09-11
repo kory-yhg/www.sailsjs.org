@@ -4,7 +4,7 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
 </script>
 
 
-<%- partial('../partials/docs-main-header.ejs', {templateList: data.templateList}) %>
+<%- partial('../partials/docs-main-header.ejs', {templateList: data.templateList, section: data.section, expandedItems: data.expandedItems}) %>
 
 <div class="main-container anatomy-page" ng-controller="DocsCtrl" scrollng>
   <div class="anatomy-container">

@@ -1,7 +1,7 @@
 .reference-page {
   .container();
   overflow-x: hidden;
-  min-width: 1000px;
+  // min-width: 1000px;
   .clearfix();
   .borderBox();
   position: relative;
@@ -229,6 +229,19 @@
       padding-left: 15px;
     }
   }
+
+  @media screen and (max-width: 700px) {
+    div.reference-sidebar {
+      display: none;
+      width: 0px;
+    }
+    div.right-column {
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
   @media screen and (max-width: 500px) {
     .clearfix();
     min-width: 0px;
