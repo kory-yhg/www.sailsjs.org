@@ -36,6 +36,10 @@
     "type": "git",
     "url": "git://github.com/shawrizard/sailsjs.org.git"
   },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "2.1.x"
+  },
   "author": "shawrizard",
   "license": ""
 }
