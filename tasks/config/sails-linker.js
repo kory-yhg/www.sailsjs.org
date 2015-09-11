@@ -8,7 +8,7 @@
  * templates using a <script> tag.
  *
  * For usage docs see:
- * 		https://github.com/Zolmeister/grunt-sails-linker
+ * https://github.com/Zolmeister/grunt-sails-linker
  *
  */
 module.exports = function(grunt) {
@@ -71,6 +71,21 @@ module.exports = function(grunt) {
 				'views/**/*.ejs': ['.tmp/public/min/production.min.js']
 			}
 		},
+
+    // devStyles: {
+    //   options: {
+    //     startTag: '<!--STYLES-->',
+    //     endTag: '<!--STYLES END-->',
+    //     fileTmpl: '<link rel="stylesheet" href="%s">',
+    //     appRoot: '.tmp/public'
+    //   },
+
+    //   files: {
+    //     '.tmp/public/**/*.html': require('../pipeline').cssFilesToInject,
+    //     'views/**/*.html': require('../pipeline').cssFilesToInject,
+    //     'views/**/*.ejs': require('../pipeline').cssFilesToInject
+    //   }
+    // },
 
 		devStylesRelative: {
 			options: {
