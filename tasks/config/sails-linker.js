@@ -72,20 +72,20 @@ module.exports = function(grunt) {
 			}
 		},
 
-    // devStyles: {
-    //   options: {
-    //     startTag: '<!--STYLES-->',
-    //     endTag: '<!--STYLES END-->',
-    //     fileTmpl: '<link rel="stylesheet" href="%s">',
-    //     appRoot: '.tmp/public'
-    //   },
+    devStyles: {
+      options: {
+        startTag: '<!--STYLES-->',
+        endTag: '<!--STYLES END-->',
+        fileTmpl: '<link rel="stylesheet" href="%s">',
+        appRoot: '.tmp/public'
+      },
 
-    //   files: {
-    //     '.tmp/public/**/*.html': require('../pipeline').cssFilesToInject,
-    //     'views/**/*.html': require('../pipeline').cssFilesToInject,
-    //     'views/**/*.ejs': require('../pipeline').cssFilesToInject
-    //   }
-    // },
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').cssFilesToInject,
+        'views/**/*.html': require('../pipeline').cssFilesToInject,
+        'views/**/*.ejs': require('../pipeline').cssFilesToInject
+      }
+    },
 
 		devStylesRelative: {
 			options: {

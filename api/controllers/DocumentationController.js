@@ -16,7 +16,7 @@ module.exports = {
             },
             fn: function(inputs, exits) {
                 // Split using regexp
-                sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.0.0'].split({
+                sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.2.0'].split({
                     "string": inputs['*'],
                     "regexp": "/"
                 }).exec({
@@ -36,7 +36,7 @@ module.exports = {
                     },
                     "success": function(splitUsingRegexp) {
                         // Get [n]th item
-                        sails.machines['c646f5e7-9c6f-49a5-91f6-7e1eabfd1186_3.0.2'].nth({
+                        sails.machines['c646f5e7-9c6f-49a5-91f6-7e1eabfd1186_5.2.0'].nth({
                             "array": splitUsingRegexp,
                             "index": 0
                         }).exec({
@@ -56,7 +56,7 @@ module.exports = {
                             },
                             "success": function(getNThItem) {
                                 // Lowercase a string
-                                sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.0.0'].lowerCase({
+                                sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.2.0'].lowerCase({
                                     "string": getNThItem
                                 }).exec({
                                     "error": function(lowercaseAString) {
@@ -68,7 +68,7 @@ module.exports = {
                                     },
                                     "success": function(lowercaseAString) {
                                         // Resolve path
-                                        sails.machines['2806adc7-0289-473a-8843-020526771565_1.1.0'].resolve({
+                                        sails.machines['2806adc7-0289-473a-8843-020526771565_1.2.0'].resolve({
                                             "paths": ["views/partials/doc-menus/" + lowercaseAString + ".jsmenu"]
                                         }).exec({
                                             "error": function(resolvePath) {
@@ -80,7 +80,7 @@ module.exports = {
                                             },
                                             "success": function(resolvePath) {
                                                 // Read JSON file
-                                                sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_3.0.0'].readJson({
+                                                sails.machines['8f8944e3-49b6-429d-a4c5-c77fe3ae878d_5.3.0'].readJson({
                                                     "source": resolvePath,
                                                     "schema": [{
                                                         templateTitle: "Foo-Bar.ejs",
@@ -119,7 +119,7 @@ module.exports = {
                                                     },
                                                     "success": function(readJSONFile) {
                                                         // Marshal menu metadata
-                                                        sails.machines['_project_3549_0.0.27'].MarshaldocPageMetadata({
+                                                        sails.machines['_project_3549_0.0.43'].MarshaldocPageMetadata({
                                                             "docPageMetadatas": readJSONFile
                                                         }).exec({
                                                             "error": function(marshalMenuMetadata) {
@@ -131,7 +131,7 @@ module.exports = {
                                                             },
                                                             "success": function(marshalMenuMetadata) {
                                                                 // Is it an old link?
-                                                                sails.machines['_project_3549_0.0.27'].isItAnOldLink({
+                                                                sails.machines['_project_3549_0.0.43'].isItAnOldLink({
                                                                     "docPageMetadatas": marshalMenuMetadata,
                                                                     "slug": inputs['*'],
                                                                     "q": inputs.q
@@ -149,7 +149,7 @@ module.exports = {
                                                                     },
                                                                     "success": function(isItAnOldLink) {
                                                                         // Find doc template to show
-                                                                        sails.machines['_project_3549_0.0.27'].Fniddocpagetoshow({
+                                                                        sails.machines['_project_3549_0.0.43'].Fniddocpagetoshow({
                                                                             "docPageMetadatas": marshalMenuMetadata,
                                                                             "slug": inputs['*']
                                                                         }).setEnvironment({
@@ -167,7 +167,7 @@ module.exports = {
                                                                             },
                                                                             "success": function(findDocTemplateToShow) {
                                                                                 // List expanded menu items
-                                                                                sails.machines['_project_3549_0.0.27'].Findparent({
+                                                                                sails.machines['_project_3549_0.0.43'].Findparent({
                                                                                     "menuData": marshalMenuMetadata,
                                                                                     "path": (findDocTemplateToShow && findDocTemplateToShow.path)
                                                                                 }).setEnvironment({
@@ -184,7 +184,7 @@ module.exports = {
                                                                                     },
                                                                                     "success": function(listExpandedMenuItems) {
                                                                                         // Construct dictionary
-                                                                                        sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.1.0'].construct({
+                                                                                        sails.machines['1ce3619d-97b1-4aec-a3e9-884c7ed24556_2.2.0'].construct({
                                                                                             "dictionary": {
                                                                                                 templateList: marshalMenuMetadata,
                                                                                                 currentTemplate: findDocTemplateToShow,
@@ -201,7 +201,7 @@ module.exports = {
                                                                                             },
                                                                                             "success": function(constructDictionary) {
                                                                                                 // If it's an 'Anatomy' page
-                                                                                                sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
+                                                                                                sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_1.2.0'].ifEqual({
                                                                                                     "a": lowercaseAString,
                                                                                                     "b": "anatomy"
                                                                                                 }).exec({
@@ -214,7 +214,7 @@ module.exports = {
                                                                                                     },
                                                                                                     "otherwise": function(ifItSAnAnatomyPage) {
                                                                                                         // Capitalize a string
-                                                                                                        sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.0.0'].capitalize({
+                                                                                                        sails.machines['03558d7e-53ad-4e20-b03f-ddd54c34ce3c_4.2.0'].capitalize({
                                                                                                             "string": getNThItem
                                                                                                         }).exec({
                                                                                                             "error": function(capitalizeAString) {
@@ -265,7 +265,7 @@ module.exports = {
                                                                             },
                                                                             "notFound": function(findDocTemplateToShow) {
                                                                                 // If equal (===) to anatomy
-                                                                                sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
+                                                                                sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_1.2.0'].ifEqual({
                                                                                     "a": getNThItem,
                                                                                     "b": "anatomy"
                                                                                 }).exec({
@@ -278,7 +278,7 @@ module.exports = {
                                                                                     },
                                                                                     "otherwise": function(ifEqualToAnatomy) {
                                                                                         // If equal (===) to reference
-                                                                                        sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_0.4.0'].ifEqual({
+                                                                                        sails.machines['4bf9c923-efd3-4077-b3e1-6b8d84d740c0_1.2.0'].ifEqual({
                                                                                             "a": getNThItem,
                                                                                             "b": "reference"
                                                                                         }).exec({

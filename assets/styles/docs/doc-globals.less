@@ -242,7 +242,9 @@
 * Get Started pages.
 *******************************/
 
-.documentation-style-guide, .reference-item, .anatomy-section, .embedded-guides-region, .version-notes, .getting-started {
+
+
+.doc-page() {
   font-family: @mainFont;
 
   h1 {
@@ -332,6 +334,8 @@
     .docs_table();
   }
 }
+
+// Contribution message.
 .contribution-message {
   .borderBox();
   padding-top: 20px;
@@ -358,6 +362,7 @@
     }
   }
 }
+
 //specific to anatomy page:
 .anatomy-page .contribution-message {
   padding: 25px 0px;

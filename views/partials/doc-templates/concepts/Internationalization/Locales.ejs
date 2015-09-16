@@ -29,6 +29,7 @@
 </code></pre>
 <!-- __LANG=%%__ -->
 <h3 id="detecting-and-or-overriding-the-desired-locale-for-a-request" permalink="detecting-and/or-overriding-the-desired-locale-for-a-request">Detecting and/or overriding the desired locale for a request</h3>
+<p>To determine the current locale used by the request, use <a href="https://github.com/mashpie/i18n-node#getlocale" target="_blank"><code>req.getLocale()</code></a>.</p>
 <p>To override the auto-detected language/localization preference for a request, use <a href="https://github.com/mashpie/i18n-node#setlocale" target="_blank"><code>req.setLocale()</code></a>, calling it with the unique code for the new locale, e.g.:</p>
 <pre><code data-language="javascript">// Force the language to German for the remainder of the request:
 req.setLocale(&apos;de&apos;);
