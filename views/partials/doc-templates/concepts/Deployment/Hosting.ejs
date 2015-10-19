@@ -4,18 +4,6 @@
 <ul>
 <li><a href="http://blog.modulus.io/sails-js" target="_blank">http://blog.modulus.io/sails-js</a></li>
 </ul>
-<h5 id="deploying-to-nodejitsu-" permalink="deploying-to-nodejitsu">Deploying to NodeJitsu?</h5>
-<p>To deploy to NodeJitsu, you&apos;ll need to make some minor modifications to your configuration:
-Open up <code>config/local.js</code> in your app folder. In here, you&apos;ll need to add the following lines.</p>
-<pre><code data-language="javascript">// Port this Sails application will live on
-    port: 80,
-    host: &apos;subdomain.jit.su&apos;,
-</code></pre><!-- __LANG=%%__ -->
-<p>The <code>host:</code> is new to the file and is not created by default.  You will need to add this.  Nodejitsu will ask you for the <code>subdomain</code> when you run <code>jitsu deploy</code></p>
-<ul>
-<li><a href="https://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/" target="_blank">https://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/</a></li>
-<li><a href="https://github.com/balderdashy/sails/issues/455" target="_blank">https://github.com/balderdashy/sails/issues/455</a></li>
-</ul>
 <h5 id="deploying-to-openshift-" permalink="deploying-to-openshift">Deploying to OpenShift?</h5>
 <p>To deploy to OpenShift, you&apos;ll need to make some minor modifications to your configuration:
 Open up <code>config/local.js</code> in your app folder. In here, you&apos;ll need to add the following lines.</p>

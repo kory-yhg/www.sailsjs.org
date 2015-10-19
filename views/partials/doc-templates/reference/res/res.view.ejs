@@ -70,6 +70,7 @@ Oven.find().sort(&apos;heat ASC&apos;).exec(function (err, ovens){
 <ul>
 <li>This method is <strong>terminal</strong>, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of <code>return</code> throughout these docs).</li>
 <li><code>res.view()</code> reads a view file from disk, compiles it into HTML, then streams it back to the client.  If you already have the view in memory, or don&apos;t want to stream the compiled HTML directly back to the client, use <code>sails.hooks.views.render()</code> instead.</li>
+<li><code>res.view()</code> always looks for the <em>lowercased</em> version of a view filename.  For example, if your controller is <code>FooBarController</code> and your action is <code>Baz</code>, <code>res.view()</code> will attempt to find <code>views/foobar/baz.ejs</code>.  On <em>case-sensitive</em> filesystems (e.g. Ubuntu Linux), this can lead to unexpected errors locating views if they are saved with capital letters.  For this reason, it is recommended that you always save your views and view folders in lowercase.</li>
 </ul>
 </blockquote>
 <p><docmeta name="uniqueID" value="resview916814"></docmeta></p>
