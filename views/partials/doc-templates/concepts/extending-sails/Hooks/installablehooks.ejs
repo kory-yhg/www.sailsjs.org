@@ -1,93 +1,93 @@
-<h1 id="creating-an-installable-hook">Creating an Installable Hook</h1>
-<p>Installable hooks are custom Sails hooks that reside in an application&#x2019;s <code>node_modules</code> folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to <a href="http://npmjs.org" target="_blank">NPM</a> to share it with the Sails community.  If you wish to create a hook for use in  <em>just one</em> Sails app, see <a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html" target="_blank">creating a project hook</a> instead.</p>
-<p>To create a new installable hook:</p>
+<h1>インストーラブルフックを作る</h1>
+<p>インストーラブルフックはSailsアプリケーションの<code>node_modules</code>に保存されるカスタムのSailsフックです。インストーラブルフックは機能を複数のアプリケーションで共有したり<a href="http://npmjs.org">NPM</a> でSailsコミュニティーに公開する際に特に便利です。もし <em>一つだけの</em> Sailsアプリケーションで利用するフックを作りたいときは <a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html">creating a project hook</a> を代わりにご覧ください。</p>
+<p>インストーラブルフックを作るには:</p>
 <ol>
-<li>Choose a name for your new hook.  It must not conflict with any of the <a href="https://github.com/balderdashy/sails/blob/master/lib/app/configuration/default-hooks.js" target="_blank">core hook names</a>.</li>
-<li>Create a new folder on your system with the name <code>sails-hook-&lt;your hook name&gt;</code>.  The <code>sails-hook-</code> prefix is optional but recommended for consistency; it is stripped off by Sails when the hook is loaded.</li>
-<li>Create a <code>package.json</code> file in the folder.  If you have <code>npm</code> installed on your system, you can do this easily by running <code>npm init</code> and following the prompts.  Otherwise, you can create the file manually, and ensure that it contains at a minimum the following:<pre><code data-language="javascript">{
- &quot;name&quot;: &quot;sails-hook-your-hook-name&quot;,
- &quot;version&quot;: &quot;0.0.0&quot;,
- &quot;description&quot;: &quot;a brief description of your hook&quot;,
- &quot;main&quot;: &quot;index.js&quot;,
- &quot;sails&quot;: {
-   &quot;isHook&quot;: true
- }
+<li>フックの名前を選びます。名前は <a href="https://github.com/balderdashy/sails/blob/master/lib/app/configuration/default-hooks.js">core hook names</a> とコンフリクトしないようにしなければいけません。</li>
+<li>あなたのシステム上に<code>sails-hook-&lt;your hook name&gt;</code>という名前のフォルダを作成します。 <code>sails-hook-</code>を利用するかは任意ですが、統合性維持のためにこれを利用することが強く推奨されています。また、このプレフィックスはロードする際に取り外されます。</li>
+<li>フォルダ内に<code>package.json</code>ファイルを作成します。もしシステム上に<code>npm</code>がインストールされていれば<code>npm init</code>を実行してその後のプロンプトに従うだけで簡単にできます。あるいは以下の最低条件に準拠したファイルを手動で作成することも出来ます。:
+<pre><code>{
+"name": "sails-hook-your-hook-name",
+"version": "0.0.0",
+"description": "a brief description of your hook",
+"main": "index.js",
+"sails": {
+  "isHook": true
 }
-</code></pre><!-- __LANG=%%__ -->
-If you use <code>npm init</code> to create your <code>package.json</code>, be sure to open the file afterwards and manually insert the <code>sails</code> key containing <code>isHook: true</code>.</li>
-<li>Write your hook code in <code>index.js</code> in accordance with the <a href="http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification" target="_blank">hook specification</a>.</li>
+}</code></pre>
+<p>もし<code>package.json</code>を作成するために<code>npm init</code>を利用する場合、あとで手動でファイルを開いて<code>isHook: true</code>を含んだ<code>sails</code>を追加するのを忘れないで下さい。</p></li>
+<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification">hook specification</a> に従ってあなたのフックのコードを<code>index.js</code>に書いてください。</li>
 </ol>
-<p>Your new folder may contain other files as well, which can be loaded in your hook via <code>require</code>; only <code>index.js</code> will be read automatically by Sails.  Use the <code>dependencies</code> key of your <code>package.json</code> to refer to any dependencies that need to be installed in order for your hook to work (you may also use <code>npm install &lt;dependency&gt; --save</code> to easily save dependency information to <code>package.json</code>).</p>
-<h3 id="testing-your-new-hook" permalink="testing-your-new-hook">Testing your new hook</h3>
-<p>Before you distribute your installable hook to others, you&#x2019;ll want to write some tests for it.  This will help ensure compatibility with future Sails versions and significantly reduce hair-pulling and destruction of nearby objects in fits of rage.  While a full guide to writing tests is outside the scope of this doc, the following steps should help get you started:</p>
+<p>新しいフォルダには他のファイルがあっても問題なく、それらのファイルは<code>require</code>で読み込むことが出来ます。Sailsによって自動的に読み込まれるのは<code>index.js</code>だけです。フックが動作するための依存を定義するには<code>package.json</code>で<code>dependencies</code>キーを設定する必要があります。(<code>npm install &lt;dependency&gt; --save</code>を使って<code>package.json</code>に簡単に依存情報を保存することも出来ます。)</p>
+<h3>あなたの新規フックをテストする</h3>
+<p>他の人にフックを配布する前にテストを書きたいかもしれません。これは将来のバージョンのSailsとの互換性を確実にするのに助かるほか、イライラしたり、凶暴な行動によって周りのものを破壊する機会を劇的に減少させます。テストに関しての全体的なガイドは本ドキュメントの範疇外にですが、まず初めてみるには以下のステップが参考になるでしょう。:</p>
 <ol>
-<li>Add Sails as a <code>devDependency</code> in your hook&#x2019;s <code>package.json</code> file:<pre><code data-language="javascript">&quot;devDependencies&quot;: {
-   &quot;sails&quot;: &quot;~0.11.0&quot;
-}
-</code></pre><!-- __LANG=%%__ --></li>
-<li>Install Sails as a dependency of your hook with <code>npm install sails</code> or <code>npm link sails</code> (if you have Sails installed globally on your system).</li>
-<li>Install <a href="http://mochajs.org/" target="_blank">Mocha</a> on your system with <code>npm install -g mocha</code>, if you haven&#x2019;t already.</li>
-<li>Add a <code>test</code> folder inside your hook&#x2019;s main folder.</li>
-<li><p>Add a <code>basic.js</code> file with the following basic test:</p>
-<pre><code data-language="javascript">var Sails = require(&apos;sails&apos;).Sails;
+<li>Sailsを<code>devDependency</code>としてあなたのフックの<code>package.json</code>ファイルに追加します。:
+<pre><code>"devDependencies": {
+  "sails": "~0.11.0"
+}</code></pre></li>
+<li><code>npm install sails</code> か <code>npm link sails</code>(Sailsがシステムにグローバルにインストールされている場合)を使ってSailsを依存としてインストールします。</li>
+<li><a href="http://mochajs.org/">Mocha</a> がまだインストールされていない場合<code>npm install -g mocha</code> を使ってインストールします。</li>
+<li>
+<p>フックのメインフォルダーの下に<code>test</code>フォルダを作成します。
+2.　<code>basic.js</code>を作成し以下の基本的テストを作成します:</p>
+<pre><code>var Sails = require('sails').Sails;
 
- describe(&apos;Basic tests ::&apos;, function() {
+describe('Basic tests ::', function() {
 
-     // Var to hold a running sails app instance
-     var sails;
+    // 実行中のアプリケーションインスタンスを格納する変数
+    var sails;
 
-     // Before running any tests, attempt to lift Sails
-     before(function (done) {
+    // 全てのテストを実行する前にSailsのliftを試みる
+    before(function (done) {
 
-         // Hook will timeout in 10 seconds
-         this.timeout(11000);
+        // フックは10秒でタイムアウトする
+        this.timeout(11000);
 
-         // Attempt to lift sails
-         Sails().lift({
-           hooks: {
-             // Load the hook
-             &quot;your-hook-name&quot;: require(&apos;../&apos;),
-             // Skip grunt (unless your hook uses it)
-             &quot;grunt&quot;: false
-           },
-           log: {level: &quot;error&quot;}
-         },function (err, _sails) {
-           if (err) return done(err);
-           sails = _sails;
-           return done();
-         });
-     });
+        // Sailsのliftを試みる
+        Sails().lift({
+          hooks: {
+            // フックを読み込む
+            "your-hook-name": require('../'),
+            // gruntをスキップする（必要なければ）
+            "grunt": false
+          },
+          log: {level: "error"}
+        },function (err, _sails) {
+          if (err) return done(err);
+          sails = _sails;
+          return done();
+        });
+    });
 
-     // After tests are complete, lower Sails
-     after(function (done) {
+    // テスト完了後、Sailsを止める
+    after(function (done) {
 
-         // Lower Sails (if it successfully lifted)
-         if (sails) {
-             return sails.lower(done);
-         }
-         // Otherwise just return
-         return done();
-     });
+        // Sailsを止める（もしliftに成功していれば）
+        if (sails) {
+            return sails.lower(done);
+        }
+        // そうでなければ単にリターンする
+        return done();
+    });
 
-     // Test that Sails can lift with the hook in place
-     it (&apos;sails does not crash&apos;, function() {
-         return true;
-     });
+    // Sailsがテストを読み込んでlift出来るかのテスト
+    it ('sails does not crash', function() {
+        return true;
+    });
 
- });
-</code></pre><!-- __LANG=%%__ --></li>
-<li>Run the test with <code>mocha -R spec</code> to see full results.</li>
-<li>See the <a href="http://mochajs.org/" target="_blank">Mocha</a> docs for a full reference.</li>
+});</code></pre>
+</li>
+<li><code>mocha -R spec</code> でテストを実行し、全体結果を見ます。</li>
+<li>完全なリファレンスは <a href="http://mochajs.org/">Mocha</a> のドキュメントをご覧ください。</li>
 </ol>
-<h3 id="publishing-your-hook" permalink="publishing-your-hook">Publishing your hook</h3>
-<p>Assuming your hook is tested and looks good, and assuming that the hook name isn&#x2019;t already in use by another <a href="http://npmjs.org" target="_blank">NPM</a> module, you can share it with world by running <code>npm publish</code>.  Go you!</p>
+<h3>フックを公開する</h3>
+<p>もしフックがテストされ問題ないように見えて、その名前のフックがまだ <a href="http://npmjs.org">NPM</a> モジュールにない場合、<code>npm publish</code>を実行することで世界中と共有することが出来ます。やってみましょう！</p>
 <ul>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks" target="_blank">Hooks overview</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html" target="_blank">Using hooks in your app</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification" target="_blank">The hook specification</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html" target="_blank">Creating a project hook</a></li>
+<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks">Hooks overview</a></li>
+<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html">Using hooks in your app</a></li>
+<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification">The hook specification</a></li>
+<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html">Creating a project hook</a></li>
 </ul>
-<p><docmeta name="uniqueID" value="Hooks74999"></docmeta></p>
-<p><docmeta name="displayName" value="Installable Hooks"></docmeta></p>
+<docmeta name="uniqueID" value="Hooks74999">
+<docmeta name="displayName" value="Installable Hooks">
 <docmeta name="stabilityIndex" value="3">
-</docmeta>

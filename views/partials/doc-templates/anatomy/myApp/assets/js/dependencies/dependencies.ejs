@@ -1,18 +1,16 @@
-<h1 id="myapp-assets-js-dependencies">myApp/assets/js/dependencies</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This directory allows grunt to load javascript files in index.ejs before the rest of the javascript files in the js directory.</p>
+<h1>myApp/assets/js/dependencies</h1>
+<h3>目的</h3>
+<p>このディレクトリは残りのjsファイルが読み込まれる前にgruntがindex.ejsにjavascriptファイルを読みこませるためのものです。</p>
 <pre><code>js/
 | main.js
 | apple.js
 | dependencies/
-| | sails.io.js
-</code></pre><p>This setup will create</p>
+| | sails.io.js</code></pre>
+<p>この状態では以下のようにセットアップされます。</p>
 <pre><code>&lt;!--SCRIPTS--&gt;
-&lt;script src=&quot;/js/dependencies/sails.io.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;/js/apple.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;/js/main.js&quot;&gt;&lt;/script&gt;
-&lt;!--SCRIPTS END--&gt;
-</code></pre><p><docmeta name="uniqueID" value="dependenciesmd334158"></docmeta></p>
+&lt;script src="/js/dependencies/sails.io.js"&gt;&lt;/script&gt;
+&lt;script src="/js/apple.js"&gt;&lt;/script&gt;
+&lt;script src="/js/main.js"&gt;&lt;/script&gt;
+&lt;!--SCRIPTS END--&gt;</code></pre>
+<docmeta name="uniqueID" value="dependenciesmd334158">
 <docmeta name="displayName" value="dependencies">
-
-</docmeta>

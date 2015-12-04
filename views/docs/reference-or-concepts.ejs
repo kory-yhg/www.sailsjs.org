@@ -18,9 +18,9 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
         // If this is the '0home' page, build a table of contents
         // (basically the nav menu but all expanded and easy-to-read)
         %>
-        <h1>Sails.js Documentation: <%= sectionTitle === 'Concepts' ? 'Core Concepts' : 'API Reference' %></h1>
+        <h1>Sails.jsドキュメント: <%= sectionTitle === 'Concepts' ? 'Core Concepts' : 'API Reference' %></h1>
         <div class="table-of-contents">
-          <h3>Table of Contents</h3>
+          <h3>目次</h3>
           <ol>
             <% _.each(data.templateList, function(navItem) {
             // Only show top-level nav items initially
@@ -35,8 +35,8 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
       <% } %>
     </div>
     <div class="contribution-message">
-        <h2>Is something missing?</h2>
-        <p>If you notice something we've missed or could be improved on, please follow <a href="https://github.com/balderdashy/sails-docs/blob/master/<%= data.currentTemplate.path.replace(/\.ejs/, '') %>.md" target="_blank">this link</a> and submit a pull request to the sails-docs repo.  Once we merge it, the changes will be reflected on the website the next time it is deployed.</p>
+        <h2>何かお気づきですか</h2>
+        <p>ドキュメントに関してお気づきのことがあった場合やなにか改善アイデアがある場合、<a href="https://github.com/balderdashy/sails-docs/blob/ja/<%= data.currentTemplate.path.replace(/\.ejs/, '') %>.md" target="_blank">こちら</a>からsails-docsレポジトリに対してプルリクエストを送ってください。プルリクエストがマージされ次第、次のアップロードのタイミングでWebサイトに反映されます。</p>
     </div>
   </div>
 
@@ -63,13 +63,5 @@ window.MENU_DATA = <%- JSON.stringify(data.templateList) %>;
 
         }) %>
     </ul>
-    <div class="book-banner-wrapper">
-      <div class="book-banner">
-        <img class="meap-cover" src="/images/bookCover.png"/>
-        <h3>We wrote a book!</h3>
-        <p>Get early access to the book<br/> with promotion code: <span>mcneildoc</span></p>
-        <a class="book-link" target="_blank" href="http://www.manning.com/mcneil/">Get the Book</a>
-      </div>
-    </div>
   </div>
 </div>

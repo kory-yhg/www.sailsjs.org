@@ -1,25 +1,26 @@
-<h1 id="myapp-config-connections-js">myApp/config/connections.js</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This file contains the settings for all of your adapters.</p>
-<p>In Sails, adapters act as the intermediary between the app and the database.  To put it another way, they act as plugins for <a href="https://github.com/balderdashy/waterline" target="_blank">Waterline</a>, the  <a href="http://en.wikipedia.org/wiki/Object-relational_mapping" target="_blank">ORM</a> that Sails uses to talk to databases.   </p>
-<p>This file lets you create different global &quot;saved settings&quot; that you can mix and match in your models. The <a href="http://sailsjs.org/documentation/anatomy/myApp/config/models.js.html" target="_blank"><code>sails.models.connection</code></a> option indicates which connection should be used if a model doesn&apos;t have one <a href="http://sailsjs.org/documentation/concepts/ORM/model-settings.html?q=connection" target="_blank">explicitly specified</a>.</p>
-<p><docmeta name="uniqueID" value="connectionsjs160878"></docmeta></p>
+<h1>myApp/config/connections.js</h1>
+<h3>目的</h3>
+<p>このファイルにはすべてのアダプタに関する設定が含まれています。</p>
+<p>Sailsではアダプタはアプリケーションとデータベースの間にいます。別の言い方をするとそれらはSailsがデータベースとやり取りする<a href="http://en.wikipedia.org/wiki/Object-relational_mapping">ORM</a>である<a href="https://github.com/balderdashy/waterline">Waterline</a>のプラグインなのです。</p>
+<p>このファイルはモデルの中で別々のグローバルな「保存設定」が混ざったものを設定し、それらをモデルの中でマッチングできます。<a href="http://sailsjs.org/documentation/anatomy/myApp/config/models.js.html"><code>sails.models.connection</code></a> はモデルで<a href="http://sailsjs.org/documentation/concepts/ORM/model-settings.html?q=connection">明確な指定</a>が無いときにどのコネクションが利用されるかを表します。</p>
+<docmeta name="uniqueID" value="connectionsjs160878">
 <docmeta name="displayName" value="connections.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * Connections
  * (sails.config.connections)
  *
- * `Connections` are like &quot;saved settings&quot; for your adapters.  What&apos;s the difference between
+ * `Connections` are like "saved settings" for your adapters.  What's the difference between
  * a connection and an adapter, you might ask?  An adapter (e.g. `sails-mysql`) is generic--
  * it needs some additional information to work (e.g. your database host, password, user, etc.)
  * A `connection` is that additional information.
  *
  * Each model must have a `connection` property (a string) which is references the name of one
- * of these connections.  If it doesn&apos;t, the default `connection` configured in `config/models.js`
+ * of these connections.  If it doesn't, the default `connection` configured in `config/models.js`
  * will be applied.  Of course, a connection can be (and usually is) shared by multiple models.
  * .
- * Note: If you&apos;re using version control, you should put your passwords/api keys
+ * Note: If you're using version control, you should put your passwords/api keys
  * in `config/local.js`, environment variables, or use another strategy.
  * (this is to prevent you from inadvertently pushing sensitive credentials up to your repository.)
  *
@@ -34,21 +35,21 @@ module.exports.connections = {
   // Installed by default.
   //
   localDiskDb: {
-    adapter: &apos;sails-disk&apos;
+    adapter: 'sails-disk'
   },
 
-  // MySQL is the world&apos;s most popular relational database.
+  // MySQL is the world's most popular relational database.
   // http://en.wikipedia.org/wiki/MySQL
   //
   // Run:
   // npm install sails-mysql
   //
   someMysqlServer: {
-    adapter: &apos;sails-mysql&apos;,
-    host: &apos;YOUR_MYSQL_SERVER_HOSTNAME_OR_IP_ADDRESS&apos;,
-    user: &apos;YOUR_MYSQL_USER&apos;,
-    password: &apos;YOUR_MYSQL_PASSWORD&apos;,
-    database: &apos;YOUR_MYSQL_DB&apos;
+    adapter: 'sails-mysql',
+    host: 'YOUR_MYSQL_SERVER_HOSTNAME_OR_IP_ADDRESS',
+    user: 'YOUR_MYSQL_USER',
+    password: 'YOUR_MYSQL_PASSWORD',
+    database: 'YOUR_MYSQL_DB'
   },
 
   // MongoDB is the leading NoSQL database.
@@ -58,12 +59,12 @@ module.exports.connections = {
   // npm install sails-mongo
   //
   someMongodbServer: {
-    adapter: &apos;sails-mongo&apos;,
-    host: &apos;localhost&apos;,
+    adapter: 'sails-mongo',
+    host: 'localhost',
     port: 27017,
-    // user: &apos;username&apos;,
-    // password: &apos;password&apos;,
-    // database: &apos;your_mongo_db_name_here&apos;
+    // user: 'username',
+    // password: 'password',
+    // database: 'your_mongo_db_name_here'
   },
 
   // PostgreSQL is another officially supported relational database.
@@ -73,17 +74,16 @@ module.exports.connections = {
   // npm install sails-postgresql
   //
   somePostgresqlServer: {
-    adapter: &apos;sails-postgresql&apos;,
-    host: &apos;YOUR_POSTGRES_SERVER_HOSTNAME_OR_IP_ADDRESS&apos;,
-    user: &apos;YOUR_POSTGRES_USER&apos;,
-    password: &apos;YOUR_POSTGRES_PASSWORD&apos;,
-    database: &apos;YOUR_POSTGRES_DB&apos;
+    adapter: 'sails-postgresql',
+    host: 'YOUR_POSTGRES_SERVER_HOSTNAME_OR_IP_ADDRESS',
+    user: 'YOUR_POSTGRES_USER',
+    password: 'YOUR_POSTGRES_PASSWORD',
+    database: 'YOUR_POSTGRES_DB'
   }
-
 
   // More adapters:
   // https://github.com/balderdashy/sails
 
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

@@ -1,174 +1,174 @@
-<h1 id="validations">Validations</h1>
-<p>Sails bundles support for automatic validations of your models&apos; attributes. Any time a record is updated, or a new record is created, the data for each attribute will be checked against all of your predefined validation rules. This provides a convenient failsafe to ensure that invalid entries don&apos;t make their way into your app&apos;s database(s).</p>
-<h3 id="validation-rules" permalink="validation-rules">Validation Rules</h3>
-<p>Validations are handled by <a href="https://github.com/balderdashy/anchor" target="_blank">Anchor</a>, a thin layer on top of <a href="https://github.com/chriso/validator.js" target="_blank">Validator</a>, one of the most robust validation libraries for Node.js.  Sails supports most of the validations available in Validator, as well as a few extras that require database integration, like <code>unique</code>.</p>
+<h1>バリデーション</h1>
+<p>Sailsはモデルのアトリビュートに対する自動バリデーションを用意しています。レコードを作成したり更新するときは常にあなたの指定したバリデーションルールにそっているか自動的に確認されます。これにより、アプリケーションに保存されるデータが不正なものでないことを保証することが簡単に実現出来ます。</p>
+<h3>バリデーションルール</h3>
+<p>バリデーションは<a href="https://github.com/chriso/validator.js">バリデータ</a>の最上位層に位置する<a href="https://github.com/balderdashy/anchor">Anchor</a>と呼ばれる軽量なレイヤーによってハンドルされます。AncherはNode.jsで最もパワフルなバリデータの一つです。<code>unique</code>のように一部にデータベース上での実装がなされていることが必要な物は有りますが、Sailsではバリデータの中のほとんどすべての種類のバリデーションをサポートします。</p>
 <table>
 <thead>
 <tr>
-<th>Name of validator</th>
-<th>What does it check?</th>
-<th>Notes on usage</th>
+<th>バリデータ名</th>
+<th>確認するもの</th>
+<th>利用上の注意</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>after</td>
-<td>check if <code>string</code> date in this record is after the specified <code>Date</code></td>
-<td>must be valid javascript <code>Date</code></td>
+<td>入力された日付の文字列が指定日より後のものか。</td>
+<td>正しいJavascriptのDate形式である必要があります。</td>
 </tr>
 <tr>
 <td>alpha</td>
-<td>check if <code>string</code> in this record contains only letters (a-zA-Z)</td>
+<td>アルファベッドのみ(a-zA-Z)を含む文字列かどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>alphadashed</td>
 <td></td>
-<td>does this <code>string</code> contain only letters and/or dashes?</td>
+<td>アルファベットとダッシュのみを含む文字列であるかどうか。）</td>
 </tr>
 <tr>
 <td>alphanumeric</td>
-<td>check if <code>string</code> in this record contains only letters and numbers.</td>
+<td>アルファベッドと数字のみを含む文字列かどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>alphanumericdashed</td>
-<td>does this <code>string</code> contain only numbers and/or letters and/or dashes?</td>
+<td>アルファベッド、数字、ダッシュのみを含む文字列かどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>array</td>
-<td>is this a valid javascript <code>array</code> object?</td>
-<td>strings formatted as arrays won&apos;t pass</td>
+<td>正しいJavascriptの配列形式であるか。</td>
+<td>「配列化された文字列」はパスしない。</td>
 </tr>
 <tr>
 <td>before</td>
-<td>check if <code>string</code> in this record is a date that&apos;s before the specified date</td>
+<td>入力された日付の文字列が指定日より前のものか。</td>
 <td></td>
 </tr>
 <tr>
 <td>binary</td>
-<td>is this binary data?</td>
-<td>If it&apos;s a string, it will always pass</td>
+<td>バイナリデータか</td>
+<td>文字列であれば常にパスします。</td>
 </tr>
 <tr>
 <td>boolean</td>
-<td>is this a valid javascript <code>boolean</code> ?</td>
-<td><code>string</code>s will fail</td>
+<td>正しいJavascriptのBoolean形式であるか。</td>
+<td>文字列はパスしない。</td>
 </tr>
 <tr>
 <td>contains</td>
-<td>check if <code>string</code> in this record contains the seed</td>
+<td>文字列がseedを含んでいるかどうか</td>
 <td></td>
 </tr>
 <tr>
 <td>creditcard</td>
-<td>check if <code>string</code> in this record is a credit card</td>
+<td>文字列はクレジットカードの形式かどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>date</td>
-<td>check if <code>string</code> in this record is a date</td>
-<td>takes both strings and javascript</td>
+<td>文字列は日付型かどうか。</td>
+<td>文字列とJavascript型のどちらでもパスする。</td>
 </tr>
 <tr>
 <td>datetime</td>
-<td>check if <code>string</code> in this record looks like a javascript <code>datetime</code></td>
+<td>文字列はJavascriptのdatetime型かどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>decimal</td>
 <td></td>
-<td>contains a decimal or is less than 1?</td>
+<td>小数点を含むかあるいは１より小さいか。</td>
 </tr>
 <tr>
 <td>email</td>
-<td>check if <code>string</code> in this record looks like an email address</td>
+<td>文字列はメールアドレスのように見えるか。</td>
 <td></td>
 </tr>
 <tr>
 <td>empty</td>
-<td>Arrays, strings, or arguments objects with a length of 0 and objects with no own enumerable properties are considered &quot;empty&quot;</td>
+<td>長さが０で数えられるプロパティもない配列と文字列、引数オブジェクトが &quot;empty&quot;とみなされます。</td>
 <td>lo-dash _.isEmpty()</td>
 </tr>
 <tr>
 <td>equals</td>
-<td>check if <code>string</code> in this record is equal to the specified value</td>
-<td><code>===</code> ! They must match in both value and type</td>
+<td>文字列は指定された内容と同じか。</td>
+<td>=== ! 型と値が合致してる必要があります。</td>
 </tr>
 <tr>
 <td>falsey</td>
-<td>Would a Javascript engine register a value of <code>false</code> on this?</td>
+<td>JavascriptエンジンがFalseとみなすものかどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>finite</td>
-<td>Checks if given value is, or can be coerced to, a finite number</td>
-<td>This is not the same as native isFinite which will return true for booleans and empty strings</td>
+<td>値または値から変換できる数が有限数かどうか。</td>
+<td>True時にBoolを、False時にからの文字列を返すネイティブのisFiniteとは同じでありません。</td>
 </tr>
 <tr>
 <td>float</td>
-<td>check if <code>string</code> in this record is of the number type float</td>
+<td>Floatがたの数値化どうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>hexadecimal</td>
-<td>check if <code>string</code> in this record is a hexadecimal number</td>
+<td>十六進の数値かどうか</td>
 <td></td>
 </tr>
 <tr>
 <td>hexColor</td>
-<td>check if <code>string</code> in this record is a hexadecimal color</td>
+<td>十六進色表記かどうか</td>
 <td></td>
 </tr>
 <tr>
 <td>in</td>
-<td>check if <code>string</code> in this record is in the specified array of allowed <code>string</code> values</td>
+<td>指定された文字列のうちいずれかと合致するものであるか。</td>
 <td></td>
 </tr>
 <tr>
 <td>int</td>
-<td>check if <code>string</code> in this record is an integer</td>
+<td>文字列は整数型であるか。</td>
 <td></td>
 </tr>
 <tr>
 <td>integer</td>
-<td>same as above</td>
-<td>Im not sure why there are two of these.</td>
+<td>intと同じ。</td>
+<td>どうしてこの両方が存在するかはわかりません。</td>
 </tr>
 <tr>
 <td>ip</td>
-<td>check if <code>string</code> in this record is a valid IP (v4 or v6)</td>
+<td>文字列は正しいIP(v4またはv6)アドレスかどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>ipv4</td>
-<td>check if <code>string</code> in this record is a valid IP v4</td>
+<td>文字列は正しいIP(v4)アドレスかどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>ipv6</td>
-<td>check if <code>string</code> in this record is a valid IP v6</td>
+<td>文字列は正しいIP(v6)アドレスかどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>is</td>
 <td></td>
-<td>something to do with REGEX</td>
+<td>REGEXと一緒に使います。</td>
 </tr>
 <tr>
 <td>json</td>
-<td>does a try&amp;catch to check for valid JSON.</td>
+<td>正しいJSON型かどうかTry and Catchします。</td>
 <td></td>
 </tr>
 <tr>
 <td>len</td>
-<td>is <code>integer</code> &gt; param1 &amp;&amp; &lt; param2</td>
-<td>Where are params defined?</td>
+<td>与えられた整数 &gt; param1 &amp;&amp; &lt; param2であるかどうか</td>
+<td>どうやってParamを設定するんだろうか。。。</td>
 </tr>
 <tr>
 <td>lowercase</td>
-<td>is this string in all lowercase?</td>
+<td>文字列は全て小文字であるか。</td>
 <td></td>
 </tr>
 <tr>
@@ -178,7 +178,7 @@
 </tr>
 <tr>
 <td>maxLength</td>
-<td>is <code>integer</code> &gt; 0 &amp;&amp; &lt; param2</td>
+<td>与えられた整数 &gt; 0 &amp;&amp; &lt; param2かどうか</td>
 <td></td>
 </tr>
 <tr>
@@ -194,7 +194,7 @@
 <tr>
 <td>not</td>
 <td></td>
-<td>Something about regexes</td>
+<td>REGEX関連。</td>
 </tr>
 <tr>
 <td>notContains</td>
@@ -208,12 +208,12 @@
 </tr>
 <tr>
 <td>notIn</td>
-<td>does the value of this model attribute exist inside of the defined validator value (of the same type)</td>
-<td>Takes strings and arrays</td>
+<td>モデルアトリビュートの値が定義されたバリデータの値の範囲内（なおかつ同じ型）に存在するか。</td>
+<td>文字列と配列を処理できます。</td>
 </tr>
 <tr>
 <td>notNull</td>
-<td>does this not have a value of <code>null</code> ?</td>
+<td>内容はNULLでないかどうか。</td>
 <td></td>
 </tr>
 <tr>
@@ -223,23 +223,23 @@
 </tr>
 <tr>
 <td>null</td>
-<td>check if <code>string</code> in this record is null</td>
+<td>内容がNULLかどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>number</td>
-<td>is this a number?</td>
-<td>NaN is considered a number</td>
+<td>数字かどうか。</td>
+<td>NaNは数字とみなされます。</td>
 </tr>
 <tr>
 <td>numeric</td>
-<td>checks if <code>string</code> in this record contains only numbers</td>
+<td>文字列は数字のみを含むかどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>object</td>
-<td>checks if this attribute is the language type of Object</td>
-<td>Passes for arrays, functions, objects, regexes, new Number(0), and new String(&apos;&apos;) !</td>
+<td>オブジェクトのLanguage typeであるかどうか。</td>
+<td>配列、関数、オブジェクト、正規表現、new Number(0)とnew String('')がパスします !</td>
 </tr>
 <tr>
 <td>regex</td>
@@ -248,77 +248,78 @@
 </tr>
 <tr>
 <td>protected</td>
-<td>Should this attribute be removed when <code>toJSON</code> is called on a model instance?</td>
+<td>モデルインスタンスでtoJSONが呼び出された時にこのアトリビュートは取り除かれるべきか。</td>
 <td></td>
 </tr>
 <tr>
 <td>required</td>
-<td>Must this model attribute contain valid data before a new record can be created?</td>
+<td>レコードが作成される前の段階で何らかの正当な値が入っている必要があるかどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>string</td>
-<td>is this a <code>string</code> ?</td>
+<td>文字列かどうか</td>
 <td></td>
 </tr>
 <tr>
 <td>text</td>
-<td>okay, well is <i>this</i> a <code>string</code> ?</td>
+<td>文字列かどうか</td>
 <td></td>
 </tr>
 <tr>
 <td>truthy</td>
-<td>Would a Javascript engine register a value of <code>false</code> on this?</td>
-<td></td>
+<td>JavascriptエンジンがFalseとみなすものかどうか。</td>
+<td>訳注：多分Tureの誤植。</td>
 </tr>
 <tr>
 <td>undefined</td>
-<td>Would a javascript engine register this thing as have the value &apos;undefined&apos; ?</td>
+<td>Javascriptエンジンが'undefined'とみなすものかどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>unique</td>
-<td>Checks to see if a new record model attribute is unique.</td>
+<td>新しいレコードのアトリビュートがユニークかどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>uppercase</td>
-<td>checks if <code>string</code> in this record is uppercase</td>
+<td>文字列が全て大文字かどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>url</td>
-<td>checks if <code>string</code> in this record is a URL</td>
+<td>文字列がURLの形式かどうか。</td>
 <td></td>
 </tr>
 <tr>
 <td>urlish</td>
-<td>Does the <code>string</code> in this record contain something that looks like a route, ending with a file extension?</td>
+<td>文字列が何らかの拡張子を含むルートかどうか。</td>
 <td>/^\s([^\/]+.)+.+\s*$/g</td>
 </tr>
 <tr>
 <td>uuid</td>
-<td>checks if <code>string</code> in this record is a UUID (v3, v4, or v5)</td>
+<td>文字列はUUID(v3,v4,もしくはv5)か。</td>
 <td></td>
 </tr>
 <tr>
 <td>uuidv3</td>
-<td>checks if <code>string</code> in this record is a UUID (v3)</td>
+<td>文字列はUUID(v3)か。</td>
 <td></td>
 </tr>
 <tr>
 <td>uuidv4</td>
-<td>checks if <code>string</code> in this record is a UUID (v4)</td>
+<td>文字列はUUID(v4)か。</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="custom-validation-rules" permalink="custom-validation-rules">Custom Validation Rules</h3>
-<p>You can define your own types and their validation with the types object. It&apos;s possible to access and compare values to other attributes (with &quot;this&quot;). This allows you to move validation business logic into your models and out of your controller logic.</p>
+<h3>カスタムバリデーションルール</h3>
+<p>タイプオブジェクトを使うとオリジナルのバリデーション規則を定義することが出来ます。ここでは別々のアトリビュートを参照し、比較することも出来ます(&quot;this&quot;を使って)。これによりバリデーションのビジネスロジックをコントローラからモデルへと移動することが出来ます。</p>
 <blockquote>
-<p>Note that your own type always have to be a variant of the basic data-types (&quot;string&quot;, &quot;int&quot;, &quot;json&quot;, ...)</p>
+<p>あなたの名づけたバリデーションスールは常に基本データ型(&quot;string&quot;, &quot;int&quot;, &quot;json&quot;など)と異なっている必要があることを覚えておいてください。</p>
 </blockquote>
-<h4 id="example-model" permalink="example-model">Example Model</h4>
-<pre><code data-language="javascript">// api/models/foo
+<h4>モデルの例</h4>
+<pre><code class="language-javascript">// api/models/foo
 module.exports = {
 
   types: {
@@ -331,29 +332,27 @@ module.exports = {
   },
   attributes: {
     firstName: {
-      type: &apos;string&apos;,
+      type: 'string',
       required: true,
       minLength: 5,
       maxLength: 15
     },
     location: {
-      //note, that the base type (json) still has to be defined
-      type: &apos;json&apos;,
+      //ベースのタイプ（Json）は依然として定義しなければなりません。
+      type: 'json',
       is_point: true
     },
     password: {
-      type: &apos;string&apos;,
+      type: 'string',
       password: true
     },
     passwordConfirmation: {
-      type: &apos;string&apos;
+      type: 'string'
     }
 
   }
-}
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="custom-validation-messages" permalink="custom-validation-messages">Custom Validation Messages</h3>
-<p>Out of the box, Sails.js does not support custom validation messages. However, for Sails v0.11.0+ a <a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks" target="_blank">Hook</a> is available: <a href="https://github.com/lykmapipo/sails-hook-validation" target="_blank">sails-hook-validator</a>. Details regarding its usage can be found in the <a href="https://github.com/lykmapipo/sails-hook-validation" target="_blank">sails-hook-validator</a> repository.</p>
-<p><docmeta name="uniqueID" value="Validations576587"></docmeta></p>
+}</code></pre>
+<h3>カスタムバリデーションメッセージ</h3>
+<p>Sailsはそのままではカスタムバリデーションメッセージをサポートしていませんがv0.11.0以降では<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks">Hook</a>が利用可能です: <a href="https://github.com/lykmapipo/sails-hook-validation">sails-hook-validator</a> この使い方に関しての詳細は<a href="https://github.com/lykmapipo/sails-hook-validation">sails-hook-validator</a>レポジトリをご覧ください。</p>
+<docmeta name="uniqueID" value="Validations576587">
 <docmeta name="displayName" value="Validations">
-</docmeta>

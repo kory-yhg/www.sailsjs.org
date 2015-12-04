@@ -1,107 +1,104 @@
-<h1 id="task-automation">Task Automation</h1>
-<h3 id="overview" permalink="overview">Overview</h3>
-<p>The <a href="http://sailsjs.org/documentation/anatomy/tasks" target="_blank"><code>tasks/</code></a> directory contains a suite of <a href="http://gruntjs.com/creating-tasks" target="_blank">Grunt tasks</a> and their <a href="http://gruntjs.com/configuring-tasks" target="_blank">configurations</a>.</p>
-<p>Tasks are mainly useful for bundling front-end assets, (like stylesheets, scripts, &amp; client-side markup templates) but they can also be used to automate all kinds of repetitive development chores, from <a href="https://github.com/jmreidy/grunt-browserify" target="_blank">browserify</a> compilation to <a href="https://www.npmjs.org/package/grunt-db-migrate" target="_blank">database migrations</a>.</p>
-<p>Sails bundles some <a href="http://sailsjs.org/documentation/grunt/default-tasks" target="_blank">default tasks</a> for convenience, but with <a href="http://gruntjs.com/plugins" target="_blank">literally hundreds of plugins</a> to choose from, you can use tasks to automate just about anything with minimal effort.  If someone hasn&apos;t already built what you need, you can always <a href="http://gruntjs.com/creating-tasks" target="_blank">author</a> and <a href="http://gruntjs.com/creating-plugins" target="_blank">publish your own Grunt plugin</a> to <a href="http://npmjs.org" target="_blank">npm</a>!</p>
+<h1>タスクの自動化</h1>
+<h3>概要</h3>
+<p><a href="http://sailsjs.org/documentation/anatomy/tasks"><code>tasks/</code></a>ディレクトリには<a href="http://gruntjs.com/creating-tasks">Gruntタスク</a>とその<a href="http://gruntjs.com/configuring-tasks">設定ファイル</a>がまとめられて入っています。</p>
+<p>タスクは主にフロントエンドのアセットをバンドルする(例えばスタイルシートやスクリプト、クライアントサイドマークアップテンプレートなど）のに利用されますがその他にも<a href="https://github.com/jmreidy/grunt-browserify">browserify</a>のcompilationから<a href="https://www.npmjs.org/package/grunt-db-migrate">データベースマイグレーション</a>に至るまで様々な開発中の細々とした仕事を自動化するためにも使えます。</p>
+<p>Sailsは簡便のためにいくつかの<a href="http://sailsjs.org/documentation/grunt/default-tasks">デフォルトのタスク</a> をバンドルしていますが文字通り数百ものプラグインが利用でき、これによってすべての雑用を最小限の手数で完了することが出来ます。もしもあなたが使いたいタスクがなかったら自分で<a href="http://gruntjs.com/creating-tasks">Gruntのプラグインを作って</a>それを<a href="http://npmjs.org">npm</a>に載せることも出来ます。</p>
 <blockquote>
-<p>If you haven&apos;t used <a href="http://gruntjs.com/" target="_blank">Grunt</a> before, be sure to check out the <a href="http://gruntjs.com/getting-started" target="_blank">Getting Started</a> guide, as it explains how to create a <a href="http://gruntjs.com/sample-gruntfile" target="_blank">Gruntfile</a> as well as install and use Grunt plugins.</p>
+<p>今までに<a href="http://gruntjs.com/">Grunt</a>を使ったことがない方は<a href="http://gruntjs.com/getting-started">Getting Started</a>ガイドを見てください。そこには<a href="http://gruntjs.com/sample-gruntfile">Gruntfile</a> の書き方やインストール方法が書かれています。</p>
 </blockquote>
-<h3 id="asset-pipeline" permalink="asset-pipeline">Asset pipeline</h3>
-<p>The asset pipeline is the place where you will organize the assets that will be injected into your views, and it can be found in the <code>tasks/pipeline.js</code> file. Configuring these assets is simple and uses grunt <a href="http://gruntjs.com/configuring-tasks#files" target="_blank">task file configuration</a> and <a href="http://gruntjs.com/configuring-tasks#globbing-patterns" target="_blank">wildcard/glob/splat patterns</a>. They are broken down into three sections.</p>
-<h5 id="css-files-to-inject" permalink="css-files-to-inject">CSS Files to Inject</h5>
-<p>This is an array of css files to be injected into your html as <code>&lt;link&gt;</code> tags.  These tags will be injected between the <code>&lt;!--STYLES--&gt;&lt;!--STYLES END--&gt;</code> comments in any view in which they appear.</p>
-<h5 id="javascript-files-to-inject" permalink="javascript-files-to-inject">Javascript Files to Inject</h5>
-<p>This is an array of Javascript files that gets injected into your html as <code>&lt;script&gt;</code> tags.  These tags will be injected between the <code>&lt;!--SCRIPTS--&gt;&lt;!--SCRIPTS END--&gt;</code> comments in any view in which they appear. The files get injected in the order they are in the array (i.e. you should place the path of dependencies before the file that depends on them.)</p>
-<h5 id="template-files-to-inject" permalink="template-files-to-inject">Template Files to Inject</h5>
-<p>This is an array of html files that will compiled to a jst function and placed in a jst.js file. This file then gets injected as a <code>&lt;script&gt;</code> tag in between the <code>&lt;!--TEMPLATES--&gt;&lt;!--TEMPLATES END--&gt;</code> comments in your html.</p>
+<h3>アセットパイプライン</h3>
+<p>アセットパイプラインはビューに挿入されるアセットを整形する部分であり、<code>tasks/pipeline.js</code>ファイルに記述されます。これらのアセットを設定するにはGruntに<a href="http://gruntjs.com/configuring-tasks#files">タスクファイル</a>タスクファイル設定と<a href="http://gruntjs.com/configuring-tasks#globbing-patterns">wildcard/glob/splaのパターン</a>を使うだけで簡単にできます。これらは3つの部分からなります。</p>
+<h5>CSSファイルの挿入</h5>
+<p>ここではHTMLに<code>&lt;link</code>&gt;タグとして挿入されるCSSファイルを指定します。これらのタグは全てのビューの<code>&lt;!--STYLES--&gt;&lt;!--STYLES END--&gt;</code>コメントの間に挿入されます。</p>
+<h5>Javascriptファイルの挿入</h5>
+<p>ここではHTMLに<code>&lt;script</code>&gt;タグとして挿入されるCSSファイルを指定します。これらのタグは全てのビューの<code>&lt;!--STYLES--&gt;&lt;!--STYLES END--&gt;</code>コメントの間に挿入されます。各ファイルは配列の並び順に基づいて挿入されます。（すなわち依存するファイルのパスの前に依存されるファイルのパスを入れなければなりません）</p>
+<h5>テンプレートファイルの挿入</h5>
+<p>ここではjstファンクションにコンパイルされjst.jsファイルに保存されるhtmlファイルの配列を指定します。このファイルはその後<code>&lt;script&gt;</code>タグとしてHTMLの<code>&lt;!--TEMPLATES--&gt;&lt;!--TEMPLATES END--&gt;</code>コメントの間に挿入されます。</p>
 <blockquote>
-<p>The same grunt wildcard/glob/splat patterns and task file configuration are used in some of the task configuration js files themselves if you would like to change those too.</p>
+<p>同じGruntのwildcard/glob/splatとタスク設定ファイルはいくつかのタスク設定jsファイル自体でで使われていますので変更を加えたいときはそれらも同様に編集してください。</p>
 </blockquote>
-<h3 id="task-configuration" permalink="task-configuration">Task configuration</h3>
-<p>Configured tasks are the set of rules your Gruntfile will follow when run. They are completely customizable and are located in the <a href="http://sailsjs.org/documentation/anatomy/my-app/tasks/config" target="_blank"><code>tasks/config/</code></a> directory. You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks- just add a <code>someTask.js</code> file in this directory to configure the new task, then register it with the appropriate parent task(s) (see files in <code>tasks/register/*.js</code>). Remember, Sails comes with a set of useful default tasks that are designed to get you up and running with no configuration required.</p>
-<h5 id="configuring-a-custom-task-" permalink="configuring-a-custom-task">Configuring a custom task.</h5>
-<p>Configuring a custom task into your project is very simple and uses Grunt&#x2019;s <a href="http://gruntjs.com/api/grunt.config" target="_blank">config</a> and <a href="http://gruntjs.com/api/grunt.task" target="_blank">task</a> APIs to allow you to make your task modular. Let&#x2019;s go through a quick example of creating a new task that replaces an existing task. Let&#x2019;s say we want to use the <a href="http://handlebarsjs.com/" target="_blank">Handlebars</a> templating engine instead of the underscore templating engine that comes configured by default:</p>
+<h3>タスクの設定</h3>
+<p>設定済みのタスクはGruntfileが実行されたとき適用されるルールをまとめたものです。これら<a href="http://sailsjs.org/documentation/anatomy/myApp/tasks/config"><code>tasks/config/</code></a>にあり、完全にカスタマイズ可能です。あなたの使いたい用途に合わせてこれたのGruntファイルのうち全てを編集し、省略し、また置き換えることが出来ます。同様に<code>someTask.js</code>のようなファイルをこのディレクトリに追加し他の適切なタスクと一緒に登録することで(<code>grunt/register/*.js</code>のファイルを参照してください。)あなた自身のGruntファイルを作成することも出来ます。なおSailsは特段の設定なしに起動できるように便利なデフォルトのタスクのセットを持っているということも忘れずにいてください。</p>
+<h5>カスタムのタスクを設定する</h5>
+<p>プロジェクトにカスタムのタスクを設定するのはとてもシンプルで、Gruntの<a href="http://gruntjs.com/api/grunt.config">設定</a>と<a href="http://gruntjs.com/api/grunt.task">タスク</a>APIを使うことでタスクをモジュールにすることが出来ます。既存のタスクを置き換えて新しいタスクを作成する例を見てみましょう。デフォルトで設定されているunderscoreの代わりに<a href="http://handlebarsjs.com/">Handlebars</a>をテンプレートエンジンとして使いたいとします。:</p>
 <ul>
-<li>The first step is to install the handlebars grunt plugin using the following command in your terminal:</li>
+<li>まずはじめに以下のコマンドをターミナルで実行することでHandlebarsのGruntプラグインをインストールするところから始めます。:</li>
 </ul>
-<pre><code data-language="javascript">npm install grunt-contrib-handlebars --save-dev
-</code></pre><!-- __LANG=%%__ -->
+<pre><code class="language-bash">npm install grunt-contrib-handlebars --save-dev</code></pre>
 <ul>
-<li>Create a configuration file at <code>tasks/config/handlebars.js</code>. This is where we&#x2019;ll put our handlebars configuration.</li>
+<li><code>tasks/config/handlebars.js</code>に設定ファイルを作成します。これはhandlebarsの設定を入れるところです。 </li>
 </ul>
-<pre><code data-language="javascript">// tasks/config/handlebars.js
+<pre><code class="language-javascript">// tasks/config/handlebars.js
 // --------------------------------
 // handlebar task configuration.
 
 module.exports = function(grunt) {
 
-  // We use the grunt.config api&apos;s set method to configure an
+  // We use the grunt.config api's set method to configure an
   // object to the defined string. In this case the task
-  // &apos;handlebars&apos; will be configured based on the object below.
-  grunt.config.set(&apos;handlebars&apos;, {
+  // 'handlebars' will be configured based on the object below.
+  grunt.config.set('handlebars', {
     dev: {
       // We will define which template files to inject
       // in tasks/pipeline.js
       files: {
-        &apos;.tmp/public/templates.js&apos;: require(&apos;../pipeline&apos;).templateFilesToInject
+        '.tmp/public/templates.js': require('../pipeline').templateFilesToInject
       }
     }
   });
 
   // load npm module for handlebars.
-  grunt.loadNpmTasks(&apos;grunt-contrib-handlebars&apos;);
-};
-</code></pre><!-- __LANG=%%__ -->
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
+};</code></pre>
 <ul>
-<li>Replace the path to source files in asset pipeline. The only change here will be that handelbars looks for files with the extension .hbs while underscore templates can be in simple html files.</li>
+<li>アセットパイプラインにおけるソースファイルのパス設定を書き換えます。ここでの唯一の変更点はunderscoreのテンプレートはシンプルなHTMLファイルの中に入れれるのに対してhandelbarsは.hbs拡張子のファイルを参照するということです。</li>
 </ul>
-<pre><code data-language="javascript">// tasks/pipeline.js
+<pre><code class="language-javascript">// tasks/pipeline.js
 // --------------------------------
 // asset pipeline
 
 var cssFilesToInject = [
-  &apos;styles/**/*.css&apos;
+  'styles/**/*.css'
 ];
 
 var jsFilesToInject = [
-  &apos;js/socket.io.js&apos;,
-  &apos;js/sails.io.js&apos;,
-  &apos;js/connection.example.js&apos;,
-  &apos;js/**/*.js&apos;
+  'js/socket.io.js',
+  'js/sails.io.js',
+  'js/connection.example.js',
+  'js/**/*.js'
 ];
 
 // We change this glob pattern to include all files in
 // the templates/ direcotry that end in the extension .hbs
 var templateFilesToInject = [
-  &apos;templates/**/*.hbs&apos;
+  'templates/**/*.hbs'
 ];
 
 module.exports = {
   cssFilesToInject: cssFilesToInject.map(function(path) {
-    return &apos;.tmp/public/&apos; + path;
+    return '.tmp/public/' + path;
   }),
   jsFilesToInject: jsFilesToInject.map(function(path) {
-    return &apos;.tmp/public/&apos; + path;
+    return '.tmp/public/' + path;
   }),
   templateFilesToInject: templateFilesToInject.map(function(path) {
-    return &apos;assets/&apos; + path;
+    return 'assets/' + path;
   })
-};
-</code></pre><!-- __LANG=%%__ -->
+};</code></pre>
 <ul>
-<li>Include the handlebars task into the compileAssets and syncAssets registered tasks. This is where the jst task was being used and we are going to replace it with the newly configured handlebars task.</li>
+<li>compileAssetsとsyncAssetsの登録済みタスクにhandlebarsのタスクをインクルードします。ここはjstタスクが使われるところですが、これを新しく設定したhandlebarsで置き換えます。</li>
 </ul>
-<pre><code data-language="javascript">// tasks/register/compileAssets.js
+<pre><code class="language-javascript">// tasks/register/compileAssets.js
 // --------------------------------
 // compile assets registered grunt task
 
 module.exports = function (grunt) {
-  grunt.registerTask(&apos;compileAssets&apos;, [
-    &apos;clean:dev&apos;,
-    &apos;handlebars:dev&apos;,       // changed jst task to handlebars task
-    &apos;less:dev&apos;,
-    &apos;copy:dev&apos;,
-    &apos;coffee:dev&apos;
+  grunt.registerTask('compileAssets', [
+    'clean:dev',
+    'handlebars:dev',       // changed jst task to handlebars task
+    'less:dev',
+    'copy:dev',
+    'coffee:dev'
   ]);
 };
 
@@ -110,35 +107,32 @@ module.exports = function (grunt) {
 // synce assets registered grunt task
 
 module.exports = function (grunt) {
-  grunt.registerTask(&apos;syncAssets&apos;, [
-    &apos;handlebars:dev&apos;,      // changed jst task to handlebars task
-    &apos;less:dev&apos;,
-    &apos;sync:dev&apos;,
-    &apos;coffee:dev&apos;
+  grunt.registerTask('syncAssets', [
+    'handlebars:dev',      // changed jst task to handlebars task
+    'less:dev',
+    'sync:dev',
+    'coffee:dev'
   ]);
-};
-</code></pre><!-- __LANG=%%__ -->
+};</code></pre>
 <ul>
-<li>Remove jst task config file. We are no longer using it so we can get rid of <code>tasks/config/jst.js</code>. Simply delete it from your project.</li>
+<li>jstタスクの設定を削除します。我々はすでにtasks/config/jst.jsを必要としないのでこれを削除することが出来ます。単にプロジェクトから削除するだけで構いません。</li>
 </ul>
 <blockquote>
-<p>Ideally you should delete it from your project and your project&apos;s node dependencies. This can be done by running this command in your terminal.</p>
-<pre><code data-language="javascript">npm uninstall grunt-contrib-jst --save-dev
-</code></pre><!-- __LANG=%%__ -->
+<p>理想的にはこれをプロジェクトとプロジェクトのnode dependenciesから削除します。これは以下のコマンドを実行することで行えます。</p>
+<pre><code class="language-bash">npm uninstall grunt-contrib-jst --save-dev</code></pre>
 </blockquote>
-<h3 id="task-triggers" permalink="task-triggers">Task triggers</h3>
-<p>In <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.local.html?q=environment" target="_blank">development mode</a>, Sails runs the <code>default</code> task (<a href="http://sailsjs.org/documentation/anatomy/myApp/tasks/register/default.js.html" target="_blank"><code>tasks/register/default.js</code></a>).  This compiles LESS, CoffeeScript, and client-side JST templates, then links to them automatically from your app&apos;s dynamic views and static HTML pages.</p>
-<p>In production, Sails runs the <code>prod</code> task (<a href="http://sailsjs.org/documentation/anatomy/myApp/tasks/register/prod.js.html" target="_blank"><code>tasks/register/prod.js</code></a>) which shares the same duties as <code>default</code>, but also minifies your app&apos;s scripts and stylesheets.  This reduces your application&apos;s load time and bandwidth usage.</p>
-<p>These task triggers are <a href="http://gruntjs.com/creating-tasks#basic-tasks" target="_blank">&quot;basic&quot; Grunt tasks</a> located in the <a href="http://sailsjs.org/documentation/anatomy/myApp/tasks/register" target="_blank"><code>tasks/register/</code></a> folder.  Below, you&apos;ll find the complete reference of all task triggers in Sails, and the command which kicks them off:</p>
-<h5 id="-sails-lift-" permalink="sails-lift"><code>sails lift</code></h5>
-<p>Runs the <strong>default</strong> task (<code>tasks/register/default.js</code>).</p>
-<h5 id="-sails-lift-prod-" permalink="sails-lift-prod"><code>sails lift --prod</code></h5>
-<p>Runs the <strong>prod</strong> task (<code>tasks/register/prod.js</code>).</p>
-<h5 id="-sails-www-" permalink="sails-www"><code>sails www</code></h5>
-<p>Runs the <strong>build</strong> task (<code>tasks/register/build.js</code>) that compiles all the assets to <code>www</code> subfolder instead of <code>.tmp/public</code> using relative paths in references. This allows serving static content with Apache or Nginx instead of relying on <a href="http://sailsjs.org/documentation/concepts/Middleware" target="_blank">&apos;www middleware&apos;</a>.</p>
-<h5 id="-sails-www-prod-production-" permalink="sails-www-prod-(production)"><code>sails www --prod</code> (production)</h5>
-<p>Runs the <strong>buildProd</strong> task (<code>tasks/register/buildProd.js</code>) that does the same as <strong>build</strong> task but also optimizes assets.</p>
-<p>You may run other tasks by specifying setting NODE_ENV and creating a task list in tasks/register/ with the same name.  For example, if NODE_ENV is QA, sails will run tasks/register/QA.js if it exists.</p>
-<p><docmeta name="uniqueID" value="TaskAutomation282238"></docmeta></p>
+<h3>Task triggers</h3>
+<p><a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.local.html?q=environment">デベロップメントモード</a>においてはSailsは<code>default</code>のタスク(<a href="http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/default.js.html"><code>tasks/register/default.js</code></a>)を実行します。これはLESSやCoffeeScript、クライアントサイドのJSTテンプレートをコンパイルし、アプリケーションの動的なビューと静的なHTMLページにリンクします。</p>
+<p>本番環境においてはSailsは<code>prod</code>のタスク(<a href="http://sailsjs.org/documentation/anatomy/myApp/tasks/register/prod.js.html"><code>tasks/register/prod.js</code></a>)を実行し、これはこれは<code>default</code>のタスクに加えてアプリケーションのスタイルシートスクリプトを最小化します。これによりアプリケーションの読み込み時間と利用帯域を節約することが出来ます。</p>
+<p>これらのタスクのトリガーは<a href="http://sailsjs.org/documentation/anatomy/myApp/tasks/register"><code>tasks/register/</code></a>フォルダーにある<a href="http://gruntjs.com/creating-tasks#basic-tasks">Gruntの&quot;basic&quot;タスク</a>に有ります。以下にSailsの全てのタスクトリガーとそれぞれが走らせるコマンドのリファレンスを説明します。:</p>
+<h5><code>sails lift</code></h5>
+<p><strong>default</strong>のタスクを実行します。 (<code>tasks/register/default.js</code>).</p>
+<h5><code>sails lift --prod</code></h5>
+<p><strong>prod</strong>のタスクを実行します。 (<code>tasks/register/prod.js</code>).</p>
+<h5><code>sails www</code></h5>
+<p><strong>build</strong>タスクを実行します。 (<code>tasks/register/build.js</code>)that compiles all the assets to <code>www</code> subfolder instead of <code>.tmp/public</code> using relative paths in references. This allows serving static content with Apache or Nginx instead of relying on <a href="http://sailsjs.org/documentation/concepts/Middleware">'www middleware'</a>、.</p>
+<h5><code>sails www --prod</code> (production)</h5>
+<p><strong>buildProd</strong>タスクを実行します。 (<code>tasks/register/buildProd.js</code>).that does the same as <strong>build</strong> task but also optimizes assets.</p>
+<p>NODE_ENVの設定で別のタスクを実行するように指定したり、tasks/register/で同名のタスクのリストを作成することが出来ます。例えば、NODE_ENVがQAの時Sailsはもしtasks/register/QA.jsが存在すればそれを実行します。</p>
+<docmeta name="uniqueID" value="TaskAutomation282238">
 <docmeta name="displayName" value="Task Automation">
-</docmeta>

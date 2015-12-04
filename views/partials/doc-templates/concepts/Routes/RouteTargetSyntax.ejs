@@ -1,150 +1,135 @@
-<h1 id="custom-routes">Custom Routes</h1>
-<h3 id="overview" permalink="overview">Overview</h3>
-<p>Sails allows you to explicitly route URLs in several different ways in your <strong>config/routes.js</strong> file.  Every route configuration consists of an <strong>address</strong> and a <strong>target</strong>, for example:</p>
-<pre><code data-language="javascript">&apos;GET /foo/bar&apos;: &apos;FooController.bar&apos;
-^^^address^^^^  ^^^^^^target^^^^^^^
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="route-address" permalink="route-address">Route Address</h3>
-<p>The route address indicates what URL should be matched in order to apply the handler and options defined by the target.  A route consists of an optional verb and a mandatory path:</p>
-<pre><code data-language="javascript">&apos;POST  /foo/bar&apos;
-^verb^ ^^path^^
-</code></pre><!-- __LANG=%%__ -->
-<p>If no verb is specified, the target will be applied to any request that matches the path, regardless of the HTTP method used (<strong>GET</strong>, <strong>POST</strong>, <strong>PUT</strong> etc.).  Note the initial <code>/</code> in the path--all paths should start with one in order to work properly.</p>
-<p>####Wildcards and dynamic parameters</p>
-<p>In addition to specifying a static path like <strong>foo/bar</strong>, you can use <code>*</code> as a wildcard:</p>
-<pre><code data-language="javascript">&apos;/*&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>will match all paths, where as:</p>
-<pre><code data-language="javascript">&apos;/user/foo/*&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>will match all paths that <em>start</em> with <strong>/user/foo</strong>.</p>
+<h1>ルートターゲットの記法</h1>
+<h3>概要</h3>
+<p>Sailsでは<strong>config/routes.js</strong>において、いくつかの方法で明示的なルートを設定することが出来ます。すべてのルーティングせっては<strong>アドレス</strong>と<strong>ターゲット</strong>から成っています。例えば、:</p>
+<pre><code>'GET /foo/bar': 'FooController.bar'
+^^^address^^^^  ^^^^^^target^^^^^^^</code></pre>
+<h3>ルートアドレス</h3>
+<p>ルートアドレスはターゲットに指定されたハンドラーやオプションの適用を受けるにはどのようなURLにマッチしていなければならないかを示すものです。ルートは必須事項のパスとオプションのリクエスト種別から成っています。:</p>
+<pre><code>'POST  /foo/bar'
+^verb^ ^^path^^</code></pre>
+<p>どのようなリクエスト種別も指定されなかった場合、(<strong>GET</strong>, <strong>POST</strong>, <strong>PUT</strong>などのいずれかにかかわらず)パスにマッチするすべてのリクエストに対してターゲットが適用されます。先頭に<code>/</code>をつけるのを忘れずにいてください。適切に動作させるにはすべてのパスは<code>/</code>から始まらなければなりません。</p>
+<h4>ワイルドカードとダイナミックパラメータ</h4>
+<p>特定のパスを<strong>foo/bar</strong>のように指定する代わりにワイルドカードとして<code>*</code>が使えます。:</p>
+<pre><code>'/*'</code></pre>
+<p>上のものはすべてのパスに当てはまります:</p>
+<pre><code>'/user/foo/*'</code></pre>
+<p>上のものは<strong>/user/foo</strong>で<em>始まる</em>すべてのパスに当てはまります。</p>
 <blockquote>
-<p><strong>Note:</strong> When using a route with a wildcard, such as <code>&apos;/*&apos;</code>, be aware that this will also match requests to static assets (i.e. <code>/js/dependencies/sails.io.js</code>) and override them. To prevent this, consider using the <code>skipAssets</code> option <a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options" target="_blank">described below</a>.</p>
+<p><strong>備考:</strong> <code>'/*'</code>のようなワイルドカードのルートを利用する場合、スタティックなアセットへのリクエストにも適用され(すなわち <code>/js/dependencies/sails.io.js</code>のようなものも)、上書きされることを覚えておいてください。これを防ぐには<a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options">以下の</a><code>skipAssets</code>オプションを利用してください。</p>
 </blockquote>
-<p>You can capture the parts of the address that are matched by wildcards into named parameters by using the <code>:paramName</code> wildcard syntax instead of the <code>*</code>:</p>
-<pre><code data-language="javascript">&apos;/user/foo/:name/bar/:age&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>Will match the same URLs as:</p>
-<pre><code data-language="javascript">&apos;/user/foo/*/bar/*&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>but will provide the values of the wildcard portions of the route to the route handler as <code>req.param(&apos;name&apos;)</code> and <code>req.param(&apos;age&apos;)</code>, respectively.</p>
-<h4 id="regular-expressions-in-addresses" permalink="regular-expressions-in-addresses">Regular expressions in addresses</h4>
-<p>In addition to the wildcard address syntax, you may also use Regular Expressions to define the URLs that a route should match.  The syntax for defining an address with a regular expression is:</p>
-<p><code>&quot;r|&lt;regular expression string&gt;|&lt;comma-delimited list of param names&gt;&quot;</code></p>
-<p>That&apos;s the letter &quot;<strong>r</strong>&quot;, followed by a pipe character <code>|</code>, a regular expression string <em>without delimiters</em>, another pipe, and a list of parameter names that should be mapped to parenthesized groups in the regular expression.  For example:</p>
-<p><code>&quot;r|^/\\d+/(\\w+)/(\\w+)$|foo,bar&quot;: &quot;MessageController.myaction&quot;</code></p>
-<p>Will match <code>/123/abc/def</code>, running the <code>myaction</code> action of <code>MessageController</code> and supplying the values <code>abc</code> and <code>def</code> as <code>req.param(&apos;foo&apos;)</code> and <code>req.param(&apos;bar&apos;)</code>, respectively.</p>
-<p>Note the double-backslash in <code>\\d</code> and <code>\\w</code>; this escaping is necessary for the regular expression to work correctly!</p>
-<h4 id="about-route-ordering" permalink="about-route-ordering">About route ordering</h4>
-<p>When using wildcards or regular expressions in your addresses, keep in mind that the ordering of your routes in <strong>config/routes.js</strong> matters; URLs are matched against addresses in the list from the top down.  If you have two configurations in this order:</p>
-<pre><code>&apos;/user&apos;: &apos;UserController.doSomething&apos;,
-&apos;/*&apos;   : &apos;CatchallController.doSomethingElse&apos;
-</code></pre><p>then a request to <code>/user</code> will not be matched by the second configuration unless the first configuration&apos;s handler calls <code>next()</code> in its code, which is discouraged (only <a href="http://sailsjs.org/documentation/concepts/Policies" target="_blank">policies</a> should call <code>next()</code>).  Unless you&apos;re doing something very advanced, it is safe to assume that every request will be handled by at most one route in your <strong>config/routes.js</strong> file.</p>
-<h3 id="route-target" permalink="route-target">Route Target</h3>
-<p>The address portion of a custom route specifies which URLs the route should match.  The <em>target</em> portion specifies what Sails should do after the match is made.  A target can take one of several different forms.  In some cases you may want to chain multiple targets to a single address by placing them in an array, but in most cases each address will have only one target.  The different types of targets are discussed below, followed by a discussion of the various options that can be applied to them.</p>
-<h4 id="controller-action-target-syntax" permalink="controller-/-action-target-syntax">Controller / action target syntax</h4>
-<p>The most common type of target is one which binds a route to a custom <a href="http://sailsjs.org/documentation/concepts/Controllers?q=actions" target="_blank">controller action</a>.  The following four routes are equivalent:</p>
-<pre><code data-language="javascript">&apos;GET /foo/go&apos;: &apos;FooController.myGoAction&apos;,
-&apos;GET /foo/go&apos;: &apos;Foo.myGoAction&apos;,
-&apos;GET /foo/go&apos;: {controller: &quot;Foo&quot;, action: &quot;myGoAction&quot;},
-&apos;GET /foo/go&apos;: {controller: &quot;FooController&quot;, action:&quot;myGoAction&quot;},
-</code></pre><!-- __LANG=%%__ -->
-<p>Each one maps <code>GET /foo/go</code> to the <code>myGoAction</code> action of the controller in <strong>api/controllers/FooController.js</strong>.  If no such controller or action exists, Sails will output an error message and ignore the route.  Otherwise, whenever a <strong>GET</strong> request to <strong>/foo/go</strong> is made, the code in that action will be run.</p>
-<p>The controller and action names in this syntax are case-insensitive.</p>
-<p>Note that the <a href="http://sailsjs.org/documentation/reference/blueprint-api" target="_blank">blueprints API</a> adds several actions to your controllers by default (like &quot;find&quot;, &quot;create&quot;, &quot;update&quot; and &quot;delete&quot;), all of which are available for routing:</p>
-<pre><code data-language="javascript">&apos;GET /foo/go&apos;: &apos;UserController.find&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>Assuming that your have a <strong>api/controllers/UserController.js</strong> file and a <strong>api/models/User.js</strong> file, browsing to <strong>/foo/go</strong> in a browser will, using the above config, run the default &quot;find* blueprint action which displays a list of all <code>User</code> models.  If you have a <a href="http://sailsjs.org/documentation/concepts/Controllers?q=actions" target="_blank">custom action</a> named <code>find</code> in UserController, that action will be run instead.</p>
-<h4 id="view-target-syntax" permalink="view-target-syntax">View target syntax</h4>
-<p>Another common target is one that binds a route to a <a href="http://sailsjs.org/documentation/concepts/Views" target="_blank">view</a>.  The syntax for this is simple: it&apos;s the path to the view file relative to the <strong>views</strong> folder, without the file extension:</p>
-<pre><code data-language="javascript">&apos;GET /home&apos;: {view: &apos;home/index&apos;}
-</code></pre><!-- __LANG=%%__ -->
-<p>This maps the <code>GET /home</code> to the view stored in <strong>views/home/index.ejs</strong> (assuming the default EJS <a href="http://sailsjs.org/documentation/concepts/Views/ViewEngines.html" target="_blank">template engine</a> is used).  As long as that view file exists, a <strong>GET</strong> request to  <strong>/home</strong> will display it.</p>
+<p><code>:paramName</code>を<code>*</code>の代わりにワイルドカードとして利用することにより、アドレス中のワイルドカードにマッチする部分を名前付きのパラメータとして利用することが出来ます。:</p>
+<pre><code>'/user/foo/:name/bar/:age'</code></pre>
+<p>これは以下のURLと同じものにマッチします:</p>
+<pre><code>'/user/foo/*/bar/*'</code></pre>
+<p>ただし、ワイルドカードにされた部分に与えられた値はそれぞれ<code>req.param('name')</code>と<code>req.param('age')</code>で取得出来ます。</p>
+<h4>アドレス中の正規表現</h4>
+<p>ワイルドカードによるアドレス記法に加えて、正規表現を用いてマッチすべきアドレスを定義する事ができます。正規表現を用いてアドレスを定義する方法は以下のとおりです。 :</p>
+<p><code>"r|&lt;regular expression string&gt;|&lt;comma-delimited list of param names&gt;"</code></p>
+<p>&quot;<strong>r</strong>&quot;の後に<code>|</code>、そして<em>デリミタなしの</em>正規表現文字列、そしてもう一つのパイプ、それから正規表現中で丸括弧方式で書かれた部分に対応するパラメータ名のリストと言う形式です。例えば:</p>
+<p><code>"r|^/\\d+/(\\w+)/(\\w+)$|foo,bar": "MessageController.myaction"</code></p>
+<p>これは <code>/123/abc/def</code>にマッチし、<code>MessageController</code>の中の<code>myaction</code>アクションを動作させその際には<code>abc</code>と<code>def</code>が<code>req.param('foo')</code>と<code>req.param('bar')</code>としてそれぞれ取り出せます。</p>
+<p>2重のバックスラッシュ<code>\\d</code>と<code>\\w</code>にご留意ください。正規表現を正しく動作させるためにはこの部分のエスケープが必要です。</p>
+<h4>ルートの順番</h4>
+<p>ワイルドカードや正規表現を利用する際には<strong>config/routes.js</strong>における記述順の問題に関してご留意ください。URLは上に書かれたパターンから下に書かれたパターンへの順番で適用されます。例えば以下の様な設定をしたとします。:</p>
+<pre><code>'/user': 'UserController.doSomething',
+'/*'   : 'CatchallController.doSomethingElse'</code></pre>
+<p>マッチングが途中で打ち切られてしまうので、リクエスト<code>/user</code>は最初の設定のハンドラがコード内で<code>next()</code>を呼び出さない限りは2つ目の設定にマッチすることはありません。(<a href="http://beta.sailsjs.org/#/documentation/concepts/Policies">policies</a>のみが<code>next()</code>をコールすることが出来ます。)何かとても特殊なことをするという場合以外は、各リクエストは<strong>config/routes.js</strong>中の一つのリクエストにのみマッチするようにしておいたほうが無難です。</p>
+<h3>ルートターゲット</h3>
+<p>カスタムルート中のアドレス部分はどのようなURLにマッチすべきかを示します。一方、<em>ターゲット</em>部分はマッチした後にSailsがどのように振る舞えばいいかを示します。ターゲットはいくつかの記法で記述できます。いくつかのケースでは並列で記述することにとっていくつかのターゲットのチェインを一つのアドレスに割り当てることも出来ますが、通常はそれぞれのアドレスは一つのターゲットを持ちます。以下にそれぞれのターゲットの記法を記し、その後提供可能な様々なオプションに関して説明します。</p>
+<h4>コントローラ・アクションに対するターゲットの記法</h4>
+<p>最もよく使われるターゲットは特定の<a href="http://sailsjs.org/documentation/concepts/Controllers?q=actions">コントローラアクション</a>を指定するルートです。以下の4つのルートは皆同じ意味です。:</p>
+<pre><code>'GET /foo/go': 'FooController.myGoAction',
+'GET /foo/go': 'Foo.myGoAction',
+'GET /foo/go': {controller: "Foo", action: "myGoAction"},
+'GET /foo/go': {controller: "FooController", action:"myGoAction"},
+</code></pre>
+<p>それぞれの設定は<code>GET /foo/go</code>が<strong>api/controllers/FooController.js</strong>の<code>myGoAction</code>マップすることを示します。もし、対応するアクションがないときにはSailsはエラーメッセージを返してルートを無視します。そうでなければ<strong>/foo/go</strong> に対する<strong>GET</strong>リクエストがなされた時はいつでもアクションのコードが実行されます。</p>
+<p>この記法におけるコントローラとアクションの名前はケースセンシティブです。</p>
+<p><a href="http://sailsjs.org/documentation/reference/blueprint-api">blueprints API</a>はデフォルトで(&quot;create&quot;, &quot;update&quot; and &quot;delete&quot;などの)いくつかのアクションをコントローラに追加することをご留意ください。 これらのアクションはすべてルーティング可能です。:</p>
+<pre><code>'GET /foo/go': 'UserController.find'</code></pre>
+<p><strong>api/controllers/UserController.js</strong>ファイルと<strong>api/models/User.js</strong>ファイルが有ったとします。そこで以上の設定においてブラウザから<strong>/foo/go</strong>にアクセスすると、Blueprintのデフォルトの &quot;find* アクションが実行され、<code>User</code>モデルの中のすべてのリストが表示されます。また、もし<code>find</code>と名付けられた<a href="http://sailsjs.org/documentation/concepts/Controllers?q=actions">カスタムアクション</a>が存在するときにはそれがかわりに呼び出されます。</p>
+<h4>ビューをターゲットとする記法</h4>
+<p>その他のよく使われる記法としては<a href="http://sailsjs.org/documentation/concepts/Views">ビュー</a>をバインドするものです。この記法はシンプルです。<strong>views</strong>フォルダーにおける拡張子を除いたパスを記述するものです。:</p>
+<pre><code>'GET /home': {view: 'home/index'}</code></pre>
+<p>このルートは<code>GET /home</code>を<strong>views/home/index.ejs</strong>に保管されているビューにマップさせるものです。（仮にデフォルトのEJS<a href="http://sailsjs.org/documentation/concepts/Views/ViewEngines.html">テンプレートエンジン</a>が利用されているとすれば。）ビューファイルが存在する限り<strong>/home</strong>への<strong>GET</strong>リクエストは表示されます。</p>
 <blockquote>
-<p>Note that this route will be bound directly to the view, no policies will be applied in this case.
-See the StackOverflow <a href="http://stackoverflow.com/questions/21303217/sailsjs-policy-based-route-with-a-view/21340313#21340313" target="_blank">question</a> for more information.</p>
+<p>このルートは直接ビューにルーティングされていますのでいかなるポリシーも適用されないことをご留意ください。
+詳細に関してはスタックオーバーフローの<a href="http://stackoverflow.com/questions/21303217/sailsjs-policy-based-route-with-a-view/21340313#21340313">質問</a>をご覧ください。</p>
 </blockquote>
-<h4 id="blueprint-target-syntax" permalink="blueprint-target-syntax">Blueprint target syntax</h4>
-<p>In some cases you may want to map a non-standard address to one of the Sails <a href="http://sailsjs.org/documentation/reference/blueprint-api?q=blueprint-actions" target="_blank">blueprint actions</a>.  For example, if you have a controller and model named <strong>UserController</strong> and <strong>User</strong> respectively, then Sails will automatically map <strong>GET /user</strong> to the &quot;find&quot; blueprint action which returns a list of User records.  If you&apos;d like to map a different address to that action, you can use the blueprint target syntax:</p>
-<pre><code data-language="javascript">&apos;GET /findAllUsers&apos;: {model: &apos;user&apos;, blueprint: &apos;find&apos;},
-&apos;GET /user/findAll&apos;: {blueprint: &apos;find&apos;}
-</code></pre><!-- __LANG=%%__ -->
-<p>Note that in the configuration, both the <code>model</code> and <code>blueprint</code> properties are set, while in the second one, only <code>blueprint</code> is used.  In the second configuration, leaving off the <code>model</code> property causes Sails to examine the address and guess that the model is <code>User</code>.  You could override this by explicitly setting <code>model</code> to something else:</p>
-<pre><code data-language="javascript">&apos;GET /user/findAll&apos;: {blueprint: &apos;find&apos;, model: &apos;pet&apos;}
-</code></pre><!-- __LANG=%%__ -->
-<p>although you will rarely if ever want to do this, as it makes for a messy and confusing API for your app.</p>
-<p>If you specify a non-existent model or blueprint in your configuration, Sails will output an error and ignore the route.</p>
-<p>You can also use this syntax to map a route to one of the default blueprint actions even if you&apos;ve overridden that action in a controller.</p>
-<h4 id="redirect-target-syntax" permalink="redirect-target-syntax">Redirect target syntax</h4>
-<p>You can have one address redirect to another--either within your Sails app, or on another server entirely--you can do so just by specifying the redirect URL as a string:</p>
-<pre><code data-language="javascript">&apos;/alias&apos; : &apos;/some/other/route&apos;
-&apos;GET /google&apos;: &apos;http://www.google.com&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>Be careful to avoid redirect loops when redirecting within your Sails app!</p>
-<p>Note that when redirecting, the HTTP method of the original request (and any extra headers / parameters) will likely be lost, and the request will be transformed to a simple <strong>GET</strong> request.  In the above example, a <strong>POST</strong> request to <strong>/alias</strong> will result in a <strong>GET</strong> request to <strong>/some/other/route</strong>.  This is somewhat browser-dependent behavior, but it is recommended that you don&apos;t expect request methods and other data to survive a redirect.  </p>
-<h4 id="response-target-syntax" permalink="response-target-syntax">Response target syntax</h4>
-<p>You can map an address directly to a default or custom <a href="http://sailsjs.org/documentation/concepts/Custom-Responses" target="_blank">response</a> using this syntax:</p>
-<pre><code data-language="javascript">&apos;/foo&apos;: {response: &apos;notFound&apos;}
-</code></pre><!-- __LANG=%%__ -->
-<p>Simply specify the name of the response file in your <strong>api/responses</strong> folder, without the <strong>.js</strong> extension.  The response name in this syntax is case-sensitive.  If you attempt to bind a route to a non-existent response, Sails will output an error and ignore the route.</p>
-<h4 id="policy-target-syntax" permalink="policy-target-syntax">Policy target syntax</h4>
-<p>In most cases, you will want to apply <a href="http://sailsjs.org/documentation/concepts/Policies" target="_blank">policies</a> to your controller actions using the <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html" target="_blank"><strong>config/policies.js</strong></a> config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the <a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax" target="_blank">view</a> or <a href="(http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax">blueprint</a> target syntax.  The policy target syntax is:</p>
-<pre><code data-language="javascript">&apos;/foo&apos;: {policy: &apos;myPolicy&apos;}
-</code></pre><!-- __LANG=%%__ -->
-<p>However, you will always want to chain the policy to at least one other type of target, using an array:</p>
-<pre><code data-language="javascript">&apos;/foo&apos;: [{policy: &apos;myPolicy&apos;}, {blueprint: &apos;find&apos;, model: &apos;user&apos;}]
-</code></pre><!-- __LANG=%%__ -->
-<p>This will apply the <strong>myPolicy</strong> policy to the route and, if it passes, continue by running the <strong>find</strong> blueprint for the <strong>User</strong> model.</p>
-<h3 id="route-target-options" permalink="route-target-options">Route target options</h3>
-<p>In addition to the options discussed in the various route target syntaxes above, any other property you add to a route target object will be passed through to the route handler in the <code>req.options</code> object.  There are several reserved properties that can be used to affect the behavior of the route handlers.  These are listed in the table below.</p>
+<h4>Blueprintをターゲットとする記法</h4>
+<p>場合によってはSailsの<a href="http://sailsjs.org/documentation/reference/blueprint-api?q=blueprint-actions">blueprintアクション</a>に対して通常とは異なるルーティングをマッピングする必要がある時があるでしょう。例えばもしそれぞれ<strong>UserController</strong>と<strong>User</strong>と命名されたコントローラとモデルがあり、Sailsが自動的に<strong>GET /user</strong>をblueprintの全データをリスト表示する&quot;find&quot;アクションにマップしたとします。このアクションに対して別のルーティングを割り当てたい場合はBlueprintをターゲットとする記法を利用できます。:</p>
+<pre><code>'GET /findAllUsers': {model: 'user', blueprint: 'find'},
+'GET /user/findAll': {blueprint: 'find'}</code></pre>
+<p>この設定において<code>model</code>と<code>blueprint</code>のプロパティが設定されている一方で2つ目の設定では<code>blueprint</code>のみが使われていることにご注目ください。2つ目の設定において<code>model</code>の設定が指定されてないためSailsはアドレスを見てモデルが<code>User</code>であると推定します。<code>model</code>への明示的設定により以下のようにこの推定をオーバーライドすることもできます。:</p>
+<pre><code>'GET /user/findAll': {blueprint: 'find', model: 'pet'}</code></pre>
+<p>しかし、アプリケーションのAPIをごちゃごちゃで理解し難いものにしてしまうため、こういうことはめったにすべきではありません。</p>
+<p>もし存在しないモデルやBlueprintを指定した場合Sailsはエラーを出力し、ルーティングを無視します。</p>
+<p>たとえアクションがコントローラでオーバーライドされている場合でもBlueprintをターゲットとする記法を使うことが出来ます。</p>
+<h4>リダイレクトをターゲットとする記法</h4>
+<p>リダイレクトアドレスを文字列で渡すだけであるアドレスを別のアドレス（アプリ内なのか外部アドレスなのかにかかわらず）にリダイレクトさせることも出来ます。:</p>
+<pre><code>'/alias' : '/some/other/route'
+'GET /google': 'http://www.google.com'</code></pre>
+<p>Sailsアプリ内でリダレクトループを引き起こさないようにご注意ください！</p>
+<p>リダイレクトの過程で多くの場合、オリジナルのHTTPリクエストは失われ、単に<strong>GET</strong>として取り扱われることにご留意ください。上記の例では<strong>/alias</strong>への<strong>POST</strong>リクエストは<strong>/some/other/route</strong>への<strong>GET</strong>リクエストとして処理されます。これはブラウザ依存の振る舞いですが、リダイレクトの間もリクエストが残ると期待しないことをおすすめします。</p>
+<h4>レスポンスをターゲットとする記法</h4>
+<p>以下の記法を用いてデフォルトまたはカスタムの<a href="http://sailsjs.org/documentation/concepts/Custom-Responses">レスポンス</a>に対して直接マッピングを指定することも出来ます。:</p>
+<pre><code>'/foo': {response: 'notFound'}</code></pre>
+<p>単に<strong>.js</strong>拡張子を除いた形で<strong>api/responses</strong>にあるレスポンス名を指定するだけです。この記法におけるレスポンス名はケースセンシティブです。もし存在しないレスポンスを指定した場合Sailsはエラーを出力してルーティングを無視します。</p>
+<h4>ポリシーをターゲットとした記法</h4>
+<p>多くの場合において<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html"><strong>config/policies.js</strong></a>設定ファイルを使ってコントローラに対して<a href="http://sailsjs.org/documentation/concepts/Policies">ポリシー</a> を設定するでしょう。しかしながら時々（特に <a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax">view</a>や<a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax">blueprint</a> をターゲットする記法を使いたいときには）、個々ののルートに対してポリシーを直接指定したい時もあるでしょう。ポリシーをターゲットする記法は以下のとおりです。:</p>
+<pre><code>'/foo': {policy: 'myPolicy'}</code></pre>
+<p>しかしながらポリシーには以下の様な配列を使って常にひとつ以上のターゲットをチェーンする必要があります。:</p>
+<pre><code>'/foo': [{policy: 'myPolicy'}, {blueprint: 'find', model: 'user'}]</code></pre>
+<p>この例では<strong>myPolicy</strong>のポリシーを適用し、もしそれがパスした際には<strong>User</strong>モデルの<strong>find</strong>blueprintアクションを実行します。</p>
+<h3>ルートターゲットのオプション</h3>
+<p>上記で説明した様々なルート記法の他にも、ルートターゲットに付加された各種のオプションに関して、<code>req.options</code>オブジェクトの中にあるルートハンドラを通過させることが出来ます。予約されたいくつかのプロパティはルートハンドラの振る舞いに影響をあたえることが出来ます。それらのプロパティは以下の表に挙げられています。</p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th style="text-align:center">Applicable Target Types</th>
-<th>Data Type</th>
-<th>Details</th>
+<th>プロパティ</th>
+<th style="text-align: center;">適用可能なターゲット</th>
+<th>データ型</th>
+<th>詳細</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>skipAssets</code></td>
-<td style="text-align:center">all</td>
-<td><bubble type="boolean" colors="true"></bubble></td>
-<td>Set to <code>true</code> if you <em>don&apos;t</em> want the route to match URLs with dots in them (e.g. <strong>myImage.jpg</strong>).  This will keep your routes with <a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=wildcards-and-dynamic-parameters" target="_blank">wildcard notation</a> from matching URLs of static assets.  Useful when creating <a href="/documentation/concepts/Routes/URLSlugs">URL slugs</a>.</td>
+<td style="text-align: center;">全て</td>
+<td>((論理型))</td>
+<td>もし、(<strong>myImage.jpg</strong>のような)ドットを含むアドレスをマッチさせたく<strong>ない</strong>場合<code>true</code>に設定してください。これにより<a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=wildcards-and-dynamic-parameters">ワイルドカード</a>を使っている場合に入力内容がアセットにマッチするのを維持します。<a href="http://sailsjs.org/documentation/concepts/Routes/URLSlugs.html">URL slugs</a>を使う際に便利です。</td>
 </tr>
 <tr>
 <td><code>skipRegex</code></td>
-<td style="text-align:center">all</td>
-<td><bubble type="regexp" colors="true"></bubble></td>
-<td>If skipping every URL containing a dot is too permissive, or you need a route&apos;s handler to be skipped based on different criteria entirely, you can use <code>skipRegex</code>.  This option allows you to specify a regular expression or array of regular expressions to match the request URL against; if any of the matches are successful, the handler is skipped.  Note that unlike the syntax for binding a handler with a regular expression, <code>skipRegex</code> expects <em>actual <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" target="_blank">RegExp objects</a></em>, not strings.</td>
+<td style="text-align: center;">全て</td>
+<td>((regexp型))</td>
+<td>ドットを含む全てのURLをスキップするだけでは寛大すぎる場合や別の基準に基づいて正規表現をハンドルしたい場合<code>skipRegex</code>を利用することが出来ます。このオプションではマッチすべき正規表現または正規表現の配列を指定することが出来ます。もしすべての条件がマッチした場合、ハンドラーはスキップされます。ハンドラーを正規表現を使ってバインドする場合と異なり<code>skipRegex</code>文字列ではなく<em>実際の <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">RegExpオブジェクト</a></em>を渡さなければなりません。</td>
 </tr>
 <tr>
 <td><code>locals</code></td>
-<td style="text-align:center"><a href="http://sailsjs.org/#!/documentation/concepts/Routes/RouteTargetSyntax.html?q=controller-%2F-action-target-syntax" target="_blank">controller</a>, <a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax" target="_blank">view</a>, <a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax" target="_blank">blueprint</a>, <a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=response-target-syntax" target="_blank">response</a></td>
-<td><bubble type="object" colors="true"></bubble></td>
-<td>Sets default <a href="http://sailsjs.org/documentation/reference/res/res.view.html?q=arguments" target="_blank">local variables</a> to pass to any view that is rendered while handling the request.</td>
+<td style="text-align: center;"><a href="http://sailsjs.org/#!/documentation/concepts/Routes/RouteTargetSyntax.html?q=controller-%2F-action-target-syntax">controller</a>, <a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax">view</a>, <a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax">blueprint</a>, <a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=response-target-syntax">response</a></td>
+<td>((オブジェクト))</td>
+<td>リクエストがハンドルされる間にレンダリングされるビューに対して渡されるデフォルトの<a href="http://sailsjs.org/documentation/reference/res/res.view.html?q=arguments">ローカル変数</a>を指定します。</td>
 </tr>
 <tr>
 <td><code>cors</code></td>
-<td style="text-align:center">all</td>
-<td><bubble type="object" colors="true"></bubble> or <bubble type="boolean" colors="true"></bubble> or <bubble type="string" colors="true"></bubble></td>
-<td>Specifies how to handle requests for this route from a different origin.  See the <a href="http://sailsjs.org/documentation/concepts/CORS" target="_blank">main CORS documentation</a> for more info.</td>
+<td style="text-align: center;">全て</td>
+<td>((オブジェクト))または((論理型))または((文字列))</td>
+<td>オリジンの異なるリクエストに対してどう処理するのかを定義します。詳細に関しては<a href="http://sailsjs.org/documentation/concepts/CORS">CORSのメインドキュメント</a>を御覧ください。</td>
 </tr>
 <tr>
 <td><code>populate</code></td>
-<td style="text-align:center"><a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax" target="_blank">blueprint</a></td>
-<td><bubble type="boolean" colors="true"></bubble></td>
-<td>Indicates whether the results in a &quot;find&quot; or &quot;findOne&quot; blueprint action should have associated model fields <a href="http://sailsjs.org/documentation/reference/waterline/populated-values" target="_blank">populated</a>.  Defaults to the value set in <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.blueprints.html" target="_blank"><strong>config/blueprints.js</strong></a>.</td>
+<td style="text-align: center;"><a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax">blueprint</a></td>
+<td>((boolean))</td>
+<td>&quot;find&quot;または&quot;findOne&quot;のblueprintアクションの際にどのようなモデルフィールドが<a href="http://sailsjs.org/documentation/reference/waterline/populated-values">populate</a>されるかを表します。デフォルトでは<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.blueprints.html"><strong>config/blueprints.js</strong></a>にある設定が適用されます。</td>
 </tr>
 <tr>
 <td><code>skip</code>, <code>limit</code>, <code>sort</code>, <code>where</code></td>
-<td style="text-align:center"><a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax" target="_blank">blueprint</a></td>
-<td><bubble type="object" colors="true"></bubble></td>
-<td>Set criteria for &quot;find&quot; blueprint.  See the <a href="https://github.com/balderdashy/sails-docs/blob/master/reference/waterline/queries/queries.md" target="_blank">queries reference</a> for more info.</td>
+<td style="text-align: center;"><a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax">blueprint</a></td>
+<td>((オブジェクト))</td>
+<td>blueprintSetの&quot;find&quot;に対する条件式を設定します。詳細に関しては<a href="https://github.com/balderdashy/sails-docs/blob/master/reference/waterline/queries/queries.md">クエリーリファレンス</a>を御覧ください。</td>
 </tr>
 </tbody>
 </table>
-<p><docmeta name="uniqueID" value="RouteTargetSyntax278177"></docmeta></p>
+<docmeta name="uniqueID" value="RouteTargetSyntax278177">
 <docmeta name="displayName" value="Custom Routes">
-</docmeta>

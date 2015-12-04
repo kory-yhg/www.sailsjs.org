@@ -1,45 +1,42 @@
-<h1 id="faq">FAQ</h1>
-<h5 id="can-i-use-environment-variables-" permalink="can-i-use-environment-variables">Can I use environment variables?</h5>
-<p>Yes! You can also configure the <code>port</code> and <code>environment</code> settings in Sails using environment variables.
+<h1>FAQ</h1>
+<h5>環境変数を利用することは出来ますか?</h5>
+<p>はい。<code>port</code>と<code>environment</code>環境の選択を環境変数を用いて設定することも出来ます。
 <code>NODE_ENV=production sails lift</code>
 <code>PORT=443 sails lift</code></p>
-<h5 id="where-do-i-put-my-production-database-credentials-other-settings-" permalink="where-do-i-put-my-production-database-credentials--other-settings">Where do I put my production database credentials?  Other settings?</h5>
-<p>For your other deployment/machine-specific settings, namely any kind of credentials, you should use <code>config/local.js</code>.<br>It&apos;s included in your <code>.gitignore</code> file by default so you don&apos;t inadvertently commit your credentials to your code repository.</p>
+<h5>プロダクション環境のデータベースの認証情報などはどこに置けばいいですか。?</h5>
+<p>その他のdeployment/machine-specificな設定（様々な認証情報を含む）に関しては<code>config/local.js</code>を使うべきです。
+このファイルはデフォルトで<code>.gitignore</code>に登録されているのでうっかり認証情報の入ったファイルをレポジトリにアップロードしてしまう心配がありません。</p>
 <p><strong>config/local.js</strong></p>
-<pre><code data-language="javascript">// Local configuration
+<pre><code class="language-javascript">// ローカル設定
 // 
-// Included in the .gitignore by default,
-// this is where you include configuration overrides for your local system
-// or for a production deployment.
+// デフォルトで.gitignoreに入っています。
+// ここはあなたのローカルのシステムやプロダクション環境に合わせた設定のオーバーライドを書くところです。
+// あるいは、本番環境へのデプロイには
 //
-// For example, to use port 80 on the local machine, override the `port` config
+// 例えばローカルマシンの80番ポートを利用するためには`port`設定をオーバーライドします。
 module.exports = {
     port: 80,
-    environment: &apos;production&apos;,
+    environment: 'production',
     adapters: {
         mysql: {
-            user: &apos;root&apos;,
-            password: &apos;12345&apos;
+            user: 'root',
+            password: '12345'
         }
     }
-}
-</code></pre><!-- __LANG=%%__ -->
-<h5 id="how-do-i-get-my-sails-app-on-the-server-" permalink="how-do-i-get-my-sails-app-on-the-server">How do I get my Sails app on the server?</h5>
-<p>Is your Node.js instance already spun up?  When you have the ip address, you can go ahead and ssh onto it, then <code>sudo npm install -g forever</code> to install Sails and forever for the first time.  </p>
-<p>Then <code>git clone</code> your project (or <code>scp</code> it onto the server if it&apos;s not in a git repo) into a new folder on the server and cd into it, and <code>forever start app.js</code></p>
-<h3 id="performance-benchmarks" permalink="performance-benchmarks">Performance Benchmarks</h3>
-<p>Performance in Sails is comparable to what you&apos;d expect from a standard Node.js/Express application.  In other words, fast!  We&apos;ve done some optimizations ourselves in Sails and Waterline, but primarily, our focus has been on not messing up what was already really fast.  Above all, we have @ry, @visionmedia, @isaacs, #v8, @joyent and the rest of the Node.js core team to thank.</p>
+}</code></pre>
+<h5>Sailをプロダクション環境のサーバにどうやってアップロードすればいいですか。</h5>
+<p>すでにNode.jsのサーバが走っていますか。サーバのIPアドレスが分かるのであればそこにSSHアクセスし、最初に<code>sudo npm install -g forever</code>を実行してSailsとforeverをセットアップしてください。</p>
+<p>その後、新規フォルダーを作成しそこにプロジェクトを<code>git clone</code>（もしgitレポジトリがないなら<code>scp</code>を）してください。さらにそのフォルダにcdし、<code>forever start app.js</code>でサーバを起動します。</p>
+<h3>パフォーマンスのベンチマーク</h3>
+<p>SailsのパフォーマンスはNode.js/Express相当です。つまり別の言葉で言えば「速い！」SailsとWaterlineにおいて幾らかのチューニングをしていますが、我々の第一の目標は「元々ものすごく速いものを台無しにしない」というものです。いずれにせよ@ry, @visionmedia, @isaacs, #v8, @joyentを始めとしたNode.jsのコアチームに感謝します。</p>
 <ul>
-<li><a href="http://serdardogruyol.com/?p=111" target="_blank">http://serdardogruyol.com/?p=111</a></li>
+<li><a href="http://serdardogruyol.com/?p=111">http://serdardogruyol.com/?p=111</a></li>
 </ul>
-<p>Issues <a href="https://github.com/balderdashy/sails/issues/3099" target="_blank">#3099</a> and <a href="https://github.com/balderdashy/sails/issues/2779" target="_blank">#2779</a> are about a memory leak. It resides in the <code>express-session</code> module used by default, which stores sessions in-memory.
-To disable it, make sure that you disable sessions in the <code>.sailsrc</code>:</p>
-<pre><code data-language="javascript">&quot;hooks&quot;: {
-  &quot;session&quot;: false
-}
-</code></pre><!-- __LANG=%%__ -->
-<p>You may also use an alternative (redis/mongo/cookies) to store sessions.</p>
-<p><docmeta name="uniqueID" value="FAQ475097"></docmeta></p>
+<p>問題<a href="https://github.com/balderdashy/sails/issues/3099">#3099</a> と <a href="https://github.com/balderdashy/sails/issues/2779">#2779</a>はメモリリークに関するものです。これはデフォルトで利用され、セッションをメモリ内に保管する<code>express-session</code>に存在する問題です。
+これを無効化するには<code>.sailsrc</code>でセッションを無効化してください。:</p>
+<pre><code>"hooks": {
+  "session": false
+}</code></pre>
+<p>セッションを保管する別の方法(redis/mongo/cookies)もあります。</p>
+<docmeta name="uniqueID" value="FAQ475097">
 <docmeta name="displayName" value="FAQ">
-
-</docmeta>

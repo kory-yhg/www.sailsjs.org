@@ -1,13 +1,11 @@
-<h1 id="generating-controllers">Generating controllers</h1>
-<p>You can use the <a href="http://sailsjs.org/documentation/reference/cli" target="_blank">Sails command line tool</a> to quickly generate a controller, by typing:</p>
-<pre><code data-language="javascript">$ sails generate controller &lt;controller name&gt; [action names separated by spaces...]
-</code></pre><!-- __LANG=%%__ -->
-<p>For example, if you run the following command:</p>
-<pre><code data-language="javascript">$ sails generate controller comment create destroy tag like
-info: Generated a new controller `comment` at api/controllers/CommentController.js!
-</code></pre><!-- __LANG=%%__ -->
-<p>Sails will generate <code>api/controllers/CommentController.js</code>:</p>
-<pre><code data-language="javascript">/**
+<h1>コントローラを生成する</h1>
+<p>以下のようにタイプすることで<a href="http://sailsjs.org/documentation/reference/cli">Sailsコマンドラインツール</a>を使ってお手軽にコントローラを生成することが出来ます:</p>
+<pre><code class="language-sh">$ sails generate controller &lt;controller name&gt; [action names separated by spaces...]</code></pre>
+<p>例えば以下のコマンドを実行すると:</p>
+<pre><code class="language-sh">$ sails generate controller comment create destroy tag like
+info: Generated a new controller `comment` at api/controllers/CommentController.js!</code></pre>
+<p>Sailsは<code>api/controllers/CommentController.js</code>を生成します:</p>
+<pre><code class="language-javascript">/**
  * CommentController.js
  *
  * @description :: Server-side logic for managing comments.
@@ -20,7 +18,7 @@ module.exports = {
    */
   create: function (req, res) {
     return res.json({
-      todo: &apos;Not implemented yet!&apos;
+      todo: 'Not implemented yet!'
     });
   },
 
@@ -29,7 +27,7 @@ module.exports = {
    */
   destroy: function (req, res) {
     return res.json({
-      todo: &apos;Not implemented yet!&apos;
+      todo: 'Not implemented yet!'
     });
   },
 
@@ -38,7 +36,7 @@ module.exports = {
    */
   tag: function (req, res) {
     return res.json({
-      todo: &apos;Not implemented yet!&apos;
+      todo: 'Not implemented yet!'
     });
   },
 
@@ -47,10 +45,8 @@ module.exports = {
    */
   like: function (req, res) {
     return res.json({
-      todo: &apos;Not implemented yet!&apos;
+      todo: 'Not implemented yet!'
     });
   }
-};
-</code></pre><!-- __LANG=%%__ -->
+};</code></pre>
 <docmeta name="displayName" value="Generating Controllers">
-</docmeta>

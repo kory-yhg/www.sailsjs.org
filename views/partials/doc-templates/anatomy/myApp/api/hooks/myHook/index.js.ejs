@@ -1,10 +1,11 @@
-<h1 id="myapp-api-hooks-myhook-index-js">myApp/api/hooks/myHook/index.js</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This is an example of a <a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html" target="_blank">project hook</a>, which adds functionality to Sails for <code>myApp</code>.  See the <a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks" target="_blank">hooks</a> concepts section for more details.</p>
-<pre><code data-language="javascript">module.exports = function(sails) {
+<h1>myApp/api/hooks/myHook/index.js</h1>
+<h3>目的</h3>
+<p>これは<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html">プロジェクトフック</a>の例であり、<code>myApp</code>のSailsアプリケーションに機能を加えるものです。詳しくは<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks">フック</a>のコンセプトのの項目をご覧ください。</p>
+<pre><code class="language-js">
+module.exports = function(sails) {
 
   // This var will be private
-  // var foo = &apos;bar&apos;;
+  // var foo = 'bar';
 
   // This var will be public
   // this.abc = 123;
@@ -35,14 +36,14 @@
     routes: {
       before: {
         // This route will be matched before any routes in config/routes.js
-        &apos;GET /*&apos;: function (req, res, next) {
+        'GET /*': function (req, res, next) {
            this.numRequestsSeen++;
            return next();
         }
       },
       after: {
         // This route will be matched after any routes in config/routes.js
-        &apos;GET /*&apos;: function (req, res, next) {
+        'GET /*': function (req, res, next) {
            this.numUnhandledRequestsSeen++;
            return next();
         }
@@ -50,7 +51,5 @@
     }
 
   };
-};
-</code></pre><!-- __LANG=%%__ -->
+};</code></pre>
 <docmeta name="displayName" value="index.js">
-</docmeta>

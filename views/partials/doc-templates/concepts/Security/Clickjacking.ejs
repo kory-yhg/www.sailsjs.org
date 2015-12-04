@@ -1,30 +1,27 @@
-<h1 id="clickjacking">Clickjacking</h1>
-<p><a href="https://www.owasp.org/index.php/Clickjacking" target="_blank">Clickjacking</a> (aka &quot;UI redress attacks&quot;) are where an attacker manages to trick your users into triggering &quot;unintended&quot; UI events (e.g. DOM events.)</p>
-<h3 id="x-frame-options" permalink="xframeoptions">X-FRAME-OPTIONS</h3>
-<p>One simple way to help prevent clickjacking attacks is to enable the X-FRAME-OPTIONS header.</p>
-<h5 id="using-lusca-https-github-com-krakenjs-lusca-luscaxframevalue-" permalink="using-lusca">Using <a href="https://github.com/krakenjs/lusca#luscaxframevalue" target="_blank">lusca</a></h5>
+<h1>Clickjacking</h1>
+<p><a href="https://www.owasp.org/index.php/Clickjacking">Clickjacking</a> (別名&quot;UI redress attacks&quot;) は攻撃者がユーザーが意図しないUIイベント（例えばDOMイベント等）を行うように仕向ける攻撃です。</p>
+<h3>X-FRAME-OPTIONS</h3>
+<p>Clickjacking攻撃を避けるためのシンプルな方法としてはX-FRAME-OPTIONSを有効化することです。</p>
+<h5><a href="https://github.com/krakenjs/lusca#luscaxframevalue">lusca</a>を使う</h5>
 <blockquote>
-<p><code>lusca</code> is open-source under the <a href="https://github.com/krakenjs/lusca/blob/master/LICENSE.txt" target="_blank">Apache license</a></p>
+<p><code>lusca</code> は<a href="https://github.com/krakenjs/lusca/blob/master/LICENSE.txt">Apache license</a>で使えるオープンソースです。</p>
 </blockquote>
-<pre><code data-language="javascript"># In your sails app
-npm install lusca --save
-</code></pre><!-- __LANG=%%__ -->
-<p>Then in the <code>middleware</code> config object in <code>config/http.js</code>:</p>
-<pre><code data-language="javascript">// ...
+<pre><code class="language-sh"># In your sails app
+npm install lusca --save</code></pre>
+<p>そして、<code>config/http.js</code>の中の設定オブジェクトで:</p>
+<pre><code class="language-js">  // ...
   // maxAge ==&gt; Number of seconds strict transport security will stay in effect.
-  xframe: require(&apos;lusca&apos;).xframe(&apos;SAMEORIGIN&apos;),
+  xframe: require('lusca').xframe('SAMEORIGIN'),
   // ...
   order: [
     // ...
-    &apos;xframe&apos;
+    'xframe'
     // ...
-  ]
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="additional-resources" permalink="additional-resources">Additional Resources</h3>
+  ]</code></pre>
+<h3>追加のリソース</h3>
 <ul>
-<li><a href="https://www.owasp.org/index.php/Clickjacking" target="_blank">Clickjacking (OWasp)</a></li>
+<li><a href="https://www.owasp.org/index.php/Clickjacking">Clickjacking (OWasp)</a></li>
 </ul>
-<p><docmeta name="uniqueID" value="Clickjacking879453"></docmeta></p>
-<p><docmeta name="displayName" value="Clickjacking"></docmeta></p>
+<docmeta name="uniqueID" value="Clickjacking879453">
+<docmeta name="displayName" value="Clickjacking">
 <docmeta name="tags" value="clickjacking,ui redress attack">
-</docmeta>

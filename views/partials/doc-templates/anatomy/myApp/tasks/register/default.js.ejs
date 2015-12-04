@@ -1,10 +1,12 @@
-<h1 id="myapp-tasks-register-default-js">myApp/tasks/register/default.js</h1>
-<p><docmeta name="uniqueID" value="defaultjs909775"></docmeta></p>
+<h1>myApp/tasks/register/default.js</h1>
+<docmeta name="uniqueID" value="defaultjs909775">
 <docmeta name="displayName" value="default.js">
 
-<p>The default grunt task list.  sails will run this if there is no task list file matching NODE_ENV (eg. NODE_ENV = QA and QA.js exists) and no other environment is set (--prod, etc.).</p>
-<pre><code data-language="javascript">module.exports = function (grunt) {
-    grunt.registerTask(&apos;default&apos;, [&apos;compileAssets&apos;, &apos;linkAssets&apos;,  &apos;watch&apos;]);
+デフォルトのgruntのタスクリストです。SailsはNODE_ENVにマッチする(例:NODE_ENV = QA and QA.jsが存在する)タスクリストファイルがない際と、別の環境 (--prodなど)が設定されていな場合にこれを実行します。
+
+```
+module.exports = function (grunt) {
+    grunt.registerTask('default', ['compileAssets', 'linkAssets',  'watch']);
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

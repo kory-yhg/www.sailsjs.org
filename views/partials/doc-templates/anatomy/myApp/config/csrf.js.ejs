@@ -1,68 +1,67 @@
-<h1 id="myapp-config-csrf-js">myApp/config/csrf.js</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This file defines how your Sails app handles CSRF and contains settings for configuring it.</p>
-<p>Cross-Site Request Forgery Protection tokens are like a tracking chip.  While a session tells the server that a user &quot;is who they say they are&quot;, a csrf token tells the server &quot;you are where you say you are&quot;.</p>
-<p>When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the <code>_csrf</code> parameter.</p>
-<p>This option protects your Sails app against cross-site request forgery (or CSRF) attacks. A would-be attacker needs not only a user&apos;s session cookie, but also this timestamped, secret CSRF token, which is refreshed/granted when the user visits a URL on your app&apos;s domain.</p>
-<p>This allows us to have certainty that our users&apos; requests haven&apos;t been hijacked, and that the requests they&apos;re making are intentional and legitimate.</p>
-<p>This token has a short-lived expiration timeline, and must be acquired by either:</p>
-<p>#####A) For traditional view-driven web apps:</p>
+<h1>myApp/config/csrf.js</h1>
+<h3>目的</h3>
+<p>このファイルはSailsアプリケーションがどのようにCSRFを扱うかを規定するものです。</p>
+<p>Cross-Site Request Forgery Protectionトークンはトラッキングチップのようなものです。セッションはリクエストが「だれからのもの」であるということを説明する一方でCSFRトークンは「その人である」ということを説明します。</p>
+<p>これを有効化した時Sailsサーバに対するGET以外のリクエストは<code>_csrf</code>と名付けられた特別なトークンを持っていなかればなりません。</p>
+<p>このオプションはあなたのアプリケーションCSRFアタックから防御します。攻撃をしようとする人はユーザのセッションクッキーのみならず、アプリケーションにアクセスした時に与えられ（あるいは更新され）、タイム・スタンプされた秘密のCSRFトークンが必要になるのです。</p>
+<p>これにより、ユーザのリクエストがリクエストが乗っ取られたものではない、意図的かつ有効なものであるということが確認できます。</p>
+<p>このトークンは短時間だけ有効であり以下の方法で取得されなけえばなりません:</p>
+<h5>A) 伝統的な「ビュー指向」のアプリケーション:</h5>
 <ul>
-<li>Fetching it from one of your views, where it may be accessed as a local variable, e.g.<pre><code data-language="html">&lt;form&gt;
- &lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;&lt;%= _csrf %&gt;&quot; /&gt;
-&lt;/form&gt;
-</code></pre><!-- __LANG=%%__ -->
-</li>
+<li>ビューの一つからローカル変数とともに取得される、例：
+<pre><code class="language-html">&lt;form&gt;
+&lt;input type="hidden" name="_csrf" value="&lt;%= _csrf %&gt;" /&gt;
+&lt;/form&gt;</code></pre></li>
 </ul>
-<p>#####B)    For AJAX/Socket-heavy and/or single-page apps: </p>
+<h5>B) AJAX（ソケット通信）またはシングルページアプリケーション:</h5>
 <ul>
-<li>Sending a GET request to the <code>/csrfToken</code> route, where it will be returned as JSON, e.g.<pre><code data-language="javascript">{ _csrf: &apos;ajg4JD(JGdajhLJALHDa&apos; }
-</code></pre><!-- __LANG=%%__ -->
-</li>
+<li>JSONを返す<code>/csrfToken</code>ルートにGETリクエストを送る、例:
+<pre><code class="language-javascript">{ _csrf: 'ajg4JD(JGdajhLJALHDa' }</code></pre></li>
 </ul>
-<p>Enabling this option requires managing the token in your front-end app. For traditional web apps, it&apos;s as easy as passing the data from a view into a form action.</p>
-<p>In AJAX/Socket-heavy apps, just send a GET request to the /csrfToken route to get a valid token.</p>
-<h3 id="more-info" permalink="more-info">More Info</h3>
+<p>このオプションを有効化するにはフロントエンドのアプリケーションでトークンの管理をしなければなりません。伝統的なアプリケーションではアクションからビューにデータのフォームを渡すだけで簡単にできます。</p>
+<p>AJAX（ソケット通信）アプリケーションでは/csrfTokenルートにアクセスし、正しいトークンを受け取ります。</p>
+<h3>More Info</h3>
 <blockquote>
-<p>For more information on CSRF, check out <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery" target="_blank">this hyperlink</a>.</p>
+<p>For more information on CSRF, check out <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">this hyperlink</a>.</p>
 </blockquote>
-<p><docmeta name="uniqueID" value="csrfjs233850"></docmeta></p>
+<docmeta name="uniqueID" value="csrfjs233850">
 <docmeta name="displayName" value="csrf.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * Cross-Site Request Forgery Protection Settings
  * (sails.config.csrf)
  *
  * CSRF tokens are like a tracking chip.  While a session tells the server that a user
- * &quot;is who they say they are&quot;, a csrf token tells the server &quot;you are where you say you are&quot;.
+ * "is who they say they are", a csrf token tells the server "you are where you say you are".
  *
- * When enabled, all non-GET requests to the Sails server must be accompanied by
- * a special token, identified as the &apos;_csrf&apos; parameter.
+ * When enabled, all non-GET requests to the Sails server must be accompanied by
+ * a special token, identified as the '_csrf' parameter.
  *
  * This option protects your Sails app against cross-site request forgery (or CSRF) attacks.
- * A would-be attacker needs not only a user&apos;s session cookie, but also this timestamped,
- * secret CSRF token, which is refreshed/granted when the user visits a URL on your app&apos;s domain.
+ * A would-be attacker needs not only a user's session cookie, but also this timestamped,
+ * secret CSRF token, which is refreshed/granted when the user visits a URL on your app's domain.
  *
- * This allows us to have certainty that our users&apos; requests haven&apos;t been hijacked,
- * and that the requests they&apos;re making are intentional and legitimate.
+ * This allows us to have certainty that our users' requests haven't been hijacked,
+ * and that the requests they're making are intentional and legitimate.
  *
  * This token has a short-lived expiration timeline, and must be acquired by either:
  *
- * (a)        For traditional view-driven web apps:
- *            Fetching it from one of your views, where it may be accessed as
- *            a local variable, e.g.:
- *            &lt;form&gt;
- *                &lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;&lt;%= _csrf %&gt;&quot; /&gt;
- *            &lt;/form&gt;
+ * (a)      For traditional view-driven web apps:
+ *          Fetching it from one of your views, where it may be accessed as
+ *          a local variable, e.g.:
+ *          <form>
+ *              <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+ *          </form>
  *
- * or (b)    For AJAX/Socket-heavy and/or single-page apps:
- *            Sending a GET request to the `/csrfToken` route, where it will be returned
- *            as JSON, e.g.:
- *            { _csrf: &apos;ajg4JD(JGdajhLJALHDa&apos; }
+ * or (b)   For AJAX/Socket-heavy and/or single-page apps:
+ *          Sending a GET request to the `/csrfToken` route, where it will be returned
+ *          as JSON, e.g.:
+ *          { _csrf: 'ajg4JD(JGdajhLJALHDa' }
  *
  *
  * Enabling this option requires managing the token in your front-end app.
- * For traditional web apps, it&apos;s as easy as passing the data from a view into a form action.
+ * For traditional web apps, it's as easy as passing the data from a view into a form action.
  * In AJAX/Socket-heavy apps, just send a GET request to the /csrfToken route to get a valid token.
  *
  * For more information on CSRF, check out:
@@ -70,5 +69,5 @@
  */
 
 module.exports.csrf = false;
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

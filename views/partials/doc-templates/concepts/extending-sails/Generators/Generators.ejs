@@ -1,18 +1,18 @@
-<h1 id="generators">Generators</h1>
-<h2 id="status" permalink="status">Status</h2>
-<h5 id="stability-2-http-nodejs-org-api-documentation-html-documentation_stability_index-unstable" permalink="stability-2--unstable">Stability: <a href="http://nodejs.org/api/documentation.html#documentation_stability_index" target="_blank">2</a> - Unstable</h5>
-<p>The API is in the process of settling, but has not yet had sufficient real-world testing to be considered stable.  </p>
-<p>Backwards-compatibility will be maintained if reasonable.</p>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>What is my purpose in this world?</p>
-<h3 id="old-partial-content-from-when-spec-was-an-itty-bitty-baby" permalink="old-partial-content-from-when-spec-was-an-itty-bitty-baby">old partial content from when spec was an itty bitty baby</h3>
-<p>Generators are designed to make it easier to customize the <code>sails new</code> and <code>sails generate</code> command-line tools, and provide better support for different Gruntfiles, configuration options, view engines, coffeescript, etc.</p>
-<h4 id="structure" permalink="structure">Structure</h4>
-<p>A generator has either:</p>
-<p>(1) a <code>generate</code> method, or</p>
-<p>(2) a <code>configure</code> + <code>render</code> method  (render may be omitted in the simplest of cases)</p>
+<h1>ジェネレータ</h1>
+<h2>ステータス</h2>
+<h5>状態: <a href="http://nodejs.org/api/documentation.html#documentation_stability_index">2</a> - 非安定的</h5>
+<p>APIは安定途上にありますがまだ安定していると判断できるほど実世界でテストされていません。</p>
+<p>後方互換性は、それが合理的であると判断した場合維持されます。</p>
+<h3>目的</h3>
+<p>この目的は何でしょうか？</p>
+<h3>old partial content from when spec was an itty bitty baby</h3>
+<p>ジェネレータは<code>sails new</code>や<code>sails generate</code>コマンドを簡略化し、異なるGruntfilesや設定ファイル、ビューオプション、coffeescriptなどに対してより良いサポートを提供します。</p>
+<h4>構造</h4>
+<p>ジェネレータは以下のうちいずれかを持っています。:</p>
+<p>(1) <code>generate</code>メソッド、または</p>
+<p>(2) <code>configure</code> + <code>render</code> メソッド (簡単なケースではrenderは省略可能。)</p>
 <p>Sails </p>
-<pre><code data-language="javascript">app (appPath + name)
+<pre><code>    app (appPath + name)
         &lt;- view
         &lt;- folder
         &lt;- jsonfile
@@ -35,9 +35,7 @@
 
     jsonfile (destination + name + data)
 
-    folder (destination + name)
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="Generators82739"></docmeta></p>
-<p><docmeta name="displayName" value="Generators"></docmeta></p>
+    folder (destination + name)</code></pre>
+<docmeta name="uniqueID" value="Generators82739">
+<docmeta name="displayName" value="Generators">
 <docmeta name="stabilityIndex" value="2">
-</docmeta>

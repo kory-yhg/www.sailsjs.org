@@ -8,9 +8,9 @@
   <div class="banner home">
     <div class="banner-container">
       <div class="tagline">
-        <h2>The web framework of your dreams.</h2>
-        <h3>Built for developers by <%= data.nauticalAuthor || 'developers'%>.</h3>
-        <a href="/get-started" class="button">Get started</a>
+        <h2>夢のWebフレームワーク</h2>
+        <h3><%= data.nauticalAuthor || 'developers'%>が開発者のために作りました</h3>
+        <a href="/get-started" class="button">始めよう！</a>
       </div>
       <img class="light" alt="Beams of light" src="/images/bkgd_light.png"/>
       <img class="squid" alt="A cartoon squid holding a tablet, phone, keyboard, and taped-up glasses in his tentacles" src="/images/bkgd_squiddy.png"/>
@@ -23,14 +23,14 @@
   <div class="sails-about">
     <div class="about-container">
       <div class="what-is-sails">
-        <h1>What Is Sails.js?</h1>
+        <h1>Sails.jsとは何でしょう</h1>
         <p>
-        Sails makes it easy to build custom, enterprise-grade Node.js apps. It is designed to emulate the familiar MVC pattern of frameworks like Ruby on Rails, but with support for the requirements of modern apps: data-driven APIs with a scalable, service-oriented architecture. It's especially good for building chat, realtime dashboards, or multiplayer games; but you can use it for any web application project - top to bottom.
+        Sailsは業務用レベルのカスタムアプリケーションをnode.jsで開発するのを簡単にするために作られました。SailsはRuby on Railsのようなよく知られたMVCパターンを踏襲していますが、同時にスケーラブルなデータドリブンAPIやサービス指向の構造などモダンなアプリケーションに必要な要求を満たしています。Sailsは特にチャットやリアルタイムダッシュボード、マルチプレーやゲームを作るのに特に適していますが、ありとあらゆる種類のWebアプリケーション開発に使うことが出来ます。
         </p>
       </div>
       <div class="video-link">
-        <h2>Watch the original screencast
-        <a href="http://www.youtube.com/watch?v=GK-tFvpIR7c&amp;feature=player_embedded">here</a>.
+        <h2>オリジナルのスクリーンショットは
+        <a href="http://www.youtube.com/watch?v=GK-tFvpIR7c&amp;feature=player_embedded">こちら</a>でご覧になります。
         </h2>
       </div>
       <div class="video">
@@ -43,9 +43,9 @@
   <div class="sails-features">
     <div class="features-container">
       <div class="features">
-        <h1>Features</h1>
+        <h1>機能</h1>
         <p>
-        Sails is the most popular MVC framework for Node.js.  It is designed for building practical, production-ready Node.js apps in a matter of weeks - not months.
+        SailsはNode.js向けの最もポピュラーなMVCフレームワークです。これは実践的で商用レベルのアプリケーションを数週間（数ヶ月でなく）レベルで構築するために作られています。
         </p>
       </div>
       <div class="feature-list">
@@ -56,98 +56,90 @@
               <h5>100% JavaScript</h5>
             </a>
             <p>
-              Building on top of Sails means your app is written entirely in JavaScript, the language you and your team are already using in the browser.
+              Sailsで開発をするということはアプリケーションの全てが、すでに開発チームがブラウザ上で使っているJavaScriptで書かれるということです。
             </p>
           </li>
           <li class="database">
             <a href="/features#?database">
               <img class="icon" alt="Database icon" src="images/icon_database.png"/>
-              <h5>Any database</h5>
+              <h5>どんなデータベースでも</h5>
             </a>
             <p>
-              Sails bundles a powerful ORM, Waterline, which provides a simple data access layer that just works, no matter what database you're using.
+              SailsにはWaterlineと呼ばれるパワフルなORMが含まれているため、利用しているデータベースが何かにかかわらず簡単な操作でデータにアクセスすることが出来ます。
             </p>
           </li>
           <li class="associations">
             <a href="/features#?associations">
               <img class="icon" alt="Icon of dots mapped together" src="images/icon_associations.png"/>
-              <h5>Powerful associations</h5>
+              <h5>強力なリレーション</h5>
             </a>
             <p>
-              Sails offers a new take on the familiar relational model, aimed at making data modeling more practical.
+              Sailsはより実践的なデータモデルを実現する新しいリレーショナルモデルを採用しています。
             </p>
           </li>
           <li class="api">
             <a href="/features#?rest">
               <img class="icon" alt="Icon with text: API" src="images/icon_api.png"/>
-              <h5>Auto-generate REST APIs</h5>
+              <h5>REST APIを自動生成</h5>
             </api>
             <p>
-              Sails comes with <em>blueprints</em> that help jumpstart your app's backend without writing any code.
+              Sailsは<em>blueprints</em>と呼ばれるバックエンドをコーディングなしに構築できる機能を持っています。
             </p>
           </li>
           <li class="realtime">
             <a href="/features#?websocket">
               <img class="icon" alt="Icon with the websocket logo" src="images/icon_websocket.png"/>
-              <h5>Easy WebSocket Support</h5>
+              <h5>簡単なWebSocketサポート</h5>
             </a>
             <p>
-              Sails translates incoming socket messages for you, they're automatically compatible with every route in your Sails app.
+              Sailsは受信したWebSocketメッセージを処理し、Sailsアプリケーション上の任意のルートに変換します。
             </p>
           </li>
           <li class="security">
             <a href="/features#?security">
               <img class="icon" alt="Lock icon" src="images/icon_security.png"/>
-              <h5>Reusable security policies</h5>
+              <h5>再利用可能なセキュリティポリシー</h5>
             </a>
             <p>
-              Sails provides basic security and role-based access control by default.
+              Sailsはロールベースアクセス管理を含む基礎的なセキュリティ機能を標準搭載しています。
             </p>
           </li>
 
           <li class="frontend">
             <a href="/features#?front-end">
               <img class="icon" alt="Icon with stack of files with a code symbol on it" src="images/icon_frontend.png"/>
-              <h5>Front-end agnostic</h5>
+              <h5>フロントエンドは何でも</h5>
             </a>
             <p>
-              Sails is designed to be compatible with any front-end strategy; whether it's Angular, Backbone, iOS/ObjC, Android/Java, Windows Phone, or something else entirely.
+              Sailsはあらゆるフロントエンド戦略に適応するように作られています。それがAngularでもBackboneでも、あるいはiOS/ObjCやAndroid/Java、Windows Phoneでも、またその他のフレームワークでも構いません。
             </p>
           </li>
 
           <li class="asset">
             <a href="/features#?asset-pipeline">
               <img class="icon" alt="Grunt logo icon" src="images/icon_asset.png"/>
-              <h5>Flexible asset pipeline</h5>
+              <h5>フレキシブルなアセットパイプライン</h5>
             </a>
             <p>
-              Sails ships with Grunt- which means your entire front-end asset workflow is completely customizable, and supports all of the great Grunt modules which are already out there.
+              SailsはGruntを組み込んでいます。つまりフロントエンドアセットのワークフローが完全にカスタマイズ可能であり、現在世の中に出ている、全ての素晴らしいGruntモジュールをサポートしているということです。
             </p>
           </li>
 
           <li class="foundation">
             <a href="/features#?solid-foundation">
               <img class="icon" alt="Icon with the Node.js logo" src="images/icon_foundation.png"/>
-              <h5>Rock-solid foundation</h5>
+              <h5>堅牢な基礎技術</h5>
             </a>
             <p>
-              Sails is built on <a href="http://nodejs.org">Node.js</a>, uses <a href="https://github.com/dougwilson">Express</a> for handling HTTP requests, and wraps <a href="http://socket.io">socket.io</a> for managing WebSockets.
+              Sailsは<a href="http://nodejs.org">Node.js</a>上で構築されており、HTTPリクエストの処理には<a href="https://github.com/dougwilson">Express</a>を採用し、WebSocketsの管理には<a href="http://socket.io">socket.io</a>を使っています。
             </p>
           </li>
         </ul>
         <div class="features-link-wrapper">
           <a href="/features">
-            <span class="long">Learn more about Sails's Features</span>
-            <span class="short">Learn More</span>
+            <span class="long">Sailsの機能をもっと詳しく見る</span>
+            <span class="short">もっと詳しく</span>
           </a>
-        </div>
-        <div class="book-banner-wrapper">
-          <div class="book-banner">
-            <img class="meap-cover" alt="Sails.js in Action Book Cover with the word 'MEAP' stamped across it" src="/images/bookCover.png"/>
-            <h3>We wrote a book!</h3>
-            <p>Get early access to half the book<br/> with promotion code: <span>mcneildoc</span></p>
-            <a class="book-link" target="_blank" href="http://www.manning.com/mcneil/">Get the Book</a>
-          </div>
         </div>
       </div>
     </div>
@@ -155,59 +147,59 @@
 
   <!-- Section with tweets-->
   <div class="sails-social">
-      <!-- <h1>What do users say about Sails?</h1> -->
+      <!-- <h1>Sailsに関する評判</h1> -->
       <div class="sails-reviews">
         <!-- (switch out this template for different tweets)-->
         <ul class="tweets-wrapper">
           <li ng-class="{active: activeTweet === '@androolloyd'}"
             class="tweet">
             <h2><a target="_blank" href="https://twitter.com/androolloyd">@androolloyd</a></h2>
-            <p><i style="font-size: 45px" class="fa fa-quote-left"></i> @sailsjs you&apos;ll be happy to know there is a hackathon this weekend and I chose you to power my mad creation. PS, Can you have my babies? &#60;3</p>
+            <p><i style="font-size: 45px" class="fa fa-quote-left"></i> @sailsjs 今週末のハッカソンで私の開発作業をパワーアップするためにSailsを使うよ。PS. その間、子守してくれない？</p>
           </li>
           <li ng-class="{active: activeTweet === '@cbmeeks'}"
             class="tweet">
             <h2><a target="_blank" href="https://twitter.com/cbmeeks">@cbmeeks</a></h2>
-            <p>OMG I&apos;ve been using #sailsjs and I am in friggin love!!  Where have you been all my life?</p>
+            <p>#sailsjsを使っているんだけど、完全に恋に落ちちゃった感じ。もっと早く出会いたかった！</p>
           </li>
           <li ng-class="{active: activeTweet === '@dylanized'}"
             class="tweet">
             <h2><a target="_blank" href="https://twitter.com/dylanized">@dylanized</a></h2>
-            <p>Rails is omakase; @SailsJS is a buffet</p>
+            <p>Railsは「おまかせコース」、@SailsJS は「ビュッフェ」</p>
           </li>
           <li ng-class="{active: activeTweet === '@FeedJoelPie'}"
             class="tweet">
             <h2><a target="_blank" href="https://twitter.com/FeedJoelPie">@FeedJoelPie</a></h2>
-            <p>Very excited to try @sailsjs. 1st Railsy framework in @nodejs that didn&apos;t make me yell &quot;STOP TRYING TO BUILD RAILS IN NODE!&quot; at my computer.</p>
+            <p>@sailsjs を試してみたけど、すごくエキサイティング。「もうJavaScriptでRailsを作るのをやめろよ！」って叫ばなくてもいい、Rails風のフレームワークは初めて。</p>
           </li>
           <li ng-class="{active: activeTweet === '@infil00p'}"
             class="tweet">
             <h2><a target="_blank" href="https://twitter.com/infil00p">@infil00p</a></h2>
-            <p>Looks like I&apos;m going to be using a lot of @sailsjs in the near future.  I don&apos;t know why I haven&apos;t heard of this earlier.</p>
+            <p>近い将来、もっと @sailsjs を使う機会が増えるね。もっと前に評判を聞いていなかったのが不思議なくらい。</p>
           </li>
           <li ng-class="{active: activeTweet === '@JohnnyReading'}"
             class="tweet">
             <h2><a target="_blank" href="https://twitter.com/JohnnyReading">@JohnnyReading</a></h2>
-            <p>Oh wow, #sailsjs. Not using node.js excuses getting thin.</p>
+            <p>もうびっくりだよ #sailsjs 。node.jsを使わない言い訳はどんどん少なくなってく気がする。</p>
           </li>
           <li ng-class="{active: activeTweet === '@lorefnon'}"
             class="tweet">
             <h2><a target="_blank" href="https://twitter.com/lorefnon">@lorefnon</a></h2>
-            <p>Exploring #sailsjs.  - awesome realtime framework for node.js. Hassle free quckstart, Great docs, nice ORM, Rails inspired.</p>
+            <p>#sailsjs を見ているのですが、これは本当に良いnode.js向けのリアルタイムフレームワークフレームワークですよ。簡単に始められて、良いドキュメントとORMがあるRailsっぽいです。</p>
           </li>
           <li ng-class="{active: activeTweet === '@rauchg'}"
             class="tweet">
             <h2><a target="_blank" href="https://twitter.com/rauchg">@rauchg</a></h2>
-            <p>Wow http://balderdashy.github.com/sails/</p>
+            <p>びっくり！ http://balderdashy.github.com/sails/</p>
           </li>
         </ul>
 
-        <h3>There's a party going on, and you're invited.</h3>
+        <h3>あなたも早速、パーティーに参加しましょう。</h3>
         <div class="follow-buttons">
           <a target="_blank" href="https://github.com/balderdashy/sails">
             <div class="github follow-button">
               <span>
                 <img src="images/icon_github.png"/>
-                Star the repo
+                スターを付ける
               </span>
             </div>
           </a>
@@ -215,7 +207,7 @@
             <div class="twitter follow-button">
               <span>
                 <img src="images/icon_twitter.png"/>
-                Follow on twitter
+                フォローする
               </span>
             </div>
           </a>

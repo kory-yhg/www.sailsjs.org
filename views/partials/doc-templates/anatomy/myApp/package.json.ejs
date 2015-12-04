@@ -1,49 +1,49 @@
-<h1 id="myapp-package-json">myApp/package.json</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This is a standard configuration file for <a href="https://npmjs.org/doc/json.html" target="_blank">npm</a>. Among other things, this file contains the name and version of all of the Node Modules that your app depends on to run.  You can change this manually but be careful to adhere to their rules or things might break.</p>
-<h3 id="more-info" permalink="more-info">More Info</h3>
+<h1>myApp/package.json</h1>
+<h3>目的</h3>
+<p>これは<a href="https://npmjs.org/doc/json.html">npm</a>の標準設定ファイルです。このファイルはあなたのアプリケーションを実行するのに依存している全てのNodeモジュールの名前とバージョンその他の情報を含みます。このファイルを手動で編集することも出来ますが、彼らのルールに則らなかればならないということと、もしかしたら何かを壊してしまうかもしれないということに気をつけてください。</p>
+<h3>さらなる情報</h3>
 <blockquote>
-<p>Check out <a href="http://package.json.nodejitsu.com" target="_blank">this awesome interactive guide by Nodejitsu</a> explaining package.json </p>
+<p>package.jsonを説明している<a href="http://package.json.nodejitsu.com">Nodejitsuによる素晴らしいインタラクティブガイド</a>をご覧下さい。 </p>
 </blockquote>
-<p><docmeta name="uniqueID" value="packagejson891874"></docmeta></p>
+<docmeta name="uniqueID" value="packagejson891874">
 <docmeta name="displayName" value="package.json">
 
-<pre><code data-language="javascript">{
-  &quot;name&quot;: &quot;myApp&quot;,
-  &quot;private&quot;: true,
-  &quot;version&quot;: &quot;0.0.0&quot;,
-  &quot;description&quot;: &quot;a Sails application&quot;,
-  &quot;keywords&quot;: [],
-  &quot;dependencies&quot;: {
-    &quot;sails&quot;: &quot;~0.10.0-rc7&quot;,
-    &quot;sails-disk&quot;: &quot;~0.10.0&quot;,
-    &quot;rc&quot;: &quot;~0.3.3&quot;,
-    &quot;include-all&quot;: &quot;~0.1.3&quot;,
-    &quot;ejs&quot;: &quot;~0.8.4&quot;,
-    &quot;grunt&quot;: &quot;0.4.2&quot;,
-    &quot;grunt-sync&quot;: &quot;~0.0.4&quot;,
-    &quot;grunt-contrib-copy&quot;: &quot;~0.5.0&quot;,
-    &quot;grunt-contrib-clean&quot;: &quot;~0.5.0&quot;,
-    &quot;grunt-contrib-concat&quot;: &quot;~0.3.0&quot;,
-    &quot;grunt-sails-linker&quot;: &quot;~0.9.5&quot;,
-    &quot;grunt-contrib-jst&quot;: &quot;~0.6.0&quot;,
-    &quot;grunt-contrib-watch&quot;: &quot;~0.5.3&quot;,
-    &quot;grunt-contrib-uglify&quot;: &quot;~0.4.0&quot;,
-    &quot;grunt-contrib-cssmin&quot;: &quot;~0.9.0&quot;,
-    &quot;grunt-contrib-less&quot;: &quot;~0.10.0&quot;,
-    &quot;grunt-contrib-coffee&quot;: &quot;~0.10.1&quot;
+```
+{
+  "name": "myApp",
+  "private": true,
+  "version": "0.0.0",
+  "description": "a Sails application",
+  "keywords": [],
+  "dependencies": {
+    "sails": "~0.10.0-rc7",
+    "sails-disk": "~0.10.0",
+    "rc": "~0.3.3",
+    "include-all": "~0.1.3",
+    "ejs": "~0.8.4",
+    "grunt": "0.4.2",
+    "grunt-sync": "~0.0.4",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-sails-linker": "~0.9.5",
+    "grunt-contrib-jst": "~0.6.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "grunt-contrib-less": "~0.10.0",
+    "grunt-contrib-coffee": "~0.10.1"
   },
-  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;node app.js&quot;,
-    &quot;debug&quot;: &quot;node debug app.js&quot;
+  "scripts": {
+    "start": "node app.js",
+    "debug": "node debug app.js"
   },
-  &quot;main&quot;: &quot;app.js&quot;,
-  &quot;repository&quot;: {
-    &quot;type&quot;: &quot;git&quot;,
-    &quot;url&quot;: &quot;git://github.com/dude/myApp.git&quot;
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dude/myApp.git"
   },
-  &quot;author&quot;: &quot;dude&quot;,
-  &quot;license&quot;: &quot;&quot;
+  "author": "dude",
+  "license": ""
 }
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+```

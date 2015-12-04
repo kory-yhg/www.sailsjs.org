@@ -1,16 +1,10 @@
-<h1 id="partials">Partials</h1>
-<p>Sails uses <code>ejs-locals</code> in its view rendering code, so in your views you can do:</p>
-<pre><code data-language="javascript">&lt;%- partial (&apos;foo.ejs&apos;) %&gt;
-</code></pre><!-- __LANG=%%__ -->
-<p>to render a partial located at <code>/views/foo.ejs</code>. All of your locals will be sent to the partial automatically.</p>
-<p>The paths are relative to the view that loads the partial. So if you have a a user view at <code>/views/users/view.ejs</code> and want to load <code>/views/partials/widget.ejs</code> then you would use:</p>
-<pre><code data-language="javascript">&lt;%- partial (&apos;../partials/widget.ejs&apos;) %&gt;
-</code></pre><!-- __LANG=%%__ -->
-<p>One thing to note: partials are rendered synchronously, so they will block Sails from serving more requests until they&apos;re done loading. It&apos;s something to keep in mind while developing your app, especially if you anticipate a large number of connections.</p>
-<blockquote>
-<p>NOTE: When using other templating languages than ejs, their syntax for loading partials or block, etc. will be used. Please refer to their documentation for more information on their syntax and conventions</p>
-</blockquote>
-<p><docmeta name="uniqueID" value="Partials610916"></docmeta></p>
+<h1>パーシャル</h1>
+<p>Sailsはビューのレンダリングコードで<code>ejs-locals</code>を利用します。そのためビューでは次のようなことが出来ます:</p>
+<pre><code>&lt;%- partial ('foo.ejs') %&gt; </code></pre>
+<p>これで<code>/views/foo.ejs</code>に配置されているパーシャルをレンダー出来ます。全てのローカルは自動的にパーシャルに受け渡されます。</p>
+<p>パスはパーシャルを読み込もうとしているビューに対して相対的です。そのため、ビューが<code>/views/users/view.ejs</code>にあり、<code>/views/partials/widget.ejs</code>を読み込もうとしているときは以下のようにすべきです：</p>
+<pre><code>&lt;%- partial ('../../partials/widget.ejs') %&gt; </code></pre>
+<p>もう一つ、備考：パーシャルは同期的にレンダリングされます。そのため、ロードが終了するまでの間Sailsが別のリクエストに対応するのをブロックしていしまいます。これは特に多くのコネクションに対応すべきアプリケーションを開発する際には気に留めておいてください。</p>
+<p>備考：ejs以外のテンプレート言語を使う場合、使用する言語のパーシャルやブロックなどの文法が適用されます。それぞれのやり方や構文に関しては各言語のドキュメントでご確認ください。</p>
+<docmeta name="uniqueID" value="Partials610916">
 <docmeta name="displayName" value="Partials">
-
-</docmeta>

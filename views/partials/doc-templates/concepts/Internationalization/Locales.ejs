@@ -1,73 +1,61 @@
-<h1 id="locales">Locales</h1>
-<h3 id="overview" permalink="overview">Overview</h3>
-<p>The i18n hook reads JSON-formatted translation files from your project&apos;s &quot;locales&quot; directory (<code>config/locales</code> by default).  Each file corresponds with a <a href="http://en.wikipedia.org/wiki/Locale" target="_blank">locale</a> (usually a language) that your Sails backend will support.</p>
-<p>These files contain locale-specific strings (as JSON key-value pairs) that you can use in your views, controllers, etc.</p>
-<p>Here is an example locale file (<code>config/locales/es.json</code>):</p>
-<pre><code data-language="json">{
-    &quot;Hello!&quot;: &quot;Hola!&quot;,
-    &quot;Hello %s, how are you today?&quot;: &quot;&#xBF;Hola %s, como estas?&quot;
-}
-</code></pre><!-- __LANG=%%__ -->
-<p>Note that the keys in your stringfiles (e.g. &quot;Hello %s, how are you today?&quot;) are <strong>case sensitive</strong> and require exact matches.  There are a few different schools of thought on the best approach here, and it really depends on who/how often you&apos;ll be editing the stringfiles vs. HTML in the future.  Especially if you&apos;ll be editing the translations by hand, simpler, all-lowercase key names may be preferable for maintainability.</p>
-<p>For example, here&apos;s another pass at <code>config/locales/es.json</code>:</p>
-<pre><code data-language="json">{
-    &quot;hello&quot;: &quot;Hola!&quot;,
-    &quot;hello-how-are-you-today&quot;: &quot;Hola %s, &#xBF;c&#xF3;mo est&#xE1;s?&quot;
-}
-</code></pre><!-- __LANG=%%__ -->
-<p>And here&apos;s <code>config/locales/en.json</code>:</p>
-<pre><code data-language="json">{
-    &quot;hello&quot;: &quot;Hello!&quot;,
-    &quot;hello-how-are-you-today&quot;: &quot;Hello, how are you today?&quot;
-}
-</code></pre><!-- __LANG=%%__ -->
-<p>You can also nest locale strings. But a better approach would be to use <code>.</code> to represent nested strings. For example, here&apos;s the list of labels for the index page of a user controller:</p>
-<pre><code class="lang-json">{
-    &quot;user.index.label.id&quot;: &quot;User ID&quot;,
-    &quot;user.index.label.name&quot;: &quot;User Name&quot;
-}
-</code></pre>
-<!-- __LANG=%%__ -->
-<h3 id="detecting-and-or-overriding-the-desired-locale-for-a-request" permalink="detecting-and/or-overriding-the-desired-locale-for-a-request">Detecting and/or overriding the desired locale for a request</h3>
-<p>To determine the current locale used by the request, use <a href="https://github.com/mashpie/i18n-node#getlocale" target="_blank"><code>req.getLocale()</code></a>.</p>
-<p>To override the auto-detected language/localization preference for a request, use <a href="https://github.com/mashpie/i18n-node#setlocale" target="_blank"><code>req.setLocale()</code></a>, calling it with the unique code for the new locale, e.g.:</p>
-<pre><code data-language="javascript">// Force the language to German for the remainder of the request:
-req.setLocale(&apos;de&apos;);
-// (this will use the strings located in `config/locales/de.json` for translation)
-</code></pre><!-- __LANG=%%__ -->
-<p>By default, node-i18n will detect the desired language of a request by examining its language headers.  Language headers are set in your users&apos; browser settings, and while they&apos;re correct most of the time, you may need the flexibility to override this detected locale and provide your own.</p>
-<p>For instance, if your app allows users to pick their preferred language, you might create a <a href="http://sailsjs.org/documentation/concepts/Policies" target="_blank">policy</a> which checks for a custom language in the user&apos;s session, and if one exists, sets the appropriate locale for use in subsequent policies, controller actions, and views:</p>
-<pre><code data-language="javascript">// api/policies/localize.js
+<h1>ロケール</h1>
+<h3>概要</h3>
+<p>i18nフックはプロジェクトの中の&quot;locales&quot;ディレクトリ(デフォルトでは<code>config/locales</code>にあります)の中にあるJSONフォーマットの翻訳ファイルを読み込みます。それぞれのファイルはSailsバックエンドがサポートすべき<a href="http://en.wikipedia.org/wiki/Locale">locale</a>（通常は言語）に対応します。</p>
+<p>これらのファイルはあなたがビューやコントローラの中で使えるロケール特有の文字列を（JSONのキー・バリューのペアで）含んでいます。</p>
+<p>以下にロケールファイルの例を挙げます (<code>config/locales/ja.json</code>):</p>
+<pre><code class="language-json">{
+    "Hello!": "こんにちは!",
+    "Hello %s, how are you today?": "こんにちは%sさん、お元気ですか。"
+}</code></pre>
+<p>文字列ファイルの中のキー(例:&quot;Hello %s, how are you today?&quot;)は<strong>大文字と小文字を区別し</strong>、厳密なマッチングが必要なことにご留意ください。ここには幾つかの違ったアプローチがありますが、どれが一番いいのかはそれは翻訳ファイルとHTMLファイルに関して、だれがどのように編集することが多いかということによって変わってきます。特に、もし翻訳ファイルを手動で編集する機会が多い場合、シンプルな全て小文字のキー名にすることでメンテナンスがしやすくなるでしょう。</p>
+<p>例えば以下が別のやり方における<code>config/locales/ja.json</code>の例です:</p>
+<pre><code class="language-json">{
+    "hello": "こんにちは!",
+    "hello-how-are-you-today": "こんにちは%sさん、お元気ですか。"
+}</code></pre>
+<p>そしてこれが <code>config/locales/en.json</code>です。:</p>
+<pre><code class="language-json">{
+    "hello": "Hello!",
+    "hello-how-are-you-today": "Hello, how are you today?"
+}</code></pre>
+<p>ロケール文字列をネストすることも出来ます。しかしより良いアプローチとしてはネストされた文字列を表すために<code>.</code>を使うことです。例えばuserコントローラのindexページで使うラベルのリストです。:</p>
+<pre><code class="language-json">{
+    "user.index.label.id": "User ID",
+    "user.index.label.name": "User Name"
+}</code></pre>
+<h3>リクエストの理想的なロケールを検出、上書きする。</h3>
+<p>現在のリクエストで使われているロケールを判断するには<a href="https://github.com/mashpie/i18n-node#getlocale"><code>req.getLocale()</code></a>を使います。</p>
+<p>自動検出されたロケールを上書きするには<a href="https://github.com/mashpie/i18n-node#setlocale"><code>req.setLocale()</code></a>を利用し、これを新しいロケールのユニークコードとともに呼び出します。 例:</p>
+<pre><code class="language-js">// Force the language to German for the remainder of the request:
+req.setLocale('de');
+// (this will use the strings located in `config/locales/de.json` for translation)</code></pre>
+<p>デフォルトではnode-i18nは言語ヘッダーを見ることで望ましい言語を検出します。言語ヘッダーはユーザーのブラウザ設定で決められ、殆どの場合においてそれは正しいのでロケールの上書きに関しては柔軟な対応が可能にするべきです。</p>
+<p>例えば、もしあなたのアプリでユーザが任意の言語を選ぶことが出来るようにする場合、まずユーザセッションにおけるカスタム言語を確認する<a href="http://beta.sailsjs.org/#/documentation/concepts/Policies">ポリシー</a> ポリシーを作り、もしそれが存在する場合、その後に続くポリシーやコントローラ、ビューで使う適切なロケールをセットすることになります。:</p>
+<pre><code class="language-js">// api/policies/localize.js
 module.exports = function(req, res, next) {
   req.setLocale(req.session.languagePreference);
   next();
-};
-</code></pre><!-- __LANG=%%__ -->
+};</code></pre>
 <!--
-
-  Alternatively, here's another extended example:
-  (todo: at the very least pull this into a separate guide)
-
-```
-<!-- __LANG=%js%__ -->
-<p>// config/routes.js
+  その他に、別の拡張したサンプルです。:
+  (todo: 最新のPullでは別のガイドページに以降する。)
+```js
+// config/routes.js
 module.export.routes = {
-  &apos;/:lang/&apos;: &apos;MyController.index&apos;,
-  &apos;/:lang/help&apos;: &apos;MyController.help&apos;,
-  &apos;/:lang/contact&apos;: &apos;MyController.contact&apos;,
+  '/:lang/': 'MyController.index',
+  '/:lang/help': 'MyController.help',
+  '/:lang/contact': 'MyController.contact',
   // ...etc...
-}</p>
-<p>// config/policies.js
+}
+// config/policies.js
 module.exports.policies = {
-  &apos;*&apos; : &apos;localize&apos;
-}</p>
-<p>// api/policies/localize.js
+  '*' : 'localize'
+}
+// api/policies/localize.js
 module.exports = function(req, res, next) {
-   req.setLocale(req.param(&apos;lang&apos;));
+   req.setLocale(req.param('lang'));
    next();
 };
 ```
-<!-- __LANG=%%__ -->
---&gt;</p>
+-->
 <docmeta name="displayName" value="Locales">
-</docmeta>

@@ -7,11 +7,11 @@
 
       <!-- Light Blue Section -->
       <div class="banner-container">
-        <h1>Take as much or as little as you need.</h1>
+        <h1>少しでも、たくさんでも、お好きなだけ。</h1>
         <p class="sub-header">
-          Sails is a lightweight framework that sits on top of <a target="_blank" href="https://github.com/expressjs">Express</a>.
+          Sailsは<a target="_blank" href="https://github.com/expressjs">Express</a>上で動作する軽量フレームワークです。
 
-          Its ensemble of small modules work together to provide <em>simplicity</em>, <em>maintainability</em>, and <em>structural conventions</em> to Node.js apps.
+          Sailsの織りなす小さなモジュールのアンサンブルは<em>シンプルさ</em>, <em>メンテナンス性</em>, と <em>構造的な慣習</em> をNode.jsアプリケーションにもたらすことが出来ます。
         </p>
         <img class="squiddy" alt="A cartoon squid holding multiple devices with the Sails.js logo on them and sitting next to a starfish" src="images/img_squiddy.png">
       </div> <!-- light blue section -->
@@ -24,17 +24,17 @@
   <div class="features-container">
     <div class="features-nav" ng-class="{'sticky': scrollTop>757}" ng-style="{left: scrollTop > 757 ? getOffsetLeft('.features-container') : 0}">
       <div>
-        <h1>Features</h1>
+        <h1>機能</h1>
         <ul>
           <li><a href="#?javascript" ng-click="intent.scrollToElement('#javascript')">100% Javascript</a></li>
-          <li><a href="#?database" ng-click="intent.scrollToElement('#database')" du-smooth-scroll du-scrollspy offset="60">Any database</a></li>
-          <li><a href="#?associations" ng-click="intent.scrollToElement('#associations')">Powerful associations</a></li>
-          <li><a href="#?rest" ng-click="intent.scrollToElement('#rest')">Auto-generate REST APIs</a></li>
-          <li><a href="#?websocket" ng-click="intent.scrollToElement('#websocket')-support">Easy WebSocket support</a></li>
-          <li><a href="#?security" ng-click="intent.scrollToElement('#security')">Reusable security policies</a></li>
-          <li><a href="#?front-end" ng-click="intent.scrollToElement('#front-end')">Front-end agnostic</a></li>
-          <li><a href="#?asset-pipeline" ng-click="intent.scrollToElement('#asset-pipeline')">Flexible asset pipeline</a></li>
-          <li><a href="#?solid-foundation" ng-click="intent.scrollToElement('#solid-foundation')">Rock solid foundation</a></li>
+          <li><a href="#?database" ng-click="intent.scrollToElement('#database')" du-smooth-scroll du-scrollspy offset="60">どんなデータベースでも</a></li>
+          <li><a href="#?associations" ng-click="intent.scrollToElement('#associations')">強力なリレーション</a></li>
+          <li><a href="#?rest" ng-click="intent.scrollToElement('#rest')">REST APIを自動生成</a></li>
+          <li><a href="#?websocket" ng-click="intent.scrollToElement('#websocket')-support">簡単なWebSocketサポート</a></li>
+          <li><a href="#?security" ng-click="intent.scrollToElement('#security')">再利用可能なセキュリティポリシー</a></li>
+          <li><a href="#?front-end" ng-click="intent.scrollToElement('#front-end')">フロントエンドは何でも</a></li>
+          <li><a href="#?asset-pipeline" ng-click="intent.scrollToElement('#asset-pipeline')">フレキシブルなアセットパイプライン</a></li>
+          <li><a href="#?solid-foundation" ng-click="intent.scrollToElement('#solid-foundation')">堅牢な基礎技術</a></li>
         </ul>
       </div>
     </div> <!-- left side navigation -->
@@ -49,8 +49,8 @@
             <div class="icon-container">
               <img class="icon javascript" src="images/icon_js_large.png"/>
             </div>
-            <h5>100% JavaScript.</h5>
-            <p>Like other MVC frameworks, Sails is built with an emphasis on developer happiness and a convention-over-configuration philosophy. But Node.js takes this principle to the next level.  Building on top of Sails means your app is written entirely in JavaScript, the language you and your team are already using in the browser.  Since you spend less time context-shifting, you're able to write code in a more consistent style, which makes development more productive and fun.
+            <h5>100% JavaScript</h5>
+            <p>多くのMVCフレームワークと同じようにSailsは慣習より設定の概念のもとにできています。しかし、Node.jsは更にそこから一歩踏み込みました。Sails上でアプリケーションを開発するということはアプリケーションが全JavaScriptによって書かれる、つまりは開発チームがすでにブラウザ上で使っている言語で書かれるということを意味します。これによりコンテキストの切り替えに掛かる時間を節約でき、より一貫性のあるスタイルでコードが書けますので開発がより楽しく、効率的になります。
             </p>
           </li>
           <li>
@@ -58,42 +58,42 @@
             <div class="icon-container">
               <img class="icon database" src="images/icon_database_large.png"/>
             </div>
-            <h5>Any database.</h5>
-            <p>Sails bundles a powerful ORM, Waterline, which provides a simple data access
-            layer that just works, no matter what database you're using.
-            In addition to a plethora of community projects, officially supported adapters exist for MySQL, MongoDB, PostgreSQL, Redis, and local disk.
+            <h5>どんなデータベースでも</h5>
+            <p>SailsはWaterlineと呼ばれるパワフルなORMを組み込んでおり、
+               データベースに依存しないシンプルなデータアクセスレイヤーを提供します。
+               多くのコミュニティサポートのプロジェクトに加え、MySQL、MongoDB、PostgreSQL、Redisとローカルディスクの公式サポートがあります。
           </li>
           <li>
             <a name="#?associations" id="associations"></a>
             <div class="icon-container">
               <img class="icon optional-support" src="images/icon_associations_large.png"/>
             </div>
-            <h5>Powerful associations.</h5>
-            <p>Sails offers a new take on the familiar relational model, aimed at making data modeling more practical. You can do all the same things you might be used to (one-to-many, many-to-many), but you can also assign multiple <em>named</em> associations per-model (for instance, a cake might have two collections of people: <em>"havers"</em> and <em>"eaters"</em>).  Better yet, you can assign different models to different databases, and your associations/joins will <strong>still work</strong>-- even across NoSQL and relational boundries.  Sails has no problem implicitly/automatically joining a MySQL table with a Mongo collection and vice versa.</p>
+            <h5>強力なリレーション</h5>
+            <p>Sailsはより実践的なデータモデルを実現する新しいリレーショナルモデルを採用しています。1対多や多対多のようなお馴染みのやり方は全て使えるということの他にモデルごとに複数の<em>名前がつけられた</em>アソシエーションを実現することが出来ます。（例えば「ケーキ」は複数の種類の人、「持っている人」と「食べる人」を持つでしょう。）さらに、別々のモデルを別々のデータベースに割り当てることが出来、さらにその上にアソシエーションとジョインを<strong>動作させる</strong>ことが(例えNoSQLとリレーショナルDB間でも)出来ます。SailsはMongoのコレクションなどとMySQLテープルの自動的かつ暗示的なジョインを全く問題なくを行うことが出来ます。</p>
           </li>
           <li>
             <div class="icon-container">
               <a name="#?rest" id="rest"></a>
               <img class="icon api" src="images/icon_api_large.png"/>
             </div>
-            <h5>Auto-generate REST APIs.</h5>
-            <p>Sails comes with <em>blueprints</em> that help jumpstart your app's backend without writing any code.  Just run <code>sails generate api dentist</code> and you'll get an API that lets you search, paginate, sort, filter, create, destroy, update, and associate dentists.  Since these <em>blueprint actions</em> are built on the same underlying technology as Sails, they also work with Websockets and any supported database out of the box.</p>
+            <h5>REST APIを自動生成</h5>
+            <p>Sailsにはコードを書くことなくバックエンドを生成できる<em>blueprints</em>が搭載されています。<code>sails generate api dentist</code> と実行するだけで検索、ページネーション、ソート、フィルタ、作成、削除、アップデート、結合操作が出来りAPIを作成することが出来ます。これらの<em>blueprint actions</em>はSailsを同じ技術の下に構築されますのでWebsocketsや各種データベースと簡単に組み合わせて使うことが出来ます。</p>
           </li>
           <li>
             <a name="#?websocket" id="websocket"></a>
             <div class="icon-container">
               <img class="icon realtime" src="images/icon_websocket_large.png"/>
             </div>
-            <h5>Support WebSockets with no additional code.</h5>
-            <p>In the past, adding realtime/"comet" features meant maintaining two separate code bases. But since the request interpreter in Sails translates incoming socket messages for you, they're automatically compatible with every route in your Sails app, as well as any existing Express routes/middleware.  Normalization of parameters, the session, and the streaming interface are all taken care of.  In other words, the code you write works with WebSockets <em>and</em> HTTP, without doing any extra work.</p>
+            <h5>追加コード無しで簡単にWebSocketをサポート</h5>
+            <p>かつてはリアルタイムの「commet」機能を使うためには別々のコードを利用することがありました。しかし、Sailsのリクエスト変換機能は受信したソケット通信を翻訳してくれ、Sailsアプリケーション上の任意のアクションに変換出来るほか、全てのExpressルートやミドルウエアに変換されることが出来ます。パラメータのノーマライゼーションやセッション、ストリーミングインタフェースは全て処理されます。これは別の言い方をすれば、あなたが書いたコードは特に何もせずともHTTPとWebSocketの<em>両方で</em>動くということなのです。</p>
           </li>
           <li>
             <a name="#?security" id="security"></a>
             <div class="icon-container">
               <img class="icon security" src="images/icon_security_large.png"/>
             </div>
-            <h5>Declarative, reusable security policies.</h5>
-            <p>Sails provides basic security and role-based access control by default in the form of policies - simple, reusable middleware functions that run before your controllers and actions.  Writing policies encourages <a>encapsulation</a>, which dramatically simplifies your business logic and reduces the total amount of code you need to write.  Policies are interchangeable with Express/Connect middleware, which means you can plug in popular npm modules like <a>Passport</a>.  Finally, like most things in Sails, your policies work for both WebSockets and HTTP automatically.</p>
+            <h5>宣言的で再利用可能なセキュリティポリシー</h5>
+            <p>Sailsは基本的なセキュリティとロールベースのアクセス制御をデフォルトのポリシーとして用意しています。この「ポリシー」はシンプルで再利用可能なミドルウエアであり、コントローラアクションの手前で実行されるものです。ポリシーを書くことで<a>カプセル化</a>を推進し、ビジネスロジックを劇的にシンプル化することで書かなければいけないコード量を減らせます。ポリシーはExpress/Connectのミドルウエアと交換可能であり、<a>Passport</a>のような人気のnpmモジュールを組み込むことが出来ます。そして、Sailsのその他多くの部分と同じようにポリシーは自動的にWebSocketsとHTTPの両方で動作します。</p>
           </li>
 
           <li>
@@ -101,8 +101,8 @@
             <div class="icon-container">
               <img class="icon database" src="images/icon_frontend_large.png"/>
             </div>
-            <h5>Front-end agnostic.</h5>
-            <p>While the promise of "one language/framework to rule them all" is certainly enticing, it isn't always realistic.  Sails is compatible with any front-end strategy; whether it's Angular, Backbone, iOS/ObjC, Android/Java, Windows Phone, or something else that hasn't been invented yet. Plus it's easy to serve up the same API to be consumed by another web service or community of developers.
+            <h5>フロントエンドは何でも</h5>
+            <p>一つのフレームワークや言語で全てを行うことは魅力的ではありますが常に現実的とは限りません。Sailsは全てのフロントエンド戦略に対応し、それがAngularでもBackboneでも、あるいはiOS/ObjCやAndroid/Java、Windows Phoneでも、まだ発明されていないその他のフレームワークでも構いません。さらに別々のWebサービスやコミュニティの開発者が同じAPIを利用するのも簡単です。
             </p>
           </li>
 
@@ -111,11 +111,11 @@
             <div class="icon-container">
               <img class="icon minification" src="images/icon_asset_large.png"/>
             </div>
-            <h5>Flexible asset pipeline.</h5>
+            <h5>フレキシブルなアセットパイプライン</h5>
             <p>
-              If you <em>are</em> building an app for the browser, you're in luck.  Sails ships with <a>Grunt</a>- which means your entire front-end asset workflow is completely customizable, and comes with support for all of the great Grunt modules which are already out there. That includes support for LESS, SASS, Stylus, CoffeeScript, JST, Jade, Handlebars, Dust, and many more.  When you're ready to go into production, your assets are minified and gzipped automatically. You can even compile your static assets and push them out to a CDN like CloudFront to make your app load even faster.
+              あなたがブラウザ向けのアプリケーションを開発しているのであればラッキーです。Sailsには<a>Grunt</a>が搭載されています。つまりフロントエンドアセットのワークフローが完全にカスタマイズ可能であり、現在世の中に出ている、全ての素晴らしいGruntモジュールをサポートしているということです。これにはLESS、SASS、Stylus、CoffeeScript、JST、 Jade、Handlebars、Dustなどたくさんのサポートが含まれます。デプロイの準備が出来た時には自動的にアセットの最小化やgzip圧縮ができます。さらにスタティックなアセットをコンパイルしたりCloudFrontのようなCDNにアップロードして読み込みをもっと早くすることも出来ます。
               <br/>
-              <br/>Prefer Gulp? Check out the <a target="_blank" href="https://github.com/PaulAvery/sails-generate-gulp-bower">community generator</a> by <a target="_blank" href="https://github.com/PaulAvery">@PaulAvery</a>.
+              <br/>Gulpがお望みですか。 <a target="_blank" href="https://github.com/PaulAvery">@PaulAvery</a>による<a target="_blank" href="https://github.com/PaulAvery/sails-generate-gulp-bower">コミュニティージェネレータ</a>をお試しください。
             </p>
           </li>
           <li>
@@ -123,8 +123,8 @@
             <div class="icon-container">
               <img class="icon policies" src="images/icon_foundation_large.png"/>
             </div>
-            <h5>Rock-solid foundation.</h5>
-            <p>Sails is built on <a href="http://nodejs.org">Node.js</a>, a popular, lightweight server-side technology that allows developers to write blazing fast, scalable network appliations in JavaScript.  Sails uses <a>Express</a> for handling HTTP requests, and wraps <a>socket.io</a> for managing WebSockets. So if your app ever needs to get really low-level, you can access the raw Express or socket.io objects. Another nice side-effect is that your existing Express routes work perfectly well in a Sails app, so migrating an existing Node app is a breeze.</p>
+            <h5>堅牢な基礎技術</h5>
+            <p>Sailsはとても早くてスケーラブルなJapascriptサーバサイドアプリケーションを開発できると人気のライトウエイトサーバサイド技術である<a href="http://nodejs.org">Node.js</a>の上に構築されています。SailsはHTTPのリクエストをハンドリングするのに<a>Express</a>を使い、WebSocketsの管理に<a>socket.io</a>をラップしています。そのためもしもあなたのアプリケーションに本当に低レベルへのアクセスが必要な場合、生のExpressやsocket.ioオブジェクトにアクセスすることが出来ます。もう一つの良い副作用としては既存のExpressのルートがSailsアプリケーションと完全にうまく共存するため、驚くほど迅速に既存のNodeアプリケーションをマイグレーション出来ます。</p>
           </li>
         </ul>
       </div>

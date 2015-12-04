@@ -1,22 +1,20 @@
-<h1 id="myapp-assets-templates">myApp/assets/templates</h1>
-<h3 id="purpose-client-side-templates" permalink="purpose--clientside-templates">Purpose - Client-side Templates</h3>
-<p>HTML templates are important prerequisites of modern, rich client applications.
-To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
-that you load these templates client-side.</p>
-<p>By default, your Gruntfile is configured to automatically load and precompile
-client-side JST templates in your <code>assets/templates</code> folder, then
-include them here automatically (between TEMPLATES and TEMPLATES END).</p>
+<h1>myApp/assets/templates</h1>
+<h3>目的 - クライアントサイドテンプレート</h3>
+<p>HTMLテンプレートはモダンなリッチクライアントアプリケーションにとっての必須の機能です。
+それらの魔法を使ってBackbone、Angular、Ember、Knockoutといったフレームワークを使うには
+それらのテンプレートクライアントサイドに読み込まなければいけません。</p>
+<p>デフォルトでGruntfileファイルは<code>assets/templates</code>クライアントサイドのJSTテンプレートを
+自動的に読み込み、プレコンパイルし、その後
+自動的にここに（TEMPLATESとTEMPLATES ENDの間に）読み込みます。</p>
 <pre><code>&lt;!--TEMPLATES--&gt;
 
-&lt;!--TEMPLATES END--&gt;
-</code></pre><p>To customize this behavior to fit your needs, just edit your Gruntfile.
-For example, here are a few things you could do:</p>
+&lt;!--TEMPLATES END--&gt;</code></pre>
+<p>この振る舞いを必要に応じて変えるには単にGruntfileをご覧ください。
+例えば、以下が出来ることの一部です:</p>
 <ul>
-<li>Import templates from other directories</li>
-<li>Use a different template engine (handlebars, jade, dust, etc) </li>
-<li>Internationalize your client-side templates using a server-side stringfile before they&apos;re served.</li>
+<li>別のディレクトリからテンプレートを読み込む</li>
+<li>別のテンプレートエンジンを使う(handlebars、jade、dustなど)</li>
+<li>サーバサイドのstringfileを使ってクライアントサイドコードを提供前に国際化する</li>
 </ul>
-<p><docmeta name="uniqueID" value="templatesmd846667"></docmeta></p>
+<docmeta name="uniqueID" value="templatesmd846667">
 <docmeta name="displayName" value="templates">
-
-</docmeta>

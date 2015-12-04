@@ -1,15 +1,16 @@
-<h1 id="myapp-tasks-register-compileassets-js">myApp/tasks/register/compileAssets.js</h1>
-<p><docmeta name="uniqueID" value="compileAssetsjs631033"></docmeta></p>
+<h1>myApp/tasks/register/compileAssets.js</h1>
+<docmeta name="uniqueID" value="compileAssetsjs631033">
 <docmeta name="displayName" value="compileAssets.js">
 
-<pre><code data-language="javascript">module.exports = function (grunt) {
-    grunt.registerTask(&apos;compileAssets&apos;, [
-        &apos;clean:dev&apos;,
-        &apos;jst:dev&apos;,
-        &apos;less:dev&apos;,
-        &apos;copy:dev&apos;,
-        &apos;coffee:dev&apos;
+```
+module.exports = function (grunt) {
+    grunt.registerTask('compileAssets', [
+        'clean:dev',
+        'jst:dev',
+        'less:dev',
+        'copy:dev',
+        'coffee:dev'
     ]);
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

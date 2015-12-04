@@ -1,33 +1,34 @@
-<h1 id="myapp-tasks-config-sync-js">myApp/tasks/config/sync.js</h1>
-<p><docmeta name="uniqueID" value="syncjs116962"></docmeta></p>
+<h1>myApp/tasks/config/sync.js</h1>
+<docmeta name="uniqueID" value="syncjs116962">
 <docmeta name="displayName" value="sync.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * A grunt task to keep directories in sync. It is very similar to grunt-contrib-copy
  * but tries to copy only those files that has actually changed.
  *
  * ---------------------------------------------------------------
  *
  * Synchronize files from the `assets` folder to `.tmp/public`,
- * smashing anything that&apos;s already there.
+ * smashing anything that's already there.
  *
  * For usage docs see:
- *         https://github.com/tomusdrw/grunt-sync
+ *      https://github.com/tomusdrw/grunt-sync
  *
  */
 module.exports = function(grunt) {
 
-    grunt.config.set(&apos;sync&apos;, {
+    grunt.config.set('sync', {
         dev: {
             files: [{
-                cwd: &apos;./assets&apos;,
-                src: [&apos;**/*.!(coffee)&apos;],
-                dest: &apos;.tmp/public&apos;
+                cwd: './assets',
+                src: ['**/*.!(coffee)'],
+                dest: '.tmp/public'
             }]
         }
     });
 
-    grunt.loadNpmTasks(&apos;grunt-sync&apos;);
+    grunt.loadNpmTasks('grunt-sync');
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

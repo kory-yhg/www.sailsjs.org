@@ -4,7 +4,7 @@
     "fullPathAndFileName": "concepts/Assets/DefaultTasks.ejs",
     "data": {
       "uniqueID": "DefaultTasks764297",
-      "displayName": "Default Tasks"
+      "displayName": "デフォルトのタスク"
     },
     "parent": "concepts/Assets/Assets.ejs",
     "isChild": true
@@ -14,7 +14,7 @@
     "fullPathAndFileName": "concepts/Assets/DisablingGrunt.ejs",
     "data": {
       "uniqueID": "DisablingGrunt970874",
-      "displayName": "Disabling Grunt"
+      "displayName": "Gruntを無効化する"
     },
     "parent": "concepts/Assets/Assets.ejs",
     "isChild": true
@@ -24,7 +24,7 @@
     "fullPathAndFileName": "concepts/Assets/TaskAutomation.ejs",
     "data": {
       "uniqueID": "TaskAutomation282238",
-      "displayName": "Task Automation"
+      "displayName": "タスクの自動化"
     },
     "parent": "concepts/Assets/Assets.ejs",
     "isChild": true
@@ -33,7 +33,7 @@
     "templateTitle": "localjsfile.ejs",
     "fullPathAndFileName": "concepts/Configuration/localjsfile.ejs",
     "data": {
-      "displayName": "The local.js file"
+      "displayName": "config/local.jsファイル"
     },
     "parent": "concepts/Configuration/Configuration.ejs",
     "isChild": true
@@ -43,7 +43,7 @@
     "fullPathAndFileName": "concepts/Configuration/usingsailsrcfiles.ejs",
     "data": {
       "uniqueID": "sailsrc374211",
-      "displayName": "Using `.sailsrc` Files"
+      "displayName": ".sailsrcファイルを使う"
     },
     "parent": "concepts/Configuration/Configuration.ejs",
     "isChild": true
@@ -52,7 +52,7 @@
     "templateTitle": "GeneratingControllers.ejs",
     "fullPathAndFileName": "concepts/Controllers/GeneratingControllers.ejs",
     "data": {
-      "displayName": "Generating Controllers"
+      "displayName": "コントローラを生成する"
     },
     "parent": "concepts/Controllers/Controllers.ejs",
     "isChild": true
@@ -61,7 +61,7 @@
     "templateTitle": "RoutingToControllers.ejs",
     "fullPathAndFileName": "concepts/Controllers/RoutingToControllers.ejs",
     "data": {
-      "displayName": "Routing to Controllers"
+      "displayName": "コントローラへのルート"
     },
     "parent": "concepts/Controllers/Controllers.ejs",
     "isChild": true
@@ -70,7 +70,7 @@
     "templateTitle": "AddingCustomResponse.ejs",
     "fullPathAndFileName": "concepts/Custom Responses/AddingCustomResponse.ejs",
     "data": {
-      "displayName": "Adding a Custom Response"
+      "displayName": "カスタムレスポンスを追加する"
     },
     "parent": "concepts/Custom Responses/Custom Responses.ejs",
     "isChild": true
@@ -79,7 +79,7 @@
     "templateTitle": "DefaultResponses.ejs",
     "fullPathAndFileName": "concepts/Custom Responses/DefaultResponses.ejs",
     "data": {
-      "displayName": "Default Responses"
+      "displayName": "デフォルトのレスポンス"
     },
     "parent": "concepts/Custom Responses/Custom Responses.ejs",
     "isChild": true
@@ -99,7 +99,7 @@
     "fullPathAndFileName": "concepts/Deployment/Hosting.ejs",
     "data": {
       "uniqueID": "Hosting276234",
-      "displayName": "Hosting"
+      "displayName": "ホスティング"
     },
     "parent": "concepts/Deployment/Deployment.ejs",
     "isChild": true
@@ -109,7 +109,7 @@
     "fullPathAndFileName": "concepts/Deployment/Scaling.ejs",
     "data": {
       "uniqueID": "Scaling291270",
-      "displayName": "Scaling"
+      "displayName": "スケーリング"
     },
     "parent": "concepts/Deployment/Deployment.ejs",
     "isChild": true
@@ -118,7 +118,7 @@
     "templateTitle": "uploading-to-amazon-s3.ejs",
     "fullPathAndFileName": "concepts/File Uploads/uploading-to-amazon-s3.ejs",
     "data": {
-      "displayName": "Uploading to S3"
+      "displayName": "Amazon S3にアップロードする"
     },
     "parent": "concepts/File Uploads/File Uploads.ejs",
     "isChild": true
@@ -127,7 +127,7 @@
     "templateTitle": "uploading-to-mongo-gridfs.ejs",
     "fullPathAndFileName": "concepts/File Uploads/uploading-to-mongo-gridfs.ejs",
     "data": {
-      "displayName": "Uploading to GridFS"
+      "displayName": "Mongo GridFSにアップロードする"
     },
     "parent": "concepts/File Uploads/File Uploads.ejs",
     "isChild": true
@@ -136,7 +136,7 @@
     "templateTitle": "DisablingGlobals.ejs",
     "fullPathAndFileName": "concepts/Globals/DisablingGlobals.ejs",
     "data": {
-      "displayName": "Disabling Globals"
+      "displayName": "グローバルを無効化する"
     },
     "parent": "concepts/Globals/Globals.ejs",
     "isChild": true
@@ -145,7 +145,7 @@
     "templateTitle": "Locales.ejs",
     "fullPathAndFileName": "concepts/Internationalization/Locales.ejs",
     "data": {
-      "displayName": "Locales"
+      "displayName": "ロケール"
     },
     "parent": "concepts/Internationalization/Internationalization.ejs",
     "isChild": true
@@ -154,7 +154,7 @@
     "templateTitle": "TranslatingDynamicContent.ejs",
     "fullPathAndFileName": "concepts/Internationalization/TranslatingDynamicContent.ejs",
     "data": {
-      "displayName": "Translating Dynamic Content"
+      "displayName": "動的コンテンツを翻訳する"
     },
     "parent": "concepts/Internationalization/Internationalization.ejs",
     "isChild": true
@@ -173,7 +173,7 @@
     "templateTitle": "ConventionalDefaults.ejs",
     "fullPathAndFileName": "concepts/Middleware/ConventionalDefaults.ejs",
     "data": {
-      "displayName": "Conventional Defaults"
+      "displayName": "コンベンショナルのデフォルト"
     },
     "parent": "concepts/Middleware/Middleware.ejs",
     "isChild": true
@@ -184,7 +184,7 @@
     "realPath": "concepts/ORM/Associations/",
     "data": {
       "uniqueID": "Associations913185",
-      "displayName": "Associations"
+      "displayName": "アソシエーション"
     },
     "parent": "concepts/ORM/ORM.ejs",
     "isChild": true,
@@ -203,7 +203,7 @@
     "fullPathAndFileName": "concepts/ORM/Associations/Dominance.ejs",
     "data": {
       "uniqueID": "Dominance904539",
-      "displayName": "Dominance"
+      "displayName": "「Dominance」"
     },
     "parent": "concepts/ORM/Associations/Associations.ejs",
     "isChild": true
@@ -213,7 +213,7 @@
     "fullPathAndFileName": "concepts/ORM/Associations/ManytoMany.ejs",
     "data": {
       "uniqueID": "ManytoMany276455",
-      "displayName": "Many-to-Many"
+      "displayName": "多対多"
     },
     "parent": "concepts/ORM/Associations/Associations.ejs",
     "isChild": true
@@ -223,7 +223,7 @@
     "fullPathAndFileName": "concepts/ORM/Associations/OneWayAssociation.ejs",
     "data": {
       "uniqueID": "OneWayAssociation708096",
-      "displayName": "One Way Association"
+      "displayName": "片方向のアソシエーション"
     },
     "parent": "concepts/ORM/Associations/Associations.ejs",
     "isChild": true
@@ -233,7 +233,7 @@
     "fullPathAndFileName": "concepts/ORM/Associations/OnetoMany.ejs",
     "data": {
       "uniqueID": "OnetoMany478093",
-      "displayName": "One-to-Many"
+      "displayName": "1対多"
     },
     "parent": "concepts/ORM/Associations/Associations.ejs",
     "isChild": true
@@ -243,7 +243,7 @@
     "fullPathAndFileName": "concepts/ORM/Associations/OnetoOne.ejs",
     "data": {
       "uniqueID": "OnetoOne169258",
-      "displayName": "One-to-One"
+      "displayName": "1対1"
     },
     "parent": "concepts/ORM/Associations/Associations.ejs",
     "isChild": true
@@ -253,7 +253,7 @@
     "fullPathAndFileName": "concepts/ORM/Associations/ThroughAssociations.ejs",
     "data": {
       "uniqueID": "ThroughAssociations740718",
-      "displayName": "Through Associations"
+      "displayName": "スルーアソシエーション"
     },
     "parent": "concepts/ORM/Associations/Associations.ejs",
     "isChild": true
@@ -263,7 +263,7 @@
     "fullPathAndFileName": "concepts/ORM/Attributes.ejs",
     "data": {
       "uniqueID": "Attributes951609",
-      "displayName": "Attributes"
+      "displayName": "アトリビュート"
     },
     "parent": "concepts/ORM/ORM.ejs",
     "isChild": true
@@ -273,7 +273,7 @@
     "fullPathAndFileName": "concepts/ORM/Lifecyclecallbacks.ejs",
     "data": {
       "uniqueID": "Lifecyclecallbacks631538",
-      "displayName": "Lifecycle callbacks"
+      "displayName": "ライフサイクルコールバック"
     },
     "parent": "concepts/ORM/ORM.ejs",
     "isChild": true
@@ -283,7 +283,7 @@
     "fullPathAndFileName": "concepts/ORM/Models.ejs",
     "data": {
       "uniqueID": "Models413907",
-      "displayName": "Models"
+      "displayName": "モデル"
     },
     "parent": "concepts/ORM/ORM.ejs",
     "isChild": true
@@ -292,7 +292,7 @@
     "templateTitle": "Querylanguage.ejs",
     "fullPathAndFileName": "concepts/ORM/Querylanguage.ejs",
     "data": {
-      "displayName": "Query Language"
+      "displayName": "Waterlineクエリー言語"
     },
     "parent": "concepts/ORM/ORM.ejs",
     "isChild": true
@@ -302,7 +302,7 @@
     "fullPathAndFileName": "concepts/ORM/Validations.ejs",
     "data": {
       "uniqueID": "Validations576587",
-      "displayName": "Validations"
+      "displayName": "バリデーション"
     },
     "parent": "concepts/ORM/ORM.ejs",
     "isChild": true
@@ -312,7 +312,7 @@
     "fullPathAndFileName": "concepts/ORM/model-settings.ejs",
     "data": {
       "uniqueID": "Modelconfiguration960213",
-      "displayName": "Model Settings"
+      "displayName": "モデルの設定"
     },
     "parent": "concepts/ORM/ORM.ejs",
     "isChild": true
@@ -332,7 +332,7 @@
     "fullPathAndFileName": "concepts/Routes/RouteTargetSyntax.ejs",
     "data": {
       "uniqueID": "RouteTargetSyntax278177",
-      "displayName": "Custom Routes"
+      "displayName": "ルートターゲットの記法"
     },
     "parent": "concepts/Routes/Routes.ejs",
     "isChild": true
@@ -342,7 +342,7 @@
     "fullPathAndFileName": "concepts/Routes/URLSlugs.ejs",
     "data": {
       "uniqueID": "URLSlugs805236",
-      "displayName": "URL Slugs"
+      "displayName": "URLスラグ"
     },
     "parent": "concepts/Routes/Routes.ejs",
     "isChild": true
@@ -383,7 +383,7 @@
     "fullPathAndFileName": "concepts/Security/ContentSecurityPolicy.ejs",
     "data": {
       "uniqueID": "ContentSecurityPolicy649437",
-      "displayName": "Content Security Policy"
+      "displayName": "コンテンツセキュリティポリシー"
     },
     "parent": "concepts/Security/Security.ejs",
     "isChild": true
@@ -442,7 +442,7 @@
     "templateTitle": "CreatingAService.ejs",
     "fullPathAndFileName": "concepts/Services/CreatingAService.ejs",
     "data": {
-      "displayName": "Creating a Service"
+      "displayName": "サービスを作成しますか?"
     },
     "parent": "concepts/Services/Services.ejs",
     "isChild": true
@@ -451,7 +451,7 @@
     "templateTitle": "CodeCoverage.ejs",
     "fullPathAndFileName": "concepts/Testing/CodeCoverage.ejs",
     "data": {
-      "displayName": "Code Coverage"
+      "displayName": "コードカバレッジ"
     },
     "parent": "concepts/Testing/Testing.ejs",
     "isChild": true
@@ -460,7 +460,7 @@
     "templateTitle": "To0.10.ejs",
     "fullPathAndFileName": "concepts/Upgrading/To0.10.ejs",
     "data": {
-      "displayName": "To v.0.10"
+      "displayName": "v.0.10へ"
     },
     "parent": "concepts/Upgrading/Upgrading.ejs",
     "isChild": true
@@ -469,7 +469,7 @@
     "templateTitle": "To0.11.ejs",
     "fullPathAndFileName": "concepts/Upgrading/To0.11.ejs",
     "data": {
-      "displayName": "To v0.11"
+      "displayName": "v0.11へ"
     },
     "parent": "concepts/Upgrading/Upgrading.ejs",
     "isChild": true
@@ -479,7 +479,7 @@
     "fullPathAndFileName": "concepts/Views/Layouts.ejs",
     "data": {
       "uniqueID": "Layouts870655",
-      "displayName": "Layouts"
+      "displayName": "レイアウト"
     },
     "parent": "concepts/Views/Views.ejs",
     "isChild": true
@@ -489,7 +489,7 @@
     "fullPathAndFileName": "concepts/Views/Locals.ejs",
     "data": {
       "uniqueID": "Locals453748",
-      "displayName": "Locals"
+      "displayName": "ローカル"
     },
     "parent": "concepts/Views/Views.ejs",
     "isChild": true
@@ -499,7 +499,7 @@
     "fullPathAndFileName": "concepts/Views/Partials.ejs",
     "data": {
       "uniqueID": "Partials610916",
-      "displayName": "Partials"
+      "displayName": "パーシャル"
     },
     "parent": "concepts/Views/Views.ejs",
     "isChild": true
@@ -509,7 +509,7 @@
     "fullPathAndFileName": "concepts/Views/ViewEngines.ejs",
     "data": {
       "uniqueID": "ViewEngines339501",
-      "displayName": "View Engines"
+      "displayName": "レイアウト"
     },
     "parent": "concepts/Views/Views.ejs",
     "isChild": true
@@ -520,7 +520,7 @@
     "realPath": "concepts/extending-sails/Adapters/",
     "data": {
       "uniqueID": "Adapters83669",
-      "displayName": "Adapters",
+      "displayName": "アダプター",
       "stabilityIndex": "3"
     },
     "parent": "concepts/extending-sails/extending-sails.ejs",
@@ -536,7 +536,7 @@
     "fullPathAndFileName": "concepts/extending-sails/Adapters/adapterList.ejs",
     "data": {
       "uniqueID": "adapterList22829",
-      "displayName": "Available Adapters"
+      "displayName": "対応済みアダプタのリスト"
     },
     "parent": "concepts/extending-sails/Adapters/Adapters.ejs",
     "isChild": true
@@ -546,7 +546,7 @@
     "fullPathAndFileName": "concepts/extending-sails/Adapters/customAdapters.ejs",
     "data": {
       "uniqueID": "customAdapters92223",
-      "displayName": "Custom Adapters"
+      "displayName": "カスタムアダプタ"
     },
     "parent": "concepts/extending-sails/Adapters/Adapters.ejs",
     "isChild": true
@@ -557,7 +557,7 @@
     "realPath": "concepts/extending-sails/Generators/",
     "data": {
       "uniqueID": "Generators82739",
-      "displayName": "Generators",
+      "displayName": "ジェネレータ",
       "stabilityIndex": "2"
     },
     "parent": "concepts/extending-sails/extending-sails.ejs",
@@ -573,7 +573,7 @@
     "fullPathAndFileName": "concepts/extending-sails/Generators/customGenerators.ejs",
     "data": {
       "uniqueID": "customGenerators22840",
-      "displayName": "Custom Generators"
+      "displayName": "カスタムのジェネレータ"
     },
     "parent": "concepts/extending-sails/Generators/Generators.ejs",
     "isChild": true
@@ -583,7 +583,7 @@
     "fullPathAndFileName": "concepts/extending-sails/Generators/generatorList.ejs",
     "data": {
       "uniqueID": "generatorList11719",
-      "displayName": "Available Generators"
+      "displayName": "利用可能なジェネレータリスト"
     },
     "parent": "concepts/extending-sails/Generators/Generators.ejs",
     "isChild": true
@@ -594,7 +594,7 @@
     "realPath": "concepts/extending-sails/Hooks/",
     "data": {
       "uniqueID": "Hooks74998",
-      "displayName": "Hooks",
+      "displayName": "フック",
       "stabilityIndex": "3"
     },
     "parent": "concepts/extending-sails/extending-sails.ejs",
@@ -635,7 +635,7 @@
     "realPath": "concepts/extending-sails/Hooks/hookspec/",
     "data": {
       "uniqueID": "Hooks75002",
-      "displayName": "Hook Specification",
+      "displayName": "フックのスペック",
       "stabilityIndex": "3"
     },
     "parent": "concepts/extending-sails/Hooks/Hooks.ejs",
@@ -675,7 +675,7 @@
     "fullPathAndFileName": "concepts/extending-sails/Hooks/installablehooks.ejs",
     "data": {
       "uniqueID": "Hooks74999",
-      "displayName": "Installable Hooks",
+      "displayName": "インストーラブルフックを作る",
       "stabilityIndex": "3"
     },
     "parent": "concepts/extending-sails/Hooks/Hooks.ejs",
@@ -686,7 +686,7 @@
     "fullPathAndFileName": "concepts/extending-sails/Hooks/projecthooks.ejs",
     "data": {
       "uniqueID": "Hooks75000",
-      "displayName": "Project Hooks",
+      "displayName": "プロジェクトフックを作る",
       "stabilityIndex": "3"
     },
     "parent": "concepts/extending-sails/Hooks/Hooks.ejs",
@@ -697,7 +697,7 @@
     "fullPathAndFileName": "concepts/extending-sails/Hooks/usinghooks.ejs",
     "data": {
       "uniqueID": "Hooks75001",
-      "displayName": "Using Hooks",
+      "displayName": "Sailsアプリケーションでフックを使う",
       "stabilityIndex": "3"
     },
     "parent": "concepts/extending-sails/Hooks/Hooks.ejs",

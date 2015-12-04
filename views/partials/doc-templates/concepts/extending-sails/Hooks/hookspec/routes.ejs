@@ -1,6 +1,6 @@
-<h1 id="-routes-"><code>.routes</code></h1>
-<p>The <code>routes</code> feature allows a custom hook to easily bind new routes to a Sails app at load time.  If implemented, <code>routes</code> should be an object with either a <code>before</code> key, an <code>after</code> key, or both.  The values of those keys should in turn be objects whose keys are <a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-address" target="_blank">route addresses</a>, and whose values are route-handling functions with the standard <code>(req, res, next)</code> parameters.  Any routes specified in the <code>before</code> object will be bound <em>before</em> custom user routes (as defined in <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html" target="_blank">sails.config.routes</a>) and <a href="http://sailsjs.org/documentation/reference/blueprint-api?q=blueprint-routes" target="_blank">blueprint routes</a>.  Conversely, routes specified in the <code>after</code> object will be bound <em>after</em> custom and blueprint routes.  For example, consider the following <code>count-requests</code> hook:</p>
-<pre><code data-language="javascript">module.exports = function (sails) {
+<h1><code>.routes</code></h1>
+<p><code>routes</code>機能を使うことでカスタムフックはSailsアプリケーションがロードされるときに簡単に新しいルートをバインド出来るようになります。もし実装されていた場合<code>routes</code>は<code>before</code>キーか<code>after</code>気のどちらか両方かを持ちます。これらのキーの値は<a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-address">route addresses</a>をキーに持ち、通常の<code>(req, res, next)</code>のパラメータをもつルートハンドリングファンクションを値に持つオブジェクトである必要があります。<code>before</code>オブジェクトで指定される全てのルートはカスタムユーザルート(<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html">sails.config.routes</a>で定義される)や<a href="http://sailsjs.org/documentation/reference/blueprint-api?q=blueprint-routes">ブループリントルート</a>よりも <em>前に</em> 来ます。反対に<code>after</code>で定義されるルートはカスタムユーザルートやブループリントルートの <em>後に</em> 来ます。例えば以下の<code>count-requests</code>フックを考えてみましょう:</p>
+<pre><code class="language-javascript">module.exports = function (sails) {
 
    return {
 
@@ -12,25 +12,23 @@
 
       routes: {
          before: {
-            &apos;GET /*&apos;: function (req, res, next) {
+            'GET /*': function (req, res, next) {
                this.numRequestsSeen++;
                return next();
             }
         },
         after: {
-            &apos;GET /*&apos;: function (req, res, next) {
+            'GET /*': function (req, res, next) {
                this.numUnhandledRequestsSeen++;
                return next();
             }
         }
     };
-};
-</code></pre><!-- __LANG=%%__ -->
-<p>This hook will process all requests via the function provided in the <code>before</code> object, and increment its <code>numRequestsSeen</code> variable.  It will also process any <em>unhandled</em> requests via the function provided in the <code>after</code> object&#x2014;that is, any routes that aren&apos;t bound in the app via a custom route configuration or a blueprint.  </p>
+};</code></pre>
+<p>このフックは<code>before</code>で提供されたファンクションを通じて全てのリクエストを行い、<code>numRequestsSeen</code>変数をインクリメントします。同様に <code>after</code> オブジェクトで提供されたファンクションを通じ全ての <em>ハンドルされていない</em> リクエスト（つまりアプリケーションのカスタムルート設定やブループリントルートで示されていない全てのルート）を処理します。</p>
 <blockquote>
-<p>The two variables set up in the hook will be available to other modules in the Sails app as <code>sails.hooks[&quot;count-requests&quot;].numRequestsSeen</code> and <code>sails.hooks[&quot;count-requests&quot;].numUnhandledRequestsSeen</code></p>
+<p>フックでセットアップされた2つの変数はSailsアプリケーションの中の他のモジュールから <code>sails.hooks["count-requests"].numRequestsSeen</code> と <code>sails.hooks["count-requests"].numUnhandledRequestsSeen</code> としてアクセスできます。</p>
 </blockquote>
-<p><docmeta name="uniqueID" value="Hooks75006"></docmeta></p>
-<p><docmeta name="displayName" value=".routes"></docmeta></p>
+<docmeta name="uniqueID" value="Hooks75006">
+<docmeta name="displayName" value=".routes">
 <docmeta name="stabilityIndex" value="3">
-</docmeta>

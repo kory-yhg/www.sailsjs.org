@@ -1,11 +1,12 @@
-<h1 id="myapp-config-policies-js">myApp/config/policies.js</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This file contains the default policies for your app.</p>
-<p>Policies are simply Express middleware functions which run before your controllers. You can apply one or more policies to a given controller, or protect just one of it&apos;s actions. Any policy file (e.g. <code>myApp/api/policies/sessionAuth.js</code>) can be dropped into the <code>myApp/api/policies/</code> folder, at which point it can be accessed by it&apos;s filename, minus the extension, (e.g. <code>sessionAuth</code>).</p>
-<p><docmeta name="uniqueID" value="policiesjs831604"></docmeta></p>
+<h1>myApp/config/policies.js</h1>
+<h3>目的</h3>
+<p>このファイルにはアプリケーションのデフォルトのポリシーが入っています。</p>
+<p>ポリシーはコントローラの前に実行される簡単なExpressミドルウエアファンクションです。コントローラやその中のアクションを保護するために、1つまたは複数のポリシーを適用することができます。全てのポリシー(例:<code>myApp/api/policies/sessionAuth.js</code>)は<code>myApp/api/policies/</code>フォルダに保管され、ファイル名から拡張子を取ったもの(例:<code>sessionAuth</code>)でアクセスできます。</p>
+<docmeta name="uniqueID" value="policiesjs831604">
 <docmeta name="displayName" value="policies.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * Policy Mappings
  * (sails.config.policies)
  *
@@ -14,35 +15,34 @@
  * its actions individually.
  *
  * Any policy file (e.g. `api/policies/authenticated.js`) can be accessed
- * below by its filename, minus the extension, (e.g. &quot;authenticated&quot;)
+ * below by its filename, minus the extension, (e.g. "authenticated")
  *
  * For more information on configuring policies, check out:
  * http://sailsjs.org/documentation/
  */
 
-
 module.exports.policies = {
 
   // Default policy for all controllers and actions
   // (`true` allows public access)
-  &apos;*&apos;: true,
+  '*': true,
 
-    // Here&apos;s an example of mapping some policies to run before
+    // Here's an example of mapping some policies to run before
   // a controller and its actions
     // RabbitController: {
 
-        // Apply the `false` policy as the default for all of RabbitController&apos;s actions
+        // Apply the `false` policy as the default for all of RabbitController's actions
         // (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
-        // &apos;*&apos;: false,
+        // '*': false,
 
-        // For the action `nurture`, apply the &apos;isRabbitMother&apos; policy
+        // For the action `nurture`, apply the 'isRabbitMother' policy
         // (this overrides `false` above)
-        // nurture    : &apos;isRabbitMother&apos;,
+        // nurture  : 'isRabbitMother',
 
         // Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
         // before letting any users feed our rabbits
-        // feed : [&apos;isNiceToAnimals&apos;, &apos;hasRabbitFood&apos;]
+        // feed : ['isNiceToAnimals', 'hasRabbitFood']
     // }
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

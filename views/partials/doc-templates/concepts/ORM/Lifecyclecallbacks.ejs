@@ -1,63 +1,59 @@
-<h1 id="lifecycle-callbacks">Lifecycle callbacks</h1>
-<h3 id="overview" permalink="overview">Overview</h3>
-<p>Lifecycle callbacks are functions that are automagically called before or after certain <em>model</em> actions. For example, we sometimes use lifecycle callbacks to automatically encrypting a password before creating or updating an <code>Account</code> model.</p>
-<p>Sails exposes a handful of lifecycle callbacks by default.</p>
-<h5 id="callbacks-on-create-" permalink="callbacks-on-create">Callbacks on <code>create</code></h5>
+<h1>ライフサイクルコールバック</h1>
+<h3>概要</h3>
+<p>ライフサイクルコールバックはとくていの <em>モデル</em> の前後に魔法のように自動的に呼び出されるファンクションです。例えば我々は時々<code>Account</code>モデルをcreateしたりupdateしたりする際にパスワードを暗号化する事がありますが、これにライフサイクルコールバックが使えます。</p>
+<p>Sailsではデフォルトで便利なライフサイクルコールバックを露出させています。</p>
+<h5><code>create</code>時のコールバック</h5>
 <ul>
 <li>beforeValidate: fn(values, cb)</li>
 <li>afterValidate: fn(values, cb)</li>
 <li>beforeCreate: fn(values, cb)</li>
 <li>afterCreate: fn(newlyInsertedRecord, cb)</li>
 </ul>
-<h5 id="callbacks-on-update-" permalink="callbacks-on-update">Callbacks on <code>update</code></h5>
+<h5><code>update</code>時のコールバック</h5>
 <ul>
 <li>beforeValidate: fn(valuesToUpdate, cb)</li>
 <li>afterValidate: fn(valuesToUpdate, cb)</li>
 <li>beforeUpdate: fn(valuesToUpdate, cb)</li>
 <li>afterUpdate: fn(updatedRecord, cb)</li>
 </ul>
-<h5 id="callbacks-on-destroy-" permalink="callbacks-on-destroy">Callbacks on <code>destroy</code></h5>
+<h5><code>destroy</code>時のコールバック</h5>
 <ul>
 <li>beforeDestroy: fn(criteria, cb)</li>
 <li>afterDestroy: fn(destroyedRecords, cb)</li>
 </ul>
-<h3 id="example" permalink="example">Example</h3>
-<p>If you want to encrypt a password before saving in the database, you might use the <code>beforeCreate</code> lifecycle callback.</p>
-<pre><code data-language="javascript">var bcrypt = require(&apos;bcrypt&apos;);
+<h3>例</h3>
+<p>もしパスワードを保存前に暗号化したいときは<code>beforeCreate</code>コールバックを使います。</p>
+<pre><code class="language-javascript">var bcrypt = require('bcrypt');
 
 module.exports = {
 
   attributes: {
 
     username: {
-      type: &apos;string&apos;,
+      type: 'string',
       required: true
     },
 
     password: {
-      type: &apos;string&apos;,
+      type: 'string',
       minLength: 6,
       required: true,
-      columnName: &apos;encrypted_password&apos;
+      columnName: 'encrypted_password'
     }
 
   },
 
-
-  // Lifecycle Callbacks
+  // コールバック
   beforeCreate: function (values, cb) {
 
-    // Encrypt password
+    // パスワードを暗号化
     bcrypt.hash(values.password, 10, function(err, hash) {
       if(err) return cb(err);
       values.password = hash;
-      //calling cb() with an argument returns an error. Useful for canceling the entire operation if some criteria fails.
+      //エラーを返す引数でcd()をコールします。これはいくつかの条件がFailした時に処理全体をキャンセルすることが出来、便利です。
       cb();
     });
   }
-};
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="Lifecyclecallbacks631538"></docmeta></p>
+};</code></pre>
+<docmeta name="uniqueID" value="Lifecyclecallbacks631538">
 <docmeta name="displayName" value="Lifecycle callbacks">
-
-</docmeta>

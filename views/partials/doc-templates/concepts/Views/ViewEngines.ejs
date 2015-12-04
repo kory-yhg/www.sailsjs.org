@@ -1,37 +1,36 @@
-<h1 id="view-engines">View Engines</h1>
-<p>The default view engine in Sails is <a href="https://github.com/visionmedia/ejs" target="_blank">EJS</a>.</p>
-<h5 id="swapping-out-the-view-engine" permalink="swapping-out-the-view-engine">Swapping out the view engine</h5>
-<p>To use a different view engine, you should use npm to install it in your project, then set <code>sails.config.views.engine</code> in <a href="http://sailsjs.org/documentation/anatomy/myApp/config/views.js.html" target="_blank"><code>config/views.js</code></a>.</p>
-<p>For example, to switch to jade, run <code>npm install jade --save-dev</code>, then set <code>engine: &apos;jade&apos;</code> in <a href="http://sailsjs.org/documentation/anatomy/myApp/config/views.js.html" target="_blank"><code>config/views.js</code></a>.</p>
-<h5 id="supported-view-engines" permalink="supported-view-engines">Supported view engines</h5>
+<h1>ビューエンジン</h1>
+<p>Sailsのデフォルトのビューエンジンは<a href="https://github.com/visionmedia/ejs">EJS</a>です。</p>
+<h5>ビューエンジンを取り替える</h5>
+<p>別のビューエンジン使うにはnpmを使ってインストールし、<code>sails.config.views.engine</code>(<a href="http://sailsjs.org/documentation/anatomy/myApp/config/views.js.html"><code>config/views.js</code></a>にあります。)を設定する必要があります。</p>
+<p>例えばjadeに切り替えるには<code>npm install jade --save-dev</code>を実行し、<a href="http://sailsjs.org/documentation/anatomy/myApp/config/views.js.html"><code>config/views.js</code></a>に<code>engine: 'jade'</code>を設定します。</p>
+<h5>サポートしているビューエンジン</h5>
 <ul>
-<li><a href="https://github.com/soywiz/atpl.js" target="_blank">atpl</a></li>
-<li><a href="https://github.com/akdubya/dustjs" target="_blank">dust</a> <a href="http://akdubya.github.com/dustjs/" target="_blank">(website)</a> (.dust)</li>
-<li><a href="https://github.com/sstephenson/eco" target="_blank">eco</a></li>
-<li><a href="https://github.com/baryshev/ect" target="_blank">ect</a> <a href="http://ectjs.com/" target="_blank">(website)</a></li>
-<li><a href="https://github.com/visionmedia/ejs" target="_blank">ejs</a> (.ejs)</li>
-<li><a href="https://github.com/visionmedia/haml.js" target="_blank">haml</a> <a href="http://haml.info/" target="_blank">(website)</a></li>
-<li><a href="https://github.com/9elements/haml-coffee" target="_blank">haml-coffee</a> <a href="http://haml.info/" target="_blank">(website)</a></li>
-<li><a href="https://github.com/wycats/handlebars.js/" target="_blank">handlebars</a> <a href="http://handlebarsjs.com/" target="_blank">(website)</a> (.hbs)</li>
-<li><a href="https://github.com/twitter/hogan.js" target="_blank">hogan</a> <a href="http://twitter.github.com/hogan.js/" target="_blank">(website)</a></li>
-<li><a href="https://github.com/visionmedia/jade" target="_blank">jade</a> <a href="http://jade-lang.com/" target="_blank">(website)</a> (.jade)</li>
-<li><a href="https://github.com/shinetech/jazz" target="_blank">jazz</a></li>
-<li><a href="https://github.com/kof/node-jqtpl" target="_blank">jqtpl</a> <a href="https://github.com/kof/jqtpl" target="_blank">(website)</a></li>
-<li><a href="https://github.com/baryshev/just" target="_blank">JUST</a></li>
-<li><a href="https://github.com/chjj/liquor" target="_blank">liquor</a></li>
-<li><a href="https://github.com/bestiejs/lodash" target="_blank">lodash</a> <a href="http://lodash.com/" target="_blank">(website)</a></li>
-<li><a href="https://github.com/janl/mustache.js" target="_blank">mustache</a></li>
-<li><a href="https://github.com/jepso/QEJS" target="_blank">QEJS</a></li>
-<li><a href="https://github.com/Rich-Harris/Ractive" target="_blank">ractive</a></li>
-<li><a href="https://github.com/paularmstrong/swig" target="_blank">swig</a> <a href="http://paularmstrong.github.com/swig/" target="_blank">(website)</a></li>
-<li><a href="http://archan937.github.com/templayed.js/" target="_blank">templayed</a></li>
-<li><a href="https://github.com/malgorithms/toffee" target="_blank">toffee</a></li>
-<li><a href="https://github.com/documentcloud/underscore" target="_blank">underscore</a> <a href="http://documentcloud.github.com/underscore/" target="_blank">(website)</a></li>
-<li><a href="https://github.com/jeremyruppel/walrus" target="_blank">walrus</a> <a href="http://documentup.com/jeremyruppel/walrus/" target="_blank">(website)</a></li>
-<li><a href="https://github.com/gsf/whiskers.js" target="_blank">whiskers</a></li>
+<li><a href="https://github.com/soywiz/atpl.js">atpl</a></li>
+<li><a href="https://github.com/akdubya/dustjs">dust</a> <a href="http://akdubya.github.com/dustjs/">(website)</a> (.dust)</li>
+<li><a href="https://github.com/sstephenson/eco">eco</a></li>
+<li><a href="https://github.com/baryshev/ect">ect</a> <a href="http://ectjs.com/">(website)</a></li>
+<li><a href="https://github.com/visionmedia/ejs">ejs</a> (.ejs)</li>
+<li><a href="https://github.com/visionmedia/haml.js">haml</a> <a href="http://haml.info/">(website)</a></li>
+<li><a href="https://github.com/9elements/haml-coffee">haml-coffee</a> <a href="http://haml.info/">(website)</a></li>
+<li><a href="https://github.com/wycats/handlebars.js/">handlebars</a> <a href="http://handlebarsjs.com/">(website)</a> (.hbs)</li>
+<li><a href="https://github.com/twitter/hogan.js">hogan</a> <a href="http://twitter.github.com/hogan.js/">(website)</a></li>
+<li><a href="https://github.com/visionmedia/jade">jade</a> <a href="http://jade-lang.com/">(website)</a> (.jade)</li>
+<li><a href="https://github.com/shinetech/jazz">jazz</a></li>
+<li><a href="https://github.com/kof/node-jqtpl">jqtpl</a> <a href="https://github.com/kof/jqtpl">(website)</a></li>
+<li><a href="https://github.com/baryshev/just">JUST</a></li>
+<li><a href="https://github.com/chjj/liquor">liquor</a></li>
+<li><a href="https://github.com/bestiejs/lodash">lodash</a> <a href="http://lodash.com/">(website)</a></li>
+<li><a href="https://github.com/janl/mustache.js">mustache</a></li>
+<li><a href="https://github.com/jepso/QEJS">QEJS</a></li>
+<li><a href="https://github.com/Rich-Harris/Ractive">ractive</a></li>
+<li><a href="https://github.com/paularmstrong/swig">swig</a> <a href="http://paularmstrong.github.com/swig/">(website)</a></li>
+<li><a href="http://archan937.github.com/templayed.js/">templayed</a></li>
+<li><a href="https://github.com/malgorithms/toffee">toffee</a></li>
+<li><a href="https://github.com/documentcloud/underscore">underscore</a> <a href="http://documentcloud.github.com/underscore/">(website)</a></li>
+<li><a href="https://github.com/jeremyruppel/walrus">walrus</a> <a href="http://documentup.com/jeremyruppel/walrus/">(website)</a></li>
+<li><a href="https://github.com/gsf/whiskers.js">whiskers</a></li>
 </ul>
-<h5 id="adding-new-custom-view-engines" permalink="adding-new-custom-view-engines">Adding new custom view engines</h5>
-<p>For instructions on adding support for a view engine not listed above, check out the <a href="https://github.com/visionmedia/consolidate.js/blob/master/Readme.md#api" target="_blank">consolidate project</a> repository.</p>
-<p><docmeta name="uniqueID" value="ViewEngines339501"></docmeta></p>
+<h5>カスタムのビューエンジンを追加する</h5>
+<p>上記のリストに無いビューエンジンを追加するには<a href="https://github.com/visionmedia/consolidate.js/blob/master/Readme.md#api">consolidate project</a> レポジトリをご確認ください。</p>
+<docmeta name="uniqueID" value="ViewEngines339501">
 <docmeta name="displayName" value="View Engines">
-</docmeta>

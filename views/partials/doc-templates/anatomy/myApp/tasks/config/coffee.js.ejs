@@ -1,8 +1,9 @@
-<h1 id="myapp-tasks-config-coffee-js">myApp/tasks/config/coffee.js</h1>
-<p><docmeta name="uniqueID" value="coffeejs932693"></docmeta></p>
+<h1>myApp/tasks/config/coffee.js</h1>
+<docmeta name="uniqueID" value="coffeejs932693">
 <docmeta name="displayName" value="coffee.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * Compile CoffeeScript files to JavaScript.
  *
  * ---------------------------------------------------------------
@@ -11,34 +12,34 @@
  * `.tmp/public/js` directory.
  *
  * For usage docs see:
- *         https://github.com/gruntjs/grunt-contrib-coffee
+ *      https://github.com/gruntjs/grunt-contrib-coffee
  */
 module.exports = function(grunt) {
 
-    grunt.config.set(&apos;coffee&apos;, {
+    grunt.config.set('coffee', {
         dev: {
             options: {
                 bare: true,
                 sourceMap: true,
-                sourceRoot: &apos;./&apos;
+                sourceRoot: './'
             },
             files: [{
                 expand: true,
-                cwd: &apos;assets/js/&apos;,
-                src: [&apos;**/*.coffee&apos;],
-                dest: &apos;.tmp/public/js/&apos;,
-                ext: &apos;.js&apos;
+                cwd: 'assets/js/',
+                src: ['**/*.coffee'],
+                dest: '.tmp/public/js/',
+                ext: '.js'
             }, {
                 expand: true,
-                cwd: &apos;assets/js/&apos;,
-                src: [&apos;**/*.coffee&apos;],
-                dest: &apos;.tmp/public/js/&apos;,
-                ext: &apos;.js&apos;
+                cwd: 'assets/js/',
+                src: ['**/*.coffee'],
+                dest: '.tmp/public/js/',
+                ext: '.js'
             }]
         }
     });
 
-    grunt.loadNpmTasks(&apos;grunt-contrib-coffee&apos;);
+    grunt.loadNpmTasks('grunt-contrib-coffee');
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

@@ -1,6 +1,6 @@
-<h1 id="myapp-config-views-js">myApp/config/views.js</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This file is where Sails looks to find out which templating engine to use when rendering server side HTML templates.  By default Sails uses ejs but it supports all view engines which implement TJ Holowaychuk&apos;s <code>consolidate.js</code>, including, but not limited to:</p>
+<h1>myApp/config/views.js</h1>
+<h3>目的</h3>
+<p>このファイルはSailsがサーバサイドテンプレートをレンダリングするのにどのテンプレートエンジンを利用するのかを判断するためのファイルです。デフォルトではSailsはejsを利用しますが、以下のものを含む（ただし、それだけは限らない）TJ Holowaychukの<code>consolidate.js</code>を実装する全てのエンジンをサポートしています。:</p>
 <ul>
 <li>ejs</li>
 <li>jade</li>
@@ -25,17 +25,18 @@
 <li>walrus</li>
 <li>whiskers</li>
 </ul>
-<p><docmeta name="uniqueID" value="viewsjs122314"></docmeta></p>
+<docmeta name="uniqueID" value="viewsjs122314">
 <docmeta name="displayName" value="views.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * View Engine Configuration
  * (sails.config.views)
  *
  * Server-sent views are a classic and effective way to get your app up
  * and running. Views are normally served from controllers.  Below, you can
  * configure your templating language/framework of choice and configure
- * Sails&apos; layout support.
+ * Sails' layout support.
  *
  * For more information on views and layouts, check out:
  * http://links.sailsjs.org/docs/config/views
@@ -44,26 +45,24 @@
 module.exports.views = {
 
   // View engine (aka template language)
-  // to use for your app&apos;s *server-side* views
+  // to use for your app's *server-side* views
   //
   // Sails+Express supports all view engines which implement
-  // TJ Holowaychuk&apos;s `consolidate.js`, including, but not limited to:
+  // TJ Holowaychuk's `consolidate.js`, including, but not limited to:
   //
   // ejs, jade, handlebars, mustache
   // underscore, hogan, haml, haml-coffee, dust
   // atpl, eco, ect, jazz, jqtpl, JUST, liquor, QEJS,
-  // swig, templayed, toffee, walrus, &amp; whiskers
+  // swig, templayed, toffee, walrus, & whiskers
 
   // For more options, check out the docs:
   // https://github.com/balderdashy/sails-wiki/blob/0.9/config.views.md#engine
 
-  engine: &apos;ejs&apos;,
-
-
+  engine: 'ejs',
 
   // Layouts are simply top-level HTML templates you can use as wrappers
-  // for your server-side views.  If you&apos;re using ejs or jade, you can take advantage of
-  // Sails&apos; built-in `layout` support.
+  // for your server-side views.  If you're using ejs or jade, you can take advantage of
+  // Sails' built-in `layout` support.
   //
   // When using a layout, when one of your views is served, it is injected into
   // the `body` partial defined in the layout.  This lets you reuse header
@@ -78,27 +77,24 @@ module.exports.views = {
   //
   // If `false`, layouts will be disabled.
   // Otherwise, if a string is specified, it will be interpreted as the relative path
-  // to your layout file from `views/` folder. (the file extension, &quot;.ejs&quot;, should be omitted)
+  // to your layout file from `views/` folder. (the file extension, ".ejs", should be omitted)
   //
 
-  layout: &apos;layout&apos;
-
-
+  layout: 'layout'
 
   // Using Multiple Layouts with EJS
   //
-  // If you&apos;re using the default engine, `ejs`, Sails supports the use of multiple
+  // If you're using the default engine, `ejs`, Sails supports the use of multiple
   // `layout` files.  To take advantage of this, before rendering a view, override
   // the `layout` local in your controller by setting `res.locals.layout`.
-  // (this is handy if you parts of your app&apos;s UI look completely different from each other)
+  // (this is handy if you parts of your app's UI look completely different from each other)
   //
   // e.g. your default might be
-  // layout: &apos;layouts/public&apos;
+  // layout: 'layouts/public'
   //
   // But you might override that in some of your controllers with:
-  // layout: &apos;layouts/internal&apos;
-
+  // layout: 'layouts/internal'
 
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

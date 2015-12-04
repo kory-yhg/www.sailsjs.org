@@ -1,8 +1,9 @@
-<h1 id="myapp-tasks-config-copy-js">myApp/tasks/config/copy.js</h1>
-<p><docmeta name="uniqueID" value="copyjs846396"></docmeta></p>
+<h1>myApp/tasks/config/copy.js</h1>
+<docmeta name="uniqueID" value="copyjs846396">
 <docmeta name="displayName" value="copy.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * Copy files and folders.
  *
  * ---------------------------------------------------------------
@@ -15,30 +16,30 @@
  * Copies all directories and files from the .tmp/public directory into a www directory.
  *
  * For usage docs see:
- *         https://github.com/gruntjs/grunt-contrib-copy
+ *      https://github.com/gruntjs/grunt-contrib-copy
  */
 module.exports = function(grunt) {
 
-    grunt.config.set(&apos;copy&apos;, {
+    grunt.config.set('copy', {
         dev: {
             files: [{
                 expand: true,
-                cwd: &apos;./assets&apos;,
-                src: [&apos;**/*.!(coffee|less)&apos;],
-                dest: &apos;.tmp/public&apos;
+                cwd: './assets',
+                src: ['**/*.!(coffee|less)'],
+                dest: '.tmp/public'
             }]
         },
         build: {
             files: [{
                 expand: true,
-                cwd: &apos;.tmp/public&apos;,
-                src: [&apos;**/*&apos;],
-                dest: &apos;www&apos;
+                cwd: '.tmp/public',
+                src: ['**/*'],
+                dest: 'www'
             }]
         }
     });
 
-    grunt.loadNpmTasks(&apos;grunt-contrib-copy&apos;);
+    grunt.loadNpmTasks('grunt-contrib-copy');
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

@@ -3,7 +3,7 @@
     "templateTitle": "NewToNode.ejs",
     "fullPathAndFileName": "getting-started/NewToNode.ejs",
     "data": {
-      "displayName": "New To Node?"
+      "displayName": "初めてのNode"
     },
     "parent": "getting-started/getting-started.ejs",
     "isChild": true
@@ -13,7 +13,7 @@
     "fullPathAndFileName": "getting-started/WhatIsSails.ejs",
     "data": {
       "uniqueID": "WhatIsSails126387",
-      "displayName": "What Is Sails"
+      "displayName": "Sailsって何？"
     },
     "parent": "getting-started/getting-started.ejs",
     "isChild": true
@@ -23,7 +23,7 @@
     "fullPathAndFileName": "getting-started/getting-started.ejs",
     "realPath": "getting-started/",
     "data": {
-      "displayName": "Installation"
+      "displayName": "インストール"
     },
     "children": [
       "getting-started/WhatIsSails.ejs",

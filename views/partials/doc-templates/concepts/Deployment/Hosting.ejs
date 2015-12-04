@@ -1,63 +1,69 @@
-<h1 id="hosting">Hosting</h1>
-<p>Here is a non-comprehensive list of Sails.js hosting providers.</p>
-<h5 id="deploying-to-modulus-" permalink="deploying-to-modulus">Deploying to Modulus?</h5>
+<h1>ホスティング</h1>
+<p>Sails.jsをサポートしているホスティングプロバイダの一部をリストにしました。</p>
+<h5>Modulusにデプロイする</h5>
 <ul>
-<li><a href="http://blog.modulus.io/sails-js" target="_blank">http://blog.modulus.io/sails-js</a></li>
+<li><a href="http://blog.modulus.io/sails-js">http://blog.modulus.io/sails-js</a></li>
 </ul>
-<h5 id="deploying-to-openshift-" permalink="deploying-to-openshift">Deploying to OpenShift?</h5>
-<p>To deploy to OpenShift, you&apos;ll need to make some minor modifications to your configuration:
-Open up <code>config/local.js</code> in your app folder. In here, you&apos;ll need to add the following lines.</p>
-<pre><code data-language="javascript">port: process.env.OPENSHIFT_NODEJS_PORT,
-    host: process.env.OPENSHIFT_NODEJS_IP,
-</code></pre><!-- __LANG=%%__ -->
-<p>You will also need to install <code>grunt-cli</code> with <code>npm i --save grunt-cli</code>.</p>
-<p>After doing that, create the file <code>.openshift/action_hooks/pre_start_nodejs</code> with the following contents. (<a href="https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6" target="_blank">source</a>)</p>
-<pre><code data-language="javascript">#!/bin/bash
+<h5>Deploying to NodeJitsu?NodeJitsuにデプロイする</h5>
+<p>NodeJitsuにデプロイするにはちょっとした設定変更が必要です。:
+appフォルダの中の<code>config/local.js</code>を開きここに以下の行を加えてください。 </p>
+<pre><code>    // Port this Sails application will live on
+    port: 80,
+    host: 'subdomain.jit.su',</code></pre>
+<p><code>host:</code>は元々記述されていませんのでこれを追加する必要があります。Nodejitsuは<code>jitsu deploy</code>を実行するときに<code>subdomein</code>サブドメインを聞いてきます。</p>
+<ul>
+<li><a href="https://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/">https://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/</a></li>
+<li><a href="https://github.com/balderdashy/sails/issues/455">https://github.com/balderdashy/sails/issues/455</a></li>
+</ul>
+<h5>OpenShiftにデプロイする</h5>
+<p>OpenShiftにデプロイするにはちょっとした設定変更が必要です。:
+appフォルダの中の<code>config/local.js</code>を開きここに以下の行を加えてください。 </p>
+<pre><code>    port: process.env.OPENSHIFT_NODEJS_PORT,
+    host: process.env.OPENSHIFT_NODEJS_IP,</code></pre>
+<p>同様に<code>npm i --save grunt-cli</code>を利用して<code>grunt-cli</code>をインストールする必要があります。</p>
+<p>これを行った後で、以下の内容の<code>.openshift/action_hooks/pre_start_nodejs</code>ファイルを作成します。(<a href="https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6">ソース</a>)</p>
+<pre><code>#!/bin/bash
 export NODE_ENV=production
 
-if [ -f &quot;${OPENSHIFT_REPO_DIR}&quot;/Gruntfile.js ]; then
-    (cd &quot;${OPENSHIFT_REPO_DIR}&quot;; node_modules/grunt-cli/bin/grunt prod)
-fi
-</code></pre><!-- __LANG=%%__ -->
-<p>Then create the file <code>/supervisor_opts</code> with the following contents. This tells OpenShift&apos;s supervisor to ignore Sails&apos; <code>.tmp</code> directory for the hot reload functionality. (<a href="https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6#comment-1318102" target="_blank">source</a>)</p>
-<pre><code data-language="javascript">-i .tmp
-</code></pre><!-- __LANG=%%__ -->
-<p>You can now <code>git add . &amp;&amp; git commit -a -m &quot;your message&quot; &amp;&amp; git push</code> to deploy to OpenShift.</p>
-<h5 id="using-digitalocean-" permalink="using-digitalocean">Using DigitalOcean?</h5>
+if [ -f "${OPENSHIFT_REPO_DIR}"/Gruntfile.js ]; then
+    (cd "${OPENSHIFT_REPO_DIR}"; node_modules/grunt-cli/bin/grunt prod)
+fi</code></pre>
+<p>そして、以下の内容の<code>/supervisor_opts</code>ファイルを作成します。これはOpenShiftのスーパバイザに対してホットリロード機能に関してSailsの<code>.tmp</code>ディレクトリを無視するように伝えます。(<a href="https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6#comment-1318102">ソース</a>)</p>
+<pre><code>-i .tmp</code></pre>
+<p>これで<code>git add . &amp;&amp; git commit -a -m "your message" &amp;&amp; git push</code>を行ってOpenShiftにデプロイ出来ます。</p>
+<h5>DigitalOceanを使う</h5>
 <ul>
-<li><a href="https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps" target="_blank">https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps</a></li>
-<li><a href="https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps" target="_blank">https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps</a></li>
-<li><a href="https://www.digitalocean.com/community/articles/how-to-host-multiple-node-js-applications-on-a-single-vps-with-nginx-forever-and-crontab" target="_blank">https://www.digitalocean.com/community/articles/how-to-host-multiple-node-js-applications-on-a-single-vps-with-nginx-forever-and-crontab</a></li>
+<li><a href="https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps">https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps</a></li>
+<li><a href="https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps">https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps</a></li>
+<li><a href="https://www.digitalocean.com/community/articles/how-to-host-multiple-node-js-applications-on-a-single-vps-with-nginx-forever-and-crontab">https://www.digitalocean.com/community/articles/how-to-host-multiple-node-js-applications-on-a-single-vps-with-nginx-forever-and-crontab</a></li>
 </ul>
-<h5 id="deploying-to-heroku-" permalink="deploying-to-heroku">Deploying to Heroku?</h5>
+<h5>Herokuにデプロイする</h5>
 <ul>
-<li><a href="http://pburtchaell.com/2015/sails/" target="_blank">Sails.js and Heroku</a></li>
-<li><a href="http://irlnathan.github.io/sailscasts/blog/2013/11/05/building-a-sails-application-ep26-deploying-a-sails-app-to-heroku/" target="_blank">SailsCasts: Deploying a Sails App to Heroku</a></li>
-<li><a href="http://vort3x.me/sailsjs-heroku/" target="_blank">Sails.js on Heroku</a></li>
-<li><a href="https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY" target="_blank">https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY</a></li>
-<li><a href="https://github.com/chadn/heroku-sails" target="_blank">https://github.com/chadn/heroku-sails</a></li>
-<li><a href="http://dennisrongo.com/deploying-sails-js-to-heroku" target="_blank">http://dennisrongo.com/deploying-sails-js-to-heroku</a></li>
-<li><a href="http://stackoverflow.com/a/20184907/486547" target="_blank">http://stackoverflow.com/a/20184907/486547</a></li>
+<li><a href="http://pburtchaell.com/2015/sails/">Sails.js and Heroku</a></li>
+<li><a href="http://irlnathan.github.io/sailscasts/blog/2013/11/05/building-a-sails-application-ep26-deploying-a-sails-app-to-heroku/">SailsCasts: Deploying a Sails App to Heroku</a></li>
+<li><a href="http://vort3x.me/sailsjs-heroku/">Sails.js on Heroku</a></li>
+<li><a href="https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY">https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY</a></li>
+<li><a href="https://github.com/chadn/heroku-sails">https://github.com/chadn/heroku-sails</a></li>
+<li><a href="http://dennisrongo.com/deploying-sails-js-to-heroku/#.UxQKPfSwI9w">http://dennisrongo.com/deploying-sails-js-to-heroku/#.UxQKPfSwI9w</a></li>
+<li><a href="http://stackoverflow.com/a/20184907/486547">http://stackoverflow.com/a/20184907/486547</a></li>
 </ul>
-<h5 id="deploying-to-aws-" permalink="deploying-to-aws">Deploying to AWS?</h5>
+<h5>AWSにデプロイする</h5>
 <ul>
-<li><a href="http://blog.grio.com/2014/01/your-own-mini-heroku-on-aws.html" target="_blank">http://blog.grio.com/2014/01/your-own-mini-heroku-on-aws.html</a></li>
-<li><a href="http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance" target="_blank">http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance</a></li>
-<li><a href="http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html" target="_blank">http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html</a></li>
-<li><a href="http://cloud.dzone.com/articles/how-deploy-nodejs-apps-aws-mac" target="_blank">http://cloud.dzone.com/articles/how-deploy-nodejs-apps-aws-mac</a></li>
+<li><a href="http://blog.grio.com/2014/01/your-own-mini-heroku-on-aws.html">http://blog.grio.com/2014/01/your-own-mini-heroku-on-aws.html</a></li>
+<li><a href="http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance">http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance</a></li>
+<li><a href="http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html">http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html</a></li>
+<li><a href="http://cloud.dzone.com/articles/how-deploy-nodejs-apps-aws-mac">http://cloud.dzone.com/articles/how-deploy-nodejs-apps-aws-mac</a></li>
 </ul>
-<h5 id="using-pm2-" permalink="using-pm2">Using PM2?</h5>
+<h5>PM2を使う</h5>
 <ul>
-<li><a href="http://devo.ps/blog/goodbye-node-forever-hello-pm2/" target="_blank">http://devo.ps/blog/goodbye-node-forever-hello-pm2/</a></li>
+<li><a href="http://devo.ps/blog/goodbye-node-forever-hello-pm2/">http://devo.ps/blog/goodbye-node-forever-hello-pm2/</a></li>
 </ul>
-<h5 id="deploying-to-cloudcontrol-" permalink="deploying-to-cloudcontrol">Deploying to CloudControl?</h5>
+<h5>CloudControlにデプロイする</h5>
 <ul>
-<li><a href="https://www.cloudcontrol.com/dev-center/Guides/NodeJS/Sailsjs" target="_blank">https://www.cloudcontrol.com/dev-center/Guides/NodeJS/Sailsjs</a></li>
+<li><a href="https://www.cloudcontrol.com/dev-center/Guides/NodeJS/Sailsjs">https://www.cloudcontrol.com/dev-center/Guides/NodeJS/Sailsjs</a></li>
 </ul>
-<h5 id="getting-professional-help" permalink="getting-professional-help">Getting professional help</h5>
-<p>These days, it&apos;s getting easier and easier to deploy powerful applications at scale.  That said, there isn&apos;t always time to do these things yourself.
-Sails.js is maintained by my company, <a href="http://balderdash.co" target="_blank">Balderdash</a>, a Node.js consultancy in Austin, TX. If your company needs professional support, reach out and we&apos;re happy to help.  The deployment part really isn&apos;t that hard, and in most cases, it shouldn&apos;t take more than a couple of hours tops.</p>
-<p><docmeta name="uniqueID" value="Hosting276234"></docmeta></p>
+<h5>専門家の手助けを求める</h5>
+<p>最近、パワフルなアプリケーションにデプロイするのはだんだんと簡単になってきています。とは言え常にそれを自分でやる時間があるとは限りません。
+Sails.jsは私（訳注：原著者）がテキサス州Austinで経営するNode.jsのコンサルタント会社である<a href="http://balderdash.co">Balderdash</a>によってメンテナンスされています。もしあなたの会社が専門家の手助けを必要とする時はご連絡いただければ喜んでお手伝いします。デプロイはホントはそんなに難しいものではなく2〜3時間以上をかけるようなものではあえりません。</p>
+<docmeta name="uniqueID" value="Hosting276234">
 <docmeta name="displayName" value="Hosting">
-
-</docmeta>

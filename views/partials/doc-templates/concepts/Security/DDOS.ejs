@@ -1,18 +1,17 @@
-<h1 id="ddos">DDOS</h1>
-<p>The prevention of <a href="https://www.owasp.org/index.php/Application_Denial_of_Service" target="_blank">denial of service attacks</a> is a <a href="http://en.wikipedia.org/wiki/Denial-of-service_attack#Handling" target="_blank">complex problem</a> which involves multiple layers of protection, up and down the networking stack.
-This type of attack has achieved <a href="http://www.darkreading.com/vulnerabilities-and-threats/10-strategies-to-fight-anonymous-ddos-attacks/d/d-id/1102699" target="_blank">notoriety</a> in recent years due to widespread media coverage of groups like Anonymous.</p>
-<p>At the API layer, there isn&apos;t much that can be done in the way of prevention.  However, Sails offers a few settings to mitigate certain types of DDOS attacks:</p>
+<h1>DDOS</h1>
+<p><a href="https://www.owasp.org/index.php/Application_Denial_of_Service">DDOS攻撃</a>への対応はネットワークの上から下まで様々なレイヤーでの対策を含んだ<a href="http://en.wikipedia.org/wiki/Denial-of-service_attack#Handling">複雑な問題</a> です。
+この種の攻撃はここ数年Anonymousのようなグループの勢いが増したことで<a href="http://www.darkreading.com/vulnerabilities-and-threats/10-strategies-to-fight-anonymous-ddos-attacks/d/d-id/1102699">悪名高t</a>ものになっています。</p>
+<p>APIレイヤーでできる防護策はあまり多くありません。しかしながらSailsではDDOS攻撃を和らげる幾つかの設定を用意しています。:</p>
 <ul>
-<li>The session in Sails can be <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.session.html" target="_blank">configured</a> to use a separate session store (e.g. <a href="http://redis.io/" target="_blank">Redis</a>), allowing your application to run without relying on the memory state of any one API server.  This means that multiple copies of your Sails app may be deployed to as many servers as is necessary to handle traffic.  This is achieved by using a <a href="http://en.wikipedia.org/wiki/Load_balancing_(computing" target="_blank">load balancer</a>), which directs each incoming request to a free server with the resources to handle it, eliminating any one app server as a single point of failure.</li>
-<li>Socket.io connections may be <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.sockets.html" target="_blank">configured</a> to use a separate <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md" target="_blank">socket store</a> (e.g. Redis) for managing pub/sub state and message queueing. This eliminates the need for sticky sessions at the load balancer, preventing would-be attackers from directing their attacks against the same server again and again.</li>
+<li>Sailsのセッションは別々のセッションストレージ(<a href="http://redis.io/">Redis</a>のような)が利用可能なように<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.session.html">設定</a>することができ、これによって一つのAPIサーバのメモリー状態に依存することなく実行することができます。これはトラフィックに応じた複数のサーバのコピーをデプロイすることが出来るということです。これは<a href="http://en.wikipedia.org/wiki/Load_balancing_(computing)">ロードバランサ</a>を使ってリクエストを空いているサーバに振り分け、単一障害点を排除する事ができるということです。</li>
+<li>Socket.ioコネクションは別々の<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md">ソケットストア</a> (例えばRedis)を使ってpub/subステートやメッセージキューを管理できるように<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.sockets.html">設定</a>することができます。これはロードバランサーでの固定的なセッションを避けることができ攻撃者と思われる人が何度も何度もサーバを同じサーバにアクセスするのを防ぐことができます。</li>
 </ul>
-<h3 id="additional-resources" permalink="additional-resources">Additional Resources</h3>
+<h3>追加資料</h3>
 <ul>
-<li><a href="http://engineering.voxer.com/2013/09/16/backpressure-in-nodejs/" target="_blank">Backpressure and Unbounded Concurrency in Node.js</a> (<a href="http://voxer.com/" target="_blank">Voxer</a>)</li>
-<li><a href="https://hacks.mozilla.org/2013/01/building-a-node-js-server-that-wont-melt-a-node-js-holiday-season-part-5/" target="_blank">Building a Node.js Server That Won&apos;t Melt</a> (<a href="https://hacks.mozilla.org/" target="_blank">Mozilla</a>)</li>
-<li><a href="https://www.harrytorry.co.uk/node-js/security-flaws-in-node-js/" target="_blank">Security in Node.js</a> - see the &quot;Denial of Service&quot; section (<a href="https://www.harrytorry.co.uk" target="_blank">Harry Torry</a>)</li>
-<li><a href="http://www.ddosattacks.biz/attacks/slowloris-ddos-attack-aka-slow-and-low/" target="_blank">Slowloris DDoSAttacks</a></li>
+<li><a href="http://engineering.voxer.com/2013/09/16/backpressure-in-nodejs/">Backpressure and Unbounded Concurrency in Node.js</a> (<a href="http://voxer.com/">Voxer</a>)</li>
+<li><a href="https://hacks.mozilla.org/2013/01/building-a-node-js-server-that-wont-melt-a-node-js-holiday-season-part-5/">Building a Node.js Server That Won't Melt</a> (<a href="https://hacks.mozilla.org/">Mozilla</a>)</li>
+<li><a href="https://www.harrytorry.co.uk/node-js/security-flaws-in-node-js/">Security in Node.js</a> - &quot;Denial of Service&quot;のセクションをご覧ください。 (<a href="https://www.harrytorry.co.uk">Harry Torry</a>)</li>
+<li><a href="http://www.ddosattacks.biz/attacks/slowloris-ddos-attack-aka-slow-and-low/">Slowloris DDoSAttacks</a></li>
 </ul>
-<p><docmeta name="uniqueID" value="DDOS139869"></docmeta></p>
+<docmeta name="uniqueID" value="DDOS139869">
 <docmeta name="displayName" value="DDOS">
-</docmeta>

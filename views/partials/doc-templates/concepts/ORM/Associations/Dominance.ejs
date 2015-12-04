@@ -1,106 +1,100 @@
-<h1 id="dominance">Dominance</h1>
-<h2 id="example-ontology" permalink="example-ontology">Example Ontology</h2>
-<pre><code data-language="javascript">// User.js
+<h1>「Dominance」</h1>
+<h2>エンティティの例</h2>
+<pre><code class="language-javascript">// User.js
 module.exports = {
-  connection: &apos;ourMySQL&apos;,
+  connection: 'ourMySQL',
   attributes: {
-    email: &apos;string&apos;,
+    email: 'string',
     wishlist: {
-      collection: &apos;product&apos;,
-      via: &apos;wishlistedBy&apos;
+      collection: 'product',
+      via: 'wishlistedBy'
     }
   }
-};
-</code></pre><!-- __LANG=%%__ -->
-<pre><code data-language="javascript">// Product.js
+};</code></pre>
+<pre><code class="language-javascript">// Product.js
 module.exports = {
-  connection: &apos;ourRedis&apos;,
+  connection: 'ourRedis',
   attributes: {
-    name: &apos;string&apos;,
+    name: 'string',
     wishlistedBy: {
-      collection: &apos;user&apos;,
-      via: &apos;wishlist&apos;
+      collection: 'user',
+      via: 'wishlist'
     }
   }
-};
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="the-problem" permalink="the-problem">The Problem</h3>
-<p>It&apos;s easy to see what&apos;s going on in this cross-adapter relationship.  There&apos;s a many-to-many ( <code>N-&gt;...</code> ) relationship between users and products.  In fact, you can imagine a few other relationships (e.g. purchases) which might exist, but since those are probably better-represented using a middleman model, I went for something simple in this example.</p>
-<p>Anyways, that&apos;s all great... but where does the relationship resource live?  &quot;ProductUser&quot;, if you&apos;ll pardon with the SQL-oriented nomenclature.  We know it&apos;ll end up on one side or the other, but what if we want to control which database it ends up in? </p>
+};</code></pre>
+<h3>問題</h3>
+<p>このアダプタをまたがるデータ間での理レーヨンに何が起こっているのかは簡単にわかります。個々には多対多( <code>N-&gt;...</code> ) のリレーションが商品とユーザの間にあります。実際はその他のリレーション(購入等)があるとお考えになると思いますが、それらはミドルマンモデルを使ういい例だと思いますのでこの例ではよりシンプルにしました。</p>
+<p>これらはすいつも全て素晴らしいですが。。。リレーションリソースは何処にあるのでしょうか。SQL的な命名法によると”ProductUser”ですね。我々はこれがどちらかの一方にあるというのはわかりますが、どっちのデータベースにあるべきなのかをコントロールしたいときはどうしましょうか。</p>
 <blockquote>
-<p><strong>IMPORTANT NOTE</strong></p>
-<p>This is <em>only a problem because both sides of the association have a <code>via</code> modifier specified</em>!!
-In the absence of <code>via</code>, a collection attribute always behaves as <code>dominant: true</code>.
-See the FAQ below for more information.</p>
+<p><strong>重要な備考</strong></p>
+<p>これは <em>アソシエーションの両方のモデルが<code>via</code>モディファイアの指定を持っているゆえに起こる問題です</em> !!
+もし<code>via</code>がなければコレクションアトリビュートは常に<code>dominant: true</code>として振る舞います。
+さらなる情報は以下のFAQを御覧ください。</p>
 </blockquote>
-<h2 id="the-solution" permalink="the-solution">The Solution</h2>
-<p>Eventually, it may even be possible to specify a 3rd connection/adapter to use for the join table.  For now, we&apos;ll focus on choosing one side or the other.</p>
-<p>We address this through the concept of &quot;dominance.&quot;  In any cross-adapter model relationship, one side is assumed to be dominant.  It may be helpful to think about the analogy of a child with multinational parents who must choose one country or the other for her <a href="http://en.wikipedia.org/wiki/Japanese_nationality_law" target="_blank">citizenship</a></p>
-<p>Here&apos;s the ontology again, but this time we&apos;ll indicate the MySQL database as the &quot;dominant&quot;.  This means that the &quot;ProductUser&quot; relationship &quot;table&quot; will be stored as a MySQL table.</p>
-<pre><code data-language="javascript">// User.js
+<h2>解決策</h2>
+<p>最終的にはジョインテーブルに使う第3のコネクション・アダプタがあることすらありえますが、とりあえずのところはどちらかの側にあるのかを選ぶことに焦点を当てます。</p>
+<p>ここではこれをドミナンスのコンセプトを通して説明します。全てのクロスアダプタモードのリレーションにおいてどちらかの側がドミナントとみなされます。これは多国籍な両親から生まれた子供がどちらかの <a href="http://en.wikipedia.org/wiki/Japanese_nationality_law">国籍</a>を選ばなければならない例に例えれば考えやすいでしょう。</p>
+<p>再びリレーションの例ですが今回はMySQLデータベースがドミナントであると明確に示しています。これは&quot;ProductUser&quot; リレーション「テーブル」がMySQLテーブルとして保存されるということです。</p>
+<pre><code class="language-javascript">// User.js
 module.exports = {
-  connection: &apos;ourMySQL&apos;,
+  connection: 'ourMySQL',
   attributes: {
-    email: &apos;string&apos;,
+    email: 'string',
     wishlist: {
-      collection: &apos;product&apos;,
-      via: &apos;wishlistedBy&apos;,
+      collection: 'product',
+      via: 'wishlistedBy',
       dominant: true
     }
   }
-};
-</code></pre><!-- __LANG=%%__ -->
-<pre><code data-language="javascript">// Product.js
+};</code></pre>
+<pre><code class="language-javascript">// Product.js
 module.exports = {
-  connection: &apos;ourRedis&apos;,
+  connection: 'ourRedis',
   attributes: {
-    name: &apos;string&apos;,
+    name: 'string',
     wishlistedBy: {
-      collection: &apos;user&apos;,
-      via: &apos;wishlist&apos;
+      collection: 'user',
+      via: 'wishlist'
     }
   }
-};
-</code></pre><!-- __LANG=%%__ -->
-<h2 id="choosing-a-dominant-" permalink="choosing-a-dominant">Choosing a &quot;dominant&quot;</h2>
-<p>Several factors may influence your decision:</p>
+};</code></pre>
+<h2>「ドミナント」を選ぶ</h2>
+<p>この判断にはいくつかの要因が関与します:</p>
 <ul>
-<li>If one side is a SQL database, placing the relationship table on that side will allow your queries to be more efficient, since the relationship table can be joined before the other side is communicated with.  This reduces the number of total queries required from 3 to 2.</li>
-<li>If one connection is much faster than the other, all other things being equal, it probably makes sense to put the connection on that side.</li>
-<li>If you know that it is much easier to migrate one of the connections, you may choose to set that side as <code>dominant</code>.  Similarly, regulations or compliance issues may affect your decision as well.  If the relationship contains sensitive patient information (for instance, a relationship between <code>Patient</code> and <code>Medicine</code>) you want to be sure that all relevant data is saved in one particular database over the other (in this case, <code>Patient</code> is likely to be <code>dominant</code>).</li>
-<li>Along the same lines, if one of your connections is read-only (perhaps <code>Medicine</code> in the previous example is connected to a read-only vendor database), you won&apos;t be able to write to it, so you&apos;ll want to make sure your relationship data can be persisted safely on the other side.</li>
+<li>片側がSQLデータベースである場合、もう一方にコミュニケーションする前にリレーションテーブルをジョインすることが出来るため、SQLの側ににリレーションテーブルを置くほうがクエリを効率化出来ます。これは必要な総クエリ数を3から2に減少させます。</li>
+<li>もしあるコネクションが他のコネクションより速い場合、その他の条件が同様であればそのコネクションに置くほうがいいでしょう。</li>
+<li>一方のコネクションにマイグレートするほうが簡単な場合、マイグレート先の方を <code>dominant</code>とすべきでしょう。同様に規制やコンプライアンスの問題が判断に影響します。もしリレーションがセンシティブな患者情報を含む場合(例えば<code>Patient</code>と<code>Medicine</code>のリレーションのように)関係する全てのデータが一つの特定のデータベースに保存されているようにしたいでしょう(このケースではおそらく<code>Patient</code>を<code>dominant</code>にするでしょう)。</li>
+<li>これらに加えて、一方のコネクションが読み込み専用(前の例の<code>Medicine</code>は製薬会社の読み込み専用データベースかもしれません)で書き込めない場合、そうでない方においてリレーションがきちんと保存されるようにすべきでしょう。</li>
 </ul>
-<h2 id="faq" permalink="faq">FAQ</h2>
-<h5 id="what-if-one-of-the-collections-doesn-t-have-via-" permalink="what-if-one-of-the-collections-doesnt-have-via">What if one of the collections doesn&apos;t have <code>via</code>?</h5>
+<h2>FAQ</h2>
+<h5>どちらかのコレクションが<code>via</code>を持たなければどうなりますか?</h5>
 <blockquote>
-<p>If a <code>collection</code> association does not have a <code>via</code> property, it is automatically <code>dominant: true</code>.</p>
+<p>もし<code>collection</code>のアソシエーションが<code>via</code>プロパティを満たない時は自動的に<code>dominant: true</code>になります。</p>
 </blockquote>
-<h5 id="what-if-both-collections-don-t-have-via-" permalink="what-if-both-collections-dont-have-via">What if both collections don&apos;t have <code>via</code>?</h5>
+<h5>両方のコレクションが<code>via</code>を持たなければどうなりますか?</h5>
 <blockquote>
-<p>If both <code>collections</code> don&apos;t have <code>via</code>, then they are not related.  Both are <code>dominant</code>, because they are separate relationship tables!!</p>
+<p>もし両方の<code>collections</code>が<code>via</code>を持たなければリレーションは張られません。両方が<code>dominant</code>です。なぜならそれぞれ別別のリレーションテーブルだからです。</p>
 </blockquote>
-<h5 id="what-about-model-associations-" permalink="what-about-model-associations">What about <code>model</code> associations?</h5>
+<h5><code>model</code>のアソシエーションはどうですか?</h5>
 <blockquote>
-<p>In all other types of associations, the <code>dominant</code> property is prohibited.  Setting one side to <code>dominant</code> is only necessary for associations between two models which have an attribute like: <code>{ via: &apos;...&apos;, collection: &apos;...&apos; }</code> on both sides.</p>
+<p>その他のタイプのアソシエーションにおいて<code>dominant</code>プロパティの仕様は禁止されています。片方に<code>dominant</code>を設定することは<code>{ via: '...', collection: '...' }</code>のようなアトリビュートを両方に持つ2つのモデルのアソシエーションにのみ必要です</p>
 </blockquote>
-<h5 id="can-a-model-be-dominant-for-one-attribute-and-not-another-" permalink="can-a-model-be-dominant-for-one-attribute-and-not-another">Can a model be dominant for one attribute and not another?</h5>
+<h5>モデルは一つのアトリビュートのドミナントになって別のもののドミナントにならないことは出来ますか。</h5>
 <blockquote>
-<p>Keep in mind that a model is &quot;dominant&quot; only in the context of a particular relationship.  A model may be dominant in one or more relationships (attributes) while simultaneously NOT being dominant in other relationships (attributes).
-e.g. if a <code>User</code> has a collection of toys called <code>favoriteToys</code> via <code>favoriteToyOf</code> on the <code>Toy</code> model, and <code>favoriteToys</code> on <code>User</code> is <code>dominant: true</code>, <code>Toy</code> can still be dominant in other ways.  So <code>Toy</code> might also be associated to <code>User</code> by way of its attribute, <code>designedBy</code>, for which it is <code>dominant: true</code>.</p>
+<p>モデルのドミナントは特定のリレーションについてのみの文脈であることを覚えておいてください。モデルは一つまたは複数のリレーション(アトリビュート)においてドミナントになり、別のリレーション(アトリビュート)に関してドミナントにならないということが出来ます。
+例　もし<code>User</code>が<code>Toy</code>モデル上の<code>favoriteToyOf</code>を通じて<code>favoriteToys</code>と呼ばれるコレクションを持ち、<code>User</code>の<code>favoriteToys</code>は<code>dominant: true</code>の時<code>Toy</code>は依然として別の方面でドミナントになることが出来ます。<code>Toy</code> は<code>User</code>に <code>designedBy</code>アトリビュートを通じてもリレーションしており、そのドミナントが<code>dominant: true</code>であるという場合です。</p>
 </blockquote>
-<h5 id="can-both-models-be-dominant-" permalink="can-both-models-be-dominant">Can both models be dominant?</h5>
+<h5>両方のモデルがドミナントになれますか?</h5>
 <blockquote>
-<p>No. If both models in a cross-adapter/cross-connection, many-to-many association set <code>dominant: true</code>, an error is thrown before lift.</p>
+<p>いいえ。クロスアダプタ・クロスコネクションの多対多アソシエーションにおいてもし両方のモデルが<code>dominant: true</code>に設定されている場合は起動前にエラーが出力されます。</p>
 </blockquote>
-<h5 id="can-neither-model-be-dominant-" permalink="can-neither-model-be-dominant">Can neither model be dominant?</h5>
+<h5>どちらもドミナントにしないことは可能ですか?</h5>
 <blockquote>
-<p>Sort of... If neither model in a cross-adapter/cross-connection, many-to-many association sets <code>dominant: true</code>, a warning is displayed before lift, and a guess will be made automatically based on the characteristics of the relationship.  For now, that just means an arbitrary decision based on alphabetical order :)</p>
+<p>一応出来ます。。。もしクロスアダプタ・クロスコネクションの多対多アソシエーションに置いてどちらのモデルも<code>dominant: true</code>にセットされなかった場合起動前に警告が出ます、そしてリレーションの文字列のアルファベット順に自動的に生成されるはずです。今のところは単にアルファベット順による恣意的な判断です。 :)</p>
 </blockquote>
-<h5 id="what-about-non-cross-adapter-associations-" permalink="what-about-noncrossadapter-associations">What about non-cross-adapter associations?</h5>
+<h5>クロスアダプタではないリレーションの場合はどうですか?</h5>
 <blockquote>
-<p>The <code>dominant</code> property is silently ignored in non-cross-adapter/cross-connection associations.  We&apos;re assuming you might be planning on breaking up the schema across multiple connections eventually, and there&apos;s no reason to prevent you from being proactive.  Plus, this reserves additional future utility for the &quot;dominant&quot; option down the road.</p>
+<p>非クロスアダプタ・非クロスコネクションのアソシエーションでは<code>dominant</code>のプロパティは静かに無視されます。我々は皆さんがいずれスキーマを複数のコネクションに分けることを考えているのではないかと思いますし、その準備を前もって行っておくことを邪魔する理由はありません。それに、これは将来の&quot;dominant&quot;の将来的な利用を予約するものですので。</p>
 </blockquote>
-<p><docmeta name="uniqueID" value="Dominance904539"></docmeta></p>
+<docmeta name="uniqueID" value="Dominance904539">
 <docmeta name="displayName" value="Dominance">
-
-</docmeta>

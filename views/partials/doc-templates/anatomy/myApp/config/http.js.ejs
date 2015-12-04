@@ -1,10 +1,11 @@
-<h1 id="myapp-config-http-js">myApp/config/http.js</h1>
-<p>This file is conventionally used for configuring the underlying HTTP server (the <code>sails.config.http</code> object.)</p>
-<p>This includes all HTTP-specific middleware, including the serving/caching of flat files.</p>
-<p><docmeta name="uniqueID" value="httpjs768553"></docmeta></p>
+<h1>myApp/config/http.js</h1>
+<p>このファイルは通常、プロジェクトの基礎部分にあるHTTPサーバ(<code>sails.config.http</code>オブジェクト)を設定するのに使われます。</p>
+<p>ここにはフラットなファイルを受け取りする、HTTPに特化したミドルウエアが含まれています。</p>
+<docmeta name="uniqueID" value="httpjs768553">
 <docmeta name="displayName" value="http.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * HTTP Server Settings
  * (sails.config.http)
  *
@@ -20,37 +21,37 @@ module.exports.http = {
   middleware: {
 
     // The order in which middleware should be run for HTTP request.
-    // (the Sails router is invoked by the &quot;router&quot; middleware below.)
+    // (the Sails router is invoked by the "router" middleware below.)
     order: [
-      &apos;startRequestTimer&apos;,
-      &apos;cookieParser&apos;,
-      &apos;session&apos;,
-      &apos;bodyParser&apos;,
-      &apos;handleBodyParserError&apos;,
-      &apos;compress&apos;,
-      &apos;methodOverride&apos;,
-      &apos;poweredBy&apos;,
-      &apos;$custom&apos;,
-      &apos;router&apos;,
-      &apos;www&apos;,
-      &apos;favicon&apos;,
-      &apos;404&apos;,
-      &apos;500&apos;
+      'startRequestTimer',
+      'cookieParser',
+      'session',
+      'bodyParser',
+      'handleBodyParserError',
+      'compress',
+      'methodOverride',
+      'poweredBy',
+      '$custom',
+      'router',
+      'www',
+      'favicon',
+      '404',
+      '500'
     ],
 
     // The body parser that will handle incoming multipart HTTP requests.
     // By default as of v0.10, Sails uses [skipper](http://github.com/balderdashy/skipper).
     // See http://www.senchalabs.org/connect/multipart.html for other options.
-    // bodyParser: require(&apos;skipper&apos;)
+    // bodyParser: require('skipper')
 
   },
 
   // The number of seconds to cache flat files on disk being served by
   // Express static middleware (by default, these files are in `.tmp/public`)
   //
-  // The HTTP static cache is only active in a &apos;production&apos; environment,
-  // since that&apos;s the only time Express will cache flat-files.
+  // The HTTP static cache is only active in a 'production' environment,
+  // since that's the only time Express will cache flat-files.
   cache: 31557600000
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

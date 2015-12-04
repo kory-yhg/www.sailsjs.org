@@ -1,26 +1,23 @@
-<h1 id="disabling-globals">Disabling Globals</h1>
-<p>Sails determines which globals to expose by looking at <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.globals.html" target="_blank"><code>sails.config.globals</code></a>, which is conventionallly configured in <a href="http://sailsjs.org/documentation/anatomy/myApp/config/globals.js.html" target="_blank"><code>config/globals.js</code></a>.</p>
-<p>To disable all global variables, just set the setting to <code>false</code>:</p>
-<pre><code data-language="javascript">// config/globals.js
-module.exports.globals = false;
-</code></pre><!-- __LANG=%%__ -->
-<p>To disable <em>some</em> global variables, specify an object instead, e.g.:</p>
-<pre><code data-language="javascript">// config/globals.js
+<h1>グローバルを無効化する</h1>
+<p>Sailsではどのグローバルを有効化するかを通常 <a href="http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/globals.js.html"><code>config/globals.js</code></a>に配置される<a href="http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.globals.html"><code>sails.config.globals</code></a>で判断しています。</p>
+<p>全てのグローバル変数を無効化するにはこの設定を単に<code>false</code>と設定してください:</p>
+<pre><code class="language-js">// config/globals.js
+module.exports.globals = false;</code></pre>
+<p><em>いくつかの</em> グローバル変数を無効化するには、その代わりに以下のようにオブジェクトを指定してください。:</p>
+<pre><code class="language-js">// config/globals.js
 module.exports.globals = {
   _: false,
   async: false,
   models: false,
   services: false
-};
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+};</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>Bear in mind that none of the globals, including <code>sails</code>, are accessible until <em>after</em> sails has loaded.  In other words, you won&apos;t be able to use <code>sails.models.user</code> or <code>User</code> outside of a function (since <code>sails</code> will not have finished loading yet.)</li>
+<li><code>sails</code>を含むいずれのグローバルもSailsが <em>ロードされてから</em> のみ有効ということを覚えておいてください。別の言い方をすると<code>sails.models.user</code> や <code>User</code> は（<code>sails</code>が読み込みを完了していないので）ファンクションの外では使えません。</li>
 </ul>
 </blockquote>
-<!-- not true anymore:
-Most of this section of the docs focuses on the methods and properties of `sails`, the singleton object representing your app.  
+<!-- もう真実ではありません:
+ドキュメントのこの節の大部分はあなたのSailsアプリケーションを代表するシングルトンオブジェクトである`sails`のメソッドとプロパティを紹介することにフォーカスしています。
 -->
 <docmeta name="displayName" value="Disabling Globals">
-</docmeta>

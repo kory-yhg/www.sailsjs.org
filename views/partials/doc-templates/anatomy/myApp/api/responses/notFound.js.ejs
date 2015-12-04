@@ -1,13 +1,14 @@
-<h1 id="myapp-api-responses-notfound-js">myApp/api/responses/notFound.js</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This is one of the default Server Responses included in a new Sails project.</p>
-<p>It contains the logic for what should happen when you wish to issue an http 404 response. It can be issued from anywhere you have access to the express <code>res</code> object by calling res.notFound.</p>
-<p>Feel free to edit this file to suit your needs.  You can also create a custom response using our <code>sails-generate-custom-response</code> generator.</p>
-<p>See the Response section of Reference Documentation for more info.</p>
-<p><docmeta name="uniqueID" value="notFoundjs935866"></docmeta></p>
+<h1>myApp/api/responses/notFound.js</h1>
+<h3>目的</h3>
+<p>これはSailsの新規プロジェクトに標準で含まれているサーバレスポンスの一つです。</p>
+<p>ここにはhttpの404レスポンスを出すべき時のロジックが含まれています。これはexpressの<code>res</code>オブジェクトへアクセスできるところならどこからでもres.notFoundをコールすることで呼び出せます。</p>
+<p>ニーズに応じてこのファイルを自由に書き換えてください。また、ジェネレータの<code>sails-generate-custom-response</code>でカスタムレスポンスを作れます。</p>
+<p>さらなる情報はリファレンスドキュメンテーションのレスポンスの項目をご覧ください。</p>
+<docmeta name="uniqueID" value="notFoundjs935866">
 <docmeta name="displayName" value="notFound.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * 404 (Not Found) Handler
  *
  * Usage:
@@ -20,14 +21,14 @@
  * return res.notFound();
  *
  * NOTE:
- * If a request doesn&apos;t match any explicit routes (i.e. `config/routes.js`)
- * or route blueprints (i.e. &quot;shadow routes&quot;, Sails will call `res.notFound()`
+ * If a request doesn't match any explicit routes (i.e. `config/routes.js`)
+ * or route blueprints (i.e. "shadow routes", Sails will call `res.notFound()`
  * automatically.
  */
 
 module.exports = function notFound (err, viewOrRedirect) {
 
-  // Get access to `req` &amp; `res`
+  // Get access to `req` & `res`
   var req = this.req;
   var res = this.res;
 
@@ -37,10 +38,10 @@ module.exports = function notFound (err, viewOrRedirect) {
       return res.send();
     }
     else {
-      if (typeof data !== &apos;object&apos; || data instanceof Error) {
+      if (typeof data !== 'object' || data instanceof Error) {
         data = {error: data};
       }
-      if ( req.options.jsonp &amp;&amp; !req.isSocket ) {
+      if ( req.options.jsonp && !req.isSocket ) {
         return res.jsonp(data);
       }
       else return res.json(data);
@@ -51,7 +52,7 @@ module.exports = function notFound (err, viewOrRedirect) {
   res.status(404);
 
   // Log error to console
-  this.req._sails.log.verbose(&apos;Sent 404 (&quot;Not Found&quot;) response&apos;);
+  this.req._sails.log.verbose('Sent 404 ("Not Found") response');
   if (err) {
     this.req._sails.log.verbose(err);
   }
@@ -64,7 +65,7 @@ module.exports = function notFound (err, viewOrRedirect) {
   // Make data more readable for view locals
   var locals;
   if (!err) { locals = {}; }
-  else if (typeof err !== &apos;object&apos;){
+  else if (typeof err !== 'object'){
     locals = {error: err};
   }
   else {
@@ -81,7 +82,7 @@ module.exports = function notFound (err, viewOrRedirect) {
   }
 
   // Serve HTML view or redirect to specified URL
-  if (typeof viewOrRedirect === &apos;string&apos;) {
+  if (typeof viewOrRedirect === 'string') {
     if (viewOrRedirect.match(/^(\/|http:\/\/|https:\/\/)/)) {
       return res.redirect(viewOrRedirect);
     }
@@ -90,10 +91,10 @@ module.exports = function notFound (err, viewOrRedirect) {
       else return res.send(html);
     });
   }
-  else return res.view(&apos;404&apos;, locals, function viewReady(viewErr, html) {
+  else return res.view('404', locals, function viewReady(viewErr, html) {
     if (viewErr) return sendJSON(err);
     else return res.send(html);
   });
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

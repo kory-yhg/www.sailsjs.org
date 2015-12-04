@@ -1,8 +1,9 @@
-<h1 id="myapp-tasks-config-watch-js">myApp/tasks/config/watch.js</h1>
-<p><docmeta name="uniqueID" value="watchjs402491"></docmeta></p>
+<h1>myApp/tasks/config/watch.js</h1>
+<docmeta name="uniqueID" value="watchjs402491">
 <docmeta name="displayName" value="watch.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * Run predefined tasks whenever watched file patterns are added, changed or deleted.
  *
  * ---------------------------------------------------------------
@@ -13,28 +14,28 @@
  * and re-run the appropriate tasks.
  *
  * For usage docs see:
- *         https://github.com/gruntjs/grunt-contrib-watch
+ *      https://github.com/gruntjs/grunt-contrib-watch
  *
  */
 module.exports = function(grunt) {
 
-    grunt.config.set(&apos;watch&apos;, {
+    grunt.config.set('watch', {
         api: {
 
             // API files to watch:
-            files: [&apos;api/**/*&apos;]
+            files: ['api/**/*']
         },
         assets: {
 
             // Assets to watch:
-            files: [&apos;assets/**/*&apos;, &apos;tasks/pipeline.js&apos;],
+            files: ['assets/**/*', 'tasks/pipeline.js'],
 
             // When assets are changed:
-            tasks: [&apos;syncAssets&apos; , &apos;linkAssets&apos;]
+            tasks: ['syncAssets' , 'linkAssets']
         }
     });
 
-    grunt.loadNpmTasks(&apos;grunt-contrib-watch&apos;);
+    grunt.loadNpmTasks('grunt-contrib-watch');
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

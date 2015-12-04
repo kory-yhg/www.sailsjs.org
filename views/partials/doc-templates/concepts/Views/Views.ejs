@@ -1,41 +1,39 @@
-<h1 id="views">Views</h1>
-<h3 id="overview" permalink="overview">Overview</h3>
-<p>In Sails, views are markup templates that are compiled <em>on the server</em> into HTML pages.  In most cases, views are used as the response to an incoming HTTP request, e.g. to serve your home page.</p>
-<p>Alternatively, a view can be compiled directly into an HTML string for use in your backend code (see <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md" target="_blank"><code>sails.renderView()</code></a>.)  For instance, you might use this approach to send HTML emails, or to build big XML strings for use with a legacy API.</p>
-<h5 id="creating-a-view" permalink="creating-a-view">Creating a view</h5>
-<p>By default, Sails is configured to use EJS (<a href="http://embeddedjs.com/" target="_blank">Embedded Javascript</a>) as its view engine.  The syntax for EJS is highly conventional- if you&apos;ve worked with php, asp, erb, gsp, jsp, etc., you&apos;ll immediately know what you&apos;re doing.</p>
-<p>If you prefer to use a different view engine, there are a multitude of options.  Sails supports all of the view engines compatible with <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md" target="_blank">Express</a> via <a href="https://github.com/visionmedia/consolidate.js/" target="_blank">Consolidate</a>.</p>
-<p>Views are defined in your app&apos;s <a href="http://sailsjs.org/documentation/anatomy/myApp/views" target="_blank"><code>views/</code></a> folder by default, but like all of the default paths in Sails, they are <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md" target="_blank">configurable</a>.  If you don&apos;t need to serve dynamic HTML pages at all (say, if you&apos;re building an API for a mobile app), you can remove the directory from your app.</p>
-<h5 id="compiling-a-view" permalink="compiling-a-view">Compiling a view</h5>
-<p>Anywhere you can access the <code>res</code> object (i.e. a controller action, custom response, or policy), you can use <a href="http://sailsjs.org/documentation/reference/res/res.view.html" target="_blank"><code>res.view</code></a> to compile one of your views, then send the resulting HTML down to the user.</p>
-<p>You can also hook up a view directly to a route in your <code>routes.js</code> file.  Just indicate the relative path to the view from your app&apos;s <code>views/</code> directory.  For example:</p>
-<pre><code data-language="javascript">{
-  &apos;get /&apos;: {
-    view: &apos;homepage&apos;
+<h1>ビュー</h1>
+<h3>概要</h3>
+<p>Sailsではビューは <em>サーバー上で</em> コンパイルされ、HTMLページに挿入されるテンプレートのことです。多くの場合、ビューはHTTPリクエストに対するレスポンスとして利用されます。（例えばホームページを表示するような使い方です。)</p>
+<p>また、その他の方法としてはビューはバックエンドコードの中で文字列として直接取得されます。(<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md"><code>sails.renderView()</code></a>をご覧ください。) 例えばHTMLメールを送信したり、レガシーなAPIを利用する際に大きなXML文字列を使ったりする場合にです。</p>
+<h5>ビューを作成する</h5>
+<p>デフォルトではSailsはビューエンジンとしてEJS (<a href="http://embeddedjs.com/">Embedded Javascript</a>)を利用するように設定されています。EJSの構文はとても慣習的ですので、もしPHPやASP、ERB、GSP,JSPなどの言語を使ったことがある人ならすぐに何をしているかがわかるでしょう。</p>
+<p>別のエンジンを利用したい場合、様々な選択肢があります。Sailは<a href="https://github.com/visionmedia/consolidate.js/">Consolidate</a>を通じ<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md">Express</a>と互換性のある全てのテンプレートエンジンを利用することが出来ます。</p>
+<p>ビューはデフォルトでは<a href="http://sailsjs.org/documentation/anatomy/myApp/views"><code>views/</code></a>フォルダーで定義されますが、他のSailsのデフォルトパスと同じように<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md">設定が可能です</a>。もしダイナミックなHTMLページを提供する必要が無い場合（例えばモバイルアプリケーションのAPIを開発しているような場合）、ディレクトリをアプリケーションから削除しても構いません。</p>
+<h5>ビューをコンパイルする</h5>
+<p><code>res</code>オブジェクトにアクセス出来るところならどこでも（すなわち、コントローラ、アクション、カスタムレスポンスやポリシーで）<a href="http://sailsjs.org/documentation/reference/res/res.view.html"><code>res.view</code></a>を利用してビューをコンパイルし、その結果のHTMLをユーザに送出することが出来ます。</p>
+<p>同様にビューディレクトリを<code>routes.js</code>ファイルに結びつけることが出来ます。これにはアプリケーションのビューの<code>views/</code>ディレクトリからの相対パスを指定するだけです。例えば：</p>
+<pre><code class="language-javascript">{
+  'get /': {
+    view: 'homepage'
   },
-  &apos;get /signup&apos;: {
-    view: &apos;signupFlow/basicInfo&apos;
+  'get /signup': {
+    view: 'signupFlow/basicInfo'
   },
-  &apos;get /signup/password&apos;: {
-    view: &apos;signupFlow/chooseAPassword&apos;
+  'get /signup/password': {
+    view: 'signupFlow/chooseAPassword'
   },
   // and so on.
-}
-</code></pre><!-- __LANG=%%__ -->
-<h5 id="what-about-single-page-apps-" permalink="what-about-singlepage-apps">What about single-page apps?</h5>
-<p>If you are building a web application for the browser, part (or all) of your navigation may take place on the client; i.e. instead of the browser fetching a new HTML page each time the user navigates around, the client-side code preloads some markup templates which are then rendered in the user&apos;s browser without needing to hit the server again directly.</p>
-<p>In this case, you have a couple of options for bootstrapping the single-page app:</p>
+}</code></pre>
+<h5>シングルページアプリケーションでは?</h5>
+<p>ナビゲーションのうちいくつか（あるいは全て）がクライアントサイドで行われるようなアプリケーションを開発している場合、すなわちユーザーが画面遷移するたびにブラウザが新しいHTMLページを持ってくるのではなく、クライアントサイドコードが事前にロードされていて直接サーバーにアクセスし直すことなくクライアントサイドでマークアップテンプレートがレンダリングされるような場合。</p>
+<p>このようなケースではシングルページアプリケーションを高速化するために幾つかの方法があります:</p>
 <ul>
-<li>Use a single view, e.g. <code>views/publicSite.ejs</code>.  Advantages:<ul>
-<li>You can use the view engine in Sails to pass data from the server directly into the HTML that will be rendered on the client.  This is an easy way to get stuff like user data to your client-side javascript, without having to send AJAX/WebSocket requests from the client.</li>
+<li><code>views/publicSite.ejs</code>のような単一のビューを使う  利点:
+<ul>
+<li>Sailsのテンプレートエンジンを利用してクライアントでレンダリングされるビューに直接データを受け渡すことが出来ます。これによってユーザーデータなどをAjaxやWeb Socketによるアクセスなしにクライアントサイドのjavascriptに直接渡すことが簡単にできます。</li>
+</ul></li>
+<li><code>assets/index.html</code>のようなアセットページに有る単一のHTMLファイルを利用する。 利点:
+<ul>
+<li>サーバサイドデータを直接クライアントに渡すことは出来ませんが、クライアントサイドとサーバサイドのアプリケーションを完全に分割できます。</li>
+<li>アセットフォヅダにあるものは全てスタティックなCDN（CloudfrontやCloudFlareのような）に移動でき、これにより地理的に分散しているCDNプロバイダの最も近いものからコンテンツを取得できるということの恩恵に預かられます。</li>
+</ul></li>
 </ul>
-</li>
-<li>Use a single HTML page in your assets folder , e.g. <code>assets/index.html</code>. Advantages:<ul>
-<li>Although you can&apos;t pass server-side data directly to the client this way, this approach allows you to further decouple the client and server-side parts of your application.</li>
-<li>Anything in your assets folder can be moved to a static CDN (like Cloudfront or CloudFlare), allowing you to take advantage of that provider&apos;s geographically distributed data centers to get your content closer to your users.</li>
-</ul>
-</li>
-</ul>
-<p><docmeta name="uniqueID" value="Views426660"></docmeta></p>
+<docmeta name="uniqueID" value="Views426660">
 <docmeta name="displayName" value="Views">
-</docmeta>

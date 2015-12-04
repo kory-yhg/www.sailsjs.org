@@ -1,13 +1,14 @@
-<h1 id="myapp-api-responses-ok-js">myApp/api/responses/ok.js</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This is one of the default Server Responses included in a new Sails project.</p>
-<p>It contains the logic for what should happen when you wish to issue an http 200 response. It can be issued from anywhere you have access to the express <code>res</code> object by calling res.ok.</p>
-<p>Feel free to edit this file to suit your needs.  You can also create a custom response using our <code>sails-generate-custom-response</code> generator.</p>
-<p>See the Response section of Reference Documentation for more info.</p>
-<p><docmeta name="uniqueID" value="okjs629833"></docmeta></p>
+<h1>myApp/api/responses/ok.js</h1>
+<h3>目的</h3>
+<p>これはSailsの新規プロジェクトに標準で含まれているサーバレスポンスの一つです。</p>
+<p>ここにはhttpの200レスポンスを出すべき時のロジックが含まれています。これはexpressの<code>res</code>オブジェクトへアクセスできるところならどこからでもres.okをコールすることで呼び出せます。</p>
+<p>ニーズに応じてこのファイルを自由に書き換えてください。また、ジェネレータの<code>sails-generate-custom-response</code>でカスタムレスポンスを作れます。</p>
+<p>さらなる情報はリファレンスドキュメンテーションのレスポンスの項目をご覧ください。</p>
+<docmeta name="uniqueID" value="okjs629833">
 <docmeta name="displayName" value="ok.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * 200 (OK) Response
  *
  * Usage:
@@ -26,7 +27,7 @@
 
 module.exports = function sendOK (data, viewOrRedirect) {
 
-    // Get access to `req` &amp; `res`
+    // Get access to `req` & `res`
   var req = this.req;
   var res = this.res;
 
@@ -36,8 +37,8 @@ module.exports = function sendOK (data, viewOrRedirect) {
       return res.send();
     }
     else {
-      if (typeof data !== &apos;object&apos;) { return res.send(data); }
-      if ( req.options.jsonp &amp;&amp; !req.isSocket ) {
+      if (typeof data !== 'object') { return res.send(data); }
+      if ( req.options.jsonp && !req.isSocket ) {
         return res.jsonp(data);
       }
       else return res.json(data);
@@ -48,7 +49,7 @@ module.exports = function sendOK (data, viewOrRedirect) {
   res.status(200);
 
   // Log error to console
-  this.req._sails.log.verbose(&apos;Sent 200 (&quot;OK&quot;) response&apos;);
+  this.req._sails.log.verbose('Sent 200 ("OK") response');
   if (data) {
     this.req._sails.log.verbose(data);
   }
@@ -60,7 +61,7 @@ module.exports = function sendOK (data, viewOrRedirect) {
 
   // Make data more readable for view locals
   var locals;
-  if (!data || typeof data !== &apos;object&apos;){
+  if (!data || typeof data !== 'object'){
     locals = {};
   }
   else {
@@ -68,7 +69,7 @@ module.exports = function sendOK (data, viewOrRedirect) {
   }
 
   // Serve HTML view or redirect to specified URL
-  if (typeof viewOrRedirect === &apos;string&apos;) {
+  if (typeof viewOrRedirect === 'string') {
     if (viewOrRedirect.match(/^(\/|http:\/\/|https:\/\/)/)) {
       return res.redirect(viewOrRedirect);
     }
@@ -83,5 +84,5 @@ module.exports = function sendOK (data, viewOrRedirect) {
   });
 
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

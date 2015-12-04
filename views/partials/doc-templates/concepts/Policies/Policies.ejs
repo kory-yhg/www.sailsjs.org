@@ -1,137 +1,131 @@
-<h1 id="policies">Policies</h1>
-<h3 id="overview" permalink="overview">Overview</h3>
-<p>Policies in Sails are versatile tools for authorization and access control-- they let you allow or deny access to your controllers down to a fine level of granularity.  For example, if you were building Dropbox, before letting a user upload a file to a folder, you might check that she <code>isAuthenticated</code>, then ensure that she <code>canWrite</code> (has write permissions on the folder.)  Finally, you&apos;d want to check that the folder she&apos;s uploading into <code>hasEnoughSpace</code>.</p>
-<p>Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAuth 2.0, or your own custom authorization/authentication scheme.</p>
+<h1>ポリシー</h1>
+<h3>概要</h3>
+<p>Sailsにおける「ポリシー」は認証とアクセスコントロールを行うための多機能なツールです。つまりポリシーはコントロータへのアクセスを許可したり拒否したりする動作を適切な粒度で定義できるのです。たとえばあなたがDropboxをつくろうとしているとしましょう。するとユーザにファイルをフォルダーにアップロードをさせる前にはユーザが<code>isAuthenticated</code>かどうかを確認して次に<code>canWrite</code>（フォルダへの書き込み権限を持っているか）を確認します。最後にアップロードしようとしてるフォルダーが<code>hasEnoughSpace</code>かどうかも確認するでしょう。</p>
+<p>ポリシーはどんなものでも利用することが出来ます。つまりHTTP BasicAuthでも、サードパーティーのシングルサインオンでも、OAuth2.0でも、あるいはあなたが書いたオリジナルの認証・認可スキーマとでも利用することが出来ます。</p>
 <blockquote>
-<p>NOTE: policies apply <strong>only</strong> to controller actions, not to views.  If you define a route in your <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html" target="_blank">routes.js config file</a> that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action.</p>
+<p>備考：ポリシーはコントローラーアクションに対して<strong>のみ</strong>提供され、ビューには適用されません。もしも<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html">routes.js config file</a> でビューを直接指定指定した場合ポリシーは一切適用されません。ポリシーが確実に適用されるようにするにはビューを表示するコントローラを作成し、ルートからはそのコントローラを呼び出すようにしてください。</p>
 </blockquote>
-<h3 id="writing-your-first-policy" permalink="writing-your-first-policy">Writing Your First Policy</h3>
-<p>Policies are files defined in the <code>api/policies</code> folder in your Sails app.  Each policy file should contain a single function.</p>
-<p>When it comes down to it, policies are really just Connect/Express middleware functions which run <strong>before</strong> your controllers.  You can chain as many of them together as you like-- in fact they&apos;re designed to be used this way.  Ideally, each middleware function should really check just <em>one thing</em>.</p>
-<p>For example, the <code>canWrite</code> policy mentioned above might look something like this:</p>
-<pre><code data-language="javascript">// policies/canWrite.js
+<h3>初めてのポリシーを書く</h3>
+<p>ポリシーはSailsアプリケーションの<code>api/policies</code>で定義されます。それぞれのポリシーは一つのファンクションを持ちます。</p>
+<p>中身を見てみると、ポリシーはまさにコントローラの<strong>手前で</strong>動作するConnect/Expresのミドルウエアなのです。ここでは好きなだけのチェーンを繋げることが出来ます。（そもそも、そういうふうにして使われるべきものなのですが）。理想的には一つのミドルウエアは<em>一つだけの</em>ことをチェックすべきです。</p>
+<p>例えば先程述べた<code>canWrite</code>ポリシーは以下のようになります。</p>
+<pre><code class="language-javascript">// policies/canWrite.js
 module.exports = function canWrite (req, res, next) {
-  var targetFolderId = req.param(&apos;id&apos;);
+  var targetFolderId = req.param('id');
   var userId = req.session.user.id;
 
   Permission
   .findOneByFolderId( targetFolderId )
   .exec( function foundPermission (err, permission) {
 
-    // Unexpected error occurred-- skip to the app&apos;s default error (500) handler
+    // Unexpected error occurred-- skip to the app's default error (500) handler
     if (err) return next(err);
 
     // No permission exists linking this user to this folder.  Maybe they got removed from it?  Maybe they never had permission in the first place?  Who cares?
-    if ( ! permission ) return res.redirect(&apos;/notAllowed&apos;);
+    if ( ! permission ) return res.redirect('/notAllowed');
 
-    // OK, so a permission was found.  Let&apos;s be sure it&apos;s a &quot;write&quot;.
-    if ( permission.type !== &apos;write&apos; ) return res.redirect(&apos;/notAllowed&apos;);
+    // OK, so a permission was found.  Let's be sure it's a "write".
+    if ( permission.type !== 'write' ) return res.redirect('/notAllowed');
 
-    // If we made it all the way down here, looks like everything&apos;s ok, so we&apos;ll let the user through
+    // If we made it all the way down here, looks like everything's ok, so we'll let the user through
     next();
   });
-};
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="protecting-controllers-with-policies" permalink="protecting-controllers-with-policies">Protecting Controllers with Policies</h3>
-<p>Sails has a built in ACL (access control list) located in <code>config/policies.js</code>.  This file is used to map policies to your controllers.  </p>
-<p>This file is  <em>declarative</em>, meaning it describes <em>what</em> the permissions for your app should look like, not <em>how</em> they should work.  This makes it easier for new developers to jump in and understand what&apos;s going on, plus it makes your app more flexible as your requirements inevitably change over time.</p>
-<p>Your <code>config/policies.js</code> file should export a Javascript object whose keys are controller names (or <code>&apos;*&apos;</code> for  global policies), and whose values are objects mapping action names to one or more policies.  See below for more details and examples.</p>
-<h5 id="to-apply-a-policy-to-a-specific-controller-action-" permalink="to-apply-a-policy-to-a-specific-controller-action">To apply a policy to a specific controller action:</h5>
-<pre><code data-language="javascript">{
+};</code></pre>
+<h3>コントローラをポリシーで保護する</h3>
+<p>SailsではビルドインのACL(アクセスコントロールリスト）が <code>config/policies.js</code>に用意されています。このファイルはポリシーとコントローラを紐付けるのに使われます。  </p>
+<p>このファイルは<em>ディクレラテブ</em>です。すなわち、ここではアプリケーションにおけるパーミッションが<em>どのようになっているのか</em>を記述するのであり、<em>どのように動作するのか</em>を記述するものではありません。これは開発を始めたばかりの開発者でも何が起こっているのかを理解しやすくというメリットばかりではなく、必然的に何度も起こるであろうプログラムの変更に柔軟に対応できるようにするという狙いもあるのです</p>
+<p><code>config/policies.js</code>ファイルはコントローラネーム（あるいはグローバル設定する場合は<code>'*'</code>）をキーとマップすべきオブジェクト名を値とするJavascriptオブジェクトをエクスポートしなければなりません。詳しくは以下の例をご覧ください・</p>
+<h5>特定のコントローラアクションにポリシーを適用する:</h5>
+<pre><code class="language-js">{
   ProfileController: {
-      // Apply the &apos;isLoggedIn&apos; policy to the &apos;edit&apos; action of &apos;ProfileController&apos;
-      edit: &apos;isLoggedIn&apos;
-      // Apply the &apos;isAdmin&apos; AND &apos;isLoggedIn&apos; policies, in that order, to the &apos;create&apos; action
-      create: [&apos;isAdmin&apos;, &apos;isLoggedIn&apos;]
+      // Apply the 'isLoggedIn' policy to the 'edit' action of 'ProfileController'
+      edit: 'isLoggedIn'
+      // Apply the 'isAdmin' AND 'isLoggedIn' policies, in that order, to the 'create' action
+      create: ['isAdmin', 'isLoggedIn']
   }
-}
-</code></pre><!-- __LANG=%%__ -->
-<h5 id="to-apply-a-policy-to-an-entire-controller-" permalink="to-apply-a-policy-to-an-entire-controller">To apply a policy to an entire controller:</h5>
-<pre><code data-language="javascript">{
+}</code></pre>
+<h5>コントローラ全体にポリシーを適用する:</h5>
+<pre><code class="language-js">{
   ProfileController: {
-    // Apply &apos;isLoggedIn&apos; by default to all actions that are NOT specified below
-    &apos;*&apos;: &apos;isLoggedIn&apos;,
+    // Apply 'isLoggedIn' by default to all actions that are NOT specified below
+    '*': 'isLoggedIn',
     // If an action is explicitly listed, its policy list will override the default list.
-    // So, we have to list &apos;isLoggedIn&apos; again for the &apos;edit&apos; action if we want it to be applied.
-    edit: [&apos;isAdmin&apos;, &apos;isLoggedIn&apos;]
+    // So, we have to list 'isLoggedIn' again for the 'edit' action if we want it to be applied.
+    edit: ['isAdmin', 'isLoggedIn']
   }
-}
-</code></pre><!-- __LANG=%%__ -->
+}</code></pre>
 <blockquote>
-<p><strong>Note:</strong> Default policy mappings do not &quot;cascade&quot; or &quot;trickle down.&quot;  Specified mappings for the controller&apos;s actions will override the default mapping.</p>
+<p><strong>備考:</strong> デフォルトのポリシーマッピングはカスケードしたりtrickle downしません。コントローラのアクションに指定されたマッピングはデフォルトのマッピングを上書きします。</p>
 </blockquote>
-<h5 id="to-apply-a-policy-to-all-actions-that-are-not-explicitly-mapped-" permalink="to-apply-a-policy-to-all-actions-that-are-not-explicitly-mapped">To apply a policy to all actions that are not explicitly mapped:</h5>
-<pre><code data-language="javascript">{
-  // Apply &apos;isLoggedIn&apos; to all actions by default
-  &apos;*&apos;: &apos;isLoggedIn&apos;,
+<h5>明示的にマッピングされたアクション以外に対してポリシーを適用する:</h5>
+<pre><code class="language-js">{
+  // Apply 'isLoggedIn' to all actions by default
+  '*': 'isLoggedIn',
   ProfileController: {
-      // Apply &apos;isAdmin&apos; to the &apos;foo&apos; action.  &apos;isLoggedIn&apos; will NOT be applied!
-      &apos;foo&apos;: &apos;isAdmin&apos;
+      // Apply 'isAdmin' to the 'foo' action.  'isLoggedIn' will NOT be applied!
+      'foo': 'isAdmin'
   }
-}
-</code></pre><!-- __LANG=%%__ -->
+}</code></pre>
 <blockquote>
-<p>Remember, default policies will not be applied to any controller / action that is given an explicit mapping.</p>
+<p>デフォルトのポリシーは明示的にマッピングされている以外のいかなるコントローラやアクションには適用されません。</p>
 </blockquote>
-<h3 id="built-in-policies" permalink="builtin-policies">Built-in policies</h3>
-<p>Sails provides two built-in policies that can be applied globally, or to a specific controller or action.</p>
+<h3>ビルトインのポリシー</h3>
+<p>SailsにはGlobalに割り当てたり、指定したコントローラやアクションに割り当てたりすることができる２つのコントローラがあります。</p>
 <ul>
-<li><code>true</code>: public access  (allows anyone to get to the mapped controller/action)</li>
-<li><p><code>false</code>: <strong>NO</strong> access (allows <strong>no-one</strong> to access the mapped controller/action)</p>
-<p><code>&apos;*&apos;: true</code> is the default policy for all controllers and actions.  In production, it&apos;s good practice to set this to <code>false</code> to prevent access to any logic you might have inadvertently exposed.</p>
+<li><code>true</code>: パブリックアクセス (マップされたコントローラやアクションにはだれでもアクセスできる。)</li>
+<li>
+<p><code>false</code>: アクセス<strong>不可</strong>  (マップされたコントローラやアクションには<strong>だれも</strong>アクセスできない)</p>
+<p><code>'*': true</code> はすべてのコントローラやアクションに対するデフォルトのポリシーです。本番環境では不用意にアクションやコントローラが露出してしまう事を防ぐためにこれを<code>false</code> にするといいでしょう。</p>
 </li>
 </ul>
-<h5 id="adding-some-policies-to-a-controller-" permalink="adding-some-policies-to-a-controller">Adding some policies to a controller:</h5>
-<pre><code data-language="javascript">// in config/policies.js
+<h5>コントローラにいくつかのポリシーを適用する:</h5>
+<pre><code class="language-javascript">  // in config/policies.js
 
   // ...
   RabbitController: {
 
-    // Apply the `false` policy as the default for all of RabbitController&apos;s actions
+    // Apply the `false` policy as the default for all of RabbitController's actions
     // (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
-    &apos;*&apos;: false,
+    '*': false,
 
-    // For the action `nurture`, apply the &apos;isRabbitMother&apos; policy
+    // For the action `nurture`, apply the 'isRabbitMother' policy
     // (this overrides `false` above)
-    nurture : &apos;isRabbitMother&apos;,
+    nurture : 'isRabbitMother',
 
     // Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
     // before letting any users feed our rabbits
-    feed : [&apos;isNiceToAnimals&apos;, &apos;hasRabbitFood&apos;]
+    feed : ['isNiceToAnimals', 'hasRabbitFood']
   }
-  // ...
-</code></pre><!-- __LANG=%%__ -->
-<p>Here&#x2019;s what the <code>isNiceToAnimals</code> policy from above might look like (this file would be located at <code>policies/isNiceToAnimals.js</code>):</p>
-<pre><code data-language="javascript">module.exports = function isNiceToAnimals (req, res, next) {
+  // ...</code></pre>
+<p>上で挙げた<code>isNiceToAnimals</code>はこのようになっているはです。(このファイルは<code>policies/isNiceToAnimals.js</code>に設置されます。):</p>
+<pre><code class="language-javascript">module.exports = function isNiceToAnimals (req, res, next) {
 
   // `req.session` contains a set of data specific to the user making this request.
-  // It&apos;s kind of like our app&apos;s &quot;memory&quot; of the current user.
+  // It's kind of like our app's "memory" of the current user.
 
-  // If our user has a history of animal cruelty, not only will we
-  // prevent her from going even one step further (`return`),
-  // we&apos;ll go ahead and redirect her to PETA (`res.redirect`).
+  // If our user has a history of animal cruelty, not only will we 
+  // prevent her from going even one step further (`return`), 
+  // we'll go ahead and redirect her to PETA (`res.redirect`).
   if ( req.session.user.hasHistoryOfAnimalCruelty ) {
-    return res.redirect(&apos;http://PETA.org&apos;);
+    return res.redirect('http://PETA.org');
   }
 
   // If the user has been seen frowning at puppies, we have to assume that
-  // they might end up being mean to them, so we&apos;ll
+  // they might end up being mean to them, so we'll
   if ( req.session.user.frownsAtPuppies ) {
-    return res.redirect(&apos;http://www.dailypuppy.com/&apos;);
+    return res.redirect('http://www.dailypuppy.com/');
   }
 
-  // Finally, if the user has a clean record, we&apos;ll call the `next()` function
+  // Finally, if the user has a clean record, we'll call the `next()` function
   // to let them through to the next policy or our controller
   next();
-};
-</code></pre><!-- __LANG=%%__ -->
-<p>Besides protecting rabbits (while a noble cause, no doubt), here are a few other use cases for policies:</p>
+};</code></pre>
+<p>うさぎを守るということ（とても立派なことだと思います）に加え、ポリシーにはいくつかのユースケースが有ります。:</p>
 <ul>
-<li>cookie-based authentication</li>
-<li>role-based access control</li>
-<li>limiting file uploads based on MB quotas</li>
-<li>any other kind of authentication scheme you can imagine</li>
+<li>クッキーベースの認証</li>
+<li>ロールベースのアクセス管理</li>
+<li>容量ベースでのファイルアップロード制限。</li>
+<li>考えられるその他すべての認証スキーム</li>
 </ul>
-<p><docmeta name="uniqueID" value="Policies766425"></docmeta></p>
+<docmeta name="uniqueID" value="Policies766425">
 <docmeta name="displayName" value="Policies">
-</docmeta>

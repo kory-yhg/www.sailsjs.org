@@ -1,16 +1,17 @@
-<h1 id="myapp-tasks-register-linkassets-js">myApp/tasks/register/linkAssets.js</h1>
-<p><docmeta name="uniqueID" value="linkAssetsjs43498"></docmeta></p>
+<h1>myApp/tasks/register/linkAssets.js</h1>
+<docmeta name="uniqueID" value="linkAssetsjs43498">
 <docmeta name="displayName" value="linkAssets.js">
 
-<pre><code data-language="javascript">module.exports = function (grunt) {
-    grunt.registerTask(&apos;linkAssets&apos;, [
-        &apos;sails-linker:devJs&apos;,
-        &apos;sails-linker:devStyles&apos;,
-        &apos;sails-linker:devTpl&apos;,
-        &apos;sails-linker:devJsJade&apos;,
-        &apos;sails-linker:devStylesJade&apos;,
-        &apos;sails-linker:devTplJade&apos;
+```
+module.exports = function (grunt) {
+    grunt.registerTask('linkAssets', [
+        'sails-linker:devJs',
+        'sails-linker:devStyles',
+        'sails-linker:devTpl',
+        'sails-linker:devJsJade',
+        'sails-linker:devStylesJade',
+        'sails-linker:devTplJade'
     ]);
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

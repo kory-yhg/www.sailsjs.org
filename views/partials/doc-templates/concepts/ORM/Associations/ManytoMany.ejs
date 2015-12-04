@@ -1,65 +1,68 @@
-<h1 id="many-to-many">Many-to-Many</h1>
-<h3 id="overview" permalink="overview">Overview</h3>
-<p>A many-to-many association states that a model can be associated with many other models and vice-versa.
-Because both models can have many related models a new join table will need to be created to keep track
-of these relations.</p>
-<p>Waterline will look at your models and if it finds that two models both have collection attributes that
-point to each other, it will automatically build up a join table for you.</p>
-<p>Because you may want a model to have multiple many-to-many associations on another model a <code>via</code> key
-is needed on the <code>collection</code> attribute. This states which <code>model</code> attribute on the one side of the
-association is used to populate the records.</p>
-<p>Using the <code>User</code> and <code>Pet</code> example lets look at how to build a schema where a <code>User</code> may have many
-<code>Pet</code> records and a <code>Pet</code> may have multiple owners.</p>
-<h3 id="many-to-many-example" permalink="manytomany-example">Many-to-Many Example</h3>
-<p>In this example, we will start with an array of users and an array of pets.  We will create records for each element in each array then associate all of the <code>Pets</code> with all of the <code>Users</code>.  If everything worked properly, we should be able to query any <code>User</code> and see that they &apos;own&apos; all of the <code>Pets</code>.  Furthermore, we should be able to query any <code>Pet</code> and see that it is &apos;owned&apos; by every <code>User</code>.</p>
+<h1>多対多</h1>
+<h3>概要</h3>
+<p>多対多のアソシエーション状態はあるモデルが複数のモデルに関連付けられることが出来て、
+もう一方のモデルも同様に複数のモデルに関連付けられることが出来る状態です。
+両方のモデルともに複数の関連付けられた持つことが出来るためこの関連を記録するために新しいジョインテーブルを作成する必要があります。</p>
+<p>Waterlineはモデルを確認し2つのモデルがお互いを指し示すアトリビュートを見つけた場合
+自動的にジョインテーブルを作成します。</p>
+<p>モデルが別のモデルと複数の多対多のアソシエーションを持つこともあるため
+<code>collection</code>アトリビュートには<code>via</code>キーが必要です。
+これでアソシエーションの一方のどの<code>model</code>アトリビュートがレコードを埋めるために使われるかが示されます。</p>
+<p><code>User</code>と<code>Pet</code>の例を用いて<code>User</code>が複数のペットを持って
+<code>Pet</code>もまた複数のオーナーを持つことが出来るようなスキーマを構築する方法を説明します。</p>
+<h3>多対多の例</h3>
+<p>この例ではまずはユーザとペットの配列を作るところから始めます。まずはそれぞれの要素の配列を作り、それから全ての<code>Pets</code>と<code>Users</code>を関連付けます。もしすべてがうまくいけば全ての<code>User</code>に関して彼らが<code>Pets</code>を「持っている」事がわかります。さらに、全ての<code>Pet</code>がすべての<code>User</code>によって「所有されている」ことがわかるようになります。</p>
 <p><code>myApp/api/models/pet.js</code></p>
-<pre><code data-language="javascript">module.exports = {
+<pre><code class="language-javascript">
+module.exports = {
 
     attributes: {
-        name:&apos;STRING&apos;,
-        color:&apos;STRING&apos;,
+        name:'STRING',
+        color:'STRING',
 
         // Add a reference to User
         owners: {
-            collection: &apos;user&apos;,
-            via: &apos;pets&apos;
+            collection: 'user',
+            via: 'pets',
         }
     }
 }
-</code></pre><!-- __LANG=%%__ -->
+</code></pre>
 <p><code>myApp/api/models/user.js</code></p>
-<pre><code data-language="javascript">module.exports = {
+<pre><code class="language-javascript">
+module.exports = {
 
     attributes: {
-        name:&apos;STRING&apos;,
-        age:&apos;INTEGER&apos;,
+        name:'STRING',
+        age:'INTEGER',
 
         // Add a reference to Pet
         pets:{
-            collection: &apos;pet&apos;,
-            via: &apos;owners&apos;
+            collection: 'pet',
+            via: 'owners'
         }
     }
 
 }
-</code></pre><!-- __LANG=%%__ -->
+</code></pre>
 <p><code>myApp/config/bootstrap.js</code></p>
-<pre><code data-language="javascript">module.exports.bootstrap = function (cb) {
+<pre><code class="language-javascript">
+module.exports.bootstrap = function (cb) {
 
-// After we create our users, we will store them here to associate with our pets
+// まずはユーザを作ってからここでペットと関連付けられていることを記録します。
 var storeUsers = []; 
 
-var users = [{name:&apos;Mike&apos;,age:&apos;16&apos;},{name:&apos;Cody&apos;,age:&apos;25&apos;},{name:&apos;Gabe&apos;,age:&apos;107&apos;}];
-var ponys = [{ name: &apos;Pinkie Pie&apos;, color: &apos;pink&apos;},{ name: &apos;Rainbow Dash&apos;,color: &apos;blue&apos;},{ name: &apos;Applejack&apos;, color: &apos;orange&apos;}]
+var users = [{name:'Mike',age:'16'},{name:'Cody',age:'25'},{name:'Gabe',age:'107'}];
+var ponys = [{ name: 'Pinkie Pie', color: 'pink'},{ name: 'Rainbow Dash',color: 'blue'},{ name: 'Applejack', color: 'orange'}]
 
-// This does the actual associating.
-// It takes one Pet then iterates through the array of newly created Users, adding each one to it&apos;s join table
+// これが実際の関連付けを行います。
+// これは一つのペットを選び出し、新しく作られたユーザの配列をジョインテーブルに追加することでアソシエーションを記述します。
 var associate = function(onePony,cb){
   var thisPony = onePony;
   var callback = cb;
 
   storeUsers.forEach(function(thisUser,index){
-    console.log(&apos;Associating &apos;,thisPony.name,&apos;with&apos;,thisUser.name);
+    console.log('Associating ',thisPony.name,'with',thisUser.name);
     thisUser.pets.add(thisPony.id);
     thisUser.save(console.log);
 
@@ -68,25 +71,24 @@ var associate = function(onePony,cb){
   })
 };
 
-
-// This callback is run after all of the Pets are created.
-// It sends each new pet to &apos;associate&apos; with our Users  
+// このコールバックは全てのペットが作成されてから実行されます。
+// これはそれぞれの新しいペットをユーザにひも付けます。  
 var afterPony = function(err,newPonys){
   while (newPonys.length){
     var thisPony = newPonys.pop();
     var callback = function(ponyID){
-      console.log(&apos;Done with pony &apos;,ponyID)
+      console.log('Done with pony ',ponyID)
     }
     associate(thisPony,callback)
   }
-  console.log(&apos;Everyone belongs to everyone!! Exiting.&apos;);
+  console.log('Everyone belongs to everyone!! Exiting.');
 
   // This callback lets us leave bootstrap.js and continue lifting our app!
   return cb()
 };
 
-// This callback is run after all of our Users are created.
-// It takes the returned User and stores it in our storeUsers array for later.
+// このコールバックは全てのユーザが作成されてから実行されます。
+// ここでは返ってきたユーザを取得して今後のためにstoreUsers配列に収納します。
 var afterUser = function(err,newUsers){
   while (newUsers.length)
     storeUsers.push(newUsers.pop())
@@ -94,13 +96,12 @@ var afterUser = function(err,newUsers){
   Pet.create(ponys).exec(afterPony)
 };
 
-
 User.create(users).exec(afterUser)
 
-};
-</code></pre><!-- __LANG=%%__ -->
-<p>Lifting our app with <code>sails console</code></p>
-<pre><code data-language="javascript">dude@littleDude:~/node/myApp$ sails console
+};</code></pre>
+<p><code>sails console</code>を使ってアプリケーションを立ち上げます。</p>
+<pre><code class="language-sh">
+dude@littleDude:~/node/myApp$ sails console
 
 info: Starting app in interactive mode...
 
@@ -120,185 +121,183 @@ Everyone belongs to everyone!! Exiting.
 info: Welcome to the Sails console.
 info: ( to exit, type &lt;CTRL&gt;+&lt;C&gt; )
 
-sails&gt; null { name: &apos;Gabe&apos;,
+sails&gt; null { name: 'Gabe',
   age: 107,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 9 }
-null { name: &apos;Cody&apos;,
+null { name: 'Cody',
   age: 25,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 8 }
-null { name: &apos;Mike&apos;,
+null { name: 'Mike',
   age: 16,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 7 }
-null { name: &apos;Gabe&apos;,
+null { name: 'Gabe',
   age: 107,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 9 }
-null { name: &apos;Cody&apos;,
+null { name: 'Cody',
   age: 25,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 8 }
-null { name: &apos;Mike&apos;,
+null { name: 'Mike',
   age: 16,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 7 }
-null { name: &apos;Gabe&apos;,
+null { name: 'Gabe',
   age: 107,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 9 }
-null { name: &apos;Cody&apos;,
+null { name: 'Cody',
   age: 25,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 8 }
-null { name: &apos;Mike&apos;,
+null { name: 'Mike',
   age: 16,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 7 }
-sails&gt; Pet.find().populate(&apos;owners&apos;).exec(function(e,r){while(r.length){var thisPet=r.pop();console.log(thisPet.toJSON())}});
+sails&gt; Pet.find().populate('owners').exec(function(e,r){while(r.length){var thisPet=r.pop();console.log(thisPet.toJSON())}});
 { owners: 
-   [ { name: &apos;Mike&apos;,
+   [ { name: 'Mike',
        age: 16,
        id: 7,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Cody&apos;,
+     { name: 'Cody',
        age: 25,
        id: 8,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Gabe&apos;,
+     { name: 'Gabe',
        age: 107,
        id: 9,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: &apos;Applejack&apos;,
-  color: &apos;orange&apos;,
+  name: 'Applejack',
+  color: 'orange',
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 9 }
 { owners: 
-   [ { name: &apos;Mike&apos;,
+   [ { name: 'Mike',
        age: 16,
        id: 7,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Cody&apos;,
+     { name: 'Cody',
        age: 25,
        id: 8,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Gabe&apos;,
+     { name: 'Gabe',
        age: 107,
        id: 9,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: &apos;Rainbow Dash&apos;,
-  color: &apos;blue&apos;,
+  name: 'Rainbow Dash',
+  color: 'blue',
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 8 }
 { owners: 
-   [ { name: &apos;Mike&apos;,
+   [ { name: 'Mike',
        age: 16,
        id: 7,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Cody&apos;,
+     { name: 'Cody',
        age: 25,
        id: 8,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Gabe&apos;,
+     { name: 'Gabe',
        age: 107,
        id: 9,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: &apos;Pinkie Pie&apos;,
-  color: &apos;pink&apos;,
+  name: 'Pinkie Pie',
+  color: 'pink',
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 7 }
-sails&gt; User.find().populate(&apos;pets&apos;).exec(function(e,r){while(r.length){var thisUser=r.pop();console.log(thisUser.toJSON())}});
+sails&gt; User.find().populate('pets').exec(function(e,r){while(r.length){var thisUser=r.pop();console.log(thisUser.toJSON())}});
 { pets: 
-   [ { name: &apos;Pinkie Pie&apos;,
-       color: &apos;pink&apos;,
+   [ { name: 'Pinkie Pie',
+       color: 'pink',
        id: 7,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Rainbow Dash&apos;,
-       color: &apos;blue&apos;,
+     { name: 'Rainbow Dash',
+       color: 'blue',
        id: 8,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Applejack&apos;,
-       color: &apos;orange&apos;,
+     { name: 'Applejack',
+       color: 'orange',
        id: 9,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: &apos;Gabe&apos;,
+  name: 'Gabe',
   age: 107,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 9 }
 { pets: 
-   [ { name: &apos;Pinkie Pie&apos;,
-       color: &apos;pink&apos;,
+   [ { name: 'Pinkie Pie',
+       color: 'pink',
        id: 7,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Rainbow Dash&apos;,
-       color: &apos;blue&apos;,
+     { name: 'Rainbow Dash',
+       color: 'blue',
        id: 8,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Applejack&apos;,
-       color: &apos;orange&apos;,
+     { name: 'Applejack',
+       color: 'orange',
        id: 9,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: &apos;Cody&apos;,
+  name: 'Cody',
   age: 25,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 8 }
 { pets: 
-   [ { name: &apos;Pinkie Pie&apos;,
-       color: &apos;pink&apos;,
+   [ { name: 'Pinkie Pie',
+       color: 'pink',
        id: 7,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Rainbow Dash&apos;,
-       color: &apos;blue&apos;,
+     { name: 'Rainbow Dash',
+       color: 'blue',
        id: 8,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Applejack&apos;,
-       color: &apos;orange&apos;,
+     { name: 'Applejack',
+       color: 'orange',
        id: 9,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: &apos;Mike&apos;,
+  name: 'Mike',
   age: 16,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 7 }
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+</code></pre>
+<h3>備考</h3>
 <blockquote>
-<p>For a more detailed description of this type of association, see the <a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md" target="_blank">Waterline Docs</a></p>
+<p>このタイプのアソシエーションに関するさらに詳細な説明は<a href="https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md">Waterline Docs</a>をご覧ください。</p>
 </blockquote>
-<p><docmeta name="uniqueID" value="ManytoMany276455"></docmeta></p>
+<docmeta name="uniqueID" value="ManytoMany276455">
 <docmeta name="displayName" value="Many-to-Many">
-
-</docmeta>

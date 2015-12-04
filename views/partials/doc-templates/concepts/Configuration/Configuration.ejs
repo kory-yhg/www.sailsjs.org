@@ -1,58 +1,53 @@
-<h1 id="configuration">Configuration</h1>
-<h3 id="overview" permalink="overview">Overview</h3>
-<p>While Sails dutifully adheres to the philosophy of <a href="http://en.wikipedia.org/wiki/Convention_over_configuration" target="_blank">convention-over-configuration</a>, it is important to understand how to customize those handy defaults from time to time.  For almost every convention in Sails, there is an accompanying set of configuration options that allow you to adjust or override things to fit your needs.  This section of the docs includes a complete reference of the configuration options available in Sails.</p>
-<p>Sails apps can be <a href="https://github.com/mikermcneil/sails-generate-new-but-like-express/blob/master/templates/app.js#L15" target="_blank">configured programmatically</a>, by specifying <a href="http://en.wikipedia.org/wiki/Environment_variable" target="_blank">environment variables</a> or command-line arguments, by changing the local or global <a href="http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html" target="_blank"><code>.sailsrc</code> files</a>, or (most commonly) using the boilerplate configuration files conventionally located in the <a href="http://sailsjs.org/documentation/anatomy/myApp/config" target="_blank"><code>config/</code></a> folder of new projects. The authoritative, merged-together configuration used in your app is available at runtime on the <code>sails</code> global as <code>sails.config</code>.</p>
-<h3 id="standard-configuration-files-config-" permalink="standard-configuration-files-(config/*)">Standard configuration files (<code>config/*</code>)</h3>
-<p>A number of configuration files are included in new Sails apps by default.  These boilerplate files include a number of inline comments, which are designed to provide a quick, on-the-fly reference without having to jump back and forth between the docs and your text editor.</p>
-<p>In most cases, the top-level keys on the <code>sails.config</code> object (e.g. <code>sails.config.views</code>) correspond to a particular configuration file (e.g. <code>config/views.js</code>) in your app; however configuration settings may be arranged however you like across the files in your <code>config/</code> directory.  The important part is the name (i.e. key) of the setting- not the file it came from.</p>
-<p>For instance, let&apos;s say you add a new file, <code>config/foo.js</code>:</p>
-<pre><code data-language="javascript">// config/foo.js
-// The object below will be merged into `sails.config.blueprints`:
+<h1>設定</h1>
+<h3>概要</h3>
+<p>Sailsは<a href="http://en.wikipedia.org/wiki/Convention_over_configuration">「設定より規約」</a>の哲学に忠実に則っているため、便利なデフォルト設定をその時時のカスタムの設定に変更する方法を学ぶことが重要です。Sailのほとんどの規約に対してそれを個別のニーズに合わせて上書きしたり調整する事のできる設定が提供されています。ドキュメントのこのセッションではSailで利用可能な設定の完全なリファレンスが掲載されています。</p>
+<p>Sailアプリはコマンドラインの引数や<a href="http://en.wikipedia.org/wiki/Environment_variable">環境変数</a>によって、またグローバルや個別の<a href="http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html"><code>.sailsrc</code></a>ファイルを編集することによって、さらに（これが最もよく使われますが）規約上では<a href="http://sailsjs.org/documentation/anatomy/myApp/config"><code>config/</code></a>フォルダーに置かれているboilerplateの設定ファイルを書き換えることで<a href="https://github.com/mikermcneil/sails-generate-new-but-like-express/blob/master/templates/app.js#L15">プログラム的に設定</a>することが出来ます。アプリケーションの中で利用される各種の設定を統合したauthoratativeは実行時に <code>sails</code>グローバル変数の<code>sails.config</code>として利用することが出来ます。</p>
+<h3>通常の設定ファイル (<code>config/*</code>)</h3>
+<p>デフォルトで多くの設定ファイルがSailアプリに含まれています。これらのboilerplateファイルは多くのインラインコメントを含んでいます。これにより迅速にその場で設定の意味を確認できるようにしてドキュメントとエディタの間を行ったり来たりしなくてもいいようになっています。</p>
+<p>多くのケースでは<code>sails.config</code>オブジェクトのトップレベルのキー(例えば <code>sails.config.views</code>)は設定ファイルの名称 (例えば<code>config/views.js</code>)に対応しています。しかしながら設定ファイルは開発者によって<code>config/</code>内で横断的に改変されることがあります。重要な部分は設定の名前 (すなわち key) でありファイル名ではありません。</p>
+<p>例えばあなたたが<code>config/foo.js</code>という新しいファイルを作成したとします。:</p>
+<pre><code class="language-js">// config/foo.js
+// 以下のオブジェクトは `sails.config.blueprints`にマージされます。:
 module.exports.blueprints = {
   shortcuts: false
-};
-</code></pre><!-- __LANG=%%__ -->
-<p>For an exhaustive reference of individual configuration options, and the file they live in by default, check out the reference pages in this section, or take a look at <a href="http://sailsjs.org/documentation/anatomy/myApp/config" target="_blank">&quot;<code>config/</code>&quot;</a> in <a href="http://sailsjs.org/documentation/anatomy" target="_blank">The Anatomy of a Sails App</a> for a higher-level overview.</p>
-<h3 id="environment-specific-files-config-env-" permalink="environmentspecific-files-(config/env/*)">Environment-specific files (<code>config/env/*</code>)</h3>
-<p>Settings specified in the standard configuration files will generally be available in all environments (i.e. development, production, test, etc.).  If you&apos;d like to have some settings take effect only in certain environments, you can use the special environment-specific files and folders:</p>
+};</code></pre>
+<p>個々の設定に関しての完全な設定プションやそれぞれが通常記録されているファイルに関してはこのセクションの各参照ページをご覧ください。まあ、より高度な概要に関しては<a href="./#!documentation/anatomy">The Anatomy of a Sails App</a>の<a href="http://sailsjs.org/documentation/anatomy/myApp/config">&quot;<code>config/</code>&quot;</a> in <a href="http://sailsjs.org/documentation/anatomy">The Anatomy of a Sails App</a> のセクションに記述されています。</p>
+<h3>環境依存のファイル (<code>config/env/*</code>)</h3>
+<p>通常の設定ファイルで定義された設定内容は一般的にどの環境でも（すなわち、development、production、testなど）有効です。特定の環境に対してのみ影響を与える設定を行いたい場合は環境依存の特別な設定ファイルやフォルダを利用できます。:</p>
 <ul>
-<li>Any files saved under the <code>/config/env/&lt;environment-name&gt;</code> folder will be loaded <em>only</em> when Sails is lifted in the <code>&lt;environment-name&gt;</code> environment.  For example, files saved under <code>config/env/production</code> will only be loaded when Sails is lifted in production mode.</li>
-<li>Any files saved as <code>config/env/&lt;environment-name&gt;.js</code> will be loaded <em>only</em> when Sails is lifted in the <code>&lt;environment-name&gt;</code> environment, and will be merged on top of any settings loaded from the environment-specific subfolder.  For example, settings in <code>config/env/production.js</code> will take precedence over those in the files in the  <code>config/env/production</code> folder.  </li>
+<li><code>/config/env/&lt;environment-name&gt;</code>以下に配置されたフォルダは<code>&lt;environment-name&gt;</code>環境のときに <em>のみ</em> ロードされます。例えば<code>config/env/production</code>以下に保存されたファイルはproductionモードでSailが起動された時にのみロードされます。</li>
+<li><code>config/env/&lt;environment-name&gt;.js</code>として保存されたファイルは<code>&lt;environment-name&gt;</code>環境のときに <em>のみ</em> ロードされ、環境依存のサブフォルダに設置された全ての設定のよりも優先する形でこれらに統合されます。例えば<code>config/env/production.js</code>は<code>config/env/production</code>に設置された設定内容よりも優先してロードされます。</li>
 </ul>
-<h3 id="the-config-local-js-file" permalink="the-config/localjs-file">The <code>config/local.js</code> file</h3>
-<p>You may use the <code>config/local.js</code> file to configure a Sails app for your local environment (your laptop, for example).  The settings in this file take precedence over all other config files except <a href="http://sailsjs.org/documentation/concepts/Configuration/usingsailsrcfiles.html" target="_blank">.sailsrc</a>.  Since they&apos;re intended only for local use, they should not be put under version control (and are included in the default <code>.gitignore</code> file for that reason).  Use <code>local.js</code> to store local database settings, change the port used when lifting an app on your computer, etc.</p>
-<p>See <a href="http://sailsjs.org/documentation/concepts/Configuration/localjsfile.html" target="_blank">http://sailsjs.org/documentation/concepts/Configuration/localjsfile.html</a> for more information.</p>
-<h3 id="accessing-sails-config-in-your-app" permalink="accessing-sailsconfig-in-your-app">Accessing <code>sails.config</code> in your app</h3>
-<p>The <code>config</code> object is available on the Sails app instance (<code>sails</code>).  By default, this is exposed on the <a href="http://sailsjs.org/documentation/concepts/Globals" target="_blank">global scope</a> during lift, and therefore available from anywhere in your app.</p>
-<h5 id="example" permalink="example">Example</h5>
-<pre><code data-language="javascript">// This example checks that, if we are in production mode, csrf is enabled.
-// It throws an error and crashes the app otherwise.
-if (sails.config.environment === &apos;production&apos; &amp;&amp; !sails.config.csrf) {
-  throw new Error(&apos;STOP IMMEDIATELY ! CSRF should always be enabled in a production deployment!&apos;);
-}
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="custom-configuration" permalink="custom-configuration">Custom Configuration</h3>
-<p>Sails recognizes many different settings, namespaced under different top level keys (e.g. <code>sails.config.sockets</code> and <code>sails.config.blueprints</code>).  However you can also use <code>sails.config</code> for your own custom configuration (e.g. <code>sails.config.someProprietaryAPI.secret</code>).</p>
-<h5 id="example" permalink="example">Example</h5>
-<pre><code data-language="javascript">// config/linkedin.js
+<h3><code>config/local.js</code>ファイル</h3>
+<p>ローカル環境（例えばあなたのラップトップなど）に対しての設定には<code>config/local.js</code>を利用することが出来ます。このファイルの設定は<a href="http://sailsjs.org/documentation/concepts/Configuration/usingsailsrcfiles.html">.sailsrc</a>以外の全てのファイルよりも優先されます。これはローカル環境でのみ利用されることを想定しているため、バージョン管理の範囲外に置く（この理由によりデフォルトの<code>.gitignore</code>ファイルに入っています）必要があります。<code>local.js</code>をローカルのデータベース設定やアプリケーションをローカルで起動する際のポート番号の指定などにお使いください。</p>
+<p>さらなる情報は<a href="http://sailsjs.org/documentation/concepts/Configuration/localjsfile.html"><a href="http://sailsjs.org/documentation/concepts/Configuration/localjsfile.html">http://sailsjs.org/documentation/concepts/Configuration/localjsfile.html</a></a>をご覧ください。</p>
+<h3>アプリケーション内で<code>sails.config</code>にアクセスする</h3>
+<p><code>config</code>オブジェクトはSailsアプリのインスタンス(<code>sails</code>)によって利用可能です。デフォルトではこの設定オブジェクトは起動時に<a href="http://sailsjs.org/documentation/concepts/Globals">グローバルにアクセス可能</a>にされるためアプリケーションのどこからでもアクセス可能です。</p>
+<h5>例</h5>
+<pre><code class="language-javascript">// この例はプロダクションモードに居るかを確認してCSRFを有効化します。
+// プロダクションモードでない場合はエラーを出力して停止します。
+if (sails.config.environment === 'production' &amp;&amp; !sails.config.csrf) {
+  throw new Error('STOP IMMEDIATELY ! CSRF should always be enabled in a production deployment!');
+}</code></pre>
+<h3>カスタムの設定</h3>
+<p>Sailsは異なるトップレベルキーによって名前空間を分けられた多くの設定を（例えば<code>sails.config.sockets</code> と<code>sails.config.blueprints</code>のように）認識可能です。しかしながら<code>sails.config</code>を（例えば<code>sails.config.someProprietaryAPI.secret</code>のように）あなたのカスタムの設定のために利用することも可能です。</p>
+<h5>例</h5>
+<pre><code class="language-javascript">// config/linkedin.js
 module.exports.linkedin = {
-  apiKey: &apos;...&apos;,
-  apiSecret: &apos;...&apos;
-};
-</code></pre><!-- __LANG=%%__ -->
-<pre><code data-language="javascript">// In your controller/service/model/hook/whatever:
+  apiKey: '...',
+  apiSecret: '...'
+};</code></pre>
+<pre><code class="language-javascript">// In your controller/service/model/hook/whatever:
 // ...
 var apiKey = sails.config.linkedin.apiKey;
 var apiSecret = sails.config.linkedin.apiSecret;
-// ...
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="configuring-the-sails-command-line-interface" permalink="configuring-the-sails-commandline-interface">Configuring the <code>sails</code> Command-Line Interface</h3>
-<p>When it comes to configuration, most of the time you&apos;ll be focused on managing the runtime settings for a particular app: the port, database connections, and so forth.  However it can also be useful to customize the Sails CLI itself; to simplify your workflow, reduce repetitive tasks, perform custom build automation, etc.  Thankfully, Sails v0.10 added a powerful new tool to do just that.</p>
-<p>The <a href="http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html" target="_blank"><code>.sailsrc</code> file</a> is unique from other configuration sources in Sails in that it may also be used to configure the Sails CLI-- either system-wide, for a group of directories, or only when you are <code>cd</code>&apos;ed into a particular folder.  The main reason to do this is to customize the <a href="http://sailsjs.org/documentation/concepts/extending-sails/Generators" target="_blank">generators</a> that are used when <code>sails generate</code> and <code>sails new</code> are run, but it can also be useful to install your own custom generators or apply hard-coded config overrides.</p>
-<p>And since Sails will look for the &quot;nearest&quot; <code>.sailsrc</code> in the ancestor directories of the current working directory, you can safely use this file to configure sensitive settings you can&apos;t check in to your cloud-hosted code repository (<em>like your <strong>database password</strong></em>.)  Just include a <code>.sailsrc</code> file in your &quot;$HOME&quot; directory.  See <a href="http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html" target="_blank">the docs on <code>.sailsrc</code></a> files for more information.</p>
-<h3 id="notes" permalink="notes">Notes</h3>
+// ...</code></pre>
+<h3><code>sails</code>のコマンドライン・インタフェースを設定する</h3>
+<p>設定に関しては多くのケースでポートやデータベース接続などの利用先固有の実行時設定の管理を強いられます。しかしSailsのCLIをカスタマイズすることで繰り返し行う作業を減らしたりワークフローを簡単にしたりその他のオリジナルの自動化ツールを作成したりすることが出来ます。Sails v0.10からこれを実現する機能がサポートされました。</p>
+<p><a href="http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html"><code>.sailsrc</code>ファイル</a>はその他のコンフィグレーションファイルと異なりSailsのCLIをシステムワイドでもグループディレクトリ単位でも特定のディレクトリに<code>cd</code>した時限定で使い分けることが出来ます。これを行うことの第一の目的は<code>sails generate</code>と<code>sails new</code>が実行された時に動作する<a href="http://sailsjs.org/documentation/concepts/extending-sails/Generators">ジェネレータ</a>とあなたがカスタマイズしたり設定をハードコピーして上書きしたジェネレータを併用するためです。</p>
+<p>そしてSailsは現在の作業ディレクトリの最寄りの<code>.sailsrc</code>ファイルを参照するため <em><strong>データベースパスワード</strong>のような</em> クラウドベースのレポジトリに保管することの難しいセンシティブな情報を安全に扱うことが出来ます。これを行うには<code>.sailsrc</code>ファイルをあなたの&quot;$HOME&quot;ディレクトリにインクルードするだけで構いません。さらなる詳細は<a href="http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html"><code>.sailsrc</code>のドキュメンテーション</a>を御覧ください。</p>
+<h3>Notes</h3>
 <blockquote>
-<p>The built-in meaning of the settings in <code>sails.config</code> are, in some cases, only interpreted by Sails during the &quot;lift&quot; process.  In other words, changing some options at runtime will have no effect.  To change the port your app is running on, for instance, you can&apos;t just change <code>sails.config.port</code>-- you&apos;ll need to change or override the setting in a configuration file or as a command-line argument, etc., then restart the server.</p>
+<p><code>sails.config</code>にあるいくつかの規定の設定はSailsの起動時にのみ読み込まれます。言い換えれば実行中にいくつかのオプションを変えたとしてもそれは有効にならないことが有ります。例えば実行中にアプリケーションのポート設定を変更したい場合には<code>sails.config.port</code>を書き換えたりオーバーライドしたり、コマンドラインのオプションを変えたりするだけでなくSailsを再起動する必要がありま</p>
 </blockquote>
 <docmeta name="displayName" value="Configuration">
-</docmeta>

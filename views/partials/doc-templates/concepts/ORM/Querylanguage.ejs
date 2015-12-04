@@ -1,176 +1,152 @@
-<h1 id="waterline-query-language">Waterline Query Language</h1>
-<p>The Waterline Query language is an object-based criteria used to retrieve the records from any of the supported database adapters. This means that you can use the same query on MySQL as you do on Redis or MongoDb. This allows you to change your database without changing your code.</p>
-<h3 id="query-language-basics" permalink="query-language-basics">Query Language Basics</h3>
-<p>The criteria objects are formed using one of four types of object keys. These are the top level
-keys used in a query object. It is loosely based on the criteria used in MongoDB with a few slight variations.</p>
-<p>Queries can be built using either a <code>where</code> key to specify attributes, which will allow you to also use query options such as <code>limit</code> and <code>skip</code> or if <code>where</code> is excluded the entire object will be treated as a <code>where</code> criteria.</p>
-<pre><code data-language="javascript">Model.find({ where: { name: &apos;foo&apos; }, skip: 20, limit: 10, sort: &apos;name DESC&apos; });
+<h1>Waterlineクエリー言語</h1>
+<p>Waterline Query languageはサポートされているすべてのデータベースコネクタからデータを取り出すことの出来るオブジェクトベースの比較式です。つまり、MySQLで使う時と同じクエリをMongo DBでもRediasでも使うことが出来るということです。これにより、コードの変更なしにデータベースの変更が可能です。</p>
+<h3>クエリー言語の基礎</h3>
+<p>Criteriaオブジェクトは４種類のオブジェクトのうち一つから構成されます。これらはクエリオブジェクトのトップレベルオブジェクトです。
+このオブジェクトはMongoDBで使われているクエリオブジェクトに「ゆるく」似ていますがちょっとした違いが有ります。</p>
+<p>クエリはアトリビュートを指定するために<code>where</code>を使い、また<code>limit</code>や<code>skip</code>などのオプションをオブジェクトのどこの部分を取り出すかを指定するために使うことができ、<code>where</code>が含まれない場合は<code>where</code>はオブジェクト全体を指しているものとしてみなされます。</p>
+<pre><code class="language-javascript">Model.find({ where: { name: 'foo' }, skip: 20, limit: 10, sort: 'name DESC' });
 
 // OR
 
-Model.find({ name: &apos;foo&apos; })
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="key-pairs" permalink="key-pairs">Key Pairs</h4>
-<p>A key pair can be used to search records for values matching exactly what is specified. This is the base of a criteria object where the key represents an attribute on a model and the value is a strict equality check of the records for matching values.</p>
-<pre><code data-language="javascript">Model.find({ name: &apos;walter&apos; })
-</code></pre><!-- __LANG=%%__ -->
-<p>They can be used together to search multiple attributes.</p>
-<pre><code data-language="javascript">Model.find({ name: &apos;walter&apos;, state: &apos;new mexico&apos; })
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="modified-pairs" permalink="modified-pairs">Modified Pairs</h4>
-<p>Modified pairs also have model attributes for keys but they also use any of the supported criteria modifiers to perform queries where a strict equality check wouldn&apos;t work.</p>
-<pre><code data-language="javascript">Model.find({
+Model.find({ name: 'foo' })</code></pre>
+<h4>Key Pairs</h4>
+<p>キーペアは指定された値に厳密に合致するレコードを探すのに使えます。キーはモデルの中のどのアトリビュートを指し示すかを表し、値はアトリビュートの中の値がどの内容に厳密に合致して欲しいか指定します。これはCriteriaオブジェクトの基礎です。</p>
+<pre><code class="language-javascript">Model.find({ name: 'walter' })</code></pre>
+<p>複数のアトリビュート指定を同時に行うことも出来ます。</p>
+<pre><code class="language-javascript">Model.find({ name: 'walter', state: 'new mexico' })</code></pre>
+<h4>Modified Pairs</h4>
+<p>改良型ペアは様々な補助演算子を使い、厳密比較ではうまくいかないケースをサポートします。</p>
+<pre><code class="language-javascript">Model.find({
   name : {
-    &apos;contains&apos; : &apos;alt&apos;
+    'contains' : 'alt'
   }
-})
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="in-pairs" permalink="in-pairs">In Pairs</h4>
-<p>IN queries work similarly to mysql &apos;in queries&apos;. Each element in the array is treated as &apos;or&apos;.</p>
-<pre><code data-language="javascript">Model.find({
-  name : [&apos;Walter&apos;, &apos;Skyler&apos;]
-});
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="not-in-pairs" permalink="notin-pairs">Not-In Pairs</h4>
-<p>Not-In queries work similar to <code>in</code> queries, except for the nested object criteria.</p>
-<pre><code data-language="javascript">Model.find({
-  name: { &apos;!&apos; : [&apos;Walter&apos;, &apos;Skyler&apos;] }
-});
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="or-pairs" permalink="or-pairs">Or Pairs</h4>
-<p>Performing <code>OR</code> queries is done by using an array of query pairs. Results will be returned that
-match any of the criteria objects inside the array.</p>
-<pre><code data-language="javascript">Model.find({
+})</code></pre>
+<h4>In Pairs</h4>
+<p>INクエリはMySQLの'in queries'と似ています。配列中のそれぞれのエレメントはorとして処理されます。</p>
+<pre><code class="language-javascript">Model.find({
+  name : ['Walter', 'Skyler']
+});</code></pre>
+<h4>Not-In Pairs</h4>
+<p>Not-Inクエリは<code>in</code>クエリと似ていますが、比較オブジェクトがネストされているという部分が異なります。</p>
+<pre><code class="language-javascript">Model.find({
+  name: { '!' : ['Walter', 'Skyler'] }
+});</code></pre>
+<h4>Or Pairs</h4>
+<p>クエリペアの配列を使うことで<code>OR</code>クエリが実行できます。
+配列の中のいずれかの条件を満たすレコードが結果として帰ってきます。</p>
+<pre><code class="language-javascript">Model.find({
   or : [
-    { name: &apos;walter&apos; },
-    { occupation: &apos;teacher&apos; }
+    { name: 'walter' },
+    { occupation: 'teacher' }
   ]
-})
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="criteria-modifiers" permalink="criteria-modifiers">Criteria Modifiers</h3>
-<p>The following modifiers are available to use when building queries.</p>
+})</code></pre>
+<h3>Criteria修飾子</h3>
+<p>クエリを作成する際には以下の修飾子を利用することが出来ます。</p>
 <ul>
-<li><code>&apos;&lt;&apos;</code> / <code>&apos;lessThan&apos;</code></li>
-<li><code>&apos;&lt;=&apos;</code> / <code>&apos;lessThanOrEqual&apos;</code></li>
-<li><code>&apos;&gt;&apos;</code> / <code>&apos;greaterThan&apos;</code></li>
-<li><code>&apos;&gt;=&apos;</code> / <code>&apos;greaterThanOrEqual&apos;</code></li>
-<li><code>&apos;!&apos;</code> / <code>&apos;not&apos;</code></li>
-<li><code>&apos;like&apos;</code></li>
-<li><code>&apos;contains&apos;</code></li>
-<li><code>&apos;startsWith&apos;</code></li>
-<li><code>&apos;endsWith&apos;</code></li>
+<li><code>'&lt;'</code> / <code>'lessThan'</code></li>
+<li><code>'&lt;='</code> / <code>'lessThanOrEqual'</code></li>
+<li><code>'&gt;'</code> / <code>'greaterThan'</code></li>
+<li><code>'&gt;='</code> / <code>'greaterThanOrEqual'</code></li>
+<li><code>'!'</code> / <code>'not'</code></li>
+<li><code>'like'</code></li>
+<li><code>'contains'</code></li>
+<li><code>'startsWith'</code></li>
+<li><code>'endsWith'</code></li>
 </ul>
-<h4 id="-lessthan-" permalink="&lt;-/-lessthan">&apos;&lt;&apos; / &apos;lessThan&apos;</h4>
-<p>Searches for records where the value is less than the value specified.</p>
-<pre><code data-language="javascript">Model.find({ age: { &apos;&lt;&apos;: 30 }})
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="-lessthanorequal-" permalink="&lt;=-/-lessthanorequal">&apos;&lt;=&apos; / &apos;lessThanOrEqual&apos;</h4>
-<p>Searches for records where the value is less or equal to the value specified.</p>
-<pre><code data-language="javascript">Model.find({ age: { &apos;&lt;=&apos;: 21 }})
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="-greaterthan-" permalink="&gt;-/-greaterthan">&apos;&gt;&apos; / &apos;greaterThan&apos;</h4>
-<p>Searches for records where the value is more than the value specified.</p>
-<pre><code data-language="javascript">Model.find({ age: { &apos;&gt;&apos;: 18 }})
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="-greaterthanorequal-" permalink="&gt;=-/-greaterthanorequal">&apos;&gt;=&apos; / &apos;greaterThanOrEqual&apos;</h4>
-<p>Searches for records where the value is more or equal to the value specified.</p>
-<pre><code data-language="javascript">Model.find({ age: { &apos;&gt;=&apos;: 21 }})
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="-not-" permalink="-/-not">&apos;!&apos; / &apos;not&apos;</h4>
-<p>Searches for records where the value is not equal to the value specified.</p>
-<pre><code data-language="javascript">Model.find({ name: { &apos;!&apos;: &apos;foo&apos; }})
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="-like-" permalink="like">&apos;like&apos;</h4>
-<p>Searches for records using pattern matching with the <code>%</code> sign. (Case insensitive.)</p>
-<pre><code data-language="javascript">Model.find({ food: { &apos;like&apos;: &apos;%beans&apos; }})
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="-contains-" permalink="contains">&apos;contains&apos;</h4>
-<p>A shorthand for pattern matching both sides of a string. Will return records where the value
-contains the string anywhere inside of it. (Case insensitive.)</p>
-<pre><code data-language="javascript">Model.find({ class: { &apos;contains&apos;: &apos;history&apos; }})
+<h4>'&lt;' / 'lessThan'</h4>
+<p>指定された値より小さな値を持つレコードを検索します。</p>
+<pre><code class="language-javascript">Model.find({ age: { '&lt;': 30 }})</code></pre>
+<h4>'&lt;=' / 'lessThanOrEqual'</h4>
+<p>指定された値と同じ値か、より小さな値を持つレコードを検索します。</p>
+<pre><code class="language-javascript">Model.find({ age: { '&lt;=': 21 }})</code></pre>
+<h4>'&gt;' / 'greaterThan'</h4>
+<p>指定された値より大きな値を持つレコードを検索します。</p>
+<pre><code class="language-javascript">Model.find({ age: { '&gt;': 18 }})</code></pre>
+<h4>'&gt;=' / 'greaterThanOrEqual'</h4>
+<p>指定された値と同じ値か、より大きな値を持つレコードを検索します。</p>
+<pre><code class="language-javascript">Model.find({ age: { '&gt;=': 21 }})</code></pre>
+<h4>'!' / 'not'</h4>
+<p>指定した値と合致しないレコードを検索します。</p>
+<pre><code class="language-javascript">Model.find({ name: { '!': 'foo' }})</code></pre>
+<h4>'like'</h4>
+<p><code>%</code>記号を使ってパターンマッチングでレコードを検索します。(大文字と小文字を区別します)</p>
+<pre><code class="language-javascript">Model.find({ food: { 'like': '%beans' }})</code></pre>
+<h4>'contains'</h4>
+<p>両端に<code>%</code>記号を付けたパターンマッチング検索のショートカットです。
+指定した内容が文字列中のどこかに存在するレコードを返します。(大文字と小文字を区別します)</p>
+<pre><code class="language-javascript">Model.find({ class: { 'contains': 'history' }})
 
-// The same as
+// 上記のコードは下記のコードと一緒です。
 
-Model.find({ class: { &apos;like&apos;: &apos;%history%&apos; }})
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="-startswith-" permalink="startswith">&apos;startsWith&apos;</h4>
-<p>A shorthand for pattern matching the right side of a string. Will return records where the value
-starts with the supplied string value. (Case insensitive.)</p>
-<pre><code data-language="javascript">Model.find({ class: { &apos;startsWith&apos;: &apos;american&apos; }})
+Model.find({ class: { 'like': '%history%' }})</code></pre>
+<h4>'startsWith'</h4>
+<p>右端に<code>%</code>記号を付けたパターンマッチング検索のショートカットです。
+文字列が指定した内容で始まるレコードを返します。(大文字と小文字を区別します)</p>
+<pre><code class="language-javascript">Model.find({ class: { 'startsWith': 'american' }})
 
-// The same as
+// 上記のコードは下記のコードと一緒です。
 
-Model.find({ class: { &apos;like&apos;: &apos;american%&apos; }})
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="-endswith-" permalink="endswith">&apos;endsWith&apos;</h4>
-<p>A shorthand for pattern matching the left side of a string. Will return records where the value
-ends with the supplied string value. (Case insensitive.)</p>
-<pre><code data-language="javascript">Model.find({ class: { &apos;endsWith&apos;: &apos;can&apos; }})
+Model.find({ class: { 'like': 'american%' }})</code></pre>
+<h4>'endsWith'</h4>
+<p>左端に<code>%</code>記号を付けたパターンマッチング検索のショートカットです。
+文字列が指定した内容で終わるレコードを返します。(大文字と小文字を区別します)</p>
+<pre><code class="language-javascript">Model.find({ class: { 'endsWith': 'can' }})
 
-// The same as
+// 上記のコードは下記のコードと一緒です。
 
-Model.find({ class: { &apos;like&apos;: &apos;%can&apos; }})
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="-date-ranges-" permalink="date-ranges">&apos;Date Ranges&apos;</h4>
+Model.find({ class: { 'like': '%can' }})</code></pre>
+<h4>'Date Ranges'</h4>
 <p>You can do date range queries using the comparison operators.</p>
-<pre><code data-language="javascript">Model.find({ date: { &apos;&gt;&apos;: new Date(&apos;2/4/2014&apos;), &apos;&lt;&apos;: new Date(&apos;2/7/2014&apos;) } })
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="query-options" permalink="query-options">Query Options</h3>
-<p>Query options allow you refine the results that are returned from a query. The current options
-available are:</p>
+<pre><code class="language-javascript">Model.find({ date: { '&gt;': new Date('2/4/2014'), '&lt;': new Date('2/7/2014') } })</code></pre>
+<h3>Query Options</h3>
+<p>クエリプションを使うことでクエリに対して帰ってくる結果をさらに改良することが出来ます。
+現在使えるオプションはい次のものです。:</p>
 <ul>
 <li><code>limit</code></li>
 <li><code>skip</code></li>
 <li><code>sort</code></li>
 </ul>
-<h4 id="limit" permalink="limit">Limit</h4>
-<p>Limits the number of results returned from a query.</p>
-<pre><code data-language="javascript">Model.find({ where: { name: &apos;foo&apos; }, limit: 20 })
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="skip" permalink="skip">Skip</h4>
-<p>Returns all the results excluding the number of items to skip.</p>
-<pre><code data-language="javascript">Model.find({ where: { name: &apos;foo&apos; }, skip: 10 });
-</code></pre><!-- __LANG=%%__ -->
-<h5 id="pagination" permalink="pagination">Pagination</h5>
-<p><code>skip</code> and <code>limit</code> can be used together to build up a pagination system.</p>
-<pre><code data-language="javascript">Model.find({ where: { name: &apos;foo&apos; }, limit: 10, skip: 10 });
-</code></pre><!-- __LANG=%%__ -->
-<p><code>paginate</code> is a  Waterline helper method which can accomplish the same as <code>skip</code> and <code>limit</code>.</p>
-<pre><code class="lang-javascript">Model.find().paginate({page: 2, limit: 10});
-</code></pre>
-<!-- __LANG=%%__ -->
+<h4>Limit</h4>
+<p>返すレコードの数を制限します。</p>
+<pre><code class="language-javascript">Model.find({ where: { name: 'foo' }, limit: 20 })</code></pre>
+<h4>Skip</h4>
+<p>最初の指定した個数を除く全てのレコードを受け取ります。</p>
+<pre><code class="language-javascript">Model.find({ where: { name: 'foo' }, skip: 10 });</code></pre>
+<h5>Pagination</h5>
+<p><code>skip</code>と<code>limit</code>を一緒に使うことでページネーションが出来ます。</p>
+<pre><code class="language-javascript">Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });</code></pre>
+<p><code>paginate</code>は<code>skip</code>と<code>limit</code>を一緒に使うのと同じ役割を果たすWaterlineヘルパーメソッドです。</p>
+<pre><code class="language-javascript">Model.find().paginate({page: 2, limit: 10});</code></pre>
 <blockquote>
 <p><strong>Waterline</strong></p>
-<p>You can find out more about the Waterline API below:</p>
+<p>WaterlineAPIに関して更に詳しくは以下のドキュメントで確認できます。:</p>
 <ul>
-<li><a href="http://sailsjs.org/documentation/reference/waterline/queries" target="_blank">Sails.js Documentation</a></li>
-<li><a href="https://github.com/balderdashy/waterline/blob/master/README.md" target="_blank">Waterline README</a></li>
-<li><a href="https://github.com/balderdashy/waterline-docs" target="_blank">Waterline Documentation</a></li>
-<li><a href="https://github.com/balderdashy/waterline" target="_blank">Waterline Github Repository</a></li>
+<li><a href="http://sailsjs.org/documentation/reference/waterline/queries">Sails.js Documentation</a></li>
+<li><a href="https://github.com/balderdashy/waterline/blob/master/README.md">Waterline README</a></li>
+<li><a href="https://github.com/balderdashy/waterline-docs">Waterline Documentation</a></li>
+<li><a href="https://github.com/balderdashy/waterline">Waterline Github Repository</a></li>
 </ul>
 </blockquote>
-<h4 id="sort" permalink="sort">Sort</h4>
-<p>Results can be sorted by attribute name. Simply specify an attribute name for natural (ascending)
-sort, or specify an <code>asc</code> or <code>desc</code> flag for ascending or descending orders respectively.</p>
-<pre><code data-language="javascript">// Sort by name in ascending order
-Model.find({ where: { name: &apos;foo&apos; }, sort: &apos;name&apos; });
+<h4>ソート</h4>
+<p>検索結果をアトリビュートの名前でソートすることが出来ます。
+単にアトリビュートを指定するだけで昇順のソートが出来る他<code>asc</code>または<code>desc</code>のフラグを指定することでそれぞれのアトリビュートに対して昇順と降順の並べ順を指定できます。</p>
+<pre><code class="language-javascript">// nameの昇順で並び替え。
+Model.find({ where: { name: 'foo' }, sort: 'name' });
 
-// Sort by name in descending order
-Model.find({ where: { name: &apos;foo&apos; }, sort: &apos;name DESC&apos; });
+// nameの降順で並び替え。
+Model.find({ where: { name: 'foo' }, sort: 'name DESC' });
 
-// Sort by name in ascending order
-Model.find({ where: { name: &apos;foo&apos; }, sort: &apos;name ASC&apos; });
+// nameの昇順で並び替え。
+Model.find({ where: { name: 'foo' }, sort: 'name ASC' });
 
-// Sort by binary notation
-Model.find({ where: { name: &apos;foo&apos; }, sort: { &apos;name&apos;: 1 }});
+// バイナリNotationで並び替え。
+Model.find({ where: { name: 'foo' }, sort: { 'name': 1 }});
 
-// Sort by multiple attributes
-Model.find({ where: { name: &apos;foo&apos; }, sort: { name:  1, age: 0 });
-</code></pre><!-- __LANG=%%__ -->
+// 複数のアトリビュートで並び替え。
+Model.find({ where: { name: 'foo' }, sort: { name:  1, age: 0 });</code></pre>
 <blockquote>
-<p><strong>Case-sensitivity</strong></p>
-<p>All queries inside of Waterline are <strong>case-insensitive</strong>. This allows for easier querying but makes indexing strings tough. This is something to be aware of if you are indexing and searching on string fields.</p>
-<p>Currently, the best way to execute <strong>case-sensitive</strong> queries is using the <a href="http://sailsjs.org/documentation/reference/waterline/models/native.html" target="_blank"><code>.native()</code></a> or <a href="http://sailsjs.org/documentation/reference/waterline/models/query.html" target="_blank"><code>.query()</code></a> method.</p>
+<p><strong>ケースセンシティブか？</strong></p>
+<p>Waterlineのすべてのクエリは<strong>ケースセンシティブではありません</strong>。このおかげでクエリを簡単に実行できますが、文字列をインデックスするのは難しくなります。このことは文字列を検索したり文字列で並び替えたりするときに念頭に置いておいてください。</p>
+<p>現在のところ、<strong>ケースセンシティブ</strong>なクエリを発行するもっともよい手段は <a href="http://sailsjs.org/documentation/reference/waterline/models/native.html"><code>.native()</code></a>か<a href="http://sailsjs.org/documentation/reference/waterline/models/query.html"><code>.query()</code></a>のメソッドを使うことです。</p>
 </blockquote>
 <docmeta name="displayName" value="Query Language">
-</docmeta>

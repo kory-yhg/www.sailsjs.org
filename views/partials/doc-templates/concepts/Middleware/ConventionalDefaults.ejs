@@ -1,66 +1,65 @@
-<h1 id="conventional-defaults">Conventional Defaults</h1>
-<p>Sails comes bundled with a suite of conventional HTTP middleware, ready to use.  You can, of course, disable, override, rearrange, or append to it, but the pre-installed stack is perfectly acceptable for most apps in development or production.  Below is a list of the standard HTTP middleware functions that comes bundled in Sails in the order they execute every time the server receives an incoming HTTP request:</p>
+<h1>コンベンショナルのデフォルト</h1>
+<p>Sailsにはすぐに使えるコンベンショナルなHTTPミドルウエアがバンドルされています。もちろんこれは、無効化したり、上書きしたり、アレンジしなおしたり、追加することも出来ますが、多くのアプリケーションの開発時及び運用時にはプリインストールのスタックは完璧に対応することが出来ます。以下に、外部からのリクエストを受けた時には毎回実行されるに標準的なミドルウエアファンクションの表を実行順に掲載します。:</p>
 <table>
 <thead>
 <tr>
-<th>HTTP Middleware Key</th>
-<th>Purpose</th>
+<th>HTTP ミドルウエアキー</th>
+<th>目的</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> <strong>startRequestTimer</strong></td>
-<td>Allocates a variable in memory to hold the timestamp when the request began.  This can be accessed and used by your app to provide diagnostic information about slow requests.</td>
+<td><strong>startRequestTimer</strong></td>
+<td>リクエストの始まった時間を記録するためにメモリ上に変数を配置します。これはスローリクエストの診断データに使います。</td>
 </tr>
 <tr>
-<td> <em>cookieParser</em> *</td>
-<td>Parses the cookie header into a clean object for use in subsequent middleware and your application code.</td>
+<td><em>cookieParser</em> *</td>
+<td>この後のミドルウエアやアプリケーションで使うためにCookieのデータをパースします。</td>
 </tr>
 <tr>
-<td> <em>session</em> *</td>
-<td>Sets up a unique session object using your <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.session.html" target="_blank">session configuration</a>.</td>
+<td><em>session</em> *</td>
+<td><a href="http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.session.html">session設定</a>を使ってユニークなセッションオブジェクトを準備します。</td>
 </tr>
 <tr>
-<td> <strong>bodyParser</strong></td>
-<td>Parses parameters and binary upstreams (for streaming file uploads) from the HTTP request body using <a href="https://github.com/balderdashy/skipper" target="_blank">Skipper</a>.</td>
+<td><strong>bodyParser</strong></td>
+<td><a href="https://github.com/balderdashy/skipper">Skipper</a>を使ってHTTPリクエストボディからパラメータとバイナリストリーム(ストリーミングファイルアップロード時に)をパースします。</td>
 </tr>
 <tr>
-<td> <strong>compress</strong></td>
-<td>Compresses response data using gzip/deflate.</td>
+<td><strong>compress</strong></td>
+<td>gzip/deflateを使ってレスポンスを圧縮します。</td>
 </tr>
 <tr>
-<td> <strong>methodOverride</strong></td>
-<td>Provides faux HTTP method support, letting you use HTTP verbs such as PUT or DELETE in places where the client doesn&apos;t support it (e.g. legacy versions of Internet Explorer.)  If a request has a <code>_method</code> parameter set to <code>&quot;PUT&quot;</code>, the request will be routed as if it was a proper PUT request.  See <a href="http://www.senchalabs.org/connect/methodOverride.html" target="_blank">Connect&apos;s methodOverride docs</a> for more information if you need it.</td>
+<td><strong>methodOverride</strong></td>
+<td>faux HTTPメソッドを提供します。これによりクライアントがサポートしない場合(例えばレガシーなInternet Explorerのように)でもPUTやDELETEのようなHTTPリクエストを使えるようにします。もしリクエストが<code>"PUT"</code>に設定された<code>_method</code>パラメータを持っていればあたかもそのリクエストは適切なPUT リクエストであったかのようにルーティングされます。さらなる情報が欲しい場合は<a href="http://www.senchalabs.org/connect/methodOverride.html">Connect's methodOverride docs</a> を御覧ください。</td>
 </tr>
 <tr>
-<td> <strong>poweredBy</strong></td>
-<td>Attaches an <code>X-Powered-By</code> header to outgoing responses.</td>
+<td><strong>poweredBy</strong></td>
+<td><code>X-Powered-By</code>ヘッダーを外行きのレスポンスに対して付加します。</td>
 </tr>
 <tr>
-<td> <strong>$custom</strong></td>
-<td>Provides backwards compatibility for a configuration option from Sails v0.9.x.  Since Sails v0.10 offers much more configuration flexibility for HTTP middleware, as long as you are not using <code>sails.config.express.customMiddleware</code>, you can confidently remove this item from the list.</td>
+<td><strong>$custom</strong></td>
+<td>Sails v0.9.x.における設定プションに対する後方互換性を提供します。Sailsv0.10ではより多くの柔軟な設定をHTTPミドルウエアに対して行えるようにしたため、<code>sails.config.express.customMiddleware</code>を使わない限りはこのアイテムを自身を持ってリストから取り除くことも出来ます。</td>
 </tr>
 <tr>
-<td> <em>router</em> *</td>
-<td>This is where the bulk of your app logic gets applied to any given request.  In addition to running <code>&quot;before&quot;</code> handlers in hooks (e.g. csrf token enforcement) and some internal Sails logic, this routes requests using your app&apos;s explicit routes (in <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html" target="_blank"><code>sails.config.routes</code></a>) and/or route blueprints.</td>
+<td><em>router</em> *</td>
+<td>ここでアプリケーションの諸々のロジックがリクエストに対して適用されます。hooksにある(csrf tokenの強制などの)<code>"before"</code> ハンドラやいくつかのSailsロジックに加え、(<a href="http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.routes.html"><code>sails.config.routes</code></a>での) 明示的ルーティングやblueprintsルーティングを使ってリクエストをルーティングします。</td>
 </tr>
 <tr>
-<td> <em>www</em> *</td>
-<td>Serves static files- usually images, stylesheets, scripts- in your app&apos;s &quot;public&quot; folder (configured in <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md" target="_blank"><code>sails.config.paths</code></a>, conventionally <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md" target="_blank"><code>.tmp/public/</code></a>) using Connect&apos;s <a href="http://www.senchalabs.org/connect/static.html" target="_blank">static middleware</a>.</td>
+<td><em>www</em> *</td>
+<td>Connectの <a href="http://www.senchalabs.org/connect/static.html">スタティックミドルウエア</a>アプリケーションの&quot;public&quot;フォルダ(通常<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md"><code>.tmp/public/</code></a>に配置されている<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md"><code>sails.config.paths</code></a>で設定されます)にあるスタティックファイル(通常画像やスタイルシート、スクリプト)を提供します。</td>
 </tr>
 <tr>
-<td> <strong>favicon</strong></td>
-<td>Serves the <a href="http://en.wikipedia.org/wiki/Favicon" target="_blank">browser favicon</a> for your app if one is provided as <code>/assets/favicon.ico</code>.</td>
+<td><strong>favicon</strong></td>
+<td><a href="http://en.wikipedia.org/wiki/Favicon">browser favicon</a>がアプリケーション中で<code>/assets/favicon.ico</code>として設定されていればこれを提供します。</td>
 </tr>
 <tr>
-<td> <em>404</em> *</td>
-<td>Handles requests which do not match any routes - triggers <code>res.notFound()</code>  <!-- technically, this emits the `router:request:404` event)  --></td>
+<td><em>404</em> *</td>
+<td>どのルーティングにもマッチしないリクエストをハンドルします - <code>res.notFound()</code>をトリガーします  <!-- technically, this emits the `router:request:404` event)  --></td>
 </tr>
 <tr>
-<td> <em>500</em> *</td>
-<td>Handles requests which trigger an internal error (i.e. call Express&apos;s <code>next(err)</code>)  - triggers <code>res.serverError()</code> <!-- technically, this emits the `router:request:500` event)  --></td>
+<td><em>500</em> *</td>
+<td>内部エラーをトリガーしたリクエストをハンドルします。 - <code>res.serverError()</code>をトリガーします <!-- technically, this emits the `router:request:500` event)  --></td>
 </tr>
 </tbody>
 </table>
 <docmeta name="displayName" value="Conventional Defaults">
-</docmeta>

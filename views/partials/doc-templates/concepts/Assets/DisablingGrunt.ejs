@@ -1,14 +1,12 @@
-<h1 id="disabling-grunt">Disabling Grunt</h1>
-<p>To disable Grunt integration in Sails, simply delete your Gruntfile (and/or <a href="http://sailsjs.org/documentation/anatomy/myApp/tasks" target="_blank"><code>tasks/</code></a> folder). You can also disable the Grunt hook. Just set the <code>grunt</code> property to <code>false</code> in <code>.sailsrc</code> hooks like this:</p>
-<pre><code data-language="json">{
-    &quot;hooks&quot;: {
-        &quot;grunt&quot;: false
+<h1>Gruntを無効化する</h1>
+<p>Gruntタスクの組み込みを無効にするためには、Gruntfile(と場合によっては<a href="http://sailsjs.org/documentation/anatomy/myApp/tasks"><code>tasks/</code></a>フォルダーのこともあります)を削除するだけで大丈夫です。同様にGrunt hookの無効化も出来ます。これをやるには<code>.sailsrc</code>のhooksで以下のように<code>grunt</code>を<code>false</code>にするだけで出来ます:</p>
+<pre><code class="language-json">{
+    "hooks": {
+        "grunt": false
     }
-}
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="can-i-customize-this-for-sass-angular-client-side-jade-templates-etc-" permalink="can-i-customize-this-for-sass,-angular,-clientside-jade-templates,-etc">Can I customize this for SASS, Angular, client-side Jade templates, etc?</h3>
-<p>Yep! Just replace the relevant grunt task in your <code>tasks/</code> directory, or add a new one.  Like <a href="https://github.com/sails101/using-sass" target="_blank">SASS</a> for example.</p>
-<p>If you still want to use Grunt for other purposes, but don&apos;t want any of the default web front-end stuff, just delete your project&apos;s assets folder and remove the front-end oriented tasks from the <code>grunt/register/</code> and <code>grunt/config/</code> folders.  You can also run <code>sails new myCoolApi --no-frontend</code> to omit the assets folder and front-end-oriented Grunt tasks for future projects.  You can also replace your <code>sails-generate-frontend</code> module with alternative community generators, or <a href="https://github.com/balderdashy/sails-generate-generator" target="_blank">create your own</a>.  This allows <code>sails new</code> to create the boilerplate for native iOS apps, Android apps, Cordova apps, SteroidsJS apps, etc.</p>
-<p><docmeta name="uniqueID" value="DisablingGrunt970874"></docmeta></p>
+}</code></pre>
+<h3>これをSASSやAngular、クライアントサイドJadeテンプレートなどのためにカスタマイズできますか。</h3>
+<p>もちろん！あなたのプロジェクトファイルの<code>tasks/</code>ディレクトリにある関係するタスクを書き換えるだけでできますし、例えば<a href="https://github.com/sails101/using-sass">SASS</a>のように新しいものを作ることでも実現できます。</p>
+<p>もしもGruntを使いたいけれどもデフォルトのフロントエンドのを使いたくない場合はあなたのプロジェクトのアセットフォルダーを削除して関連するフロントエンド関連のタスクを<code>grunt/register/</code>と<code>grunt/config/</code>から削除してください。また、<code>sails new myCoolApi --no-frontend</code>を実行することでアセットフォルダーやフロントエンド関連のGruntタスクを将来のプロジェクトのために省略することも出来ます。 さらに<code>sails-generate-frontend</code>モジュールを別のサードパーティの物に変えたり<a href="https://github.com/balderdashy/sails-generate-generator">自分で開発する</a>ことも出来ます。これをすることでネイティブのiOSアプリやAndroidアプリ、CordovaアプリSteroidsJSアプリをSailsで開発できる新たなboilerplateを<code>sails new</code>で作ることが出来ます。</p>
+<docmeta name="uniqueID" value="DisablingGrunt970874">
 <docmeta name="displayName" value="Disabling Grunt">
-</docmeta>

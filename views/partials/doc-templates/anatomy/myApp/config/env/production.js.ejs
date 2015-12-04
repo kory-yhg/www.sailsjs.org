@@ -1,17 +1,18 @@
-<h1 id="myapp-config-env-production-js">myApp/config/env/production.js</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This file will be loaded when Sails is running in <code>production</code> mode. If using the CLI command <code>sails lift --prod</code>, these settings will be loaded.</p>
-<p><docmeta name="uniqueID" value="productionjs658723"></docmeta></p>
+<h1>myApp/config/env/production.js</h1>
+<h3>目的</h3>
+<p>このファイルはSailsが<code>production</code>モードで実行されるときにロードされます。<code>sails lift --prod</code>CLIコマンドを利用するとこの設定が読み込まれます。</p>
+<docmeta name="uniqueID" value="productionjs658723">
 <docmeta name="displayName" value="production.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * Production environment settings
  *
  * This file can include shared settings for a production environment,
- * such as API keys or remote database passwords.  If you&apos;re using
+ * such as API keys or remote database passwords.  If you're using
  * a version control solution for your Sails app, this file will
  * be committed to your repository unless you add it to your .gitignore
- * file.  If your repository will be publicly viewable, don&apos;t add
+ * file.  If your repository will be publicly viewable, don't add
  * any private information to this file!
  *
  */
@@ -24,7 +25,7 @@ module.exports = {
    ***************************************************************************/
 
   // models: {
-  //   connection: &apos;someMysqlServer&apos;
+  //   connection: 'someMysqlServer'
   // },
 
   /***************************************************************************
@@ -34,12 +35,12 @@ module.exports = {
   // port: 80,
 
   /***************************************************************************
-   * Set the log level in production environment to &quot;silent&quot;                 *
+   * Set the log level in production environment to "silent"                 *
    ***************************************************************************/
 
   // log: {
-  //   level: &quot;silent&quot;
+  //   level: "silent"
   // }
 
 };
-</code></pre></docmeta>
+```

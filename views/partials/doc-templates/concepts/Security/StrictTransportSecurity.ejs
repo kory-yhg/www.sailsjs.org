@@ -1,24 +1,21 @@
-<h1 id="http-strict-transport-security">HTTP Strict Transport Security</h1>
-<p>Strict Transport Security (STS) is an opt-in security enhancement that forces usage of <code>HTTPS</code> instead of <code>HTTP</code>.</p>
-<h3 id="enabling-sts" permalink="enabling-sts">Enabling STS</h3>
-<p>Implementing STS is actually very simple and <a href="https://github.com/krakenjs/lusca/blob/master/lib/hsts.js" target="_blank">only takes a few lines of code</a>.  But better yet, a few different open-source modules exist that bring support for this feature to Express and Sails.  To use one of these modules, install it from npm using the directions below, then open <code>config/http.js</code> in your project and <a href="http://sailsjs.org/documentation/concepts/Middleware" target="_blank">configure it as a custom middleware</a>.  The example(s) below cover basic usage and configuration.  For more guidance and advanced usage details, be sure and follow the link to the docs.</p>
-<h5 id="using-lusca-https-github-com-krakenjs-lusca-luscahstsoptions-" permalink="using-lusca">Using <a href="https://github.com/krakenjs/lusca#luscahstsoptions" target="_blank">lusca</a></h5>
+<h1>HTTP Strict Transport Security</h1>
+<p>HTTP Strict Transport Security(STS)は <code>HTTP</code>の代わりに<code>HTTPS</code>を利用させることを強制するオプショナルなセキュリティ強化策です。</p>
+<h3>STSを有効化する</h3>
+<p>実はSTSを実装するにはとてもシンプルで<a href="https://github.com/krakenjs/lusca/blob/master/lib/hsts.js">数行のコードを書くだけで</a>できます。しかし、更に良いことにSailsとExpressでこの機能を実現できる幾つかのオープンソースモジュールがあります。これらのモジュールを使うには以下の手順に従ってnpmからインストールしてアプリケーションの<code>config/http.js</code>の中で<a href="http://sailsjs.org/documentation/concepts/Middleware">カスタムのミドルウエアとして設定</a>してください。以下の例で簡単な使い方があります。詳しい説明や応用的な使い方は下記にあるリンクを参照してください。</p>
+<h5><a href="https://github.com/krakenjs/lusca#luscahstsoptions">lusca</a>を使う</h5>
 <blockquote>
-<p><code>lusca</code> is open-source under the <a href="https://github.com/krakenjs/lusca/blob/master/LICENSE.txt" target="_blank">Apache license</a></p>
+<p><code>lusca</code> は<a href="https://github.com/krakenjs/lusca/blob/master/LICENSE.txt">Apache license</a>で使えるオープンソースです。</p>
 </blockquote>
-<pre><code data-language="javascript"># In your sails app
-npm install lusca --save
-</code></pre><!-- __LANG=%%__ -->
-<p>Then in the <code>middleware</code> config object in <code>config/http.js</code>:</p>
-<pre><code data-language="javascript">// ...
+<pre><code class="language-sh"># In your sails app
+npm install lusca --save</code></pre>
+<p>そして、<code>config/http.js</code>の<code>middleware</code>設定オブジェクトで:</p>
+<pre><code class="language-js">  // ...
   // maxAge ==&gt; Number of seconds strict transport security will stay in effect.
-  strictTransportSecurity: require(&apos;lusca&apos;).hsts({ maxAge: 31536000 })
-  // ...
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="additional-resources" permalink="additional-resources">Additional Resources</h3>
+  strictTransportSecurity: require('lusca').hsts({ maxAge: 31536000 })
+  // ...</code></pre>
+<h3>追加資料</h3>
 <ul>
-<li><a href="https://www.owasp.org/index.php/HTTP_Strict_Transport_Security" target="_blank">HTTP Strict Transport Security (OWasp)</a></li>
+<li><a href="https://www.owasp.org/index.php/HTTP_Strict_Transport_Security">HTTP Strict Transport Security (OWasp)</a></li>
 </ul>
-<p><docmeta name="uniqueID" value="HSTSecurity397141"></docmeta></p>
+<docmeta name="uniqueID" value="HSTSecurity397141">
 <docmeta name="displayName" value="Strict Transport Security">
-</docmeta>

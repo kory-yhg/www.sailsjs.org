@@ -1,107 +1,93 @@
-<h1 id="model-settings">Model Settings</h1>
-<p>The following properties can be specified at the top level of your model definition to override the defaults for that particular model.  To override the default settings shared by all of your models, edit <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md" target="_blank"><code>config/models.js</code></a>.</p>
-<h3 id="-migrate-" permalink="migrate"><code>migrate</code></h3>
-<pre><code data-language="javascript">migrate: &apos;safe&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>In short, this setting controls whether/how Sails will attempt to automatically rebuild the tables/collections/sets/etc. in your schema.</p>
-<p>In a production environment (NODE_ENV===&quot;production&quot;) Sails always uses
-<code>migrate:&quot;safe&quot;</code> to protect inadvertent deletion of your data. However during development, you have a few other options for convenience:</p>
+<h1>モデルの設定</h1>
+<p>特定のモデルでのデフォルトをオーバーライドするために以下のプロパティをアプリケーションのモデル定義のトップレベルにおいてステイすることが出来ます。あなたのアプリケーションで使われすすべてのモデルで使われるデフォルト設定をオーバーライドするためには<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md"><code>config/models.js</code></a>を編集してください。</p>
+<h3><code>migrate</code></h3>
+<pre><code class="language-javascript">migrate: 'safe'</code></pre>
+<p>単純に言うとこの設定はSailsがあなたのスキーマのテーブルやコレクション、セットなどをどのようにして自動リビルドするかを定義するものです。</p>
+<p>本番環境(NODE_ENV===&quot;production&quot;の状態の時)にはSailsはデータを不用意に削除してしまうのを防ぐため、つねに<code>migrate:"safe"</code>を利用します。
+しかし開発環境では簡便のために他の方法を使うことが出来ます。</p>
 <ol>
-<li>safe  - never auto-migrate my database(s). I will do it myself (by hand)</li>
-<li>alter - auto-migrate, but attempt to keep my existing data (experimental)</li>
-<li>drop  - wipe/drop ALL my data and rebuild models every time I lift Sails</li>
+<li>safe  - データベースを自動マイグレーションしません。開発者が手動でやります。</li>
+<li>alter - データを保持したまま自動マイグレーションします。（実験的運用）</li>
+<li>drop  - Sailsを起動するときにすべてのデータを消してデータベースを再構築します。</li>
 </ol>
-<p>When your sails app lifts, waterline validates all of the data in your database.  This flag tells waterline what to do with data when the data is corrupt.  You can set this flag to <code>safe</code> which will ignore the corrupt data and continue to lift.  You can also set it to</p>
+<p>Sailsを起動するときにWaterlineはデータベースの中にあるすべてのデータをバリデーションします。このフラグはデーが破壊された時にどのように振る舞うかを伝えるものです。起動時に破損したデータを無視したいのであれば<code>safe</code>にセットすることが出来ます。</p>
 <table>
 <thead>
 <tr>
-<th>Auto-Migration Strategy</th>
-<th>Description</th>
+<th>自動マイグレーションストラテジー</th>
+<th>定義</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>safe</code></td>
-<td>never auto-migrate my database(s). I will do it myself, by hand.</td>
+<td>データベースを自動マイグレーションしません。開発者が手動でやります。</td>
 </tr>
 <tr>
 <td><code>alter</code></td>
-<td>auto-migrate columns/fields, but attempt to keep my existing data (experimental)</td>
+<td>データを保持したまま自動マイグレーションします。（実験的運用）</td>
 </tr>
 <tr>
 <td><code>drop</code></td>
-<td>wipe/drop ALL my data and rebuild models every time I lift Sails</td>
+<td>Sailsを起動するときにすべてのデータを消してデータベースを再構築します。</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>Note, by using <code>drop</code>, or even <code>alter</code>, you risk losing your data.  Be careful.  Never use <code>drop</code> or <code>alter</code> with a production dataset. Additionally, on large databases <code>alter</code> may take a long time to complete at startup. This may cause commands like <code>sails console</code> to appear to hang.</p>
+<p>備考　<code>drop</code>を行うことではもちろん、<code>alter</code>でもデータ消失のリスクが有ります。ご注意ください。本番環境でのデータセットでは決して<code>drop</code>や<code>alter</code>を使わないでください。更に、大規模なデータベースでは<code>alter</code>を選択すると起動に時間がかかることがあります。これにより<code>sails console</code>のようなコマンドがハングアップしているように見えることがあります。</p>
 </blockquote>
-<h3 id="-schema-" permalink="schema"><code>schema</code></h3>
-<pre><code data-language="javascript">schema: true
-</code></pre><!-- __LANG=%%__ -->
-<p>A flag to toggle schemaless or schema mode in databases that support schemaless data structures. If turned off, this will allow you to store arbitrary data in a record. If turned on, only attributes defined in the model&apos;s <code>attributes</code> object will be stored.</p>
-<p>For adapters that don&apos;t require a schema, such as Mongo or Redis, the default setting is <code>schema:false</code>.</p>
-<h3 id="-connection-" permalink="connection"><code>connection</code></h3>
-<pre><code data-language="javascript">connection: &apos;my-local-postgresql&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>The configured database <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html" target="_blank">connection</a> where this model will fetch and save its data.  Defaults to <code>localDiskDb</code>, the default connection that uses the <code>sails-disk</code> adapter.</p>
-<h3 id="-identity-" permalink="identity"><code>identity</code></h3>
-<pre><code data-language="javascript">identity: &apos;purchase&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>The lowercase unique key for this model, e.g. <code>user</code>.  By default, a model&apos;s <code>identity</code> is inferred automatically by lowercasing its filename.  You should never change this property on your models.</p>
-<h3 id="-globalid-" permalink="globalid"><code>globalId</code></h3>
-<pre><code data-language="javascript">globalId: &apos;Purchase&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models. To disable globals, see <a href="http://sailsjs.org/documentation/concepts/Globals?q=disabling-globals" target="_blank"><code>sails.config.globals</code></a>.</p>
-<h3 id="autopk" permalink="autopk">autoPK</h3>
-<pre><code data-language="javascript">autoPK: true
-</code></pre><!-- __LANG=%%__ -->
-<p>A flag to toggle the automatic definition of a primary key in your model. The details of this default PK vary between adapters (e.g. MySQL uses an auto-incrementing integer primary key, whereas MongoDB uses a randomized string UUID).  In any case, the primary keys generated by autoPK will be unique. If turned off no primary key will be created by default, and you will need to define one manually, e.g.:</p>
-<pre><code data-language="javascript">attributes: {
+<h3><code>schema</code></h3>
+<pre><code class="language-javascript">schema: true</code></pre>
+<p>データベースがスキーマレスなデータ構造に対応している場合、このフラグでスキーマレスとスキーマモードの変更ができます。オフの時にはレコード内に任意のデータを保存できるようになります。オンの時にはモデルのアトリビュートで定義された<code>attribute</code>オブジェクトのみが保存できます。</p>
+<p>スキーマがなくてもいいアダプタ（MongoやRedisなど）では<code>schema:false</code>がデフォルトの設定になります。</p>
+<h3><code>connection</code></h3>
+<pre><code class="language-javascript">connection: 'my-local-postgresql'</code></pre>
+<p>設定済みのデータベース<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html">接続設定</a>のうち、このモデルがデータを取得したるデータを書き込むものです。デフォルトは<code>sails-disk</code>をつかったSailsのデフォルトのデータベースである<code>localDiskDb</code>が選択されます。`</p>
+<h3><code>identity</code></h3>
+<pre><code class="language-javascript">identity: 'purchase'</code></pre>
+<p><code>user</code>のような、小文字で書かれたこのモデルのユニークキーです。デフォルトではモデルの<code>identity</code>はファイル名を小文字化したもので自道的に推測されますモデル内でこのフラグを変更してはいけません。</p>
+<h3><code>globalId</code></h3>
+<pre><code class="language-javascript">globalId: 'Purchase'</code></pre>
+<p>このフラッグはモデルに（モデルのグローバルアクセスが許可されている場合に限り）グローバルでアクセス可能な際の名前を決定します。models-においてモデルのグローバルを無効化するためにこのフラグを使ってはいけません。<a href="http://sailsjs.org/documentation/concepts/Globals?q=disabling-globals">sails.config.globals</a>を御覧ください。</p>
+<h3>autoPK</h3>
+<pre><code class="language-javascript">autoPK: true</code></pre>
+<p>自動で主キーアトリビュートを定義するかどうかを定義するフラグです。デフォルトのPKはアダプタによって異なります。（例えば、MySQLはオートインクリメントの整数を使いますし、Mongo DBはランダムなUUIDを使います。）いずれのケースにおいてもautoPKで作成された主キーはユニークです。もしこの機能をOffにしたら自動で主キーは作成されなくなりますので手動設定する必要があります.例：</p>
+<pre><code class="language-js">attributes: {
   sku: {
-    type: &apos;string&apos;,
+    type: 'string',
     primaryKey: true,
     unique: true
   }
-}
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="-autocreatedat-" permalink="autocreatedat"><code>autoCreatedAt</code></h3>
-<pre><code data-language="javascript">autoCreatedAt: true
-</code></pre><!-- __LANG=%%__ -->
-<p>A flag to toggle the automatic definition of a <code>createdAt</code> attribute in your model.  By default, <code>createdAt</code> is an attribute which will be automatically set when a record is created with the current timestamp, e.g.:</p>
-<pre><code data-language="javascript">attributes: {
+}</code></pre>
+<h3><code>autoCreatedAt</code></h3>
+<pre><code class="language-javascript">autoCreatedAt: true</code></pre>
+<p>自動で<code>createdAt</code>アトリビュートをモデルに追加するかどうかを定義するフラグです。デフォルトでは<code>createdAt</code>にはレコードが作成された時に自動で現在時刻のタイムスタンプが記録されます。例：</p>
+<pre><code class="language-js">attributes: {
   createdAt: {
-    type: &apos;datetime&apos;,
+    type: 'datetime',
     defaultsTo: function (){ return new Date(); }
   }
-}
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="-autoupdatedat-" permalink="autoupdatedat"><code>autoUpdatedAt</code></h3>
-<pre><code data-language="javascript">autoUpdatedAt: true
-</code></pre><!-- __LANG=%%__ -->
-<p>A flag to toggle the automatic definition of a <code>updatedAt</code> attribute in your model.  By default, <code>updatedAt</code> is an attribute which will be automatically set with the current timestamp every time a record is updated, e.g.:</p>
-<pre><code data-language="javascript">attributes: {
+}</code></pre>
+<h3><code>autoUpdatedAt</code></h3>
+<pre><code class="language-javascript">autoUpdatedAt: true</code></pre>
+<p>自動で<code>updatedAt</code>アトリビュートをモデルに追加するかどうかを定義するフラグです。デフォルトでは<code>updatedAt</code>には毎回更新が行われうごとに自動で現在時刻のタイムスタンプが記録されます。例: </p>
+<pre><code class="language-js">attributes: {
   updatedAt: {
-    type: &apos;datetime&apos;,
+    type: 'datetime',
     defaultsTo: function (){ return new Date(); }
   }
-}
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="tablename" permalink="tablename">tableName</h3>
-<pre><code data-language="javascript">tableName: &apos;some_preexisting_table&apos;
-</code></pre><!-- __LANG=%%__ -->
-<p>You can define a custom name for the physical collection in your adapter by adding a <code>tableName</code> attribute. <strong>This isn&apos;t just for tables</strong>.  In MySQL, PostgreSQL, Oracle, etc. this setting refers to the name of the table, but in MongoDB or Redis, it refers to the collection, and so forth. If no tableName is specified, Waterline will use the model&apos;s <code>identity</code> as its <code>tableName</code>.</p>
-<p>This is particularly useful for working with pre-existing/legacy databases.</p>
+}</code></pre>
+<h3>tableName</h3>
+<pre><code class="language-javascript">tableName: 'some_preexisting_table'</code></pre>
+<p><code>tableName</code>を加える事にアダプタの実際のコレクションの中におけるコレクション名を指定することが出来ます。これは <em>テーブル名には限りませ</em> ん。MySQLやPostgreSQL、Oracleなどではこれはテープル名を意味しますが、Mongo DBやRedisではコレクション名を意味するなどのことが行われます。<code>tableName</code>が定義されていなければWaterlineはモデルの<code>identity</code>を<code>tableName</code>として利用します。</p>
+<p>これはすでに存在するレガシーのデータベースと一緒に利用する際に便利です。</p>
 <!-- in WL2, this is `cid` (but is backwards-compatible) -->
-<h3 id="-attributes-" permalink="attributes"><code>attributes</code></h3>
-<pre><code data-language="javascript">attributes: {
-  name: { type: &apos;string&apos; },
-  email: { type: &apos;email&apos; },
-  age: { type: &apos;integer&apos; }
-}
-</code></pre><!-- __LANG=%%__ -->
-<p>See <a href="http://sailsjs.org/documentation/concepts/ORM/Attributes.html" target="_blank">Attributes</a>.</p>
-<p><docmeta name="uniqueID" value="Modelconfiguration960213"></docmeta></p>
+<h3><code>attributes</code></h3>
+<pre><code class="language-js">attributes: {
+  name: { type: 'string' },
+  email: { type: 'email' },
+  age: { type: 'integer' }
+}</code></pre>
+<p><a href="http://sailsjs.org/documentation/concepts/ORM/Attributes.html">アトリビュート</a>の項目をご覧ください。</p>
+<docmeta name="uniqueID" value="Modelconfiguration960213">
 <docmeta name="displayName" value="Model Settings">
-</docmeta>

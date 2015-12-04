@@ -1,17 +1,18 @@
-<h1 id="myapp-tasks-register-buildprod-js">myApp/tasks/register/buildProd.js</h1>
-<p><docmeta name="uniqueID" value="buildProdjs242328"></docmeta></p>
+<h1>myApp/tasks/register/buildProd.js</h1>
+<docmeta name="uniqueID" value="buildProdjs242328">
 <docmeta name="displayName" value="buildProd.js">
 
-<pre><code data-language="javascript">module.exports = function (grunt) {
-    grunt.registerTask(&apos;buildProd&apos;, [
-        &apos;compileAssets&apos;,
-        &apos;concat&apos;,
-        &apos;uglify&apos;,
-        &apos;cssmin&apos;,
-        &apos;linkAssetsBuildProd&apos;,
-        &apos;clean:build&apos;,
-        &apos;copy:build&apos;
+```
+module.exports = function (grunt) {
+    grunt.registerTask('buildProd', [
+        'compileAssets',
+        'concat',
+        'uglify',
+        'cssmin',
+        'linkAssetsBuildProd',
+        'clean:build',
+        'copy:build'
     ]);
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

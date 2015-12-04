@@ -1,20 +1,19 @@
-<h1 id="adapters">Adapters</h1>
-<h3 id="status" permalink="status">Status</h3>
-<h5 id="stability-3-http-nodejs-org-api-documentation-html-documentation_stability_index-stable" permalink="stability-3--stable">Stability: <a href="http://nodejs.org/api/documentation.html#documentation_stability_index" target="_blank">3</a> - Stable</h5>
-<p>The API has proven satisfactory, but cleanup in the underlying code may cause minor changes.  Backwards-compatibility is guaranteed.</p>
-<h3 id="what-is-an-adapter-" permalink="what-is-an-adapter">What is an adapter?</h3>
-<p> Adapters expose <strong>interfaces</strong>, which imply a contract to implement certain functionality.  This allows us to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  Adapters are useful for integrating with databases, open APIs, internal/proprietary web services, or even hardware.</p>
-<h3 id="what-kind-of-things-can-i-do-in-an-adapter-" permalink="what-kind-of-things-can-i-do-in-an-adapter">What kind of things can I do in an adapter?</h3>
-<p>Adapters are mainly focused on providing model-contextualized CRUD methods.  CRUD stands for create, read, update, and delete.  In Sails/Waterline, we call these methods <code>create()</code>, <code>find()</code>, <code>update()</code>, and <code>destroy()</code>.</p>
-<p>For example, a <code>MySQLAdapter</code> implements a <code>create()</code> method which, internally, calls out to a MySQL database using the specified table name and connection informtion and runs an <code>INSERT ...</code> SQL query.</p>
-<p>In practice, your adapter can really do anything it likes-- any method you write will be exposed on the raw connection objects and any models which use them.</p>
-<h5 id="class-methods" permalink="class-methods">Class methods</h5>
-<p>Below, <code>class methods</code> refer to the static, or collection-oriented, functions available on the model itself, e.g. <code>User.create()</code> or <code>Menu.update()</code>.  To add custom class methods to your model (beyond what is provided in the adapters it implements), define them as top-level key/function pairs in the model object.</p>
-<h5 id="instance-methods" permalink="instance-methods">Instance methods</h5>
-<p><code>instance methods</code> on the other hand, (also known as object, or model, methods) refer to methods available on the individual result models themselves, e.g. <code>User.findOne(7).done(function (err, user) { user.someInstanceMethod(); });</code>.  To add custom instance methods to your model (beyond what is provided in the adapters it implements), define them as key/function pairs in the <code>attributes</code> object of the model&apos;s definition.</p>
-<h5 id="ddl-and-auto-migrations" permalink="ddl-and-automigrations">DDL and auto-migrations</h5>
-<p><code>DDL</code> stands for data-definition language, and is a common fixture of schema-oriented databases.  In Sails, auto-migrations are supported out of the box.  Since adapters for the most common SQL databases support <code>alter()</code>, they also support automatic schema migration!  In your own adapter, if you write the <code>alter()</code> method, the same behavior will take effect.  The feature is configurable using the <code>migrate</code> property, which can be set to <code>safe</code> (don&apos;t touch the schema, period), <code>drop</code> (recreate the tables every time the app starts), or <code>alter</code> (the default-- merge the schema in the apps&apos; models with what is currently in the database).</p>
-<p><docmeta name="uniqueID" value="Adapters83669"></docmeta></p>
-<p><docmeta name="displayName" value="Adapters"></docmeta></p>
+<h1>アダプター</h1>
+<h3>ステータス</h3>
+<h5>安定度: <a href="http://nodejs.org/api/documentation.html#documentation_stability_index">3</a> - ステーブル</h5>
+<p>APIは十分に検証済みですが小規模な変更のためにコードを治す必要があります。後方互換性は保証されています。</p>
+<h3>アダプターとは何でしょうか</h3>
+<p>アダプタはある機能を実装することを意図して<strong>インターフェース</strong>を露出するものです。これによって複数のモデル、開発者、アプリケーション、さらには会社の間でもアプリケーションコードをメンテナンス可能に、効率よく、信頼性の高いものにすることが出来ます。アダプタはデータベースやオープンAPI、内部や商用のWebサービス、更にはハードウエアを統合するのに便利に使えます。</p>
+<h3>アダプタを使ってどんなことが出来ますか。</h3>
+<p>アダプタはモデルに意味をもたせたCRUDメソッドを提供することに主眼が置かれています。CRUDはCreate、Read、Update、Deleteの略です。SailsとWaterlineではこれらのメソッドを<code>create()</code>、<code>find()</code>、<code>update()</code>そして <code>destroy()</code>と呼んでいます。</p>
+<p>例えば<code>MySQLAdapter</code>内部的には指定されたテーブル名とコネクション情報を使って<code>INSERT ...</code>SQLクエリを実行するというように<code>create()</code>メソッドを実装しています。</p>
+<p>実務的にはアダプタは好きな様になんでもすることが出来ます。つまり、あなたが作った全てのメソッドは接続オブジェクトとそれを使うモデルから呼び出すことが出来ます。</p>
+<h5>クラスメソッド</h5>
+<p>以下の<code>class methods</code>はモデルそのもので利用可能な静的またはコレクション指向なファンクションです。（例えば<code>User.create()</code>や<code>Menu.update()</code>のようなものです）モデルに（アダプタ自身が持っているものを超えるような）カスタムメソッドを追加するにはモデルオブジェクトのトップレベルにkey/functionのペアとして追加してください。</p>
+<h5>インスタンスメソッド</h5>
+<p>一方で<code>instance methods</code>（オブジェクトソッドやモデルメソッドとも呼ばれます）はモデルのそれぞれの結果に対して実行可能なメソッドです。（例:<code>User.findOne(7).done(function (err, user) { user.someInstanceMethod(); });</code>）モデルに（アダプタ自身が持っているものを超えるような）インスタンスメソッドを追加するにはモデル定義の<code>attributes</code>オブジェクトににkey/functionのペアとして追加してください。</p>
+<h5>DDLと自動マイグレーション</h5>
+<p><code>DDL</code>とはdata-definition languageの略で、スキーマ指向のデータベースでおなじみのものです。Sailsでは設定だけで簡単に使える自動マイグレーションが用意されています。多くのSQLデータベース向けのアダプタで<code>alter()</code>が対応されていますので自動スキーママイグレーションも利用可能です。あなたがアダプタの中で<code>alter()</code>メソッドを書いた場合同様の振る舞いを起こすことが出来ます。この機能は<code>migrate</code>プロパティを使って設定可能で、<code>safe</code>（つまりスキーマに触れない）、 <code>drop</code>（つまりSailsを起動するたびにテーブルを再生成する）、<code>alter</code>（デフォルト。現在のスキーマをデータベースとマージする）をセットすることが出来ます。</p>
+<docmeta name="uniqueID" value="Adapters83669">
+<docmeta name="displayName" value="Adapters">
 <docmeta name="stabilityIndex" value="3">
-</docmeta>

@@ -1,37 +1,34 @@
-<h1 id="controllers">Controllers</h1>
-<h3 id="overview" permalink="overview">Overview</h3>
-<p>Controllers (the <strong>C</strong> in <strong>MVC</strong>) are the principal objects in your Sails application that are responsible for responding to <em>requests</em> from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your <a href="http://sailsjs.org/documentation/concepts/ORM/Models.html" target="_blank">models</a> and <a href="http://sailsjs.org/documentation/concepts/Views" target="_blank">views</a>. For many applications, the controllers will contain the bulk of your project&#x2019;s <a href="http://en.wikipedia.org/wiki/Business_logic" target="_blank">business logic</a>.</p>
-<h3 id="actions" permalink="actions">Actions</h3>
-<p>Controllers are comprised of a set of functions called <em>actions</em>.  Action methods can be bound to <a href="http://sailsjs.org/documentation/concepts/Routes" target="_blank">routes</a> in your application so that when a client requests the route, the bound method is executed to perform some business logic and (in most cases) generate a response.  For example, the <code>GET /hello</code> route in your application could be bound to a method like:</p>
-<pre><code data-language="javascript">function (req, res) {
-  return res.send(&quot;Hi there!&quot;);
-}
-</code></pre><!-- __LANG=%%__ -->
-<p>so that any time a web browser is pointed to the <code>/hello</code> URL on your app&apos;s server, the page displays the message &#x201C;Hi there&#x201D;.</p>
-<h3 id="where-are-controllers-defined-" permalink="where-are-controllers-defined">Where are Controllers defined?</h3>
-<p>Controllers are defined in the <code>api/controllers/</code> folder. You can put any files you like in that folder, but in order for them to be loaded by Sails as controllers, a file must <em>end</em> in <code>Controller.js</code>.  By convention, Sails controllers are usually <a href="http://c2.com/cgi/wiki?PascalCase" target="_blank"><em>Pascal-cased</em></a>, so that every word in the filename (including the first word) is capitalized: for example, <code>UserController.js</code>, <code>MyController.js</code> and <code>SomeGreatBigController.js</code> are all valid, Pascal-cased names.</p>
-<p>You may organize your controllers into groups by saving them in subfolders of <code>api/controllers</code>, however note that the subfolder name <em>will become part of the Controller&#x2019;s identity</em> when used for routing (more on that in the &quot;Routing&quot; section below).</p>
-<h3 id="what-does-a-controller-file-look-like-" permalink="what-does-a-controller-file-look-like">What does a Controller file look like?</h3>
-<p>A controller file defines a Javascript object whose keys are action names, and whose values are the corresponding action methods.  Here&#x2019;s a simple example of a full controller file:</p>
-<pre><code data-language="javascript">module.exports = {
+<h1>コントローラ</h1>
+<h3>概要</h3>
+<p>コントローラ（<strong>MVC</strong>モデルでいうところの<strong>C</strong>）はSailsアプリケーションがWebブラウザやモバイルアプリケーションなどWebサーバと通信できる各種の端末から受けるリクエストを処理する基礎的なオブジェクトです。コントローラはしばしば<a href="http://sailsjs.org/documentation/concepts/ORM/Models.html">Model</a>と<a href="http://sailsjs.org/documentation/concepts/Views">View</a>の中間に立ちます。また、多くのケースではアプリケーションお大半の<a href="http://en.wikipedia.org/wiki/Business_logic">ビジネスロジック</a>はコントローラの中に記述されます。</p>
+<h3>アクション</h3>
+<p>コントローラは<em>アクション</em>と呼ばれるファンクションの集合から構成されます。アクションはあなたのアプリケーションのルーティングから転送されます。つまりクライアントが特定の<a href="http://sailsjs.org/documentation/concepts/Routes">ルート</a>に対してリクエストを行った時にはアクションに転送されそこで何ら家のビジネスロジックを実行した上で（大抵の場合は）レスポンスを生成します。例えば「<code>/hello</code>のルートにGETアクセスがなされた場合以下の様なメソッドが呼び出す」ということが出来ます。:</p>
+<pre><code class="language-javascript">function (req, res) {
+  return res.send("Hi there!");
+}</code></pre>
+<p>このためブラウザが<code>/hello</code>のURLを呼び出した時はいつでも&ldquo;Hi there&rdquo;とメッセージが表示されるようになります。</p>
+<h3>コントローラはどこで定義されますか</h3>
+<p>コントローラは<code>api/controllers</code>フォルダの中に定義されます。このフォルダにはどんなファイルでも置いていいですがSailsのコントローラとして読み込まれるためにはファイル名は必ず<code>Controller.js</code>で<em>終わらなければ</em>なりません。慣習に則り、Sailsのコントローラは<a href="http://c2.com/cgi/wiki?PascalCase"><em>パスカルケース</em></a>で命名されます。そのためすべての単語（最初の単語も含め）は大文字で始まらなければなりません。例えばUserController.js, MyController.js や<code>SomeGreatBigController.js</code> はすべて正しいフォーマットのパスカルケース命名です。</p>
+<p>もしもコントローラをグループ分けする必要がある場合<code>api/controllers</code>の中にサブフォルダーを作成することが出来ます。ただし、サブフォルダー名はルーティングの過程で<em>コントローラの名前の一部</em>として取り扱われます。(詳細は下記の&quot;Routing&quot;セクションをご覧ください。)</p>
+<h3>コントローラはどんなファイルですか</h3>
+<p>コントローラフォルダはアクション名をキーとしたJavascriptオブジェクトとして定義され、そのオブジェクトのキーの中身にアクションが入ります。以下にコントローラファイルの簡単な例を挙げます。:</p>
+<pre><code class="language-javascript">module.exports = {
   hi: function (req, res) {
-    return res.send(&quot;Hi there!&quot;);
+    return res.send("Hi there!");
   },
   bye: function (req, res) {
-    return res.redirect(&quot;http://www.sayonara.com&quot;);
+    return res.redirect("http://www.sayonara.com");
   }
-};
-</code></pre><!-- __LANG=%%__ -->
-<p>This controller defines two actions: the &#x201C;hi&#x201D; responds to a request with a string message, while the &#x201C;bye&#x201D; action responds by redirecting to another web site.  The <code>req</code> and <code>res</code> objects will be familiar to anyone who has used <a href="https://github.com/expressjs" target="_blank">Express.js</a> to write a web application.  This is by design, as Sails uses Express under the hood to handle routing.  Take special note, however, of the lack of a <code>next</code> argument for the actions.  Unlike Express  middleware methods, Sails controller actions should always be the last stop in the request chain--that is, they should always result in either a response or an error.  While it is possible to use <code>next</code> in an action method, you are strongly encouraged to use <a href="http://sailsjs.org/documentation/concepts/Policies" target="_blank">policies</a> instead wherever possible.</p>
-<h3 id="-thin-controllers" permalink="thin-controllers">&quot;Thin&quot; Controllers</h3>
-<p>Most MVC frameworks recommend writing &quot;thin&quot; controllers, and while Sails is no exception (it is a good idea to keep your Sails controllers as simple as possible) it is also helpful to understand &quot;why?&quot;</p>
-<p>Controller code is inherently dependent on some sort of trigger or event.  In a backend framework like Sails, this event is almost always an incoming request.  So if you write a bunch of code in one of your controller actions, it is not uncommon for that code&apos;s scope to be dependent on the &quot;request context&quot; (the <code>req</code> and <code>res</code> objects).  Which is fine...until you want to use that code from a slightly different action, or from the command line.</p>
-<p>So the goal of the &quot;thin controller&quot; philosophy is to encourage decoupling of reusable code from any related scope entanglements.  In Sails, you can achieve this in a number of different ways, but the most common strategies for extrapolating code from controllers are:</p>
+};</code></pre>
+<p>このコントローラには2つのアクションが定義されいます。アクション&ldquo;hi&rdquo;はテキストのレスポンスを返し、アクション&ldquo;bye&rdquo;は別のWebサイトへのリダイレクトを返します。<code>req</code>オブジェクトと<code>res</code>オブジェクトは<a href="https://github.com/expressjs">Express.js</a>でWebアプリケーションを書いたことのある人は誰でも馴染みあるところです。これはSailsはルーティングにあたってExpressを裏方で利用しているという設計上の利用です。Expressのミドルウエアとは違いSailsのコントローラは常にリクエストチェーンの最後になります。つまり、常に何らかのレスポンスないしエラーを返さなければならないということです。アクションメソッドの中で別の方針を使うことは可能ですが、この方針をとって構わない時には<a href="http://sailsjs.org/documentation/concepts/Policies">ポリシー</a>を利用することを強くおすすめします。</p>
+<h3>「軽量な」コントローラ</h3>
+<p>ほとんどのMVCフレームワークはコントローラを「軽量に」保つことを進めており、Sailsもその例外ではありませんが、（つまりSailsのコントローラ可能な限りシンプルにしておくべきです）ここで「なぜそうなのか」を知っておくのもいいでしょう。</p>
+<p>コントローラのコートはトリガーやイベント本質的に独立しています。Sailsのようなバックエンドフレームワークでは、イベントは殆どの場合においてインカミングのリクエストです。そのためもしいくつかのコードを一つのコントローラアクションに書いてしまった場合リクエストのコンテキスト（つまり<code>req</code>オブジェクトと<code>res</code>オブジェクト）ごとに独立しているべきである各コードのスコープとは別のものになってしまいます。それは一時的には何とかなりますが、あとで「ちょっと違うアクション」やコマンドラインから呼び出したいときに困ったことになります。</p>
+<p>そのため「軽量なコントローラ」の目指すものは再利用可能なコードが特定のスコープともつれ合ってしまっている状況を解消することです。Sailsにおいてこれを実現する方法はいろいろありますがコードをコントローラから独立させる最も一般的な方法は以下のとおりです。</p>
 <ul>
-<li>Write a custom model method to encapsulate some code that performs a particular task relating to a particular model</li>
-<li>Write a service as a function to encapsulate some code that performs a particular application-specific task</li>
-<li>If you find some code which is useful across multiple different applications (and you have time to do this), you should extract it into a node module.  Then you can share it across your organization, use it in future projects, or better yet, <a href="">publish it on npm</a> under a permissive open-source license for other developers to use and help maintain.</li>
+<li>特定のモデルに対して特定のタスクを実行するためにカプセリングされたカスタムのモデルメソッドを書く。</li>
+<li>特定の用途に限定して使われるタスクを実行するためにカプセリングされたファンクションをサービスとして書く。</li>
+<li>もし複数のアプリケーションを通じて有用であるコードを見つけた場合は（時間があれば）nodeのモジュールにしましょう。そうすればあなたの組織を通じて利用することが出来るようになりますし、更に良いこととしてはもしそれをnpmとしてオープンソースで公開すれば誰かが使ってくれたり、メンテナンスを手伝ってくれたりします。</li>
 </ul>
-<p><docmeta name="uniqueID" value="Controllers464694"></docmeta></p>
+<docmeta name="uniqueID" value="Controllers464694">
 <docmeta name="displayName" value="Controllers">
-</docmeta>

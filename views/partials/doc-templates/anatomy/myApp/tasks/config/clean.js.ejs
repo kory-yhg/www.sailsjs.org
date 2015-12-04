@@ -1,8 +1,9 @@
-<h1 id="myapp-tasks-config-clean-js">myApp/tasks/config/clean.js</h1>
-<p><docmeta name="uniqueID" value="cleanjs253199"></docmeta></p>
+<h1>myApp/tasks/config/clean.js</h1>
+<docmeta name="uniqueID" value="cleanjs253199">
 <docmeta name="displayName" value="clean.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * Clean files and folders.
  *
  * ---------------------------------------------------------------
@@ -11,16 +12,16 @@
  * sails project.
  *
  * For usage docs see:
- *         https://github.com/gruntjs/grunt-contrib-clean
+ *      https://github.com/gruntjs/grunt-contrib-clean
  */
 module.exports = function(grunt) {
 
-    grunt.config.set(&apos;clean&apos;, {
-        dev: [&apos;.tmp/public/**&apos;],
-        build: [&apos;www&apos;]
+    grunt.config.set('clean', {
+        dev: ['.tmp/public/**'],
+        build: ['www']
     });
 
-    grunt.loadNpmTasks(&apos;grunt-contrib-clean&apos;);
+    grunt.loadNpmTasks('grunt-contrib-clean');
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```

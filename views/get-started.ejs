@@ -5,7 +5,7 @@
     <!-- Left-side navigation -->
     <div class="navigation" ng-class="{'sticky': scrollTop>75}" ng-style="{left: scrollTop > 75 ? getOffsetLeft('.get-started-container') : 0}">
       <ul>
-        <li><h4>Getting Started:</h4></li>
+        <li><h4>Sailsを始める:</h4></li>
 
         <% _.each(sections, function(section) {
           if(section.displayName === 'What Is Sails') {
@@ -15,8 +15,8 @@
         <li><a href="#?<%= section.id %>" ng-click="intent.scrollToElement('#<%= section.id %>', 500)"><%= section.displayName %></a></li>
         <% }) %>
         <li><h4>More:</h4></li>
-        <li><a href="/documentation">Getting help</a></li>
-        <li><a href="/support">More resources</a></li>
+        <li><a href="/documentation">困ったときには</a></li>
+        <li><a href="/support">さらなるリソース</a></li>
       </ul>
     </div>
 

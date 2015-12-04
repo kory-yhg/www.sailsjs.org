@@ -1,27 +1,27 @@
-<h1 id="myapp-views-layout-ejs">myApp/views/layout.ejs</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This <a href="http://embeddedjs.com/" target="_blank">Embedded JavaScript file</a> acts as the default layout for all server side views rendered by your app.  </p>
-<p>Before one of your custom views is sent to the client, it is injected into this file.  It is this file that is actually sent to the client.  </p>
-<p>Feel free to change this as you see fit.  Its also a great place to include javascript and css that you plan on using in every view.  This keeps you from having to include them in all your custom .ejs files.  Note, this isnt an issue if you created your app with the <code>--linker</code> flag.  In this case, everything in your assets directory is minified and injected into every view rendered by your app. </p>
-<p><docmeta name="uniqueID" value="layoutejs708856"></docmeta></p>
+<h1>myApp/views/layout.ejs</h1>
+<h3>目的</h3>
+<p>この<a href="http://embeddedjs.com/">Embedded JavaScriptファイル</a>はアプリケーションのサーバサイドでレンダリングされる全てのビューのデフォルトレイアウトです。</p>
+<p>それぞれのカスタムビューはクライアントに送信される前に、このファイルに挿入されます。実際にクライアントに送信されるのはこのファイルです。</p>
+<p>このファイルは用途に合わせて編集できます。また、全てのビューで使うCSSやjavascriptをインクルードするのに最適な場所です。ここに挿入することで全てのカスタム.ejsファイルに挿入する必要がなくなります。アプリケーションを<code>--linker</code>で作成した場合、この限りでないことを覚えておいてください。その場合はアセットディレクトリにあるもの全てが最小化され、アプリケーションでレンダリングされる全てのビューに挿入されます。</p>
+<docmeta name="uniqueID" value="layoutejs708856">
 <docmeta name="displayName" value="layout.ejs">
 
-<pre><code data-language="html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;New Sails App&lt;/title&gt;
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>New Sails App</title>
 
-    &lt;!-- Viewport mobile tag for sensible mobile support --&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1&quot;&gt;
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-
-    &lt;!--  
+    <!--  
         Stylesheets and Preprocessors
         ==============================
 
-        You can always bring in CSS files manually with `&lt;link&gt;` tags, or asynchronously
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
         using a solution like AMD (RequireJS).  Or, if you like, you can take advantage 
-        of Sails&apos; conventional asset pipeline (boilerplate Gruntfile).
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
 
         By default, stylesheets from your `assets/linker/styles` folder are included
         here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
@@ -34,18 +34,16 @@
             + Change the order of your CSS files
             + Import stylesheets from other directories
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
-    --&gt;
+    -->
 
-    &lt;!--STYLES--&gt;
-    &lt;!--STYLES END--&gt;
-  &lt;/head&gt;
+    <!--STYLES-->
+    <!--STYLES END-->
+  </head>
 
-  &lt;body&gt;
-    &lt;%- body %&gt;
+  <body>
+    <%- body %>
 
-
-
-    &lt;!--
+    <!--
         Client-side Templates
         ========================
 
@@ -63,21 +61,20 @@
             + Import templates from other directories
             + Use a different template engine (handlebars, jade, dust, etc.)
             + Internationalize your client-side templates using a server-side
-              stringfile before they&apos;re served.
-    --&gt;
+              stringfile before they're served.
+    -->
 
-    &lt;!--TEMPLATES--&gt;
-    &lt;!--TEMPLATES END--&gt;
+    <!--TEMPLATES-->
+    <!--TEMPLATES END-->
 
-
-    &lt;!--
+    <!--
 
       Client-side Javascript
       ========================
 
       You can always bring in JS files manually with `script` tags, or asynchronously
       on the client using a solution like AMD (RequireJS).  Or, if you like, you can 
-      take advantage of Sails&apos; conventional asset pipeline (boilerplate Gruntfile).
+      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
 
       By default, filesin your `assets/linker/js` folder are included here
       automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
@@ -91,11 +88,11 @@
           + Import scripts from other directories
           + Use a different preprocessor, like TypeScript
 
-    --&gt;
+    -->
 
-    &lt;!--SCRIPTS--&gt;
-    &lt;!--SCRIPTS END--&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+    <!--SCRIPTS-->
+    <!--SCRIPTS END-->
+  </body>
+</html>
+
+```

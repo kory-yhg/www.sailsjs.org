@@ -1,25 +1,22 @@
-<h1 id="-defaults-"><code>.defaults</code></h1>
-<p>The <code>defaults</code> feature can be implemented either as an object or a function which takes a single argument (see &#x201C;using <code>defaults</code> as a function&#x201D; below) and returns an object.  The object you specify will be used to provide default configuration values for Sails.  You should use this feature to specify default settings for your hook.  For example, if you were creating a hook that communicates with a remote service, you may want to provide a default domain and timeout length:</p>
-<pre><code data-language="javascript">{
+<h1><code>.defaults</code></h1>
+<p><code>defaults</code>機能はオブジェクトまたは単一の引数を取るファンクション (以下の&ldquo;using <code>defaults</code> as a function&rdquo; をご覧ください)として実装することが出来、オブジェクトを返すことが出来ます。あなたが指定したオブジェクトはSailsのデフォルトの設定を提供するために使われます。あなたのフックのデフォルト設定を指定するためにこれを使うべきです。例えば、リモートサービスと通信するフックを作っている場合、以下のようにデフォルトのドメインとタイムアウトの長さを提供します。:</p>
+<pre><code>{
    myapihook: {
       timeout: 5000,
-      domain: &quot;www.myapi.com&quot;
+      domain: "www.myapi.com"
    }
-}
-</code></pre><!-- __LANG=%%__ -->
-<p>If a <code>myapihook.timeout</code> value is provided via a Sails configuration file, that value will be used; otherwise it will default to <code>5000</code>.  </p>
-<h5 id="namespacing-your-hook-configuration" permalink="namespacing-your-hook-configuration">Namespacing your hook configuration</h5>
-<p>For <a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks?q=types-of-hooks" target="_blank">project hooks</a>, you should namespace your hook&#x2019;s configuration under a key that uniquely identifies that hook (e.g. <code>myapihook</code> above).  For <a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks?q=types-of-hooks" target="_blank">installable hooks</a>, you should use the special <code>__configKey__</code> key to allow end-users of your hook to <a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html?q=changing-the-way-sails-loads-an-installable-hook" target="_blank">change the configuration key</a> if necessary.  The default key for a hook using <code>__configKey__</code> is the hook name.  For example, if you create a hook called <code>sails-hooks-myawesomehook</code> which includes the following <code>defaults</code> object:</p>
-<pre><code data-language="javascript">{
+}</code></pre>
+<p>Sailsの設定で<code>myapihook.timeout</code>が提供されていた場合、その値が使われます。そうでなければデフォルトの<code>5000</code>が使われます。</p>
+<h5>フック設定のネームスペース</h5>
+<p><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks?q=types-of-hooks">プロジェクトフック</a>に関してはフックを一意に示すキー(例：上記の<code>myapihook</code>)のもとにフックの設定を置かなければなりません。<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks?q=types-of-hooks">インスタンスフック</a>に関しては特別な<code>__configKey__</code>キーを使い、フックのエンドユーザが必要に応じて<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html?q=changing-the-way-sails-loads-an-installable-hook">設定キーを変更</a> 出来るようにしなければなりません。<code>__configKey__</code>を使うフックのデフォルトのキーはフック名です。例えば以下の<code>defaults</code>オブジェクトを持つ<code>sails-hooks-myawesomehook</code>と呼ばれるフックを作った時には:</p>
+<pre><code>{
    __configKey__: {
-      name: &quot;Super Bob&quot;
+      name: "Super Bob"
    }
-}
-</code></pre><!-- __LANG=%%__ -->
-<p>then it will, by default, provide default settings for the <code>sails.config.myawesomehook.name</code> value.  If the end-user of the hook overrides the hook name to be <code>foo</code>, then the <code>defaults</code> object will provide a default value for <code>sails.config.foo.name</code>.</p>
-<h5 id="using-defaults-as-a-function" permalink="using-defaults-as-a-function">Using <code>defaults</code> as a function</h5>
-<p>If you specify a function for the <code>defaults</code> feature instead of a plain object, it takes a single argument (<code>config</code>) which receives any Sails configuration overrides.  Configuration overrides can be made by passing settings to the command line when lifting Sails (e.g. <code>sails lift --prod</code>), by passing an object as the first argument when programmatically lifting or loading Sails (e.g. <code>Sails.lift({port: 1338}, ...)</code>) or by using a <a href="http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html" target="_blank"><code>.sailsrc</code></a> file.  The <code>defaults</code> function should return a plain object representing configuration defaults for your hook.</p>
-<p><docmeta name="uniqueID" value="Hooks75003"></docmeta></p>
-<p><docmeta name="displayName" value=".defaults"></docmeta></p>
+}</code></pre>
+<p>これはデフォルトでは<code>sails.config.myawesomehook.name</code>の値を提供することになります。もしエンドユーザーがフックの名前を<code>foo</code>に上書きした場合、<code>defaults</code> オブジェクトは <code>sails.config.foo.name</code>のデフォルト値を提供することになります。</p>
+<h5><code>defaults</code>をファンクションとして使う</h5>
+<p><code>defaults</code>機能でプレーンオブジェクトの代わりにファンクションを指定した場合、Sailsの設定で上書きされた (<code>config</code>)を受け取ることになります。設定の上書きはSailをliftする際に設定を渡したり(例：<code>sails lift --prod</code>)、Sailsをプログラム的にliftまたは読み込む際に最初の引数にオブジェクトを渡したり(例：<code>Sails.lift({port: 1338}, ...)</code>)、<a href="http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html"><code>.sailsrc</code></a>を使ったりする方法でできます。<code>defaults</code>ファンクションはあなたのフックのデフォルト設定を表すプレーンオブジェクトを返さなければなりません。</p>
+<docmeta name="uniqueID" value="Hooks75003">
+<docmeta name="displayName" value=".defaults">
 <docmeta name="stabilityIndex" value="3">
-</docmeta>

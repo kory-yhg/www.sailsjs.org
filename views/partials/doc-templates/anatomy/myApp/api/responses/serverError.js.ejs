@@ -1,13 +1,14 @@
-<h1 id="myapp-api-responses-servererror-js">myApp/api/responses/serverError.js</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This is one of the default Server Responses included in a new Sails project.</p>
-<p>It contains the logic for what should happen when you wish to issue an http 500 response. It can be issued from anywhere you have access to the express <code>res</code> object by calling res.serverError.</p>
-<p>Feel free to edit this file to suit your needs.  You can also create a custom response using our <code>sails-generate-custom-response</code> generator.</p>
-<p>See the Response section of Reference Documentation for more info.</p>
-<p><docmeta name="uniqueID" value="serverErrorjs285178"></docmeta></p>
+<h1>myApp/api/responses/serverError.js</h1>
+<h3>目的</h3>
+<p>これはSailsの新規プロジェクトに標準で含まれているサーバレスポンスの一つです。</p>
+<p>ここにはhttpの500レスポンスを出すべき時のロジックが含まれています。これはexpressの<code>res</code>オブジェクトへアクセスできるところならどこからでもres.serverErrorをコールすることで呼び出せます。</p>
+<p>ニーズに応じてこのファイルを自由に書き換えてください。また、ジェネレータの<code>sails-generate-custom-response</code>でカスタムレスポンスを作れます。</p>
+<p>さらなる情報はリファレンスドキュメンテーションのレスポンスの項目をご覧ください。</p>
+<docmeta name="uniqueID" value="serverErrorjs285178">
 <docmeta name="displayName" value="serverError.js">
 
-<pre><code data-language="javascript">/**
+```
+/**
  * 500 (Server Error) Response
  *
  * Usage:
@@ -24,7 +25,7 @@
 
 module.exports = function serverError (err, viewOrRedirect) {
 
-  // Get access to `req` &amp; `res`
+  // Get access to `req` & `res`
   var req = this.req;
   var res = this.res;
 
@@ -34,11 +35,11 @@ module.exports = function serverError (err, viewOrRedirect) {
       return res.send();
     }
     else {
-      if (typeof data !== &apos;object&apos; || data instanceof Error) {
+      if (typeof data !== 'object' || data instanceof Error) {
         data = {error: data};
       }
 
-      if ( req.options.jsonp &amp;&amp; !req.isSocket ) {
+      if ( req.options.jsonp && !req.isSocket ) {
         return res.jsonp(data);
       }
       else return res.json(data);
@@ -49,15 +50,15 @@ module.exports = function serverError (err, viewOrRedirect) {
   res.status(500);
 
   // Log error to console
-  this.req._sails.log.error(&apos;Sent 500 (&quot;Server Error&quot;) response&apos;);
+  this.req._sails.log.error('Sent 500 ("Server Error") response');
   if (err) {
     this.req._sails.log.error(err);
   }
 
   // Only include errors in response if application environment
-  // is not set to &apos;production&apos;.  In production, we shouldn&apos;t
+  // is not set to 'production'.  In production, we shouldn't
   // send back any identifying information about errors.
-  if (this.req._sails.config.environment === &apos;production&apos;) {
+  if (this.req._sails.config.environment === 'production') {
     err = undefined;
   }
 
@@ -69,7 +70,7 @@ module.exports = function serverError (err, viewOrRedirect) {
   // Make data more readable for view locals
   var locals;
   if (!err) { locals = {}; }
-  else if (typeof err !== &apos;object&apos;){
+  else if (typeof err !== 'object'){
     locals = {error: err};
   }
   else {
@@ -86,7 +87,7 @@ module.exports = function serverError (err, viewOrRedirect) {
   }
 
   // Serve HTML view or redirect to specified URL
-  if (typeof viewOrRedirect === &apos;string&apos;) {
+  if (typeof viewOrRedirect === 'string') {
     if (viewOrRedirect.match(/^(\/|http:\/\/|https:\/\/)/)) {
       return res.redirect(viewOrRedirect);
     }
@@ -95,11 +96,11 @@ module.exports = function serverError (err, viewOrRedirect) {
       else return res.send(html);
     });
   }
-  else return res.view(&apos;500&apos;, locals, function viewReady(viewErr, html) {
+  else return res.view('500', locals, function viewReady(viewErr, html) {
     if (viewErr) return sendJSON(err);
     else return res.send(html);
   });
 
 };
-</code></pre><!-- __LANG=%%__ -->
-</docmeta>
+
+```
