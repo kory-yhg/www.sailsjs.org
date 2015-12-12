@@ -1,10 +1,8 @@
-<h1 id="records">Records</h1>
-<p>A record is a uniquely identifiable object that corresponds 1-to-1 with a database entry; e.g. a row in Oracle/MSSQL/PostgreSQL/MySQL, a document in MongoDB, or a hash in Redis.</p>
-<pre><code data-language="javascript">Order.findOne().exec(function (err, order){
+<h1>Records</h1>
+<p>レコードはデータベースのエントリーと1対1の対応をする一意に特定できるオブジェクトです。例:Oracle/MSSQL/PostgreSQL/MySQLでの行、MongoDBでのドキュメント、Redisでのハッシュ</p>
+<pre><code class="language-js">Order.findOne().exec(function (err, order){
   var record = order;
-});
-</code></pre><!-- __LANG=%%__ -->
-<p>For the most part, records are just plain old JavaScript objects (aka POJOs).  However they do have a few protected (non-enumerable) methods for formatting their wrapped data, as well as a special method (<a href="http://sailsjs.org/documentation/reference/waterline/records/save.html" target="_blank"><code>.save()</code></a>) for persisting <a href="http://en.wikipedia.org/wiki/Active_record_pattern" target="_blank">programmatic changes</a> to the database.</p>
-<p><docmeta name="uniqueID" value="record890682"></docmeta></p>
+});</code></pre>
+<p>多くの部分でレコードは単なるのJavaScriptオブジェクト（あるいはPOJOとも呼ばれます）です。しかしながら、<a href="http://en.wikipedia.org/wiki/Active_record_pattern">プログラム的な変更</a>をデータベースに永続化するための特別なメソッドである(<a href="http://sailsjs.jp/documentation/reference/waterline/records/save.html"><code>.save()</code></a>)のようにラップされたデータをフォーマットするための幾つかの数えきれないprotectedのメソッドがあります。</p>
+<docmeta name="uniqueID" value="record890682">
 <docmeta name="displayName" value="Records">
-</docmeta>

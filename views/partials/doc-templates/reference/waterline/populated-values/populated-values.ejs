@@ -1,62 +1,57 @@
-<h1 id="populated-values">Populated Values</h1>
-<p>In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using associations.  When <a href="http://sailsjs.org/documentation/reference/waterline/queries/populate.html" target="_blank"><code>.populate()</code></a> is called on a query, each of the resulting records will contain one or more <strong>populated values</strong>.  Each one of those <strong>populated values</strong> is a snapshot of the record(s) linked to that particular association at the time of the query.</p>
-<p>The type of a populated value is either:</p>
+<h1>Populated Values</h1>
+<p>Eメールアドレスや電話番号、誕生日などの基本的な促成に加えてWaterlineではアソシエーションを使ってリンクされたデータのセットを動的に取得し、保存する必要があります。クエリーが<a href="http://sailsjs.jp/documentation/reference/waterline/queries/populate.html"><code>.populate()</code></a>が呼びだされた時にはそれぞれの結果は一つまたは複数の <strong>populated values</strong> を持ちます。それら、それぞれの<strong>populated values</strong>クエリされた時点での特定のアソシエーションへのリンクを含むスナップショットです。</p>
+<p>populated valueは2種類あります:</p>
 <ul>
-<li><code>null</code>, or a plain old JavaScript object (POJO), or  <em>(if it corresponds to a &quot;model&quot; association)</em></li>
-<li>an empty array, or an array of plain old JavaScript objects <em>(if it corresponds to a &quot;collection&quot; association)</em></li>
+<li><code>null</code>または単なるJavaScriptオブジェクト(POJO)(合致するアソシエーションが&quot;model&quot;であれば)_</li>
+<li>空の配列、または単なるJavaScriptオブジェクトの配列(合致するアソシエーションが&quot;collection&quot;であれば)_</li>
 </ul>
-<p>For example, assuming we&apos;re dealing with orders of adorable wolf puppies:</p>
-<pre><code data-language="javascript">Order.find()
-.populate(&apos;buyers&apos;)  // a &quot;collection&quot; association
-.populate(&apos;seller&apos;)  // a &quot;model&quot; association
+<p>たとえは、可愛い狼の子供のオーダーを扱っているとすると:</p>
+<pre><code class="language-js">Order.find()
+.populate('buyers')  // a "collection" association
+.populate('seller')  // a "model" association
 .exec(function (err, orders){
 
-  // this array is a snapshot of the Customers who are associated with the first Order as &quot;buyers&quot;
+  // this array is a snapshot of the Customers who are associated with the first Order as "buyers"
   orders[0].buyers;
-  // =&gt; [ {id: 1, name: &apos;Rob Stark&apos;}, {id: 6, name: &apos;Arya Stark&apos;} ]
+  // =&gt; [ {id: 1, name: 'Rob Stark'}, {id: 6, name: 'Arya Stark'} ]
 
-  // this object is a snapshot of the Company that is associated with the first Order as the &quot;seller&quot;
+  // this object is a snapshot of the Company that is associated with the first Order as the "seller"
   orders[0].seller;
-  // =&gt; { id: 42941, corporateName: &apos;WolvesRUs Inc.&apos; }
+  // =&gt; { id: 42941, corporateName: 'WolvesRUs Inc.' }
 
-  // this array is empty because the second Order doesn&apos;t have any &quot;buyers&quot;
+  // this array is empty because the second Order doesn't have any "buyers"
   orders[1].buyers;
   // =&gt; []
 
-  // this is `null` because there is no &quot;seller&quot; associated with the second Order
+  // this is `null` because there is no "seller" associated with the second Order
   orders[1].seller;
   // =&gt; null
-});
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="modifying-populated-values" permalink="modifying-populated-values">Modifying populated values</h3>
-<p>Changes to populated values are persisted (i.e. saved to the database) by calling <code>.save()</code> on the record they are attached to.  You cannot call <code>.save()</code> directly on a populated value.</p>
-<p>Changing or remove the linked record of a &quot;model&quot; association can be accomplished by simply setting the property directly on the original record:</p>
-<pre><code data-language="javascript">orders[1].seller = { corporateName: &apos;Wolf Orphanage&apos; };
-</code></pre><!-- __LANG=%%__ -->
-<p>&quot;collection&quot; associations, on the other hand, <em>do</em> have a couple of special (non-enumerable) methods for associating and disassociating linked records.  However, <code>.save()</code> must still be called on the original record in order for changes to be persisted to the database.</p>
-<pre><code data-language="javascript">orders[1].buyers.add({ name: &apos;Jon Snow&apos; });
-orders[1].save(function (err) { ... });
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="example" permalink="example">Example</h3>
-<p>Finally, to put it all together:</p>
-<pre><code data-language="javascript">Order.find()
-.populate(&apos;buyers&apos;)
+});</code></pre>
+<h3>populated valuesを編集する</h3>
+<p>変更はアタッチされたレコードで<code>.save()</code>をコールすることによって永続化（すなわちデータベースにセーブ）されます。populated valueに直接<code>.save()</code>する事はできません。</p>
+<p>&quot;model&quot;アソシエーションでリンクされたレコードの変更または削除は単に元のレコードにプロパティを設定することによって行えます:</p>
+<pre><code class="language-js">orders[1].seller = { corporateName: 'Wolf Orphanage' };</code></pre>
+<p>一方&quot;model&quot;アソシエーションに関しては、リンクされたレコードを接続または切断するための幾つかの(数えきれない)特殊なメソッドがあります。しかしながら、変更がデータベースで永続化されるためには<code>.save()</code>メソッドは依然としてもとのレコードで呼び出す必要があります。</p>
+<pre><code class="language-js">orders[1].buyers.add({ name: 'Jon Snow' });
+orders[1].save(function (err) { ... });</code></pre>
+<h3>例</h3>
+<p>最後にこれらをまとめて:</p>
+<pre><code class="language-js">Order.find()
+.populate('buyers')
 .exec(function (err, orders){
 
-  orders[1].buyers.add({ name: &apos;Jon Snow&apos; });
-  orders[1].seller = { corporateName: &apos;Wolf Orphanage&apos; };
+  orders[1].buyers.add({ name: 'Jon Snow' });
+  orders[1].seller = { corporateName: 'Wolf Orphanage' };
   orders[1].save(function (err) {
     // We successfully created a new Customer named Jon and added
-    // him to `order[1]` as one of its &quot;buyers&quot;.
-    // We also created a new company and set it as `order[1]`&apos;s &quot;seller&quot;.
+    // him to `order[1]` as one of its "buyers".
+    // We also created a new company and set it as `order[1]`'s "seller".
     //
     // If we had provided only a primary key value instead of an object,
     // in both cases Waterline would have tried to associate existing
     // Customer and Company records rather than creating new ones.
   });
 
-});
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="populatedvalues790682"></docmeta></p>
+});</code></pre>
+<docmeta name="uniqueID" value="populatedvalues790682">
 <docmeta name="displayName" value="Populated Values">
-</docmeta>

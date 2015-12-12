@@ -1,7 +1,7 @@
 <h1>ミドルウエア</h1>
-<p>SailsはExpress / Connectのミドルウエアと(実は全ての部分が)完全な互換性を持っています。<a href="http://sailsjs.org/documentation/concepts/Controllers?q=actions">コントローラアクション</a>や<a href="http://sailsjs.org/documentation/concepts/Policies">ポリシー</a>を始めとした、あなたがSails上で書くコードの大半は事実上ミドルウエアであると言えます。</p>
+<p>SailsはExpress / Connectのミドルウエアと(実は全ての部分が)完全な互換性を持っています。<a href="http://sailsjs.jp/documentation/concepts/Controllers?q=actions">コントローラアクション</a>や<a href="http://sailsjs.jp/documentation/concepts/Policies">ポリシー</a>を始めとした、あなたがSails上で書くコードの大半は事実上ミドルウエアであると言えます。</p>
 <h3>HTTPミドルウエア</h3>
-<p>また、SailsはHTTPリクエストを処理する目的で追加の<a href="http://sailsjs.org/documentation/concepts/Middleware?q=adding-or-overriding-http-middleware">設定可能なミドルウエアスタック</a>を利用しています。アプリケーションがHTTPリクエストを受け取った時は常に、設定されたミドルウエアスタックが順に実行されます。</p>
+<p>また、SailsはHTTPリクエストを処理する目的で追加の<a href="http://sailsjs.jp/documentation/concepts/Middleware?q=adding-or-overriding-http-middleware">設定可能なミドルウエアスタック</a>を利用しています。アプリケーションがHTTPリクエストを受け取った時は常に、設定されたミドルウエアスタックが順に実行されます。</p>
 <blockquote>
 <p>HTTPミドルウエアスタックは「実際の」HTTPリクエスト時にのみ利用され、<strong>バーチャルなリクエスト</strong>（例えばliveなSocket.ioコネクションからのリクエスト）は無視されるということを覚えておいてください。</p>
 </blockquote>
@@ -57,9 +57,9 @@
 <blockquote>
 <p><em>”何処で<code>app.use()</code>すればいいのか?”</em>ということです。</p>
 </blockquote>
-<p>ほとんどのケースにおいてこの答えはExpressのミドルウエアをHTTPミドルウエアとして<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.http.html"><code>sails.config.http.middleware</code></a>でインストールすることです。これでアプリケーションにおける全てのHTTPリクエストの際にこれらトリガーされることになります。また他のHTTPミドルウエアと関連してどの順番で動作すればいいのかを設定することも出来ます。</p>
+<p>ほとんどのケースにおいてこの答えはExpressのミドルウエアをHTTPミドルウエアとして<a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.http.html"><code>sails.config.http.middleware</code></a>でインストールすることです。これでアプリケーションにおける全てのHTTPリクエストの際にこれらトリガーされることになります。また他のHTTPミドルウエアと関連してどの順番で動作すればいいのかを設定することも出来ます。</p>
 <h3>SailsにおけるExpress Routingミドルウエア</h3>
-<p><a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html"><code>config/policies.js</code></a>で設定することによりポリシーとしてExpressミドルウエアをインクルードすることも出来ます。また、実際のラッパーポリシーの中にmiddlewareをrequireしてセットアップすることも出来ます(通常、そうするのがいいです)し、単にpolicies.jsファイルで直接requireする事もできます。以下の例では簡潔さを優先して後者の手法を取っています。:</p>
+<p><a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.policies.html"><code>config/policies.js</code></a>で設定することによりポリシーとしてExpressミドルウエアをインクルードすることも出来ます。また、実際のラッパーポリシーの中にmiddlewareをrequireしてセットアップすることも出来ます(通常、そうするのがいいです)し、単にpolicies.jsファイルで直接requireする事もできます。以下の例では簡潔さを優先して後者の手法を取っています。:</p>
 <pre><code class="language-js">{
   '*': true,
 

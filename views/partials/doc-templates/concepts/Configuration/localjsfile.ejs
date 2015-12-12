@@ -1,7 +1,7 @@
 <h1><code>config/local.js</code>ファイル</h1>
-<p><code>config/local.js</code>ファイルはSailsアプリケーションをローカル環境（あなたのラップトップなど）で動かすのに便利です。このファイルでの設定は<a href="http://sailsjs.org/documentation/concepts/Configuration/usingsailsrcfiles.html">.sailsrc</a>以外の全ての設よりも優先します。これはローカルな利用のみに利用されることを想定しているのでバージョン管理の管理下に入れるべきではありません（また、その理由でこのファイルはデフォルトの<code>.gitignore</code>に入っています。）。<code>local.js</code>をローカルのデータベース設定やアプリケションをローカルでリフトする際に使うポートなどの情報を保管してください。</p>
+<p><code>config/local.js</code>ファイルはSailsアプリケーションをローカル環境（あなたのラップトップなど）で動かすのに便利です。このファイルでの設定は<a href="http://sailsjs.jp/documentation/concepts/Configuration/usingsailsrcfiles.html">.sailsrc</a>以外の全ての設よりも優先します。これはローカルな利用のみに利用されることを想定しているのでバージョン管理の管理下に入れるべきではありません（また、その理由でこのファイルはデフォルトの<code>.gitignore</code>に入っています。）。<code>local.js</code>をローカルのデータベース設定やアプリケションをローカルでリフトする際に使うポートなどの情報を保管してください。</p>
 <p>アプリケーションを開発するにあたってはこのファイルが全てのあなたのコンピュータやサーバ依存のデータ（データベースのパスワードなど）を保管するようにして場合、<code>config/local.js</code>は新規のSailsアプリケーションの<code>.gitignore</code>にデフォルトで含まれており、コミットする際にレポジトリに保管されないことを覚えておいてください。</p>
-<p>アプリケーションがデプロイできるようになったらこのファイルをデプロイ先のサーバで使う設定プションを保存するのにも使えます。しかしながらサーバのデプロイにあたっては通常、環境変数を使うことが望ましいです。ローカルの開発コンフィグを保存するには<code>config/local.js</code>の代わりにコマンドの引数や<code>.sailsrc</code>ファイルを使うことも出来ます。Sailsの設定の全般的情報に関しては<a href="http://sailsjs.org/documentation/concepts/Configuration">概要</a> をご覧ください。</p>
+<p>アプリケーションがデプロイできるようになったらこのファイルをデプロイ先のサーバで使う設定プションを保存するのにも使えます。しかしながらサーバのデプロイにあたっては通常、環境変数を使うことが望ましいです。ローカルの開発コンフィグを保存するには<code>config/local.js</code>の代わりにコマンドの引数や<code>.sailsrc</code>ファイルを使うことも出来ます。Sailsの設定の全般的情報に関しては<a href="http://sailsjs.jp/documentation/concepts/Configuration">概要</a> をご覧ください。</p>
 <blockquote>
 <p><strong>備考:</strong> このファイルは.gitignoreに含まれていますので、あなたのSailsアプリケーションのバージョン管理にgitを使っている場合、このファイルはコミットされないということにご注意ください！
 この利点はつまり個人的情報（データベースパスワードなど）をうっかりレポジトリにコミットしてしまう心配なくあなたのローカルマシンに対する設定をすることが出来るということです。さらに他の開発メンバーがあなたの設定内容を上書きしてコミットしてしまうことも防げます。</p>

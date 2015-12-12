@@ -1,11 +1,11 @@
 <h1>プロジェクトフックを作る</h1>
-<p>プロジェクトフックは<code>api/hooks</code>の中にあるカスタムのSailsフックです。プロジェクトフックは<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html">デフォルト</a> や<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/routes.html">ルート</a> のようなフックの利点を使ったコードを一つのアプリケーション内の複数のモジュールで共有されるのに便利です。もし <em>複数の</em> Sailsアプリケーションでコードを共有したい場合は<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html">creating an installable hook</a> を代わりにご覧ください。</p>
+<p>プロジェクトフックは<code>api/hooks</code>の中にあるカスタムのSailsフックです。プロジェクトフックは<a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html">デフォルト</a> や<a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/hookspec/routes.html">ルート</a> のようなフックの利点を使ったコードを一つのアプリケーション内の複数のモジュールで共有されるのに便利です。もし <em>複数の</em> Sailsアプリケーションでコードを共有したい場合は<a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/installablehooks.html">creating an installable hook</a> を代わりにご覧ください。</p>
 <p>プロジェクトフックを作るには:</p>
 <ol>
 <li>新しいフックの名前を選びます。これは<a href="https://github.com/balderdashy/sails/blob/master/lib/app/configuration/default-hooks.js">core hook names</a> とコンフリクトしてはいけません。</li>
 <li>アプリケーションの<code>api/hooks</code>フォルダにその名前のフォルダを作ります。</li>
 <li><code>index.js</code>をそのフォルダに足します。</li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec">hook specification</a> に従って`index.jsにコードを書きます。</li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/hookspec">hook specification</a> に従って`index.jsにコードを書きます。</li>
 </ol>
 <p>新しいフォルダには他のファイルがあっても問題なく、それらのファイルは<code>require</code>で読み込むことが出来ます。Sailsによって自動的に読み込まれるのは<code>index.js</code>だけです。</p>
 <p>フォルダを作る代わりにプロジェクトの<code>api/hooks</code>フォルダに<code>api/hooks/myProjectHook.js</code>ファイルを作ることも出来ます。</p>
@@ -14,10 +14,10 @@
 <p><code>verbose: your-hook-name hook loaded successfully.</code></p>
 <p>以上の様なメッセージをログで確認することが出来ます。</p>
 <ul>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks">Hooks overview</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html">Using hooks in your app</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec">The hook specification</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html">Creating an installable hook</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks">Hooks overview</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/usinghooks.html">Using hooks in your app</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/hookspec">The hook specification</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/installablehooks.html">Creating an installable hook</a></li>
 </ul>
 <docmeta name="uniqueID" value="Hooks75000">
 <docmeta name="displayName" value="Project Hooks">

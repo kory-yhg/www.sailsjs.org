@@ -4,7 +4,7 @@
 <p>おおくのWebフレームワークのようにSailsはURLをコントローラやビューをマッピングするメカニズムである、ルータを提供します。<strong>ルート</strong>はSailsがリクエストを受け取った時にどのように対処するかを決めたルールです。Sailsには<strong>カスタム</strong>（あるいは明示的）と<strong>オートマティック</strong>（あるいは非明示的）の2種類のルートがあります。</p>
 <h3>カスタムルート</h3>
 <p>Sailsではフレームワークによる制約なく好きなようにURLを決めることが出来ます。</p>
-<p>すべてのSailsプロジェクトにはカスタムの（明示的な）<strong>ルート</strong>のオブジェクトをエクスポートするシンプルな<a href="http://nodejs.org/api/modules.html">Node.js module</a>である<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html"><code>config/routes.js</code></a>があります。例えば以下の <code>routes.js</code>は6つのルールを定義しており、そのうちあるものはアクションを指しており、またあるものはビューを直接指しています。 </p>
+<p>すべてのSailsプロジェクトにはカスタムの（明示的な）<strong>ルート</strong>のオブジェクトをエクスポートするシンプルな<a href="http://nodejs.org/api/modules.html">Node.js module</a>である<a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.routes.html"><code>config/routes.js</code></a>があります。例えば以下の <code>routes.js</code>は6つのルールを定義しており、そのうちあるものはアクションを指しており、またあるものはビューを直接指しています。 </p>
 <pre><code class="language-javascript">// config/routes.js
 module.exports.routes = {
   'get /signup': { view: 'conversion/signup' },
@@ -14,7 +14,7 @@ module.exports.routes = {
   '/logout': 'AuthController.logout',
   'get /me': 'UserController.profile'
 }</code></pre>
-<p>それぞれの<strong>ルート</strong>は<strong>アドレス</strong>（左辺の<code>'get /me'</code>など）と<strong>ターゲット</strong>（右辺の<code>'UserController.profile'</code>など）から成り立っています。<strong>アドレス</strong>はURLパスであり、<a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">HTTP method</a>を指定することも出来ます。<strong>ターゲット</strong>は幾つもの方法で定義することが出来ます(<a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html">この部分における詳細のセクションをご覧ください</a>)が、上に見られるような2つの文法が最も有名です。Sailsはインカミングなリクエストを受け取った時にはすべてのカスタムルートに関して<strong>アドレス</strong>を元にマッチするかを確認します。そこでマッチするルートが見つかったらリクエストは<strong>ターゲット</strong>に渡されます。</p>
+<p>それぞれの<strong>ルート</strong>は<strong>アドレス</strong>（左辺の<code>'get /me'</code>など）と<strong>ターゲット</strong>（右辺の<code>'UserController.profile'</code>など）から成り立っています。<strong>アドレス</strong>はURLパスであり、<a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">HTTP method</a>を指定することも出来ます。<strong>ターゲット</strong>は幾つもの方法で定義することが出来ます(<a href="http://sailsjs.jp/documentation/concepts/Routes/RouteTargetSyntax.html">この部分における詳細のセクションをご覧ください</a>)が、上に見られるような2つの文法が最も有名です。Sailsはインカミングなリクエストを受け取った時にはすべてのカスタムルートに関して<strong>アドレス</strong>を元にマッチするかを確認します。そこでマッチするルートが見つかったらリクエストは<strong>ターゲット</strong>に渡されます。</p>
 <p>例えば我々は<code>'get /me': 'UserController.profile'</code>を以下のように理解するでしょう。:</p>
 <blockquote>
 <p>&quot;やあ、Sails。もし<code>http://mydomain.com/me</code>へのGETリクエストを受け取ったら<code>UserController</code>の<code>profile</code>を走らせてよ。いいね。&quot;</p>
@@ -28,19 +28,19 @@ module.exports.routes = {
   },</code></pre>
 <h4>備考</h4>
 <ul>
-<li>リクエストがルートにマッチしたからといってそれが <em>直接</em> ルートのターゲットにパスされるというわけではありません。例えばHTTPリクエストは通常いくつかの<a href="http://sailsjs.org/documentation/concepts/Middleware">ミドルウエア</a>を先に通ります。そしてもしルートがコントローラの<a href="http://sailsjs.org/documentation/concepts/Controllers?q=actions">アクション</a>を指している場合、リクエストは設定済みの<a href="http://sailsjs.org/documentation/concepts/Policies">ポリシー</a> を通過する必要があります。そしていくつかの特殊な<a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options">ルートオプション</a> は特定の種類のリクエストを「スキップ」させることも有ります。</li>
-<li>ルーターはNodeミドルウエアの標準的なファンクション(すなわち<code>function (req, res, next) {}</code>のような)も含め、どのような正当なルートターゲットに対する<strong>ルート</strong>でも<strong>バインド</strong>することが出来ます。しかしながら可能な限りSailsの慣例的な<a href="http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html">ルートターゲットシンタックス</a>を利用してください。これにより、開発の効率かやトレーニングの簡易化が図れ、プログラムのメンテナンス性も向上します。</li>
+<li>リクエストがルートにマッチしたからといってそれが <em>直接</em> ルートのターゲットにパスされるというわけではありません。例えばHTTPリクエストは通常いくつかの<a href="http://sailsjs.jp/documentation/concepts/Middleware">ミドルウエア</a>を先に通ります。そしてもしルートがコントローラの<a href="http://sailsjs.jp/documentation/concepts/Controllers?q=actions">アクション</a>を指している場合、リクエストは設定済みの<a href="http://sailsjs.jp/documentation/concepts/Policies">ポリシー</a> を通過する必要があります。そしていくつかの特殊な<a href="http://sailsjs.jp/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options">ルートオプション</a> は特定の種類のリクエストを「スキップ」させることも有ります。</li>
+<li>ルーターはNodeミドルウエアの標準的なファンクション(すなわち<code>function (req, res, next) {}</code>のような)も含め、どのような正当なルートターゲットに対する<strong>ルート</strong>でも<strong>バインド</strong>することが出来ます。しかしながら可能な限りSailsの慣例的な<a href="http://sailsjs.jp/documentation/concepts/Routes/RouteTargetSyntax.html">ルートターゲットシンタックス</a>を利用してください。これにより、開発の効率かやトレーニングの簡易化が図れ、プログラムのメンテナンス性も向上します。</li>
 </ul>
 <h3>自動ルーティング</h3>
 <p>カスタムのルーティングに加え、Sailsは多くのルートを自動的にバインドします。もしURLがカスタムルートにマッチしなくてもどれかの自動ルートにマッチすればレスポンスを返します。Sailsにおける主な自動ルーティングは以下のとおりです。:</p>
 <ul>
-<li><a href="http://sailsjs.org/documentation/concepts/Controllers">controllers</a>や<a href="http://sailsjs.org/documentation/concepts/ORM/Models.html">models</a>に完全なRESR APIを提供する、<a href="http://sailsjs.org//documentation/">Blueprintルート</a>。</li>
-<li>イメージやJavascriptやスタイルシートファイルをサポートする<a href="http://sailsjs.org/documentation/concepts/Assets">Assets</a></li>
-<li>もし有効化されていれば、CSRFトークンを取得できるルートを提供する<strong>/csrfToken</strong><a href="http://sailsjs.org/documentation/concepts/Security/CSRF.html">CSRF</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/Controllers">controllers</a>や<a href="http://sailsjs.jp/documentation/concepts/ORM/Models.html">models</a>に完全なRESR APIを提供する、<a href="http://sailsjs.jp//documentation/">Blueprintルート</a>。</li>
+<li>イメージやJavascriptやスタイルシートファイルをサポートする<a href="http://sailsjs.jp/documentation/concepts/Assets">Assets</a></li>
+<li>もし有効化されていれば、CSRFトークンを取得できるルートを提供する<strong>/csrfToken</strong><a href="http://sailsjs.jp/documentation/concepts/Security/CSRF.html">CSRF</a></li>
 </ul>
 <h3>サポートしているプロトコル</h3>
-<p>Sailsのルーターはプロトコル非依存です。すなわち、<a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP requests</a>と<a href="http://en.wikipedia.org/wiki/Websockets">WebSockets</a>から送られたメッセージの両方を処理する方法を知っています。 これはJWRと呼ばれるシンプルなフォーマットでreserved eventハンドラに送られるSocket.ioメッセージをリッスンすることによって実現しています。このスペックは<a href="http://sailsjs.org/documentation/reference/websockets/sails.io.js">client-side socket SDK</a>の枠を超えて定義・実装されています。</p>
+<p>Sailsのルーターはプロトコル非依存です。すなわち、<a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP requests</a>と<a href="http://en.wikipedia.org/wiki/Websockets">WebSockets</a>から送られたメッセージの両方を処理する方法を知っています。 これはJWRと呼ばれるシンプルなフォーマットでreserved eventハンドラに送られるSocket.ioメッセージをリッスンすることによって実現しています。このスペックは<a href="http://sailsjs.jp/documentation/reference/websockets/sails.io.js">client-side socket SDK</a>の枠を超えて定義・実装されています。</p>
 <h4>備考</h4>
-<p>+上級のユーザーにとってはルーターを完全に回避して完全にカスタマイズした低レベルのWebSocketメッセージを直接Socket.ioサーバに送信することも出来ます。ソケットイベントはアプリケーションの<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.sockets.html?q=commonlyused-options"><code>onConnect</code></a>（<a href="http://sailsjs.org/documentation/anatomy/myApp/config/sockets.js.html"><code>config/sockets.js</code></a>にあります。） ファンクションで直接バインドすることが出来ます。ただし多くの場合に関してソケット通信のためのリクエストインタープリタの恩恵に預かったほうがいいということを気に留めておいてください。（HTTPとWebSocketでルートの一貫性を維持することはメンテナンス性を維持する上で重要です。）</p>
+<p>+上級のユーザーにとってはルーターを完全に回避して完全にカスタマイズした低レベルのWebSocketメッセージを直接Socket.ioサーバに送信することも出来ます。ソケットイベントはアプリケーションの<a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.sockets.html?q=commonlyused-options"><code>onConnect</code></a>（<a href="http://sailsjs.jp/documentation/anatomy/myApp/config/sockets.js.html"><code>config/sockets.js</code></a>にあります。） ファンクションで直接バインドすることが出来ます。ただし多くの場合に関してソケット通信のためのリクエストインタープリタの恩恵に預かったほうがいいということを気に留めておいてください。（HTTPとWebSocketでルートの一貫性を維持することはメンテナンス性を維持する上で重要です。）</p>
 <docmeta name="uniqueID" value="Routes849188">
 <docmeta name="displayName" value="Routes">

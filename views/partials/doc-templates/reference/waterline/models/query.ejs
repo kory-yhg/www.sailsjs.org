@@ -1,18 +1,15 @@
-<h1 id="-query-">.query()</h1>
-<p><code>.query()</code> is only available on Sails/Waterline models using a SQL database (PostgreSQL and mySQL) adapter.  Its purpose is to perform raw SQL queries.</p>
-<h3 id="example" permalink="example">Example</h3>
-<pre><code data-language="javascript">Pet.query(&apos;SELECT pet.name FROM pet&apos;, function(err, results) {
+<h1>.query()</h1>
+<p><code>.query()</code>はSails/WaterlineをSQLデータベース（PostgreSQLとmySQL）と使っている時のみ利用可能です。この目的は生のSQLクエリを実行することです。</p>
+<h3>例</h3>
+<pre><code class="language-js">Pet.query('SELECT pet.name FROM pet', function(err, results) {
   if (err) return res.serverError(err);
   return res.ok(results.rows);
-});
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+});</code></pre>
+<h3>備考</h3>
 <blockquote>
-<p>This method only works with PostgreSQL and mySQL! use .native() for Mongo.</p>
+<p>このメソッドはPostgreSQLとmySQLにのみ利用可能です。Mongoには.native()をご利用下さい。</p>
 </blockquote>
-<p><docmeta name="uniqueID" value="query546204"></docmeta></p>
-<p><docmeta name="methodType" value="mcm"></docmeta></p>
-<p><docmeta name="importance" value="undefined"></docmeta></p>
+<docmeta name="uniqueID" value="query546204">
+<docmeta name="methodType" value="mcm">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".query()">
-
-</docmeta>

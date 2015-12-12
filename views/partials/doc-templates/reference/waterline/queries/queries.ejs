@@ -1,33 +1,28 @@
-<h1 id="working-with-queries">Working with Queries</h1>
-<p>Chainable deferred objects returned from Waterline model methods like <code>.find()</code> and <code>.create()</code>.</p>
-<pre><code data-language="javascript">var query = Stuff.find();
-</code></pre><!-- __LANG=%%__ -->
-<p>You have likely already interacted with query objects in your Sails app. Most of the time, you probably won&apos;t think about them as objects <em>per se</em>, rather just another part of the syntax for communicating with the database.</p>
-<p>The primary purpose of Waterline query instances is to provide a convenient, chainable syntax for working with your models.  Methods like <code>.populate()</code>, <code>.where()</code>, and <code>.sort()</code> allow you to refine database calls <em>before</em> they&apos;re sent down the wire.  When you&apos;re ready to fire the query off to the database, you can just call <a href="http://sailsjs.org/documentation/reference/waterline/queries/exec.html" target="_blank"><code>.exec()</code></a>.</p>
-<h3 id="promises" permalink="promises">Promises</h3>
-<p>In addition to the <code>.exec()</code> method, Waterline queries implement a partial integration with the <a href="https://github.com/petkaantonov/bluebird" target="_blank">Bluebird</a> promise library, exposing <code>.then()</code> and <code>.catch()</code> methods.</p>
-<pre><code data-language="javascript">Stuff.find()
+<h1>クエリーを扱う</h1>
+<p><code>.find()</code>や<code>.create()</code>と同じようにチェーン可能なdeferredオブジェクトがWaterlineから返されます</p>
+<pre><code class="language-js">var query = Stuff.find();</code></pre>
+<p>おそらく、すでにSailsアプリケーションでクエリオブジェクトを扱ったことがあると思います。多くの場合、そのオブジェクト <em>それ自体</em>　に関してはデータベースと通信するシンタックスの一部ということ以上に考えてこなかったと思います。</p>
+<p>Waterlineクエリインスタンスの第一の目的はモデル操作に関して便利で、チェーン可能なシンタックスを提供することです。<code>.populate()</code>や<code>.where()</code>、<code>.sort()</code>のようなメソッドはデータベースの呼び出しをそれが送られる <em>前に</em> 洗練することが出来ます。クエリをデータベースに送信する準備ができた時には単に<a href="http://sailsjs.jp/documentation/reference/waterline/queries/exec.html"><code>.exec()</code></a>を呼び出すことが出来ます。</p>
+<h3>Promises</h3>
+<p><code>.exec()</code>メソッドに加え、Waterlineクエリーは<a href="https://github.com/petkaantonov/bluebird">Bluebird</a> promiseライブラリの部分的なサポートを実装しており、<code>.then()</code>と<code>.catch()</code>メソッドを露出しています。</p>
+<pre><code class="language-js">Stuff.find()
 .then(function (allTheStuff) {...})
-.catch(function (err) {...});
-</code></pre><!-- __LANG=%%__ -->
-<p>If you are a fan of promises, and have a reasonable amount of experience with them, you should have no problem working with this interface.  However if you are not very familiar with promises, or don&apos;t care one way or another, you will probably have an easier time working with <code>.exec()</code>, which uses standard Node.js callback conventions.</p>
-<pre><code data-language="javascript">Stuff.find()
-.exec(function (err, allTheStuff) {...})
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="query-execution" permalink="query-execution">Query Execution</h3>
-<p>When you <strong>execute</strong> a query, a lot happens:</p>
-<pre><code data-language="javascript">Zookeeper.find().exec(function (err, zookeepers){
+.catch(function (err) {...});</code></pre>
+<p>あなたがpromisesのファンであって、それに対しての十分な経験があればそのインタフェースを扱うのに問題はないと思います。しかしながらもしpromisesにそれほど慣れていない場合やそんなことを気にしないなどの場合、おそらくNodeのコールバックの慣習を採用した<code>.exec()</code>ほうが物事を簡単に進められます。</p>
+<pre><code class="language-js">Stuff.find()
+.exec(function (err, allTheStuff) {...})</code></pre>
+<h3>クエリの実行</h3>
+<p>クエリを <strong>実行</strong> すると、たくさんのことが起こります:</p>
+<pre><code class="language-js">Zookeeper.find().exec(function (err, zookeepers){
   // would you look at all those zookeepers?
-});
-</code></pre><!-- __LANG=%%__ -->
-<p>First, it is &quot;shaken out&quot; by Waterline core into a normalized <a href="http://sailsjs.org/documentation/concepts/ORM/Querylanguage.html?q=query-language-basics" target="_blank">criteria object</a>.  Then it passes through the relevant Waterline adapter(s) for translation to the raw query syntax of your database(s) (e.g. Redis or Mongo commands, various SQL dialects, etc.)  Finally, each involved adapter uses its native Node.js database driver to send the query out over the network to the corresponding physical database.</p>
-<p>When the adapter receives a response, it is marshalled to the Waterline interface spec and passed back up to Waterine core, where it is integrated with any other raw adapter responses into a coherent result set.  At that point, it undergoes one last normalization before being passed back to your callback for consumption by your app.</p>
-<h3 id="notes" permalink="notes">Notes</h3>
+});</code></pre>
+<p>まず、Waterlineのコアからノーマライズされた<a href="http://sailsjs.jp/documentation/concepts/ORM/Querylanguage.html?q=query-language-basics">criteria object</a>が送り出されます。それから、それから、使っているデータベース(例:Redis、Mongoや多種のSQLの方言など) に対応した生のクエリに変換されるために関連するWaterlineのアダプタに渡されます。最後にそれぞれの関連するアダプタがそのネイティブのNode.jsデータベースドライバが物理的なデータベースに対してネットワークを通じてクエリを発行します。</p>
+<p>アダプタがレスポンスを受け取った時には、Waterlineインタフェースのスペックに誘導され、その他のアダプタからの生のレスポンスと統合して整合性ある結果セットに変換されるためにWaterlineのコアに送り返されます。この時点で、アプリケーションで利用されるコールバックに渡される直前の最後のノーマライゼーションが行われます。</p>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>Waterline model methods will <strong>NOT</strong> return a query instance if an optional callback is directly passed as the final argument.  Instead, that callback will be triggered when the query is complete.</li>
+<li>Waterlineのモデルメソッドは最後の引数にコールバックが直接渡されていた場合、クエリインスタンスを <strong>返しません</strong>。代わりに、クエリが完了した際にはそのコールバックがトリガーされます。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="query820682"></docmeta></p>
+<docmeta name="uniqueID" value="query820682">
 <docmeta name="displayName" value="Queries">
-</docmeta>

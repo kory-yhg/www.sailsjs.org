@@ -1,8 +1,8 @@
 <h1>コントローラ</h1>
 <h3>概要</h3>
-<p>コントローラ（<strong>MVC</strong>モデルでいうところの<strong>C</strong>）はSailsアプリケーションがWebブラウザやモバイルアプリケーションなどWebサーバと通信できる各種の端末から受けるリクエストを処理する基礎的なオブジェクトです。コントローラはしばしば<a href="http://sailsjs.org/documentation/concepts/ORM/Models.html">Model</a>と<a href="http://sailsjs.org/documentation/concepts/Views">View</a>の中間に立ちます。また、多くのケースではアプリケーションお大半の<a href="http://en.wikipedia.org/wiki/Business_logic">ビジネスロジック</a>はコントローラの中に記述されます。</p>
+<p>コントローラ（<strong>MVC</strong>モデルでいうところの<strong>C</strong>）はSailsアプリケーションがWebブラウザやモバイルアプリケーションなどWebサーバと通信できる各種の端末から受けるリクエストを処理する基礎的なオブジェクトです。コントローラはしばしば<a href="http://sailsjs.jp/documentation/concepts/ORM/Models.html">Model</a>と<a href="http://sailsjs.jp/documentation/concepts/Views">View</a>の中間に立ちます。また、多くのケースではアプリケーションお大半の<a href="http://en.wikipedia.org/wiki/Business_logic">ビジネスロジック</a>はコントローラの中に記述されます。</p>
 <h3>アクション</h3>
-<p>コントローラは<em>アクション</em>と呼ばれるファンクションの集合から構成されます。アクションはあなたのアプリケーションのルーティングから転送されます。つまりクライアントが特定の<a href="http://sailsjs.org/documentation/concepts/Routes">ルート</a>に対してリクエストを行った時にはアクションに転送されそこで何ら家のビジネスロジックを実行した上で（大抵の場合は）レスポンスを生成します。例えば「<code>/hello</code>のルートにGETアクセスがなされた場合以下の様なメソッドが呼び出す」ということが出来ます。:</p>
+<p>コントローラは<em>アクション</em>と呼ばれるファンクションの集合から構成されます。アクションはあなたのアプリケーションのルーティングから転送されます。つまりクライアントが特定の<a href="http://sailsjs.jp/documentation/concepts/Routes">ルート</a>に対してリクエストを行った時にはアクションに転送されそこで何ら家のビジネスロジックを実行した上で（大抵の場合は）レスポンスを生成します。例えば「<code>/hello</code>のルートにGETアクセスがなされた場合以下の様なメソッドが呼び出す」ということが出来ます。:</p>
 <pre><code class="language-javascript">function (req, res) {
   return res.send("Hi there!");
 }</code></pre>
@@ -20,7 +20,7 @@
     return res.redirect("http://www.sayonara.com");
   }
 };</code></pre>
-<p>このコントローラには2つのアクションが定義されいます。アクション&ldquo;hi&rdquo;はテキストのレスポンスを返し、アクション&ldquo;bye&rdquo;は別のWebサイトへのリダイレクトを返します。<code>req</code>オブジェクトと<code>res</code>オブジェクトは<a href="https://github.com/expressjs">Express.js</a>でWebアプリケーションを書いたことのある人は誰でも馴染みあるところです。これはSailsはルーティングにあたってExpressを裏方で利用しているという設計上の利用です。Expressのミドルウエアとは違いSailsのコントローラは常にリクエストチェーンの最後になります。つまり、常に何らかのレスポンスないしエラーを返さなければならないということです。アクションメソッドの中で別の方針を使うことは可能ですが、この方針をとって構わない時には<a href="http://sailsjs.org/documentation/concepts/Policies">ポリシー</a>を利用することを強くおすすめします。</p>
+<p>このコントローラには2つのアクションが定義されいます。アクション&ldquo;hi&rdquo;はテキストのレスポンスを返し、アクション&ldquo;bye&rdquo;は別のWebサイトへのリダイレクトを返します。<code>req</code>オブジェクトと<code>res</code>オブジェクトは<a href="https://github.com/expressjs">Express.js</a>でWebアプリケーションを書いたことのある人は誰でも馴染みあるところです。これはSailsはルーティングにあたってExpressを裏方で利用しているという設計上の利用です。Expressのミドルウエアとは違いSailsのコントローラは常にリクエストチェーンの最後になります。つまり、常に何らかのレスポンスないしエラーを返さなければならないということです。アクションメソッドの中で別の方針を使うことは可能ですが、この方針をとって構わない時には<a href="http://sailsjs.jp/documentation/concepts/Policies">ポリシー</a>を利用することを強くおすすめします。</p>
 <h3>「軽量な」コントローラ</h3>
 <p>ほとんどのMVCフレームワークはコントローラを「軽量に」保つことを進めており、Sailsもその例外ではありませんが、（つまりSailsのコントローラ可能な限りシンプルにしておくべきです）ここで「なぜそうなのか」を知っておくのもいいでしょう。</p>
 <p>コントローラのコートはトリガーやイベント本質的に独立しています。Sailsのようなバックエンドフレームワークでは、イベントは殆どの場合においてインカミングのリクエストです。そのためもしいくつかのコードを一つのコントローラアクションに書いてしまった場合リクエストのコンテキスト（つまり<code>req</code>オブジェクトと<code>res</code>オブジェクト）ごとに独立しているべきである各コードのスコープとは別のものになってしまいます。それは一時的には何とかなりますが、あとで「ちょっと違うアクション」やコマンドラインから呼び出したいときに困ったことになります。</p>

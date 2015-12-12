@@ -1,14 +1,14 @@
 <h1>CSRF</h1>
 <p>クロスサイトのリクエスト強制(<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a>)はすでに認証されているWebアプリケーションに対してエンドユーザが意図しないリク絵イストを強制するものです。言い換えればこの防御なしにはChase.comで使うためにChromeに保存されたクッキーのデータを今アクセスしているHorrible-Hacker-Site.comのために使われてしまうということです。 </p>
 <h3>SCRF防御を有効にする</h3>
-<p>Sailsは設定するだけで簡単に使えるオプショナルなCSRF防御策を用意しています。これを有効化するためには<a href="http://sailsjs.org/documentation/reference/Configuration/CSRF.html">sails.config.csrf</a>(通常プロジェクトの中の<a href="http://sailsjs.org/documentation/anatomy/myApp/config/csrf.js.html"><code>config/csrf.js</code></a>ファイルに保管されています。)に以下の編集を加えます。:</p>
+<p>Sailsは設定するだけで簡単に使えるオプショナルなCSRF防御策を用意しています。これを有効化するためには<a href="http://sailsjs.jp/documentation/reference/Configuration/CSRF.html">sails.config.csrf</a>(通常プロジェクトの中の<a href="http://sailsjs.jp/documentation/anatomy/myApp/config/csrf.js.html"><code>config/csrf.js</code></a>ファイルに保管されています。)に以下の編集を加えます。:</p>
 <pre><code class="language-js">csrf: true</code></pre>
 <p>すでにSailsのバックエンドとPOST,PUT,やDELETEで通信しなければならないコードが有る場合、それらの通信はパラメータかヘッダーにCSRFトークンを持たなければならなくなるということにお気をつけ下さい。これから詳しく説明します。</p>
 <h3>CSRFトークン</h3>
 <p>多くのNodeアプリケーションと同じようにSailsとExpressはこれらの攻撃に対応するための<a href="http://www.senchalabs.org/connect/csrf.html">CSRF protection middleware</a>接続に対応しています。このミドルウエアは<a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet#General_Recommendation:_Synchronizer_Token_Pattern">Synchronizer Token Pattern</a>を実装しています。CSRF防御が有効なときにGETでないアクセス方法はHTTPのBodyやクエリストリング、もしくはヘッダーに特別なトークンを持つことで認証されなければなりません。</p>
 <p>CSRFトークンは一時的でセッション依存です。例えばマリーとモハメドがSailsで動作しておりCSRF防御が有効になっているいるEコマースサイトにアクセスするとします。月曜日にマリーもモハメドも買い物をするとします。これを実現するにはマリーとモハメドに一つづつ、少なくとも2つの別々のトークンを用意する必要があります。それからWebバックエンドはトークンがないあるいは、トークンが間違っているリクエストを拒否するでしょう。これでマリーがオンラインポーカを使っている時にサードパーティのWebサイトが彼女のブラウザに入り込んでクッキーを使って彼女が意図しないアクセスをすることはできないようになります。</p>
 <h3>CSRFトークンを発行する</h3>
-<p>CSRFトークンを取得するには<a href="http://sailsjs.org/documentation/concepts/Views/Locals.html">locals</a>を使ってビューでこれを立ち上げる（昔ながらのマルチーページアプリケーションに向いています）か特別な防御がされているJSONエンドポイントからAJAXやソケットで取得（シングルページアプリケーション（SPA）で便利です。）しなければいけません。</p>
+<p>CSRFトークンを取得するには<a href="http://sailsjs.jp/documentation/concepts/Views/Locals.html">locals</a>を使ってビューでこれを立ち上げる（昔ながらのマルチーページアプリケーションに向いています）か特別な防御がされているJSONエンドポイントからAJAXやソケットで取得（シングルページアプリケーション（SPA）で便利です。）しなければいけません。</p>
 <h5>ビューのローカルを使う:</h5>
 <p>古いやり方のフォーム送信ではビューからフォームにデータを渡すのが簡単です。ビューのローカルにアクセス可能な場所からトークンを取得することができます。: <code>&lt;%= _csrf %&gt;</code></p>
 <p>e.g.:</p>

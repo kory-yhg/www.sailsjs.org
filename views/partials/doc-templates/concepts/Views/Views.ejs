@@ -5,9 +5,9 @@
 <h5>ビューを作成する</h5>
 <p>デフォルトではSailsはビューエンジンとしてEJS (<a href="http://embeddedjs.com/">Embedded Javascript</a>)を利用するように設定されています。EJSの構文はとても慣習的ですので、もしPHPやASP、ERB、GSP,JSPなどの言語を使ったことがある人ならすぐに何をしているかがわかるでしょう。</p>
 <p>別のエンジンを利用したい場合、様々な選択肢があります。Sailは<a href="https://github.com/visionmedia/consolidate.js/">Consolidate</a>を通じ<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md">Express</a>と互換性のある全てのテンプレートエンジンを利用することが出来ます。</p>
-<p>ビューはデフォルトでは<a href="http://sailsjs.org/documentation/anatomy/myApp/views"><code>views/</code></a>フォルダーで定義されますが、他のSailsのデフォルトパスと同じように<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md">設定が可能です</a>。もしダイナミックなHTMLページを提供する必要が無い場合（例えばモバイルアプリケーションのAPIを開発しているような場合）、ディレクトリをアプリケーションから削除しても構いません。</p>
+<p>ビューはデフォルトでは<a href="http://sailsjs.jp/documentation/anatomy/myApp/views"><code>views/</code></a>フォルダーで定義されますが、他のSailsのデフォルトパスと同じように<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md">設定が可能です</a>。もしダイナミックなHTMLページを提供する必要が無い場合（例えばモバイルアプリケーションのAPIを開発しているような場合）、ディレクトリをアプリケーションから削除しても構いません。</p>
 <h5>ビューをコンパイルする</h5>
-<p><code>res</code>オブジェクトにアクセス出来るところならどこでも（すなわち、コントローラ、アクション、カスタムレスポンスやポリシーで）<a href="http://sailsjs.org/documentation/reference/res/res.view.html"><code>res.view</code></a>を利用してビューをコンパイルし、その結果のHTMLをユーザに送出することが出来ます。</p>
+<p><code>res</code>オブジェクトにアクセス出来るところならどこでも（すなわち、コントローラ、アクション、カスタムレスポンスやポリシーで）<a href="http://sailsjs.jp/documentation/reference/res/res.view.html"><code>res.view</code></a>を利用してビューをコンパイルし、その結果のHTMLをユーザに送出することが出来ます。</p>
 <p>同様にビューディレクトリを<code>routes.js</code>ファイルに結びつけることが出来ます。これにはアプリケーションのビューの<code>views/</code>ディレクトリからの相対パスを指定するだけです。例えば：</p>
 <pre><code class="language-javascript">{
   'get /': {

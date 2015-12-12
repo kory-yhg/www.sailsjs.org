@@ -1,24 +1,21 @@
-<h1 id="req-acceptslanguage-">req.acceptsLanguage()</h1>
-<p>Returns whether this request (<code>req</code>) considers a certain <code>language</code> &quot;acceptable&quot;.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">req.acceptsLanguage(language);
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="details" permalink="details">Details</h3>
-<p><code>req.acceptsLanguage()</code> returns true if a request has specified the given <code>language</code> as &quot;acceptable&quot; its <code>Accept-Language</code> header (see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4" target="_blank">RFC-2616</a>.)</p>
-<p>This method is used by Sails internally for its implementation of internationalization and localization.  The <a href="http://sailsjs.org/documentation/concepts/Internationalization" target="_blank">i18n</a> hook automatically serves different content to different locales, based on the request.</p>
-<h3 id="example" permalink="example">Example</h3>
-<p>If a request is sent with a <code>&quot;Accept-Charset: utf-8&quot;</code> header:</p>
-<pre><code data-language="javascript">req.acceptsCharset(&apos;utf-8&apos;);
-// -&gt; true
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+<h1>req.acceptsLanguage()</h1>
+<p>リクエスト(<code>req</code>)が特定の<code>language</code>を扱えるかを返します。</p>
+<h3>使い方</h3>
+<pre><code class="language-js">req.acceptsLanguage(language);</code></pre>
+<h3>詳細</h3>
+<p><code>req.acceptsLanguage()</code>はリクエストの<code>Accept-Language</code> ヘッダー (see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4">RFC-2616</a>をご覧下さい)で与えられた<code>language</code>がサポートされていた場合Trueを返します。</p>
+<p>このメソッドはSailsの内部で国際化やローカライゼーションのために使われます。<a href="http://sailsjs.jp/documentation/concepts/Internationalization">i18n</a>フックはリクエストに応じて自動的に別々のロケールに対して別々のコンテンツを提供します。</p>
+<h3>Example</h3>
+<p>リクエストが<code>"Accept-Charset: utf-8"</code>ヘッダーともに送信されていた場合:</p>
+<pre><code class="language-js">req.acceptsCharset('utf-8');
+// -&gt; true</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>See the <a href="https://github.com/expressjs/accepts" target="_blank"><code>accepts</code> module</a> for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.</li>
-<li>Browsers send the &quot;Accept-Language&quot; header automatically based on the user&apos;s language settings.</li>
-<li>You can expect the &quot;Accept-Language&quot; header to exist in most requests which originate from web browsers.</li>
+<li>Sails/Express/Koa/Connectでのヘッダーパースアルゴリズムの詳細に関しては<a href="https://github.com/expressjs/accepts"><code>accepts</code> module</a>を御覧ください。</li>
+<li>ブラウザはユーザの言語設定に基づいて自動的に&quot;Accept-Language&quot;ヘッダを送ります。</li>
+<li>Webブラウザを出元とする多くのリクエストに関して&quot;Accept-Language&quot;ヘッダがあると期待できます。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="reqacceptsLanguage170988"></docmeta></p>
+<docmeta name="uniqueID" value="reqacceptsLanguage170988">
 <docmeta name="displayName" value="req.acceptsLanguage()">
-</docmeta>

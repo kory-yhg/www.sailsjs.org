@@ -23,7 +23,7 @@ req.__('Hello {{name}}', { name: 'Marcus' }); // =&gt; Hola Marcus</code></pre>
 });
 // =&gt; 'Hola!'</code></pre>
 <h3>追加のオプション</h3>
-<p>国際化とローカライゼーションの設定は <a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.i18n.html"><code>sails.config.i18n</code></a>で設定されています。このファイルを編集する典型的な例はあなたのアプリケーションのサポートする言語や翻訳ファイルの位置を変更する時です。:</p>
+<p>国際化とローカライゼーションの設定は <a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.i18n.html"><code>sails.config.i18n</code></a>で設定されています。このファイルを編集する典型的な例はあなたのアプリケーションのサポートする言語や翻訳ファイルの位置を変更する時です。:</p>
 <pre><code class="language-javascript">// どのロケールがサポートされますか?
 locales: ['en', 'es'],
 
@@ -31,7 +31,7 @@ locales: ['en', 'es'],
 localesDirectory: '/config/locales'</code></pre>
 <h3>Sailのデフォルトの国際化サポートを無効化、もしくはカスタマイズする。</h3>
 <p>もちろんプロジェクトの中のどこでも好きなNodeモジュールを<code>require()</code>して、好きな国際化の方法を取ることが出来ます。</p>
-<p>しかし、ここで理解するに値すべきことはSailsは<a href="https://github.com/mashpie/i18n-node">node-i18n</a>の実装を<a href="http://sailsjs.org/documentation/concepts/Internationalization">i18n hook</a>で行っているので<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md"><code>loadHooks</code></a>や<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md"><code>hooks</code></a> の設定を使ってこれを完全に無効化したり、オーバライドすることが出来ます。</p>
+<p>しかし、ここで理解するに値すべきことはSailsは<a href="https://github.com/mashpie/i18n-node">node-i18n</a>の実装を<a href="http://sailsjs.jp/documentation/concepts/Internationalization">i18n hook</a>で行っているので<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md"><code>loadHooks</code></a>や<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md"><code>hooks</code></a> の設定を使ってこれを完全に無効化したり、オーバライドすることが出来ます。</p>
 <h3>クライアントでの国際化に関して</h3>
 <p>ここに上げたテクニックはサーバーサイドのビューではとてもうまく動きます。しかし、静的なテンプレートをCDNや静的ホストから提供するリッチクライアント、（例えばパフォーマンス重視のSPAやPhonegapアプリやGoogleエクステンションなど）ではどうでしょうか。</p>
 <p>実はSailsのi18nサポートは翻訳済みのテンプレートをブラウザに届ける際にも再利用することが出来ます。もしSailの国際化機能を<em>クライアントサイドテンプレート</em>で使いたいときはフロントエンドテンプレートを<code>/views</code>のサブディレクトリに配置してください。</p>

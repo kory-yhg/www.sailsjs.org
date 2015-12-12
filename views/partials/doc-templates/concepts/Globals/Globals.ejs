@@ -1,11 +1,11 @@
 <h1>グローバル</h1>
 <h3>概要</h3>
-<p>物事を便利にするためにSailsでは多くの便利な変数をグローバルにアクセス可能にしています。デフォルトではアプリケーションの<a href="http://sailsjs.org/documentation/reference/Models">models</a>や<a href="http://sailsjs.org/documentation/reference/Services">services</a>やグローバルオブジェクトである<code>sails</code>がグローバルスコープに有ります。つまりこれはバックエンドのコードのどこからでも名前を使って呼び出すことが出来るということです。(Sailsが<a href="https://github.com/balderdashy/sails/tree/master/lib/app">読み込まれている限りは</a>)</p>
+<p>物事を便利にするためにSailsでは多くの便利な変数をグローバルにアクセス可能にしています。デフォルトではアプリケーションの<a href="http://sailsjs.jp/documentation/reference/Models">models</a>や<a href="http://sailsjs.jp/documentation/reference/Services">services</a>やグローバルオブジェクトである<code>sails</code>がグローバルスコープに有ります。つまりこれはバックエンドのコードのどこからでも名前を使って呼び出すことが出来るということです。(Sailsが<a href="https://github.com/balderdashy/sails/tree/master/lib/app">読み込まれている限りは</a>)</p>
 <p>Sailsのコアはこれらのグローバル変数に全く依存していません。それぞれのグローバル変数は全て<code>sails.config.globals</code>(通常`config/globals.jsに記述されています。)から無効化することが出来ます。</p>
 <h3>アプリケーションオブジェクト (<code>sails</code>)</h3>
 <p>多くの場合、<code>sails</code>オブジェクトはグローバルからアクセス可能であるべきでしょう。これを行うことでアプリケーションのコードはより綺麗になります。しかしながらもし<em>本当に<code>sails</code>を含む </em>全ての<em> グローバルを </em>無効化したい_ 場合、<code>sails</code>オブジェクトをリクエストオブジェクトの(<code>req</code>)から取得することも出来ます。</p>
 <h3>モデルとサービス</h3>
-<p>アプリケーションの中の<a href="http://sailsjs.org/documentation/reference/Models">モデル</a> と <a href="http://sailsjs.org/documentation/reference/Services">サービス</a>は<code>globalId</code>を使ってグローバルにアクセス可能になっています。例えば<code>api/models/Foo.js</code>で定義されているモデルは<code>Foo</code>でグローバルにアクセス可能で、<code>api/services/Baz.js</code>で定義されているサービスは<code>Baz</code>でアクセス可能です。</p>
+<p>アプリケーションの中の<a href="http://sailsjs.jp/documentation/reference/Models">モデル</a> と <a href="http://sailsjs.jp/documentation/reference/Services">サービス</a>は<code>globalId</code>を使ってグローバルにアクセス可能になっています。例えば<code>api/models/Foo.js</code>で定義されているモデルは<code>Foo</code>でグローバルにアクセス可能で、<code>api/services/Baz.js</code>で定義されているサービスは<code>Baz</code>でアクセス可能です。</p>
 <h3>Async (<code>async</code>) とLodash (<code>_</code>)</h3>
 <p>Sailsは同様に<a href="http://lodash.com">lodash</a>のインスタンスを<code>_</code>で、<a href="https://github.com/caolan/async">async</a>のインスタンスを<code>async</code>でグローバルにアクセス可能にしています。これらのよく使われるユーティリティはデフォルトで用意されていますので、プロジェクトを新規作成する際にも<code>npm install</code>しなくてもいいのです。Sailsにおける他のグローバルと同様にこれは無効化が出来ます。</p>
 <docmeta name="uniqueID" value="Globals668238">

@@ -1,121 +1,113 @@
-<h1 id="create-a-record">Create a Record</h1>
-<p>Creates a new model instance in your database then returns it&apos;s values.</p>
-<pre><code data-language="javascript">POST /:model
-</code></pre><!-- __LANG=%%__ -->
-<p>Attributes can be sent in the HTTP body as form-encoded values or JSON.</p>
-<p>Responds with a JSON object representing the newly created instance.  If a validation error occurred, a JSON response with the invalid attributes and a <code>400</code> status code will be returned instead.</p>
-<p>Additionally, a <code>create</code> event will be published to all listening sockets (see the docs for <a href="https://github.com/balderdashy/sails-docs/blob/master/reference/websockets/resourceful-pubsub/watch.md" target="_blank">.watch()</a> for more info).</p>
-<p>If the action is triggered via a socket request, the requesting socket will ALSO be subscribed to the newly created model instance. If the record is subsequently updated or deleted, a message will be sent to that socket&apos;s client informing them of the change. See the docs for .subscribe() for more info.</p>
-<h2 id="parameters" permalink="parameters">Parameters</h2>
+<h1>レコードを作成する</h1>
+<p>データベースに新しいモデルを作成し、その値を返します。</p>
+<pre><code>POST /:model</code></pre>
+<p>属性はフォームエンコードされたHTTPボディまたはJSONで送ることが出来ます。</p>
+<p>新規作成されたインスタンスを含むJSONオブジェクトともにレスポンスされます。バリデーションエラーが起きた場合は不正な属性が含まれたJSONとともに<code>400</code>ステータスを返します。</p>
+<p>加えて、全てのソケットに対して<code>create</code>イベントが発行されます。(詳しくは<a href="https://github.com/balderdashy/sails-docs/blob/master/reference/websockets/resourceful-pubsub/watch.md">.watch()</a>のドキュメントを御覧ください。)</p>
+<p>アクションがソケットのリクエストとしてトリガーされた場合、リクエストを送ったソケットは同様に新規作成されたモデルインスタンスを受け取ります。レコードが付加的に編集、削除された場合その旨を伝えるメッセージがソケットのクライアントに送られます。詳しくは.subscribe()のドキュメントを御覧ください。</p>
+<h2>パラメータ</h2>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th style="text-align:left">Details</th>
+<th>パラメータ</th>
+<th>型</th>
+<th style="text-align: left;">詳細</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> *</td>
-<td><bubble type="string" colors="true"></bubble><br><bubble type="number" colors="true"></bubble><br><bubble type="object" colors="true"></bubble><br><bubble type="array" colors="true"></bubble></td>
-<td style="text-align:left">For <code>POST</code> (RESTful) requests, pass in body parameter with the same name as the attribute defined on your model to set those values on your new record.  For <code>GET</code> (shortcut) requests, add the parameters to the query string. <br> <br> Nested objects and arrays passed in as parameters are handled the same way as if they were passed into the model&apos;s <a>.create()</a> method.</td>
+<td>*</td>
+<td>((string))<br/>((number))<br/>((object))<br/>((array))</td>
+<td style="text-align: left;"><code>POST</code> (RESTful)リクエストに対しては新規作成されるレコードのそれぞれの値を定義するためには、ボディパラメータの中でモデルで定義されたものと同じ名前の属性を定義します。<code>GET</code> (shortcut)リクエストに関してはパラメータはクエリストリングに追加されます。<br/> <br/> パラメータとして渡された入れ子のオブジェクトや配列はモデルの<a>.create()</a>メソッドに渡された時と同じように動作します。</td>
 </tr>
 <tr>
-<td> callback</td>
-<td><bubble type="string" colors="true"></bubble></td>
-<td style="text-align:left">If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br> <br> e.g. <code>?callback=myJSONPHandlerFn</code></td>
+<td>callback</td>
+<td>((string))</td>
+<td style="text-align: left;">指定されていればJSONPレスポンスが（JSONの代わりに）送信されます。この名前のJavascript関数を、結果を一つ目の（そして唯一の）引数として実行します。<br/> <br/> 例:<code>?callback=myJSONPHandlerFn</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="examples" permalink="examples">Examples</h2>
-<h3 id="create-a-record-rest-" permalink="create-a-record-(rest)">Create a record (REST)</h3>
-<p>Create a new pony named &quot;AppleJack&quot; with a hobby of &quot;pickin&quot;.</p>
-<h4 id="route" permalink="route">Route</h4>
+<h2>例</h2>
+<h3>レコードを作成 (REST)</h3>
+<p>&quot;pickin&quot;の趣味を持った&quot;AppleJack&quot;という名前のポニーを作成。</p>
+<h4>ルート</h4>
 <p><code>POST /pony</code></p>
-<h4 id="json-request-body" permalink="json-request-body">JSON Request Body</h4>
-<pre><code data-language="json">{
-  &quot;name&quot;: &quot;AppleJack&quot;,
-  &quot;hobby&quot;: &quot;pickin&quot;
-}
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="example-response" permalink="example-response">Example Response</h4>
-<pre><code data-language="json">{
-  &quot;name&quot;: &quot;AppleJack&quot;,
-  &quot;hobby&quot;: &quot;pickin&quot;,
-  &quot;id&quot;: 47,
-  &quot;createdAt&quot;: &quot;2013-10-18T01:23:56.000Z&quot;,
-  &quot;updatedAt&quot;: &quot;2013-11-26T22:55:19.951Z&quot;
-}
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="create-a-record-shortcuts-" permalink="create-a-record-(shortcuts)">Create a record (shortcuts)</h3>
-<h4 id="route" permalink="route">Route</h4>
+<h4>JSONリクエストボディ</h4>
+<pre><code class="language-json">{
+  "name": "AppleJack",
+  "hobby": "pickin"
+}</code></pre>
+<h4>レスポンスの例</h4>
+<pre><code class="language-json">{
+  "name": "AppleJack",
+  "hobby": "pickin",
+  "id": 47,
+  "createdAt": "2013-10-18T01:23:56.000Z",
+  "updatedAt": "2013-11-26T22:55:19.951Z"
+}</code></pre>
+<h3>レコードを作成(ショートカット)</h3>
+<h4>ルート</h4>
 <p><code>GET /pony/create?name=Fluttershy&amp;best_pony=yep</code></p>
-<h4 id="expected-response" permalink="expected-response">Expected Response</h4>
-<pre><code data-language="javascript">{
- &quot;name&quot;: &quot;Fluttershy&quot;,
- &quot;best_pony&quot;: &quot;yep&quot;,
- &quot;createdAt&quot;: &quot;2014-02-24T21:02:16.068Z&quot;,
- &quot;updatedAt&quot;: &quot;2014-02-24T21:02:16.068Z&quot;,
- &quot;id&quot;: 5
+<h4>期待されるレスポンス</h4>
+<pre><code class="language-javascript">{
+ "name": "Fluttershy",
+ "best_pony": "yep",
+ "createdAt": "2014-02-24T21:02:16.068Z",
+ "updatedAt": "2014-02-24T21:02:16.068Z",
+ "id": 5
 }
-</code></pre><!-- __LANG=%%__ -->
-<h2 id="examples-with-one-way-associations" permalink="examples-with-one-way-associations">Examples with One Way Associations</h2>
-<p>You can create associations between models in two different ways. You can either make the association with a record that already exists OR you can create both records simultaneously. Check out the examples to see how.</p>
-<p>These examples assume the existence of <code>Pet</code> and <code>Pony</code> APIs which can be created by hand or using the <a href="http://sailsjs.org/documentation/reference/CommandLine/CommandLine.html" target="_blank">Sails CLI Tool</a>. The <code>Pony</code> model must be configured with a <code>pet</code> attribute pointing to the <code>Pet</code> model.  See <a href="./ModelAssociations.md">Model Association Docs</a> for info on how to do this.</p>
-<h3 id="create-record-while-associating-w-existing-record-rest-" permalink="create-record-while-associating-w/-existing-record-(rest)">Create record while associating w/ existing record (REST)</h3>
-<p>Create a new pony named &quot;Pinkie Pie&quot; and associate it with an existing pet named &quot;Gummy&quot; which has an <code>id</code> of 10.</p>
-<h4 id="route" permalink="route">Route</h4>
+</code></pre>
+<h2>一方のアソシエーションを含む例</h2>
+<p>モデル化のアソシエーションの作成は2つの方法で行えます。すでの存在するレコードへのアソシエーションを作ることが出来るほか、それぞれを同時に作ることができます。どのようにするのかは例をご覧ください。</p>
+<p>これらの例では<code>Pet</code>と<code>Pony</code>APIが手動または<a href="http://sailsjs.jp/documentation/reference/CommandLine/CommandLine.html">Sails CLI Tool</a>で作られていると仮定します。<code>Pony</code> モデルには<code>Pet</code>モデルを指す<code>pet</code>属性が設定されている必要があります。これをどうするのかに関しての詳しい話は<a href="./ModelAssociations.md">Model Association Docs</a>をご覧ください。</p>
+<h3>既存のレコードと関連付けられたレコードを作成する(REST)</h3>
+<p>既存の&quot;Gummy&quot;と名付けられた<code>id</code>10のペットと関連付けられた、&quot;Pinkie Pie&quot;という名前のポニーを追加する。</p>
+<h4>ルート</h4>
 <p><code>POST /pony</code></p>
-<h4 id="json-request-body" permalink="json-request-body">JSON Request Body</h4>
-<pre><code data-language="json">{
-  &quot;name&quot;: &quot;Pinkie Pie&quot;,
-  &quot;hobby&quot;: &quot;ice skating&quot;,
-  &quot;pet&quot;: 10
-}
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="example-response" permalink="example-response">Example Response</h4>
-<pre><code data-language="json">{
-  &quot;name&quot;: &quot;Pinkie Pie&quot;,
-  &quot;hobby&quot;: &quot;ice skating&quot;,
-  &quot;pet&quot;: {
-    &quot;name&quot;: &quot;Gummy&quot;,
-    &quot;species&quot;: &quot;crocodile&quot;,
-    &quot;id&quot;: 10
+<h4>JSONリクエストボディ</h4>
+<pre><code class="language-json">{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pet": 10
+}</code></pre>
+<h4>Responseの例</h4>
+<pre><code class="language-json">{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile",
+    "id": 10
   },
-  &quot;id&quot;: 4,
-  &quot;createdAt&quot;: &quot;2013-10-18T01:22:56.000Z&quot;,
-  &quot;updatedAt&quot;: &quot;2013-11-26T22:54:19.951Z&quot;
-}
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="create-new-record-while-associating-w-another-new-record-rest-" permalink="create-new-record-while-associating-w/-another-new-record-(rest)">Create new record while associating w/ another new record (REST)</h3>
-<p>Create a new pony named &quot;Pinkie Pie&quot;, an &quot;ice skating&quot; hobby, and a new pet named &quot;Gummy&quot;.</p>
-<h4 id="route" permalink="route">Route</h4>
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}</code></pre>
+<h3>新規レコードと関連付けられた新規レコードを作成する。</h3>
+<p>新しい&quot;Gummy&quot;と名付けられた`ペットと関連付けられた、&quot;Pinkie Pie&quot;という名前と&quot;ice skating&quot;の趣味を持つポニーを追加する。</p>
+<h4>ルート</h4>
 <p><code>POST /pony</code></p>
-<h4 id="json-request-body" permalink="json-request-body">JSON Request Body</h4>
-<pre><code data-language="json">{
-  &quot;name&quot;: &quot;Pinkie Pie&quot;,
-  &quot;hobby&quot;: &quot;ice skating&quot;,
-  &quot;pet&quot;: {
-    &quot;name&quot;: &quot;Gummy&quot;,
-    &quot;species&quot;: &quot;crocodile&quot;
+<h4>JSONリクエストボティ</h4>
+<pre><code class="language-json">{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile"
   }
-}
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="expected-response" permalink="expected-response">Expected Response</h4>
-<pre><code data-language="json">{
-  &quot;name&quot;: &quot;Pinkie Pie&quot;,
-  &quot;hobby&quot;: &quot;ice skating&quot;,
-  &quot;pet&quot;: {
-    &quot;name&quot;: &quot;Gummy&quot;,
-    &quot;species&quot;: &quot;crocodile&quot;,
-    &quot;id&quot;: 10
+}</code></pre>
+<h4>期待されるレスポンス</h4>
+<pre><code class="language-json">{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile",
+    "id": 10
   },
-  &quot;id&quot;: 4,
-  &quot;createdAt&quot;: &quot;2013-10-18T01:22:56.000Z&quot;,
-  &quot;updatedAt&quot;: &quot;2013-11-26T22:54:19.951Z&quot;
-}
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="CreateARecord744986"></docmeta></p>
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}</code></pre>
+<docmeta name="uniqueID" value="CreateARecord744986">
 <docmeta name="displayName" value="create">
-</docmeta>

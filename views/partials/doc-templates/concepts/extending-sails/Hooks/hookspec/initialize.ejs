@@ -15,7 +15,7 @@
 
 }</code></pre>
 <h5>フックのタイムアウト設定</h5>
-<p>デフォルトではフックは<code>initialize</code>を10秒で終了させられない場合、Sailsがエラーを出力する前に<code>cb</code>を呼び出します。このタイムアウトは<code>_hookTimeout</code>キーSailsが待つべきミリ秒数を指定することで設定可能です。それはフックの<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html"><code>defaults</code></a> で行うことが出来ます。</p>
+<p>デフォルトではフックは<code>initialize</code>を10秒で終了させられない場合、Sailsがエラーを出力する前に<code>cb</code>を呼び出します。このタイムアウトは<code>_hookTimeout</code>キーSailsが待つべきミリ秒数を指定することで設定可能です。それはフックの<a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html"><code>defaults</code></a> で行うことが出来ます。</p>
 <pre><code>defaults: {
    __configKey__: {
       _hookTimeout: 20000 // wait 20 seconds before timing out

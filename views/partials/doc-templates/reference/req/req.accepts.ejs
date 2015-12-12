@@ -1,20 +1,16 @@
-<h1 id="req-accepts-">req.accepts()</h1>
-<p>Checks whether this request&apos;s stated list of &quot;accepted&quot; <a href="http://www.iana.org/assignments/media-types/media-types.xhtml" target="_blank">media types</a> includes the specified <code>type</code>. Returns true or false.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">req.accepts(type);
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="example" permalink="example">Example</h3>
-<pre><code data-language="javascript">req.accepts(&apos;application/json&apos;);
+<h1>req.accepts()</h1>
+<p>リクエストが許容される<a href="http://www.iana.org/assignments/media-types/media-types.xhtml">media types</a> に特定の<code>type</code>が含まれるかどうかを確認します。TrueかFalseを返します。</p>
+<h3>使いかた</h3>
+<pre><code class="language-javascript">req.accepts(type);</code></pre>
+<h3>例</h3>
+<pre><code class="language-javascript">req.accepts('application/json');
 // -&gt; true
-req.accepts(&apos;json&apos;);
-// -&gt; true
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+req.accepts('json');
+// -&gt; true</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>See the <a href="https://github.com/expressjs/accepts" target="_blank"><code>accepts</code> module</a> for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.</li>
+<li>Sails/Express/Koa/Connectでのヘッダーパースアルゴリズムの詳細に関しては<a href="https://github.com/expressjs/accepts"><code>accepts</code> module</a>を御覧ください。</li>
 </ul>
 </blockquote>
 <docmeta name="displayName" value="req.accepts()">
-
-</docmeta>

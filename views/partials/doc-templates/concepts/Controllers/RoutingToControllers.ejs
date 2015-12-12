@@ -1,6 +1,6 @@
 <h1>コントローラへのルート</h1>
-<p>Sailsはデフォルトで各コントローラに<a href="http://sailsjs.org/documentation/reference/blueprint-api">blueprint action route</a>を生成しますので<code>/:コントローラ/:アクション</code>への<code>GET</code>リクエストはアクションをトリガーします。前のセクションの例が<code>api/controllers/SayController.js</code>として保存されていればアプリケーションがリフトされるときはいつでも<code>/say/hi</code>や<code>/say/bye</code>がデフォルトで有効になります。コントローラがサブフォルダ<code>/we</code>に保存されていればルートは <code>/we/say/hi</code>と<code>/we/say/bye</code>になります。Sailsの自動ルートバインディングに関するさらなる情報は<a href="http://sailsjs.org/documentation/reference/blueprint-api">blueprints documentation</a> をご覧ください。</p>
-<p>デフォルトのルートに加え、Sailsでは<a href="http://sailsjs.org/documentation/concepts/Routes"><code>config/routes.js</code></a>ファイルを付けうことで手動でルートのバインディングが出来ます。ルートを明示的に設定する必要のある例は:</p>
+<p>Sailsはデフォルトで各コントローラに<a href="http://sailsjs.jp/documentation/reference/blueprint-api">blueprint action route</a>を生成しますので<code>/:コントローラ/:アクション</code>への<code>GET</code>リクエストはアクションをトリガーします。前のセクションの例が<code>api/controllers/SayController.js</code>として保存されていればアプリケーションがリフトされるときはいつでも<code>/say/hi</code>や<code>/say/bye</code>がデフォルトで有効になります。コントローラがサブフォルダ<code>/we</code>に保存されていればルートは <code>/we/say/hi</code>と<code>/we/say/bye</code>になります。Sailsの自動ルートバインディングに関するさらなる情報は<a href="http://sailsjs.jp/documentation/reference/blueprint-api">blueprints documentation</a> をご覧ください。</p>
+<p>デフォルトのルートに加え、Sailsでは<a href="http://sailsjs.jp/documentation/concepts/Routes"><code>config/routes.js</code></a>ファイルを付けうことで手動でルートのバインディングが出来ます。ルートを明示的に設定する必要のある例は:</p>
 <ul>
 <li><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP method</a>(verbとも呼ばれます)に基づきアクションが個別のルートを取り扱いたい時。前述の <strong>action blueprint</strong> は <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code>などを含め、<em>すべての</em> アクションに与えられたリクエストメソッドをバインディングします。</li>
 <li>カスタムURLでアクションにアクセスできるようにしたい時。(例: <code>PUT /login</code>、<code>POST /signup</code>や<code>GET /:username</code>ような&quot;vanity URL&quot;)</li>
@@ -15,5 +15,5 @@
 <pre><code class="language-js">  '/do/homework': 'stuff/things/HomeworkController.do'</code></pre>
 <p>これで<code>/do/homework</code>がリクエストされた時はいつでも<code>api/controllers/stuff/things/HomeworkController.js</code>の<code>do()</code>アクションをトリガーするようになります。</p>
 </blockquote>
-<p>手動ルーティングに関しての全体的なディスカッションはこのドキュメントのスコープから外れます。利用可能な全てのオプションに関しては<a href="http://sailsjs.org/documentation/concepts/Routes">routes documentation</a> をご覧ください。</p>
+<p>手動ルーティングに関しての全体的なディスカッションはこのドキュメントのスコープから外れます。利用可能な全てのオプションに関しては<a href="http://sailsjs.jp/documentation/concepts/Routes">routes documentation</a> をご覧ください。</p>
 <docmeta name="displayName" value="Routing to Controllers">

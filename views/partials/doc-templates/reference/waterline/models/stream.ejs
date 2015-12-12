@@ -1,66 +1,66 @@
-<h1 id="-stream-criteria-">.stream( <code>criteria</code> )</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This method uses a <a href="http://nodejs.org/api/stream.html" target="_blank">node write stream</a> to pipe model data as it is retrieved without first having to buffer all of the results to memory.</p>
-<h3 id="overview" permalink="overview">Overview</h3>
-<h4 id="parameters" permalink="parameters">Parameters</h4>
+<h1>.stream( <code>criteria</code> )</h1>
+<h3>目的</h3>
+<p>このメソッドは<a href="http://nodejs.org/api/stream.html">node write stream</a>を使って、最初に全ての結果をメモリにバッファすることなくデータを取得できるようにモデルデータをパイプします。</p>
+<h3>概要</h3>
+<h4>パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>#</th>
+<th>説明</th>
+<th>受け入れられるデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Find Criteria</td>
+<td>検索条件</td>
 <td><code>{}</code>,<code>[{}]</code>, <code>string</code>, <code>int</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Custom Write/End Methods</td>
-<td><code>{}</code></td>
-<td>No</td>
+<td>カスタムのWrite/Endメソッド</td>
+<td><code>`{}</code></td>
+<td>いいえ</td>
 </tr>
 </tbody>
 </table>
-<h4 id="returned" permalink="returned">Returned</h4>
+<h4>コールバックパラメータ</h4>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Description</th>
-<th>Possible Data Types</th>
+<th>#</th>
+<th>説明</th>
+<th>想定されるデータ型</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Error</td>
+<td>エラー</td>
 <td><code>Error</code></td>
 </tr>
 <tr>
 <td>2</td>
-<td>Stream of Records</td>
+<td>レコードのストリーム</td>
 <td><code>stream</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="example-usage" permalink="example-usage">Example Usage</h3>
+<h3>使用例</h3>
 <p>UsersController.js</p>
-<pre><code data-language="javascript">module.exports = {
+<pre><code class="language-javascript">module.exports = {
 
   testStream: function(req, res){
 
-    if (req.param(&apos;startStream&apos;) &amp;&amp; req.isSocket){
+    if (req.param('startStream') &amp;&amp; req.isSocket){
 
         var getSocket = req.socket;
 
         // Start the stream.  Pipe it to sockets.
-        User.stream({name:&apos;Walter&apos;}).pipe(getSocket.emit);
+        User.stream({name:'Walter'}).pipe(getSocket.emit);
 
     } else {
 
@@ -68,31 +68,26 @@
 
     }
 
-
   }
-}
-`
-</code></pre><!-- __LANG=%%__ -->
+}</code></pre>
 <p>views/users/testSocket.ejs</p>
-<pre><code data-language="javascript">&lt;script type=&quot;text/javascript&quot;&gt;
+<pre><code class="language-javascript">&lt;script type="text/javascript"&gt;
 window.onload = function startListening(){
-    socket.on(&apos;gotUser&apos;,function(data){
-      console.log(data.name + &apos; number &apos; + data.id + &apos; has joined the party&apos;);
+    socket.on('gotUser',function(data){
+      console.log(data.name + ' number ' + data.id + ' has joined the party');
     });
 };
 
 &lt;/script&gt;
-&lt;div class=&quot;addButton&quot; onClick=&quot;socket.get(&apos;/users/testStream/&apos;, {startStream:true})&quot;&gt;Stream all the Users!&lt;/div&gt;
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+&lt;div class="addButton" onClick="socket.get('/users/testStream/', {startStream:true})"&gt;Stream all the Users!&lt;/div&gt;
+</code></pre>
+<h3>備考</h3>
 <blockquote>
-<p>This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
-Only the mongo, mysql, and posgresql adapters support this method.  This won&apos;t work with the disk adapter.
-Any string arguments passed must be the ID of the record.</p>
+<p>このメソッドはとても大きなモデルからデータをそのままレスポンスにパイプするときに便利です。　また、別の場所にパイプすることも出来ます。詳しくはnode streamのドキュメントをお読み下さい。
+mongo、mysql、posgresqlのアダプタのみがサポートされます。これはdiskアダプタだは動作しません。
+全ての文字列引数はレコードのIDである必要があります。</p>
 </blockquote>
-<p><docmeta name="uniqueID" value="stream427721"></docmeta></p>
-<p><docmeta name="methodType" value="mcm"></docmeta></p>
-<p><docmeta name="importance" value="undefined"></docmeta></p>
+<docmeta name="uniqueID" value="stream427721">
+<docmeta name="methodType" value="mcm">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".stream()">
-
-</docmeta>

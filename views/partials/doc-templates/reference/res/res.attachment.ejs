@@ -1,19 +1,15 @@
-<h1 id="res-attachment-">res.attachment()</h1>
-<p>Sets the &quot;Content-Disposition&quot; header of the current response to &quot;attachment&quot;. If a <code>filename</code> is given, then the &quot;Content-Type&quot; will be automatically set based on the extension of the file (e.g. <code>.jpg</code> or <code>.html</code>), and the &quot;Content-Disposition&quot; header will be set to &quot;filename=<code>filename</code>&quot;.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">res.attachment([filename]);
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="example" permalink="example">Example</h3>
-<pre><code data-language="javascript">res.attachment();
+<h1>res.attachment()</h1>
+<p>現在のリクエストの &quot;Content-Disposition&quot;に&quot;attachment&quot;をセットします。<code>filename</code>が与えられていれば&quot;Content-Type&quot;はファイル名の拡張子(<code>.jpg</code>または<code>.html</code>など)から自動的に推測されてセットされ&quot;Content-Disposition&quot;ヘッダーには&quot;filename=<code>filename</code>&quot;がセットされます。</p>
+<h3>使い方</h3>
+<pre><code class="language-javascript">res.attachment([filename]);</code></pre>
+<h3>例</h3>
+<pre><code class="language-javascript">res.attachment();
 // -&gt; response header will contain:
 //   Content-Disposition: attachment
 
-res.attachment(&apos;path/to/logo.png&apos;);
+res.attachment('path/to/logo.png');
 // -&gt; response header will contain:
-//   Content-Disposition: attachment; filename=&quot;logo.png&quot;
-//   Content-Type: image/png
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="resattachment107506"></docmeta></p>
+//   Content-Disposition: attachment; filename="logo.png"
+//   Content-Type: image/png</code></pre>
+<docmeta name="uniqueID" value="resattachment107506">
 <docmeta name="displayName" value="res.attachment()">
-
-</docmeta>

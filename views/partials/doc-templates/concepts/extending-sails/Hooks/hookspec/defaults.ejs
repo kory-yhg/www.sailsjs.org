@@ -8,7 +8,7 @@
 }</code></pre>
 <p>Sailsの設定で<code>myapihook.timeout</code>が提供されていた場合、その値が使われます。そうでなければデフォルトの<code>5000</code>が使われます。</p>
 <h5>フック設定のネームスペース</h5>
-<p><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks?q=types-of-hooks">プロジェクトフック</a>に関してはフックを一意に示すキー(例：上記の<code>myapihook</code>)のもとにフックの設定を置かなければなりません。<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks?q=types-of-hooks">インスタンスフック</a>に関しては特別な<code>__configKey__</code>キーを使い、フックのエンドユーザが必要に応じて<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html?q=changing-the-way-sails-loads-an-installable-hook">設定キーを変更</a> 出来るようにしなければなりません。<code>__configKey__</code>を使うフックのデフォルトのキーはフック名です。例えば以下の<code>defaults</code>オブジェクトを持つ<code>sails-hooks-myawesomehook</code>と呼ばれるフックを作った時には:</p>
+<p><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks?q=types-of-hooks">プロジェクトフック</a>に関してはフックを一意に示すキー(例：上記の<code>myapihook</code>)のもとにフックの設定を置かなければなりません。<a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks?q=types-of-hooks">インスタンスフック</a>に関しては特別な<code>__configKey__</code>キーを使い、フックのエンドユーザが必要に応じて<a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/usinghooks.html?q=changing-the-way-sails-loads-an-installable-hook">設定キーを変更</a> 出来るようにしなければなりません。<code>__configKey__</code>を使うフックのデフォルトのキーはフック名です。例えば以下の<code>defaults</code>オブジェクトを持つ<code>sails-hooks-myawesomehook</code>と呼ばれるフックを作った時には:</p>
 <pre><code>{
    __configKey__: {
       name: "Super Bob"
@@ -16,7 +16,7 @@
 }</code></pre>
 <p>これはデフォルトでは<code>sails.config.myawesomehook.name</code>の値を提供することになります。もしエンドユーザーがフックの名前を<code>foo</code>に上書きした場合、<code>defaults</code> オブジェクトは <code>sails.config.foo.name</code>のデフォルト値を提供することになります。</p>
 <h5><code>defaults</code>をファンクションとして使う</h5>
-<p><code>defaults</code>機能でプレーンオブジェクトの代わりにファンクションを指定した場合、Sailsの設定で上書きされた (<code>config</code>)を受け取ることになります。設定の上書きはSailをliftする際に設定を渡したり(例：<code>sails lift --prod</code>)、Sailsをプログラム的にliftまたは読み込む際に最初の引数にオブジェクトを渡したり(例：<code>Sails.lift({port: 1338}, ...)</code>)、<a href="http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html"><code>.sailsrc</code></a>を使ったりする方法でできます。<code>defaults</code>ファンクションはあなたのフックのデフォルト設定を表すプレーンオブジェクトを返さなければなりません。</p>
+<p><code>defaults</code>機能でプレーンオブジェクトの代わりにファンクションを指定した場合、Sailsの設定で上書きされた (<code>config</code>)を受け取ることになります。設定の上書きはSailをliftする際に設定を渡したり(例：<code>sails lift --prod</code>)、Sailsをプログラム的にliftまたは読み込む際に最初の引数にオブジェクトを渡したり(例：<code>Sails.lift({port: 1338}, ...)</code>)、<a href="http://sailsjs.jp/documentation/anatomy/myApp/sailsrc.html"><code>.sailsrc</code></a>を使ったりする方法でできます。<code>defaults</code>ファンクションはあなたのフックのデフォルト設定を表すプレーンオブジェクトを返さなければなりません。</p>
 <docmeta name="uniqueID" value="Hooks75003">
 <docmeta name="displayName" value=".defaults">
 <docmeta name="stabilityIndex" value="3">

@@ -1,70 +1,74 @@
-<h1 id="-destroy-criteria-callback-">.destroy( <code>criteria</code> , [<code>callback</code>] )</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>Destroys all records in your database that match the given criteria.</p>
-<h3 id="overview" permalink="overview">Overview</h3>
-<h4 id="parameters" permalink="parameters">Parameters</h4>
+<h1>.destroy( <code>criteria</code> , [<code>callback</code>] )</h1>
+<h3>目的</h3>
+<p>与えられた条件式に合う、データベース中にある全てのレコードを削除します。</p>
+<h3>概要</h3>
+<h4>パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>#</th>
+<th>説明</th>
+<th>受け入れられるデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Find Criteria</td>
+<td>検索条件</td>
 <td><code>{}</code>,<code>[{}]</code>, <code>string</code>, <code>int</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Callback</td>
+<td>コールバック</td>
 <td><code>function</code></td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 </tbody>
 </table>
-<h4 id="callback-parameters" permalink="callback-parameters">Callback Parameters</h4>
+<h4>コールバックパラメータ</h4>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Description</th>
-<th>Possible Data Types</th>
+<th>#</th>
+<th>説明</th>
+<th>想定されるデータ型</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Error</td>
+<td>エラー</td>
 <td><code>Error</code></td>
 </tr>
 <tr>
 <td>2</td>
-<td>Deleted Records</td>
+<td>削除されたレコード</td>
 <td><code>[{}]</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="example-usage" permalink="example-usage">Example Usage</h3>
-<pre><code data-language="javascript">User.destroy({name:&apos;Flynn&apos;}).exec(function deleteCB(err){
-  console.log(&apos;The record has been deleted&apos;);
+<h3>使用例</h3>
+<pre><code class="language-javascript">User.destroy({name:'Flynn'}).exec(function deleteCB(err){
+  console.log('The record has been deleted');
+});
+
+// Or if there are multiple records to delete
+
+User.destroy({id:['id1', 'id2']}).exec(function deleteCB(err){
+  console.log('The record has been deleted');
 });
 
 // If the record existed, then it has been deleted
-// Don&apos;t forget to handle your errors
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+// Don't forget to handle your errors
+</code></pre>
+<h3>備考</h3>
 <blockquote>
-<p>If you want to confirm the record exists before you delete it, you must first perform a find()
-Any string arguments passed must be the ID of the record.</p>
+<p>削除する前にデータが存在することを確認する必要がありますので、先にfind()しなければいけません。
+全ての文字列引数はレコードのIDである必要があります。</p>
 </blockquote>
-<p><docmeta name="uniqueID" value="destroy398816"></docmeta></p>
-<p><docmeta name="methodType" value="instance"></docmeta></p>
-<p><docmeta name="importance" value="undefined"></docmeta></p>
+<docmeta name="uniqueID" value="destroy398816">
+<docmeta name="methodType" value="instance">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".destroy()">
-
-</docmeta>

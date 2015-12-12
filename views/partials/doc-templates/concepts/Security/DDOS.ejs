@@ -3,8 +3,8 @@
 この種の攻撃はここ数年Anonymousのようなグループの勢いが増したことで<a href="http://www.darkreading.com/vulnerabilities-and-threats/10-strategies-to-fight-anonymous-ddos-attacks/d/d-id/1102699">悪名高t</a>ものになっています。</p>
 <p>APIレイヤーでできる防護策はあまり多くありません。しかしながらSailsではDDOS攻撃を和らげる幾つかの設定を用意しています。:</p>
 <ul>
-<li>Sailsのセッションは別々のセッションストレージ(<a href="http://redis.io/">Redis</a>のような)が利用可能なように<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.session.html">設定</a>することができ、これによって一つのAPIサーバのメモリー状態に依存することなく実行することができます。これはトラフィックに応じた複数のサーバのコピーをデプロイすることが出来るということです。これは<a href="http://en.wikipedia.org/wiki/Load_balancing_(computing)">ロードバランサ</a>を使ってリクエストを空いているサーバに振り分け、単一障害点を排除する事ができるということです。</li>
-<li>Socket.ioコネクションは別々の<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md">ソケットストア</a> (例えばRedis)を使ってpub/subステートやメッセージキューを管理できるように<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.sockets.html">設定</a>することができます。これはロードバランサーでの固定的なセッションを避けることができ攻撃者と思われる人が何度も何度もサーバを同じサーバにアクセスするのを防ぐことができます。</li>
+<li>Sailsのセッションは別々のセッションストレージ(<a href="http://redis.io/">Redis</a>のような)が利用可能なように<a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.session.html">設定</a>することができ、これによって一つのAPIサーバのメモリー状態に依存することなく実行することができます。これはトラフィックに応じた複数のサーバのコピーをデプロイすることが出来るということです。これは<a href="http://en.wikipedia.org/wiki/Load_balancing_(computing)">ロードバランサ</a>を使ってリクエストを空いているサーバに振り分け、単一障害点を排除する事ができるということです。</li>
+<li>Socket.ioコネクションは別々の<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md">ソケットストア</a> (例えばRedis)を使ってpub/subステートやメッセージキューを管理できるように<a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.sockets.html">設定</a>することができます。これはロードバランサーでの固定的なセッションを避けることができ攻撃者と思われる人が何度も何度もサーバを同じサーバにアクセスするのを防ぐことができます。</li>
 </ul>
 <h3>追加資料</h3>
 <ul>

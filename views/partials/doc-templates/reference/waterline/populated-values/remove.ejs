@@ -1,28 +1,29 @@
-<h1 id="-remove-primary-key-">*.remove( <code>primary key</code> )</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>Used to remove records from the join table that is automatically generated during a many-to-many association. Unlike .add(), it only accepts the primary key of the model instance (defaults to record ID).</p>
-<h3 id="overview" permalink="overview">Overview</h3>
-<h4 id="parameters" permalink="parameters">Parameters</h4>
+<h1>*.remove( <code>primary key</code> )</h1>
+<h3>目的</h3>
+<p>多対多のアソシエーションにおいて自動的に生成されたジョインテーブルからレコードを削除するのに使います。.add()とは違い、これはモデルインスタンスの主キー（デフォルトではレコードID）のみを受け入れます。</p>
+<h3>概要</h3>
+<h4>パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>#</th>
+<th>説明</th>
+<th>受け入れられるデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Primary Key</td>
+<td>主キー</td>
 <td><code>string</code>, <code>int</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 </tbody>
 </table>
-<h3 id="example-usage" permalink="example-usage">Example Usage</h3>
-<pre><code data-language="javascript">User.find({name:&apos;Mike&apos;}).populate(&apos;pets&apos;).exec(function(e,r){
+<h3>使用例</h3>
+<pre><code class="language-javascript">
+User.find({name:'Mike'}).populate('pets').exec(function(e,r){
   r[0].pets.remove(7);
   r[0].save(console.log)
 });
@@ -30,34 +31,32 @@
   /*
 
 { pets:
-   [ { name: &apos;Rainbow Dash&apos;,
-       color: &apos;blue&apos;,
+   [ { name: 'Rainbow Dash',
+       color: 'blue',
        id: 8,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Applejack&apos;,
-       color: &apos;orange&apos;,
+     { name: 'Applejack',
+       color: 'orange',
        id: 9,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: &apos;Mike&apos;,
+  name: 'Mike',
   age: 16,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 19:30:54 GMT-0600 (CST),
   id: 7 }
 
   */
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>Any string arguments passed must be the primary key of the record.</li>
-<li><code>.remove()</code> alone won&apos;t actually persist the change in associations to the databse.  You should call <code>.save()</code> after using <code>.add()</code> or <code>.remove()</code>.</li>
+<li>全ての文字列引数はレコードのIDである必要があります。</li>
+<li><code>.remove()</code>だけではアソシエーションに対する変更のデータベースへの永続化をしません。<code>.add()</code>や<code>.remove()</code>のあとに<code>.save()</code>を行って下さい。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="remove790682"></docmeta></p>
-<p><docmeta name="methodType" value="association"></docmeta></p>
-<p><docmeta name="importance" value="undefined"></docmeta></p>
+<docmeta name="uniqueID" value="remove790682">
+<docmeta name="methodType" value="association">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".remove()">
-
-</docmeta>

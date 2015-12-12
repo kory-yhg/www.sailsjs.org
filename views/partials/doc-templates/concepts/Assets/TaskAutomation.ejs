@@ -1,8 +1,8 @@
 <h1>タスクの自動化</h1>
 <h3>概要</h3>
-<p><a href="http://sailsjs.org/documentation/anatomy/tasks"><code>tasks/</code></a>ディレクトリには<a href="http://gruntjs.com/creating-tasks">Gruntタスク</a>とその<a href="http://gruntjs.com/configuring-tasks">設定ファイル</a>がまとめられて入っています。</p>
+<p><a href="http://sailsjs.jp/documentation/anatomy/tasks"><code>tasks/</code></a>ディレクトリには<a href="http://gruntjs.com/creating-tasks">Gruntタスク</a>とその<a href="http://gruntjs.com/configuring-tasks">設定ファイル</a>がまとめられて入っています。</p>
 <p>タスクは主にフロントエンドのアセットをバンドルする(例えばスタイルシートやスクリプト、クライアントサイドマークアップテンプレートなど）のに利用されますがその他にも<a href="https://github.com/jmreidy/grunt-browserify">browserify</a>のcompilationから<a href="https://www.npmjs.org/package/grunt-db-migrate">データベースマイグレーション</a>に至るまで様々な開発中の細々とした仕事を自動化するためにも使えます。</p>
-<p>Sailsは簡便のためにいくつかの<a href="http://sailsjs.org/documentation/grunt/default-tasks">デフォルトのタスク</a> をバンドルしていますが文字通り数百ものプラグインが利用でき、これによってすべての雑用を最小限の手数で完了することが出来ます。もしもあなたが使いたいタスクがなかったら自分で<a href="http://gruntjs.com/creating-tasks">Gruntのプラグインを作って</a>それを<a href="http://npmjs.org">npm</a>に載せることも出来ます。</p>
+<p>Sailsは簡便のためにいくつかの<a href="http://sailsjs.jp/documentation/grunt/default-tasks">デフォルトのタスク</a> をバンドルしていますが文字通り数百ものプラグインが利用でき、これによってすべての雑用を最小限の手数で完了することが出来ます。もしもあなたが使いたいタスクがなかったら自分で<a href="http://gruntjs.com/creating-tasks">Gruntのプラグインを作って</a>それを<a href="http://npmjs.org">npm</a>に載せることも出来ます。</p>
 <blockquote>
 <p>今までに<a href="http://gruntjs.com/">Grunt</a>を使ったことがない方は<a href="http://gruntjs.com/getting-started">Getting Started</a>ガイドを見てください。そこには<a href="http://gruntjs.com/sample-gruntfile">Gruntfile</a> の書き方やインストール方法が書かれています。</p>
 </blockquote>
@@ -18,7 +18,7 @@
 <p>同じGruntのwildcard/glob/splatとタスク設定ファイルはいくつかのタスク設定jsファイル自体でで使われていますので変更を加えたいときはそれらも同様に編集してください。</p>
 </blockquote>
 <h3>タスクの設定</h3>
-<p>設定済みのタスクはGruntfileが実行されたとき適用されるルールをまとめたものです。これら<a href="http://sailsjs.org/documentation/anatomy/myApp/tasks/config"><code>tasks/config/</code></a>にあり、完全にカスタマイズ可能です。あなたの使いたい用途に合わせてこれたのGruntファイルのうち全てを編集し、省略し、また置き換えることが出来ます。同様に<code>someTask.js</code>のようなファイルをこのディレクトリに追加し他の適切なタスクと一緒に登録することで(<code>grunt/register/*.js</code>のファイルを参照してください。)あなた自身のGruntファイルを作成することも出来ます。なおSailsは特段の設定なしに起動できるように便利なデフォルトのタスクのセットを持っているということも忘れずにいてください。</p>
+<p>設定済みのタスクはGruntfileが実行されたとき適用されるルールをまとめたものです。これら<a href="http://sailsjs.jp/documentation/anatomy/myApp/tasks/config"><code>tasks/config/</code></a>にあり、完全にカスタマイズ可能です。あなたの使いたい用途に合わせてこれたのGruntファイルのうち全てを編集し、省略し、また置き換えることが出来ます。同様に<code>someTask.js</code>のようなファイルをこのディレクトリに追加し他の適切なタスクと一緒に登録することで(<code>grunt/register/*.js</code>のファイルを参照してください。)あなた自身のGruntファイルを作成することも出来ます。なおSailsは特段の設定なしに起動できるように便利なデフォルトのタスクのセットを持っているということも忘れずにいてください。</p>
 <h5>カスタムのタスクを設定する</h5>
 <p>プロジェクトにカスタムのタスクを設定するのはとてもシンプルで、Gruntの<a href="http://gruntjs.com/api/grunt.config">設定</a>と<a href="http://gruntjs.com/api/grunt.task">タスク</a>APIを使うことでタスクをモジュールにすることが出来ます。既存のタスクを置き換えて新しいタスクを作成する例を見てみましょう。デフォルトで設定されているunderscoreの代わりに<a href="http://handlebarsjs.com/">Handlebars</a>をテンプレートエンジンとして使いたいとします。:</p>
 <ul>
@@ -122,15 +122,15 @@ module.exports = function (grunt) {
 <pre><code class="language-bash">npm uninstall grunt-contrib-jst --save-dev</code></pre>
 </blockquote>
 <h3>Task triggers</h3>
-<p><a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.local.html?q=environment">デベロップメントモード</a>においてはSailsは<code>default</code>のタスク(<a href="http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/default.js.html"><code>tasks/register/default.js</code></a>)を実行します。これはLESSやCoffeeScript、クライアントサイドのJSTテンプレートをコンパイルし、アプリケーションの動的なビューと静的なHTMLページにリンクします。</p>
-<p>本番環境においてはSailsは<code>prod</code>のタスク(<a href="http://sailsjs.org/documentation/anatomy/myApp/tasks/register/prod.js.html"><code>tasks/register/prod.js</code></a>)を実行し、これはこれは<code>default</code>のタスクに加えてアプリケーションのスタイルシートスクリプトを最小化します。これによりアプリケーションの読み込み時間と利用帯域を節約することが出来ます。</p>
-<p>これらのタスクのトリガーは<a href="http://sailsjs.org/documentation/anatomy/myApp/tasks/register"><code>tasks/register/</code></a>フォルダーにある<a href="http://gruntjs.com/creating-tasks#basic-tasks">Gruntの&quot;basic&quot;タスク</a>に有ります。以下にSailsの全てのタスクトリガーとそれぞれが走らせるコマンドのリファレンスを説明します。:</p>
+<p><a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.local.html?q=environment">デベロップメントモード</a>においてはSailsは<code>default</code>のタスク(<a href="http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/default.js.html"><code>tasks/register/default.js</code></a>)を実行します。これはLESSやCoffeeScript、クライアントサイドのJSTテンプレートをコンパイルし、アプリケーションの動的なビューと静的なHTMLページにリンクします。</p>
+<p>本番環境においてはSailsは<code>prod</code>のタスク(<a href="http://sailsjs.jp/documentation/anatomy/myApp/tasks/register/prod.js.html"><code>tasks/register/prod.js</code></a>)を実行し、これはこれは<code>default</code>のタスクに加えてアプリケーションのスタイルシートスクリプトを最小化します。これによりアプリケーションの読み込み時間と利用帯域を節約することが出来ます。</p>
+<p>これらのタスクのトリガーは<a href="http://sailsjs.jp/documentation/anatomy/myApp/tasks/register"><code>tasks/register/</code></a>フォルダーにある<a href="http://gruntjs.com/creating-tasks#basic-tasks">Gruntの&quot;basic&quot;タスク</a>に有ります。以下にSailsの全てのタスクトリガーとそれぞれが走らせるコマンドのリファレンスを説明します。:</p>
 <h5><code>sails lift</code></h5>
 <p><strong>default</strong>のタスクを実行します。 (<code>tasks/register/default.js</code>).</p>
 <h5><code>sails lift --prod</code></h5>
 <p><strong>prod</strong>のタスクを実行します。 (<code>tasks/register/prod.js</code>).</p>
 <h5><code>sails www</code></h5>
-<p><strong>build</strong>タスクを実行します。 (<code>tasks/register/build.js</code>)that compiles all the assets to <code>www</code> subfolder instead of <code>.tmp/public</code> using relative paths in references. This allows serving static content with Apache or Nginx instead of relying on <a href="http://sailsjs.org/documentation/concepts/Middleware">'www middleware'</a>、.</p>
+<p><strong>build</strong>タスクを実行します。 (<code>tasks/register/build.js</code>)that compiles all the assets to <code>www</code> subfolder instead of <code>.tmp/public</code> using relative paths in references. This allows serving static content with Apache or Nginx instead of relying on <a href="http://sailsjs.jp/documentation/concepts/Middleware">'www middleware'</a>、.</p>
 <h5><code>sails www --prod</code> (production)</h5>
 <p><strong>buildProd</strong>タスクを実行します。 (<code>tasks/register/buildProd.js</code>).that does the same as <strong>build</strong> task but also optimizes assets.</p>
 <p>NODE_ENVの設定で別のタスクを実行するように指定したり、tasks/register/で同名のタスクのリストを作成することが出来ます。例えば、NODE_ENVがQAの時Sailsはもしtasks/register/QA.jsが存在すればそれを実行します。</p>

@@ -1,55 +1,49 @@
-<h1 id="populate-where-">Populate Where...</h1>
-<p>If the specified association is plural (&quot;collection&quot;), this action returns the list of associated records as a JSON array of objects.  If the specified association is singular (&quot;model&quot;), this action returns the associated record as a JSON object.</p>
-<pre><code data-language="javascript">GET /:model/:record/:association
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="example" permalink="example">Example</h3>
-<p>Populate the <code>cashier</code> who conducted purchase #47.</p>
-<p><strong>Using <a href="http://jquery.com/" target="_blank">jQuery</a>:</strong></p>
-<pre><code data-language="javascript">$.get(&apos;/purchase/47/cashier&apos;, function (purchase) {
+<h1>Populate Where...</h1>
+<p>指定されたアソシエーションが複数(&quot;collection&quot;)の時、このアクションは関連付けられたレコードのリストをJSONオブジェクトの配列として返します。指定されたアソシエーションが一つ(&quot;model&quot;)の時、このアクションは関連付けられたレコードのJSONオブジェクトを返します。</p>
+<pre><code>GET /:model/:record/:association</code></pre>
+<h3>例</h3>
+<p>購入#47に関わった<code>cashier</code>を取得する。</p>
+<p><strong><a href="http://jquery.com/">jQuery</a>を使う:</strong></p>
+<pre><code class="language-javascript">$.get('/purchase/47/cashier', function (purchase) {
   console.log(purchase);
-});
-</code></pre><!-- __LANG=%%__ -->
-<p><strong>Using <a href="https://angularjs.org/" target="_blank">Angular</a>:</strong></p>
-<pre><code data-language="javascript">$http.get(&apos;/purchase/47/cashier&apos;)
+});</code></pre>
+<p><strong><a href="https://angularjs.org/">Angular</a>を使う:</strong></p>
+<pre><code class="language-javascript">$http.get('/purchase/47/cashier')
 .then(function (purchase) {
   console.log(purchase);
-});
-</code></pre><!-- __LANG=%%__ -->
-<p><strong>Using <a href="http://sailsjs.org/documentation/reference/websockets/sails.io.js" target="_blank">sails.io.js</a>:</strong></p>
-<pre><code data-language="javascript">io.socket.get(&apos;/purchase/47/cashier&apos;, function (purchase) {
+});</code></pre>
+<p><strong><a href="http://sailsjs.jp/documentation/reference/websockets/sails.io.js">sails.io.js</a>を使う:</strong></p>
+<pre><code class="language-javascript">io.socket.get('/purchase/47/cashier', function (purchase) {
   console.log(purchase);
-});
-</code></pre><!-- __LANG=%%__ -->
-<p><strong>Using <a href="http://en.wikipedia.org/wiki/CURL" target="_blank">cURL</a>:</strong></p>
-<pre><code data-language="javascript">curl http://localhost:1337/purchase/47/cashier
-</code></pre><!-- __LANG=%%__ -->
-<p>Should return:</p>
-<pre><code data-language="json">{
-  &quot;amount&quot;: 99.99,
-  &quot;id&quot;: 47,
-  &quot;cashier&quot;: {
-    &quot;name&quot;: &quot;Dolly&quot;,
-    &quot;id&quot;: 7,
-    &quot;createdAt&quot;: &quot;2012-05-14T01:21:05.000Z&quot;,
-    &quot;updatedAt&quot;: &quot;2013-01-15T01:18:40.000Z&quot;
+});</code></pre>
+<p><strong><a href="http://en.wikipedia.org/wiki/CURL">cURL</a>を使う:</strong></p>
+<pre><code class="language-bash">curl http://localhost:1337/purchase/47/cashier</code></pre>
+<p>以下のように返ってくるはずです:</p>
+<pre><code class="language-json">{
+  "amount": 99.99,
+  "id": 47,
+  "cashier": {
+    "name": "Dolly",
+    "id": 7,
+    "createdAt": "2012-05-14T01:21:05.000Z",
+    "updatedAt": "2013-01-15T01:18:40.000Z"
   },
-  &quot;createdAt&quot;: &quot;2013-10-14T01:22:00.000Z&quot;,
-  &quot;updatedAt&quot;: &quot;2013-10-15T01:20:54.000Z&quot;
+  "createdAt": "2013-10-14T01:22:00.000Z",
+  "updatedAt": "2013-10-15T01:20:54.000Z"
 }
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li><p>The example above assumes &quot;rest&quot; blueprints are enabled, and that your project contains at least an empty &apos;Employee&apos; model as well as a <code>Purchase</code> model with an association attribute: <code>cashier: {model: &apos;Employee&apos;}</code>.  You&apos;ll also need at least an empty <code>PurchaseController</code> and <code>EmployeeController</code>.  You can quickly achieve this by running:</p>
-<pre><code data-language="shell">$ sails new foo
+<li>
+<p>上記の例では&quot;rest&quot;blueprintが有効であると仮定します。それに加えてあなたのプロジェクトが少なくともアソシエーション<code>involvedInPurchases: {collection: 'Purchase', via: 'cashier'}</code>を持った'Employee'モデルとアソシエーション<code>cashier: {model: 'Employee'}</code>を持った<code>Purchase</code>モデルを持っているべきです。 同様に空の<code>PurchaseController</code>と<code>EmployeeController</code>も必要です。これを簡単に行うには以下を実行します:</p>
+<pre><code class="language-shell">$ sails new foo
 $ cd foo
 $ sails generate api purchase
-$ sails generate api employee
-</code></pre><!-- __LANG=%%__ -->
+$ sails generate api employee</code></pre>
 <p>...then editing <code>api/models/Purchase.js</code>.</p>
 </li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="Populate838372"></docmeta></p>
+<docmeta name="uniqueID" value="Populate838372">
 <docmeta name="displayName" value="populate where">
-</docmeta>

@@ -1,5 +1,5 @@
-<h1 id="-publishupdate-id-changes-request-options-">.publishUpdate( <code>{id}</code>,[<code>changes</code>],[<code>request</code>],[<code>options</code>] )</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
+<h1>.publishUpdate( <code>{id}</code>,[<code>changes</code>],[<code>request</code>],[<code>options</code>] )</h1>
+<h3>Purpose</h3>
 <p>PublishUpdate updates nothing.  It publishes information about the update of a model instance via websockets.</p>
 <table>
 <thead>
@@ -41,29 +41,29 @@
 <p>The socket message is an object with the following properties:</p>
 <ul>
 <li><strong>id</strong> - the <code>id</code> attribute of the model instance</li>
-<li><strong>verb</strong>  - <code>&quot;updated&quot;</code> (a string)</li>
+<li><strong>verb</strong>  - <code>"updated"</code> (a string)</li>
 <li><strong>data</strong> - an object-- the attributes that were updated</li>
 <li><strong>previous</strong> - an object--if present, the previous values of the updated attributes</li>
 </ul>
-<h4 id="-changes-" permalink="changes"><code>changes</code></h4>
+<h4><code>changes</code></h4>
 <p>This should be an object containing any changed attributes and their new values.  </p>
-<h4 id="-request-" permalink="request"><code>request</code></h4>
+<h4><code>request</code></h4>
 <p>If this argument is included then the socket attached to that request will <em>not</em> receive the notification.</p>
-<h4 id="-options-previous-" permalink="optionsprevious"><code>options.previous</code></h4>
-<p>If the <code>options</code> object contains a <code>previous</code> property, it is expected to be a representation of the model instance&apos;s attributes <em>before</em> they were updated.  This may be used to determine whether or not to publish additional messages (see the <code>options.noReverse</code> flag below for more info).</p>
-<h4 id="-options-noreverse-" permalink="optionsnoreverse"><code>options.noReverse</code></h4>
-<p>The default implementation of <code>publishUpdate</code> will, if <code>options.previous</code> is present, check whether any associated records were affected by the update, and possibly send out additional notifications.  For example, if a <code>Pet</code> model has an <code>owner</code> attribute that is associated with the <code>User</code> model so that a user may own several pets, and the data sent with the call to <code>publishUpdate</code> indicates that the value of a pet&apos;s <code>owner</code> changed, then an additional <code>publishAdd</code> or <code>publishRemove</code> call may be made.  To suppress these notifications, set the <code>options.noReverse</code> flag to <code>true</code>.  In general, you should not have to set this flag unless you are writing your own implementation of <code>publishUpdate</code> for a model.</p>
-<h3 id="example-usage" permalink="example-usage">Example Usage</h3>
+<h4><code>options.previous</code></h4>
+<p>If the <code>options</code> object contains a <code>previous</code> property, it is expected to be a representation of the model instance's attributes <em>before</em> they were updated.  This may be used to determine whether or not to publish additional messages (see the <code>options.noReverse</code> flag below for more info).</p>
+<h4><code>options.noReverse</code></h4>
+<p>The default implementation of <code>publishUpdate</code> will, if <code>options.previous</code> is present, check whether any associated records were affected by the update, and possibly send out additional notifications.  For example, if a <code>Pet</code> model has an <code>owner</code> attribute that is associated with the <code>User</code> model so that a user may own several pets, and the data sent with the call to <code>publishUpdate</code> indicates that the value of a pet's <code>owner</code> changed, then an additional <code>publishAdd</code> or <code>publishRemove</code> call may be made.  To suppress these notifications, set the <code>options.noReverse</code> flag to <code>true</code>.  In general, you should not have to set this flag unless you are writing your own implementation of <code>publishUpdate</code> for a model.</p>
+<h3>Example Usage</h3>
 <p>UsersController.js</p>
-<pre><code data-language="javascript">module.exports = {
+<pre><code class="language-javascript">module.exports = {
 
   testSocket: function(req,res){
 
-        var nameSent = req.param(&apos;name&apos;);
+        var nameSent = req.param('name');
 
         if (nameSent &amp;&amp; req.isSocket){
 
-          User.update({name:nameSent},{name:&apos;Heisenberg&apos;}).exec(function update(err,updated){
+          User.update({name:nameSent},{name:'Heisenberg'}).exec(function update(err,updated){
             User.publishUpdate(updated[0].id,{ name:updated[0].name });
           });
 
@@ -71,7 +71,7 @@
 
         User.find({}).exec(function(e,listOfUsers){
           User.subscribe(req.socket,listOfUsers);
-        console.log(&apos;User with socket id &apos;+req.socket.id+&apos; is now subscribed to all of the model instances in \&apos;users\&apos;.&apos;);
+        console.log('User with socket id '+req.socket.id+' is now subscribed to all of the model instances in \'users\'.');
         });
 
         } else {
@@ -82,38 +82,35 @@
     }
 }
 
-    // Don&apos;t forget to handle your errors
-</code></pre><!-- __LANG=%%__ -->
+    // Don't forget to handle your errors</code></pre>
 <p>views/users/testSocket.ejs</p>
-<pre><code data-language="html">&lt;script type=&quot;text/javascript&quot;&gt;
+<pre><code class="language-html">&lt;script type="text/javascript"&gt;
 window.onload = function subscribeAndListen(){
     // When the document loads, send a request to users.testSocket
-    // The controller code will subscribe you to all of the &apos;users&apos; model instances (records)
-    socket.get(&apos;/users/testSocket/&apos;);
+    // The controller code will subscribe you to all of the 'users' model instances (records)
+    socket.get('/users/testSocket/');
 
-    // Listen for the event called &apos;user&apos;
-    socket.on(&apos;user&apos;,function(obj){
-      if (obj.verb == &apos;updated&apos;) {
+    // Listen for the event called 'user'
+    socket.on('user',function(obj){
+      if (obj.verb == 'updated') {
         var previous = obj.previous;
         var data = obj.data;
-        console.log(&apos;User &apos;+previous.name+&apos; has been updated to &apos;+data.name);
+        console.log('User '+previous.name+' has been updated to '+data.name);
       }
     });
 };
 
 function doEdit(){
 
-    // Send the name to the testSocket action on the &apos;Users&apos; contoller
+    // Send the name to the testSocket action on the 'Users' contoller
 
-    socket.get(&apos;/users/testSocket/&apos;,{name:&apos;Walter&apos;});
+    socket.get('/users/testSocket/',{name:'Walter'});
 }
 
 &lt;/script&gt;
-&lt;div class=&quot;addButton&quot; onClick=&quot;doEdit()&quot;&gt;Click Me to add a new User! &lt;/div&gt;
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="publishUpdate712330"></docmeta></p>
-<p><docmeta name="methodType" value="pubsub"></docmeta></p>
-<p><docmeta name="importance" value="undefined"></docmeta></p>
+&lt;div class="addButton" onClick="doEdit()"&gt;Click Me to add a new User! &lt;/div&gt;
+</code></pre>
+<docmeta name="uniqueID" value="publishUpdate712330">
+<docmeta name="methodType" value="pubsub">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".publishUpdate()">
-
-</docmeta>

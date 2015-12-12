@@ -3,7 +3,7 @@
 <p>Sailsにおける「ポリシー」は認証とアクセスコントロールを行うための多機能なツールです。つまりポリシーはコントロータへのアクセスを許可したり拒否したりする動作を適切な粒度で定義できるのです。たとえばあなたがDropboxをつくろうとしているとしましょう。するとユーザにファイルをフォルダーにアップロードをさせる前にはユーザが<code>isAuthenticated</code>かどうかを確認して次に<code>canWrite</code>（フォルダへの書き込み権限を持っているか）を確認します。最後にアップロードしようとしてるフォルダーが<code>hasEnoughSpace</code>かどうかも確認するでしょう。</p>
 <p>ポリシーはどんなものでも利用することが出来ます。つまりHTTP BasicAuthでも、サードパーティーのシングルサインオンでも、OAuth2.0でも、あるいはあなたが書いたオリジナルの認証・認可スキーマとでも利用することが出来ます。</p>
 <blockquote>
-<p>備考：ポリシーはコントローラーアクションに対して<strong>のみ</strong>提供され、ビューには適用されません。もしも<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html">routes.js config file</a> でビューを直接指定指定した場合ポリシーは一切適用されません。ポリシーが確実に適用されるようにするにはビューを表示するコントローラを作成し、ルートからはそのコントローラを呼び出すようにしてください。</p>
+<p>備考：ポリシーはコントローラーアクションに対して<strong>のみ</strong>提供され、ビューには適用されません。もしも<a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.routes.html">routes.js config file</a> でビューを直接指定指定した場合ポリシーは一切適用されません。ポリシーが確実に適用されるようにするにはビューを表示するコントローラを作成し、ルートからはそのコントローラを呼び出すようにしてください。</p>
 </blockquote>
 <h3>初めてのポリシーを書く</h3>
 <p>ポリシーはSailsアプリケーションの<code>api/policies</code>で定義されます。それぞれのポリシーは一つのファンクションを持ちます。</p>

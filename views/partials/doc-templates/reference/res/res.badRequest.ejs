@@ -1,50 +1,46 @@
-<h1 id="res-badrequest-">res.badRequest()</h1>
-<p>This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error" target="_blank">400</a> (&quot;Bad Request&quot;) response back down to the client indicating that the request is invalid.  This usually means it contained invalid parameters or headers, or tried to do something impossible based on your app logic.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">return res.badRequest();
-</code></pre><!-- __LANG=%%__ -->
-<p><em>Or:</em></p>
+<h1>res.badRequest()</h1>
+<p>このメソッドは<a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error">400</a> (&quot;Bad Request&quot;)レスポンスを返し、クライアントにリクエストが不正であることを示します。通常これはヘッダーのパラメータに不正があるときやアプリケーションロジックで処理できないことを意味します。</p>
+<h3>使い方</h3>
+<pre><code class="language-js">return res.badRequest();</code></pre>
+<p><em>あるいは:</em></p>
 <ul>
 <li><code>return res.badRequest(data);</code></li>
 <li><code>return res.badRequest(data, pathToView);</code></li>
 </ul>
-<h3 id="details" permalink="details">Details</h3>
-<p>Like the other built-in custom response modules, the behavior of this method is customizable.</p>
-<p>By default, it works as follows:</p>
+<h3>詳細</h3>
+<p>ほかのカスタムレスポンスモジュールと同じようにこのメソッドはカスタマイズ可能です。</p>
+<p>デフォルトでこれは以下のように動作します:</p>
 <ul>
-<li>If the request &quot;<a href="http://sailsjs.org/documentation/reference/req/req.wantsJSON.html" target="_blank">wants JSON</a>&quot; (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error <code>data</code> as JSON.  If no <code>data</code> is provided a default response body will be sent (the string <code>&quot;Bad Request&quot;</code>).</li>
-<li>If the request <em>does not</em> &quot;want JSON&quot; (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.<ul>
-<li>If a specific <code>pathToView</code> was provided, Sails will attempt to use that view.</li>
-<li>Alternatively if <code>pathToView</code> was <em>not</em> provided, Sails will try to guess an appropriate view (see <a href="http://sailsjs.org/documentation/reference/res/res.view.html" target="_blank"><code>res.view()</code></a> for details).  If Sails cannot guess a workable view, it will just send JSON.</li>
-<li>If Sails serves a view, the <code>data</code> argument will be accessible as a <a href="http://sailsjs.org/documentation/concepts/Views/Locals.html" target="_blank">view local</a>: <code>data</code>.</li>
+<li>リクエストが&quot;<a href="http://sailsjs.jp/documentation/reference/req/req.wantsJSON.html">JSONを望んでいる</a>&quot;場合（例えはリクエストがAJAXやWebSocketsその他cURLなどのRESTクライアントからのものである場合）、Sailsは与えられたエラーの<code>data</code>をJSONで返します。もし何の<code>data</code>も与えられていない時はデフォルトのレスポンスボディ（文字列の<code>"Bad Request"</code>）が送信されます。</li>
+<li>リクエストがJSONを望んで <em>いない場合</em> （例:URLがブラウザに打ち込まれた場合）、Sailsはビューのうち1つを返そうとします。
+<ul>
+<li>特定の<code>pathToView</code>が与えられているときはSailsはそのビューを返そうとします。</li>
+<li>そうではなく<code>pathToView</code>が与えられて_いない時_Sailsは適切なviewを推測しようとします。（詳しくは<a href="http://sailsjs.jp/documentation/reference/res/res.view.html"><code>res.view()</code></a>を御覧ください。）、もし適切なビューを見つけられない時Sailsは単にJSONを返します。</li>
+<li>Sailsがビューを返すとき、<code>data</code>引数は<a href="http://sailsjs.jp/documentation/concepts/Views/Locals.html">view local</a>: <code>data</code>としてアクセス可能です。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="example" permalink="example">Example</h3>
-<p>Using the default view:</p>
-<pre><code data-language="javascript">if ( req.param(&apos;amount&apos;) &lt; 500 )
+<h3>例</h3>
+<p>デフォルトのビューを使う:</p>
+<pre><code class="language-javascript">if ( req.param('amount') &lt; 500 )
   return res.badRequest(
-    &apos;Transaction limit exceeded. Please try again with an amount less than $500.&apos;
+    'Transaction limit exceeded. Please try again with an amount less than $500.'
   );
-}
-</code></pre><!-- __LANG=%%__ -->
-<p>With a custom view:</p>
-<pre><code data-language="javascript">if ( req.param(&apos;amount&apos;) &lt; 500 )
+}</code></pre>
+<p>カスタムのビュー使う:</p>
+<pre><code class="language-javascript">if ( req.param('amount') &lt; 500 )
   return res.badRequest(
-    &apos;Transaction limit exceeded. Please try again with an amount less than $500.&apos;,
-    &apos;salesforce/leads/edit&apos;
+    'Transaction limit exceeded. Please try again with an amount less than $500.',
+    'salesforce/leads/edit'
   );
-}
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+}</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>This method is <strong>terminal</strong>, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of <code>return</code> throughout these docs).</li>
-<li><code>res.badRequest()</code> (like other userland response methods) can be overridden or modified.  It runs the response method defined in <code>/responses/badRequest.js</code>, which is bundled automatically in newly generated Sails apps.  If a <code>badRequest.js</code> response method does not exist in your app, Sails will implicitly use the default behavior.</li>
-<li>This method is called automatically if a call to <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md" target="_blank"><code>req.validate()</code></a> fails any of its validation checks.</li>
-<li>By default, the specified error (<code>err</code>) will be excluded if the app is running in the &quot;production&quot; environment (i.e. <code>process.env.NODE_ENV === &apos;production&apos;</code>).</li>
+<li>このメソッドは <strong>ターミナル</strong>であり、リクエストを処理するための一般的に最後の1行であるべきです。（そのためこれらのドキュメントの使用方法では<code>return</code>を使うと考えるべきです。）。</li>
+<li><code>res.badRequest()</code>は（ほかのユーザ側のレスポンスメソッドと同様に）編集や上書きが可能です。<code>/responses/badRequest.js</code>で定義されたレスポンスメソッドが実行されますが、これはSailsアプリケーションを生成する際に自動的に作成されます。<code>badRequest.js</code>が無いときはSailsは暗黙でデフォルトの振る舞いを利用します。</li>
+<li>このメソッドはバリデーションチェックに失敗し、 <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md"><code>req.validate()</code></a>が呼び出された時に自動で呼びだされます。
++　デフォルトではアプリケーションが本番環境で実行されている時(すなわち<code>process.env.NODE_ENV === 'production'</code>)に於いては特定のエラー(<code>err</code>)は除外されます。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="resbadRequest631019"></docmeta></p>
+<docmeta name="uniqueID" value="resbadRequest631019">
 <docmeta name="displayName" value="res.badRequest()">
-</docmeta>

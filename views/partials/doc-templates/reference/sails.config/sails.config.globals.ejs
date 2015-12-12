@@ -1,11 +1,11 @@
-<h1 id="sails-config-globals">sails.config.globals</h1>
-<p>Configuration for the <a href="http://sailsjs.org/documentation/reference/Globals" target="_blank">global variables</a> that Sails exposes to its Node process.  The options are conventionally specified in the <a href="http://sailsjs.org/documentation/anatomy/myApp/config/globals.js.html" target="_blank"><code>config/globals.js</code></a> configuration file.</p>
-<h3 id="properties" permalink="properties">Properties</h3>
+<h1>sails.config.globals</h1>
+<p>Configuration for the <a href="http://sailsjs.jp/documentation/reference/Globals">global variables</a> that Sails exposes to its Node process.  The options are conventionally specified in the <a href="http://sailsjs.jp/documentation/anatomy/myApp/config/globals.js.html"><code>config/globals.js</code></a> configuration file.</p>
+<h3>Properties</h3>
 <table>
 <thead>
 <tr>
 <th>Property</th>
-<th style="text-align:center">Type</th>
+<th style="text-align: center;">Type</th>
 <th>Default</th>
 <th>Details</th>
 </tr>
@@ -13,42 +13,41 @@
 <tbody>
 <tr>
 <td><code>sails</code></td>
-<td style="text-align:center"><bubble type="boolean" colors="true"></bubble></td>
+<td style="text-align: center;">((boolean))</td>
 <td><code>true</code></td>
 <td>Expose the <code>sails</code> instance representing your app.  If this is disabled, you can still get access via <code>req._sails</code>.</td>
 </tr>
 <tr>
 <td><code>models</code></td>
-<td style="text-align:center"><bubble type="boolean" colors="true"></bubble></td>
+<td style="text-align: center;">((boolean))</td>
 <td><code>true</code></td>
-<td>Expose each of your app&apos;s models as global variables (using their &quot;globalId&quot;).  E.g. a model defined in <code>api/models/User.js</code> would have a globalId of <code>User</code> by default.   If this is disabled, you can still access your models via <code>sails.models.*</code>.</td>
+<td>Expose each of your app's models as global variables (using their &quot;globalId&quot;).  E.g. a model defined in <code>api/models/User.js</code> would have a globalId of <code>User</code> by default.   If this is disabled, you can still access your models via <code>sails.models.*</code>.</td>
 </tr>
 <tr>
 <td><code>services</code></td>
-<td style="text-align:center"><bubble type="boolean" colors="true"></bubble></td>
+<td style="text-align: center;">((boolean))</td>
 <td><code>true</code></td>
-<td>Expose each of your app&apos;s services as global variables (using their &quot;globalId&quot;).  E.g. a service defined in <code>api/services/NaturalLanguage.js</code> would have a globalId of <code>NaturalLanguage</code> by default.  If this is disabled, you can still access your services via <code>sails.services.*</code>.</td>
+<td>Expose each of your app's services as global variables (using their &quot;globalId&quot;).  E.g. a service defined in <code>api/services/NaturalLanguage.js</code> would have a globalId of <code>NaturalLanguage</code> by default.  If this is disabled, you can still access your services via <code>sails.services.*</code>.</td>
 </tr>
 <tr>
 <td><code>_</code></td>
-<td style="text-align:center"><bubble type="boolean" colors="true"></bubble></td>
+<td style="text-align: center;">((boolean))</td>
 <td><code>true</code></td>
-<td>Expose the <code>lodash</code> installed in Sails core as a global variable. If this is disabled, like <a href="https://soundcloud.com/marak/marak-the-node-js-rap" target="_blank">any other node module</a> you can always run <code>npm install lodash --save</code>, then <code>var _ = require(&apos;lodash&apos;)</code> at the top of any file.</td>
+<td>Expose the <code>lodash</code> installed in Sails core as a global variable. If this is disabled, like <a href="https://soundcloud.com/marak/marak-the-node-js-rap">any other node module</a> you can always run <code>npm install lodash --save</code>, then <code>var _ = require('lodash')</code> at the top of any file.</td>
 </tr>
 <tr>
 <td><code>async</code></td>
-<td style="text-align:center"><bubble type="boolean" colors="true"></bubble></td>
+<td style="text-align: center;">((boolean))</td>
 <td><code>true</code></td>
-<td>Expose the <code>async</code> installed in Sails core as a global variable.  If this is disabled, like <a href="https://soundcloud.com/marak/marak-the-node-js-rap" target="_blank">any other node module</a> you can always run <code>npm install async --save</code>, then <code>var async = require(&apos;async&apos;)</code> at the top of any file.</td>
+<td>Expose the <code>async</code> installed in Sails core as a global variable.  If this is disabled, like <a href="https://soundcloud.com/marak/marak-the-node-js-rap">any other node module</a> you can always run <code>npm install async --save</code>, then <code>var async = require('async')</code> at the top of any file.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="notes" permalink="notes">Notes</h3>
+<h3>Notes</h3>
 <blockquote>
 <ul>
 <li>To disable all global variables, you can set <code>sails.config.globals</code> to <code>false</code>.</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="sailsconfigglobals588825999999"></docmeta></p>
+<docmeta name="uniqueID" value="sailsconfigglobals588825999999">
 <docmeta name="displayName" value="sails.config.globals">
-</docmeta>

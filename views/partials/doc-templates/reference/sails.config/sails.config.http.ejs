@@ -1,58 +1,53 @@
-<h1 id="sails-config-http">sails.config.http</h1>
-<p>Configuration for your app&apos;s underlying HTTP server.  These properties are conventionally specified in the <a href="http://sailsjs.org/documentation/anatomy/myApp/config/http.js.html" target="_blank"><code>config/http.js</code></a> configuration file.</p>
-<h3 id="properties" permalink="properties">Properties</h3>
+<h1>sails.config.http</h1>
+<p>Configuration for your app's underlying HTTP server.  These properties are conventionally specified in the <a href="http://sailsjs.jp/documentation/anatomy/myApp/config/http.js.html"><code>config/http.js</code></a> configuration file.</p>
+<h3>Properties</h3>
 <table>
 <thead>
 <tr>
 <th>Property</th>
-<th style="text-align:center">Type</th>
+<th style="text-align: center;">Type</th>
 <th>Default</th>
 <th>Details</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> <code>middleware</code></td>
-<td style="text-align:center"><bubble type="object" colors="true"></bubble></td>
-<td>See <a href="http://sailsjs.org/documentation/concepts/Middleware?q=conventional-defaults" target="_blank">conventional defaults for HTTP middleware</a></td>
-<td>A configuration object of all HTTP middleware functions your app will run on every incoming HTTP request.  All <a href="https://github.com/expressjs/" target="_blank">Express</a> or Connect middleware is supported.<br><a href="https://gist.github.com/mikermcneil/9cbd68c95839da480e97" target="_blank">Example</a></td>
+<td><code>middleware</code></td>
+<td style="text-align: center;">((object))</td>
+<td>See <a href="http://sailsjs.jp/documentation/concepts/Middleware?q=conventional-defaults">conventional defaults for HTTP middleware</a></td>
+<td>A configuration object of all HTTP middleware functions your app will run on every incoming HTTP request.  All <a href="https://github.com/expressjs/">Express</a> or Connect middleware is supported.<br/><a href="https://gist.github.com/mikermcneil/9cbd68c95839da480e97">Example</a></td>
 </tr>
 <tr>
-<td> <code>middleware.order</code></td>
-<td style="text-align:center"><bubble type="array" colors="true"></bubble></td>
-<td>See <a href="https://github.com/balderdashy/sails/blob/master/lib/hooks/http/index.js#l51-66" target="_blank">conventional defaults for HTTP middleware order</a></td>
+<td><code>middleware.order</code></td>
+<td style="text-align: center;">((array))</td>
+<td>See <a href="https://github.com/balderdashy/sails/blob/master/lib/hooks/http/index.js#l51-66">conventional defaults for HTTP middleware order</a></td>
 <td>The order in which middleware should be run for HTTP request (the Sails router, which runs the appropriate explicit routes, policies, controllers, etc. from your app is invoked by the &quot;router&quot; middleware).</td>
 </tr>
 <tr>
-<td> <code>cache</code></td>
-<td style="text-align:center"><bubble type="number" colors="true"></bubble></td>
+<td><code>cache</code></td>
+<td style="text-align: center;">((number))</td>
 <td><code>cache: 31557600000</code></td>
-<td>The number of milliseconds to cache flat files on disk being served by Express static middleware (by default, these files are in <code>.tmp/public</code>)<br>The HTTP static cache is only active in a &apos;production&apos; environment (default 1 year), since that&apos;s the only time Express will cache flat-files.</td>
+<td>The number of milliseconds to cache flat files on disk being served by Express static middleware (by default, these files are in <code>.tmp/public</code>)<br/>The HTTP static cache is only active in a 'production' environment (default 1 year), since that's the only time Express will cache flat-files.</td>
 </tr>
 <tr>
-<td> <code>serverOptions</code></td>
-<td style="text-align:center"><bubble type="object" colors="true"></bubble></td>
+<td><code>serverOptions</code></td>
+<td style="text-align: center;">((object))</td>
 <td>TODO</td>
 <td>TODO</td>
 </tr>
 </tbody>
 </table>
-<h3 id="notes" permalink="notes">Notes</h3>
+<h3>Notes</h3>
 <blockquote>
 <ul>
-<li><p>Note that this HTTP middleware stack configured in <code>sails.config.http.middleware</code> is only applied to true HTTP requests-- it is ignored when handling virtual requests (e.g. sockets)</p>
+<li>
+<p>Note that this HTTP middleware stack configured in <code>sails.config.http.middleware</code> is only applied to true HTTP requests-- it is ignored when handling virtual requests (e.g. sockets)</p>
 </li>
-<li><p>You cannot define a custom middleware function with the key <code>order</code> (since <code>sails.config.http.middleware.order</code> has special meaning)</p>
-</li>
+<li>You cannot define a custom middleware function with the key <code>order</code> (since <code>sails.config.http.middleware.order</code> has special meaning)</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="sailsconfighttp178274"></docmeta></p>
+<docmeta name="uniqueID" value="sailsconfighttp178274">
 <docmeta name="displayName" value="sails.config.http">
-
-
-
-
-
 
 <!--
 # Express
@@ -61,8 +56,6 @@ If you want to use custom middleware or add local variables and helpers to templ
 
 ### Description
 
-
 This configuration file lets you easily add [Express](https://github.com/expressjs/) middleware, local variables and helpers for templates and directly access the application instance before it starts.
 
  -->
-</docmeta>

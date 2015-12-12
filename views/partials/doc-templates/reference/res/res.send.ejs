@@ -1,42 +1,34 @@
-<h1 id="res-send-">res.send()</h1>
-<p>Send a simple response.  <code>statusCode</code> defaults to 200 (&quot;OK&quot;).</p>
-<p>This method is used in the underlying implementation of most of the other terminal response methods.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">return res.send([statusCode,] body);
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="details" permalink="details">Details</h3>
-<p>This method performs a myriad of useful tasks for simple non-streaming responses such as automatically assigning the Content-Length unless previously defined and providing automatic HEAD and HTTP cache freshness support.</p>
-<p>When a Buffer is given the Content-Type is set to &quot;application/octet-stream&quot; unless previously defined as shown below:</p>
-<pre><code data-language="javascript">res.set(&apos;Content-Type&apos;, &apos;text/html&apos;);
-res.send(new Buffer(&apos;some html&apos;));
-</code></pre><!-- __LANG=%%__ -->
-<p>When a String is given the Content-Type is set to &quot;text/html&quot;:</p>
-<pre><code data-language="javascript">res.send(&apos;some html&apos;);
-</code></pre><!-- __LANG=%%__ -->
-<p>When an Array or Object is given Express will respond with the JSON representation:</p>
-<pre><code data-language="javascript">res.send({ user: &apos;tobi&apos; })
-res.send([1,2,3])
-</code></pre><!-- __LANG=%%__ -->
-<p>Finally when a Number is given without any of the previously mentioned bodies, then a response body string is assigned for you. For example 200 will respond will the text &quot;OK&quot;, and 404 &quot;Not Found&quot; and so on.</p>
-<pre><code data-language="javascript">res.send(200)
+<h1>res.send()</h1>
+<p>シンプルなリクエストを送信します。<code>statusCode</code>はデフォルトで200 (&quot;OK&quot;)になります。</p>
+<p>このメソッドは多くのターミナルレスポンスのメソッドの裏側で利用されています。</p>
+<h3>使い方</h3>
+<pre><code class="language-javascript">return res.send([statusCode,] body);</code></pre>
+<h3>詳細</h3>
+<p>このメソッドはContent-Lengthが事前に定義されていない時に自動で割り当てたり、自動的なHEADとHTTPの更新サポートなど、シンプルで、ストリーミングでないレスポンスに必要な数えきれないほど多くのタスクを提供します。</p>
+<p>バッファが与えられた時、Content-Typeには以下のように事前に定義された時を除き&quot;application/octet-stream&quot;がセットされます:</p>
+<pre><code class="language-javascript">res.set('Content-Type', 'text/html');
+res.send(new Buffer('some html'));</code></pre>
+<p>文字列が与えられた時、Content-Typeには&quot;text/html&quot;がセットされます:</p>
+<pre><code class="language-javascript">res.send('some html');</code></pre>
+<p>配列またはオブジェクトが与えられた時、ExpressはJSON表現でレスポンスします。:</p>
+<pre><code class="language-javascript">res.send({ user: 'tobi' })
+res.send([1,2,3])</code></pre>
+<p>最後に、事前にNodyが与えられることなく数字が与えられた場合、レスポンスボディ文字列が割り当てられます。例えば200が文字列「OK」とともにレスポンスされたり、404「Not found」だったりという感じにです。</p>
+<pre><code class="language-javascript">res.send(200)
 res.send(404)
-res.send(500)
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="example" permalink="example">Example</h3>
-<pre><code data-language="javascript">res.send(new Buffer(&apos;whoop&apos;));
-res.send({ some: &apos;json&apos; });
-res.send(&apos;some html&apos;);
-res.send(404, &apos;Sorry, we cannot find that!&apos;);
-res.send(500, { error: &apos;something blew up&apos; });
-res.send(200);
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+res.send(500)</code></pre>
+<h3>例</h3>
+<pre><code class="language-javascript">res.send(new Buffer('whoop'));
+res.send({ some: 'json' });
+res.send('some html');
+res.send(404, 'Sorry, we cannot find that!');
+res.send(500, { error: 'something blew up' });
+res.send(200);</code></pre>
+<h3>Notes</h3>
 <blockquote>
 <ul>
-<li>This method is <strong>terminal</strong>, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of <code>return</code> throughout these docs).</li>
+<li>このメソッドは <strong>ターミナル</strong>であり、リクエストを処理するための一般的に最後の1行であるべきです。（そのためこれらのドキュメントの使用方法では<code>return</code>を使うと考えるべきです。）。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="ressend588955"></docmeta></p>
+<docmeta name="uniqueID" value="ressend588955">
 <docmeta name="displayName" value="res.send()">
-
-</docmeta>

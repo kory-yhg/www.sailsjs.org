@@ -4,15 +4,15 @@
 <h5>安定性: <a href="http://nodejs.org/api/documentation.html#documentation_stability_index">3</a> - 安定</h5>
 </blockquote>
 <h2>フックとは何でしょうか</h2>
-<p>フックはSailsのコアに機能を追加するモジュールです。<a href="http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification">hook specification</a> ではモジュールがSailsにコードをインポートできて新しい機能を利用可能になるための条件が定義されています。これらはコアとは別に保存されるため、フックを使うことでフレームワークを改変することなくアプリケーションや開発者の間でSailsのコードを共有することができます。</p>
+<p>フックはSailsのコアに機能を追加するモジュールです。<a href="http://sailsjs.jp/documentation/concepts/extending-sails/hooks/hook-specification">hook specification</a> ではモジュールがSailsにコードをインポートできて新しい機能を利用可能になるための条件が定義されています。これらはコアとは別に保存されるため、フックを使うことでフレームワークを改変することなくアプリケーションや開発者の間でSailsのコードを共有することができます。</p>
 <h2>フックとサービス</h2>
-<p>フックはSailsの<a href="http://sailsjs.org/documentation/concepts/Services">services</a>と幾つかの共通した機能を持っています。両方とも開発者が共通的に使われるコードを1箇所に保管することが出来るようにし、これらのメソッドはSailsアプリケーションからグローバルに呼び出せます。しかし、この2つのコンセプトにはいくつかの重要な違いがあります。:</p>
+<p>フックはSailsの<a href="http://sailsjs.jp/documentation/concepts/Services">services</a>と幾つかの共通した機能を持っています。両方とも開発者が共通的に使われるコードを1箇所に保管することが出来るようにし、これらのメソッドはSailsアプリケーションからグローバルに呼び出せます。しかし、この2つのコンセプトにはいくつかの重要な違いがあります。:</p>
 <ul>
-<li>サービスはアプリケーションと独立して提供できません。幾つかのタイプのフックは単一のアプリケーションに紐付けられますが(<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html">Project Hooks</a>をご覧ください。)その他のフックはSailsアプリケーションから独立して配布でき、<code>npm install</code>でインストールすることが出来ます。</li>
+<li>サービスはアプリケーションと独立して提供できません。幾つかのタイプのフックは単一のアプリケーションに紐付けられますが(<a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/projecthooks.html">Project Hooks</a>をご覧ください。)その他のフックはSailsアプリケーションから独立して配布でき、<code>npm install</code>でインストールすることが出来ます。</li>
 <li>フックは独自の初期化システムを持っています。これによりダイナミックになり、Sails liftをしたときに自身の設定ができるようになります。</li>
-<li>フックはliftする前にSailsのアプリケーションに新規の<a href="http://sailsjs.org/documentation/concepts/Routes">ルート</a>を作成できます。</li>
+<li>フックはliftする前にSailsのアプリケーションに新規の<a href="http://sailsjs.jp/documentation/concepts/Routes">ルート</a>を作成できます。</li>
 </ul>
-<p>とは言え、サービスは複数の<a href="http://sailsjs.org/documentation/concepts/Controllers">コントローラ</a> や<a href="http://sailsjs.org/documentation/concepts/models-and-orm/models">モデル</a> の間でコードを共有するのにいい方法ですが、</p>
+<p>とは言え、サービスは複数の<a href="http://sailsjs.jp/documentation/concepts/Controllers">コントローラ</a> や<a href="http://sailsjs.jp/documentation/concepts/models-and-orm/models">モデル</a> の間でコードを共有するのにいい方法ですが、</p>
 <ul>
 <li>別のアプリケーションコードを再利用することは難しいです</li>
 <li>（developmentとproductionのような）別々の環境で別々の振る舞いをするととは出来ません。(e.g. development vs. production)</li>
@@ -21,16 +21,16 @@
 <h2>フックの種類</h2>
 <p>Sailsでは3種類のフックが利用可能です:</p>
 <ol>
-<li><strong>コアフック</strong>.  これらのフックはリクエストハンドリングや、blueprintルートの作成、<a href="http://sailsjs.org/documentation/concepts/models-and-orm">Waterline</a>を使ったデータベースの統合など、Sailsアプリの中での多くの共通機能を提供します。コアフックはSailsのコアにバンドルされてるので全てのアプリケーションで利用することが出来ます。</li>
+<li><strong>コアフック</strong>.  これらのフックはリクエストハンドリングや、blueprintルートの作成、<a href="http://sailsjs.jp/documentation/concepts/models-and-orm">Waterline</a>を使ったデータベースの統合など、Sailsアプリの中での多くの共通機能を提供します。コアフックはSailsのコアにバンドルされてるので全てのアプリケーションで利用することが出来ます。</li>
 <li><strong>プロジェクトフック</strong>.  このフックはSailsアプリケーションの中の<code>api/hooks</code>フォルダにあります。プロジェクトフックはアプリ―ケーション間で再利用する必要ないコードでフックの長所を利用したい時に使う方法です。  </li>
 <li><strong>インストーラブルフック</strong>.  これらのフックは<code>npm install</code>を使うことでアプリケーションの中の<code>node_modules</code>フォルダにインストールすることが出来ます。インストーラブルフックを使うことでSailsコミュニティの開発者はSailsアプリケーション内で利用可能なプラグインのようなモジュールを作ることが出来ます。</li>
 </ol>
 <h2>こちらもお読みください。</h2>
 <ul>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html">Using hooks in your app</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification">The hook specification</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html">Creating a project hook</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html">Creating an installable hook</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/usinghooks.html">Using hooks in your app</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/hooks/hook-specification">The hook specification</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/projecthooks.html">Creating a project hook</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/installablehooks.html">Creating an installable hook</a></li>
 </ul>
 <docmeta name="uniqueID" value="Hooks74998">
 <docmeta name="displayName" value="Hooks">

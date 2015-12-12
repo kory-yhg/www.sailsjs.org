@@ -1,8 +1,8 @@
 <h1>Sailsアプリケーションでフックを使う</h1>
 <h2>プロジェクトフックを使う</h2>
-<p>プロジェクトフックをSailsで使うには、まずもし<code>api/hooks</code>フォルダがなければ作成します。次に<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html">プロジェクトフックを作成する</a> か使いたいフックを <code>api/hooks</code> フォルダにコピーします。</p>
+<p>プロジェクトフックをSailsで使うには、まずもし<code>api/hooks</code>フォルダがなければ作成します。次に<a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/projecthooks.html">プロジェクトフックを作成する</a> か使いたいフックを <code>api/hooks</code> フォルダにコピーします。</p>
 <h2>インストーラブルフックを使う</h2>
-<p>インストーラブルフックを作成するには単にインストールしたいフックの名前（例：<code>npm install sails-hook-autoreload</code>）で<code>npm install</code>を実行します。また、アプリケーションの<code>node_modules</code>フォルダに直接<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html">あなたが作成したインストーラブルフック</a>をコピーまたはリンクすることも出来ます。</p>
+<p>インストーラブルフックを作成するには単にインストールしたいフックの名前（例：<code>npm install sails-hook-autoreload</code>）で<code>npm install</code>を実行します。また、アプリケーションの<code>node_modules</code>フォルダに直接<a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/installablehooks.html">あなたが作成したインストーラブルフック</a>をコピーまたはリンクすることも出来ます。</p>
 <h2>フックメソッドを作る</h2>
 <p>フックが露出する全てのメソッドは<code>sails.hooks[&lt;hook-name&gt;]</code>オブジェクトで利用可能です。例えば、<code>sails-hook-email</code>フックは<code>sails.hooks.email.send()</code>を提供します。(<code>sails-hook-</code> プレフィックスはなくなることにご留意ください。)どのメソッドが提供されるかはフックのドキュメンテーションをご覧ください。</p>
 <h2>フックを設定する</h2>
@@ -22,10 +22,10 @@ module.exports.installedHooks = {
 <p>Note: <code>config/installedHooks.js</code> ファイルを自分で作る必要があることにご留意ください。</p>
 </blockquote>
 <ul>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks">Hooks overview</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec">The hook specification</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html">Creating a project hook</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html">Creating an installable hook</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks">Hooks overview</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/hookspec">The hook specification</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/projecthooks.html">Creating a project hook</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/installablehooks.html">Creating an installable hook</a></li>
 </ul>
 <docmeta name="uniqueID" value="Hooks75001">
 <docmeta name="displayName" value="Using Hooks">

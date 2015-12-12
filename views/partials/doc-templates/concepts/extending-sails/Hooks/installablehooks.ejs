@@ -1,5 +1,5 @@
 <h1>インストーラブルフックを作る</h1>
-<p>インストーラブルフックはSailsアプリケーションの<code>node_modules</code>に保存されるカスタムのSailsフックです。インストーラブルフックは機能を複数のアプリケーションで共有したり<a href="http://npmjs.org">NPM</a> でSailsコミュニティーに公開する際に特に便利です。もし <em>一つだけの</em> Sailsアプリケーションで利用するフックを作りたいときは <a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html">creating a project hook</a> を代わりにご覧ください。</p>
+<p>インストーラブルフックはSailsアプリケーションの<code>node_modules</code>に保存されるカスタムのSailsフックです。インストーラブルフックは機能を複数のアプリケーションで共有したり<a href="http://npmjs.org">NPM</a> でSailsコミュニティーに公開する際に特に便利です。もし <em>一つだけの</em> Sailsアプリケーションで利用するフックを作りたいときは <a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/projecthooks.html">creating a project hook</a> を代わりにご覧ください。</p>
 <p>インストーラブルフックを作るには:</p>
 <ol>
 <li>フックの名前を選びます。名前は <a href="https://github.com/balderdashy/sails/blob/master/lib/app/configuration/default-hooks.js">core hook names</a> とコンフリクトしないようにしなければいけません。</li>
@@ -15,7 +15,7 @@
 }
 }</code></pre>
 <p>もし<code>package.json</code>を作成するために<code>npm init</code>を利用する場合、あとで手動でファイルを開いて<code>isHook: true</code>を含んだ<code>sails</code>を追加するのを忘れないで下さい。</p></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification">hook specification</a> に従ってあなたのフックのコードを<code>index.js</code>に書いてください。</li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/hooks/hook-specification">hook specification</a> に従ってあなたのフックのコードを<code>index.js</code>に書いてください。</li>
 </ol>
 <p>新しいフォルダには他のファイルがあっても問題なく、それらのファイルは<code>require</code>で読み込むことが出来ます。Sailsによって自動的に読み込まれるのは<code>index.js</code>だけです。フックが動作するための依存を定義するには<code>package.json</code>で<code>dependencies</code>キーを設定する必要があります。(<code>npm install &lt;dependency&gt; --save</code>を使って<code>package.json</code>に簡単に依存情報を保存することも出来ます。)</p>
 <h3>あなたの新規フックをテストする</h3>
@@ -83,10 +83,10 @@ describe('Basic tests ::', function() {
 <h3>フックを公開する</h3>
 <p>もしフックがテストされ問題ないように見えて、その名前のフックがまだ <a href="http://npmjs.org">NPM</a> モジュールにない場合、<code>npm publish</code>を実行することで世界中と共有することが出来ます。やってみましょう！</p>
 <ul>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks">Hooks overview</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html">Using hooks in your app</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification">The hook specification</a></li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html">Creating a project hook</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks">Hooks overview</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/usinghooks.html">Using hooks in your app</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/hooks/hook-specification">The hook specification</a></li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks/projecthooks.html">Creating a project hook</a></li>
 </ul>
 <docmeta name="uniqueID" value="Hooks74999">
 <docmeta name="displayName" value="Installable Hooks">

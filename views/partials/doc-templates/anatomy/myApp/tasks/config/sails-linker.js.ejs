@@ -21,8 +21,31 @@ module.exports = function(grunt) {
     grunt.config.set('sails-linker', {
         devJs: {
             options: {
-                startTag: '<!--SCRIPTS-->',
-                endTag: '<!--SCRIPTS END-->',
+                startTag: '<!--SCRIPTS-->
+<script src="/dependencies/jquery.js"></script>
+<script src="/dependencies/angular.js"></script>
+<script src="/dependencies/JSON2.js"></script>
+<script src="/dependencies/angular-touch.js"></script>
+<script src="/dependencies/directive.stopPropagation.js"></script>
+<script src="/dependencies/lodash.js"></script>
+<script src="/dependencies/moment.min.js"></script>
+<script src="/dependencies/rainbow.js"></script>
+<script src="/dependencies/retina.min.js"></script>
+<script src="/js/App.js"></script>
+<script src="/js/controls/AboutIrcCtrl.js"></script>
+<script src="/js/controls/DocsCtrl.js"></script>
+<script src="/js/controls/FeaturesCtrl.js"></script>
+<script src="/js/controls/GetStartedCtrl.js"></script>
+<script src="/js/controls/HeaderCtrl.js"></script>
+<script src="/js/controls/HomepageCtrl.js"></script>
+<script src="/js/controls/SecurityPolicyCtrl.js"></script>
+<script src="/js/controls/VersionNotesCtrl.js"></script>
+<script src="/js/directives/directive.anatomyBoilerplate.js"></script>
+<script src="/js/directives/directive.bubble.js"></script>
+<script src="/js/directives/directive.scrollng.js"></script>
+<script src="/js/directives/open-links-to-external-urls-in-new-tab.directive.js"></script>
+<script src="/js/directives/permalink.directive.js"></script>
+<!--SCRIPTS END-->',
                 fileTmpl: '<script src="%s"></script>',
                 appRoot: '.tmp/public'
             },
@@ -79,8 +102,9 @@ module.exports = function(grunt) {
 
         devStyles: {
             options: {
-                startTag: '<!--STYLES-->',
-                endTag: '<!--STYLES END-->',
+                startTag: '<!--STYLES-->
+<link rel="stylesheet" href="/styles/importer.css">
+<!--STYLES END-->',
                 fileTmpl: '<link rel="stylesheet" href="%s">',
                 appRoot: '.tmp/public'
             },
@@ -140,8 +164,9 @@ module.exports = function(grunt) {
         // Bring in JST template object
         devTpl: {
             options: {
-                startTag: '<!--TEMPLATES-->',
-                endTag: '<!--TEMPLATES END-->',
+                startTag: '<!--TEMPLATES-->
+
+<!--TEMPLATES END-->',
                 fileTmpl: '<script type="text/javascript" src="%s"></script>',
                 appRoot: '.tmp/public'
             },

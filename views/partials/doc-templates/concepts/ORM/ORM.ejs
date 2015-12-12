@@ -2,7 +2,7 @@
 <p>SailsはWaterlineと呼ばれるデータベース非依存の<a href="http://stackoverflow.com/questions/12261866/what-is-the-difference-between-an-orm-and-an-odm">ORM/ODM</a> called <a href="https://github.com/balderdashy/waterline">Waterline</a>を内蔵しており一つや複数の<a href="http://www.cs.umb.edu/cs630/hd1.pdf">データベース</a>にアクセスする手順をおどろくほど簡単にすることが出来ます。Waterlineはデータベースの上層に抽象化レイヤーを存在させることでベンダー依存の実装コードを <em>書くことなく</em> 簡単にデータを参照し変更することが出来ます</p>
 <h3>データベース非依存</h3>
 <p>[Postgres](),[Oracle](), [MySQL]()のようなスキーマ式データベースではモデルはテーブルに置き換えられます。[MongoDB]()ではMongoの「コレクション」に置き換えられます。[Redis]()ではキーと値のペアに置き換えられます。それぞれのデータベースはその「方言」を持ち、時にはデータベースに接続するために個別のネイティブモジュールをインストールする必要があります。これにはかなりのオーバーヘッドが生じ、不安定な<a href="http://stackoverflow.com/questions/29868/how-important-is-it-to-choose-and-stick-to-a-technology-stack">ベンダー依存</a>のコードを蓄積させることになります。（例：あなたのアプリケーションがある程度まとまったSQLクエリを利用している場合、MongoやRedis、vice versaへ後で変更することは困難になるでしょう。）</p>
-<p>Waterlineの文法はそれらすべての上層に位置しデータを作成したり検索したり更新したり削除したりというビジネスロジックに焦点を当てたものです。どんなデータベースに接続する場合にも文法は <em>全く一緒</em> です。さらに言えばWaterlineは <em>異なるデータベース上にある</em> 複数のモデル間でデータリレーションを<a href="http://sailsjs.org/documentation/reference/waterline/queries/populate.html"><code>.populate()</code></a>することすら出来ます。つまりこれはアプリケーションのモデルをMongoからPostgresに、MySQLに、Redisに移行し、もとに戻ることすら出来るのです（しかも一切のコード改変なしに）もしも低レイヤーのデータベース依存の関数を使いたいときはWaterlineはモデルの下層にあるそれらのデータベースドライバに直接アクセスすることも出来ます。(<a href="http://sailsjs.org/documentation/reference/waterline/models/query.html">.query()</a>と<a href="http://sailsjs.org/documentation/reference/waterline/models/native.html">.native()</a>を御覧ください。)</p>
+<p>Waterlineの文法はそれらすべての上層に位置しデータを作成したり検索したり更新したり削除したりというビジネスロジックに焦点を当てたものです。どんなデータベースに接続する場合にも文法は <em>全く一緒</em> です。さらに言えばWaterlineは <em>異なるデータベース上にある</em> 複数のモデル間でデータリレーションを<a href="http://sailsjs.jp/documentation/reference/waterline/queries/populate.html"><code>.populate()</code></a>することすら出来ます。つまりこれはアプリケーションのモデルをMongoからPostgresに、MySQLに、Redisに移行し、もとに戻ることすら出来るのです（しかも一切のコード改変なしに）もしも低レイヤーのデータベース依存の関数を使いたいときはWaterlineはモデルの下層にあるそれらのデータベースドライバに直接アクセスすることも出来ます。(<a href="http://sailsjs.jp/documentation/reference/waterline/models/query.html">.query()</a>と<a href="http://sailsjs.jp/documentation/reference/waterline/models/native.html">.native()</a>を御覧ください。)</p>
 <h3>シナリオ</h3>
 <p>モバイルアプリを持つeコマースアプリケーションを構築することを考えてみましょう。ユーザはカテゴリーや検索で商品を閲覧することが出来、商品を購入することが出来ます。それだけです！アプリケーションのいくつかの部分は非常にシンプルです。アプリケーションはAPIを使ったログイン、サインアップ、購入・決済、パスワードの変更などが出来ます。しかしその他にもいくつかの手間がかかるありふれた機能がロードマップ上に隠れているはずです。おそらく。:</p>
 <h5>フレキシビリティ</h5>
@@ -11,7 +11,7 @@
 <p>&quot;データなんとかって、なんだよ。そう焦らせないでくれよ、間違ったのを選びたくないな。情シスに聞くから先に進めていてくれよ。&quot;</p>
 </blockquote>
 <p>WebアプリケーションやAPIに一つのデータベースを選ぶというやり方は多くの利用例において取ることが出来ません。多くの場合において既存の複数のデータセットとの互換性を持たなければなりませんし、場合によってはパフォーマンス上の原因から複数のデータベースを利用しなければならないことすら有ります。</p>
-<p>Sailsはデフォルトで<code>sails-disk</code>を利用するので、ローカルの一時ファイルを使ったデータベースを設定なしで利用することが出来ます。実際に使うデータベースに切り替える用意ができた時には（あるいはそれが何なのかみんながわかった時には）アプリケーションの中の<a href="http://sailsjs.org/documentation/reference/configuration/sails-config-connections">接続設定</a>を書き換えるだけですみます。</p>
+<p>Sailsはデフォルトで<code>sails-disk</code>を利用するので、ローカルの一時ファイルを使ったデータベースを設定なしで利用することが出来ます。実際に使うデータベースに切り替える用意ができた時には（あるいはそれが何なのかみんながわかった時には）アプリケーションの中の<a href="http://sailsjs.jp/documentation/reference/configuration/sails-config-connections">接続設定</a>を書き換えるだけですみます。</p>
 <h5>互換性</h5>
 <p><em>プロジェクトの管理者があなたのところに来て言いました。</em></p>
 <blockquote>
@@ -28,11 +28,11 @@
 <p>しかしそれ以上に特定のインデックスや検索に対するニーズに適した試みを皆行うことでしょう。そのニーズとはすなわち関連商品を検索したりレコメンドするエンジンに利用される&quot;driving-direction-closeness&quot;と呼ばれる機能のようなものです。幸い、いくつかのデータベースによってそれらの機能を簡単にすることが出来ます。（例えばMongo DBは空間地理学的なインデックス機能や全文検索やインデックスづくりに見事に対応した柔軟性のある検索機能を提供しています。）</p>
 <p>データベースを意図されたように使うということはパフォーマンス面で多大なメリットが有ります。特に複雑なレポートクレリを投げるときや検索（ソートを変えるだけでも）の時、機械学習をするときなどはその最たるものです。あるデータベースは昔ながらのビジネスクエリーをとても得意としますが、またあるものは特に速い読み書きの代わりにデータのMAPリデュースを得意とします。このような考慮がユーザベースのスケーリングでは特に重要となるのです。 </p>
 <h3>アダプタ</h3>
-<p>他の多くのMVCフレームワークと同様にSailsは<a href="http://sailsjs.org/features">複数のデータベース</a>複数のデータベースをサポートします。これは我々がMySQLを使う時もMongo DBを使うときにもその他のDBを使う時にもみんな同じ方法でデータの問い合わせや操作を行えるということです。</p>
-<p>Waterlineはアダプタに関してもこのようなフレキシビリイティのあるコンセプトで作られています。アダプタは<code>find()</code>や<code>create（）</code>のようなマッピングメソッドを<code>SELECT * FROM</code>や<code>INSERT INTO</code>のようなローレベルのメソッドに書き換えることを目的にした小さなコードです。Sailsのコアチームのメンテナーは<a href="http://sailsjs.org/features">ポピュラーなデータベース</a>に対してのアダプタをオープンソースでメンテナンスしますし、<a href="https://github.com/balderdashy/sails-docs/blob/0.9/Database-Support.md">コミュニティの成果</a>を利用することも出来ます。</p>
+<p>他の多くのMVCフレームワークと同様にSailsは<a href="http://sailsjs.jp/features">複数のデータベース</a>複数のデータベースをサポートします。これは我々がMySQLを使う時もMongo DBを使うときにもその他のDBを使う時にもみんな同じ方法でデータの問い合わせや操作を行えるということです。</p>
+<p>Waterlineはアダプタに関してもこのようなフレキシビリイティのあるコンセプトで作られています。アダプタは<code>find()</code>や<code>create（）</code>のようなマッピングメソッドを<code>SELECT * FROM</code>や<code>INSERT INTO</code>のようなローレベルのメソッドに書き換えることを目的にした小さなコードです。Sailsのコアチームのメンテナーは<a href="http://sailsjs.jp/features">ポピュラーなデータベース</a>に対してのアダプタをオープンソースでメンテナンスしますし、<a href="https://github.com/balderdashy/sails-docs/blob/0.9/Database-Support.md">コミュニティの成果</a>を利用することも出来ます。</p>
 <p>カスタムのWaterlineアダプタは実は<a href="https://github.com/balderdashy/sails-generate-adapter">とっても簡単に作る</a>ことが出来ますし、インテグレーションをもっとメンテナンスしやすくすることが出来ます。（有名な業務用システムやLinked in などのオープンAPI、キャッシュたトラディショナルなデータベースに至るまで。）</p>
 <h3>コネクション</h3>
-<p><strong>コネクション</strong>は個々のデータベースへの接続を意味します。この設定オブジェクトは使用するアダプタやホスト、ポート、ユーザ名、パスワードなどの接続情報を含みます。もしあなたのデータベースがパスワードを要求しない場単にパスワードプロパティを削除してください。コネクションは<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html"><code>config/connections.js</code></a>にあります。</p>
+<p><strong>コネクション</strong>は個々のデータベースへの接続を意味します。この設定オブジェクトは使用するアダプタやホスト、ポート、ユーザ名、パスワードなどの接続情報を含みます。もしあなたのデータベースがパスワードを要求しない場単にパスワードプロパティを削除してください。コネクションは<a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.connections.html"><code>config/connections.js</code></a>にあります。</p>
 <pre><code class="language-javascript">// in config/connections.js
 // ...
 {
@@ -43,7 +43,7 @@
   password: 'g3tInCr4zee&amp;stUfF'
 }
 // ...</code></pre>
-<p>Sailアプリケーションにおけるデフォルトのデータベース接続はベースモデル設定(<code>config/models.js</code>)にあります。しかし、モデルごとに<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html"><code>connection</code></a>を指定することでオーバーライド出来ます。</p>
+<p>Sailアプリケーションにおけるデフォルトのデータベース接続はベースモデル設定(<code>config/models.js</code>)にあります。しかし、モデルごとに<a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.connections.html"><code>connection</code></a>を指定することでオーバーライド出来ます。</p>
 <h3>喩え話</h3>
 <p>紙にペンで書かれている記入済みのフォームでいっぱいになった引き出しを想像してください。すべてのフォームは同じ項目を持っています。（例えば名前とか、誕生日、婚姻状況のように）しかし、それぞれのフォームに書かれている <em>値</em> は様々です。例えばあるフォームは &quot;Lara&quot;, &quot;2000-03-16T21:16:15.127Z&quot;, &quot;single&quot;, と、また別のあるものは &quot;Larry&quot;, &quot;1974-01-16T21:16:15.127Z&quot;, &quot;married&quot;と。</p>
 <p>あなたがホットドッグの商売を経営していると想像してください。もしもあなたがとても几帳面ならこのようなファイルを引き出しに作るでしょう。:</p>

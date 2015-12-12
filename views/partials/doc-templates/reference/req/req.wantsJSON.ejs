@@ -1,39 +1,36 @@
-<h1 id="req-wantsjson">req.wantsJSON</h1>
-<p>A flag indicating whether the requesting client would prefer a JSON response (as opposed to some other format, like XML or HTML.)</p>
-<p><code>req.wantsJSON</code> is used by all of the <a href="http://sailsjs.org/documentation/anatomy/myApp/api/responses" target="_blank">built-in custom responses</a> in Sails.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">req.wantsJSON;
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="details" permalink="details">Details</h3>
-<p>The intended purpose of <code>req.wantsJSON</code> is to provide a clean, reusable indication of whether the server should respond with JSON, or send back something else (like an HTML page or a 302 redirect.) It is not the right answer for <em>every</em> content negotiation problem, but it is a simple, go-to solution for most use cases.</p>
-<p>For instance, for requests typed into the URL bar, all major browsers set an &quot;Accept: text/plain;&quot; request header.  In that case, <code>req.wantsJSON</code> is false.  But for many other cases, the distinction is not quite as clear.  In those scenarios, Sails uses heuristics to determine the best value for <code>req.wantsJSON</code>.</p>
-<p>Technically, <code>req.wantsJSON</code> inspects the request&apos;s <code>&quot;Content-type&quot;</code>, <code>&quot;Accepts&quot;</code>, and <code>&quot;X-Requested-With&quot;</code> headers to make an inference as to whether the request is expecting a JSON response.  If the request did not provide enough information to know for sure, Sails errs on the side of JSON (i.e. <code>req.wantsJSON</code> will be set to <code>true</code>.)</p>
-<p>This all makes your app more future-proof and less brittle: as best-practices for content negotiation change over time (e.g. a new type of consumer device or enterprise user-agent introduces a new header) Sails can patch <code>req.wantsJSON</code> at the framework level and modify the heuristics accordingly. Not to mention that it reduces code duplication and saves you the annoyance of manually inspecting headers in each of your routes.</p>
-<h3 id="example" permalink="example">Example</h3>
-<pre><code data-language="javascript">if (req.wantsJSON) {
+<h1>req.wantsJSON</h1>
+<p>クライアントが（XMLやHTMLではなく）JSONレスポンスを求めていることを示すフラグです。</p>
+<p><code>req.wantsJSON</code>はSailsの全ての<a href="http://sailsjs.jp/documentation/anatomy/myApp/api/responses">ビルトインのカスタムレスポンス</a>で利用されています。</p>
+<h3>使い方</h3>
+<pre><code class="language-js">req.wantsJSON;</code></pre>
+<h3>詳細</h3>
+<p><code>req.wantsJSON</code>の意図している使い道はサーバがJSONを返すべきなのか、それとも(HTMLページや302リダイレクトのような)何か別のものを返すべきなのかのクリーンで再利用可能な判断方法を提供することです。これは <em>全ての</em> コンテンツネゴシエーション問題に利用できるわけではありませんが、シンプルで殆どのケースで使える方法です。</p>
+<p>例えば、URLバーに入力されたリクエストに関しては全てのメジャーなブラウザは&quot;Accept: text/plain;&quot;リクエストヘッダーを付加します。このケースでは<code>req.wantsJSON</code>はFalseです。しかし別のケースでは区別はそれほど明確ではありません。これらのシナリオではSailsは<code>req.wantsJSON</code>に最適な値をヒューリスティックに判断します。</p>
+<p>厳密には、<code>req.wantsJSON</code>はリクエストの<code>"Content-type"</code>、<code>"Accepts"</code>、<code>"X-Requested-With"</code>を確認してリクエストがJSONを求めているかどうかを推測します。リクエストが確な判断ができるのに十分な情報を持っていない場合、SailsはJSONの側を選びます(すなわち<code>req.wantsJSON</code>は<code>true</code>になります)。</p>
+<p>これによりアプリケーションはより未来志向で堅牢なものになります: つまり、長期的なコンテンツネゴシエーションの変化（新しい消費者向けデバイスや企業向けユーザエージェントが別のヘッダを導入するような）に対するベストプラクティスとしてSailsは<code>req.wantsJSON</code>をフレームワークレベルでパッチしてヒューリスティックをそれに応じて変更します。言うまでもなく、これによりコードの重複が抑制できそれぞれのルートでヘッダーを確認するイライラからも逃れることが出来ます。</p>
+<h3>例</h3>
+<pre><code class="language-javascript">if (req.wantsJSON) {
   return res.json(data);
 }
 else {
   return res.view(data);
-}
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="details" permalink="details">Details</h3>
-<p>Here is the specific order in which <code>req.wantsJSON</code> inspects the request.  <strong>If any of the following match, subsequent checks are ignored.</strong></p>
-<p>A request &quot;wantsJSON&quot; if:</p>
+}</code></pre>
+<h3>詳細</h3>
+<p><code>req.wantsJSON</code>がリクエストを検査する際の具体的な順序は以下のとおりです。 <strong> 以下のいずれかにマッチした時は、それから先のチェックは無視されます </strong></p>
+<p>もし以下ならリクエストは&quot;wantsJSON&quot; :</p>
 <ul>
-<li>if this looks like an AJAX request</li>
-<li>if this is a virtual request from a socket</li>
-<li>if this request DOESN&apos;T explicitly want HTML</li>
-<li>if this request has a &quot;json&quot; content-type AND ALSO has its &quot;Accept&quot; header set</li>
-<li>if <code>req.options.wantsJSON</code> is truthy</li>
+<li>AJAXリクエストのように見えれば</li>
+<li>ソケットからのバーチャルなリクエストに見えれば</li>
+<li>明示的にHTMLを要求していなければ</li>
+<li>JSONのcontent-typeヘッダーを持っていて&quot;Accept&quot;ヘッダーを持っていれば</li>
+<li><code>req.options.wantsJSON</code>がTrueであれば</li>
 </ul>
-<h3 id="notes" permalink="notes">Notes</h3>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>Lower-level content negotiation is, of course, still possible using <code>req.is()</code>, <code>req.accepts()</code>, <code>req.xhr</code>, and <code>req.get()</code>.</li>
-<li>As of Sails v0.10, requests originating from a WebSocket client always &quot;want JSON&quot;.</li>
+<li>低レベルなコンテントネゴシエーションは、もちろん<code>req.is()</code>、<code>req.accepts()</code>、<code>req.xhr</code>と<code>req.get()</code>を使って行えます。</li>
+<li>Sails v0.10からはWebSocketを出元とするリクエストは全て&quot;want JSON&quot;として扱われます。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="reqwantsJSON30891"></docmeta></p>
+<docmeta name="uniqueID" value="reqwantsJSON30891">
 <docmeta name="displayName" value="req.wantsJSON">
-</docmeta>

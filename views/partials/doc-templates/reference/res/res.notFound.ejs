@@ -1,48 +1,44 @@
-<h1 id="res-notfound-">res.notFound()</h1>
-<p>Sends a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error" target="_blank">404</a> (&quot;Not Found&quot;) response using either <a href="http://sailsjs.org/documentation/reference/res/res.json.html" target="_blank">res.json()</a> or <a href="http://sailsjs.org/documentation/reference/res/res.view.html" target="_blank">res.view()</a>. Called automatically when Sails receives a request which doesn&apos;t match any of its explicit routes or route blueprints (i.e. serves the 404 page).</p>
-<p>When called manually from your app code, this method is normally used to indicate that the user-agent tried to find, update, or delete something that doesn&apos;t exist.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">return res.notFound();
-</code></pre><!-- __LANG=%%__ -->
-<p><em>Or:</em></p>
+<h1>res.notFound()</h1>
+<p><a href="http://sailsjs.jp/documentation/reference/res/res.json.html">res.json()</a> か <a href="http://sailsjs.jp/documentation/reference/res/res.view.html">res.view()</a>を使って<a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error">404</a> (&quot;Not Found&quot;)レスポンスを返します。Sailsが明示的なルートにもbluepintのルートにもマッチしないリクエストを受け取った時に自動的に呼びだされます。（すなわち、404ページを返します。)</p>
+<p>アプリケーションのコードから手動で呼びだされる時としては、ユーザエージェントが何か実在しないものを取得，書き換え、削除しようとした時にこのメソッドが呼び出されます。</p>
+<h3>使い方</h3>
+<pre><code class="language-js">return res.notFound();</code></pre>
+<p><em>あるいは:</em></p>
 <ul>
 <li><code>return res.notFound(data);</code></li>
 <li><code>return res.notFound(data, pathToView);</code></li>
 </ul>
-<h3 id="details" permalink="details">Details</h3>
-<p>Like the other built-in custom response modules, the behavior of this method is customizable.</p>
-<p>By default, it works as follows:</p>
+<h3>詳細</h3>
+<p>ほかのカスタムレスポンスモジュールと同じようにこのメソッドはカスタマイズ可能です。</p>
+<p>デフォルトでこれは以下のように動作します:</p>
 <ul>
-<li>If the request &quot;<a href="http://sailsjs.org/documentation/reference/req/req.wantsJSON.html" target="_blank">wants JSON</a>&quot; (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error <code>data</code> as JSON.  If no <code>data</code> is provided a default response body will be sent (the string <code>&quot;Not Found&quot;</code>).</li>
-<li>If the request <em>does not</em> &quot;want JSON&quot; (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.<ul>
-<li>If a specific <code>pathToView</code> was provided, Sails will attempt to use that view.</li>
-<li>Alternatively if <code>pathToView</code> was <em>not</em> provided, Sails will try to guess an appropriate view (see <a href="http://sailsjs.org/documentation/reference/res/res.view.html" target="_blank"><code>res.view()</code></a> for details).  If Sails cannot guess a workable view, it will just send JSON.</li>
-<li>If Sails serves a view, the <code>data</code> argument will be accessible as a <a href="http://sailsjs.org/documentation/concepts/Views/Locals.html" target="_blank">view local</a>: <code>data</code>.</li>
+<li>リクエストが&quot;<a href="http://sailsjs.jp/documentation/reference/req/req.wantsJSON.html">JSONを望んでいる</a>&quot;場合（例えはリクエストがAJAXやWebSocketsその他cURLなどのRESTクライアントからのものである場合）、Sailsは与えられたエラーの<code>data</code>をJSONで返します。もし何の<code>data</code>も与えられていない時はデフォルトのレスポンスボディ（文字列の<code>"Not Found"</code>）が送信されます。</li>
+<li>リクエストがJSONを望んで <em>いない場合</em> （例:URLがブラウザに打ち込まれた場合）、Sailsはビューのうち1つを返そうとします。
+<ul>
+<li>特定の<code>pathToView</code>が与えられているときはSailsはそのビューを返そうとします。</li>
+<li>そうではなく<code>pathToView</code>が与えられて_いない時_Sailsは適切なviewを推測しようとします。（詳しくは <a href="http://sailsjs.jp/documentation/reference/res/res.view.html"><code>res.view()</code></a>を御覧ください。）、もし適切なビューを見つけられない時Sailsは単にJSONを返します。</li>
+<li>Sailsがビューを返すとき、<code>data</code>引数は<a href="http://sailsjs.jp/documentation/concepts/Views/Locals.html">view local</a>: <code>data</code>としてアクセス可能です。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="example" permalink="example">Example</h3>
-<p>Using the default view:</p>
-<pre><code data-language="javascript">return res.notFound();
-</code></pre><!-- __LANG=%%__ -->
-<p>With a custom view:</p>
-<pre><code data-language="javascript">Pet.findOne()
-.where(name: &apos;fido&apos;)
+<h3>例</h3>
+<p>デフォルトのビューを使って:</p>
+<pre><code class="language-javascript">return res.notFound();</code></pre>
+<p>カスタムビューで:</p>
+<pre><code class="language-javascript">Pet.findOne()
+.where(name: 'fido')
 .exec(function(err, fido) {
   if (err) return res.serverError(err);
-  if (!fido) return res.notFound(undefined,&apos;pet/sorry-that-pet-has-moved&apos;);
+  if (!fido) return res.notFound(undefined,'pet/sorry-that-pet-has-moved');
   // ...
-})
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+})</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>This method is <strong>terminal</strong>, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of <code>return</code> throughout these docs).</li>
-<li><code>res.notFound()</code> (like other userland response methods) can be overridden or modified.  It runs the response method defined in <code>/responses/notFound.js</code>, which is bundled automatically in newly generated Sails apps.  If a <code>notFound.js</code> response method does not exist in your app, Sails will implicitly use the default behavior.</li>
-<li>If <code>pathToView</code> refers to a missing view, this method will respond as if the request &quot;wants JSON&quot;.
-+By default, the specified error (<code>err</code>) will be excluded if the app is running in the &quot;production&quot; environment (i.e. <code>process.env.NODE_ENV === &apos;production&apos;</code>).</li>
+<li>このメソッドは <strong>ターミナル</strong>であり、リクエストを処理するための一般的に最後の1行であるべきです。（そのためこれらのドキュメントの使用方法では<code>return</code>を使うと考えるべきです。）。</li>
+<li><code>res.notFound()</code>は（ほかのユーザ側のレスポンスメソッドと同様に）編集や上書きが可能です。<code>/responses/notFound.js</code>で定義されたレスポンスメソッドが実行されますが、これはSailsアプリケーションを生成する際に自動的に作成されます。<code>notFound.js</code>が無いときはSailsは暗黙でデフォルトの振る舞いを利用します。</li>
+<li><code>pathToView</code>がっ存在しないビューを示している場合、このメソッドはリクエストが「JSONを望んでいる」ように振る舞います。
++　デフォルトではアプリケーションが本番環境で実行されている時(すなわち<code>process.env.NODE_ENV === 'production'</code>)に於いては特定のエラー(<code>err</code>)は除外されます。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="resnotFound130366"></docmeta></p>
+<docmeta name="uniqueID" value="resnotFound130366">
 <docmeta name="displayName" value="res.notFound()">
-</docmeta>

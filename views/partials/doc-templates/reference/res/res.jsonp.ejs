@@ -1,45 +1,37 @@
-<h1 id="res-jsonp-">res.jsonp()</h1>
-<p>Send a JSON or JSONP response.</p>
-<p>Identical to <a href="http://sailsjs.org/documentation/reference/res/res.json.html" target="_blank"><code>res.json()</code></a>, except if a &quot;callback&quot; parameter exists, a <a href="http://en.wikipedia.org/wiki/JSONP" target="_blank">JSONP</a> response will be sent instead, using the value of the &quot;callback&quot; parameter as the name of the function wrapper.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">return res.jsonp([statusCode, ] data);
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="example" permalink="example">Example</h3>
-<pre><code data-language="javascript">return res.jsonp({
+<h1>res.jsonp()</h1>
+<p>JSONまたはJSONPのレスポンスを送信します。</p>
+<p>&quot;callback&quot;パラメータが存在する場合に&quot;callback&quot;パタメータをファンクションラッパーの名前に使った<a href="http://en.wikipedia.org/wiki/JSONP">JSONP</a>レスポンスを返すということ以外は<a href="http://sailsjs.jp/documentation/reference/res/res.json.html"><code>res.json()</code></a>と同じです。</p>
+<h3>使い方</h3>
+<pre><code class="language-js">return res.jsonp([statusCode, ] data);</code></pre>
+<h3>例</h3>
+<pre><code class="language-js">return res.jsonp({
   users: [{
-    name: &apos;Thelma&apos;,
+    name: 'Thelma',
     id: 1
   }, {
-    name: &apos;Leonardo&apos;
+    name: 'Leonardo'
     id: 2
   }]
-});
-</code></pre><!-- __LANG=%%__ -->
+});</code></pre>
 <!--
-
-Need to make this better:
-
-By default the JSONP callback name is simply callback, however you may alter this with the jsonp callback name setting. The following are some examples of JSONP responses using the same code:
-
+これを改善する必要があります:
+デフォルトではJSONPコールバック名は単にcallbakですが、これをコールバック名の設定で変更することが出来ます。以下に同じコードを使ったJSONPのサンプルを挙げます:
+```javascript
+// ?callback=foo
+res.jsonp({ user: 'tobi' })
+// foo({ "user": "tobi" })
+app.set('jsonp callback name', 'cb');
+// ?cb=foo
+res.jsonp(500, { error: 'message' })
+// foo({ "error": "message" })
 ```
-<!-- __LANG=%javascript%__ -->
-<p>// ?callback=foo
-res.jsonp({ user: &apos;tobi&apos; })
-// foo({ &quot;user&quot;: &quot;tobi&quot; })</p>
-<p>app.set(&apos;jsonp callback name&apos;, &apos;cb&apos;);</p>
-<p>// ?cb=foo
-res.jsonp(500, { error: &apos;message&apos; })
-// foo({ &quot;error&quot;: &quot;message&quot; })
-```
-<!-- __LANG=%%__ -->
---&gt;</p>
-<h3 id="notes" permalink="notes">Notes</h3>
+-->
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>Don&apos;t forget this method&apos;s name is all lowercase.</li>
-<li>This method is <strong>terminal</strong>, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of <code>return</code> throughout these docs).</li>
+<li>メソッド名が全て小文字なことを忘れないでください。</li>
+<li>このメソッドは <strong>ターミナル</strong>であり、リクエストを処理するための一般的に最後の1行であるべきです。（そのためこれらのドキュメントの使用方法では<code>return</code>を使うと考えるべきです。）。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="resjsonp798206"></docmeta></p>
+<docmeta name="uniqueID" value="resjsonp798206">
 <docmeta name="displayName" value="res.jsonp()">
-</docmeta>

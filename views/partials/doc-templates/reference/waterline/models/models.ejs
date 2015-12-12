@@ -1,68 +1,66 @@
-<h1 id="working-with-models">Working with Models</h1>
-<p>This section of the documentation focuses on the model methods provided by Waterline out of the box.  In addition to these, additional methods can come from hooks (i.e. the <a href="">resourceful pubsub methods</a>), be exposed by the underlying adapters to provide custom functionality, or be hand-written in your app to wrap reusable custom code.</p>
+<h1>モデルを扱う</h1>
+<p>ドキュメントのこのセクションはWaterlineですぐに使えるモデルメソッドに焦点を当てます。それに加えてフックからもたらされる追加的なメソッド(すなわち[resourceful pubsub methods]())、カスタムの機能を提供するために下のアダプタから露出されるもの、実在するコードを上書きするためのアプリケーション内で手作りするコードのメソッドがあります。</p>
 <blockquote>
-<p>For an in-depth introduction to models in Sails/Waterline, see <a href="http://sailsjs.org/documentation/concepts/ORM/Models.html" target="_blank">http://sailsjs.org/documentation/concepts/ORM/Models.html</a>.</p>
+<p>Sails/Waterlineのモデルに関してのより深い説明は<a href="http://sailsjs.jp/documentation/concepts/ORM/Models.html"><a href="http://sailsjs.jp/documentation/concepts/ORM/Models.html">http://sailsjs.jp/documentation/concepts/ORM/Models.html</a></a>を御覧ください。</p>
 </blockquote>
-<p><img src="http://i.imgur.com/8uRlFi8.png" alt="screenshot of a Waterline/Sails model in Sublime Text 2"></p>
-<h3 id="built-in-model-methods" permalink="builtin-model-methods">Built-In Model Methods</h3>
-<p>In general, model methods are <em>asynchronous</em>, meaning you cannot just call them and use the return value.  Instead, you must use callbacks, or promises.
-Most built-in model methods accept a callback as an optional final argument. If the callback is not supplied, a chainable Query object is returned, which has methods like <code>.where()</code> and <code>.exec()</code>. See <a href="http://sailsjs.org/documentation/reference/waterline/queries" target="_blank">Working with Queries</a> for more on that.</p>
+<p><img src="http://i.imgur.com/8uRlFi8.png" alt="screenshot of a Waterline/Sails model in Sublime Text 2" /></p>
+<h3>ビルトインのモデルメソッド</h3>
+<p>一般的にモデルのメソッドは <em>非同期</em> であり、これが意味するところはただ、これを呼び出してその返り値を使うことは出来ないということです。そのかわりにコールバックまたはpromisesを使わなければなりません。
+多くのビルトインのモデルはコールバックを1つ目の引数として受け取りますっ。コールバックが与えられなければチェーン可能なクエリーオブジェクトが返され、それは<code>.where()</code> and <code>.exec()</code>のようなメソッドを持ちます。詳しくは<a href="http://sailsjs.jp/documentation/reference/waterline/queries">Working with Queries</a>を御覧ください。</p>
 <table>
 <thead>
 <tr>
-<th>Method</th>
-<th>Summary</th>
+<th>メソッド</th>
+<th>概要</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> <code>.create()</code></td>
-<td>Create record consisting of object passed in</td>
+<td><code>.create()</code></td>
+<td>与えられたオブジェクトからなるレコードを作成する。</td>
 </tr>
 <tr>
-<td> <code>.find()</code></td>
-<td>Lookup an array of records which match the specified criteria</td>
+<td><code>.find()</code></td>
+<td>与えられた検索条件に合うレコードの配列を探す。</td>
 </tr>
 <tr>
-<td> <code>.findOne()</code></td>
-<td>Lookup a single record which matches the specified criteria, or send back <code>null</code> if it doesn&apos;t.</td>
+<td><code>.findOne()</code></td>
+<td>与えられた検索条件に合うレコードを1件探し、それがなければ<code>null</code>を返す。</td>
 </tr>
 <tr>
-<td> <code>.update()</code></td>
-<td>Update records matching the specified criteria, setting the specified object of <code>attrName:value</code> pairs.</td>
+<td><code>.update()</code></td>
+<td>与えられた検索条件に合うレコードに<code>attrName:value</code>のペアからなるオブジェクトの値をセットする。</td>
 </tr>
 <tr>
-<td> <code>.destroy()</code></td>
-<td>Destroy records matching the specified criteria.</td>
+<td><code>.destroy()</code></td>
+<td>与えられた検索条件に合うレコードを削除する。</td>
 </tr>
 <tr>
-<td> <code>.findOrCreate()</code></td>
-<td>Lookup a single record which matches the specified criteria, or create it if it doesn&apos;t.</td>
+<td><code>.findOrCreate()</code></td>
+<td>与えられた検索条件に合うレコードを1件探し、あるいはそれが存在しなけば作成する。</td>
 </tr>
 <tr>
-<td> <code>.count()</code></td>
-<td>Get the total count of records which match the specified criteria.</td>
+<td><code>.count()</code></td>
+<td>与えられた検索条件に合うレコードの総件数を取得する。</td>
 </tr>
 <tr>
-<td> <code>.native()</code>/<code>query()</code></td>
-<td>Make a direct call to the underlying database driver.</td>
+<td><code>.native()</code>/<code>query()</code></td>
+<td>元になっているデータベースドライバを直接呼び出す。</td>
 </tr>
 <tr>
-<td> <code>.stream()</code></td>
-<td>Return a readable (object-mode) stream of records which match the specified criteria</td>
+<td><code>.stream()</code></td>
+<td>与えられた検索条件に合うレコードの読み出し可能な（オブジェクトモード）ストリームを返す。</td>
 </tr>
 </tbody>
 </table>
 <!-- ![screenshot of the api/models/ folder in a text editor](http://i.imgur.com/xdTZpKT.png) -->
-<h3 id="-sails-models-" permalink="sailsmodels"><code>sails.models</code></h3>
-<p>If you need to disable global variables in Sails, you can still use <code>sails.models.&lt;model_identity&gt;</code> to access your models.</p>
-<p>A model&apos;s <code>identity</code> is different than its <code>globalId</code>.  The <code>globalId</code> is determined automatically from the name of the model, whereas the <code>identity</code> is the all-lowercased version.  For instance, you the model defined in <code>api/models/Kitten.js</code> has a globalId of <code>Kitten</code>, but its identity is <code>kitten</code>. For example:</p>
-<pre><code data-language="javascript">// Kitten === sails.models.kitten
+<h3><code>sails.models</code></h3>
+<p>もしSailsのグローバル変数を無効にしなかればならない時でも、<code>sails.models.&lt;model_identity&gt;</code>を使ってモデルへのアクセスが出来ます。</p>
+<p>モデルの<code>identity</code>はその<code>globalId</code>とは異なります。<code>globalId</code>はモデルの名前から自動的に判断され、<code>identity</code>はその全てが小文字になった版です。例えば、<code>api/models/Kitten.js</code>で定義されたモデルは<code>Kitten</code>のglobalIdを持ちますが、そのidentityは<code>kitten</code>です。例えば:</p>
+<pre><code class="language-javascript">// Kitten === sails.models.kitten
 sails.models.kitten.find().exec(function (err, allTheKittens) {
   // We also could have just used `Kitten.find().exec(...)`
-  // if we&apos;d left the global variable exposed.
-});
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="Models537291"></docmeta></p>
+  // if we'd left the global variable exposed.
+});</code></pre>
+<docmeta name="uniqueID" value="Models537291">
 <docmeta name="displayName" value="Models">
-</docmeta>

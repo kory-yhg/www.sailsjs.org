@@ -1,6 +1,6 @@
-<h1 id="-message-models-data-request-">.message( <code>models</code>,<code>data</code>, [<code>request</code>] )</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>Publishes a custom message to a model&#x2019;s subscribers.</p>
+<h1>.message( <code>models</code>,<code>data</code>, [<code>request</code>] )</h1>
+<h3>Purpose</h3>
+<p>Publishes a custom message to a model&rsquo;s subscribers.</p>
 <table>
 <thead>
 <tr>
@@ -35,16 +35,14 @@
 <p>The socket message is an object with the following properties:</p>
 <ul>
 <li><strong>id</strong> - the <code>id</code> attribute of the model instance</li>
-<li><strong>verb</strong>  - <code>&quot;messaged&quot;</code> (a string)</li>
+<li><strong>verb</strong>  - <code>"messaged"</code> (a string)</li>
 <li><strong>data</strong> - the message payload</li>
 </ul>
-<h4 id="-data-" permalink="data"><code>data</code></h4>
+<h4><code>data</code></h4>
 <p>Arbitrary data to send to the subscribed sockets.</p>
-<h4 id="-request-" permalink="request"><code>request</code></h4>
+<h4><code>request</code></h4>
 <p>If this argument is included then the socket attached to that request will <em>not</em> receive the notification.</p>
-<p><docmeta name="uniqueID" value="message373731"></docmeta></p>
-<p><docmeta name="methodType" value="pubsub"></docmeta></p>
-<p><docmeta name="importance" value="undefined"></docmeta></p>
+<docmeta name="uniqueID" value="message373731">
+<docmeta name="methodType" value="pubsub">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".message()">
-
-</docmeta>

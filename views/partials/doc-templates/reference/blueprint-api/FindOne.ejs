@@ -1,7 +1,6 @@
-<h1 id="find-one">Find One</h1>
-<p>Returns a single record from the model as a JSON Object.</p>
-<pre><code data-language="javascript">GET /:model/:id
-</code></pre><!-- __LANG=%%__ -->
+<h1>1件取り出す</h1>
+<p>モデルからレコードを1件、JSONオブジェクトとして取り出す。</p>
+<pre><code>GET /:model/:id</code></pre>
 <!--
 <table>
   <thead>
@@ -29,42 +28,40 @@
   </tbody>
 </table>
 -->
-<p>The <strong>findOne()</strong> blueprint action returns a single record from the model (given by <code>:modelIdentity</code>) as a JSON object. The specified <code>id</code> is the <a href="http://en.wikipedia.org/wiki/Unique_key" target="_blank">primary key</a> of the desired record.</p>
-<p>If the action was triggered via a socket request, the requesting socket will be &quot;subscribed&quot; to the returned record. If the record is subsequently updated or deleted, a message will be sent to that socket&apos;s client informing them of the change. See the docs for <a href="http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html" target="_blank">.subscribe()</a> for more info.</p>
-<h3 id="parameters" permalink="parameters">Parameters</h3>
+<p><strong>findOne()</strong> blueprintアクションは(<code>:modelIdentity</code>として与えられた)モデルからレコードを1件JSONオブジェクトで取り出します。指定された<code>id</code>は欲しいレコードの<a href="http://en.wikipedia.org/wiki/Unique_key">主キー</a>です。</p>
+<p>アクションがリクエストを通じて呼びされた場合、リクエストを行ったソケットは返されたレコードをサブスクライブします。レコードが付加的に編集、削除された場合その旨を伝えるメッセージがソケットのクライアントに送られます。詳しくは<a href="http://sailsjs.jp/documentation/reference/websockets/resourceful-pubsub/subscribe.html">.subscribe()のドキュメント</a>を御覧ください。</p>
+<h3>パラメータ</h3>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th style="text-align:left">Details</th>
+<th>パラメータ</th>
+<th>型</th>
+<th style="text-align: left;">詳細</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> id<br><em>(required)</em></td>
-<td><bubble type="number" colors="true"></bubble><br><em>-or-</em><br><bubble type="string" colors="true"></bubble></td>
-<td style="text-align:left">The desired record&apos;s primary key value<br><br>e.g. <code>/product/7</code></td>
+<td>id<br/><em>(required)</em></td>
+<td>((number))<br/><em>-or-</em><br/>((string))</td>
+<td style="text-align: left;">レコードの主キー値 <br/><br/>例: <code>/product/7</code></td>
 </tr>
 <tr>
-<td> callback</td>
-<td><bubble type="string" colors="true"></bubble></td>
-<td style="text-align:left">If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br> <br> e.g. <code>?callback=myJSONPHandlerFn</code></td>
+<td>callback</td>
+<td>((string))</td>
+<td style="text-align: left;">指定されていればJSONPレスポンスが（JSONの代わりに）送信されます。この名前のJavascript関数を、結果を一つ目の（そして唯一の）引数として実行します。<br/> <br/> 例:<code>?callback=myJSONPHandlerFn</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="example" permalink="example">Example</h3>
-<p>Find the purchase with ID #1, E.g. <code>http://localhost:1337/purchase/1</code></p>
-<h4 id="route" permalink="route">Route</h4>
+<h3>例</h3>
+<p>IDが1の購入を検索する。例:<code>http://localhost:1337/purchase/1</code></p>
+<h4>ルート</h4>
 <p><code>GET /purchase/1</code></p>
-<h4 id="expected-response" permalink="expected-response">Expected Response</h4>
-<pre><code data-language="json">{
-   &quot;amount&quot;: 49.99,
-   &quot;id&quot;: 1,
-   &quot;createdAt&quot;: &quot;2013-10-18T01:22:56.000Z&quot;,
-   &quot;updatedAt&quot;: &quot;2013-10-18T01:22:56.000Z&quot;
- }
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="FindOne259267"></docmeta></p>
+<h4>想定されるレスポンス</h4>
+<pre><code class="language-json"> {
+   "amount": 49.99,
+   "id": 1,
+   "createdAt": "2013-10-18T01:22:56.000Z",
+   "updatedAt": "2013-10-18T01:22:56.000Z"
+ }</code></pre>
+<docmeta name="uniqueID" value="FindOne259267">
 <docmeta name="displayName" value="find one">
-</docmeta>

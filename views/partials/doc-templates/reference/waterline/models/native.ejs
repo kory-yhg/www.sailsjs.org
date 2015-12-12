@@ -1,10 +1,10 @@
-<h1 id="-native-">.native()</h1>
-<p><code>.native()</code> is only available when using Sails/Waterline with MongoDB.</p>
-<p>Returns a raw Mongo collection instance representing the specified model, allowing you to perform raw Mongo queries.</p>
-<p>For full documentation and usage examples, check out the <a href="https://github.com/mongodb/node-mongodb-native#introduction" target="_blank">native Node Mongo driver</a>.</p>
-<p>Note that <code>sails-mongo</code> maintains a single Mongo connection for each of your configured connections/datastores.  Consequently, when using <code>.native()</code>, you don&apos;t need to close or open <code>db</code> manually.  For lower-level usage, you can <code>require(&apos;mongodb&apos;)</code> directly.</p>
-<h3 id="example" permalink="example">Example</h3>
-<pre><code data-language="javascript">Pet.native(function(err, collection) {
+<h1>.native()</h1>
+<p><code>.native()</code> はSails/WaterlineをMongoDBと使っている時のみ利用可能です。</p>
+<p>与えられたモデルを示すMongoコレクションを生で返し、これにより生のMongoクエリーを実行することが出来ます。</p>
+<p>完全なドキュメントや利用例は<a href="https://github.com/mongodb/node-mongodb-native#introduction">ネイティブのMongoドライバ</a>を御覧ください</p>
+<p><code>sails-mongo</code>は設定されたコネクション・データストアごとに一つだけのMongoコネクションを持つことが出来ます。この結果、<code>.native()</code>を使っている時に<code>db</code>を手動で閉会する必要はありません。低レベルの利用方法では<code>require('mongodb')</code>を直接行うこともできます。</p>
+<h3>例</h3>
+<pre><code class="language-js">Pet.native(function(err, collection) {
   if (err) return res.serverError(err);
 
   collection.find({}, {
@@ -13,17 +13,15 @@
     if (err) return res.serverError(err);
     return res.ok(results);
   });
-});
-</code></pre><!-- __LANG=%%__ -->
-<p>Source: <a href="https://gist.github.com/mikermcneil/483987369d54512b6104" target="_blank">https://gist.github.com/mikermcneil/483987369d54512b6104</a></p>
-<h3 id="notes" permalink="notes">Notes</h3>
+});</code></pre>
+<p>ソース: <a href="https://gist.github.com/mikermcneil/483987369d54512b6104">https://gist.github.com/mikermcneil/483987369d54512b6104</a></p>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>This method only works with Mongo! For raw functionality in SQL databases, use <a href="http://sailsjs.org/documentation/reference/waterline/models/query.html" target="_blank"><code>.query()</code></a>.</li>
+<li>このメソッドはMongoでのみ動作します。SQLデータベースの生機能に関しては<a href="http://sailsjs.jp/documentation/reference/waterline/models/query.html"><code>.query()</code></a>をご利用下さい。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="native900002"></docmeta></p>
-<p><docmeta name="methodType" value="mcm"></docmeta></p>
-<p><docmeta name="importance" value="undefined"></docmeta></p>
+<docmeta name="uniqueID" value="native900002">
+<docmeta name="methodType" value="mcm">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".native()">
-</docmeta>

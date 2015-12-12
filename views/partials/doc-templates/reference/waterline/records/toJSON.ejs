@@ -1,36 +1,36 @@
-<h1 id="-tojson-">.toJSON()</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This method also returns a cloned model instance.  This one however includes all instance methods.  Be sure to read the notes on this one.</p>
-<h3 id="overview" permalink="overview">Overview</h3>
-<h4 id="return-value" permalink="return-value">Return Value</h4>
+<h1>.toJSON()</h1>
+<h3>目的</h3>
+<p>このメソッドはクローンされたモデルインスタンスを返します。しかし、これは全てのインスタンスメソッドを含みます。これに関して備考を読むようにして下さい。</p>
+<h3>概要</h3>
+<h4>返り値</h4>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Description</th>
-<th>Possible Data Types</th>
+<th>#</th>
+<th>説明</th>
+<th>想定されるデータ型</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td>Cloned Record</td>
-<td><code>{ }</code></td>
+<td>1</td>
+<td>クローンされたレコード</td>
+<td><code>{}</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="example-usage" permalink="example-usage">Example Usage</h3>
-<pre><code data-language="javascript">User.find().exec(
+<h3>使用例</h3>
+<pre><code class="language-javascript">User.find().exec(
   function(err,myRecord){
     var datUser = myRecord.pop().toObject();
     console.log(datUser);
   });
 
 /* { id: 2,
-  createdAt: &apos;2013-10-31T22:42:25.459Z&apos;,
-  updatedAt: &apos;2013-11-01T20:12:55.534Z&apos;,
-  name: &apos;Hank&apos;,
-  phoneNumber: &apos;101-150-1337&apos; } */
+  createdAt: '2013-10-31T22:42:25.459Z',
+  updatedAt: '2013-11-01T20:12:55.534Z',
+  name: 'Hank',
+  phoneNumber: '101-150-1337' } */
 
 User.find().exec(
   function(err,myRecord){
@@ -39,19 +39,17 @@ User.find().exec(
   });
 
 /* { id: 2,
-  createdAt: &apos;2013-10-31T22:42:25.459Z&apos;,
-  updatedAt: &apos;2013-11-01T20:12:55.534Z&apos;,
-  name: &apos;Hank&apos; } */
+  createdAt: '2013-10-31T22:42:25.459Z',
+  updatedAt: '2013-11-01T20:12:55.534Z',
+  name: 'Hank' } */
 
-
-
-// Don&apos;t forget to handle your errors
-</code></pre><!-- __LANG=%%__ -->
-<p>For model</p>
-<pre><code data-language="javascript">module.exports = {
+// Don't forget to handle your errors
+</code></pre>
+<p>モデルで</p>
+<pre><code class="language-javascript">module.exports = {
   attributes: {
-    name: &apos;string&apos;,
-    phoneNumber: &apos;string&apos;,
+    name: 'string',
+    phoneNumber: 'string',
 
     // Override the default toJSON method
 
@@ -62,16 +60,15 @@ User.find().exec(
     }
   }
 }
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+</code></pre>
+<h3>備考</h3>
 <blockquote>
-<p>The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
-Instead of writing custom code for every controller action that uses a particular model (including the &quot;out of the box&quot; blueprints), you can manipulate outgoing records by simply overriding the default toJSON function in your model.<br>You would use this to keep private data like email addresses and passwords from being sent back to every client.</p>
-<p>This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  </p>
+<p>toJSONの真価はres.jsonを通じて送り出される全てのモデルインスタンスがtoJSONを経由するということです。
+特定のモデル(すぐに使えるblueprints含め)を扱う全てのコントローラアクションにカスタムのコードを書く代わりに単にデフォルトのtoJSONファンクションを上書きすることにより出て行くデータを操作できます。
+メールアドレス等のプライベートな情報が全てのクライアントに送られないようにするためにこれを使うべきです。</p>
+<p>これはインスタンスメソッドです。現在、インスタンスメソッドはトランザクション出来ません。そのため、同じ意味を持つモデルメソッドを使うことをおすすめします。  </p>
 </blockquote>
-<p><docmeta name="uniqueID" value="toJSON161307"></docmeta></p>
-<p><docmeta name="methodType" value="instance"></docmeta></p>
-<p><docmeta name="importance" value="undefined"></docmeta></p>
+<docmeta name="uniqueID" value="toJSON161307">
+<docmeta name="methodType" value="instance">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".toJSON()">
-
-</docmeta>

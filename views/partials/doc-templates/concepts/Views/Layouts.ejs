@@ -1,11 +1,11 @@
 <h1>レイアウト</h1>
 <p>多くの異なるページを持つアプリケーションを構築する際に外挿マークアップを利用して幾つかのHTMLファイルをレイアウトに挿出来ると便利です。この<a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">総コード量の減少</a>を行うことで複数のファイルで同じ変更をするのを避けることが出来ます。</p>
 <p>SailsとExpressではレイアウトはビューエンジン自体に実装されています。例えば、<code>jade</code>は独自のシンタックスを持つ独自のレイアウトシステムを持っています。</p>
-<p>簡便のためにSailsは<strong>デフォルトのテンプレートエンジンであるEJSを使う際にのみ</strong>レイアウトをサポートします。もし別のテンプレートエンジンに変更したい際には<a href="http://sailsjs.org/documentation/concepts/Views/ViewEngines.html">that view engine's documentation</a>をご覧になって適切なレイアウトをお探しください。</p>
+<p>簡便のためにSailsは<strong>デフォルトのテンプレートエンジンであるEJSを使う際にのみ</strong>レイアウトをサポートします。もし別のテンプレートエンジンに変更したい際には<a href="http://sailsjs.jp/documentation/concepts/Views/ViewEngines.html">that view engine's documentation</a>をご覧になって適切なレイアウトをお探しください。</p>
 <h3>レイアウトを作成する</h3>
 <p>Sailsのレイアウトはアプリケーションの<code>views/</code>フォルダーに特別な<code>.ejs</code>ファイルとして存在し、別のビューにラップしたり挟み込んだりして使えます。レイアウトは通常プリミティブな前置き(例：<code>!DOCTYPE html&lt;html&gt;&lt;head&gt;....&lt;/head&gt;&lt;body&gt;</code>) と後付(<code>&lt;/body&gt;&lt;/html</code>)を含んでいます。そして<code>&lt;%- body %&gt;</code>を使うことでオリジナルのビューをインクルードすることが出来ます。レイアウトはビュー無しで使われることはありません。つまり、ブレンドサンドイッチを提供するようなものです。</p>
-<p>レイアウトは<a href="http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html"><code>config/views.js</code></a>で設定や無効化をすることが出来、<code>layout</code>と呼ばれる特別な<a href="http://sailsjs.org/documentation/concepts/Views/Locals.html">local</a>を設定することで特定のルートやアクションに関しての設定を行うことが出来ます。デフォルトではSailsは<code>views/layout.ejs</code>に置かれたレイアウトを利用することで全てのビューを仕上げます。</p>
-<p>どのレイアウトを利用するか指定するには以下の例をご覧ください。さらなる情報はドキュメントの中の<a href="http://sailsjs.org/documentation/concepts/Routes.html">routes</a>にあります。</p>
+<p>レイアウトは<a href="http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html"><code>config/views.js</code></a>で設定や無効化をすることが出来、<code>layout</code>と呼ばれる特別な<a href="http://sailsjs.jp/documentation/concepts/Views/Locals.html">local</a>を設定することで特定のルートやアクションに関しての設定を行うことが出来ます。デフォルトではSailsは<code>views/layout.ejs</code>に置かれたレイアウトを利用することで全てのビューを仕上げます。</p>
+<p>どのレイアウトを利用するか指定するには以下の例をご覧ください。さらなる情報はドキュメントの中の<a href="http://sailsjs.jp/documentation/concepts/Routes.html">routes</a>にあります。</p>
 <p>以下の例では<code>./views/users/privacy.ejs</code>にあるビューを<code>./views/users.ejs</code>にあるレイアウトの中で利用するものです。</p>
 <pre><code class="language-javascript">'get /privacy': {
     view: 'users/privacy',
@@ -22,7 +22,7 @@
 <h4>どうしてレイアウトはESJでのみ動作するのですか?</h4>
 <p>Express3ではlayouts/partialsに対する内蔵サポートは廃止されています。その代わりに開発者はビューエンジン自体を使ってこの機能を実装することを期待されています。詳細に関しては(<a href="https://github.com/balderdashy/sails/issues/494">https://github.com/balderdashy/sails/issues/494</a> をご覧ください。)</p>
 <p>Express3を採用するにあたってSailsでは簡便のためとExpress 2.xやSails 0.8.xで作られたアプリケーションとの後方互換性のため、そして特に他のMVCフレームワークから移行するルーザーにとってわかりやすくするためにレガシーな<code>layouts</code>を採用しています。その結果レイアウトはデフォルトのビューエンジンであるejでのみテストされているのです。</p>
-<p>もし、レイアウトを使いたくなかったり、ejs以外のサーバサイドテンプレートエンジンを使っている場合（Jadeやhandlebars、haml、dustなど）<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.views.html"><code>sails.config.views</code></a>で<code>layout:false</code>をセットすることであなたの使っているビューエンジンのみでlayout/partialのサポートをすることができます。</p>
+<p>もし、レイアウトを使いたくなかったり、ejs以外のサーバサイドテンプレートエンジンを使っている場合（Jadeやhandlebars、haml、dustなど）<a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.views.html"><code>sails.config.views</code></a>で<code>layout:false</code>をセットすることであなたの使っているビューエンジンのみでlayout/partialのサポートをすることができます。</p>
 </blockquote>
 <docmeta name="uniqueID" value="Layouts870655">
 <docmeta name="displayName" value="Layouts">

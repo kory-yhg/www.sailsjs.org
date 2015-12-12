@@ -1,20 +1,16 @@
-<h1 id="req-xhr">req.xhr</h1>
-<p>A flag indicating whether the current request (<code>req</code>) appears to be an AJAX request (i.e. it was issued with its &quot;X-Requested-With&quot; header set to &quot;XMLHttpRequest&quot;.)</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">req.xhr;
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="example" permalink="example">Example</h3>
-<pre><code data-language="javascript">if (req.xhr) {
-  // Yup, it&apos;s AJAX alright.
-}
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+<h1>req.xhr</h1>
+<p>リクエスト(<code>req</code>)がAJAXリクエストに見えるかどうかのフラグ。（すなわち、これは&quot;X-Requested-With&quot;に&quot;XMLHttpRequest&quot;が設定されているかによってもたらされます）</p>
+<h3>使い方</h3>
+<pre><code class="language-js">req.xhr;</code></pre>
+<h3>例</h3>
+<pre><code class="language-javascript">if (req.xhr) {
+  // Yup, it's AJAX alright.
+}</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>Whenever possible, you should prefer the <code>req.wantsJSON</code> flag.  Avoid writing custom content-negotiation negotiation logic into your app  - it makes your code more brittle and more verbose.</li>
+<li>可能な限り<code>req.wantsJSON</code>を使うことを選択すべきです。あなたのアプリケーションでカスタムのコンテントネゴシエーションを書くことは避けて下さい。それはあなたのコードをより冗長で脆弱なものにします。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="reqxhr450203"></docmeta></p>
+<docmeta name="uniqueID" value="reqxhr450203">
 <docmeta name="displayName" value="req.xhr">
-
-</docmeta>

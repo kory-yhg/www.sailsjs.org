@@ -1,11 +1,11 @@
 <h1>Sailsを拡張する</h1>
 <p>Nodeの思想を維持するためにSailsは可能な限りコアを小さく、なるべく全てのものを移譲して、もっとも重要なものはモジュール<a href="./#foot1">*</a>に分けています。現在Sailsには3種類の拡張方法があります。</p>
 <ul>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Generators"><strong>Generators</strong></a> - SailsのCILに機能を足したり、上書きするためのものです。  <em>例</em>: <a href="https://www.npmjs.com/package/sails-generate-model">sails-generate-model</a>, <code>sails generate model foo</code>の形式でコマンドラインからモジュールを生成することが出来るようになります。</li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Adapters"><strong>Adapters</strong></a> - Waterline（SailsのORM)に新しいデータソース（データベースやAPI,ハードウエアなど）を追加するものです。<em>例</em>: <a href="https://www.npmjs.com/package/sails-postgresql">sails-postgresql</a>, Sailsの公式<a href="http://www.postgresql.org/">PostgreSQL</a>アダプタです。</li>
-<li><a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks"><strong>Hooks</strong></a> - Satilsの実行時に機能を追加したり上書きするためのものです。<em>例</em>: <a href="https://www.npmjs.com/package/sails-hook-autoreload">sails-hook-autoreload</a>, 手動でサーバを再起動することなくSaplsプロジェクトのAPIをリフレッシュすることが出来ます。</li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Generators"><strong>Generators</strong></a> - SailsのCILに機能を足したり、上書きするためのものです。  <em>例</em>: <a href="https://www.npmjs.com/package/sails-generate-model">sails-generate-model</a>, <code>sails generate model foo</code>の形式でコマンドラインからモジュールを生成することが出来るようになります。</li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Adapters"><strong>Adapters</strong></a> - Waterline（SailsのORM)に新しいデータソース（データベースやAPI,ハードウエアなど）を追加するものです。<em>例</em>: <a href="https://www.npmjs.com/package/sails-postgresql">sails-postgresql</a>, Sailsの公式<a href="http://www.postgresql.org/">PostgreSQL</a>アダプタです。</li>
+<li><a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks"><strong>Hooks</strong></a> - Satilsの実行時に機能を追加したり上書きするためのものです。<em>例</em>: <a href="https://www.npmjs.com/package/sails-hook-autoreload">sails-hook-autoreload</a>, 手動でサーバを再起動することなくSaplsプロジェクトのAPIをリフレッシュすることが出来ます。</li>
 </ul>
-<p>もしもSailsのプラグインを開発したい場合、最も多くの場合において<a href="http://sailsjs.org/documentation/concepts/extending-sails/Hooks">hook</a>を作ることになるでしょう。</p>
+<p>もしもSailsのプラグインを開発したい場合、最も多くの場合において<a href="http://sailsjs.jp/documentation/concepts/extending-sails/Hooks">hook</a>を作ることになるでしょう。</p>
 <p><a name="foot1">*</a> <sub>リクエストフックのような幾つかの重要なモジュールはSailsのコアにバンドルされていますが厳密には削除したり別々にインストールすることも出来ます。</sub></p>
 <docmeta name="uniqueID" value="extendingsails78468">
 <docmeta name="displayName" value="Extending Sails">

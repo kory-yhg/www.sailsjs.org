@@ -1,5 +1,5 @@
-<h1 id="-unsubscribe-request-records-contexts-">.unsubscribe(<code>request</code>,<code>records</code>,[<code>contexts</code>])</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
+<h1>.unsubscribe(<code>request</code>,<code>records</code>,[<code>contexts</code>])</h1>
+<h3>Purpose</h3>
 <p>This method will unsubscribe a socket from one or more model instances.</p>
 <table>
 <thead>
@@ -32,17 +32,14 @@
 </tbody>
 </table>
 <p><em>Note</em>: <code>unsubscribe</code> will only work when the request is made over a socket connection (e.g. using <code>socket.get</code>), <em>not</em> over an http connection (e.g. using <code>jquery.get</code>).</p>
-<h4 id="-context-" permalink="context"><code>context</code></h4>
+<h4><code>context</code></h4>
 <p>See <code>.subscribe()</code> for a discussion of pubsub contexts.  Omit this argument to unsubscribe a socket from all contexts.</p>
-<h3 id="example-usage" permalink="example-usage">Example Usage</h3>
+<h3>Example Usage</h3>
 <p>Controller Code</p>
-<pre><code data-language="javascript">User.findOne({id: 123}).exec(function(err, userInstance) {
+<pre><code class="language-javascript">User.findOne({id: 123}).exec(function(err, userInstance) {
     User.unsubscribe(req.socket, userInstance);
-});
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="unsubscribe354769"></docmeta></p>
-<p><docmeta name="methodType" value="pubsub"></docmeta></p>
-<p><docmeta name="importance" value="undefined"></docmeta></p>
+});</code></pre>
+<docmeta name="uniqueID" value="unsubscribe354769">
+<docmeta name="methodType" value="pubsub">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".unsubscribe()">
-
-</docmeta>

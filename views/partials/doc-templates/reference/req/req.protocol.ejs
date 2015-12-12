@@ -1,19 +1,15 @@
-<h1 id="req-protocol">req.protocol</h1>
-<p>The protocol used to send this request (<code>req</code>).</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">req.protocol;
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="example" permalink="example">Example</h3>
-<pre><code data-language="javascript">switch (req.protocol) {
-  case &apos;http&apos;:
+<h1>req.protocol</h1>
+<p>リクエスト(<code>req</code>)に使われたプロトコルです。</p>
+<h3>使い方</h3>
+<pre><code class="language-javascript">req.protocol;</code></pre>
+<h3>例</h3>
+<pre><code class="language-js">switch (req.protocol) {
+  case 'http':
     // this is an HTTP request
     break;
-  case &apos;https&apos;:
+  case 'https':
     // this is a secure HTTPS request
     break;
-}
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="reqprotocol732076"></docmeta></p>
+}</code></pre>
+<docmeta name="uniqueID" value="reqprotocol732076">
 <docmeta name="displayName" value="req.protocol">
-
-</docmeta>

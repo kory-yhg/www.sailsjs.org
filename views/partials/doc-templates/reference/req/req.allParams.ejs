@@ -1,31 +1,28 @@
-<h1 id="req-allparams-">req.allParams()</h1>
-<p>Returns the value of <em>all</em> parameters sent in the request, merged together into a single object. Includes parameters parsed from the url path, the query string, and the request body. See <a href="http://sailsjs.org/documentation/reference/req.param" target="_blank"><code>req.param()</code></a> for details.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">req.allParams();
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="example" permalink="example">Example</h3>
-<p>Update the product with the specified <code>sku</code>, setting new values using the parameters which were passed in:</p>
-<pre><code data-language="javascript">var values = req.allParams();
+<h1>req.allParams()</h1>
+<p>リクエストの中で送信された <em>全ての</em> パラメータを一つのオブジェクトにして送信します。URLパスに含まれるパラメータやクエリストリング、リクエストボディの内容もこれに含まれます。詳しくは<a href="http://sailsjs.jp/documentation/reference/req.param"><code>req.param()</code></a>を御覧ください。</p>
+<h3>使い方</h3>
+<pre><code class="language-js">req.allParams();</code></pre>
+<h3>例</h3>
+<p>特定の<code>sku</code>を持つ製品を与えられたパラメータの内容を使って編集します。:</p>
+<pre><code class="language-javascript">var values = req.allParams();
 
-// Don&apos;t allow `price` or `isAvailable` to be edited.
+// Don't allow `price` or `isAvailable` to be edited.
 delete values.price;
 delete values.isAvailable;
 
 // At this point, `values` might look something like this:
-// values ==&gt; { displayName: &apos;Bubble Trouble Bubble Bath&apos; }
+// values ==&gt; { displayName: 'Bubble Trouble Bubble Bath' }
 
 Product.update({sku: sku})
 .set(values)
 .then(function (newProduct) {
   // ...
-});
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+});</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>This method can also be called as <code>req.params.all()</code> - they are synonyms.</li>
+<li>メソッドは<code>req.params.all()</code>としても呼び出せます - これらは同期されています。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="reqallParams817828"></docmeta></p>
+<docmeta name="uniqueID" value="reqallParams817828">
 <docmeta name="displayName" value="req.allParams()">
-</docmeta>

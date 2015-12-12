@@ -1,122 +1,114 @@
-<h1 id="update-a-record">Update a Record</h1>
-<p>Updates an existing record.
-Attributes to change should be sent in the HTTP body as form-encoded values or JSON.</p>
-<pre><code data-language="javascript">PUT /:model/:record
-</code></pre><!-- __LANG=%%__ -->
-<p>Updates the model instance which matches the <strong>id</strong> parameter. Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a <code>400</code> status code will be returned instead.  If no model instance exists matching the specified <strong>id</strong>, a <code>404</code> is returned.</p>
-<h3 id="parameters" permalink="parameters">Parameters</h3>
+<h1>レコードを編集する</h1>
+<p>既存のレコードを編集します。
+変更すべき属性はフォームエンコードされたHTTPボディまたはJSONで送ることが出来ます。</p>
+<pre><code>PUT /:model/:record</code></pre>
+<p><strong>id</strong>パラメータに一致するモデルインスタンスを更新します。新たに更新されたインスタンスをJSONオブジェクトとして返します。バリデーションエラーが起こった場合、不正な属性のJSONレスポンスとともに<code>400</code>ステータスコードを返します。<strong>id</strong>パラメータに一致するモデルインスタンスがない場合は<code>404</code>が返されます。</p>
+<h3>属性</h3>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th style="text-align:left">Details</th>
+<th>属性</th>
+<th>型</th>
+<th style="text-align: left;">詳細</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> id<br><em>(required)</em></td>
-<td><bubble type="number" colors="true"></bubble><br><em>-or-</em><br><bubble type="string" colors="true"></bubble></td>
-<td style="text-align:left">The primary key value of the record to update.<br><br>e.g. <code>PUT /product/5</code></td>
+<td>id<br/><em>(required)</em></td>
+<td>((number))<br/><em>-or-</em><br/>((string))</td>
+<td style="text-align: left;">編集したいレコードの主キー値<br/><br/>例: <code>PUT /product/5</code></td>
 </tr>
 <tr>
-<td> *</td>
-<td><bubble type="string" colors="true"></bubble><br><bubble type="number" colors="true"></bubble><br><bubble type="object" colors="true"></bubble><br><bubble type="array" colors="true"></bubble></td>
-<td style="text-align:left">For <code>POST</code> (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record. For <code>GET</code> (shortcut) requests, add the parameters to the query string.</td>
+<td>*</td>
+<td>((string))<br/>((number))<br/>((object))<br/>((array))</td>
+<td style="text-align: left;"><code>POST</code> (RESTful)リクエストに対しては編集したいレコードにセットしたい値をボディパラメータの中でモデルで定義されたものと同じ名前の属性で定義します。<code>GET</code> (shortcut)リクエストに関してはパラメータはクエリストリングに追加されます。</td>
 </tr>
 <tr>
-<td> callback</td>
-<td><bubble type="string" colors="true"></bubble></td>
-<td style="text-align:left">If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br> <br> e.g. <code>?callback=myJSONPHandlerFn</code></td>
+<td>callback</td>
+<td>((string))</td>
+<td style="text-align: left;">指定されていればJSONPレスポンスが（JSONの代わりに）送信されます。この名前のJavascript関数を、結果を一つ目の（そして唯一の）引数として実行します。<br/> <br/> 例:<code>?callback=myJSONPHandlerFn</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="examples" permalink="examples">Examples</h3>
-<h4 id="update-record-rest-" permalink="update-record-(rest)">Update Record (REST)</h4>
-<p>Change AppleJack&apos;s hobby to &quot;kickin&quot;.</p>
-<h5 id="route" permalink="route">Route</h5>
+<h3>例</h3>
+<h4>レコードを編集する (REST)</h4>
+<p>AppleJackの趣味を&quot;kickin&quot;に変える。</p>
+<h5>ルート</h5>
 <p><code>PUT /pony/47</code></p>
-<h5 id="json-request-body" permalink="json-request-body">JSON Request Body</h5>
-<pre><code data-language="json">{
-  &quot;hobby&quot;: &quot;kickin&quot;
-}
-</code></pre><!-- __LANG=%%__ -->
-<h5 id="expected-response" permalink="expected-response">Expected Response</h5>
-<pre><code data-language="json">{
-  &quot;name&quot;: &quot;AppleJack&quot;,
-  &quot;hobby&quot;: &quot;kickin&quot;,
-  &quot;id&quot;: 47,
-  &quot;createdAt&quot;: &quot;2013-10-18T01:23:56.000Z&quot;,
-  &quot;updatedAt&quot;: &quot;2013-11-26T22:55:19.951Z&quot;
-}
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="update-record-shortcuts-" permalink="update-record-(shortcuts)">Update Record (Shortcuts)</h4>
+<h5>JSONリクエストボディ</h5>
+<pre><code class="language-json">{
+  "hobby": "kickin"
+}</code></pre>
+<h5>期待されるレスポンス</h5>
+<pre><code class="language-json">{
+  "name": "AppleJack",
+  "hobby": "kickin",
+  "id": 47,
+  "createdAt": "2013-10-18T01:23:56.000Z",
+  "updatedAt": "2013-11-26T22:55:19.951Z"
+}</code></pre>
+<h4>レコードを編集する (Shortcuts)</h4>
 <p><code>GET /pony/update/47?hobby=kickin</code></p>
-<h5 id="expected-response" permalink="expected-response">Expected Response</h5>
-<p>Same as above.</p>
-<h4 id="add-association-between-two-existing-records-rest-" permalink="add-association-between-two-existing-records-(rest)">Add association between two existing records (REST)</h4>
-<p>Give Pinkie Pie the pre-existing pet named &quot;Bubbles&quot; who has ID 15.</p>
-<h5 id="route" permalink="route">Route</h5>
+<h5>期待されるレスポンス</h5>
+<p>同上。</p>
+<h4>既存の2つのレコード間のアソシエーションを加える。 (REST)</h4>
+<p>Pinkie Pieに既存の&quot;Bubbles&quot;でIDが15のペットを与える。</p>
+<h5>ルート</h5>
 <p><code>POST /pony/4/pets</code></p>
-<h5 id="json-request-body" permalink="json-request-body">JSON Request Body</h5>
-<pre><code data-language="json">{
-  &quot;id&quot;: 15
-}
-</code></pre><!-- __LANG=%%__ -->
-<h5 id="expected-response" permalink="expected-response">Expected Response</h5>
-<pre><code data-language="json">{
-  &quot;name&quot;: &quot;Pinkie Pie&quot;,
-  &quot;hobby&quot;: &quot;kickin&quot;,
-  &quot;id&quot;: 4,
-  &quot;pets&quot;: [{
-      &quot;name&quot;: &quot;Gummy&quot;,
-      &quot;species&quot;: &quot;crocodile&quot;,
-      &quot;id&quot;: 10,
-      &quot;createdAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;,
-      &quot;updatedAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;
+<h5>JSONリクエストボディ</h5>
+<pre><code class="language-json">{
+  "id": 15
+}</code></pre>
+<h5>期待されるレスポンス</h5>
+<pre><code class="language-json">{
+  "name": "Pinkie Pie",
+  "hobby": "kickin",
+  "id": 4,
+  "pets": [{
+      "name": "Gummy",
+      "species": "crocodile",
+      "id": 10,
+      "createdAt": "2014-02-13T00:06:50.603Z",
+      "updatedAt": "2014-02-13T00:06:50.603Z"
     },{
-      &quot;name&quot;: &quot;Bubbles&quot;,
-      &quot;species&quot;: &quot;manticore&quot;,
-      &quot;id&quot;: 15,
-      &quot;createdAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;,
-      &quot;updatedAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;
+      "name": "Bubbles",
+      "species": "manticore",
+      "id": 15,
+      "createdAt": "2014-02-13T00:06:50.603Z",
+      "updatedAt": "2014-02-13T00:06:50.603Z"
     }],
-  &quot;createdAt&quot;: &quot;2013-10-18T01:23:56.000Z&quot;,
-  &quot;updatedAt&quot;: &quot;2013-11-26T22:55:19.951Z&quot;
-}
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="add-association-between-two-existing-records-shortcuts-" permalink="add-association-between-two-existing-records-(shortcuts)">Add association between two existing records (Shortcuts)</h4>
+  "createdAt": "2013-10-18T01:23:56.000Z",
+  "updatedAt": "2013-11-26T22:55:19.951Z"
+}</code></pre>
+<h4>既存の2つのレコード間のアソシエーションを加える。 (Shortcuts)</h4>
 <p><code>GET /pony/4/pets/add/15</code></p>
-<h4 id="remove-association-many-to-many-rest-" permalink="remove-association-(manytomany)-(rest)">Remove Association (Many-To-Many) (REST)</h4>
-<p>Remove Pinkie Pie&apos;s pet, &quot;Gummy&quot; (ID 12)</p>
-<h5 id="route" permalink="route">Route</h5>
+<h4>アソシエーションを削除する (多対多) (REST)</h4>
+<p>Pinkie Pieのペット&quot;Gummy&quot; (ID 12)を削除する。</p>
+<h5>ルート</h5>
 <p><code>DELETE /pony/4/pets</code></p>
-<h5 id="json-request-body" permalink="json-request-body">JSON Request Body</h5>
-<pre><code data-language="json">{
-  &quot;id&quot;: 12
-}
-</code></pre><!-- __LANG=%%__ -->
-<h5 id="expected-response" permalink="expected-response">Expected Response</h5>
-<pre><code data-language="json">{
-  &quot;name&quot;: &quot;Pinkie Pie&quot;,
-  &quot;hobby&quot;: &quot;ice skating&quot;,
-  &quot;pets&quot;: [{
-      &quot;name&quot;: &quot;Bubbles&quot;,
-      &quot;species&quot;: &quot;manticore&quot;,
-      &quot;id&quot;: 15,
-      &quot;createdAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;,
-      &quot;updatedAt&quot;: &quot;2014-02-13T00:06:50.603Z&quot;
+<h5>JSONリクエストボディ</h5>
+<pre><code class="language-json">{
+  "id": 12
+}</code></pre>
+<h5>期待されるレスポンス</h5>
+<pre><code class="language-json">{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pets": [{
+      "name": "Bubbles",
+      "species": "manticore",
+      "id": 15,
+      "createdAt": "2014-02-13T00:06:50.603Z",
+      "updatedAt": "2014-02-13T00:06:50.603Z"
     }],
-  &quot;id&quot;: 4,
-  &quot;createdAt&quot;: &quot;2013-10-18T01:22:56.000Z&quot;,
-  &quot;updatedAt&quot;: &quot;2013-11-26T22:54:19.951Z&quot;
-}
-</code></pre><!-- __LANG=%%__ -->
-<h4 id="remove-association-many-to-many-shortcuts-" permalink="remove-association-(manytomany)-(shortcuts)">Remove Association (Many-To-Many) (Shortcuts)</h4>
-<h5 id="route" permalink="route">Route</h5>
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}</code></pre>
+<h4>アソシエーションを削除する (多対多) (Shortcuts)</h4>
+<h5>ルート</h5>
 <p><code>GET /pony/4/pets/remove/12</code></p>
-<h5 id="expected-response" permalink="expected-response">Expected Response</h5>
-<p>Same as above.</p>
-<p><docmeta name="uniqueID" value="UpdateARecord421031"></docmeta></p>
+<h5>期待されるレスポンス</h5>
+<p>同上。</p>
+<docmeta name="uniqueID" value="UpdateARecord421031">
 <docmeta name="displayName" value="update">
-</docmeta>

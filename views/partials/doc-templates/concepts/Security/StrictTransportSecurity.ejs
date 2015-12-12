@@ -1,7 +1,7 @@
 <h1>HTTP Strict Transport Security</h1>
 <p>HTTP Strict Transport Security(STS)は <code>HTTP</code>の代わりに<code>HTTPS</code>を利用させることを強制するオプショナルなセキュリティ強化策です。</p>
 <h3>STSを有効化する</h3>
-<p>実はSTSを実装するにはとてもシンプルで<a href="https://github.com/krakenjs/lusca/blob/master/lib/hsts.js">数行のコードを書くだけで</a>できます。しかし、更に良いことにSailsとExpressでこの機能を実現できる幾つかのオープンソースモジュールがあります。これらのモジュールを使うには以下の手順に従ってnpmからインストールしてアプリケーションの<code>config/http.js</code>の中で<a href="http://sailsjs.org/documentation/concepts/Middleware">カスタムのミドルウエアとして設定</a>してください。以下の例で簡単な使い方があります。詳しい説明や応用的な使い方は下記にあるリンクを参照してください。</p>
+<p>実はSTSを実装するにはとてもシンプルで<a href="https://github.com/krakenjs/lusca/blob/master/lib/hsts.js">数行のコードを書くだけで</a>できます。しかし、更に良いことにSailsとExpressでこの機能を実現できる幾つかのオープンソースモジュールがあります。これらのモジュールを使うには以下の手順に従ってnpmからインストールしてアプリケーションの<code>config/http.js</code>の中で<a href="http://sailsjs.jp/documentation/concepts/Middleware">カスタムのミドルウエアとして設定</a>してください。以下の例で簡単な使い方があります。詳しい説明や応用的な使い方は下記にあるリンクを参照してください。</p>
 <h5><a href="https://github.com/krakenjs/lusca#luscahstsoptions">lusca</a>を使う</h5>
 <blockquote>
 <p><code>lusca</code> は<a href="https://github.com/krakenjs/lusca/blob/master/LICENSE.txt">Apache license</a>で使えるオープンソースです。</p>

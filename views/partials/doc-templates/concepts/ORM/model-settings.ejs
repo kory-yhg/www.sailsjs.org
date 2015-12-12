@@ -42,13 +42,13 @@
 <p>スキーマがなくてもいいアダプタ（MongoやRedisなど）では<code>schema:false</code>がデフォルトの設定になります。</p>
 <h3><code>connection</code></h3>
 <pre><code class="language-javascript">connection: 'my-local-postgresql'</code></pre>
-<p>設定済みのデータベース<a href="http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html">接続設定</a>のうち、このモデルがデータを取得したるデータを書き込むものです。デフォルトは<code>sails-disk</code>をつかったSailsのデフォルトのデータベースである<code>localDiskDb</code>が選択されます。`</p>
+<p>設定済みのデータベース<a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.connections.html">接続設定</a>のうち、このモデルがデータを取得したるデータを書き込むものです。デフォルトは<code>sails-disk</code>をつかったSailsのデフォルトのデータベースである<code>localDiskDb</code>が選択されます。`</p>
 <h3><code>identity</code></h3>
 <pre><code class="language-javascript">identity: 'purchase'</code></pre>
 <p><code>user</code>のような、小文字で書かれたこのモデルのユニークキーです。デフォルトではモデルの<code>identity</code>はファイル名を小文字化したもので自道的に推測されますモデル内でこのフラグを変更してはいけません。</p>
 <h3><code>globalId</code></h3>
 <pre><code class="language-javascript">globalId: 'Purchase'</code></pre>
-<p>このフラッグはモデルに（モデルのグローバルアクセスが許可されている場合に限り）グローバルでアクセス可能な際の名前を決定します。models-においてモデルのグローバルを無効化するためにこのフラグを使ってはいけません。<a href="http://sailsjs.org/documentation/concepts/Globals?q=disabling-globals">sails.config.globals</a>を御覧ください。</p>
+<p>このフラッグはモデルに（モデルのグローバルアクセスが許可されている場合に限り）グローバルでアクセス可能な際の名前を決定します。models-においてモデルのグローバルを無効化するためにこのフラグを使ってはいけません。<a href="http://sailsjs.jp/documentation/concepts/Globals?q=disabling-globals">sails.config.globals</a>を御覧ください。</p>
 <h3>autoPK</h3>
 <pre><code class="language-javascript">autoPK: true</code></pre>
 <p>自動で主キーアトリビュートを定義するかどうかを定義するフラグです。デフォルトのPKはアダプタによって異なります。（例えば、MySQLはオートインクリメントの整数を使いますし、Mongo DBはランダムなUUIDを使います。）いずれのケースにおいてもautoPKで作成された主キーはユニークです。もしこの機能をOffにしたら自動で主キーは作成されなくなりますので手動設定する必要があります.例：</p>
@@ -88,6 +88,6 @@
   email: { type: 'email' },
   age: { type: 'integer' }
 }</code></pre>
-<p><a href="http://sailsjs.org/documentation/concepts/ORM/Attributes.html">アトリビュート</a>の項目をご覧ください。</p>
+<p><a href="http://sailsjs.jp/documentation/concepts/ORM/Attributes.html">アトリビュート</a>の項目をご覧ください。</p>
 <docmeta name="uniqueID" value="Modelconfiguration960213">
 <docmeta name="displayName" value="Model Settings">

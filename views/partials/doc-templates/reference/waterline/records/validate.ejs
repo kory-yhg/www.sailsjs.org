@@ -1,50 +1,50 @@
-<h1 id="-validate-callback-">* .validate(<code>callback</code>)</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>Checks the current keys/values on the record against the validations specified in the attributes object of your model. </p>
-<h3 id="overview" permalink="overview">Overview</h3>
-<h4 id="parameters" permalink="parameters">Parameters</h4>
+<h1>* .validate(<code>callback</code>)</h1>
+<h3>目的</h3>
+<p>現在のキーと値がモデルで指定された属性オブジェクトに適合するかを確認します。</p>
+<h3>概要</h3>
+<h4>パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>#</th>
+<th>説明</th>
+<th>受け入れられるデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Callback</td>
+<td>コールバック</td>
 <td><code>function</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 </tbody>
 </table>
-<h4 id="callback-parameters" permalink="callback-parameters">Callback Parameters</h4>
+<h4>コールバックパラメータ</h4>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Description</th>
-<th>Possible Data Types</th>
+<th>#</th>
+<th>説明</th>
+<th>想定されるデータ型</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Error</td>
+<td>エラー</td>
 <td><code>Error</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="example-usage" permalink="example-usage">Example Usage</h3>
-<pre><code data-language="javascript">User.find().exec(
+<h3>使用例</h3>
+<pre><code class="language-javascript">User.find().exec(
   function(err,myRecords){
 
     // Grab a record off the top, change it to the wrong data type, then try to validate
     var getOneRecord = myRecords.pop();
-    getOneRecord.name = [&apos;Marie&apos;,&apos;Hank&apos;];
+    getOneRecord.name = ['Marie','Hank'];
     getOneRecord.name.validate(
       function(err){
         if (err)
@@ -52,29 +52,26 @@
       });
   });
 
-// {&quot;ValidationError&quot;:{&quot;name&quot;:[{&quot;data&quot;:[&quot;Marie&quot;,&quot;Hank&quot;],&quot;message&quot;:&quot;Validation error: \&quot;Marie,Hank\&quot; is not of type \&quot;string\&quot;&quot;,&quot;rule&quot;:&quot;string&quot;}]}}
-</code></pre><!-- __LANG=%%__ -->
-<p>For model</p>
-<pre><code data-language="javascript">module.exports = {
+// {"ValidationError":{"name":[{"data":["Marie","Hank"],"message":"Validation error: \"Marie,Hank\" is not of type \"string\"","rule":"string"}]}}
+</code></pre>
+<p>モデルで</p>
+<pre><code class="language-javascript">module.exports = {
 
   attributes: {
-    name: &apos;string&apos;
+    name: 'string'
 
   }
 
-};
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+};</code></pre>
+<h3>備考</h3>
 <blockquote>
-<p>This is shorthand for <code>Model.validate({ attributes }, cb)</code>
-If you <code>.save()</code> without first validating, Waterline tries to convert.  If it can&apos;t, it will throw an error.
-In this case, it would have converted the array to the string &apos;Marie,Hank&apos;</p>
-<p>There will be no parameters in the callback unless there is an error.  No news is good news.</p>
-<p>This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  </p>
+<p>これは<code>Model.validate({ attributes }, cb)</code>の短縮版です。
+バリデーション無しで<code>.save()</code>した場合、Waterlineはまずコンバートを試みて、それでも出来なければエラーを返します。
+このケースでは、配列は'Marie,Hank'のような文字列に置き換えられます。</p>
+<p>エラー長い限り、コールバックのパラメータはありません。便りがないのは良い便りです。</p>
+<p>これはインスタンスメソッドです。現在、インスタンスメソッドはトランザクション出来ません。そのため、同じ意味を持つモデルメソッドを使うことをおすすめします。  </p>
 </blockquote>
-<p><docmeta name="uniqueID" value="validate76690"></docmeta></p>
-<p><docmeta name="methodType" value="instance"></docmeta></p>
-<p><docmeta name="importance" value="undefined"></docmeta></p>
+<docmeta name="uniqueID" value="validate76690">
+<docmeta name="methodType" value="instance">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".validate()">
-
-</docmeta>

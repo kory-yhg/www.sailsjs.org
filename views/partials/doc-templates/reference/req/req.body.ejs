@@ -1,15 +1,13 @@
-<h1 id="req-body">req.body</h1>
-<p>An object containing text parameters from the parsed request body, defaulting to <code>{}</code>.</p>
-<p>By default, the request body can be url-encoded or stringified as JSON.  Support for other formats, such as serialized XML, is possible using the <a href="http://sailsjs.org/documentation/concepts/Middleware" target="_blank">middleware</a> configuration.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">req.body;
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+<h1>req.body</h1>
+<p>リクエストボディをパースしたテキストパワメータが含まれ、デフォルトは<code>{}</code>です。</p>
+<p>デフォルトで、リクエストボディはURLエンコードされているか、Json文字列です。シリアライズされたXMLなど、その他フォーマットのサポートは<a href="http://sailsjs.jp/documentation/concepts/Middleware">middleware</a>を設定を使って可能です。</p>
+<h3>使い方</h3>
+<pre><code class="language-js">req.body;</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>If a request contains one or more file uploads, only the text parameters sent <em><strong>before</strong></em> the first file parameter will be available in <code>req.body</code>.</li>
+<li>リクエストが、一つまたは複数のファイルアップロードを含んでいる場合、文字列属性は<code>req.body</code>の中の最初のパラメータの <em><strong>前に</strong></em> あるもののみ取得可能です。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="reqbody1481"></docmeta></p>
+<docmeta name="uniqueID" value="reqbody1481">
 <docmeta name="displayName" value="req.body">
-</docmeta>

@@ -1,57 +1,54 @@
-<h1 id="res-view-">res.view()</h1>
-<p>Respond with an HTML page.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">return res.view(pathToView, locals);
-</code></pre><!-- __LANG=%%__ -->
-<p><em>Or:</em></p>
+<h1>res.view()</h1>
+<p>HTMLページでレスポンスする。</p>
+<h3>使い方</h3>
+<pre><code class="language-js">return res.view(pathToView, locals);</code></pre>
+<p><em>あるいは:</em></p>
 <ul>
 <li><code>return res.view(pathToView);</code></li>
 <li><code>return res.view(locals);</code></li>
 <li><code>return res.view();</code></li>
 </ul>
-<p>Uses the <a href="http://sailsjs.org/documentation/concepts/Views/ViewEngines.html" target="_blank">configured view engine</a> to compile the <a href="http://sailsjs.org/documentation/concepts/Views/Partials.html" target="_blank">view template</a> at <code>pathToView</code> into HTML.  If <code>pathToView</code> is not provided, serves the conventional view based on the current controller and action.</p>
-<p>The specified <a href="http://sailsjs.org/documentation/reference/Views/Locals.html" target="_blank"><code>locals</code></a> are merged with your configured app-wide locals, as well as certain built-in locals from Sails and/or your view engine, then passed to the view engine as data.</p>
-<h3 id="arguments" permalink="arguments">Arguments</h3>
+<p><a href="http://sailsjs.jp/documentation/concepts/Views/ViewEngines.html">設定されたビューエンジン</a>を使って<code>pathToView</code>にある<a href="http://sailsjs.jp/documentation/concepts/Views/Partials.html">view template</a>をHTMLにコンパイルします。<code>pathToView</code>が与えられない場合、現在のコントローラとアクションに応じて慣習的にビューを提供します。</p>
+<p>与えられた、<a href="http://sailsjs.jp/documentation/reference/Views/Locals.html"><code>locals</code></a> はアプリケーション横断的なローカルやSailsやビューエンジンによって挿入されたローカルと統合された後にdataとしてビューエンジンに渡されます。</p>
+<h3>引数</h3>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Argument</th>
-<th style="text-align:center">Type</th>
-<th>Details</th>
+<th>引数</th>
+<th style="text-align: center;">型</th>
+<th>詳細</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
 <td><code>pathToView</code></td>
-<td style="text-align:center"><bubble type="string" colors="true"></bubble></td>
-<td>The path to the desired view file relative to your app&apos;s <a href="http://sailsjs.org/documentation/anatomy/myApp/views" target="_blank"><code>views</code> folder</a> (usually <code>views/</code>), without the file extension (e.g. <code>.ejs</code>), and with no trailing slash.<br>Defaults to &quot;identityOfController/nameOfAction&quot;.</td>
+<td style="text-align: center;">((string))</td>
+<td>目的のビューファイルに対する<a href="http://sailsjs.jp/documentation/anatomy/myApp/views"><code>views</code> フォルダ</a> (usually <code>views/</code>)に相対的なパスを拡張子(例:<code>.ejs</code>)と最後のスラッシュ無しで。<br/>デフォルトは&quot;identityOfController/nameOfAction&quot;.</td>
 </tr>
 <tr>
 <td>2</td>
 <td><code>locals</code></td>
-<td style="text-align:center"><bubble type="object" colors="true"></bubble></td>
-<td>Data to pass to the view template.  These explicitly specified locals will be merged in to Sails&apos; <a href="http://sailsjs.org/documentation/concepts/Views/Locals.html" target="_blank">built-in locals</a> and your <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md" target="_blank">configured app-wide locals</a>.<br>Defaults to <code>{}</code>.</td>
+<td style="text-align: center;">((object))</td>
+<td>ビューテンプレートに渡すデータ。ここで明示的に渡されたローカルがSailsの<a href="http://sailsjs.jp/documentation/concepts/Views/Locals.html">ビルドインのlocal</a>とアプリケーションの<a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md">アプリ内で全体的に使えると設定したlocal</a>と統合されます。<br/>デフォルトは<code>{}</code>です。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="example" permalink="example">Example</h3>
-<p>Consider a conventionally configured Sails app with a call to <code>res.view()</code> in the <code>cook()</code> action of its <code>OvenController.js</code>.</p>
-<p>With no <code>pathToView</code> argument, <code>res.view()</code> will decide the path by combining the identity of the controller (<code>oven</code>) and the name of the action (<code>cook</code>):</p>
-<pre><code data-language="javascript">return res.view();
-// -&gt; responds with `views/oven/cook.ejs`
-</code></pre><!-- __LANG=%%__ -->
-<p>Here&apos;s how you would load the same view using an explicit <code>pathToView</code>:</p>
-<pre><code data-language="javascript">return res.view(&apos;oven/cook&apos;);
-// -&gt; responds with `views/oven/cook.ejs`
-</code></pre><!-- __LANG=%%__ -->
-<p>Finally, here&apos;s a more involved example demonstrating how <code>res.view</code> can be combined with Waterline queries:</p>
-<pre><code data-language="javascript">// Find the 5 hottest oven brands on the market
-Oven.find().sort(&apos;heat ASC&apos;).exec(function (err, ovens){
+<h3>例</h3>
+<p>慣習通りに設定されたSailsアプリケーションの<code>OvenController.js</code>の<code>cook()</code>アクションで<code>res.view()</code>を呼び出すとします。</p>
+<p><code>pathToView</code>引数なしには<code>res.view()</code>はコントローラの識別子(<code>oven</code>)とアクションの名前(<code>cook</code>)を合わせて判断します:</p>
+<pre><code class="language-js">return res.view();
+// -&gt; responds with `views/oven/cook.ejs`</code></pre>
+<p>以下は明示的な<code>pathToView</code>を使って同じビューをロードする方法です:</p>
+<pre><code class="language-js">return res.view('oven/cook');
+// -&gt; responds with `views/oven/cook.ejs`</code></pre>
+<p>最後に<code>res.view</code>がどのようにWaterlineと組み合わさるのか関してのもう少し踏み込んだデモです。:</p>
+<pre><code class="language-js">// Find the 5 hottest oven brands on the market
+Oven.find().sort('heat ASC').exec(function (err, ovens){
   if (err) return res.serverError(err);
 
-  return res.view(&apos;oven/top5&apos;, {
+  return res.view('oven/top5', {
     hottestOvens: ovens
   });
   // -&gt; responds using the view at `views/oven/top5.ejs`,
@@ -64,15 +61,14 @@ Oven.find().sort(&apos;heat ASC&apos;).exec(function (err, ovens){
   // &lt;% }) %&gt;
   // ...
 });
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+</code></pre>
+<h3>Notes</h3>
 <blockquote>
 <ul>
 <li>This method is <strong>terminal</strong>, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of <code>return</code> throughout these docs).</li>
-<li><code>res.view()</code> reads a view file from disk, compiles it into HTML, then streams it back to the client.  If you already have the view in memory, or don&apos;t want to stream the compiled HTML directly back to the client, use <code>sails.hooks.views.render()</code> instead.</li>
-<li><code>res.view()</code> always looks for the <em>lowercased</em> version of a view filename.  For example, if your controller is <code>FooBarController</code> and your action is <code>Baz</code>, <code>res.view()</code> will attempt to find <code>views/foobar/baz.ejs</code>.  On <em>case-sensitive</em> filesystems (e.g. Ubuntu Linux), this can lead to unexpected errors locating views if they are saved with capital letters.  For this reason, it is recommended that you always save your views and view folders in lowercase.</li>
+<li><code>res.view()</code>はビューファイルをディスクから読み出し、HTMLにコンパイルし、クライアントに返送します。ビューがすでにメモリ上にある場合や直接クライアントにコンパイルされたHTMLを送信したくない場合、代わりに<code>sails.hooks.views.render()</code>を使って下さい。</li>
+<li><code>res.view()</code> は常にビューファイル名の <em>小文字版</em> 探します。例えばコントローラが<code>FooBarController</code>でアクションが<code>Baz</code>なら<code>res.view()</code>は<code>views/foobar/baz.ejs</code>を見つけようとします。<em>大文字と小文字を区別する</em> ファイルシステム(例:Ubuntu Linux)では大文字を入れてこれらが命名されていた場合、思わぬエラーを発生させる場合があります。この理由からビューとビューフォルダは常に小文字で命名することをおすすめします。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="resview916814"></docmeta></p>
+<docmeta name="uniqueID" value="resview916814">
 <docmeta name="displayName" value="res.view()">
-</docmeta>

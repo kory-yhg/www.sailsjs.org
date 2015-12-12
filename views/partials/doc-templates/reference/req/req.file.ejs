@@ -1,37 +1,33 @@
-<h1 id="req-file-">req.file()</h1>
-<p>Returns a <a href="http://nodejs.org/api/stream.html#stream_class_stream_readable" target="_blank">readable Node stream</a> of incoming multipart file uploads (an <a href="https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js" target="_blank"><code>Upstream</code></a>) from the specified <code>field</code>.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">req.file(field);
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="details" permalink="details">Details</h3>
-<p><code>req.file()</code> comes from <a href="https://github.com/balderdashy/skipper" target="_blank">Skipper</a>, an opinionated variant of the original Connect body parser that allows you to take advantage of high-performance, streaming file uploads without any dramatic changes in your application logic.</p>
-<p>This is a great simplification, but comes with a minor caveat:  <strong>Text parameters must be included before files in the request body.</strong>  Typically, these text parameters contain string metadata which provides additional information about the file upload.</p>
-<p>Multipart requests to Sails should send all of their <strong>text parameters</strong>. before sending <em>any</em> <strong>file parameters</strong>.  For instance, if you&apos;re building a web frontend that communicates with Sails, you should include text parameters <em>first</em> in any form upload or AJAX file upload requests.  The term &quot;text parameters&quot; refers to the metadata parameters you might send along with the file(s) providing some additional information about this upload.</p>
-<h3 id="how-it-works" permalink="how-it-works">How It Works</h3>
-<p>Skipper treats <em>all</em> file uploads as streams.  This allows users to upload monolithic files with minimal performance impact and no disk footprint, all the while protecting your app against nasty denial-of-service attacks involving tmp files.</p>
-<p>When a multipart request hits your server, instead of writing temporary files to disk, Skipper buffers the request just long enough to run your app code, giving you an opportunity to &quot;plug in&quot; to a compatible blob receiver.  If you don&apos;t &quot;plug in&quot; the data from a particular field, the Upstream hits its &quot;high water mark&quot;, the buffer is flushed, and subsequent incoming bytes on that field are ignored.</p>
-<h3 id="example" permalink="example">Example</h3>
-<p>In a controller action or policy:</p>
-<pre><code data-language="javascript">var SomeReceiver = require(&apos;../services/SomeReceiver&apos;);
+<h1>req.file()</h1>
+<p>特定の<code>field</code>のマルチパートアップロード入力(<a href="https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js"><code>Upstream</code></a>)からの<a href="http://nodejs.org/api/stream.html#stream_class_stream_readable">読み込み可能なNodeストリーム</a> を返します。</p>
+<h3>使い方</h3>
+<pre><code class="language-js">req.file(field);</code></pre>
+<h3>詳細</h3>
+<p><code>req.file()</code>はオリジナルのConnectのbodyパーサーとは違う考え方でアプリケーションロジックに動的な変更を加えることなくストリーミングアップロードのハイパフォーマンスさを利用できる<a href="https://github.com/balderdashy/skipper">Skipper</a>から来ています。</p>
+<p>これは非常な簡易化ですが、ちょっと注意しなければならいこともあります。: <strong>文字列のパラメータはリクエストボディー中のファイルより前になかればいけません</strong> 一般的にこれらのテキストパラメータはファイルアップロードに関する追加情報を提供するメタデータの文字列を含んでいます。</p>
+<p>Sailsに対するマルチパートのリクエストは <em>いかなる</em> <strong>ファイルパラメータより前に</strong> 全ての　<strong>テキストパラメータ</strong> を送る必要があります。例えば、Sails通信するWebフロントエンドの作成している場合、いかなるファイルアップロードを行うフォームに関してもテキストのパラメータを <em>最初に</em> 含める必要があります。ここにおける「テキストパラメータ」とは、ファイルのアップロードに際して一緒に何かの情報を送るメタデータパラメータを指します。</p>
+<h3>どのように動作するのか</h3>
+<p>Skipperは <em>全ての</em> ファイルアップロードをストリームとして扱います。これによってユーザは大きなファイルアップロードをディスクのフットプリントに影響をあたえることがなくなるので、tmpファイル関連の醜いDOSアタックから守ることが出来ます。</p>
+<p>マルチパートのリクエストがサーバに来た場合、一時ファイルに書き込むことなくSkipperはリクエストをアプリケーションコードが実行されるに十分な長さに渡りバッファーし、適切なBLOBレシーバをプラグインする機会を与えます。特定のフィールドに適切なデータフォームがプラグインされなかった場合、アップストリームは&quot;high water mark&quot;を呼び出し、バッファはクリアーされ、そのフィールドに対するその後の入力は無視されます。</p>
+<h3>例</h3>
+<p>コントローラアクションかポリシーで:</p>
+<pre><code class="language-javascript">var SomeReceiver = require('../services/SomeReceiver');
 
-req.file(&apos;avatar&apos;).upload( SomeReceiver(), function (err, files) {
+req.file('avatar').upload( SomeReceiver(), function (err, files) {
     if (err) return res.serverError(err);
     return res.json({
-      message: files.length + &apos; file(s) uploaded successfully!&apos;,
+      message: files.length + ' file(s) uploaded successfully!',
       files: files
     });
   });
-});
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+});</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>Remember that the client request&apos;s <strong>text parameters must be sent first</strong>, before the file parameters.</li>
-<li><code>req.file()</code> supports multiple files sent over the same field, but it&apos;s important to realize that, as a consequence, the Upstream it returns is actually a stream (buffered event emitter) of potential binary streams (files).</li>
-<li>If you prefer to work directly with the Upstream as a stream of streams, you can omit the <code>.upload()</code> method and bind &quot;finish&quot; and &quot;error&quot; events (or use <code>.pipe()</code>) instead.  <a href="https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js#L126" target="_blank">Under the covers</a>, all <code>.upload()</code> is doing is piping the <strong>Upstream</strong> into the specified receiver instance, then running the specified callback when the Upstream emits either a <code>finish</code> or <code>error</code> event.</li>
+<li>クライアントのリクエストの <strong>テキストパラメータは先に送られなければならず</strong> 、その後ファイルパラメータを送るべきということを覚えておいて下さい。</li>
+<li><code>req.file()</code>は同一のフィールドに対する複数のファイル送信をサポートしていますが、それはそれほど大事なことではありませんので、その結果Upstreamとして実際に返されるものはバイナリーストリーム（ファイル）の候補となるストリーム（バッファされたイベントエミッタ）です。</li>
+<li>ストリームのストリームとしてのUpstreamを直接扱いたいときは<code>.upload()</code>メソッドを省いて代わりに&quot;finish&quot;か&quot;error&quot;のイベントをバインドして (あるいは<code>.pipe()</code>を使って) 下さい。 events (or use <code>.pipe()</code>) instead.</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="reqfile784692"></docmeta></p>
+<docmeta name="uniqueID" value="reqfile784692">
 <docmeta name="displayName" value="req.file()">
-
-</docmeta>

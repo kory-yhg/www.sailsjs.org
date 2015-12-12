@@ -1,98 +1,97 @@
-<h1 id="-populate-foreignkey-query-">.populate( <code>foreignKey</code>, [<code>query</code>] )</h1>
-<h3 id="purpose" permalink="purpose">Purpose</h3>
-<p>This chainable method is used between .find()/.update() and .exec() in order to retrieve records associated with the model being queried.  You must supply the Foreign Key specified in your model config.  </p>
-<h3 id="overview" permalink="overview">Overview</h3>
-<h4 id="parameters" permalink="parameters">Parameters</h4>
+<h1>.populate( <code>foreignKey</code>, [<code>query</code>] )</h1>
+<h3>目的</h3>
+<p>このチェーン可能なメソッドは問い合わされているレコードに関連付けられているレコードを取得し、.find()、.update()や.exec()するために使われます。モデル設定で指定された外部キーを与えなければいけません、</p>
+<h3>概要</h3>
+<h4>パラメータ</h4>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>#</th>
+<th>説明</th>
+<th>受け入れられるデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Foreign Key</td>
+<td>外部キー</td>
 <td><code>string</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Query</td>
+<td>クエリ</td>
 <td><code>object</code></td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 </tbody>
 </table>
-<h3 id="example-usage" permalink="example-usage">Example Usage</h3>
-<pre><code data-language="javascript">User.find({name:&apos;Mike&apos;}).exec(function(e,r){
+<h3>使用例</h3>
+<pre><code class="language-javascript">
+User.find({name:'Mike'}).exec(function(e,r){
   console.log(r[0].toJSON())
 })
 
 /* 
-{ name: &apos;Mike&apos;,
+{ name: 'Mike',
   age: 16,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 7 }
 */
 
-User.find({name:&apos;Mike&apos;}).populate(&apos;pets&apos;).exec(function(e,r){
+User.find({name:'Mike'}).populate('pets').exec(function(e,r){
   console.log(r[0].toJSON())
 });
 
 /*
 { pets: 
-   [ { name: &apos;Pinkie Pie&apos;,
-       color: &apos;pink&apos;,
+   [ { name: 'Pinkie Pie',
+       color: 'pink',
        id: 7,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Rainbow Dash&apos;,
-       color: &apos;blue&apos;,
+     { name: 'Rainbow Dash',
+       color: 'blue',
        id: 8,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: &apos;Applejack&apos;,
-       color: &apos;orange&apos;,
+     { name: 'Applejack',
+       color: 'orange',
        id: 9,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: &apos;Mike&apos;,
+  name: 'Mike',
   age: 16,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 7 }
 */
 
-User.find({name:&apos;Mike&apos;}).populate(&apos;pets&apos;,{color:&apos;pink&apos;}).exec(function(e,r){
+User.find({name:'Mike'}).populate('pets',{color:'pink'}).exec(function(e,r){
   console.log(r[0].toJSON())
 });
 
 /*
 { pets: 
-   [ { name: &apos;Pinkie Pie&apos;,
-       color: &apos;pink&apos;,
+   [ { name: 'Pinkie Pie',
+       color: 'pink',
        id: 7,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) }],
-  name: &apos;Mike&apos;,
+  name: 'Mike',
   age: 16,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
   id: 7 }
 */
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+</code></pre>
+<h3>　備考</h3>
 <blockquote>
-<p>Any string arguments passed must be the primary key of the record.</p>
+<p>全ての文字列引数はレコードのIDである必要があります。</p>
 </blockquote>
-<p><docmeta name="uniqueID" value="populate245634"></docmeta></p>
-<p><docmeta name="methodType" value="association"></docmeta></p>
-<p><docmeta name="importance" value="undefined"></docmeta></p>
+<docmeta name="uniqueID" value="populate245634">
+<docmeta name="methodType" value="association">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".populate()">
-
-</docmeta>

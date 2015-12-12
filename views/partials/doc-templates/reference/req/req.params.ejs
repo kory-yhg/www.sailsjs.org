@@ -1,16 +1,13 @@
-<h1 id="req-params">req.params</h1>
-<p>An object containing parameter values parsed from the URL path.</p>
-<p>For example if you have the route <code>/user/:name</code>, then the &quot;name&quot; from the URL path wil be available as <code>req.params.name</code>.  This object defaults to <code>{}</code>.</p>
-<h3 id="usage" permalink="usage">Usage</h3>
-<pre><code data-language="javascript">req.params;
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+<h1>req.params</h1>
+<p>URLパスから得られたパラメータ値を持ったオブジェクトです。</p>
+<p>例えば、<code>/user/:name</code>がある場合、&quot;name&quot;は<code>req.params.name</code>としてURLパスから得ることが出来ます。このオブジェクトのデフォルト値は<code>{}</code>です。</p>
+<h3>使い方</h3>
+<pre><code class="language-javascript">req.params;</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>When a route address is defined using a regular expression, each capture group match from the regex is available as <code>req.params[0]</code>, <code>req.params[1]</code>, etc.This strategy is also applied to unnamed wild-card matches in string routes such as <code>/file/*</code>.</li>
+<li>ルートアドレスが正規表現を使って出来ていた場合、正規表現のそれぞれのマッチから得られた値は<code>req.params[0]</code>、<code>req.params[1]</code>のように得られます。この方法は<code>/file/*</code>のような命名されていないワイルドカードマッチにも使えます。</li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="reqparams977271"></docmeta></p>
+<docmeta name="uniqueID" value="reqparams977271">
 <docmeta name="displayName" value="req.params">
-
-</docmeta>

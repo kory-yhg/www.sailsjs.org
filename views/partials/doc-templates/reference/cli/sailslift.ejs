@@ -1,15 +1,15 @@
-<h1 id="sails-lift">sails lift</h1>
-<p>Run the Sails app in the current dir (if <code>node_modules/sails</code> exists, it will be used instead of the globally installed Sails)</p>
-<h5 id="options-" permalink="options">Options:</h5>
+<h1>sails lift</h1>
+<p>カレントディレクトリ（もし<code>node_modules/sails</code>があればグローバルにインストールされたSailsの代わりに利用します。）でSailsアプリケーションを実行します。</p>
+<h5>オプション:</h5>
 <ul>
-<li><code>--dev</code> - in development environment (the default). In the development environment Sails use <em>grunt-watch</em> to keep a eye on your files in <code>/assets</code>. If you change something (for example in one of our css-files) and reload your browser Sails will automatically show your changes. Also you views won&apos;t be cached so you can change your view-files without restarting Sails like the assets.</li>
-<li><code>--prod</code> - in production environment</li>
-<li><code>--port &lt;portNum&gt;</code> - on the port specified by <code>portNum</code> instead of the default (1337)</li>
-<li><code>--verbose</code> - with verbose logging enabled</li>
-<li><code>--silly</code> - with insane logging enabled</li>
+<li><code>--dev</code> - 開発環境（デフォルト）で実行します。 開発環境ではSailsでは<code>/assets</code>フォルダを監視するのに <em>grunt-watch</em> を使います。もし何かを変更（たとえばcss-filesのどれかなど）して、ブラウザをリロードした場合、Sailsは自動的に変更を表示します。同様に、ビューはキャッシュされませんのでSailsを再起動することなくアセットのようなビューファイルを変更することが出来ます。</li>
+<li><code>--prod</code> - 本番環境で実行します。</li>
+<li><code>--port &lt;portNum&gt;</code> - デフォルトの(1337)ポートに変えて<code>portNum</code>で指定されたポート上で実行します。</li>
+<li><code>--verbose</code> - 多めにログをとります。</li>
+<li><code>--silly</code> - 異常なほど多めにログをとります。</li>
 </ul>
-<h3 id="example" permalink="example">Example</h3>
-<pre><code data-language="javascript">$ sails lift
+<h3>例</h3>
+<pre><code class="language-sh">$ sails lift
 
 info: Starting app...
 
@@ -19,9 +19,9 @@ info:    Sails              &lt;|
 info:    v0.10.3             |\
 info:                       /|.\
 info:                      / || \
-info:                    ,&apos;  |&apos;  \
-info:                 .-&apos;.-==|/_--&apos;
-info:                 `--&apos;-------&apos; 
+info:                    ,'  |'  \
+info:                 .-'.-==|/_--'
+info:                 `--'-------' 
 info:    __---___--___---___--___---___--___
 info:  ____---___--___---___--___---___--___-__
 info: 
@@ -34,9 +34,6 @@ debug: :: Sat Apr 05 2014 17:03:39 GMT-0500 (CDT)
 
 debug: Environment : development
 debug: Port        : 1337
-debug: --------------------------------------------------------
-</code></pre><!-- __LANG=%%__ -->
-<p><docmeta name="uniqueID" value="sailslift482554"></docmeta></p>
+debug: --------------------------------------------------------</code></pre>
+<docmeta name="uniqueID" value="sailslift482554">
 <docmeta name="displayName" value="sails lift">
-
-</docmeta>

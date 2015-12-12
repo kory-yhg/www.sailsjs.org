@@ -1,105 +1,98 @@
-<h1 id="find-records">Find Records</h1>
-<p>Returns a list of records from the model as a JSON array of objects.</p>
-<pre><code data-language="javascript">GET /:model
-</code></pre><!-- __LANG=%%__ -->
-<p>Results may be filtered, paginated, and sorted based on the blueprint configuration and/or parameters sent in the request.</p>
-<p>If the action was triggered via a socket request, the requesting socket will be &quot;subscribed&quot; to all records returned. If any of the returned records are subsequently updated or deleted, a message will be sent to that socket&apos;s client informing them of the change. See the <a href="https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts" target="_blank">docs for Model.subscribe()</a> for details.</p>
-<h3 id="parameters" permalink="parameters">Parameters</h3>
-<p><em>All parameters are optional.</em></p>
+<h1>レコードを検索する</h1>
+<p>モデル上のレコードのリストをオブジェクトのJSON配列として返します。</p>
+<pre><code>GET /:model</code></pre>
+<p>結果に対してはリクエストとして送られたパラメータとblueprintの設定（のずれかまたは両方）によってフィルター、ページ分け、並び替えが行われます。</p>
+<p>アクションがリクエストを通じて呼びされた場合、リクエストを行ったソケットは返された全てのレコードをサブスクライブします。レコードが付加的に編集、削除された場合その旨を伝えるメッセージがソケットのクライアントに送られます。詳しくは<a href="https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts">Model.subscribe()のドキュメント</a>を御覧ください。</p>
+<h3>パラメータ</h3>
+<p><em> 全てのパラメータはオプショナルです。 </em></p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th style="text-align:left">Details</th>
+<th>パラメータ</th>
+<th>型</th>
+<th style="text-align: left;">詳細</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td> *</td>
-<td><bubble type="string" colors="true"></bubble></td>
-<td style="text-align:left">To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model. <br> <br> For instance, if our <code>Purchase</code> model has an <strong>amount</strong> attribute, we could send <code>GET /purchase?amount=99.99</code> to return a list of $99.99 purchases.</td>
+<td>*</td>
+<td>((string))</td>
+<td style="text-align: left;">モデルで定義されたものと同名の属性を指定することで属性に応じて結果をフィルターします。<br/> <br/> 例えば<code>Purchase</code>モデルが <strong>amount</strong> 属性を持っていた場合、<code>GET /purchase?amount=99.99</code> と送信することで$99.99の購入のリストが取得できます。</td>
 </tr>
 <tr>
-<td> where</td>
-<td><bubble type="string" colors="true"></bubble></td>
-<td style="text-align:left">Instead of filtering based on a specific attribute, you may instead choose to provide a <code>where</code> parameter with a Waterline WHERE criteria object, <em>encoded as a JSON string</em>.  This allows you to take advantage of <code>contains</code>, <code>startsWith</code>, and other sub-attribute criteria modifiers for more powerful <code>find()</code> queries. <br> <br> e.g. <code>?where={&quot;name&quot;:{&quot;contains&quot;:&quot;theodore&quot;}}</code></td>
+<td>where</td>
+<td>((string))</td>
+<td style="text-align: left;">特定の属性でフィルタする代わりに<code>where</code>パラメータを <em>JSON文字列にエンコードされた</em> Waterline WHERE条件オブジェクトで与えることが出来ます。 これによって<code>contains</code>、<code>startsWith</code>などのサブ属性の強みを活かして更に強力な<code>find()</code>を実現することが出来ます。 <br/> <br/> 例: <code>?where={"name":{"contains":"theodore"}}</code></td>
 </tr>
 <tr>
-<td> limit</td>
-<td><bubble type="number" colors="true"></bubble></td>
-<td style="text-align:left">The maximum number of records to send back (useful for pagination). Defaults to 30. <br> <br> e.g. <code>?limit=100</code></td>
+<td>limit</td>
+<td>((number))</td>
+<td style="text-align: left;">返すレコード数の最大値(ページ分けに便利です)。デフォルトは30です。<br/> <br/> 例:<code>?limit=100</code></td>
 </tr>
 <tr>
-<td> skip</td>
-<td><bubble type="number" colors="true"></bubble></td>
-<td style="text-align:left">The number of records to skip (useful for pagination). <br> <br> e.g. <code>?skip=30</code></td>
+<td>skip</td>
+<td>((number))</td>
+<td style="text-align: left;">スキップしたいページ数(ページ分けに便利です)。 <br/> <br/> 例: <code>?skip=30</code></td>
 </tr>
 <tr>
-<td> sort</td>
-<td><bubble type="string" colors="true"></bubble></td>
-<td style="text-align:left">The sort order. By default, returned records are sorted by primary key value in ascending order. <br> <br> e.g. <code>?sort=lastName%20ASC</code></td>
+<td>sort</td>
+<td>((string))</td>
+<td style="text-align: left;">並べ替えをします。デフォルトでは返されたレコードは主キーの昇順で並べられます。<br/> <br/> 例:<code>?sort=lastName%20ASC</code></td>
 </tr>
 <tr>
-<td> populate</td>
-<td><bubble type="string" colors="true"></bubble></td>
-<td style="text-align:left">If specified, overide the default automatic population process. Accepts a comma separated list of attributes names for which to populate record values. See <a href="http://sailsjs.org/documentation/reference/waterline-orm/populated-values" target="_blank">here</a> for more information on how the population process fills out attributes in the returned list of records according to the model&apos;s defined associations.</td>
+<td>populate</td>
+<td>((string))</td>
+<td style="text-align: left;">指定されていればデフォルトの自動ポピュレーションプロセスを上書きします。ポピュレートしたいレコード値をコンマ区切りの属性名で受け付けます。返されたレコードのリストに対してモデルに設定されたアソシエーションに応じてどのように値を満たしていくのかに関して更に詳しくは<a href="http://sailsjs.jp/documentation/reference/waterline-orm/populated-values">こちら</a>をご覧ください。</td>
 </tr>
 <tr>
-<td> callback</td>
-<td><bubble type="string" colors="true"></bubble></td>
-<td style="text-align:left">If specified, a JSONP response will be sent (instead of JSON).  This is the name of a client-side javascript function to call, to which results will be passed as the first (and only) argument <br> <br> e.g. ?callback=my_JSONP_data_receiver_fn</td>
+<td>callback</td>
+<td>((string))</td>
+<td style="text-align: left;">指定されていればJSONPレスポンスが（JSONの代わりに）送信されます。この名前のJavascript関数を、結果を一つ目の（そして唯一の）引数として実行します。<br/> <br/> 例:<code>?callback=myJSONPHandlerFn</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="-find-example" permalink="find-example"><code>find</code> Example</h3>
-<p>Find the 30 newest purchases in our database.</p>
-<pre><code data-language="json">[
+<h3><code>find</code> の例</h3>
+<p>データベースの中から最新30件の購入を検索する。</p>
+<pre><code class="language-json">[
  {
-   &quot;amount&quot;: 49.99,
-   &quot;id&quot;: 1,
-   &quot;createdAt&quot;: &quot;2013-10-18T01:22:56.000Z&quot;,
-   &quot;updatedAt&quot;: &quot;2013-10-18T01:22:56.000Z&quot;
+   "amount": 49.99,
+   "id": 1,
+   "createdAt": "2013-10-18T01:22:56.000Z",
+   "updatedAt": "2013-10-18T01:22:56.000Z"
  },
  {
-   &quot;amount&quot;: 99.99,
-   &quot;id&quot;: 47,
-   &quot;createdAt&quot;: &quot;2013-10-14T01:22:00.000Z&quot;,
-   &quot;updatedAt&quot;: &quot;2013-10-15T01:20:54.000Z&quot;
+   "amount": 99.99,
+   "id": 47,
+   "createdAt": "2013-10-14T01:22:00.000Z",
+   "updatedAt": "2013-10-15T01:20:54.000Z"
  }
-]
-</code></pre><!-- __LANG=%%__ -->
-<p><strong>Using <a href="http://jquery.com/" target="_blank">jQuery</a>:</strong></p>
-<pre><code data-language="javascript">$.get(&apos;/purchase?sort=createdAt DESC&apos;, function (purchases) {
+]</code></pre>
+<p><strong><a href="http://jquery.com/">jQuery</a>を使う:</strong></p>
+<pre><code class="language-javascript">$.get('/purchase?sort=createdAt DESC', function (purchases) {
   console.log(purchases);
-});
-</code></pre><!-- __LANG=%%__ -->
-<p><strong>Using <a href="https://angularjs.org/" target="_blank">Angular</a>:</strong></p>
-<pre><code data-language="javascript">$http.get(&apos;/purchase?sort=createdAt DESC&apos;)
+});</code></pre>
+<p><strong><a href="https://angularjs.org/">Angular</a>を使う:</strong></p>
+<pre><code class="language-javascript">$http.get('/purchase?sort=createdAt DESC')
 .then(function (res) {
   var purchases = res.data;
   console.log(purchases);
-});
-</code></pre><!-- __LANG=%%__ -->
-<p><strong>Using <a href="http://sailsjs.org/documentation/reference/websockets/sails.io.js" target="_blank">sails.io.js</a>:</strong></p>
-<pre><code data-language="javascript">io.socket.get(&apos;/purchase?sort=createdAt DESC&apos;, function (purchases) {
+});</code></pre>
+<p><strong><a href="http://sailsjs.jp/documentation/reference/websockets/sails.io.js">sails.io.js</a>を使う:</strong></p>
+<pre><code class="language-javascript">io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
   console.log(purchases);
-});
-</code></pre><!-- __LANG=%%__ -->
-<p><strong>Using <a href="http://en.wikipedia.org/wiki/CURL" target="_blank">cURL</a>:</strong></p>
-<pre><code data-language="javascript">curl http://localhost:1337/purchase?sort=createdAt%20DESC
-</code></pre><!-- __LANG=%%__ -->
-<h3 id="notes" permalink="notes">Notes</h3>
+});</code></pre>
+<p><strong><a href="http://en.wikipedia.org/wiki/CURL">cURL</a>を使う:</strong></p>
+<pre><code class="language-bash">curl http://localhost:1337/purchase?sort=createdAt%20DESC</code></pre>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li><p>The example above assumes &quot;rest&quot; blueprints are enabled, and that your project contains a <code>Purchase</code> model and an empty <code>PurchaseController</code>.  You can quickly achieve this by running:</p>
-<pre><code data-language="javascript">$ sails new foo
+<li>
+<p>上記の例では&quot;rest&quot;blueprintが有効であると仮定します。それに加えてあなたのプロジェクトが<code>PurchaseController</code>と<code>Purchase</code>モデルを持っているべきです。これを簡単に行うには以下を実行します:</p>
+<pre><code class="language-bash">$ sails new foo
 $ cd foo
-$ sails generate api purchase
-</code></pre><!-- __LANG=%%__ -->
+$ sails generate api purchase</code></pre>
 </li>
 </ul>
 </blockquote>
-<p><docmeta name="uniqueID" value="Find290807"></docmeta></p>
+<docmeta name="uniqueID" value="Find290807">
 <docmeta name="displayName" value="find where">
-</docmeta>
