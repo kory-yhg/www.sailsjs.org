@@ -1,33 +1,33 @@
 <h1>sails.sockets.leave( <code>socket</code>, <code>roomName</code> )</h1>
-<h3>Purpose</h3>
-<p>Unsubscribe a socket from a generic room.</p>
-<h3>Overview</h3>
-<h4>Parameters</h4>
+<h3>目的</h3>
+<p>一般的なroomからのサブスクライブ解除をします。</p>
+<h3>概要</h3>
+<h4>パタメータ</h4>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>説明</th>
+<th>受け入れ可能なデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Socket object</td>
+<td>ソケットオブジェクト</td>
 <td><code>object</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Room Name</td>
+<td>room名</td>
 <td><code>string</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 </tbody>
 </table>
-<h3>Example Usage</h3>
+<h3>使用例</h3>
 <pre><code class="language-javascript">// Controller action
 
 leaveFunRoom: function(req, res) {
@@ -37,11 +37,11 @@ leaveFunRoom: function(req, res) {
       message: 'Left a fun room called '+roomName+'!'
     });
 }</code></pre>
-<p><em>Note: <code>req.socket</code> is only valid if the action is triggered via a socket request, e.g. <code>socket.get('/leaveFunRoom/someRoomName')</code></em></p>
-<h3>Notes</h3>
+<p><em>備考:<code>req.socket</code>はアクションがソケットリクエストによってトリガーされた時にのみ有効です。例：<code>socket.get('/subscribeToFunRoom/someRoomName')</code></em></p>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>The phrase &quot;request socket&quot; here refers to an application-layer WebSocket/Socket.io connection.  <code>req.socket</code> also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure <code>req.isSocket == true</code> before using <code>req.socket</code> with this method.</li>
+<li>ここでの&quot;request socket&quot;はアプリケーションレイヤーのWebSocket/Socket.ioコネクションを意味します。<code>req.socket</code>はHTTPリクエストにも存在しますが、これはその下のトランスポートレイヤーに存在するTCPソケットを表すものでこれとは違います。この方法で<code>req.socket</code>を使う前に<code>req.isSocket == true</code>であることを確認して下さい。</li>
 </ul>
 </blockquote>
 <docmeta name="uniqueID" value="sailssocketsleave425459">

@@ -1,28 +1,28 @@
 <h1>sails.sockets.socketRooms( <code>socket</code> )</h1>
-<h3>Purpose</h3>
-<p>Get the list of rooms a socket is subscribed to</p>
-<h3>Overview</h3>
-<h4>Parameters</h4>
+<h3>目的</h3>
+<p>ソケットがサブスクライブしているroomのリストを取得します。</p>
+<h3>概要</h3>
+<h4>パラメータ</h4>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>説明</th>
+<th>受け入れ可能なデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Socket</td>
+<td>ソケット</td>
 <td><code>object</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 </tbody>
 </table>
-<h3>Example Usage</h3>
-<pre><code class="language-javascript">// Controller action
+<h3>利用例</h3>
+<pre><code class="language-javascript">// コントローラアクション
 
 getMyRooms: function(req, res) {
     var roomNames = JSON.stringify(sails.sockets.socketRooms(req.socket));
@@ -30,10 +30,10 @@ getMyRooms: function(req, res) {
       message: 'I am subscribed to: '+roomNames
     });
 }</code></pre>
-<h3>Notes</h3>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>The phrase &quot;request socket&quot; here refers to an application-layer WebSocket/Socket.io connection.  <code>req.socket</code> also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure <code>req.isSocket == true</code> before using <code>req.socket</code> with this method.</li>
+<li>ここでの&quot;request socket&quot;はアプリケーションレイヤーのWebSocket/Socket.ioコネクションを意味します。<code>req.socket</code>はHTTPリクエストにも存在しますが、これはその下のトランスポートレイヤーに存在するTCPソケットを表すものでこれとは違います。この方法で<code>req.socket</code>を使う前に<code>req.isSocket == true</code>であることを確認して下さい。</li>
 </ul>
 </blockquote>
 <docmeta name="uniqueID" value="sailssocketssocketRooms270469">

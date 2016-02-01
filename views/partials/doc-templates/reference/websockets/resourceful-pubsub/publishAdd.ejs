@@ -1,60 +1,60 @@
 <h1>.publishAdd( <code>{id}</code>,<code>attribute</code>, <code>idAdded</code>, [<code>request</code>], [<code>options</code>] )</h1>
-<h3>Purpose</h3>
-<p>Publishes a notification when an associated record is added to a model's collection.  For example, if a <code>User</code> model has an association with the <code>Pet</code> model so that a user can have one or more pets available in its <code>pets</code> attribute, then any time a new pet is associated with a user <code>publishAdd</code> may be called.</p>
+<h3>目的</h3>
+<p>関連付けられたレコードにモデルコレクションが追加された時に通知を発行します。例えば、<code>User</code>モデルが<code>Pet</code>モデルへの関連付けを持っていて、ユーザが１つまたは複数のペットを<code>pets</code>属性に持てるような場合で、<code>publishAdd</code>がコールされるユーザにペットが関連付けられた時にです。</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>説明</th>
+<th>受け入れ可能なデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>ID of Updated Record</td>
+<td>更新されたレコードのID</td>
 <td><code>int</code>, <code>string</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Attribute of associated collection</td>
+<td>関連付けられたレコードの属性</td>
 <td><code>string</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>3</td>
-<td>ID of associated record that was added</td>
+<td>追加された関連レコードのID</td>
 <td><code>int</code>, <code>string</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>4</td>
-<td>Request</td>
+<td>リクエスト</td>
 <td><code>request object</code></td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 <tr>
 <td>5</td>
-<td>Additional Options</td>
+<td>追加のオプション</td>
 <td><code>object</code></td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 </tbody>
 </table>
-<p><code>publishAdd()</code> emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the <code>.subscribe</code> model method.</p>
-<p>The socket message is an object with the following properties:</p>
+<p><code>message()</code>はモデル識別子をイベント名として利用し、ソケットメッセージを送信します。メッセージは<code>.subscribe</code>モデルメソッドにを経由してサブスクライブをした全てのソケットに送信されます。</p>
+<p>ソケットメッセージは以下のプロパティを含むオブジェクトです。:</p>
 <ul>
-<li><strong>id</strong> - the <code>id</code> attribute of the model instance</li>
-<li><strong>verb</strong>  - <code>"addedTo"</code> (a string)</li>
-<li><strong>attribute</strong> - the name of the model attribute that was added to</li>
-<li><strong>addedId</strong> - the ID of the record that was added</li>
+<li><strong>id</strong> - モデルインスタンスの<code>id</code>属性</li>
+<li><strong>verb</strong>  - <code>"addedTo"</code> (文字列)</li>
+<li><strong>attribute</strong> - 追加されたモデルあ属性の名前</li>
+<li><strong>addedId</strong> - 追加されたレコードのID</li>
 </ul>
 <h4><code>request</code></h4>
-<p>If this argument is included then the socket attached to that request will <em>not</em> receive the notification.</p>
+<p>この引数が含まれていればそのリクエストに結びついているソケットは通知を<em>受け取りません</em>。</p>
 <h4><code>options.noReverse</code></h4>
-<p>See the documentation for <code>publishUpdate</code> for information about <code>options.noReverse</code>.  In general, you should not have to set this argument unless you are writing your own implementation of <code>publishAdd</code> for a model.</p>
+<p><code>options.noReverse</code>に関しては<code>publishUpdate</code>のドキュメントをご覧ください。一般的にモデルに対してど記事の<code>publishAdd</code>実装を行っていないかぎりはこの引数をっかうべきではありません。</p>
 <docmeta name="uniqueID" value="publishAdd129964">
 <docmeta name="methodType" value="pubsub">
 <docmeta name="importance" value="undefined">

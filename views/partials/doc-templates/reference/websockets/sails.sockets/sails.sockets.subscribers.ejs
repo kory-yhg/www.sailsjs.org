@@ -1,14 +1,14 @@
 <h1>sails.sockets.subscribers()</h1>
-<p>Get the IDs of all sockets subscribed to a room.</p>
+<p>roomをサブスクライブしている全てのソケットのIDを取得します。</p>
 <pre><code class="language-javascript">sails.sockets.subscribers(roomName);</code></pre>
-<h3>Usage</h3>
+<h3>使い方</h3>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Argument</th>
-<th>Type</th>
-<th>Details</th>
+<th>引数</th>
+<th>型</th>
+<th>詳細</th>
 </tr>
 </thead>
 <tbody>
@@ -16,16 +16,16 @@
 <td>1</td>
 <td>roomName</td>
 <td>((string))</td>
-<td>The name of the room whose socket ids should be retrieved. <br/> e.g. <code>'supportchat'</code></td>
+<td>ソケットのIDを取得したいroomの名前。<br/>例: <code>'supportchat'</code></td>
 </tr>
 </tbody>
 </table>
-<h3>Example</h3>
+<h3>使用例</h3>
 <pre><code class="language-javascript">sails.sockets.subscribers('supportchat');
 // =&gt; ['BetX2G-2889Bg22xi-jy', 'BTA4G-8126Kr32bi-za']</code></pre>
 <!--
-  Wrote this, then took this out because it's needlessly complex.
-  See sails101/low-level-sockets for more like it.
+　書いてはみたものの取り除くことにしました。なぜならこれは不必要に複雑なので。
+  これに関して詳しくはsails101/low-level-socketsを見てください。
   ~mike
 ```javascript
 // Controller action

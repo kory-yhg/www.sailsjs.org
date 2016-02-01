@@ -1,20 +1,20 @@
 <h1>sails.sockets.blast()</h1>
-<p>Broadcast a message to all sockets connected to the server.</p>
+<p>サーバに接続された全てのソケットにメッセージを送信します。</p>
 <pre><code class="language-javascript">sails.sockets.blast(data);</code></pre>
-<p><em>Or:</em></p>
+<p><em>あるいは:</em></p>
 <ul>
 <li><code>sails.sockets.blast(eventName, data);</code></li>
 <li><code>sails.sockets.blast(data, socketToOmit);</code></li>
 <li><code>sails.sockets.blast(eventName, data, socketToOmit);</code></li>
 </ul>
-<h3>Usage</h3>
+<h3>使い方</h3>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Argument</th>
-<th>Type</th>
-<th>Details</th>
+<th>引数</th>
+<th>型</th>
+<th>詳細</th>
 </tr>
 </thead>
 <tbody>
@@ -22,24 +22,24 @@
 <td>1</td>
 <td>eventName</td>
 <td>((string))</td>
-<td>Optional. Defaults to <code>'message'</code>.</td>
+<td>オプション、デフォルトでは<code>'message'</code></td>
 </tr>
 <tr>
 <td>2</td>
 <td>data</td>
 <td>((*))</td>
-<td>The data to send in the message.</td>
+<td>メッセージとして送信されるデータ。</td>
 </tr>
 <tr>
 <td>3</td>
 <td>socketToOmit</td>
 <td>((Socket))</td>
-<td>Optional. If provided, that request socket will <strong>not</strong> receive the message blasted out to everyone else.  Useful when the broadcast-worthy event is triggered by a requesting user who doesn't need to hear about it again.</td>
+<td>オプション。存在する場合、リクエストメソッドは他からblastされたメッセージを受信 <strong>しません</strong>。ブロードキャストに値するデータが、それらを再び受信する必要のないユーザによってトリガーされた時に便利です。</td>
 </tr>
 </tbody>
 </table>
-<h3>Example</h3>
-<p>In a controller action...</p>
+<h3>使用例</h3>
+<p>コントローラアクションで。。。</p>
 <pre><code class="language-javascript">sails.sockets.blast('user_logged_in', {
   msg: 'User #' + req.session.userId + ' just logged in.',
   user: {
@@ -47,10 +47,10 @@
     username: req.session.username
   }
 }, req.socket);</code></pre>
-<h3>Notes</h3>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>The phrase &quot;request socket&quot; here refers to an application-layer WebSocket/Socket.io connection.  <code>req.socket</code> also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure <code>req.isSocket == true</code> before using <code>req.socket</code> with this method.</li>
+<li>ここでの&quot;request socket&quot;はアプリケーションレイヤーのWebSocket/Socket.ioコネクションを意味します。<code>req.socket</code>はHTTPリクエストにも存在しますが、これはその下のトランスポートレイヤーに存在するTCPソケットを表すものでこれとは違います。この方法で<code>req.socket</code>を使う前に<code>req.isSocket == true</code>であることを確認して下さい。</li>
 </ul>
 </blockquote>
 <docmeta name="uniqueID" value="sailssocketsblast345475">

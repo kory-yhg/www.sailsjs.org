@@ -21,9 +21,8 @@ module.exports = function(grunt) {
     grunt.config.set('sails-linker', {
         devJs: {
             options: {
-                startTag: '<!--SCRIPTS-->
-
-<!--SCRIPTS END-->',
+                startTag: '<!--SCRIPTS-->',
+                endTag: '<!--SCRIPTS END-->',
                 fileTmpl: '<script src="%s"></script>',
                 appRoot: '.tmp/public'
             },
@@ -80,9 +79,8 @@ module.exports = function(grunt) {
 
         devStyles: {
             options: {
-                startTag: '<!--STYLES-->
-
-<!--STYLES END-->',
+                startTag: '<!--STYLES-->',
+                endTag: '<!--STYLES END-->',
                 fileTmpl: '<link rel="stylesheet" href="%s">',
                 appRoot: '.tmp/public'
             },
@@ -142,9 +140,8 @@ module.exports = function(grunt) {
         // Bring in JST template object
         devTpl: {
             options: {
-                startTag: '<!--TEMPLATES-->
-
-<!--TEMPLATES END-->',
+                startTag: '<!--TEMPLATES-->',
+                endTag: '<!--TEMPLATES END-->',
                 fileTmpl: '<script type="text/javascript" src="%s"></script>',
                 appRoot: '.tmp/public'
             },

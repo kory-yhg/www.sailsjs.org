@@ -1,40 +1,40 @@
 <h1>sails.sockets.emit( <code>socketIds</code>, [<code>event</code>], <code>data</code>)</h1>
-<h3>Purpose</h3>
-<p>Send a message to one or more sockets by ID.</p>
-<h3>Overview</h3>
-<h4>Parameters</h4>
+<h3>目的</h3>
+<p>IDを使って、一つもしくは複数のソケットにメッセージを送信します。</p>
+<h3>概要</h3>
+<h4>パラメータ</h4>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>記述</th>
+<th>入力できるデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>IDs of sockets to receive message</td>
+<td>メッセージを受け取るソケットのID</td>
 <td><code>string</code>, <code>array</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Event name</td>
+<td>イベント名</td>
 <td><code>string</code></td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 <tr>
 <td>3</td>
-<td>Message data</td>
+<td>メッセージのデータ</td>
 <td><code>object</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 </tbody>
 </table>
-<h3>Example Usage</h3>
-<pre><code class="language-javascript">// Controller action
+<h3>使用例</h3>
+<pre><code class="language-javascript">// コントローラアクション
 
 sayHiToFriend: function(req, res) {
     var friendId = req.param('friendId');
@@ -43,10 +43,10 @@ sayHiToFriend: function(req, res) {
       message: 'Message sent!'
     });
 }</code></pre>
-<h3>Notes</h3>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>If the event name is not specified then the &quot;message&quot; event will be used by default. This would allow the target sockets to listen on the &quot;message&quot; event in order to react to the emit.</li>
+<li>イベント名が指定されていない時、&quot;message&quot;イベントがデフォルトで使われます。これによって対象のソケットが&quot;message&quot;イベントをリッスンすることで送信されたメッセージに反応することができます。</li>
 </ul>
 </blockquote>
 <docmeta name="uniqueID" value="sailssocketsemit963182">

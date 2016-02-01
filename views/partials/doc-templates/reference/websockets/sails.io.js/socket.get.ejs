@@ -1,6 +1,6 @@
 <h1>socket.get()</h1>
-<p>Sends a virtual GET request to a Sails server using Socket.io.</p>
-<h3>Usage</h3>
+<p>仮想的なGETリクエストをSocket.ioを使っているサーバに送信します。</p>
+<h3>使い方</h3>
 <pre><code class="language-js">io.socket.get(url, data, function (data, jwres){
   // ...
 });</code></pre>
@@ -8,9 +8,9 @@
 <thead>
 <tr>
 <th></th>
-<th>Argument</th>
-<th style="text-align: center;">Type</th>
-<th>Details</th>
+<th>引数</th>
+<th style="text-align: center;">型</th>
+<th>詳細</th>
 </tr>
 </thead>
 <tbody>
@@ -18,30 +18,30 @@
 <td>1</td>
 <td><code>url</code></td>
 <td style="text-align: center;">((string))</td>
-<td>The destination URL path, e.g. &quot;/checkout&quot;.</td>
+<td>宛先のURLパス。（例：&quot;/checkout&quot;）</td>
 </tr>
 <tr>
 <td>2</td>
 <td><code>data</code></td>
 <td style="text-align: center;">((*))</td>
-<td>Optional request data- if provided, will be URL encoded and appended to <code>url</code> (existing query string params in url will be preserved)</td>
+<td>（オプションのリクエストデータ）存在する場合、URLエンコードされ、<code>url</code>に追加されます。（urlに含まれる既存のパラメータも温存されます。）</td>
 </tr>
 <tr>
 <td>3</td>
 <td><code>callback</code></td>
 <td style="text-align: center;">((function))</td>
-<td>Optional callback- if provided, will be called when the server responds.</td>
+<td>（オプションのコールバック）存在する場合、サーバがレスポンスを返した時にコールされます。</td>
 </tr>
 </tbody>
 </table>
-<h5>Callback</h5>
+<h5>コールバック</h5>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Argument</th>
-<th style="text-align: center;">Type</th>
-<th>Details</th>
+<th>引数</th>
+<th style="text-align: center;">型</th>
+<th>詳細</th>
 </tr>
 </thead>
 <tbody>
@@ -49,17 +49,17 @@
 <td>1</td>
 <td><code>resData</code></td>
 <td style="text-align: center;">((*))</td>
-<td>Data received in the response from the Sails server (=== <code>jwres.body</code>, equivalent to the HTTP response body.)</td>
+<td>Sailsサーバから返されたデータ(=== <code>jwres.body</code>、HTTPレスポンスボディと同等)</td>
 </tr>
 <tr>
 <td>2</td>
 <td><code>jwres</code></td>
 <td style="text-align: center;">((JWR))</td>
-<td>The <a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md">JSON WebSocket Response</a> object.  Has <code>headers</code>, a <code>body</code>, and a <code>statusCode</code>.</td>
+<td><a href="https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md">JSON WebSocket Response</a> オブジェクト。<code>headers</code>と<code>body</code>、<code>statusCode</code>を持っています。</td>
 </tr>
 </tbody>
 </table>
-<h3>Example</h3>
+<h3>使用例</h3>
 <pre><code class="language-html">&lt;script&gt;
 io.socket.get('/users/9', function (resData) {
   resData; // =&gt; {id:9, name: 'Timmy Mendez'}

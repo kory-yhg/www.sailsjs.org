@@ -1,21 +1,21 @@
-<h1>Resourceful PubSub</h1>
-<h3>Overview</h3>
-<p>For apps that rely heavily on real-time client-server communication--for example, peer-to-peer chat and social networking apps--sending and listening for socket events can quickly become overwhelming.  Sails helps smooth away some of this complexity by introducing the concept of Resourceful PubSub (<a href="http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern">Publish / Subscribe</a>).  Every model (AKA <em>resource</em>) in your app is automatically equipped with class methods for subscribing sockets to notifications about instance creations, updates and deletions.  If you&rsquo;re using the <a href="http://sailsjs.jp/documentation/reference/blueprint-api">Blueprint API</a>, socket messages are automatically broadcast to subscribed sockets when a model event occurs.  If not, you can use the methods described in this section to manually communicate model events to clients.</p>
-<h3>Listening for events on the client</h3>
-<p>While you are free to use any Javascript library to listen for socket events on the client, Sails does provide its own <a href="http://sailsjs.jp/documentation/reference/websockets/sails.io.js">Socket Client</a> as a convenient way to communicate with the server.  Using the Sails socket client makes listening for resourceful pubsub events as easy as:</p>
+<h1>リソースフルなPubSub</h1>
+<h3>概要</h3>
+<p>P2PのチャットやSNSアプリケーションのようなリアルタイムのクライアント・サーバ通信に大きく依存したアプリケーションではソケットイベントの送受信はすぐに膨大なものになります。SailsはリソースフルなPubSub(<a href="http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern">Publish / Subscribe</a>)を提供することでこの複雑さをスムーズにすることに貢献します。アプリケーションの全てのモデル（あるいは<em>リソース</em>）は自動的にインスタンスの作成やアップデート、削除に関してソケットで通知をするクラスメソッドを持っています。<a href="http://sailsjs.jp/documentation/reference/blueprint-api">Blueprint API</a>を利用している場合、ソケットのメッセージはモデルイベントが発生した時に自動的にブロードキャストされます。そうでない時にもこのセクションで書かれた方法を使って、クライアントに手動でモデルイベントの通信ができます。</p>
+<h3>クライアントでイベントをリッスンする</h3>
+<p>Javascriptライブラリを自由に使ってクライアント側でソケットイベントをリッスンできますが、Sailsでは独自の<a href="http://sailsjs.jp/documentation/reference/websockets/sails.io.js">Socketクライアント</a>をサーバと通信するための簡便な方法として用意しています。SailsのソケットクライアントはリソースフルなPubSubを以下のように簡単にリッスンすることができます。:</p>
 <pre><code>io.socket.on("&lt;model identity&gt;", listenerFunction)</code></pre>
 <blockquote>
-<p>The <em>model identity</em> is typically the lowercased version of the model name, unless it has been manually configured in the model file.</p>
+<p>モデルファイルで手動で定義しない限り、<em>model identity</em>は通常モデル名の小文字版です。</p>
 </blockquote>
-<h3>Example</h3>
-<p>Let&rsquo;s say you have a model named <code>User</code> in your app, with a single &ldquo;name&rdquo; attribute.  First, we&rsquo;ll add a listener for &ldquo;user&rdquo; events:</p>
+<h3>使用例</h3>
+<p>アプリケーションの中に&quot;name&quot;と名づけられた一つのアトリビュートを持つ<code>User</code>というモデルが有るとしましょう。まずはじめに&quot;user&quot;イベントにイベントリスナーを追加します。:</p>
 <pre><code>io.socket.on("user", function(event){console.log(event);})</code></pre>
-<p>This will log any notifications about <code>User</code> models to the console.  However, we won&rsquo;t receive any such messages until we <em>subscribe</em> to the existing <code>User</code> model instances.  If you&rsquo;re using the default blueprints, you can subscribe by making a socket request from the client to <code>/user</code>:</p>
+<p>これで<code>User</code>に関する全ての通知がコンソールに記録されます。しかしながら実在する<code>User</code>モデルインスタンスを<em>サブスクライブする</em>までそのようなメッセージを受け取ることはありません。もしデフォルトのblueprintを使っている場合、クライアントから<code>/user</code>へのWebsocketリクエストを行うことでサブスクライブができます。:</p>
 <pre><code>io.socket.get("/user", function(resData, jwres) {console.log(resData);})</code></pre>
-<p>This requests the current list of users from the Sails server, and subscribes the client to events about each user.  Additionally, if the <a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.blueprints.html?q=properties"><code>autoWatch</code> setting</a> is on (the default), the client will also be notified whenever a new <code>User</code> is created, and will automatically be subscribed to the new user.  The callback in this example simply logs the user list to the console.  See the <a href="http://sailsjs.jp/documentation/reference/websockets/sails.io.js/socket.get.html">socket.get</a> reference for more info about this method.</p>
-<p>It&rsquo;s important to note that in order for the subscription to take place, the <code>/user</code> request must be made via a websocket call, <em>not</em> a regular HTTP request.  That is, using an AJAX request (e.g. <code>jQuery.get("/user")</code>) will <em>not</em> result in the client being subscribed to resourceful pubsub messages about <code>User</code>.  However, once the subscription is made, <em>any</em> changes to models--whether they be the result of a socket call, an AJAX request, even a cURL request from the command line--will cause the client to receive a notification.  Continuing with the above example, if you were to open up a new browser window and go to the following URL:</p>
+<p>これでSailsサーバに現在のユーザのリストをリクエストし、クライアントはそれぞれのユーザに関してのイベントをサブスクライブします。。加えて、<a href="http://sailsjs.jp/documentation/reference/sails.config/sails.config.blueprints.html?q=properties"><code>autoWatch</code>設定</a> がonであれば（デフォルトではonです。）、新規の<code>User</code>が作成された時にも通知を受け、新しいユーザもまたサブスクリプトされます。この例のコールバックは単にユーザのリストをコンソールにログします。このメソッドに関してのより詳細の情報は <a href="http://sailsjs.jp/documentation/reference/websockets/sails.io.js/socket.get.html">socket.get</a>のリファレンスをご覧ください。</p>
+<p>ここで大切なことはサブスクリプションが行われるためには<code>/user</code>へのリクエストは通常の<em>HTTPリクエストではなく</em>、Websocketのリクエストである必要があるということです。つまり、AJAXリクエストを行うこと(例えば<code>jQuery.get("/user")</code>) では<code>User</code>に対してのリソースフルなPubsubをサブスクライブすることはできないということです。しかし、一旦サブスクリプションが行われると、ソケットのコールでもAjaxリクエストでも、cURLのリクエストでも、<em>全ての</em>モデル変更が通知されます。上の例に続けでブラウザを開き、以下のURLへのリクエストを行うと:</p>
 <pre><code>/user/create?name=joe</code></pre>
-<p>You would see something like the following in the console of the first window:</p>
+<p>以下の様な通知が最初のウインドウのコンソールで表示されます。:</p>
 <pre><code>{
     data: {
         createdAt: "2014-08-01T05:50:19.855Z"
@@ -26,6 +26,6 @@
     id: 1,
     verb: "created"
 }</code></pre>
-<p>The <code>verb</code> indicates the kind of action that occurred.  The <code>id</code> refers to the instance that the action occurred on, and <code>data</code> contains more information about the <code>User</code> that was acted upon.  Each event type sends back slightly different information; see the individual resourceful pubsub method reference documents for more info.</p>
+<p><code>verb</code>はどのようなアクションが起こったかを示します。<code>id</code>はアクションが発生したインスタンスを、<code>data</code>はそれが発生した<code>User</code>に関しての更なる情報を示します。それぞれのイベントタイプはそれぞれちょっと違う情報を含みます。さらなる情報に関してはそれぞれのリソースフルPubSubメソッドのドキュメントをご覧ください。</p>
 <docmeta name="uniqueID" value="resourcefulpubsub293545">
 <docmeta name="displayName" value="Resourceful PubSub">

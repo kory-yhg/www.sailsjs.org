@@ -1,48 +1,48 @@
 <h1>.publishDestroy( <code>{id}</code>, [<code>request</code>], [<code>options</code>] )</h1>
-<h3>Purpose</h3>
-<p>Publish the destruction of a model</p>
+<h3>目的</h3>
+<p>モデルの削除を通知します。</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>説明</th>
+<th>受け入れ可能なデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>ID of Destroyed Record</td>
+<td>削除されたレコードのID</td>
 <td><code>int</code>, <code>string</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Request</td>
+<td>リクエスト</td>
 <td><code>request object</code></td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 <tr>
 <td>3</td>
-<td>Additional options</td>
+<td>追加のオプション</td>
 <td><code>object</code></td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 </tbody>
 </table>
-<p><code>publishDestroy()</code> emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the <code>.subscribe</code> model method.</p>
-<p>The socket message is an object with the following properties:</p>
+<p><code>publishDestroy()</code>はモデルの識別子をイベント名として利用します。このメッセージは<code>.subscribe</code>モデルメソッドを通じてモデルインスタンスをサブスクライブした全てのソケットに送信されます。</p>
+<p>ソケットメッセージは以下の属性を含んだオブジェクトです:</p>
 <ul>
-<li><strong>id</strong> - the <code>id</code> attribute of the model instance</li>
-<li><strong>verb</strong>  - <code>"destroyed"</code> (a string)</li>
-<li><strong>previous</strong> - an object--if present, contains the attributes and values of the object that was destroyed.</li>
+<li><strong>id</strong> - モデルインスタンスの<code>id</code>属性</li>
+<li><strong>verb</strong>  - <code>"destroyed"</code> (文字列)</li>
+<li><strong>previous</strong> - オブジェクト。もし存在したら削除されたオブジェクトの属性と値を持っています。</li>
 </ul>
 <h4><code>request</code></h4>
-<p>If this argument is included then the socket attached to that request will <em>not</em> receive the notification.</p>
+<p>この引数が含まれていればそのリクエストに結びついているソケットは通知を<em>受け取りません</em>。</p>
 <h4><code>options.previous</code></h4>
-<p>If this is set, it is expected to be a representation of the model before it was destroyed.  This may be used to send out additional notifications to associated records.</p>
-<h3>Example Usage</h3>
+<p>もしセットされていれば削除前の、モデルを表しています。これは関連付けられているレコードに関して追加の通知を送るのに使えます。</p>
+<h3>使用例</h3>
 <p>UsersController.js</p>
 <pre><code class="language-javascript">module.exports = {
 
@@ -74,7 +74,7 @@
   }
 }
 
-    // Don't forget to handle your errors
+    // エラーのハンドリングを忘れずに
 </code></pre>
 <p>views/users/testSocket.ejs</p>
 <pre><code class="language-html">
@@ -101,9 +101,9 @@ function destroy(){
 &lt;/script&gt;
 &lt;div class="addButton" onClick="destroy()"&gt;Click Me to destroy user 'Walter' ! &lt;/div&gt;
 </code></pre>
-<h3>Notes</h3>
+<h3>備考</h3>
 <blockquote>
-<p>Any string arguments passed must be the ID of the record.</p>
+<p>渡される全ての母子列はレコードのIDでなければいけません。</p>
 </blockquote>
 <docmeta name="uniqueID" value="publishDestroy732227">
 <docmeta name="methodType" value="pubsub">

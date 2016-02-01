@@ -1,14 +1,14 @@
 <h1>sails.sockets.id()</h1>
-<p>Gets the ID of a request socket object.</p>
+<p>リクエストのソケットオブジェクトのIDを取得します。</p>
 <pre><code class="language-javascript">sails.sockets.id(socket);</code></pre>
-<h3>Usage</h3>
+<h3>使い方</h3>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Argument</th>
-<th>Type</th>
-<th>Details</th>
+<th>引数</th>
+<th>型</th>
+<th>詳細</th>
 </tr>
 </thead>
 <tbody>
@@ -16,12 +16,12 @@
 <td>1</td>
 <td>socket</td>
 <td>((Socket))</td>
-<td>A request socket (WebSocket/Socket.io) object <br/> e.g. <code>req.socket</code>.</td>
+<td>リクエストのソケット(WebSocket/Socket.io)オブジェクト<br/> 例: <code>req.socket</code>.</td>
 </tr>
 </tbody>
 </table>
-<p>Once acquired, the socket object's ID can be used to send direct messages to that socket (see <a href="http://sailsjs.jp/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html">sails.sockets.emit</a>) or get information about the rooms that the socket is subscribed to (see <a href="http://sailsjs.jp/documentation/reference/websockets/sails.sockets/sails.sockets.rooms.html">sails.sockets.socketRooms</a>).</p>
-<h3>Example</h3>
+<p>ソケットオブジェクトのIDを一旦取得すると、それを使ってそのソケットへのダイレクトメッセージを送信（<a href="http://sailsjs.jp/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html">sails.sockets.emit</a>を御覧ください）したり、そのソケットがサブスクライブしているルームの情報を取得（(see <a href="http://sailsjs.jp/documentation/reference/websockets/sails.sockets/sails.sockets.rooms.html">sails.sockets.socketRooms</a>を御覧ください）できます。</p>
+<h3>使用例</h3>
 <pre><code class="language-javascript">// Controller action
 
 getSocketID: function(req, res) {
@@ -32,10 +32,10 @@ getSocketID: function(req, res) {
 
   return res.ok('My socket ID is: ' + socketId);
 }</code></pre>
-<h3>Notes</h3>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>The phrase &quot;request socket&quot; here refers to an application-layer WebSocket/Socket.io connection.  <code>req.socket</code> also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure <code>req.isSocket == true</code> before using <code>req.socket</code> with this method.</li>
+<li>ここでの&quot;request socket&quot;はアプリケーションレイヤーのWebSocket/Socket.ioコネクションを意味します。<code>req.socket</code>はHTTPリクエストにも存在しますが、これはその下のトランスポートレイヤーに存在するTCPソケットを表すものでこれとは違います。この方法で<code>req.socket</code>を使う前に<code>req.isSocket == true</code>であることを確認して下さい。</li>
 </ul>
 </blockquote>
 <docmeta name="uniqueID" value="sailssocketsid240053">

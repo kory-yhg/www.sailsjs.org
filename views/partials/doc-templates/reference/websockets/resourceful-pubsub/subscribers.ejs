@@ -1,40 +1,40 @@
 <h1>.subscribers(<code>record</code>,[<code>contexts</code>])</h1>
-<h3>Purpose</h3>
-<p>Returns an array of sockets that are subscribed to <code>record</code>.  This can be used in conjunction with lower-level methods like <a href="http://sailsjs.jp/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html"><code>sails.sockets.emit</code></a> to send custom messages to a collection of sockets, or with <a href="http://sailsjs.jp/documentation/reference/websockets/resourceful-pubsub/subscribe.html"><code>.subscribe</code></a> to subscribe one group of sockets to a new instance.</p>
+<h3>目的</h3>
+<p><code>record</code>を購読しているソケットの配列を返します。これは<a href="http://sailsjs.jp/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html"><code>sails.sockets.emit</code></a>のような低レベルのメソッドと一緒に使ってカスタムメッセージを特定のソケット群に送信したり、 <a href="http://sailsjs.jp/documentation/reference/websockets/resourceful-pubsub/subscribe.html"><code>.subscribe</code></a>と一緒に使ってソケット群に新しいインスタンスをサブスクライブさせることができます。</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>説明</th>
+<th>受け入れ可能なデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Record</td>
+<td>レコード</td>
 <td>((object)), ((integer)), ((string))</td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Contexts to subscribe to</td>
+<td>サブスクライブしているコンテキスト</td>
 <td>((string)), ((array))</td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 </tbody>
 </table>
-<p><em>Note</em>: <code>record</code> can be either an instance of a model, or a model&rsquo;s primary key.</p>
+<p><em>備考</em>: <code>record</code>にはモデルのインスタンスか主キーが利用できます。</p>
 <h4><code>context</code></h4>
-<p>If you specify a specific context (or array of contexts), you will only get sockets that are subscribed to the specified contexts for the record.</p>
-<h3>Example Usage</h3>
-<p>Controller Code</p>
-<pre><code class="language-javascript">    // Find user #1
+<p>特定のコンテキスト（あるいはコンテキストの配列）を指定した場合、レコードに関してそのコンテキストをサブスクライブしているソケットのみを取得できます。</p>
+<h3>利用例</h3>
+<p>コントローラのコード</p>
+<pre><code class="language-javascript">    // ユーザ#1を探す
     User.findOne(1).exec(function(e,userOne){
-        // Get all of the sockets that are subscribed to user #1
+        // ユーザ#1をサブスクライブしている全てのソケットを取得する
         var subscribers = User.subscribers(userOne);
-        // Subscribe them all to userOne's best friend, too
+        // ユーザ#1の親友も同様にサブスクライブする。
         _.each(subscribers, function(subscriber) {
            User.subscribe(subscriber, userOne.bestFriendId);
         });

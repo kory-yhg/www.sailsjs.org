@@ -1,33 +1,33 @@
 <h1>sails.sockets.join()</h1>
-<p>Subscribes a socket to a generic room.</p>
-<h3>Usage</h3>
+<p>一般的なroomをsocketでサブスクライブします。</p>
+<h3>使い方</h3>
 <pre><code class="language-js">sails.sockets.join(socket, roomName);</code></pre>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Argument</th>
-<th style="text-align: center;">Type</th>
-<th>Details</th>
+<th>引数</th>
+<th style="text-align: center;">型</th>
+<th>詳細</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
 <td><code>socket</code></td>
-<td style="text-align: center;">((string)) -or- ((socket))</td>
-<td>The socket to be subscribed.  May be specified by the socket's id or a raw socket object.</td>
+<td style="text-align: center;">((string)) あるいは ((socket))</td>
+<td>サブスクライブするソケットソケットのIDまたはソケットオブジェクトで特定可能。</td>
 </tr>
 <tr>
 <td>2</td>
 <td><code>roomName</code></td>
 <td style="text-align: center;">((string))</td>
-<td>The name of the room to which the socket will be subscribed.  If the room does not exist yet, it will be created.</td>
+<td>ソケットがサブスクライブするroomの名前。roomが存在しなければ新規作成されます。</td>
 </tr>
 </tbody>
 </table>
-<h3>Example</h3>
-<p>In a controller action:</p>
+<h3>使用例</h3>
+<p>コントローラアクションで:</p>
 <pre><code class="language-javascript">subscribeToFunRoom: function(req, res) {
   var roomName = req.param('roomName');
   sails.sockets.join(req.socket, roomName);
@@ -35,11 +35,11 @@
     message: 'Subscribed to a fun room called '+roomName+'!'
   });
 }</code></pre>
-<p><em>Note: <code>req.socket</code> is only valid if the action is triggered via a socket request, e.g. <code>socket.get('/subscribeToFunRoom/someRoomName')</code></em></p>
-<h3>Notes</h3>
+<p><em>備考:<code>req.socket</code>はアクションがソケットリクエストによってトリガーされた時にのみ有効です。例：<code>socket.get('/subscribeToFunRoom/someRoomName')</code></em></p>
+<h3>備考</h3>
 <blockquote>
 <ul>
-<li>The phrase &quot;request socket&quot; here refers to an application-layer WebSocket/Socket.io connection.  <code>req.socket</code> also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure <code>req.isSocket == true</code> before using <code>req.socket</code> with this method.</li>
+<li>ここでの&quot;request socket&quot;はアプリケーションレイヤーのWebSocket/Socket.ioコネクションを意味します。<code>req.socket</code>はHTTPリクエストにも存在しますが、これはその下のトランスポートレイヤーに存在するTCPソケットを表すものでこれとは違います。この方法で<code>req.socket</code>を使う前に<code>req.isSocket == true</code>であることを確認して下さい。</li>
 </ul>
 </blockquote>
 <docmeta name="uniqueID" value="sailssocketsjoin958690">

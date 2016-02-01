@@ -1,59 +1,59 @@
 <h1>.publishUpdate( <code>{id}</code>,[<code>changes</code>],[<code>request</code>],[<code>options</code>] )</h1>
-<h3>Purpose</h3>
-<p>PublishUpdate updates nothing.  It publishes information about the update of a model instance via websockets.</p>
+<h3>目的</h3>
+<p>PublishCreate自体は実際には何も更新しません。これはただ単にモデルインスタンスが更新されたことをWebsocket経由で通知するだけです。</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>説明</th>
+<th>受け入れ可能なデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>ID of Updated Record</td>
+<td>更新されたレコードのID</td>
 <td><code>int</code>, <code>string</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Updated values</td>
+<td>更新された値</td>
 <td><code>{}</code></td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 <tr>
 <td>3</td>
-<td>Request</td>
+<td>リクエスト</td>
 <td><code>request object</code></td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 <tr>
 <td>4</td>
-<td>Additional Options</td>
+<td>追加のオプション</td>
 <td><code>object</code></td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 </tbody>
 </table>
-<p><code>publishUpdate()</code> emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the <code>.subscribe</code> model method.</p>
-<p>The socket message is an object with the following properties:</p>
+<p><code>publishUpdate()</code>はモデル識別子をイベント名として利用し、ソケットメッセージを送信します。メッセージは<code>.subscribe</code>モデルメソッドにを経由してサブスクライブをした全てのソケットに送信されます。</p>
+<p>ソケットメッセージは以下のプロパティを含むオブジェクトです。:</p>
 <ul>
-<li><strong>id</strong> - the <code>id</code> attribute of the model instance</li>
-<li><strong>verb</strong>  - <code>"updated"</code> (a string)</li>
-<li><strong>data</strong> - an object-- the attributes that were updated</li>
-<li><strong>previous</strong> - an object--if present, the previous values of the updated attributes</li>
+<li><strong>id</strong> - モデルインスタンスの<code>id</code>属性</li>
+<li><strong>verb</strong>  - <code>"updated"</code> (文字列)</li>
+<li><strong>data</strong> - 更新された属性のオブジェクト</li>
+<li><strong>previous</strong> - オブジェクト。もし存在すれば更新された属性の、前の値</li>
 </ul>
 <h4><code>changes</code></h4>
-<p>This should be an object containing any changed attributes and their new values.  </p>
+<p>変更された属性とその新しい値を含むオブジェクトです。</p>
 <h4><code>request</code></h4>
-<p>If this argument is included then the socket attached to that request will <em>not</em> receive the notification.</p>
+<p>この引数が含まれていればそのリクエストに結びついているソケットは通知を<em>受け取りません</em>。</p>
 <h4><code>options.previous</code></h4>
-<p>If the <code>options</code> object contains a <code>previous</code> property, it is expected to be a representation of the model instance's attributes <em>before</em> they were updated.  This may be used to determine whether or not to publish additional messages (see the <code>options.noReverse</code> flag below for more info).</p>
+<p><code>options</code>オブジェクトに<code>previous</code>プロパティが含まれていた場合、それは変更する<em>前の</em>モデルインスタンスを表します。これは追加のメッセージを発行するかどうかを判断するのに使うことができます。(詳しくは以下の<code>options.noReverse</code>フラグに関してをご覧下さい。)</p>
 <h4><code>options.noReverse</code></h4>
-<p>The default implementation of <code>publishUpdate</code> will, if <code>options.previous</code> is present, check whether any associated records were affected by the update, and possibly send out additional notifications.  For example, if a <code>Pet</code> model has an <code>owner</code> attribute that is associated with the <code>User</code> model so that a user may own several pets, and the data sent with the call to <code>publishUpdate</code> indicates that the value of a pet's <code>owner</code> changed, then an additional <code>publishAdd</code> or <code>publishRemove</code> call may be made.  To suppress these notifications, set the <code>options.noReverse</code> flag to <code>true</code>.  In general, you should not have to set this flag unless you are writing your own implementation of <code>publishUpdate</code> for a model.</p>
-<h3>Example Usage</h3>
+<p><code>publishUpdate</code>のデフォルト実装は、もし<code>options.previous</code>が存在すれば関連付けられたレコードがその更新により影響を受けるかを確認し、追加の通知を発行することがあります。例えば、<code>Pet</code>モデルが<code>User</code>モデルに関連付けられた<code>owner</code>属性を持っており、ユーザが特定のペットを所有することが出来る場合で、<code>publishUpdate</code>がコールされて送信されたデータがぺっとの<code>owner</code>変更を示していた場合、追加の<code>publishAdd</code>あるいは<code>publishRemove</code>コールがなされます。これらの通知を抑制するには<code>options.noReverse</code>フラグを<code>true</code>に設定します。一般的にモデルに対して独自の<code>publishUpdate</code>実装を行っていないかぎりはこの引数をっかうべきではありません。</p>
+<h3>使用例</h3>
 <p>UsersController.js</p>
 <pre><code class="language-javascript">module.exports = {
 
@@ -82,7 +82,7 @@
     }
 }
 
-    // Don't forget to handle your errors</code></pre>
+    // エラーハンドリングを忘れずに</code></pre>
 <p>views/users/testSocket.ejs</p>
 <pre><code class="language-html">&lt;script type="text/javascript"&gt;
 window.onload = function subscribeAndListen(){
@@ -102,13 +102,13 @@ window.onload = function subscribeAndListen(){
 
 function doEdit(){
 
-    // Send the name to the testSocket action on the 'Users' contoller
+    //  'Users'コントローラでのnameをtestSocketアクションに送る
 
     socket.get('/users/testSocket/',{name:'Walter'});
 }
 
 &lt;/script&gt;
-&lt;div class="addButton" onClick="doEdit()"&gt;Click Me to add a new User! &lt;/div&gt;
+&lt;div class="addButton" onClick="doEdit()"&gt;ユーザの新規作成はここをクリック！&lt;/div&gt;
 </code></pre>
 <docmeta name="uniqueID" value="publishUpdate712330">
 <docmeta name="methodType" value="pubsub">

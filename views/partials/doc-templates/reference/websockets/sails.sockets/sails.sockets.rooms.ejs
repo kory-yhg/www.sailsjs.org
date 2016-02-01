@@ -1,11 +1,11 @@
 <h1>sails.sockets.rooms()</h1>
-<h3>Purpose</h3>
-<p>Get the list of all current socket rooms</p>
-<h3>Overview</h3>
-<h4>Parameters</h4>
-<p>None.</p>
-<h3>Example Usage</h3>
-<pre><code class="language-javascript">// Controller action
+<h3>目的</h3>
+<p>現在の全てのソケットroomの一覧を取得します。</p>
+<h3>概要</h3>
+<h4>パラメータ</h4>
+<p>なし。</p>
+<h3>使用例</h3>
+<pre><code class="language-javascript">// コントローラアクション
 
 getRoomsList: function(req, res) {
     var roomNames = JSON.stringify(sails.sockets.rooms());
@@ -13,6 +13,6 @@ getRoomsList: function(req, res) {
       message: 'A list of all the rooms: '+roomNames
     });
 }</code></pre>
-<p><em>Note: In Socket.io, all sockets are automatically subscribed to a global room with an empty name ('').  This room is not returned as part of the array in <code>sails.sockets.rooms</code></em> </p>
+<p><em>備考：Socket.ioでは全てのソケットが自動的に空白の名前('')と名付けられたグローバルなroomをサブスクライブします。このroomは<code>sails.sockets.rooms</code>で返される配列には含まれません</em> </p>
 <docmeta name="uniqueID" value="sailssocketsrooms183984">
 <docmeta name="displayName" value="sails.sockets.rooms()">

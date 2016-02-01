@@ -1,41 +1,41 @@
 <h1>.publishCreate( <code>data</code>,[<code>request</code>] )</h1>
-<h3>Purpose</h3>
-<p>PublishCreate doesn't actually create anything.  It simply publishes information about the creation of a model instance via websockets.  PublishCreate is called automatically by the <a href="https://github.com/balderdashy/sails-docs/blob/0.10/reference/Blueprints.md#create-a-record">blueprint <code>create</code> action</a>.</p>
+<h3>目的</h3>
+<p>PublishCreate自体は実際には何も作成しません。これはただ単にモデルインスタンスが生成されたことをWebsocket経由で通知するだけです。PublishCreateは<a href="https://github.com/balderdashy/sails-docs/blob/0.10/reference/Blueprints.md#create-a-record">blueprint <code>create</code> アクション</a>によって自動的に呼びだされます</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>Description</th>
-<th>Accepted Data Types</th>
-<th>Required ?</th>
+<th>説明</th>
+<th>受け入れ可能なデータ型</th>
+<th>必須か</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1</td>
-<td>Data to Send</td>
+<td>送信するデータ</td>
 <td><code>object</code></td>
-<td>Yes</td>
+<td>はい</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Request</td>
+<td>リクエスト</td>
 <td><code>Request object</code></td>
-<td>No</td>
+<td>いいえ</td>
 </tr>
 </tbody>
 </table>
-<p>The default implementation of publishCreate only publishes messages to the firehose, and to sockets subscribed to the model class using the <code>watch</code> method.  It also subscribes all sockets &quot;watching&quot; the model class to the new instance.  The socket message to subscribers will include the following properties:</p>
+<p>publishCreateのデフォルトの実装は <code>watch</code>メソッドを使ってサブスクライブしているソケットfirehoseにメッセージを発行するだけです。同様に、該当するモデルに対する新規インスタンスの作成をウォッチしているソケットもサブスクライブしています。サブスクライバへのメッセージは以下の内容を含みます。:</p>
 <ul>
-<li><strong>id</strong> - the <code>id</code> attribute of the new model instance</li>
-<li><strong>verb</strong>  - <code>"created"</code> (a string)</li>
-<li><strong>data</strong> - an object-- the attributes and values of the new model instance</li>
+<li><strong>id</strong> - 新しいモデルインスタンスの<code>id</code>属性</li>
+<li><strong>verb</strong>  - <code>"created"</code> (文字列)</li>
+<li><strong>data</strong> - 新規モデルインスタンスの属性と値からなるオブジェクト</li>
 </ul>
 <h4><code>data</code></h4>
-<p>An object containing the attributes and values of the new model instance.</p>
+<p>新規モデルインスタンスの属性と値からなるオブジェクト</p>
 <h4><code>request</code></h4>
-<p>If this argument is included then the socket attached to that request will <em>not</em> receive the notification.</p>
-<h3>Example Usage</h3>
+<p>この引数が含まれていればそのリクエストに結びついているソケットは通知を<em>受け取りません</em>。</p>
+<h3>使用例</h3>
 <p>UsersController.js</p>
 <pre><code class="language-javascript">module.exports = {
 
